@@ -1,0 +1,11 @@
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\bin\Debug\WcfServiceWindouws.exe.config
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\bin\Debug\WcfServiceWindouws.exe
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\bin\Debug\WcfServiceWindouws.pdb
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\bin\Debug\WcfService.dll
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\bin\Debug\WcfService.pdb
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\obj\Debug\WcfServiceWindouws.csprojResolveAssemblyReference.cache
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\obj\Debug\WcfServiceWindouws.Form1.resources
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\obj\Debug\WcfServiceWindouws.Properties.Resources.resources
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\obj\Debug\WcfServiceWindouws.csproj.GenerateResource.Cache
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\obj\Debug\WcfServiceWindouws.exe
+D:\my\code\Vane\AutoTest\WcfService\WcfServiceWindouws\obj\Debug\WcfServiceWindouws.pdb

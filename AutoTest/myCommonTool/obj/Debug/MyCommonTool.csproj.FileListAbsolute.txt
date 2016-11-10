@@ -1,0 +1,10 @@
+F:\file\Code\AutoTest\AutoTest\myCommonTool\bin\Debug\myCommonTool.dll
+F:\file\Code\AutoTest\AutoTest\myCommonTool\bin\Debug\myCommonTool.pdb
+F:\file\Code\AutoTest\AutoTest\myCommonTool\obj\Debug\myCommonTool.dll
+F:\file\Code\AutoTest\AutoTest\myCommonTool\obj\Debug\myCommonTool.pdb
+D:\my\code\Vane\AutoTest\AutoTest\myCommonTool\bin\Debug\myCommonTool.dll
+D:\my\code\Vane\AutoTest\AutoTest\myCommonTool\bin\Debug\myCommonTool.pdb
+D:\my\code\Vane\AutoTest\AutoTest\myCommonTool\obj\Debug\myCommonTool.dll
+D:\my\code\Vane\AutoTest\AutoTest\myCommonTool\obj\Debug\myCommonTool.pdb
+D:\my\code\Vane\AutoTest\AutoTest\myCommonTool\obj\Debug\MyCommonTool.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\myCommonTool\obj\Debug\MyCommonTool.csprojResolveAssemblyReference.cache

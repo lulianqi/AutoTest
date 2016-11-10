@@ -1,0 +1,12 @@
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyMommonControl.csprojResolveAssemblyReference.cache
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.Control.CBalloonBase.resources
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.Control.DataRecordBox.resources
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.Control.myChildWindow.resources
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyMommonControl.csproj.GenerateResource.Cache
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.pdb
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\bin\Debug\myCommonTool.dll
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\bin\Debug\SpeechLib.dll
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\bin\Debug\myCommonTool.pdb
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AAA8BDB9-2468-4338-A8E8-BC2CE2752051}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyCommonControl</RootNamespace>
+    <AssemblyName>MyControl</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Control\CBalloonBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\DataRecordBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\DataRecordBox.Designer.cs">
+      <DependentUpon>DataRecordBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\EXComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\EXListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\ListViewExDB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\ListViewExDB.Designer.cs">
+      <DependentUpon>ListViewExDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PlayButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\PlayButton.Designer.cs">
+      <DependentUpon>PlayButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ProgressBarList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\ProgressBarList.Designer.cs">
+      <DependentUpon>ProgressBarList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\TreeViewExDB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\TreeViewExDB.Designer.cs">
+      <DependentUpon>TreeViewExDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ListViewWithButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\ListViewWithButton.Designer.cs">
+      <DependentUpon>ListViewWithButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\MyTool.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Control\CBalloonBase.resx">
+      <DependentUpon>CBalloonBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\DataRecordBox.resx">
+      <DependentUpon>DataRecordBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\PlayButton.resx">
+      <DependentUpon>PlayButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\myCommonTool\MyCommonTool.csproj">
+      <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
+      <Name>MyCommonTool</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\full_page.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

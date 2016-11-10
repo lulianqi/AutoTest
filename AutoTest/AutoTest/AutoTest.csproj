@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5CE88056-AADB-4DF1-81FD-4E2FC1639F20}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutoTest</RootNamespace>
+    <AssemblyName>AutoTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutoTest.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=8.1.0.6, Culture=neutral, PublicKeyToken=5fd520d36328f741, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\code\ToolForPC\ToolForPC\ZfmmqForSunyard_old\ZfmmqForSunyard_old\ZfmmqForSunyard_old\ZfmmqForSunyard\bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.3.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="SpeechLib, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Debug\SpeechLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SYDControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SYDControls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoRunner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoRunner.Designer.cs">
+      <DependentUpon>AutoRunner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myControl\ListView_RemoteRunnerView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="myControl\ListView_RemoteRunnerView.Designer.cs">
+      <DependentUpon>ListView_RemoteRunnerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myControl\ListView_RunnerView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="myControl\ListView_RunnerView.Designer.cs">
+      <DependentUpon>ListView_RunnerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myControl\myChildWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myControl\RemoteClientNode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="myControl\RemoteClientNode.Designer.cs">
+      <DependentUpon>RemoteClientNode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\AddRemoteHost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\AddRemoteHost.Designer.cs">
+      <DependentUpon>AddRemoteHost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\AddRunner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\AddRunner.Designer.cs">
+      <DependentUpon>AddRunner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\myCaseParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\myCaseParameter.Designer.cs">
+      <DependentUpon>myCaseParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\MyCBalloon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\MyCBalloon.designer.cs">
+      <DependentUpon>MyCBalloon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\EditCasebody.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\EditCasebody.designer.cs">
+      <DependentUpon>EditCasebody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\EditProjiectHead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\EditProjiectHead.designer.cs">
+      <DependentUpon>EditProjiectHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\MyCBalloonResultInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\MyCBalloonResultInfo.Designer.cs">
+      <DependentUpon>MyCBalloonResultInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\myDirectionalTestForDevEpAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\myDirectionalTestForDevEpAdd.Designer.cs">
+      <DependentUpon>myDirectionalTestForDevEpAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\MyMessageListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\MyMessageListWindow.Designer.cs">
+      <DependentUpon>MyMessageListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\MyPutInKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\MyPutInKey.Designer.cs">
+      <DependentUpon>MyPutInKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\MyVaneConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\MyVaneConfig.Designer.cs">
+      <DependentUpon>MyVaneConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\OptionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\OptionWindow.Designer.cs">
+      <DependentUpon>OptionWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\RemoteRunner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\RemoteRunner.Designer.cs">
+      <DependentUpon>RemoteRunner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\RunnerSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\RunnerSet.Designer.cs">
+      <DependentUpon>RunnerSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\SetingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\SetingWindow.designer.cs">
+      <DependentUpon>SetingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myDialogWindow\testWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\testWindow.Designer.cs">
+      <DependentUpon>testWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="myTool\CaseRunner.cs" />
+    <Compile Include="myTool\myDataAnalysis.cs" />
+    <Compile Include="myTool\myGlobalStaticData .cs" />
+    <Compile Include="myTool\myResultOut.cs" />
+    <Compile Include="myTool\myShareData.cs" />
+    <Compile Include="myTool\myStruct.cs" />
+    <Compile Include="myTool\CaseFileXmlAnalysis.cs" />
+    <Compile Include="myTool\myVaneConfigTool.cs" />
+    <Compile Include="myTool\RemoteClient.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AutoRunner.resx">
+      <DependentUpon>AutoRunner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myControl\myChildWindow.resx">
+      <DependentUpon>myChildWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\AddRemoteHost.resx">
+      <DependentUpon>AddRemoteHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\AddRunner.resx">
+      <DependentUpon>AddRunner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\myCaseParameter.resx">
+      <DependentUpon>myCaseParameter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\MyCBalloon.resx">
+      <DependentUpon>MyCBalloon.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\EditCasebody.resx">
+      <DependentUpon>EditCasebody.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\EditProjiectHead.resx">
+      <DependentUpon>EditProjiectHead.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\MyCBalloonResultInfo.resx">
+      <DependentUpon>MyCBalloonResultInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\myDirectionalTestForDevEpAdd.resx">
+      <DependentUpon>myDirectionalTestForDevEpAdd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\MyMessageListWindow.resx">
+      <DependentUpon>MyMessageListWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\MyPutInKey.resx">
+      <DependentUpon>MyPutInKey.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\MyVaneConfig.resx">
+      <DependentUpon>MyVaneConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\OptionWindow.resx">
+      <DependentUpon>OptionWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\RemoteRunner.resx">
+      <DependentUpon>RemoteRunner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\RunnerSet.resx">
+      <DependentUpon>RunnerSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\SetingWindow.resx">
+      <DependentUpon>SetingWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\testWindow.resx">
+      <DependentUpon>testWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TEST.resx">
+      <DependentUpon>TEST.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\RemoteServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="TEST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TEST.Designer.cs">
+      <DependentUpon>TEST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vanelife_config.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>AutoRunner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vanelife_serial.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>AutoRunner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoTest_CaseRunner.cs">
+      <DependentUpon>AutoRunner.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoTest_RemoteRunner.cs">
+      <DependentUpon>AutoRunner.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <None Include="Service References\RemoteServiceReference\AutoTest.RemoteServiceReference.RemoteRunnerInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RemoteServiceReference\ExecuteService.wsdl" />
+    <None Include="Service References\RemoteServiceReference\SelService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RemoteServiceReference\SelService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RemoteServiceReference\SelService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RemoteServiceReference\SelService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RemoteServiceReference\SelService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RemoteServiceReference\SelService.disco" />
+    <None Include="Service References\RemoteServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RemoteServiceReference\configuration.svcinfo" />
+    <None Include="Service References\RemoteServiceReference\configuration91.svcinfo" />
+    <None Include="Resources\addUser2.png" />
+    <None Include="Resources\addUser.png" />
+    <None Include="Resources\1187340.png" />
+    <None Include="Resources\1182113.png" />
+    <None Include="Resources\15080.png" />
+    <None Include="Resources\33504.png" />
+    <None Include="Resources\connect_1.png" />
+    <None Include="Resources\load_1gif.gif" />
+    <None Include="Resources\2015062101221885_easyicon_net_128.png" />
+    <None Include="Resources\20150621012209230_easyicon_net_128.png" />
+    <None Include="Resources\1160359.png" />
+    <None Include="Resources\1168178.png" />
+    <None Include="Resources\1163309.png" />
+    <None Include="Resources\1152198.png" />
+    <None Include="Resources\1141978.png" />
+    <Content Include="Resources\logo.ico" />
+    <Content Include="Resources\logo_vane.ico" />
+    <None Include="Resources\1186205.png" />
+    <None Include="Resources\2015070304121672223_easyicon_net_128.png" />
+    <None Include="Resources\560495.png" />
+    <None Include="Resources\560462.png" />
+    <None Include="Resources\15410.png" />
+    <None Include="Resources\20150627013317882_easyicon_net_128.png" />
+    <None Include="Resources\1175642.png" />
+    <None Include="Resources\1186177.png" />
+    <None Include="Resources\chart_pie.ico" />
+    <None Include="Resources\1175874.png" />
+    <None Include="Resources\1186203.png" />
+    <None Include="Resources\560471.png" />
+    <None Include="Resources\560490.png" />
+    <None Include="Resources\1186321.png" />
+    <None Include="Resources\1180540.png" />
+    <None Include="Resources\1180348.png" />
+    <None Include="Resources\1175797.png" />
+    <None Include="Resources\1175597.png" />
+    <None Include="Resources\1175397.png" />
+    <None Include="Resources\1170472.png" />
+    <None Include="Resources\1167714.png" />
+    <None Include="Resources\519914.png" />
+    <None Include="Resources\20141211063254953_easyicon_net_256.png" />
+    <None Include="Resources\20141210060401689_easyicon_net_96.png" />
+    <None Include="Resources\2014110304480190_easyicon_net_32.png" />
+    <None Include="Resources\20141101040347900_easyicon_net_72.png" />
+    <None Include="Resources\20140924023908574_easyicon_net_128.png" />
+    <None Include="Resources\20140924023756383_easyicon_net_128.png" />
+    <None Include="Resources\20131120053301194_easyicon_net_2561.png" />
+    <None Include="Resources\20131120053301194_easyicon_net_256.png" />
+    <None Include="Resources\20131120052142859_easyicon_net_642.png" />
+    <None Include="Resources\20131120052552411_easyicon_net_118.png" />
+    <None Include="Resources\20131120052142859_easyicon_net_641.png" />
+    <None Include="Resources\20131120052142859_easyicon_net_64.png" />
+    <None Include="Resources\2013112005093916_easyicon_net_5121.png" />
+    <None Include="Resources\2013112005093916_easyicon_net_512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CaseExecutiveActuator\CaseExecutiveActuator.csproj">
+      <Project>{2da29bc6-bda9-498e-a6da-5bd9fbc3298b}</Project>
+      <Name>CaseExecutiveActuator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\myCommonTool\MyCommonTool.csproj">
+      <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
+      <Name>MyCommonTool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyControl\MyCommonControl.csproj">
+      <Project>{aaa8bdb9-2468-4338-a8e8-bc2ce2752051}</Project>
+      <Name>MyCommonControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\RemoteServiceReference\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

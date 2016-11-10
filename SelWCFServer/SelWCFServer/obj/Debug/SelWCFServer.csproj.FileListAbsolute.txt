@@ -1,0 +1,8 @@
+D:\my\code\Vane\AutoTest\SelWCFServer\SelWCFServer\obj\Debug\SelWCFServer.csprojResolveAssemblyReference.cache
+D:\my\code\Vane\AutoTest\SelWCFServer\SelWCFServer\obj\Debug\SelWCFServer.Form1.resources
+D:\my\code\Vane\AutoTest\SelWCFServer\SelWCFServer\obj\Debug\SelWCFServer.Properties.Resources.resources
+D:\my\code\Vane\AutoTest\SelWCFServer\SelWCFServer\obj\Debug\SelWCFServer.csproj.GenerateResource.Cache
+D:\my\code\Vane\AutoTest\SelWCFServer\SelWCFServer\bin\Debug\SelWCFServer.exe
+D:\my\code\Vane\AutoTest\SelWCFServer\SelWCFServer\bin\Debug\SelWCFServer.pdb
+D:\my\code\Vane\AutoTest\SelWCFServer\SelWCFServer\obj\Debug\SelWCFServer.exe
+D:\my\code\Vane\AutoTest\SelWCFServer\SelWCFServer\obj\Debug\SelWCFServer.pdb

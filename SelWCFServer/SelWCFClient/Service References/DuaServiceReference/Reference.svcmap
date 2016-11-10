@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a7e82fa1-e949-46f7-a41f-6a48314acf62" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/DuaService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DuaService.disco" MetadataType="Disco" ID="c4ff07ad-9d21-403f-9ca2-481bb64ea097" SourceId="1" SourceUrl="http://localhost:8080/DuaService?disco" />
+    <MetadataFile FileName="DuaService.xsd" MetadataType="Schema" ID="487a1769-6b95-4753-8950-4c9baa0f647a" SourceId="1" SourceUrl="http://localhost:8080/DuaService?xsd=xsd0" />
+    <MetadataFile FileName="DuplexService.wsdl" MetadataType="Wsdl" ID="2dca9e40-1db4-4cdc-ab45-b0236a36e260" SourceId="1" SourceUrl="http://localhost:8080/DuaService?wsdl" />
+    <MetadataFile FileName="DuaService1.xsd" MetadataType="Schema" ID="7fbb22c4-a636-4d10-90e7-e7f838a1d742" SourceId="1" SourceUrl="http://localhost:8080/DuaService?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6d158d13-5d80-4ecf-83e7-d114d45d868b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8087/SelService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SelService.xsd" MetadataType="Schema" ID="15add31a-849a-47be-aebf-517ff0b3c97b" SourceId="1" SourceUrl="http://localhost:8087/SelService?xsd=xsd3" />
+    <MetadataFile FileName="SelService.disco" MetadataType="Disco" ID="501a43dc-4120-4250-9f55-e6ce5bbaaef7" SourceId="1" SourceUrl="http://localhost:8087/SelService?disco" />
+    <MetadataFile FileName="SelService1.xsd" MetadataType="Schema" ID="0e0c8293-eb08-4215-9fd4-778321aecdf6" SourceId="1" SourceUrl="http://localhost:8087/SelService?xsd=xsd1" />
+    <MetadataFile FileName="SelService2.xsd" MetadataType="Schema" ID="d3adc423-20f3-4e03-b8fa-fd304fe4cc54" SourceId="1" SourceUrl="http://localhost:8087/SelService?xsd=xsd4" />
+    <MetadataFile FileName="SelService3.xsd" MetadataType="Schema" ID="fb45ff81-cc59-4c15-a054-221837660bc8" SourceId="1" SourceUrl="http://localhost:8087/SelService?xsd=xsd0" />
+    <MetadataFile FileName="ExecuteService.wsdl" MetadataType="Wsdl" ID="e8b98a14-2abb-4a86-82d9-12db0487846b" SourceId="1" SourceUrl="http://localhost:8087/SelService?wsdl" />
+    <MetadataFile FileName="SelService4.xsd" MetadataType="Schema" ID="61cc44c2-06fe-4c37-99d2-df2e06b878c9" SourceId="1" SourceUrl="http://localhost:8087/SelService?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

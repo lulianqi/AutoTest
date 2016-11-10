@@ -1,0 +1,6 @@
+D:\my\code\Vane\AutoTest\WcfService\WcfService\bin\Debug\WcfService.pdb
+D:\my\code\Vane\AutoTest\WcfService\WcfService\obj\Debug\WcfService.pdb
+D:\my\code\Vane\AutoTest\WcfService\WcfService\bin\Debug\WcfService.dll
+D:\my\code\Vane\AutoTest\WcfService\WcfService\obj\Debug\WcfService.dll
+D:\my\code\Vane\AutoTest\WcfService\WcfService\bin\Debug\WcfService.dll.config
+D:\my\code\Vane\AutoTest\WcfService\WcfService\obj\Debug\WcfService.csprojResolveAssemblyReference.cache

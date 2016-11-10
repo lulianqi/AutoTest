@@ -1,0 +1,5 @@
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.csprojResolveAssemblyReference.cache
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.Control.CBalloonBase.resources
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.Control.DataRecordBox.resources
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.Control.myChildWindow.resources
+D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.csproj.GenerateResource.Cache

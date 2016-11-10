@@ -1,0 +1,8 @@
+D:\my\code\Vane\AutoTest\WcfService\WcfTest1\bin\Debug\WcfTest1.exe.config
+D:\my\code\Vane\AutoTest\WcfService\WcfTest1\bin\Debug\WcfTest1.exe
+D:\my\code\Vane\AutoTest\WcfService\WcfTest1\bin\Debug\WcfTest1.pdb
+D:\my\code\Vane\AutoTest\WcfService\WcfTest1\obj\Debug\WcfTest1.Properties.Resources.resources
+D:\my\code\Vane\AutoTest\WcfService\WcfTest1\obj\Debug\WcfTest1.csproj.GenerateResource.Cache
+D:\my\code\Vane\AutoTest\WcfService\WcfTest1\obj\Debug\WcfTest1.exe
+D:\my\code\Vane\AutoTest\WcfService\WcfTest1\obj\Debug\WcfTest1.pdb
+D:\my\code\Vane\AutoTest\WcfService\WcfTest1\obj\Debug\WcfTest1.Form1.resources

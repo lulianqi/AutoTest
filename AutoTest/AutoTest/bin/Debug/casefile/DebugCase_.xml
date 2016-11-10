@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="gb2312"?>
+<S180M_testfile1>
+  <Project name="Project液晶测试" remark="对液晶显示进行测试该处描述测试目标">
+    <case step="5">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#100#1-9#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>StartRepeat</repeat>
+      <times>2</times>
+      <Content>B01001002#Sys_LCDOpen#1#3#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="2">
+      <repeat>EndRepeat</repeat>
+      <times>
+      </times>
+      <Content>B01001003#Sys_LCDOpen#2#1-8#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="3">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B0120002#Sys_ClearScreen#1000#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="5">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001005#Sys_LCDContrast#1100#8888#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="6">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001006#Sys_LCDClose#1#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001007#Sys_ClearLineAt#1#1#1#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="8">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001008#Sys_ClearLine#1#1#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="液晶显示" remark="将字符串显示在屏幕上">
+    <case step="1">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#100#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001002#Sys_LCDOpen#1#1-9#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01000689#Sys_LCDContrast#10#50#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01055578#Sys_DisplayLine#1000#2#0#1#@我我我我我我我我我我我E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>StartRepeat</repeat>
+      <times>3</times>
+      <Content>B01001005#Sys_LCDOpen#1#1-9#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>EndRepeat</repeat>
+      <times>
+      </times>
+      <Content>B01001006#Sys_LCDOpen#1#1-9#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001007#Sys_LCDOpen#1#1-9#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="1">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001008#Sys_LCDOpen#1#1-9#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="2">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B1#Sys_ClearLine#1#1#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="NewProject" remark="no remark">
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#3#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B10000584#Sys_Buzzer#1000#100-103#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="新工程" remark="给sb看的">
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>StartRepeat</repeat>
+      <times>2</times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>EndRepeat</repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>StartRepeat</repeat>
+      <times>10</times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>EndRepeat</repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="FillLCDRect" remark="延时时间">
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001&lt;#Sys_LCDOpen#1000#1#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B1000021#Sys_ClearLine#500#1-5#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1000#3-4#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01000052#Sys_FillLCDRect#20#3-90#4#9-79#9#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01000052#Sys_FillLCDRect#1000#3#4#9#9#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B0100053#Sys_DisplayLine#2000#2#0#0#@123456789我槽我爱你E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="打印调试" remark="打印测试">
+    <case step="x">
+      <repeat>StartRepeat</repeat>
+      <times>1</times>
+      <Content>B010001001#Sys_PrinterPrint#1055#1#2#1#@我爱你啊我爱你我也还是爱你啊爱爱啊i爱啊i爱爱爱i爱爱爱i爱i爱i信雅达必胜E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B010001001#Sys_PrinterPrint#1055#10000#2000#1#@期间嗲就死家具嗲就hhh啊设计甲级低价啊ijsE</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>EndRepeat</repeat>
+      <times>
+      </times>
+      <Content>B010001001#Sys_PrinterPrint#1000#3#2#1#@思密达E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B000123#Sys_DisplayLine#1000#1-9#1#1#@你好E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="Sram内存读写" remark="测试Sram内存读写。">
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01001001#Sys_LCDOpen#1#3#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01000025#Sys_SramWriteBytes#1000#159#9#@abcdefghijklmnE</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B01000026#Sys_SramReadBytes#1000#161#2#@输出参数E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="flash读写" remark="flash读写测试">
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B0215553#Sys_ExFlashWrite#1000#100-103#10#@我都是2的的E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B0215554#Sys_ExFlashRead#1000#100#10#@我都是2的的E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="蜂鸣器" remark="蜂鸣器bibibibibi">
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B2000215#Sys_Buzzer#1000#10-13#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+    <case step="x">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>B2000216#Sys_Buzzer#1000#200#E</Content>
+      <remark>Remark</remark>
+      <level>1</level>
+    </case>
+  </Project>
+</S180M_testfile1>

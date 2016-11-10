@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RemoteService.MyService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RemoteService.MyService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8087/SelService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+  <xs:complexType name="RemoteRunnerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RunnerStateList" nillable="true" type="tns:ArrayOfRunnerState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemoteRunnerInfo" nillable="true" type="tns:RemoteRunnerInfo" />
+  <xs:complexType name="ArrayOfRunnerState">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RunnerState" nillable="true" type="tns:RunnerState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRunnerState" nillable="true" type="tns:ArrayOfRunnerState" />
+  <xs:complexType name="RunnerState">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CellResult" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NowCell" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunnerID" type="xs:int" />
+      <xs:element minOccurs="0" name="RunnerName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="RunnerProgress" nillable="true" type="q1:ArrayOfKeyValuePairOfintint" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RunnerState" nillable="true" type="tns:RunnerState" />
+</xs:schema>

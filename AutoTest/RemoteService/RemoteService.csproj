@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80FD8424-02A2-4ABB-9A12-824DB3D66C15}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RemoteService</RootNamespace>
+    <AssemblyName>RemoteService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>users.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=8.1.0.6, Culture=neutral, PublicKeyToken=5fd520d36328f741, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MyControl\ListView_RunnerView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyControl\ListView_RunnerView.Designer.cs">
+      <DependentUpon>ListView_RunnerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyService\IRunnerService.cs" />
+    <Compile Include="MyService\RunnerService.cs" />
+    <Compile Include="MyService\ServerHost.cs" />
+    <Compile Include="MyTool\CaseFileXmlAnalysis.cs" />
+    <Compile Include="MyTool\CaseRunner.cs" />
+    <Compile Include="MyTool\MessageTransferChannel.cs" />
+    <Compile Include="MyWindow\AddRunner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyWindow\AddRunner.Designer.cs">
+      <DependentUpon>AddRunner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyControl\myChildWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyWindow\RunnerSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyWindow\RunnerSet.Designer.cs">
+      <DependentUpon>RunnerSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RunnerRemoteService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RunnerRemoteService.Designer.cs">
+      <DependentUpon>RunnerRemoteService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MyWindow\AddRunner.resx">
+      <DependentUpon>AddRunner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyControl\myChildWindow.resx">
+      <DependentUpon>myChildWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyWindow\RunnerSet.resx">
+      <DependentUpon>RunnerSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RunnerRemoteService.resx">
+      <DependentUpon>RunnerRemoteService.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CaseExecutiveActuator\CaseExecutiveActuator.csproj">
+      <Project>{2da29bc6-bda9-498e-a6da-5bd9fbc3298b}</Project>
+      <Name>CaseExecutiveActuator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\myCommonTool\MyCommonTool.csproj">
+      <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
+      <Name>MyCommonTool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyControl\MyCommonControl.csproj">
+      <Project>{aaa8bdb9-2468-4338-a8e8-bc2ce2752051}</Project>
+      <Name>MyCommonControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_red_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addUser2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1187340.png" />
+    <None Include="Resources\addUser1.png" />
+    <Content Include="users.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
