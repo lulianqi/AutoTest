@@ -579,10 +579,22 @@ namespace MyCommonTool.FileHelper
         public static void SaveCsvFile(string yourFilePath,List<List<string>> yourDataSouse,bool isAppend,Encoding yourEncode)
         {
             //FileStream myCsvStream = new FileStream(yourFilePath, FileMode.Create, FileAccess.ReadWrite);
-
-            if(isAppend && !File.Exists(yourFilePath))
+            if (isAppend && !File.Exists(yourFilePath))
             {
                 throw new Exception("in Append mode the FilePath must exist");
+            }
+            if(!isAppend && !File.Exists(yourFilePath))
+            {
+                {
+                    {
+                        throw new Exception("the FilePath or the Directory it not exist");
+                    }
+                    
+                }
+                else
+                {
+                    throw new Exception("find error in your FilePath");
+                }
             }
             //StreamWriter myCsvSw = new StreamWriter(yourFilePath, isAppend, yourEncode);   //isAppend对应的Stream的FileMode 为 append  ? FileMode.Append : FileMode.Create
             StreamWriter myCsvSw = new StreamWriter(new FileStream(yourFilePath, isAppend ? FileMode.Append : FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite), yourEncode);
