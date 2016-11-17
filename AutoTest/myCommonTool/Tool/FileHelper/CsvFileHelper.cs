@@ -22,7 +22,7 @@ namespace MyCommonTool.FileHelper
     /// <summary>
     /// 单个元素支持包括tab，换行回车（\r\n），空内容等在内的所有文本字符 （在使用时请确定文件的编码方式）
     /// 可指定元素分割符，行非官方必须为\r\n(\r\n可以作为内容出现在元素中)，转义字符必须为".
-    /// 转义所有的引号必须出现在首尾（如果不在首尾，则不会按转义符处理，直接作为引号处理）
+    /// 转义所有的引号必须出现在首尾（如果不在首尾，则不会按转义符处理，直接作为引号处理）[excel可以读取转义出现在中间的情况，而本身存储不会使用这种方式，保存时并会强制修复这种异常，所以这里遇到中间转义的情况直接抛出指定异常]
     /// 如果在被转义的情况下需要出现引号，则使用2个引号代替（如果需要在首部使用双引号，则需要转义该元素，其他地方可直接使用）（excel对所有双引号都进行转义，无论其出现位置,对于保存方式可以选择是否按excel的方式进行保存）
     /// 每一行的结尾是补需要逗号结束的，如果多加一个逗号则标识该行会多一个空元素
     /// 使用问题或疑问可通过mycllq@hotmail.com进行联系
@@ -585,7 +585,9 @@ namespace MyCommonTool.FileHelper
             }
             if(!isAppend && !File.Exists(yourFilePath))
             {
+                if (yourFilePath.Contains('\\'))
                 {
+                    if (!Directory.Exists(yourFilePath.Remove(yourFilePath.LastIndexOf('\\'))))
                     {
                         throw new Exception("the FilePath or the Directory it not exist");
                     }
