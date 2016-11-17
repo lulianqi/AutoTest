@@ -602,7 +602,7 @@ namespace MyCommonTool.FileHelper
                 }
             }
             //StreamWriter myCsvSw = new StreamWriter(yourFilePath, isAppend, yourEncode);   //isAppend对应的Stream的FileMode 为 append  ? FileMode.Append : FileMode.Create
-            StreamWriter myCsvSw = new StreamWriter(new FileStream(yourFilePath, isAppend ? FileMode.Append : FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite), yourEncode);
+            StreamWriter myCsvSw = new StreamWriter(new FileStream(yourFilePath, isAppend ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.ReadWrite), yourEncode);
             if (yourDataSouse == null)
             {
                 throw new Exception("your DataSouse is null");

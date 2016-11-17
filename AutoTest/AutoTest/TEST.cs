@@ -128,7 +128,7 @@ namespace AutoTest
 
             //CsvFileHelper.SaveCsvFile(@"C:\Users\administer\Desktop\my6.csv", xxxx, true, new System.Text.UTF8Encoding(false));
 
-            CsvFileHelper.SaveCsvFile(@"C:\Users\administer\Desktop\my6.csv", xxxx);
+            //CsvFileHelper.SaveCsvFile(@"C:\Users\administer\Desktop\my6.csv", xxxx);
             CsvFileHelper.SaveCsvFile(@"C:\Users\administer\Desktop\my8.csv", xxxx);
             CsvFileHelper.SaveCsvFile(@"C:\Users\administer\Desktop\my9.csv", xxxx, true, new System.Text.UTF8Encoding(false));
 
