@@ -560,9 +560,12 @@ namespace MyCommonTool.FileHelper
                 {
                     if(fields[i].Contains("\""))
                     {
-                        fields[i] = fields[i].Replace("\"", "\"\"");
+                        myStrBld.Append(String.Format("\"{0}\"", fields[i].Replace("\"", "\"\"")));
                     }
-                    myStrBld.Append(String.Format("\"{0}\"",fields[i]));
+                    else
+                    {
+                        myStrBld.Append(String.Format("\"{0}\"", fields[i]));
+                    }
                 }
                 else
                 {
