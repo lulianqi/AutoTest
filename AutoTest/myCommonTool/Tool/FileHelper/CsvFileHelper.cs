@@ -602,6 +602,7 @@ namespace MyCommonTool.FileHelper
                 }
             }
             //StreamWriter myCsvSw = new StreamWriter(yourFilePath, isAppend, yourEncode);   //isAppend对应的Stream的FileMode 为 append  ? FileMode.Append : FileMode.Create
+            //文件如果被其他任务打开并处于Write模式，此处会抛出异常（该工具也含多处异常抛出，使用时务必考虑接收这些异常）
             StreamWriter myCsvSw = new StreamWriter(new FileStream(yourFilePath, isAppend ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.ReadWrite), yourEncode);
             if (yourDataSouse == null)
             {
@@ -623,7 +624,7 @@ namespace MyCommonTool.FileHelper
             {
                 myStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
