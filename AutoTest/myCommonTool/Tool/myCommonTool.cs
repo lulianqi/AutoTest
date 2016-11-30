@@ -659,7 +659,7 @@ namespace MyCommonTool
     public class FileService
     {
         /// <summary>
-        /// 根据文件名返回文件路径（容错上可能受相对垃圾影响，未测试请勿使用可能出现错误的垃圾格式）
+        /// 根据文件名返回文件路径（容错上可能受相对路径影响，未测试请勿使用可能出现错误的路径格式）
         /// </summary>
         /// <param name="yourPath">文件路径</param>
         /// <returns>文件夹路径</returns>
@@ -815,6 +815,28 @@ namespace MyCommonTool
             {
                 Directory.CreateDirectory(yourPath);
             }
+        }
+
+        /// <summary>
+        /// get all file in your path
+        /// </summary>
+        /// <param name="yourPath">your path</param>
+        /// <returns>all file in path</returns>
+        public static FileInfo[] GetAllFiles(string yourPath)
+        {
+
+            if (!Directory.Exists(yourPath))
+            {
+                return null;
+            }
+            DirectoryInfo theFolder = new DirectoryInfo(yourPath);
+            return theFolder.GetFiles("*", SearchOption.AllDirectories);
+        }
+
+        public static void GetMyFiles(DirectoryInfo yourDirectory, out DirectoryInfo[] outDirectoryInfos, out FileInfo[] outFileInfos)
+        {
+            outDirectoryInfos = yourDirectory.GetDirectories();
+            outFileInfos = yourDirectory.GetFiles();
         }
     }
 
