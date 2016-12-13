@@ -104,6 +104,43 @@ namespace MyCommonTool
         }
 
         /// <summary>
+        /// 去除首尾指定字符串
+        /// </summary>
+        /// <param name="str">指定字符串</param>
+        /// <param name="startValue">首部匹配（如果为null则忽略首部匹配）</param>
+        /// <param name="endVaule">尾部匹配（如果为null则忽略尾部匹配）</param>
+        /// <returns>返回结果</returns>
+        public static string myTrimStr(this string str, string startValue, string endVaule)
+        {
+            if (str != null)
+            {
+                if (startValue != null)
+                {
+                    if (startValue.Length <= str.Length)
+                    {
+                        int tempTrimStartIndex = str.IndexOf(startValue);
+                        if (tempTrimStartIndex == 0)
+                        {
+                            str = str.Remove(0, startValue.Length);
+                        }
+                    }
+                }
+                if (endVaule != null)
+                {
+                    if (endVaule.Length <= str.Length)
+                    {
+                        int tempTrimEndIndex = str.LastIndexOf(endVaule);
+                        if (tempTrimEndIndex == str.Length - endVaule.Length)
+                        {
+                            str = str.Remove(tempTrimEndIndex, endVaule.Length);
+                        }
+                    }
+                }
+            }
+            return str;
+        }
+
+        /// <summary>
         /// 添加键值，若遇到已有key则覆盖
         /// </summary>
         /// <param name="dc">Dictionary</param>

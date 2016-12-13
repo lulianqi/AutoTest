@@ -1805,6 +1805,27 @@ namespace AutoTest
             isCanMove = false;
         }
 
+        private void label_moveFlagForDataAdd_DoubleClick(object sender, EventArgs e)
+        {
+            int defultDataAddHeight = 242;
+            int defultDataAddWidth = 605;
+            Point defultDataAddLocation = new Point(389, 91);
+            if(expandablePanel_dataAdd.Height==tvw_Case.Height&&expandablePanel_dataAdd.Width==tvw_Case.Width)
+            {
+                expandablePanel_dataAdd.Location = defultDataAddLocation;
+                expandablePanel_dataAdd.Height = defultDataAddHeight;
+                expandablePanel_dataAdd.Width = defultDataAddWidth;
+                label_moveFlagForDataAdd.Width = expandablePanel_dataAdd.Width - 28;
+            }
+            else
+            {
+                expandablePanel_dataAdd.Location = tvw_Case.Location;
+                expandablePanel_dataAdd.Height = tvw_Case.Height;
+                expandablePanel_dataAdd.Width = tvw_Case.Width;
+                label_moveFlagForDataAdd.Width = expandablePanel_dataAdd.Width - 28;
+            }
+        }
+
         #endregion
 
         #endregion
@@ -2013,6 +2034,9 @@ namespace AutoTest
         }
 
         #endregion 
+
+
+       
 
 
     }

@@ -387,6 +387,23 @@ namespace MyCommonTool
             }
             return System.Web.HttpUtility.HtmlEncode(strHtml);
         }
+
+        public static string StrListAdd(List<string> strList, string yourSplit)
+        {
+            StringBuilder myOurStb = new StringBuilder();
+            if (strList != null)
+            {
+                for (int i = 0; i < strList.Count; i++)
+                {
+                    myOurStb.Append(strList[i]);
+                    if (i != strList.Count - 1)
+                    {
+                        myOurStb.Append(yourSplit);
+                    }
+                }
+            }
+            return myOurStb.ToString();
+        }
     }
 
     /// <summary>

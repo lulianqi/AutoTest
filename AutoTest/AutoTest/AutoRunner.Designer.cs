@@ -103,31 +103,6 @@ namespace AutoTest
             this.lb_msg5 = new System.Windows.Forms.Label();
             this.lb_msg4 = new System.Windows.Forms.Label();
             this.lb_msg3 = new System.Windows.Forms.Label();
-            this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
-            this.pictureBox_gwListMax = new System.Windows.Forms.PictureBox();
-            this.listViewEx_GWlist = new System.Windows.Forms.ListView();
-            this.columnHeader_vc_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_vc_ip = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_vc_sn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_vc_Alias = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader1_vc_Version = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader_vc_Ability = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip_GwList = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.richTextBox_BroadcastRecord = new System.Windows.Forms.RichTextBox();
-            this.panel_configMain = new System.Windows.Forms.Panel();
-            this.expandablePanel_vaneWifiConfig = new DevComponents.DotNetBar.ExpandablePanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox_startWifiConfig = new System.Windows.Forms.PictureBox();
-            this.lb_WifiConfig_info3 = new System.Windows.Forms.Label();
-            this.lb_WifiConfig_info2 = new System.Windows.Forms.Label();
-            this.lb_WifiConfig_info1 = new System.Windows.Forms.Label();
-            this.tb_wifiCfg_Key = new System.Windows.Forms.TextBox();
-            this.tb_wifiCfg_SSID = new System.Windows.Forms.TextBox();
-            this.cb_wifiCfg_Mode = new System.Windows.Forms.ComboBox();
-            this.listView_WifiConfigDataBack = new System.Windows.Forms.ListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.progressBarX_WifiConfig = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
             this.pictureBox_rr_DelSelect = new System.Windows.Forms.PictureBox();
             this.pictureBox_rr_RefreshSelect = new System.Windows.Forms.PictureBox();
@@ -174,6 +149,31 @@ namespace AutoTest
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
+            this.pictureBox_gwListMax = new System.Windows.Forms.PictureBox();
+            this.listViewEx_GWlist = new System.Windows.Forms.ListView();
+            this.columnHeader_vc_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_vc_ip = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_vc_sn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_vc_Alias = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1_vc_Version = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_vc_Ability = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip_GwList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.richTextBox_BroadcastRecord = new System.Windows.Forms.RichTextBox();
+            this.panel_configMain = new System.Windows.Forms.Panel();
+            this.expandablePanel_vaneWifiConfig = new DevComponents.DotNetBar.ExpandablePanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_startWifiConfig = new System.Windows.Forms.PictureBox();
+            this.lb_WifiConfig_info3 = new System.Windows.Forms.Label();
+            this.lb_WifiConfig_info2 = new System.Windows.Forms.Label();
+            this.lb_WifiConfig_info1 = new System.Windows.Forms.Label();
+            this.tb_wifiCfg_Key = new System.Windows.Forms.TextBox();
+            this.tb_wifiCfg_SSID = new System.Windows.Forms.TextBox();
+            this.cb_wifiCfg_Mode = new System.Windows.Forms.ComboBox();
+            this.listView_WifiConfigDataBack = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.progressBarX_WifiConfig = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.ribbonTabItem1 = new DevComponents.DotNetBar.RibbonTabItem();
             this.ribbonTabItem2 = new DevComponents.DotNetBar.RibbonTabItem();
             this.ribbonTabItem3 = new DevComponents.DotNetBar.RibbonTabItem();
@@ -235,13 +235,6 @@ namespace AutoTest
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RunHere2)).BeginInit();
             this.contextMenuStrip_CaseTree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_caseParameter)).BeginInit();
-            this.ribbonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_gwListMax)).BeginInit();
-            this.contextMenuStrip_GwList.SuspendLayout();
-            this.panel_configMain.SuspendLayout();
-            this.expandablePanel_vaneWifiConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_startWifiConfig)).BeginInit();
             this.ribbonPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_rr_DelSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_rr_RefreshSelect)).BeginInit();
@@ -255,6 +248,13 @@ namespace AutoTest
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_cr_StopSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_cr_runSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_cr_addUser)).BeginInit();
+            this.ribbonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_gwListMax)).BeginInit();
+            this.contextMenuStrip_GwList.SuspendLayout();
+            this.panel_configMain.SuspendLayout();
+            this.expandablePanel_vaneWifiConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_startWifiConfig)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolStripMenuItem_DirectionalTest_1
@@ -604,6 +604,7 @@ namespace AutoTest
             this.label_moveFlagForDataAdd.TabIndex = 6;
             this.label_moveFlagForDataAdd.Text = "DataBack";
             this.label_moveFlagForDataAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_moveFlagForDataAdd.DoubleClick += new System.EventHandler(this.label_moveFlagForDataAdd_DoubleClick);
             this.label_moveFlagForDataAdd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label_moveFlagForDataAdd_MouseDown);
             this.label_moveFlagForDataAdd.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_moveFlagForDataAdd_MouseMove);
             this.label_moveFlagForDataAdd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label_moveFlagForDataAdd_MouseUp);
@@ -1197,264 +1198,6 @@ namespace AutoTest
             this.lb_msg3.TabIndex = 35;
             this.lb_msg3.Text = "lb_msg3";
             // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.ribbonPanel2.Controls.Add(this.pictureBox_gwListMax);
-            this.ribbonPanel2.Controls.Add(this.listViewEx_GWlist);
-            this.ribbonPanel2.Controls.Add(this.richTextBox_BroadcastRecord);
-            this.ribbonPanel2.Controls.Add(this.panel_configMain);
-            this.ribbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel2.Location = new System.Drawing.Point(0, 55);
-            this.ribbonPanel2.Name = "ribbonPanel2";
-            this.ribbonPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel2.Size = new System.Drawing.Size(1000, 543);
-            this.ribbonPanel2.TabIndex = 2;
-            this.ribbonPanel2.Visible = false;
-            // 
-            // pictureBox_gwListMax
-            // 
-            this.pictureBox_gwListMax.BackColor = System.Drawing.Color.AliceBlue;
-            this.pictureBox_gwListMax.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox_gwListMax.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_gwListMax.Image")));
-            this.pictureBox_gwListMax.Location = new System.Drawing.Point(656, 5);
-            this.pictureBox_gwListMax.Name = "pictureBox_gwListMax";
-            this.pictureBox_gwListMax.Size = new System.Drawing.Size(23, 23);
-            this.pictureBox_gwListMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_gwListMax.TabIndex = 22;
-            this.pictureBox_gwListMax.TabStop = false;
-            this.pictureBox_gwListMax.Click += new System.EventHandler(this.pictureBox_gwListMax_Click);
-            this.pictureBox_gwListMax.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
-            this.pictureBox_gwListMax.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
-            // 
-            // listViewEx_GWlist
-            // 
-            this.listViewEx_GWlist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewEx_GWlist.BackColor = System.Drawing.Color.AliceBlue;
-            this.listViewEx_GWlist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader_vc_id,
-            this.columnHeader_vc_ip,
-            this.columnHeader_vc_sn,
-            this.columnHeader_vc_Alias,
-            this.columnHeader1_vc_Version,
-            this.columnHeader_vc_Ability});
-            this.listViewEx_GWlist.ContextMenuStrip = this.contextMenuStrip_GwList;
-            this.listViewEx_GWlist.FullRowSelect = true;
-            this.listViewEx_GWlist.Location = new System.Drawing.Point(4, 3);
-            this.listViewEx_GWlist.Name = "listViewEx_GWlist";
-            this.listViewEx_GWlist.Size = new System.Drawing.Size(676, 120);
-            this.listViewEx_GWlist.TabIndex = 1;
-            this.listViewEx_GWlist.UseCompatibleStateImageBehavior = false;
-            this.listViewEx_GWlist.View = System.Windows.Forms.View.Details;
-            this.listViewEx_GWlist.DoubleClick += new System.EventHandler(this.listViewEx_GWlist_DoubleClick);
-            // 
-            // columnHeader_vc_id
-            // 
-            this.columnHeader_vc_id.Text = "ID";
-            this.columnHeader_vc_id.Width = 39;
-            // 
-            // columnHeader_vc_ip
-            // 
-            this.columnHeader_vc_ip.Text = "IP";
-            this.columnHeader_vc_ip.Width = 104;
-            // 
-            // columnHeader_vc_sn
-            // 
-            this.columnHeader_vc_sn.Text = "SN";
-            this.columnHeader_vc_sn.Width = 107;
-            // 
-            // columnHeader_vc_Alias
-            // 
-            this.columnHeader_vc_Alias.Text = "别名";
-            this.columnHeader_vc_Alias.Width = 123;
-            // 
-            // columnHeader1_vc_Version
-            // 
-            this.columnHeader1_vc_Version.Text = "版本状态";
-            this.columnHeader1_vc_Version.Width = 133;
-            // 
-            // columnHeader_vc_Ability
-            // 
-            this.columnHeader_vc_Ability.Text = "网关能力";
-            this.columnHeader_vc_Ability.Width = 103;
-            // 
-            // contextMenuStrip_GwList
-            // 
-            this.contextMenuStrip_GwList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            ToolStripMenuItem_DirectionalTest_1});
-            this.contextMenuStrip_GwList.Name = "contextMenuStrip_GwList";
-            this.contextMenuStrip_GwList.Size = new System.Drawing.Size(137, 26);
-            // 
-            // richTextBox_BroadcastRecord
-            // 
-            this.richTextBox_BroadcastRecord.BackColor = System.Drawing.Color.Azure;
-            this.richTextBox_BroadcastRecord.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox_BroadcastRecord.HideSelection = false;
-            this.richTextBox_BroadcastRecord.Location = new System.Drawing.Point(683, 3);
-            this.richTextBox_BroadcastRecord.Name = "richTextBox_BroadcastRecord";
-            this.richTextBox_BroadcastRecord.Size = new System.Drawing.Size(311, 118);
-            this.richTextBox_BroadcastRecord.TabIndex = 21;
-            this.richTextBox_BroadcastRecord.Text = "";
-            this.richTextBox_BroadcastRecord.TextChanged += new System.EventHandler(this.richTextBox_BroadcastRecord_TextChanged);
-            // 
-            // panel_configMain
-            // 
-            this.panel_configMain.BackColor = System.Drawing.Color.White;
-            this.panel_configMain.Controls.Add(this.expandablePanel_vaneWifiConfig);
-            this.panel_configMain.Location = new System.Drawing.Point(3, 127);
-            this.panel_configMain.Name = "panel_configMain";
-            this.panel_configMain.Size = new System.Drawing.Size(994, 392);
-            this.panel_configMain.TabIndex = 0;
-            // 
-            // expandablePanel_vaneWifiConfig
-            // 
-            this.expandablePanel_vaneWifiConfig.CanvasColor = System.Drawing.SystemColors.Control;
-            this.expandablePanel_vaneWifiConfig.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.pictureBox1);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.pictureBox_startWifiConfig);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.lb_WifiConfig_info3);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.lb_WifiConfig_info2);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.lb_WifiConfig_info1);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.tb_wifiCfg_Key);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.tb_wifiCfg_SSID);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.cb_wifiCfg_Mode);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.listView_WifiConfigDataBack);
-            this.expandablePanel_vaneWifiConfig.Controls.Add(this.progressBarX_WifiConfig);
-            this.expandablePanel_vaneWifiConfig.Expanded = false;
-            this.expandablePanel_vaneWifiConfig.ExpandedBounds = new System.Drawing.Rectangle(590, 0, 403, 195);
-            this.expandablePanel_vaneWifiConfig.Location = new System.Drawing.Point(590, 0);
-            this.expandablePanel_vaneWifiConfig.Name = "expandablePanel_vaneWifiConfig";
-            this.expandablePanel_vaneWifiConfig.Size = new System.Drawing.Size(403, 26);
-            this.expandablePanel_vaneWifiConfig.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.expandablePanel_vaneWifiConfig.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.expandablePanel_vaneWifiConfig.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.expandablePanel_vaneWifiConfig.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.expandablePanel_vaneWifiConfig.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.expandablePanel_vaneWifiConfig.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandablePanel_vaneWifiConfig.Style.GradientAngle = 90;
-            this.expandablePanel_vaneWifiConfig.TabIndex = 0;
-            this.expandablePanel_vaneWifiConfig.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
-            this.expandablePanel_vaneWifiConfig.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.expandablePanel_vaneWifiConfig.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.expandablePanel_vaneWifiConfig.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
-            this.expandablePanel_vaneWifiConfig.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandablePanel_vaneWifiConfig.TitleStyle.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.expandablePanel_vaneWifiConfig.TitleStyle.GradientAngle = 90;
-            this.expandablePanel_vaneWifiConfig.TitleText = "Vane Wifi Config";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(383, 176);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(18, 18);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.TabStop = false;
-            this.toolTip_clickInfo.SetToolTip(this.pictureBox1, "wifi配置监听");
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pictureBox_startWifiConfig
-            // 
-            this.pictureBox_startWifiConfig.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_startWifiConfig.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox_startWifiConfig.BackgroundImage")));
-            this.pictureBox_startWifiConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox_startWifiConfig.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox_startWifiConfig.Location = new System.Drawing.Point(173, 113);
-            this.pictureBox_startWifiConfig.Name = "pictureBox_startWifiConfig";
-            this.pictureBox_startWifiConfig.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox_startWifiConfig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_startWifiConfig.TabIndex = 32;
-            this.pictureBox_startWifiConfig.TabStop = false;
-            this.toolTip_clickInfo.SetToolTip(this.pictureBox_startWifiConfig, "WIFI配置");
-            this.pictureBox_startWifiConfig.Click += new System.EventHandler(this.pictureBox_startWifiConfig_Click);
-            this.pictureBox_startWifiConfig.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
-            this.pictureBox_startWifiConfig.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
-            // 
-            // lb_WifiConfig_info3
-            // 
-            this.lb_WifiConfig_info3.AutoSize = true;
-            this.lb_WifiConfig_info3.Location = new System.Drawing.Point(6, 94);
-            this.lb_WifiConfig_info3.Name = "lb_WifiConfig_info3";
-            this.lb_WifiConfig_info3.Size = new System.Drawing.Size(29, 12);
-            this.lb_WifiConfig_info3.TabIndex = 31;
-            this.lb_WifiConfig_info3.Text = "KEY:";
-            // 
-            // lb_WifiConfig_info2
-            // 
-            this.lb_WifiConfig_info2.AutoSize = true;
-            this.lb_WifiConfig_info2.Location = new System.Drawing.Point(6, 65);
-            this.lb_WifiConfig_info2.Name = "lb_WifiConfig_info2";
-            this.lb_WifiConfig_info2.Size = new System.Drawing.Size(65, 12);
-            this.lb_WifiConfig_info2.TabIndex = 30;
-            this.lb_WifiConfig_info2.Text = "加密模式：";
-            // 
-            // lb_WifiConfig_info1
-            // 
-            this.lb_WifiConfig_info1.AutoSize = true;
-            this.lb_WifiConfig_info1.Location = new System.Drawing.Point(6, 37);
-            this.lb_WifiConfig_info1.Name = "lb_WifiConfig_info1";
-            this.lb_WifiConfig_info1.Size = new System.Drawing.Size(35, 12);
-            this.lb_WifiConfig_info1.TabIndex = 29;
-            this.lb_WifiConfig_info1.Text = "SSID:";
-            // 
-            // tb_wifiCfg_Key
-            // 
-            this.tb_wifiCfg_Key.Location = new System.Drawing.Point(75, 89);
-            this.tb_wifiCfg_Key.Name = "tb_wifiCfg_Key";
-            this.tb_wifiCfg_Key.Size = new System.Drawing.Size(122, 21);
-            this.tb_wifiCfg_Key.TabIndex = 28;
-            // 
-            // tb_wifiCfg_SSID
-            // 
-            this.tb_wifiCfg_SSID.Location = new System.Drawing.Point(75, 33);
-            this.tb_wifiCfg_SSID.Name = "tb_wifiCfg_SSID";
-            this.tb_wifiCfg_SSID.Size = new System.Drawing.Size(122, 21);
-            this.tb_wifiCfg_SSID.TabIndex = 27;
-            // 
-            // cb_wifiCfg_Mode
-            // 
-            this.cb_wifiCfg_Mode.FormattingEnabled = true;
-            this.cb_wifiCfg_Mode.Location = new System.Drawing.Point(75, 61);
-            this.cb_wifiCfg_Mode.Name = "cb_wifiCfg_Mode";
-            this.cb_wifiCfg_Mode.Size = new System.Drawing.Size(122, 20);
-            this.cb_wifiCfg_Mode.TabIndex = 26;
-            // 
-            // listView_WifiConfigDataBack
-            // 
-            this.listView_WifiConfigDataBack.BackColor = System.Drawing.Color.AliceBlue;
-            this.listView_WifiConfigDataBack.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8});
-            this.listView_WifiConfigDataBack.Location = new System.Drawing.Point(203, 26);
-            this.listView_WifiConfigDataBack.Name = "listView_WifiConfigDataBack";
-            this.listView_WifiConfigDataBack.Size = new System.Drawing.Size(197, 151);
-            this.listView_WifiConfigDataBack.TabIndex = 25;
-            this.listView_WifiConfigDataBack.UseCompatibleStateImageBehavior = false;
-            this.listView_WifiConfigDataBack.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "项目";
-            this.columnHeader7.Width = 73;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "内容";
-            this.columnHeader8.Width = 175;
-            // 
-            // progressBarX_WifiConfig
-            // 
-            this.progressBarX_WifiConfig.Location = new System.Drawing.Point(3, 177);
-            this.progressBarX_WifiConfig.Maximum = 30;
-            this.progressBarX_WifiConfig.Name = "progressBarX_WifiConfig";
-            this.progressBarX_WifiConfig.Size = new System.Drawing.Size(379, 16);
-            this.progressBarX_WifiConfig.TabIndex = 1;
-            this.progressBarX_WifiConfig.Text = "WifiConfig";
-            // 
             // ribbonPanel4
             // 
             this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
@@ -1949,6 +1692,264 @@ namespace AutoTest
             this.columnHeader17.Text = "RunnerControl";
             this.columnHeader17.Width = 102;
             // 
+            // ribbonPanel2
+            // 
+            this.ribbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.ribbonPanel2.Controls.Add(this.pictureBox_gwListMax);
+            this.ribbonPanel2.Controls.Add(this.listViewEx_GWlist);
+            this.ribbonPanel2.Controls.Add(this.richTextBox_BroadcastRecord);
+            this.ribbonPanel2.Controls.Add(this.panel_configMain);
+            this.ribbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel2.Location = new System.Drawing.Point(0, 55);
+            this.ribbonPanel2.Name = "ribbonPanel2";
+            this.ribbonPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel2.Size = new System.Drawing.Size(1000, 543);
+            this.ribbonPanel2.TabIndex = 2;
+            this.ribbonPanel2.Visible = false;
+            // 
+            // pictureBox_gwListMax
+            // 
+            this.pictureBox_gwListMax.BackColor = System.Drawing.Color.AliceBlue;
+            this.pictureBox_gwListMax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox_gwListMax.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_gwListMax.Image")));
+            this.pictureBox_gwListMax.Location = new System.Drawing.Point(656, 5);
+            this.pictureBox_gwListMax.Name = "pictureBox_gwListMax";
+            this.pictureBox_gwListMax.Size = new System.Drawing.Size(23, 23);
+            this.pictureBox_gwListMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_gwListMax.TabIndex = 22;
+            this.pictureBox_gwListMax.TabStop = false;
+            this.pictureBox_gwListMax.Click += new System.EventHandler(this.pictureBox_gwListMax_Click);
+            this.pictureBox_gwListMax.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
+            this.pictureBox_gwListMax.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
+            // 
+            // listViewEx_GWlist
+            // 
+            this.listViewEx_GWlist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewEx_GWlist.BackColor = System.Drawing.Color.AliceBlue;
+            this.listViewEx_GWlist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader_vc_id,
+            this.columnHeader_vc_ip,
+            this.columnHeader_vc_sn,
+            this.columnHeader_vc_Alias,
+            this.columnHeader1_vc_Version,
+            this.columnHeader_vc_Ability});
+            this.listViewEx_GWlist.ContextMenuStrip = this.contextMenuStrip_GwList;
+            this.listViewEx_GWlist.FullRowSelect = true;
+            this.listViewEx_GWlist.Location = new System.Drawing.Point(4, 3);
+            this.listViewEx_GWlist.Name = "listViewEx_GWlist";
+            this.listViewEx_GWlist.Size = new System.Drawing.Size(676, 120);
+            this.listViewEx_GWlist.TabIndex = 1;
+            this.listViewEx_GWlist.UseCompatibleStateImageBehavior = false;
+            this.listViewEx_GWlist.View = System.Windows.Forms.View.Details;
+            this.listViewEx_GWlist.DoubleClick += new System.EventHandler(this.listViewEx_GWlist_DoubleClick);
+            // 
+            // columnHeader_vc_id
+            // 
+            this.columnHeader_vc_id.Text = "ID";
+            this.columnHeader_vc_id.Width = 39;
+            // 
+            // columnHeader_vc_ip
+            // 
+            this.columnHeader_vc_ip.Text = "IP";
+            this.columnHeader_vc_ip.Width = 104;
+            // 
+            // columnHeader_vc_sn
+            // 
+            this.columnHeader_vc_sn.Text = "SN";
+            this.columnHeader_vc_sn.Width = 107;
+            // 
+            // columnHeader_vc_Alias
+            // 
+            this.columnHeader_vc_Alias.Text = "别名";
+            this.columnHeader_vc_Alias.Width = 123;
+            // 
+            // columnHeader1_vc_Version
+            // 
+            this.columnHeader1_vc_Version.Text = "版本状态";
+            this.columnHeader1_vc_Version.Width = 133;
+            // 
+            // columnHeader_vc_Ability
+            // 
+            this.columnHeader_vc_Ability.Text = "网关能力";
+            this.columnHeader_vc_Ability.Width = 103;
+            // 
+            // contextMenuStrip_GwList
+            // 
+            this.contextMenuStrip_GwList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            ToolStripMenuItem_DirectionalTest_1});
+            this.contextMenuStrip_GwList.Name = "contextMenuStrip_GwList";
+            this.contextMenuStrip_GwList.Size = new System.Drawing.Size(137, 26);
+            // 
+            // richTextBox_BroadcastRecord
+            // 
+            this.richTextBox_BroadcastRecord.BackColor = System.Drawing.Color.Azure;
+            this.richTextBox_BroadcastRecord.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox_BroadcastRecord.HideSelection = false;
+            this.richTextBox_BroadcastRecord.Location = new System.Drawing.Point(683, 3);
+            this.richTextBox_BroadcastRecord.Name = "richTextBox_BroadcastRecord";
+            this.richTextBox_BroadcastRecord.Size = new System.Drawing.Size(311, 118);
+            this.richTextBox_BroadcastRecord.TabIndex = 21;
+            this.richTextBox_BroadcastRecord.Text = "";
+            this.richTextBox_BroadcastRecord.TextChanged += new System.EventHandler(this.richTextBox_BroadcastRecord_TextChanged);
+            // 
+            // panel_configMain
+            // 
+            this.panel_configMain.BackColor = System.Drawing.Color.White;
+            this.panel_configMain.Controls.Add(this.expandablePanel_vaneWifiConfig);
+            this.panel_configMain.Location = new System.Drawing.Point(3, 127);
+            this.panel_configMain.Name = "panel_configMain";
+            this.panel_configMain.Size = new System.Drawing.Size(994, 392);
+            this.panel_configMain.TabIndex = 0;
+            // 
+            // expandablePanel_vaneWifiConfig
+            // 
+            this.expandablePanel_vaneWifiConfig.CanvasColor = System.Drawing.SystemColors.Control;
+            this.expandablePanel_vaneWifiConfig.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.pictureBox1);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.pictureBox_startWifiConfig);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.lb_WifiConfig_info3);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.lb_WifiConfig_info2);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.lb_WifiConfig_info1);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.tb_wifiCfg_Key);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.tb_wifiCfg_SSID);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.cb_wifiCfg_Mode);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.listView_WifiConfigDataBack);
+            this.expandablePanel_vaneWifiConfig.Controls.Add(this.progressBarX_WifiConfig);
+            this.expandablePanel_vaneWifiConfig.Expanded = false;
+            this.expandablePanel_vaneWifiConfig.ExpandedBounds = new System.Drawing.Rectangle(590, 0, 403, 195);
+            this.expandablePanel_vaneWifiConfig.Location = new System.Drawing.Point(590, 0);
+            this.expandablePanel_vaneWifiConfig.Name = "expandablePanel_vaneWifiConfig";
+            this.expandablePanel_vaneWifiConfig.Size = new System.Drawing.Size(403, 26);
+            this.expandablePanel_vaneWifiConfig.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel_vaneWifiConfig.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel_vaneWifiConfig.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel_vaneWifiConfig.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.expandablePanel_vaneWifiConfig.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.expandablePanel_vaneWifiConfig.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.expandablePanel_vaneWifiConfig.Style.GradientAngle = 90;
+            this.expandablePanel_vaneWifiConfig.TabIndex = 0;
+            this.expandablePanel_vaneWifiConfig.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel_vaneWifiConfig.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel_vaneWifiConfig.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel_vaneWifiConfig.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
+            this.expandablePanel_vaneWifiConfig.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.expandablePanel_vaneWifiConfig.TitleStyle.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.expandablePanel_vaneWifiConfig.TitleStyle.GradientAngle = 90;
+            this.expandablePanel_vaneWifiConfig.TitleText = "Vane Wifi Config";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(383, 176);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
+            this.toolTip_clickInfo.SetToolTip(this.pictureBox1, "wifi配置监听");
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox_startWifiConfig
+            // 
+            this.pictureBox_startWifiConfig.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_startWifiConfig.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox_startWifiConfig.BackgroundImage")));
+            this.pictureBox_startWifiConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox_startWifiConfig.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox_startWifiConfig.Location = new System.Drawing.Point(173, 113);
+            this.pictureBox_startWifiConfig.Name = "pictureBox_startWifiConfig";
+            this.pictureBox_startWifiConfig.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox_startWifiConfig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_startWifiConfig.TabIndex = 32;
+            this.pictureBox_startWifiConfig.TabStop = false;
+            this.toolTip_clickInfo.SetToolTip(this.pictureBox_startWifiConfig, "WIFI配置");
+            this.pictureBox_startWifiConfig.Click += new System.EventHandler(this.pictureBox_startWifiConfig_Click);
+            this.pictureBox_startWifiConfig.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
+            this.pictureBox_startWifiConfig.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
+            // 
+            // lb_WifiConfig_info3
+            // 
+            this.lb_WifiConfig_info3.AutoSize = true;
+            this.lb_WifiConfig_info3.Location = new System.Drawing.Point(6, 94);
+            this.lb_WifiConfig_info3.Name = "lb_WifiConfig_info3";
+            this.lb_WifiConfig_info3.Size = new System.Drawing.Size(29, 12);
+            this.lb_WifiConfig_info3.TabIndex = 31;
+            this.lb_WifiConfig_info3.Text = "KEY:";
+            // 
+            // lb_WifiConfig_info2
+            // 
+            this.lb_WifiConfig_info2.AutoSize = true;
+            this.lb_WifiConfig_info2.Location = new System.Drawing.Point(6, 65);
+            this.lb_WifiConfig_info2.Name = "lb_WifiConfig_info2";
+            this.lb_WifiConfig_info2.Size = new System.Drawing.Size(65, 12);
+            this.lb_WifiConfig_info2.TabIndex = 30;
+            this.lb_WifiConfig_info2.Text = "加密模式：";
+            // 
+            // lb_WifiConfig_info1
+            // 
+            this.lb_WifiConfig_info1.AutoSize = true;
+            this.lb_WifiConfig_info1.Location = new System.Drawing.Point(6, 37);
+            this.lb_WifiConfig_info1.Name = "lb_WifiConfig_info1";
+            this.lb_WifiConfig_info1.Size = new System.Drawing.Size(35, 12);
+            this.lb_WifiConfig_info1.TabIndex = 29;
+            this.lb_WifiConfig_info1.Text = "SSID:";
+            // 
+            // tb_wifiCfg_Key
+            // 
+            this.tb_wifiCfg_Key.Location = new System.Drawing.Point(75, 89);
+            this.tb_wifiCfg_Key.Name = "tb_wifiCfg_Key";
+            this.tb_wifiCfg_Key.Size = new System.Drawing.Size(122, 21);
+            this.tb_wifiCfg_Key.TabIndex = 28;
+            // 
+            // tb_wifiCfg_SSID
+            // 
+            this.tb_wifiCfg_SSID.Location = new System.Drawing.Point(75, 33);
+            this.tb_wifiCfg_SSID.Name = "tb_wifiCfg_SSID";
+            this.tb_wifiCfg_SSID.Size = new System.Drawing.Size(122, 21);
+            this.tb_wifiCfg_SSID.TabIndex = 27;
+            // 
+            // cb_wifiCfg_Mode
+            // 
+            this.cb_wifiCfg_Mode.FormattingEnabled = true;
+            this.cb_wifiCfg_Mode.Location = new System.Drawing.Point(75, 61);
+            this.cb_wifiCfg_Mode.Name = "cb_wifiCfg_Mode";
+            this.cb_wifiCfg_Mode.Size = new System.Drawing.Size(122, 20);
+            this.cb_wifiCfg_Mode.TabIndex = 26;
+            // 
+            // listView_WifiConfigDataBack
+            // 
+            this.listView_WifiConfigDataBack.BackColor = System.Drawing.Color.AliceBlue;
+            this.listView_WifiConfigDataBack.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listView_WifiConfigDataBack.Location = new System.Drawing.Point(203, 26);
+            this.listView_WifiConfigDataBack.Name = "listView_WifiConfigDataBack";
+            this.listView_WifiConfigDataBack.Size = new System.Drawing.Size(197, 151);
+            this.listView_WifiConfigDataBack.TabIndex = 25;
+            this.listView_WifiConfigDataBack.UseCompatibleStateImageBehavior = false;
+            this.listView_WifiConfigDataBack.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "项目";
+            this.columnHeader7.Width = 73;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "内容";
+            this.columnHeader8.Width = 175;
+            // 
+            // progressBarX_WifiConfig
+            // 
+            this.progressBarX_WifiConfig.Location = new System.Drawing.Point(3, 177);
+            this.progressBarX_WifiConfig.Maximum = 30;
+            this.progressBarX_WifiConfig.Name = "progressBarX_WifiConfig";
+            this.progressBarX_WifiConfig.Size = new System.Drawing.Size(379, 16);
+            this.progressBarX_WifiConfig.TabIndex = 1;
+            this.progressBarX_WifiConfig.Text = "WifiConfig";
+            // 
             // ribbonTabItem1
             // 
             this.ribbonTabItem1.Checked = true;
@@ -2243,14 +2244,6 @@ namespace AutoTest
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RunHere2)).EndInit();
             this.contextMenuStrip_CaseTree.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_caseParameter)).EndInit();
-            this.ribbonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_gwListMax)).EndInit();
-            this.contextMenuStrip_GwList.ResumeLayout(false);
-            this.panel_configMain.ResumeLayout(false);
-            this.expandablePanel_vaneWifiConfig.ResumeLayout(false);
-            this.expandablePanel_vaneWifiConfig.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_startWifiConfig)).EndInit();
             this.ribbonPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_rr_DelSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_rr_RefreshSelect)).EndInit();
@@ -2265,6 +2258,14 @@ namespace AutoTest
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_cr_StopSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_cr_runSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_cr_addUser)).EndInit();
+            this.ribbonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_gwListMax)).EndInit();
+            this.contextMenuStrip_GwList.ResumeLayout(false);
+            this.panel_configMain.ResumeLayout(false);
+            this.expandablePanel_vaneWifiConfig.ResumeLayout(false);
+            this.expandablePanel_vaneWifiConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_startWifiConfig)).EndInit();
             this.ResumeLayout(false);
 
         }
