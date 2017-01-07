@@ -863,7 +863,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// i can find the value you need in the json
+        /// i can find the value you need in the json (if the math value over one it will spit with ",")
         /// </summary>
         /// <param name="yourTarget">the key you want get</param>
         /// <param name="yourSouce">the json Souce</param>
