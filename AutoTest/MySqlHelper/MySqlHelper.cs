@@ -147,18 +147,24 @@ namespace MySqlHelper
             public void Dispose()
             {
                 StopAliveTask();
+                executeMySqlDrive.Dispose();
             }
 
-            public override void Finalize()
+            //protected override void Finalize()
+            //{
+            //    try
+            //    {
+            //        this.Dispose();
+            //    }
+            //    finally
+            //    {
+            //        //base.Finalize();
+            //    }
+            //}
+
+             ~AliveTaskInfo()
             {
-                try
-                {
-                    this.Dispose();
-                }
-                finally
-                {
-                    //base.Finalize();
-                }
+                Dispose();
             }
         }
        
@@ -625,7 +631,7 @@ namespace MySqlHelper
             if (aliveTaskList.ContainsKey(yourName))
             {
                 aliveTaskList[yourName].StopAliveTask();
-                //aliveTaskList[yourName].Dispose();
+                aliveTaskList[yourName].Dispose();
                 aliveTaskList[yourName] = null;
                 aliveTaskList.Remove(yourName);
                 return true;
@@ -806,6 +812,10 @@ namespace MySqlHelper
             {
                 myConnection.Close();
                 myConnection.Dispose();
+                myCommand.Dispose();
+                myAdapter.Dispose();
+                myTransaction.Dispose();
+                myTable.Dispose();
             }
         }
 
