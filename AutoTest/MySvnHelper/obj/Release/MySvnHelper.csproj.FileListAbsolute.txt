@@ -1,0 +1,6 @@
+F:\file\Code\AutoTest\AutoTest\MySvnHelper\bin\Release\MySvnHelper.dll
+F:\file\Code\AutoTest\AutoTest\MySvnHelper\bin\Release\MySvnHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MySvnHelper\bin\Release\SharpSvn.dll
+F:\file\Code\AutoTest\AutoTest\MySvnHelper\bin\Release\SharpPlink-x64.svnExe
+F:\file\Code\AutoTest\AutoTest\MySvnHelper\obj\Release\MySvnHelper.dll
+F:\file\Code\AutoTest\AutoTest\MySvnHelper\obj\Release\MySvnHelper.pdb

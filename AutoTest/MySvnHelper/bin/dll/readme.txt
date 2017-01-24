@@ -1,0 +1,2 @@
+由于SharpPlink-x64.svnExe为sharpSvn依赖项，而又不能引入VS
+如果直接放在生成目录（debug目录）在生成时会先被删除，导致生成失败，所以该项目dll只能放在其他目录

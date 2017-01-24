@@ -59,6 +59,7 @@
     <Compile Include="Tool\myShareData.cs" />
     <Compile Include="Tool\mySocket.cs" />
     <Compile Include="Tool\myWebTool.cs" />
+    <Compile Include="Tool\MyWindowsCmd.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -29,11 +29,14 @@ namespace AutoTest.myTool
         //声明为 volatile 的字段不受编译器优化（假定由单个线程访问）的限制。这样可以确保该字段在任何时间呈现的都是最新的值。
 
         public static AutoResetEvent myAutoResetEvent = new AutoResetEvent(false);
-        //myAutoResetEvent.Set();                
-        //myAutoResetEvent.WaitOne(); 
+        //myAutoResetEvent.Set();  开锁              
+        //myAutoResetEvent.WaitOne(); 调用后主动上锁  （就是说正常情况下一个AutoResetEvent只能激活一个线程）
 
         public static ManualResetEvent myManualResetEvent = new ManualResetEvent(false);
-        //WaitOne调用后不会主动上锁  Set() Reset()  WaitOne()可加时间间隔
+        //WaitOne调用后不会主动上锁  
+        //Set()    开锁
+        //Reset()  上锁
+        //WaitOne()可加时间间隔
 
         public static readonly object myThreadLock = new object();
         //通常，应避免锁定 public 类型，最佳做法是定义 private 对象来锁定, 或 private static 对象变量来保护所有实例所共有的数据。

@@ -1,0 +1,8 @@
+F:\file\Code\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.dll
+F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\myCommonTool.dll
+F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\SpeechLib.dll
+F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\myCommonTool.pdb
+F:\file\Code\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.dll
+F:\file\Code\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.pdb
