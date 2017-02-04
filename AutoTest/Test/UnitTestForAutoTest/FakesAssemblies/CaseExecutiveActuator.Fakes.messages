@@ -44,7 +44,7 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActua
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyExtensionMethods 生成存根: 类型已密封。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseTool 生成存根: 类型已密封。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myWebTool 生成存根: 类型已密封。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{8CAEA2CA-4FF6-4A4F-AA06-A4A659022097} 生成存根: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{564BBBEE-F035-412F-9E9F-2806F797F517} 生成存根: 类型不受支持，因为存在内部限制。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.ExportMefAssembly 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.IExtendProtocolDriver 生成填充码: 类型是一个接口。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.MyExtendProtocolDriver 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
@@ -82,4 +82,4 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActua
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseExpectType 生成填充码: 类型是一个枚举。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterizationContentEncodingType 生成填充码: 类型是一个枚举。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myWebTool+HttpHelper+SetHeadAttributeCallback 生成填充码: 类型是一个委托。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{8CAEA2CA-4FF6-4A4F-AA06-A4A659022097} 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{564BBBEE-F035-412F-9E9F-2806F797F517} 生成填充码: 类型不受支持，因为存在内部限制。

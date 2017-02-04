@@ -5,7 +5,7 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myWebTool 生成存根: 类型已密封。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.StreamAsynRead 生成存根: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.MyWindowsCmd 生成存根: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 <PrivateImplementationDetails>{A8FF2C2B-B690-436F-A68C-45D720073570} 生成存根: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 <PrivateImplementationDetails>{D878EAD9-588D-4EE2-8810-16D7D7FD9FEF} 生成存根: 类型不受支持，因为存在内部限制。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.FileHelper.CsvFileHelper+Type 生成填充码: 类型是一个枚举。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySerialPort+delegateReceiveData 生成填充码: 类型是一个委托。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySerialPort+delegateThrowError 生成填充码: 类型是一个委托。
@@ -17,4 +17,4 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myWebTool+HttpHelper+SetHeadAttributeCallback 生成填充码: 类型是一个委托。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.StreamAsynRead 生成填充码: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.MyWindowsCmd 生成填充码: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 <PrivateImplementationDetails>{A8FF2C2B-B690-436F-A68C-45D720073570} 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 <PrivateImplementationDetails>{D878EAD9-588D-4EE2-8810-16D7D7FD9FEF} 生成填充码: 类型不受支持，因为存在内部限制。

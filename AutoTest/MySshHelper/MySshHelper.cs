@@ -21,6 +21,12 @@ namespace MySshHelper
     
     public class MySsh
     {
+        /// <summary>
+        /// make folder in full Path (创建完整路径的文件夹，对不存在的根进行循环创建 文件夹路径使用/分割)
+        /// </summary>
+        /// <param name="sshCp">ssh</param>
+        /// <param name="FilePath">File Path</param>
+        /// <returns>is sucess</returns>
         public static bool SshFileMkFullDir(SshTransferProtocolBase sshCp, string FilePath)
         {
             string[] files = FilePath.Split('/');
@@ -55,6 +61,13 @@ namespace MySshHelper
             return true;
         }
 
+        /// <summary>
+        /// make folder
+        /// </summary>
+        /// <param name="sshCp">ssh</param>
+        /// <param name="FilePath">File Path</param>
+        /// <param name="errMes"></param>
+        /// <returns>is sucess</returns>
         public static bool SshFileMkDir(SshTransferProtocolBase sshCp, string FilePath, out string errMes)
         {
             errMes = null;
@@ -70,6 +83,15 @@ namespace MySshHelper
             }
         }
 
+        /// <summary>
+        /// move all file to  remote Asyn （使用异步的方式将指定文件夹内的所有文件包括之目录的所有文件在保留目录结果的提前向下复制到shh服务器的指定目录）
+        /// </summary>
+        /// <param name="sshCp">ssh</param>
+        /// <param name="LocalFilePath">Local File Path</param>
+        /// <param name="remoteFilePath">remote File Path</param>
+        /// <param name="reportProcess">report Process </param>
+        /// <param name="reportError">report Error</param>
+        /// <returns>is creat task sucess</returns>
         public static bool SshMvAllFileAsyn(SshTransferProtocolBase sshCp, string LocalFilePath, string remoteFilePath, Action<string> reportProcess, Action<string> reportError)
         {
             string outError = null;
@@ -98,6 +120,16 @@ namespace MySshHelper
             return true;
         }
 
+        /// <summary>
+        /// move all file to remote Sync （使用同步的方式将指定文件夹内的所有文件包括之目录的所有文件在保留目录结果的提前向下复制到shh服务器的指定目录）
+        /// </summary>
+        /// <param name="sshCp"></param>
+        /// <param name="LocalFilePath">Local File Path</param>
+        /// <param name="remoteFilePath">remote File Path</param>
+        /// <param name="errMes"></param>
+        /// <param name="reportProcess">report Process </param>
+        /// <param name="reportError">report Error</param>
+        /// <returns></returns>
         public static bool SshMvAllFileSync(SshTransferProtocolBase sshCp, string LocalFilePath, string remoteFilePath, out string errMes, Action<string> reportProcess, Action<string> reportError)
         {
             errMes = null;

@@ -146,26 +146,33 @@ namespace MySqlHelper
 
             public void Dispose()
             {
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+
+            protected void Dispose(bool disposing)
+            {
                 StopAliveTask();
                 executeMySqlDrive.Dispose();
+            }
+
+
+             ~AliveTaskInfo()
+            {
+                Dispose(false);
             }
 
             //protected override void Finalize()
             //{
             //    try
             //    {
-            //        this.Dispose();
+            //        //do ~AliveTaskInfo()
             //    }
             //    finally
             //    {
             //        //base.Finalize();
             //    }
             //}
-
-             ~AliveTaskInfo()
-            {
-                Dispose();
-            }
         }
        
         private class SqlMonitor : IDisposable
@@ -630,6 +637,7 @@ namespace MySqlHelper
         {
             if (aliveTaskList.ContainsKey(yourName))
             {
+                //GC.SuppressFinalize(aliveTaskList[yourName]); //only for GC test
                 aliveTaskList[yourName].StopAliveTask();
                 aliveTaskList[yourName].Dispose();
                 aliveTaskList[yourName] = null;
@@ -804,9 +812,15 @@ namespace MySqlHelper
         }
 
         /// <summary>
-        /// only call it when you want drop it
+        /// only call it when you want drop it 
         /// </summary>
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected void Dispose(bool disposing)
         {
             if (myConnection != null)
             {
@@ -814,9 +828,21 @@ namespace MySqlHelper
                 myConnection.Dispose();
                 myCommand.Dispose();
                 myAdapter.Dispose();
-                myTransaction.Dispose();
-                myTable.Dispose();
+                if (myTransaction != null)
+                {
+                    myTransaction.Dispose(); //myTransaction not use here it is null
+                }
+                if (myTable != null)
+                {
+                    myTable.Dispose();
+                }
+
             }
+        }
+
+        ~MySqlDrive()
+        {
+            Dispose(false);
         }
 
         #endregion

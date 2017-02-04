@@ -58,9 +58,11 @@ namespace DemoForMyHelper
                     }
                 }
             }));
-            mySql.DelAliveTask("TestIn");
+
+            
+            //mySql.DelAliveTask("TestIn");
             //GC.Collect();
-            return;
+            //return;
             mySql.StartAliveTask("TestIn");
 
         }

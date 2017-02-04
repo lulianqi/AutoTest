@@ -188,8 +188,18 @@ namespace MySvnHelper
         /// </summary>
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected void Dispose(bool disposing)
+        {
             reporter.Dispose();
             client.Dispose();
+        }
+
+        ~MySvn()
+        {
+            Dispose(false);
         }
     }
 }
