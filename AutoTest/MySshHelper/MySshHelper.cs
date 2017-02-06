@@ -7,7 +7,17 @@ using System.Text;
 using System.Threading;
 using Tamir.SharpSsh;
 
-
+/*******************************************************************************
+* Copyright (c) 2016 lulianqi 
+* All rights reserved.
+* 
+* 文件名称: 
+* 内容摘要: mycllq@hotmail.com
+* 
+* 历史记录:
+* 日	  期:   201700120          创建人: lulianqi mycllq@hotmail.com
+* 描    述: 创建
+*******************************************************************************/
 
 //namespace Tamir.SharpSsh
 //{

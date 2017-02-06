@@ -340,6 +340,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.Dispose">
             <summary>设置 CaseActionActuator.Dispose() 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.DisposeBoolean">
+            <summary>设置 CaseActionActuator.Dispose(Boolean disposing) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ErrorInfoGet">
             <summary>设置 CaseActionActuator.get_ErrorInfo() 的 填充码</summary>
         </member>
@@ -504,6 +507,9 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.Dispose">
             <summary>设置 CaseActionActuator.Dispose() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.DisposeBoolean">
+            <summary>设置 CaseActionActuator.Dispose(Boolean disposing) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.ErrorInfoGet">
             <summary>设置 CaseActionActuator.get_ErrorInfo() 的 填充码</summary>

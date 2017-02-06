@@ -462,7 +462,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// 描述单次执行所需的基本数据集
+        /// 描述单次执行所需的基本数据集  (未使用)
         /// </summary>
         private class ExecutivebasicData
         {
@@ -1956,21 +1956,36 @@ namespace CaseExecutiveActuator
         /// </summary>
         public void Dispose()
         {
-            KillAll();
-            DisconnectExecutionDevice();
-            myExecutionDeviceList.Clear();
-            runActuatorParameterList.Clear();
-            runActuatorStaticDataList.Clear();
-            runTimeCaseDictionary = null;
-            runCellProjctCollection = null;
-            if (caseRunTime!=null)
-            {
-                caseRunTime.OnLoopChangeEvent -= caseRunTime_OnLoopChangeEvent;
-                caseRunTime.OnQueueChangeEvent -= caseRunTime_OnQueueChangeEvent;
-                caseRunTime = null;
-            }
-           
+            Dispose(true);
         }
-        
+
+        protected void Dispose(bool disposing)
+        {
+            if(disposing)
+            {
+                KillAll();
+                DisconnectExecutionDevice();
+                myExecutionDeviceList.Clear();
+                runActuatorParameterList.Clear();
+                runActuatorStaticDataList.Clear();
+                runTimeCaseDictionary = null;
+                runCellProjctCollection = null;
+                if (caseRunTime != null)
+                {
+                    caseRunTime.OnLoopChangeEvent -= caseRunTime_OnLoopChangeEvent;
+                    caseRunTime.OnQueueChangeEvent -= caseRunTime_OnQueueChangeEvent;
+                    caseRunTime = null;
+                }
+            }
+            else
+            {
+                //Clean up the native resources
+            }
+        }
+
+        ~CaseActionActuator()
+        {
+            Dispose(false);
+        }
     }
 }

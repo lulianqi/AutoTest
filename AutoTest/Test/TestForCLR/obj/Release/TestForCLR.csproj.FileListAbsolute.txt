@@ -1,0 +1,4 @@
+F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\bin\Release\TestForCLR.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\bin\Release\TestForCLR.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\obj\Release\TestForCLR.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\obj\Release\TestForCLR.pdb

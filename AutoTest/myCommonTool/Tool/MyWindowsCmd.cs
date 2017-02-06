@@ -311,9 +311,19 @@ namespace MyCommonTool
 
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected void Dispose(bool disposing)
+        {
             StopCmd();
             standardOutputRead.Dispose();
             standardErrorRead.Dispose();
+        }
+
+        ~MyWindowsCmd()
+        {
+            Dispose(false);
         }
     }
 }
