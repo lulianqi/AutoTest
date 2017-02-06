@@ -94,7 +94,7 @@ namespace MySvnHelper
         }
 
 
-        public void Updata(string SvnPathTarget)
+        public bool Updata(string SvnPathTarget)
         {
             ShowState(String.Format("{0} start updata", SvnPathTarget));
             //SvnInfoEventArgs serverInfo;
@@ -104,28 +104,48 @@ namespace MySvnHelper
             //SvnUriTarget repos = new SvnUriTarget(svnUriTarget);
             SvnPathTarget local = new SvnPathTarget(SvnPathTarget);
             //client.GetInfo(repos, out serverInfo);
-            client.GetInfo(local, out clientInfo);
+            try
+            {
+                client.GetInfo(local, out clientInfo);
+            }
+            catch (Exception ex)
+            {
+                ShowState(String.Format("[updata errer] {0}", ex.Message));
+                return false;
+            }
             //client.GetLog(SvnPathTarget, out logSvnArgs);
             if (!client.Update(SvnPathTarget))
             {
-                ShowState(String.Format("{0} updata errer", SvnPathTarget));
+                ShowState(String.Format("[updata errer] {0}", SvnPathTarget));
+                return false;
             }
             ShowState(string.Format("Svn remote path is :{0} \r\nLocal path is :{1} \r\nLast change revision is :{2} \r\nLast change time is :{3} \r\nLast change author is :{4} \r\n",
                 clientInfo.Uri, clientInfo.Path, clientInfo.LastChangeRevision, clientInfo.LastChangeTime, clientInfo.LastChangeAuthor, clientInfo.Revision));
+            return true;
         }
 
-        public void CheckOut(string svnUriTarget, string SvnPathTarget)
+        public bool CheckOut(string svnUriTarget, string SvnPathTarget)
         {
             ShowState(String.Format("{0} start CheckOut", SvnPathTarget));
             client.CheckOut(new SvnUriTarget(svnUriTarget), SvnPathTarget);
             SvnInfoEventArgs clientInfo;
-            client.GetInfo(new SvnPathTarget(SvnPathTarget), out clientInfo);
+            try
+            {
+                client.GetInfo(new SvnPathTarget(SvnPathTarget), out clientInfo);
+            }
+            catch (Exception ex)
+            {
+                ShowState(String.Format("CheckOut errer {0}", ex.Message));
+                return false;
+            }
             if (!client.Update(SvnPathTarget))
             {
-                ShowState(String.Format("{0} CheckOut errer", SvnPathTarget));
+                ShowState(String.Format("CheckOut errer {0}", SvnPathTarget));
+                return false;
             }
             ShowState(string.Format("Svn remote path is :{0} \r\nLocal path is :{1} \r\nLast change revision is :{2} \r\nLast change time is :{3} \r\nLast change author is :{4} \r\n",
                 clientInfo.Uri, clientInfo.Path, clientInfo.LastChangeRevision, clientInfo.LastChangeTime, clientInfo.LastChangeAuthor, clientInfo.Revision));
+            return true;
         }
 
         public void CleanUp(string SvnPathTarget)
