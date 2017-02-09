@@ -1,0 +1,19 @@
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 163
+在其上下文中，该请求的地址无效。 0.0.0.0:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 385
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 163
+在其上下文中，该请求的地址无效。 0.0.0.0:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 385
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms

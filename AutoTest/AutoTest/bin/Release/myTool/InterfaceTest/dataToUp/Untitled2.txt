@@ -1,0 +1,11 @@
+POST http://test.api.vanelife.com/v1/datapoint/publish?timestamp=2013-12-27T19:24:03&key=730939EFE27DED91AE13731DD98E6006&signature=02E1A7CD254A1504904D32B267970BEA&access_id=E1B3EDB023DA345FAB1C1F392A4FC5E8&ep_id=ep13874354011&dp_id=11 HTTP/1.1
+Content-Type: multipart/form-data; boundary=---------------8d0d150564c920c
+Host: test.api.vanelife.com
+Content-Length: 8718
+Expect: 100-continue
+
+-----------------8d0d150564c920c
+Content-Disposition: form-data; name="dp_data"; filename="oo"
+Content-Type: application/octet-stream
+
+????

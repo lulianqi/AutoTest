@@ -1,0 +1,9 @@
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Release\CaseExecutiveActuator.dll
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Release\CaseExecutiveActuator.pdb
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Release\myCommonTool.dll
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Release\Newtonsoft.Json.dll
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Release\SpeechLib.dll
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Release\myCommonTool.pdb
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\obj\Release\CaseExecutiveActuator.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\obj\Release\CaseExecutiveActuator.dll
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\obj\Release\CaseExecutiveActuator.pdb

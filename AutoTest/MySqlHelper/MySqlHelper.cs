@@ -852,6 +852,7 @@ namespace MySqlHelper
             }
         }
 
+        //该类实际没有直接引入非托管资源，是不应该添加析构函数的，之后可能会有，先标记在这里
         ~MySqlDrive()
         {
             Dispose(false);

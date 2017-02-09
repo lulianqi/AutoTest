@@ -1,0 +1,124 @@
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 远程主机强迫关闭了一个现有的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 142
+未将对象引用设置到对象的实例。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 335
+无法将类型为“AutoTestForVane.myDialogWindow.myDirectionalTestForDevEpAdd”的对象强制转换为类型“AutoTestForVane.myDialogWindow.MyVaneConfig”。
+AutoTestForVane
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 142
+由于目标机器积极拒绝，无法连接。 192.168.11.106:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 335
+无法将类型为“AutoTestForVane.myDialogWindow.myDirectionalTestForDevEpAdd”的对象强制转换为类型“AutoTestForVane.myDialogWindow.MyVaneConfig”。
+AutoTestForVane
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 142
+由于目标机器积极拒绝，无法连接。 192.168.11.100:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 335
+无法将类型为“AutoTestForVane.myDialogWindow.myDirectionalTestForDevEpAdd”的对象强制转换为类型“AutoTestForVane.myDialogWindow.MyVaneConfig”。
+AutoTestForVane
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 335
+无法将类型为“AutoTestForVane.myDialogWindow.myDirectionalTestForDevEpAdd”的对象强制转换为类型“AutoTestForVane.myDialogWindow.MyVaneConfig”。
+AutoTestForVane
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 142
+由于目标机器积极拒绝，无法连接。 192.168.11.106:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 317
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 335
+无法将类型为“AutoTestForVane.myDialogWindow.myDirectionalTestForDevEpAdd”的对象强制转换为类型“AutoTestForVane.myDialogWindow.MyVaneConfig”。
+AutoTestForVane
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 142
+由于目标机器积极拒绝，无法连接。 192.168.11.106:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 317
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 227
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。

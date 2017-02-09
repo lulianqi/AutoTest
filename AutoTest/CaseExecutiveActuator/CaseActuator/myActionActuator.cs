@@ -1983,9 +1983,10 @@ namespace CaseExecutiveActuator
             }
         }
 
-        ~CaseActionActuator()
-        {
-            Dispose(false);
-        }
+        //如果没有非托管资源的释放，需谨慎添加析构函数，其可能影响GC性能
+        //~CaseActionActuator()
+        //{
+        //    Dispose(false);
+        //}
     }
 }

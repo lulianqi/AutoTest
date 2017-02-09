@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html>
+  <body>
+    <h1>
+      <br />AutoTest V1.2   Atuo_interface Report</h1>
+    <div style="color:#00FF00">
+      <p>
+      </p>
+      <table>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>报告生成时间:</td>
+          <td>
+            <td width="400px">2016-01-26T23:26:45</td>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <hr />
+    <p>
+    </p>
+    <div style="color:#00FF00">
+    </div>
+    <h2>Test Remark</h2>
+    <p>
+    </p>
+    <div style="color:#00FF00">
+      <table>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>状态色对照表:</td>
+        </tr>
+        <tr>
+          <td width="50px">
+          </td>
+          <td width="100px" bgcolor="#FA8072">不通过</td>
+          <td width="100px" bgcolor="#FFFACD">未知错误</td>
+          <td width="100px" bgcolor="#FFA500">无法执行</td>
+          <td width="100px" bgcolor="#E0FFFF">通过</td>
+          <td width="100px" bgcolor="#E6E6FA">未知状态</td>
+        </tr>
+      </table>
+      <p>
+      </p>
+      <table>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>目标用例文件:</td>
+        </tr>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>
+            <td width="100px">D:\my\code\Vane\AutoTest\AutoTest\AutoTest\bin\Debug\casefile\casefile\cn.xml</td>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <h2>Test Result</h2>
+    <p>
+    </p>
+    <div style="color:#00FF00">
+      <table border="0" cellpadding="0" cellspacing="1" bgcolor="#ACDDEC">
+        <tr>
+          <td width="50px">
+          </td>
+          <td width="200px">
+            <h5>项目:</h5>
+          </td>
+          <td width="150px">
+            <h5>结果:</h5>
+          </td>
+        </tr>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>执行用例总数:</td>
+          <td>
+            <td width="100px">13</td>
+          </td>
+        </tr>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>通过的用例数:</td>
+          <td>
+            <td width="100px">11</td>
+          </td>
+        </tr>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>不通过的用例数:</td>
+          <td>
+            <td width="100px">2</td>
+          </td>
+        </tr>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>无法执行的用例数:</td>
+          <td>
+            <td width="100px">0</td>
+          </td>
+        </tr>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>未能解析的用例总数:</td>
+          <td>
+            <td width="100px">0</td>
+          </td>
+        </tr>
+        <tr>
+          <td width="50px">
+          </td>
+          <td>异常用例总数:</td>
+          <td>
+            <td width="100px">0</td>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <h2>Test Record</h2>
+    <p>
+    </p>
+    <div>
+    </div>
+    <table border="0" width="100%" cellpadding="0" cellspacing="1" bgcolor="#ACDDEC">
+      <tbody>
+        <tr>
+          <td width="100px">
+          </td>
+          <td width="100px">
+          </td>
+          <td width="100px">
+          </td>
+          <td width="100px">
+          </td>
+          <td width="100px">
+          </td>
+          <td width="700px">
+          </td>
+          <td width="500px">
+          </td>
+          <td width="200px">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h5>caseID</h5>
+          </td>
+          <td>
+            <h5>CaseProtocol</h5>
+          </td>
+          <td>
+            <h5>执行时间</h5>
+          </td>
+          <td>
+            <h5>执行耗时</h5>
+          </td>
+          <td>
+            <h5>执行结果</h5>
+          </td>
+          <td>
+            <h5>执行过程</h5>
+          </td>
+          <td>
+            <h5>执行反馈</h5>
+          </td>
+          <td>
+            <h5>其他信息</h5>
+          </td>
+        </tr>
+        <tr bgcolor="#FA8072">
+                                    <td width="100px">1000010001</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:40</td>
+                                    <td width="100px">183</td>
+                                    <td width="100px">Fail</td>
+                                    <td width="700px">http://www.news.baidu.com -&gt; StatusCode:  505
+&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+ &lt;head&gt;
+  &lt;title&gt;505 - HTTP Version Not Supported&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;h1&gt;505 - HTTP Version Not Supported&lt;/h1&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</td>
+                                    <td width="500px">judge_contain -&gt; baidu</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#FA8072">
+                                    <td width="100px">1000010002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:40</td>
+                                    <td width="100px">672</td>
+                                    <td width="100px">Fail</td>
+                                    <td width="700px">http://stackoverflow.com -&gt; 基础连接已经关闭: 接收时发生错误。</td>
+                                    <td width="500px">judge_contain -&gt; baidu</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:41</td>
+                                    <td width="100px">166</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:41</td>
+                                    <td width="100px">35</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:41</td>
+                                    <td width="100px">32</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:41</td>
+                                    <td width="100px">31</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:41</td>
+                                    <td width="100px">32</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:42</td>
+                                    <td width="100px">31</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:42</td>
+                                    <td width="100px">31</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:42</td>
+                                    <td width="100px">32</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:42</td>
+                                    <td width="100px">32</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:42</td>
+                                    <td width="100px">31</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+        <tr bgcolor="#E0FFFF">
+                                    <td width="100px">1000020002</td>
+                                    <td width="100px">vanelife_http</td>
+                                    <td width="100px">23:26:42</td>
+                                    <td width="100px">32</td>
+                                    <td width="100px">Pass</td>
+                                    <td width="700px">http://pv.sohu.com/cityjson?ie=utf-8 -&gt; var returnCitySN = {"cip": "122.233.109.95", "cid": "330100", "cname": "浙江省杭州市"};</td>
+                                    <td width="500px">judge_contain -&gt; 浙江</td>
+                                    <td>  </td>
+                                    </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VaneConfig version="1.0">
+  <AssignedNumber>
+    <Protocol-Type AssignedNumber="81"></Protocol-Type>
+    <Transaction-ID AssignedNumber="82"></Transaction-ID>
+    <Protocol-Version AssignedNumber="83"></Protocol-Version>
+    <Status AssignedNumber="84"></Status>
+    <Heart-Beat AssignedNumber="85"></Heart-Beat>
+    <GW-ID AssignedNumber="86"></GW-ID>
+    <GW-Alias AssignedNumber="87"></GW-Alias>
+    <GW-Version AssignedNumber="88"></GW-Version>
+    <GW-IP AssignedNumber="89"></GW-IP>
+    <GW-Port AssignedNumber="8A"></GW-Port>
+    <GW-Key AssignedNumber="8B"></GW-Key>
+    <Vendor AssignedNumber="8C"></Vendor>
+    <Model AssignedNumber="8D"></Model>
+    <Endpoint-Count AssignedNumber="8E"></Endpoint-Count>
+    <EndpointList AssignedNumber="8F"></EndpointList>
+    <EndpointItem AssignedNumber="90"></EndpointItem>
+    <Endpoint-ID AssignedNumber="91"></Endpoint-ID>
+    <Endpoint-Name AssignedNumber="92"></Endpoint-Name>
+    <Signal AssignedNumber="93"></Signal>
+    <Battery AssignedNumber="94"></Battery>
+    <Endpoint-Version AssignedNumber="95"></Endpoint-Version>
+    <Datapoint-ID AssignedNumber="96"></Datapoint-ID>
+    <APP-ID AssignedNumber="97"></APP-ID>
+    <GW-Token AssignedNumber="98"></GW-Token>
+    <GW-SN AssignedNumber="99"></GW-SN>
+    <Online-Status AssignedNumber="9A"></Online-Status>
+    <Endpoint-Type AssignedNumber="9B"></Endpoint-Type>
+    <Control-Port AssignedNumber="9C"></Control-Port>
+    <New-Version-Flag AssignedNumber="9D"></New-Version-Flag>
+    <Device-Version-Type AssignedNumber="9E"></Device-Version-Type>
+    <Device-Version-String AssignedNumber="9F"></Device-Version-String>
+    <Device-Version-Desc AssignedNumber="A0"></Device-Version-Desc>
+    <GWAbilityGWAbility AssignedNumber="A1"></GWAbilityGWAbility>
+    <Router-SSID AssignedNumber="A2"></Router-SSID>
+    <Router-Key AssignedNumber="A3"></Router-Key>
+    <Router-Auth-Mode AssignedNumber="A4"></Router-Auth-Mode>
+    <Device-Version-Type AssignedNumber="A5"></Device-Version-Type>
+    <Device-Version-Info AssignedNumber="A6"></Device-Version-Info>
+    <Device-Upgrade-Info AssignedNumber="A7"></Device-Upgrade-Info>
+    <Device-Version-Code AssignedNumber="A8"></Device-Version-Code>
+    <Device-Current-Version-String AssignedNumber="A9"></Device-Current-Version-String>
+  </AssignedNumber>
+  <ProtocolType>
+    <HeartBeatRequest AssignedNumber="01"></HeartBeatRequest>
+    <HeartBeatResponse AssignedNumber="02"></HeartBeatResponse>
+    <DeviceConnectionInformation AssignedNumber="03"></DeviceConnectionInformation>
+    <DeviceConfigurationQuery AssignedNumber="04"></DeviceConfigurationQuery>
+    <DeviceConfigurationResponse AssignedNumber="05"></DeviceConfigurationResponse>
+    <DeviceConfigurationModifyRequest AssignedNumber="06"></DeviceConfigurationModifyRequest>
+    <DeviceConfigurationModifyResponse AssignedNumber="07"></DeviceConfigurationModifyResponse>
+    <EndpointListRequest AssignedNumber="08"></EndpointListRequest>
+    <EndpointListResponse AssignedNumber="09"></EndpointListResponse>
+    <EndpointAddRequest AssignedNumber="0A"></EndpointAddRequest>
+    <EndpointAddResponse AssignedNumber="0B"></EndpointAddResponse>
+    <EndpointRemoveRequest AssignedNumber="0C"></EndpointRemoveRequest>
+    <EndpointRemoveResponse AssignedNumber="0D"></EndpointRemoveResponse>
+    <EndpointModifyRequest AssignedNumber="0E"></EndpointModifyRequest>
+    <EndpointModifyResponse AssignedNumber="0F"></EndpointModifyResponse>
+    <ConfigurationModeLeave AssignedNumber="10"></ConfigurationModeLeave>
+    <ConfigurationModeLeaveAck AssignedNumber="11"></ConfigurationModeLeaveAck>
+    <EndpointAddAllStartRequest AssignedNumber="12"></EndpointAddAllStartRequest>
+    <EndpointAddAllStartResponse AssignedNumber="13"></EndpointAddAllStartResponse>
+    <EndpointListChangeNotify AssignedNumber="14"></EndpointListChangeNotify>
+    <DeviceNewVersionCheckRequest AssignedNumber="15"></DeviceNewVersionCheckRequest>
+    <DeviceNewVersionCheckResponse AssignedNumber="16"></DeviceNewVersionCheckResponse>
+    <DeviceVersionUpgradeRequest AssignedNumber="17"></DeviceVersionUpgradeRequest>
+    <DeviceVersionUpdateResponse AssignedNumber="18"></DeviceVersionUpdateResponse>
+    <DeviceRouterInformationModifyRequest AssignedNumber="19"></DeviceRouterInformationModifyRequest>
+    <DeviceRouterInformationModifyResponse AssignedNumber="1A"></DeviceRouterInformationModifyResponse>
+    <DeviceAddAllNewEndpointNotify AssignedNumber="1B"></DeviceAddAllNewEndpointNotify>
+    <EndpointInformationQueryRequest AssignedNumber="1C"></EndpointInformationQueryRequest>
+    <EndpointInformationQueryResponse AssignedNumber="1D"></EndpointInformationQueryResponse>
+    <DeviceAddAllStopRequest AssignedNumber="1E"></DeviceAddAllStopRequest>
+    <DeviceAddAllStopResponse AssignedNumber="1F"></DeviceAddAllStopResponse>
+    <DeviceAddAllStopIndication AssignedNumber="20"></DeviceAddAllStopIndication>
+    <WifiConfigurationSetRequest AssignedNumber="A0"></WifiConfigurationSetRequest>
+    <WifiConfigurationSetResponse AssignedNumber="A1"></WifiConfigurationSetResponse>
+  </ProtocolType>
+  <Status>
+    <OK AssignedNumber="00"></OK>
+    <Fail AssignedNumber="01"></Fail>
+    <Denied AssignedNumber="02"></Denied>
+    <Busy AssignedNumber="03"></Busy>
+  </Status>
+  <ContentType>
+    <TLS AssignedNumber="10"></TLS>
+    <SLP AssignedNumber="20"></SLP>
+    <VSC AssignedNumber="30"></VSC>
+  </ContentType>
+  <NewVersionFlag>
+    <NoNewVersionDetected AssignedNumber="00"></NoNewVersionDetected>
+    <NewVersionSoftwareDetected AssignedNumber="01"></NewVersionSoftwareDetected>
+    <SoftwareDownloading AssignedNumber="02"></SoftwareDownloading>
+    <SoftwareUpgrading AssignedNumber="03"></SoftwareUpgrading>
+    <SoftwareUpgradeFinish AssignedNumber="04"></SoftwareUpgradeFinish>
+  </NewVersionFlag>
+  <GWAbility>
+    <Turbo AssignedNumber="00"></Turbo>
+    <Zigbee AssignedNumber="01"></Zigbee>
+    <Wifi AssignedNumber="02"></Wifi>
+    <WifiAndZigbee AssignedNumber="03"></WifiAndZigbee>
+  </GWAbility>
+  <RouterAuthMode>
+    <Open AssignedNumber="00"></Open>
+    <WEP AssignedNumber="01"></WEP>
+    <WAP-TKIP AssignedNumber="02"></WAP-TKIP>
+    <WPA-AES AssignedNumber="03"></WPA-AES>
+    <WPA2-AES AssignedNumber="04"></WPA2-AES>
+    <WPA2-TKIP AssignedNumber="05"></WPA2-TKIP>
+    <AUTO-SCAN AssignedNumber="06"></AUTO-SCAN>
+  </RouterAuthMode>
+  <WifiAssignedNumber>
+    <Protocol-Type AssignedNumber="81"></Protocol-Type>
+    <Transaction-ID AssignedNumber="82"></Transaction-ID>
+    <Protocol-Version AssignedNumber="83"></Protocol-Version>
+    <Status AssignedNumber="84"></Status>
+    <Wifi-SSID AssignedNumber="85"></Wifi-SSID>
+    <Wifi-Key AssignedNumber="86"></Wifi-Key>
+    <Wifi-Auth-Mode AssignedNumber="87"></Wifi-Auth-Mode>
+  </WifiAssignedNumber>
+  <VersionType>
+    <VANE AssignedNumber="00"></VANE>
+    <VANE_MZB AssignedNumber="01"></VANE_MZB>
+    <VANE_SZB AssignedNumber="02"></VANE_SZB>
+  </VersionType>
+</VaneConfig>

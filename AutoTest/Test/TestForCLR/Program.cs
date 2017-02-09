@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -9,7 +10,8 @@ namespace TestForCLR
     {
         static void Main(string[] args)
         {
-            new TestForGC_1().Run();
+
+            new TestForGC_2().Run();
             //new TestForGC_1().RunAsThread();
             Console.ReadLine();
             GC.Collect();
