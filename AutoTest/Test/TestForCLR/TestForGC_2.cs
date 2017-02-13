@@ -14,6 +14,8 @@ namespace TestForCLR
         {
             byte[] bts = new byte[] { 1, 2, 3, 4 };
             FileStream fs = new FileStream("lj", FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Dispose();
             fs.Write(bts, 0, 4);
             //fs.Dispose();
             GC.Collect(2, GCCollectionMode.Forced);
