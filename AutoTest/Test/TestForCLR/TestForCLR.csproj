@@ -58,8 +58,10 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestForAppDomain_1.cs" />
     <Compile Include="TestForGC_1.cs" />
     <Compile Include="TestForGC_2.cs" />
+    <Compile Include="TestForGC_3.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

@@ -11,11 +11,17 @@ namespace TestForCLR
         static void Main(string[] args)
         {
 
-            new TestForGC_2().Run();
+            new TestForGC_3().RunTest();
             //new TestForGC_1().RunAsThread();
             Console.ReadLine();
             GC.Collect();
-            Console.WriteLine("Over put any key to exit");
+            byte[] bytes = new byte[1024];
+            for (int i = 0; i < 1024;i++ )
+            {
+                bytes[i] = 0xaa;
+            }
+
+                Console.WriteLine("Over put any key to exit");
             Console.ReadKey();
         }
     }
