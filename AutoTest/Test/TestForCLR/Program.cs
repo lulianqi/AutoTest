@@ -15,13 +15,13 @@ namespace TestForCLR
             //new TestForGC_1().RunAsThread();
             Console.ReadLine();
             GC.Collect();
+            Console.ReadLine();
             byte[] bytes = new byte[1024];
             for (int i = 0; i < 1024;i++ )
             {
-                bytes[i] = 0xaa;
+                bytes[i] = 0xdd;
             }
-
-                Console.WriteLine("Over put any key to exit");
+            Console.WriteLine("Over put any key to exit");
             Console.ReadKey();
         }
     }
