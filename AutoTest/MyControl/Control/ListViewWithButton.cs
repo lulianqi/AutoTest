@@ -40,7 +40,7 @@ namespace MyCommonControl
         /// <summary>
         /// progressBar显示模式
         /// </summary>
-        [DescriptionAttribute("在第几列添加button")]
+        [DescriptionAttribute("在第几列添加button[在添加行时该列必须是存在的]")]
         public int ButtonIndex
         {
             get { return _buttonIndex; }
@@ -88,6 +88,10 @@ namespace MyCommonControl
             base.WndProc(ref m);
         }
 
+        /// <summary>
+        /// 添加含有Control的ListViewItem
+        /// </summary>
+        /// <param name="yourItem">ListViewItem 的tag 需要指向目标Control ，且存放Control的列也要在ListViewItem被填充</param>
         public void AddItemEx(ListViewItem yourItem)
         {
             this.Items.Add(yourItem);
@@ -100,6 +104,11 @@ namespace MyCommonControl
             }
         }
 
+        /// <summary>
+        /// 当加入Control被触发Click时，即执行此处（所有Control的click只需要订阅ButtonClickEvent即可）
+        /// </summary>
+        /// <param name="sender">被点击的行Control</param>
+        /// <param name="e"></param>
         void tempControl_Click(object sender, EventArgs e)
         {
                 if(ButtonClickEvent!=null)

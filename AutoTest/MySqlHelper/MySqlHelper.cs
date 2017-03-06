@@ -137,21 +137,35 @@ namespace MySqlHelper
             /// <param name="taskInfo"></param>
             private void AliveTaskBody(object taskInfo)
             {
+                DataTable lastTable = null;
+                DataTable nowTable = null;
                 while (!IsKill)
                 {
                     myManualResetEvent.WaitOne();
-                    DataTable tempTable = executeMySqlDrive.ExecuteQuery(TaskSqlcmd);
-                    if (tempTable != null)
+                    nowTable = executeMySqlDrive.ExecuteQuery(TaskSqlcmd);
+                    if (nowTable != null)
                     {
-                        if (tempTable.Rows.Count > 0)
+                        if (nowTable.Rows.Count > 0)
                         {
-                            PutOutAliveTaskDataTableInfo(tempTable);
+                            PutOutAliveTaskDataTableInfo(nowTable);
+                        }
+                        else
+                        {
+                            if (lastTable == null)
+                            {
+                                PutOutAliveTaskDataTableInfo(nowTable);
+                            }
+                            else if (lastTable.Rows.Count > 0)
+                            {
+                                PutOutAliveTaskDataTableInfo(nowTable);
+                            }
                         }
                     }
                     else
                     {
                         executeMySqlDrive.SetErrorMes(" [ExecuteQuery] fail in RunSynchronousAliveTask");
                     }
+                    lastTable = nowTable;
                     Thread.Sleep(IntervalTime);
                 }
             }
@@ -186,7 +200,10 @@ namespace MySqlHelper
             //    }
             //}
         }
-       
+        
+        /// <summary>
+        /// SqlMonitor will check the specified position when it change he will report you the new key
+        /// </summary>
         private class SqlMonitor : IDisposable
         {
 
