@@ -81,6 +81,9 @@
     <Compile Include="Control\TabControlEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Control\TextBoxWithWatermak.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Control\TreeViewExDB.cs">
       <SubType>Component</SubType>
     </Compile>
