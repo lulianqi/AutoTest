@@ -63,7 +63,7 @@ namespace MyCommonTool
                 }
 
                 //arr.Add(new IPAddress(tip));
-                arr.myAdd(new IPAddress(tip));
+                arr.MyAdd(new IPAddress(tip));
             }
 
             IPAddress[] ret = new IPAddress[arr.Count];

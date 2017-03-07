@@ -152,10 +152,10 @@ namespace AutoTest
             //AT_RemoteRunnerLoad();
 
             string xxxxx = null;
-            xxxxx=xxxxx.myAddValue("cnm");
-            xxxxx = xxxxx.myAddValue("cnm2");
-            xxxxx = xxxxx.myAddValue("cnm3");
-            xxxxx = xxxxx.myAddValue("cn44m");
+            xxxxx=xxxxx.MyAddValue("cnm");
+            xxxxx = xxxxx.MyAddValue("cnm2");
+            xxxxx = xxxxx.MyAddValue("cnm3");
+            xxxxx = xxxxx.MyAddValue("cn44m");
             return;
             VoiceService.Beep();
             VoiceService.Speak("我爱你  i love you 1234");

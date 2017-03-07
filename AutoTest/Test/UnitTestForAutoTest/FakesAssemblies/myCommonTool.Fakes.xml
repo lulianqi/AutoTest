@@ -430,41 +430,41 @@
         <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
+        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddArrayListIPAddress">
+            <summary>设置 myExtensionMethods.MyAdd(ArrayList myArratList, IPAddress yourIp) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddDictionaryOfStringStringKeyValuePairOfStringString">
+            <summary>设置 myExtensionMethods.MyAdd(Dictionary`2&lt;String,String&gt; dc, KeyValuePair`2&lt;String,String&gt; yourKeyValuePair) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddExDictionaryOfStringStringStringString">
+            <summary>设置 myExtensionMethods.MyAddEx(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddExNameValueCollectionStringString">
+            <summary>设置 myExtensionMethods.MyAddEx(NameValueCollection dc, String yourKey, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddValueStringString">
+            <summary>设置 myExtensionMethods.MyAddValue(String str, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyToStringNameValueCollection">
+            <summary>设置 myExtensionMethods.MyToString(NameValueCollection nvc) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyTrimStrStringStringString">
+            <summary>设置 myExtensionMethods.MyTrimStr(String str, String startValue, String endVaule) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyValueString">
+            <summary>设置 myExtensionMethods.MyValue(String str) 的 填充码</summary>
+        </member>
         <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.ToXmlValueString">
             <summary>设置 myExtensionMethods.ToXmlValue(String str) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddArrayListIPAddress">
-            <summary>设置 myExtensionMethods.myAdd(ArrayList myArratList, IPAddress yourIp) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddDictionaryOfStringStringKeyValuePairOfStringString">
-            <summary>设置 myExtensionMethods.myAdd(Dictionary`2&lt;String,String&gt; dc, KeyValuePair`2&lt;String,String&gt; yourKeyValuePair) 的 填充码</summary>
         </member>
         <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddDictionaryOfStringStringStringString">
             <summary>设置 myExtensionMethods.myAdd(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
         </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddExDictionaryOfStringStringStringString">
-            <summary>设置 myExtensionMethods.myAddEx(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddExNameValueCollectionStringString">
-            <summary>设置 myExtensionMethods.myAddEx(NameValueCollection dc, String yourKey, String yourValue) 的 填充码</summary>
-        </member>
         <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddNameValueCollectionStringString">
             <summary>设置 myExtensionMethods.myAdd(NameValueCollection nvc, String yourName, String yourValue) 的 填充码</summary>
         </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddValueStringString">
-            <summary>设置 myExtensionMethods.myAddValue(String str, String yourValue) 的 填充码</summary>
-        </member>
         <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myTextTextBox">
             <summary>设置 myExtensionMethods.myText(TextBox tb) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myToStringNameValueCollection">
-            <summary>设置 myExtensionMethods.myToString(NameValueCollection nvc) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myTrimStrStringStringString">
-            <summary>设置 myExtensionMethods.myTrimStr(String str, String startValue, String endVaule) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myValueString">
-            <summary>设置 myExtensionMethods.myValue(String str) 的 填充码</summary>
         </member>
         <member name="T:MyCommonTool.Fakes.ShimmyNetConfig">
             <summary>MyCommonTool.myNetConfig 的填充码类型</summary>

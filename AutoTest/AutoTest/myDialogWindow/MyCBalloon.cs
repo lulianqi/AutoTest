@@ -59,7 +59,7 @@ namespace AutoTest.myControl
             {
                 foreach(KeyValuePair<CaseResult, caseActionDescription> tempAction in yourCaseRunData.actions)
                 {
-                    listView_action.Items.Add(new ListViewItem(new string[] { tempAction.Key.ToString(), tempAction.Value.caseAction.ToString() + tempAction.Value.addInfo.myValue()}));
+                    listView_action.Items.Add(new ListViewItem(new string[] { tempAction.Key.ToString(), tempAction.Value.caseAction.ToString() + tempAction.Value.addInfo.MyValue()}));
                 }
             }
             if(yourCaseRunData.testContent!=null)

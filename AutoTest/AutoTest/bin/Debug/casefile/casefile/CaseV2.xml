@@ -6,8 +6,20 @@
       <NewParameter name="appid1">appid1</NewParameter><!-- name值务必不要使用=，+，-这3个字符结尾开头（该值开头的参数被工具保留） -->
       <NewParameter name="appid2">appid2</NewParameter>
     </RunTimeParameter>
+    <RunTimeStaticData><!-- type当前支持index / random / time /list /long如果参数错误不会被抛弃将被强行修正为默认值 (name请勿与RunTimeParameter同名，否则执行器将使用RunTimeParameter的值)(+,-,=,为保留字符请勿在参数名称中使用，数字打头的名称也是不允许的)--><!-- 使用时可以在尾部添加=标识取上一个值 -->
+      <NewStaticData name="StaticData" type="index">1-100-2</NewStaticData><!-- 范围必须在0到2147483647之间，使用第一个-连接[首次的当前值与下一个值都是起始值]若有第二个-则后跟为进制，没有则默认为1 -->
+      <NewStaticData name="StaticData0" type="index">1-1000</NewStaticData>
+      <NewStaticData name="StaticData1" type="random">10-6</NewStaticData><!-- 使用-连接2个数字，第一个标识字符串长度，第个标识类型 0-是有可见ASCII / 1-数字 / 2-大写字母 / 3-小写字母 / 4-特殊字符 / 5-大小写字母 / 6-字母和数字 -->
+      <NewStaticData name="StaticData2" type="time"></NewStaticData><!-- 当前时间，时间格式支持DateTimeFormatInfo ，如不了解可以不填空，示例"yyyy-MM-ddTHH:mm:ss" -->
+      <NewStaticData name="StaticData3" type="list">a1,a2,a3,a4-2</NewStaticData><!-- 数据用，隔开如1,2,3,4,a,b默认使用顺序读取，后可说明读取方式-1为顺序读取-2为随机读取，不填则默认顺序读取 -->
+      <NewStaticData name="StaticData4" type="long">1-15158155511</NewStaticData><!-- 暂时与index逻辑一致，支持更大的数值0到9223372036854775807 -->
+    </RunTimeStaticData>
+    <RunTimeDataSouce><!--文件或数据库数据源，支持csv --> 
+      <NewDataSouce name="mycsvfile" type="csv">@D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\casefile\casefile\csvdatasouce.csv-65001</NewDataSouce><!--内容包括2个数据用“-”分割，第一个为数据相对对路径（如果用@开头则强制使用绝对路径）（路径请不要包含分隔符），第二个数据为编码方式代码页utf-8为65001 （对照表见https://msdn.microsoft.com/zh-cn/library/system.text.encoding(v=vs.110).aspx） -->
+    </RunTimeDataSouce>
     <RunTimeActuator>
-      <NewActuator name="httpApi" protocol="vanelife_http"><!-- 必须含有name及protocol属性 --><!-- 不填 将默认为空 -->
+      <NewActuator name="httpApi" protocol="vanelife_http"><!-- 必须含有name及protocol属性 -->
+      <!-- 不填 将默认为空 -->
         <dev_key>405E6D199E33596E4CE04B6417B8A267</dev_key>
         <dev_secret>405E6D199E33596E4CE04B6417B8A267</dev_secret>
         <default_url>http://api.vanelife.com/v1/</default_url>
@@ -42,14 +54,6 @@
         <baudRate>9600</baudRate>
       </NewActuator>
     </RunTimeActuator>
-    <RunTimeStaticData><!-- type当前支持index / random / time /list /long如果参数错误不会被抛弃将被强行修正为默认值 (name请勿与RunTimeParameter同名，否则执行器将使用RunTimeParameter的值)(+,-,=,为保留字符请勿在参数名称中使用，数字打头的名称也是不允许的)--><!-- 使用时可以在尾部添加=标识取上一个值 -->
-      <NewStaticData name="StaticData" type="index">1-100-2</NewStaticData><!-- 范围必须在0到2147483647之间，使用第一个-连接[首次的当前值与下一个值都是起始值]若有第二个-则后跟为进制，没有则默认为1 -->
-      <NewStaticData name="StaticData0" type="index">1-1000</NewStaticData>
-      <NewStaticData name="StaticData1" type="random">10-6</NewStaticData><!-- 使用-连接2个数字，第一个标识字符串长度，第个标识类型 0-是有可见ASCII / 1-数字 / 2-大写字母 / 3-小写字母 / 4-特殊字符 / 5-大小写字母 / 6-字母和数字 -->
-      <NewStaticData name="StaticData2" type="time"></NewStaticData><!-- 当前时间，时间格式支持DateTimeFormatInfo ，如不了解可以填空，示例"yyyy-MM-ddTHH:mm:ss" -->
-      <NewStaticData name="StaticData3" type="list">a1,a2,a3,a4-2</NewStaticData><!-- 数据用，隔开如1,2,3,4,a,b默认使用顺序读取，后可说明读取方式-1为顺序读取-2为随机读取，不填则默认顺序读取 -->
-      <NewStaticData name="StaticData4" type="long">1-15158155511</NewStaticData><!-- 暂时与index逻辑一致，支持更大的数值0到9223372036854775807 -->
-    </RunTimeStaticData>
   </ScriptRunTime>
   <Project id="1000010001" name="Project device/active" remark="device_sn测试">
     <Case id="1000010001" remark="case备注"> <!-- Case根下若出现非法重复节点，将取第一个 ，重复Case将被抛弃-->

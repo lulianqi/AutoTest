@@ -1,1 +1,5 @@
 F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.pdb

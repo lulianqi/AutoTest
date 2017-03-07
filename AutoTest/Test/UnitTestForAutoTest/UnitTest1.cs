@@ -5,6 +5,7 @@ using MyCommonTool;
 using CaseExecutiveActuator;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Collections.Specialized;
 
 namespace UnitTestForAutoTest
 {
@@ -126,6 +127,24 @@ namespace UnitTestForAutoTest
                 Assert.AreNotSame((object)dc1[tempKey], (object)dc2[tempKey], "Value对象引用相同");
             }
 
+        }
+
+        [TestMethod]
+        public void TestMethod_TryGetParametersAdditionData()
+        {
+            NameValueCollection testDataList = new NameValueCollection() { { "Parameter(+)", "+" }, { "Parameter(-)", "-" }, { "Parameter(@#$%^)", "@#$%^" }, { "Parameter()", "" } 
+            , { "Parameter", "NULL" }, { "Parameter(1-2)", "1-2" }, { "Parameter(-", "NULL" }, { "Parameter-)", "NULL" }};
+            string AdditionData = null;
+            string ParametersData = null;
+            foreach(string testData in testDataList.AllKeys)
+            {
+                ParametersData = CaseTool.TryGetParametersAdditionData(testData, out AdditionData);
+                Console.WriteLine("--------------------------------");
+                Console.WriteLine(testData);
+                Console.WriteLine(ParametersData);
+                Console.WriteLine(AdditionData.MyValue());
+                Assert.IsTrue(AdditionData.MyValue() == testDataList[testData], "解析失败");
+            }
         }
     }
 }

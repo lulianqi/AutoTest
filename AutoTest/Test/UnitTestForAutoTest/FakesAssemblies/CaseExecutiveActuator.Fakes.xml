@@ -868,6 +868,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.CheckCaseXmlNodeStringStringArray">
             <summary>设置 CaseTool.CheckCase(XmlNode sourceNode, String targetKey, String[] targetValue) 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
+            <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetFullPathString">
             <summary>设置 CaseTool.GetFullPath(String path) 的 填充码</summary>
         </member>
@@ -892,11 +895,11 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.StaticConstructor">
             <summary>设置 CaseTool.CaseTool() 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.TryGetParametersAdditionDataStringStringOut">
+            <summary>设置 CaseTool.TryGetParametersAdditionData(String souceData, String&amp; additionData) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.getCaseProtocolXmlNode">
             <summary>设置 CaseTool.getCaseProtocol(XmlNode sourceNode) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.getCurrentParametersDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
-            <summary>设置 CaseTool.getCurrentParametersData(String yourSourceData, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.getHttpConfigXmlNodeDictionaryOfStringString">
             <summary>设置 CaseTool.getHttpConfig(XmlNode sourceNode, Dictionary`2&lt;String,String&gt; yourRunParameter) 的 填充码</summary>
@@ -2013,9 +2016,6 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyWebTool.ShimHttpHelper._cctorb__9HttpWebRequestString">
             <summary>设置 HttpHelper.&lt;.cctor&gt;b__9(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyWebTool.ShimHttpHelper._cctorb__aHttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__a(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyWebTool.ShimHttpHelper.AllInstances">
             <summary>为所有实例成员定义填充码</summary>

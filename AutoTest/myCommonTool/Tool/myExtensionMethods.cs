@@ -52,7 +52,7 @@ namespace MyCommonTool
         /// </summary>
         /// <param name="str">String</param>
         /// <returns>String文本</returns>
-        public static string myValue(this string str)
+        public static string MyValue(this string str)
         {
             if(str==null)
             {
@@ -70,7 +70,7 @@ namespace MyCommonTool
         /// <param name="str">string</param>
         /// <param name="yourValue">your Value</param>
         /// <returns>添加后的结果</returns>
-        public static string myAddValue(this string str,string yourValue)
+        public static string MyAddValue(this string str,string yourValue)
         {
             if (str == null)
             {
@@ -91,7 +91,7 @@ namespace MyCommonTool
         /// </summary>
         /// <param name="dc">Dictionary</param>
         /// <param name="yourKeyValuePair">KeyValuePair</param>
-        public static void myAdd(this Dictionary<string, string> dc,  KeyValuePair<string, string> yourKeyValuePair)
+        public static void MyAdd(this Dictionary<string, string> dc,  KeyValuePair<string, string> yourKeyValuePair)
         {
             if(dc.ContainsKey(yourKeyValuePair.Key))
             {
@@ -110,7 +110,7 @@ namespace MyCommonTool
         /// <param name="startValue">首部匹配（如果为null则忽略首部匹配）</param>
         /// <param name="endVaule">尾部匹配（如果为null则忽略尾部匹配）</param>
         /// <returns>返回结果</returns>
-        public static string myTrimStr(this string str, string startValue, string endVaule)
+        public static string MyTrimStr(this string str, string startValue, string endVaule)
         {
             if (str != null)
             {
@@ -164,7 +164,7 @@ namespace MyCommonTool
         /// <param name="dc">Dictionary</param>
         /// <param name="yourKey">Key</param>
         /// <param name="yourValue">Value</param>
-        public static void myAddEx(this Dictionary<string, string> dc, string yourKey, string yourValue)
+        public static void MyAddEx(this Dictionary<string, string> dc, string yourKey, string yourValue)
         {
             if (dc.ContainsKey(yourKey))
             {
@@ -187,7 +187,7 @@ namespace MyCommonTool
         /// <param name="dc">NameValueCollection</param>
         /// <param name="yourKey">Key</param>
         /// <param name="yourValue">Value</param>
-        public static void myAddEx(this NameValueCollection dc, string yourKey, string yourValue)
+        public static void MyAddEx(this NameValueCollection dc, string yourKey, string yourValue)
         {
             if (dc.AllKeys.Contains<string>(yourKey))
             {
@@ -218,7 +218,7 @@ namespace MyCommonTool
            }
         }
 
-        public static string myToString(this NameValueCollection nvc)
+        public static string MyToString(this NameValueCollection nvc)
         {
             if (nvc != null)
             {
@@ -288,7 +288,7 @@ namespace MyCommonTool
         /// </summary>
         /// <param name="myArratList">ArratList</param>
         /// <param name="yourIp">IPAddress</param>
-        public static void myAdd(this System.Collections.ArrayList myArratList,  System.Net.IPAddress yourIp)
+        public static void MyAdd(this System.Collections.ArrayList myArratList,  System.Net.IPAddress yourIp)
         {
             if (!myArratList.Contains(yourIp))
             {

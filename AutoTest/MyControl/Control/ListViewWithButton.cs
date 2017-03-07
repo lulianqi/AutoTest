@@ -97,7 +97,7 @@ namespace MyCommonControl
             this.Items.Add(yourItem);
             if ((yourItem.Tag is System.Windows.Forms.Control) && _buttonIndex > -1 && _buttonIndex < yourItem.SubItems.Count)
             {
-                Control tempControl = yourItem.Tag as System.Windows.Forms.Control;
+                System.Windows.Forms.Control tempControl = yourItem.Tag as System.Windows.Forms.Control;
                 this.Controls.Add(tempControl);
                 tempControl.Tag = yourItem;
                 tempControl.Click += tempControl_Click;
@@ -113,7 +113,7 @@ namespace MyCommonControl
         {
                 if(ButtonClickEvent!=null)
                 {
-                    this.ButtonClickEvent(((Control)sender).Tag, e);
+                    this.ButtonClickEvent(((System.Windows.Forms.Control)sender).Tag, e);
                 }
         }
 

@@ -40,7 +40,7 @@ namespace DemoForMyHelper
             Console.WriteLine("开始更新");
             foreach (FileInfo tempFileInfo in distFIles)
             {
-                string tempNowPath = serverPath + tempFileInfo.DirectoryName.myTrimStr(localPath, null).Replace(@"\", @"/") + @"/" + tempFileInfo.Name;
+                string tempNowPath = serverPath + tempFileInfo.DirectoryName.MyTrimStr(localPath, null).Replace(@"\", @"/") + @"/" + tempFileInfo.Name;
                 try
                 {
                     sshCp.Put(tempFileInfo.DirectoryName + @"\" + tempFileInfo.Name, tempNowPath);

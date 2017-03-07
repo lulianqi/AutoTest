@@ -169,7 +169,7 @@ namespace MySshHelper
             PutOutReport("start Mv");
             foreach (FileInfo tempFileInfo in distFIles)
             {
-                string tempNowPath = remoteFilePath + tempFileInfo.DirectoryName.myTrimStr(LocalFilePath, null).Replace(@"\", @"/") + @"/" + tempFileInfo.Name;
+                string tempNowPath = remoteFilePath + tempFileInfo.DirectoryName.MyTrimStr(LocalFilePath, null).Replace(@"\", @"/") + @"/" + tempFileInfo.Name;
                 try
                 {
                     sshCp.Put(tempFileInfo.DirectoryName + @"\" + tempFileInfo.Name, tempNowPath);

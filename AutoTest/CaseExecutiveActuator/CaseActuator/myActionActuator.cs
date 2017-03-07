@@ -1319,7 +1319,7 @@ namespace CaseExecutiveActuator
             if (tempError != null)
             {
                 myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
-                yourExecutionResult.additionalEroor = yourExecutionResult.additionalEroor.myAddValue(tempError);
+                yourExecutionResult.additionalEroor = yourExecutionResult.additionalEroor.MyAddValue(tempError);
             }
             if (CaseTool.CheckBackData(yourExecutionResult.backContent, yourExecutionResult.expectContent, yourRunData.caseExpectInfo.myExpectType))
             {
@@ -1354,7 +1354,7 @@ namespace CaseExecutiveActuator
                             else
                             {
                                 tempError = string.Format("【ID:{0}】ParameterSave 脚本数据不合法", yourRunData.id);
-                                yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.myAddValue(tempError);
+                                yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                 SetNowActionError(tempError);
                                 myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                             }
@@ -1365,7 +1365,7 @@ namespace CaseExecutiveActuator
                             break;
                         default:
                             tempError = string.Format("【ID:{0}】 ParameterSave 暂不支持该数据提取方式", yourRunData.id);
-                            yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.myAddValue(tempError);
+                            yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                             SetNowActionError(tempError);
                             myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                             break;
@@ -1415,7 +1415,7 @@ namespace CaseExecutiveActuator
                             if (yourRunData.actions[yourExecutionResult.result].addInfo == null)
                             {
                                 tempError = string.Format("【ID:{0}】 CaseAction Case数据中部没有发现目的ID", yourRunData.id);
-                                yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.myAddValue(tempError);
+                                yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                 SetNowActionError(tempError);
                                 myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                             }
@@ -1428,19 +1428,19 @@ namespace CaseExecutiveActuator
                                     if (caseRunTime.gotoMyCase(tempProjectID, tempCaseID, runTimeCaseDictionary ))
                                     {
                                         SetNowExecutiveData("【action_goto】");
-                                        yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.myAddValue(string.Format("【action_goto】触发，已经跳转到Project：{0}  Case：{1}", tempProjectID, tempCaseID));
+                                        yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(string.Format("【action_goto】触发，已经跳转到Project：{0}  Case：{1}", tempProjectID, tempCaseID));
                                     }
                                     else
                                     {
                                         tempError = string.Format("【ID:{0}】action_goto跳转任务未成功", yourRunData.id);
-                                        yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.myAddValue(tempError);
+                                        yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                         SetNowActionError(tempError);
                                     }
                                 }
                                 else
                                 {
                                     tempError = string.Format("【ID:{0}】 CaseAction 目标跳转Case不合法", yourRunData.id);
-                                    yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.myAddValue(tempError);
+                                    yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                     SetNowActionError(tempError);
                                     myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                                 }
@@ -1489,7 +1489,7 @@ namespace CaseExecutiveActuator
                                 catch
                                 {
                                     tempError = string.Format("【ID:{0}】 retry 解析错误", yourRunData.id);
-                                    yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.myAddValue(tempError);
+                                    yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                     SetNowActionError(tempError);
                                     myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                                 }
@@ -1512,7 +1512,7 @@ namespace CaseExecutiveActuator
                             break;
                         case CaseAction.action_unknow:
                             tempError = string.Format("【ID:{0}】 CaseAction 未能解析", yourRunData.id);
-                            yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.myAddValue(tempError);
+                            yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                             SetNowActionError(tempError);
                             myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                             break;

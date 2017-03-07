@@ -628,7 +628,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourStaticDataList">StaticDataList</param>
         /// <param name="errorMessage">error Message</param>
         /// <returns></returns>
-        public static string getCurrentParametersData(string yourSourceData, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, NameValueCollection yourDataResultCollection, out string errorMessage)
+        public static string GetCurrentParametersData_Old(string yourSourceData, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             errorMessage = null;
             while (yourSourceData.Contains("*#"))
@@ -703,6 +703,121 @@ namespace CaseExecutiveActuator
             }
 
             return yourSourceData;
+        }
+
+        //仅用于【caseParameterizationContent】内部
+        //如果没有任何valid identification，直接返回原始数据，不报错（为实现最大兼容）
+        /// <summary>
+        /// get the getTargetContentData in caseParameterizationContent
+        /// </summary>
+        /// <param name="yourSourceData">Source Data</param>
+        /// <param name="yourParameterList">ParameterList</param>
+        /// <param name="yourStaticDataList">StaticDataList</param>
+        /// <param name="errorMessage">error Message</param>
+        /// <returns></returns>
+        public static string GetCurrentParametersData(string yourSourceData, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, NameValueCollection yourDataResultCollection, out string errorMessage)
+        {
+            errorMessage = null;
+            while (yourSourceData.Contains("*#"))
+            {
+
+                int tempStart, tempEnd = 0;
+                string tempKey = "";
+                string tempVaule = "";
+                while (yourSourceData.Contains("*#"))
+                {
+                    tempStart = yourSourceData.IndexOf("*#");
+                    tempEnd = yourSourceData.IndexOf("*#", tempStart + 2);
+                    if (tempEnd == -1)
+                    {
+                        errorMessage = "the identification  not enough";
+                        return yourSourceData;
+                    }
+                    tempKey = yourSourceData.Substring(tempStart + 2, tempEnd - (tempStart + 2));
+                    if (yourParameterList.Keys.Contains(tempKey))
+                    {
+                        tempVaule = yourParameterList[tempKey];
+                        yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
+                        yourDataResultCollection.myAdd(tempKey, tempVaule);
+                    }
+                    else if (yourStaticDataList.Keys.Contains(tempKey))
+                    {
+                        tempVaule = yourStaticDataList[tempKey].dataMoveNext();
+                        yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
+                        yourDataResultCollection.myAdd(tempKey, tempVaule);
+                    }
+                    else
+                    {
+                        if (tempKey.EndsWith("+"))
+                        {
+                            if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
+                            {
+                                tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
+                                yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
+                                yourDataResultCollection.myAdd(tempKey, tempVaule);
+                            }
+                            else
+                            {
+                                yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", "[ErrorData]");
+                                errorMessage = "your Parameter not find in the runTime data";
+                                yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
+                            }
+                        }
+                        else if (tempKey.EndsWith("="))
+                        {
+                            if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
+                            {
+                                tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
+                                yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
+                                yourDataResultCollection.myAdd(tempKey, tempVaule);
+                            }
+                            else
+                            {
+                                errorMessage = "your Parameter not find in the runTime data";
+                                yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", "[ErrorData]");
+                                yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
+                            }
+                        }
+                        else
+                        {
+                            errorMessage = "your Parameter not find in the runTime data";
+                            yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", "[ErrorData]");
+                            yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
+                        }
+                    }
+                }
+
+            }
+
+            return yourSourceData;
+        }
+
+
+        public static string TryGetParametersAdditionData(string souceData, out string additionData)
+        {
+            additionData = null;
+            string parametersData = null;
+            if (souceData!=null)
+            {
+                if (souceData.EndsWith(")"))
+                {
+                    int startIndex = souceData.LastIndexOf('(');
+                    if (startIndex > 0)
+                    {
+                        parametersData = souceData.Remove(startIndex);
+                        additionData = souceData.Substring(startIndex + 1, souceData.Length - startIndex - 2);
+                    }
+                    else
+                    {
+                        parametersData = souceData;
+                    }
+                }
+                else
+                {
+                    parametersData = souceData;
+                }
+            }
+            return parametersData;
         }
 
         /// <summary>

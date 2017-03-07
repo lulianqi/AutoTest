@@ -180,7 +180,7 @@ namespace CaseExecutiveActuator
             errorMessage = null;
             if (hasParameter)
             {
-                myTargetContentData = CaseTool.getCurrentParametersData(contentData, yourParameterList, yourStaticDataList, yourDataResultCollection, out errorMessage);
+                myTargetContentData = CaseTool.GetCurrentParametersData(contentData, yourParameterList, yourStaticDataList, yourDataResultCollection, out errorMessage);
             }
             if (encodetype != ParameterizationContentEncodingType.encode_default)
             {

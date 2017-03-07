@@ -261,7 +261,7 @@ namespace AutoTest
         /// <param name="myMessage">the message</param>
         public void ShowMessage(string myMessage)
         {
-            runInfoMessage.myAddEx(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff"), myMessage);
+            runInfoMessage.MyAddEx(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff"), myMessage);
             //richTextBox_showMessage.Visible = true;
             richTextBox_showMessage.Text = myMessage;
             expandablePanel_messageBox.Expanded = true;
@@ -966,7 +966,7 @@ namespace AutoTest
         {
             myCommonTool.SetControlFreeze(listView_DataAdd);
             listView_DataAdd.BeginUpdate();
-            listView_DataAdd.Items.Add(new ListViewItem(new string[] { listView_DataAdd.Items.Count.ToString(), yourResult.caseId.ToString(), yourResult.startTime, yourResult.spanTime, yourResult.result.ToString(), yourResult.caseTarget + "->" + yourResult.backContent, yourResult.staticDataResultCollection.myToString() + yourResult.additionalRemark }));
+            listView_DataAdd.Items.Add(new ListViewItem(new string[] { listView_DataAdd.Items.Count.ToString(), yourResult.caseId.ToString(), yourResult.startTime, yourResult.spanTime, yourResult.result.ToString(), yourResult.caseTarget + "->" + yourResult.backContent, yourResult.staticDataResultCollection.MyToString() + yourResult.additionalRemark }));
             if (pictureBox_dataAddStopTag)
             {
                 listView_DataAdd.EnsureVisible(listView_DataAdd.Items.Count - 1);

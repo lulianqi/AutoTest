@@ -1,0 +1,4 @@
+F:\file\Code\AutoTest\AutoTest\Test\TestForSpecifiedHttp\bin\Debug\TestForSpecifiedHttp.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForSpecifiedHttp\bin\Debug\TestForSpecifiedHttp.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForSpecifiedHttp\obj\Debug\TestForSpecifiedHttp.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForSpecifiedHttp\obj\Debug\TestForSpecifiedHttp.pdb
