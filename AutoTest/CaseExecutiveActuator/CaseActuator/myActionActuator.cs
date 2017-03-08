@@ -522,7 +522,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// RunTimeDataSouce List
         /// </summary>
-        private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataList;
+        private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataSouceList;
 
         /// <summary>
         /// Execution Result List

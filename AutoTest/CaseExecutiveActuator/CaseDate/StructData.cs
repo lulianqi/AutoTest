@@ -1189,15 +1189,15 @@ namespace CaseExecutiveActuator
     public struct MyStaticDataSource:IRunTimeDataSource
     {
         private bool isNew;
-        private int NowRowIndex;
-        private int NowColumnIndex;
+        private int nowRowIndex;
+        private int nowColumnIndex;
         private List<List<string>> csvData;
 
         public MyStaticDataSource(List<List<string>> yourCsvData)
         {
             isNew = true;
-            NowRowIndex = 0;
-            NowColumnIndex = 0;
+            nowRowIndex = 0;
+            nowColumnIndex = 0;
             csvData = yourCsvData;
         }
         public object Clone()
@@ -1226,17 +1226,32 @@ namespace CaseExecutiveActuator
 
         public string DataCurrent()
         {
-            throw new NotImplementedException();
+            //不需要检查 Index ，索引在内部操作，不可能越界
+            return csvData[nowColumnIndex][nowRowIndex];
         }
 
         public string DataMoveNext()
         {
-            throw new NotImplementedException();
+            if (nowRowIndex+1 < csvData[nowColumnIndex].Count)
+            {
+                nowRowIndex++;
+            }
+            else if (nowColumnIndex + 1 < csvData.Count)
+            {
+                nowRowIndex = 0;
+                nowColumnIndex++;
+            }
+            else
+            {
+                DataReset();
+            }
+            return DataCurrent();
         }
 
         public void DataReset()
         {
-            throw new NotImplementedException();
+            nowColumnIndex = 0;
+            nowRowIndex = 0;
         }
 
         public bool DataSet(string expectData)
