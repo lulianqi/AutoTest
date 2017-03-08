@@ -3,7 +3,7 @@ Thumbs.db
 ehthumbs.db
 
 # My filter
-+*.pdb
+#*.pdb
 
 # Folder config file
 Desktop.ini
