@@ -871,6 +871,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
             <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersData_OldStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
+            <summary>设置 CaseTool.GetCurrentParametersData_Old(String yourSourceData, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetFullPathString">
             <summary>设置 CaseTool.GetFullPath(String path) 的 填充码</summary>
         </member>
