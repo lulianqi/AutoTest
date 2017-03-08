@@ -628,7 +628,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourStaticDataList">StaticDataList</param>
         /// <param name="errorMessage">error Message</param>
         /// <returns></returns>
-        public static string GetCurrentParametersData_Old(string yourSourceData, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, NameValueCollection yourDataResultCollection, out string errorMessage)
+        public static string GetCurrentParametersData(string yourSourceData, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             errorMessage = null;
             while (yourSourceData.Contains("*#"))
@@ -655,7 +655,7 @@ namespace CaseExecutiveActuator
                     }
                     else if (yourStaticDataList.Keys.Contains(tempKey))
                     {
-                        tempVaule = yourStaticDataList[tempKey].dataMoveNext();
+                        tempVaule = yourStaticDataList[tempKey].DataMoveNext();
                         yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
                         yourDataResultCollection.myAdd(tempKey, tempVaule);
                     }
@@ -665,7 +665,7 @@ namespace CaseExecutiveActuator
                         {
                             if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
                             {
-                                tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
+                                tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].DataMoveNext();
                                 yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
                                 yourDataResultCollection.myAdd(tempKey, tempVaule);
                             }
@@ -680,7 +680,7 @@ namespace CaseExecutiveActuator
                         {
                             if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
                             {
-                                tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
+                                tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].DataMoveNext();
                                 yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
                                 yourDataResultCollection.myAdd(tempKey, tempVaule);
                             }
@@ -715,76 +715,137 @@ namespace CaseExecutiveActuator
         /// <param name="yourStaticDataList">StaticDataList</param>
         /// <param name="errorMessage">error Message</param>
         /// <returns></returns>
-        public static string GetCurrentParametersData(string yourSourceData, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, NameValueCollection yourDataResultCollection, out string errorMessage)
+        public static string GetCurrentParametersData(string yourSourceData,string splitStr, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             errorMessage = null;
-            while (yourSourceData.Contains("*#"))
+            if (yourSourceData.Contains(splitStr))
             {
-
                 int tempStart, tempEnd = 0;
-                string tempKey = "";
-                string tempVaule = "";
-                while (yourSourceData.Contains("*#"))
+                string tempKey = null;
+                string keyParameter = null;
+                string keyAdditionData = null;
+                string tempVaule = null;
+                while (yourSourceData.Contains(splitStr))
                 {
-                    tempStart = yourSourceData.IndexOf("*#");
-                    tempEnd = yourSourceData.IndexOf("*#", tempStart + 2);
+                    tempStart = yourSourceData.IndexOf(splitStr);
+                    tempEnd = yourSourceData.IndexOf(splitStr, tempStart + 2);
                     if (tempEnd == -1)
                     {
-                        errorMessage = "the identification  not enough";
+                        errorMessage = string.Format("the identification  not enough in Source[{0}]", yourSourceData);
                         return yourSourceData;
                     }
                     tempKey = yourSourceData.Substring(tempStart + 2, tempEnd - (tempStart + 2));
-                    if (yourParameterList.Keys.Contains(tempKey))
+                    keyParameter = TryGetParametersAdditionData(tempKey, out keyAdditionData);
+                    if (keyAdditionData!=null)
                     {
-                        tempVaule = yourParameterList[tempKey];
-                        yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
+                        keyAdditionData = GetCurrentParametersData(yourSourceData, MyConfiguration.ParametersExecuteSplitStr, yourParameterList, yourStaticDataList, yourDataResultCollection, out errorMessage);
+                    }
+
+                    //『RunTimeParameter』
+                    if (yourParameterList.Keys.Contains(keyParameter))
+                    {
+                        //RunTimeParameter 不含有参数信息，所以不处理keyParameter
+                        tempVaule = yourParameterList[keyParameter];
+                        yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, tempVaule);
                         yourDataResultCollection.myAdd(tempKey, tempVaule);
                     }
-                    else if (yourStaticDataList.Keys.Contains(tempKey))
+
+                    //『RunTimeStaticData』
+                    else if (yourStaticDataList.Keys.Contains(keyParameter))
                     {
-                        tempVaule = yourStaticDataList[tempKey].dataMoveNext();
-                        yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
-                        yourDataResultCollection.myAdd(tempKey, tempVaule);
-                    }
-                    else
-                    {
-                        if (tempKey.EndsWith("+"))
+                        Func<string> DealErrorAdditionData = () =>
                         {
-                            if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
-                            {
-                                tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
-                                yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
-                                yourDataResultCollection.myAdd(tempKey, tempVaule);
-                            }
-                            else
-                            {
-                                yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", "[ErrorData]");
-                                errorMessage = "your Parameter not find in the runTime data";
-                                yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
-                            }
-                        }
-                        else if (tempKey.EndsWith("="))
+                            tempVaule = "[ErrorData]";
+                            return string.Format("ParametersAdditionData error find in the runTime data with [{0}]", tempVaule);
+                        };
+                        if (keyAdditionData == null)
                         {
-                            if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
-                            {
-                                tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
-                                yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", tempVaule);
-                                yourDataResultCollection.myAdd(tempKey, tempVaule);
-                            }
-                            else
-                            {
-                                errorMessage = "your Parameter not find in the runTime data";
-                                yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", "[ErrorData]");
-                                yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
-                            }
+                            tempVaule = yourStaticDataList[tempKey].DataMoveNext();
                         }
                         else
                         {
-                            errorMessage = "your Parameter not find in the runTime data";
-                            yourSourceData = yourSourceData.Replace("*#" + tempKey + "*#", "[ErrorData]");
-                            yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
+                            if(keyAdditionData=="=")
+                            {
+                                tempVaule = yourStaticDataList[tempKey].DataCurrent();
+                            }
+                            else if(keyAdditionData=="+")
+                            {
+                                tempVaule = yourStaticDataList[tempKey].DataMoveNext();
+                            }
+                            else if(keyAdditionData.StartsWith("+"))
+                            {
+                                int tempTimes;
+                                if(int.TryParse(keyAdditionData.Remove(0,1),out tempTimes))
+                                {
+                                    if(tempTimes>0)
+                                    {
+                                        for(int i=0;i>tempTimes;i++)
+                                        {
+                                            yourStaticDataList[tempKey].DataMoveNext();
+                                        }
+                                        tempVaule = yourStaticDataList[tempKey].DataCurrent();
+                                    }
+                                    else
+                                    {
+                                        errorMessage = DealErrorAdditionData();
+                                    }
+                                }
+                                else
+                                {
+                                    errorMessage = DealErrorAdditionData();
+                                }
+                            }
+                            else
+                            {
+                                errorMessage = DealErrorAdditionData();
+                            }
+
                         }
+                        yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, tempVaule);
+                        yourDataResultCollection.myAdd(tempKey, tempVaule);
                     }
+
+
+
+                    //else
+                    //{
+                    //    if (tempKey.EndsWith("+"))
+                    //    {
+                    //        if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
+                    //        {
+                    //            tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
+                    //            yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, tempVaule);
+                    //            yourDataResultCollection.myAdd(tempKey, tempVaule);
+                    //        }
+                    //        else
+                    //        {
+                    //            yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, "[ErrorData]");
+                    //            errorMessage = "your Parameter not find in the runTime data";
+                    //            yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
+                    //        }
+                    //    }
+                    //    else if (tempKey.EndsWith("="))
+                    //    {
+                    //        if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
+                    //        {
+                    //            tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
+                    //            yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, tempVaule);
+                    //            yourDataResultCollection.myAdd(tempKey, tempVaule);
+                    //        }
+                    //        else
+                    //        {
+                    //            errorMessage = "your Parameter not find in the runTime data";
+                    //            yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, "[ErrorData]");
+                    //            yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        errorMessage = "your Parameter not find in the runTime data";
+                    //        yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, "[ErrorData]");
+                    //        yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
+                    //    }
+                    //}
                 }
 
             }
@@ -792,7 +853,12 @@ namespace CaseExecutiveActuator
             return yourSourceData;
         }
 
-
+        /// <summary>
+        /// 处理ParametersData，解析静态数据名及其参数
+        /// </summary>
+        /// <param name="souceData">souce parameter data 原数据</param>
+        /// <param name="additionData">返回辅助参数数据，若没有或无法解析返回null</param>
+        /// <returns></returns>
         public static string TryGetParametersAdditionData(string souceData, out string additionData)
         {
             additionData = null;

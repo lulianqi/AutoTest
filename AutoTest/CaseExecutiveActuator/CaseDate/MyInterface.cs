@@ -87,10 +87,18 @@ namespace CaseExecutiveActuator
     /// </summary>
     public interface IRunTimeStaticData : ICloneable
     {
-        string dataCurrent();
-        string dataMoveNext();
-        void dataReset();
-        bool dataSet(string expectData);
+        string DataCurrent();
+        string DataMoveNext();
+        void DataReset();
+        bool DataSet(string expectData);
+    }
+
+    public interface IRunTimeDataSource : IRunTimeStaticData
+    {
+        bool IsConnected { get; }
+        bool ConnectDataSource();
+        bool DisConnectDataSource();
+        string GetDataVaule(string vauleAddress);
     }
 
 

@@ -516,7 +516,7 @@ namespace CaseExecutiveActuator
     /// </summary>
     public class myCaseDataTypeEngine 
     {
-        public static bool getIndexStaticData(out myStaticDataIndex yourStaticData, out string errorMes, string yourFormatData)
+        public static bool getIndexStaticData(out MyStaticDataIndex yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -524,31 +524,31 @@ namespace CaseExecutiveActuator
                 tempStartEnd = yourFormatData.Split('-');
                 if (tempStartEnd.Length == 2)
                 {
-                    yourStaticData = new myStaticDataIndex(int.Parse(tempStartEnd[0]), int.Parse(tempStartEnd[1]),1);
+                    yourStaticData = new MyStaticDataIndex(int.Parse(tempStartEnd[0]), int.Parse(tempStartEnd[1]),1);
                     errorMes = null;
                     return true;
                 }
                 if (tempStartEnd.Length == 3)
                 {
-                    yourStaticData = new myStaticDataIndex(int.Parse(tempStartEnd[0]), int.Parse(tempStartEnd[1]), int.Parse(tempStartEnd[2]));
+                    yourStaticData = new MyStaticDataIndex(int.Parse(tempStartEnd[0]), int.Parse(tempStartEnd[1]), int.Parse(tempStartEnd[2]));
                     errorMes = null;
                     return true;
                 }
                 else
                 {
-                    yourStaticData = new myStaticDataIndex(0, 2147483647, 1);
+                    yourStaticData = new MyStaticDataIndex(0, 2147483647, 1);
                     errorMes = "find error data[myStaticDataIndex] in RunTimeStaticData - ScriptRunTime :(find error number of parameters)";
                 }
             }
             catch (Exception)
             {
-                yourStaticData = new myStaticDataIndex(0, 2147483647,1);
+                yourStaticData = new MyStaticDataIndex(0, 2147483647,1);
                 errorMes = "find error data[myStaticDataIndex] in RunTimeStaticData - ScriptRunTime ";
             }
             return false;
         }
 
-        public static bool getLongStaticData(out myStaticDataLong yourStaticData, out string errorMes, string yourFormatData)
+        public static bool getLongStaticData(out MyStaticDataLong yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -556,36 +556,36 @@ namespace CaseExecutiveActuator
                 tempStartEnd = yourFormatData.Split('-');
                 if (tempStartEnd.Length == 2)
                 {
-                    yourStaticData = new myStaticDataLong(long.Parse(tempStartEnd[0]), long.Parse(tempStartEnd[1]),1);
+                    yourStaticData = new MyStaticDataLong(long.Parse(tempStartEnd[0]), long.Parse(tempStartEnd[1]),1);
                     errorMes = null;
                     return true;              
                 }
                 else if(tempStartEnd.Length==3)
                 {
-                    yourStaticData = new myStaticDataLong(long.Parse(tempStartEnd[0]), long.Parse(tempStartEnd[1]), long.Parse(tempStartEnd[2]));
+                    yourStaticData = new MyStaticDataLong(long.Parse(tempStartEnd[0]), long.Parse(tempStartEnd[1]), long.Parse(tempStartEnd[2]));
                     errorMes = null;
                     return true;     
                 }
                 else
                 {
-                    yourStaticData = new myStaticDataLong(0, 9223372036854775807,1);
+                    yourStaticData = new MyStaticDataLong(0, 9223372036854775807,1);
                     errorMes = "find error data[myStaticDataLong] in RunTimeStaticData - ScriptRunTime  :(find error number of parameters)";
                 }
             }
             catch (Exception)
             {
-                yourStaticData = new myStaticDataLong(0, 9223372036854775807,1);
+                yourStaticData = new MyStaticDataLong(0, 9223372036854775807,1);
                 errorMes = "find error data[myStaticDataLong] in RunTimeStaticData - ScriptRunTime ";
             }
             return false;
         }
 
-        public static void getTimeStaticData(out myStaticDataNowTime yourStaticData, string yourFormatData)
+        public static void getTimeStaticData(out MyStaticDataNowTime yourStaticData, string yourFormatData)
         {
-              yourStaticData=new myStaticDataNowTime(yourFormatData);
+              yourStaticData=new MyStaticDataNowTime(yourFormatData);
         }
 
-        public static bool getRandomStaticData(out myStaticDataRandomStr yourStaticData, out string errorMes, string yourFormatData)
+        public static bool getRandomStaticData(out MyStaticDataRandomStr yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -593,48 +593,48 @@ namespace CaseExecutiveActuator
                 tempStartEnd = yourFormatData.Split('-');
                 if (tempStartEnd.Length < 2)
                 {
-                    yourStaticData = new myStaticDataRandomStr(10, 0);
+                    yourStaticData = new MyStaticDataRandomStr(10, 0);
                     errorMes = "find error data[myStaticDataRandomNumber] in RunTimeStaticData - ScriptRunTime ";
                 }
                 else
                 {
-                    yourStaticData = new myStaticDataRandomStr(int.Parse(tempStartEnd[0]), int.Parse(tempStartEnd[1]));
+                    yourStaticData = new MyStaticDataRandomStr(int.Parse(tempStartEnd[0]), int.Parse(tempStartEnd[1]));
                     errorMes = null;
                     return true;
                 }
             }
             catch (Exception)
             {
-                yourStaticData = new myStaticDataRandomStr(10, 0);
+                yourStaticData = new MyStaticDataRandomStr(10, 0);
                 errorMes = "find error data[myStaticDataRandomNumber] in RunTimeStaticData - ScriptRunTime ";
             }
             return false;
         }
 
-        public static bool getListStaticData(out myStaticDataList yourStaticData, out string errorMes, string yourFormatData)
+        public static bool getListStaticData(out MyStaticDataList yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
                 if (yourFormatData.EndsWith("-1"))
                 {
                     yourFormatData = yourFormatData.Remove(yourFormatData.Length - 2);
-                    yourStaticData = new myStaticDataList(yourFormatData, false);
+                    yourStaticData = new MyStaticDataList(yourFormatData, false);
                 }
                 else if(yourFormatData.EndsWith("-2"))
                 {
                     yourFormatData = yourFormatData.Remove(yourFormatData.Length - 2);
-                    yourStaticData = new myStaticDataList(yourFormatData, true);
+                    yourStaticData = new MyStaticDataList(yourFormatData, true);
                 }
                 else
                 {
-                    yourStaticData = new myStaticDataList(yourFormatData, false);
+                    yourStaticData = new MyStaticDataList(yourFormatData, false);
                 }
                 errorMes = null;
                 return true;
             }
             catch (Exception)
             {
-                yourStaticData = new myStaticDataList("",false);
+                yourStaticData = new MyStaticDataList("",false);
                 errorMes = "find error data[myStaticDataList] in RunTimeStaticData - ScriptRunTime ";
             }
             return false;

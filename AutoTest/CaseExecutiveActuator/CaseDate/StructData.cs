@@ -861,10 +861,11 @@ namespace CaseExecutiveActuator
     }
 
     #region IRunTimeStaticData
+
     /// <summary>
     /// 为StaticData提供类似索引递增的动态数据【IRunTimeStaticData】
     /// </summary>
-    public struct myStaticDataIndex : IRunTimeStaticData
+    public struct MyStaticDataIndex : IRunTimeStaticData
     {
         private bool isNew;
         private int dataIndex;
@@ -872,7 +873,7 @@ namespace CaseExecutiveActuator
         private int defaultEnd;
         private int defaultStep;
 
-        public myStaticDataIndex(int yourStart, int yourEnd,int yourStep)
+        public MyStaticDataIndex(int yourStart, int yourEnd,int yourStep)
         {
             isNew = true;
             dataIndex = defaultStart = yourStart;
@@ -882,16 +883,16 @@ namespace CaseExecutiveActuator
 
         public object Clone()
         {
-            return new myStaticDataIndex(defaultStart, defaultEnd, defaultStep);
+            return new MyStaticDataIndex(defaultStart, defaultEnd, defaultStep);
         }
 
 
-        public string dataCurrent()
+        public string DataCurrent()
         {
             return dataIndex.ToString();
         }
 
-        public string dataMoveNext()
+        public string DataMoveNext()
         {
             if(isNew)
             {
@@ -900,8 +901,8 @@ namespace CaseExecutiveActuator
             }
             if (dataIndex >= defaultEnd)
             {
-                dataReset();
-                return dataMoveNext();
+                DataReset();
+                return DataMoveNext();
             }
             else
             {
@@ -911,14 +912,14 @@ namespace CaseExecutiveActuator
         }
 
 
-        public void dataReset()
+        public void DataReset()
         {
             isNew = true;
             dataIndex = defaultStart;
         }
 
 
-        public bool dataSet(string expectData)
+        public bool DataSet(string expectData)
         {
             int tempData;
             if(int.TryParse(expectData,out tempData))
@@ -936,7 +937,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 为StaticData提供长数字索引支持【IRunTimeStaticData】
     /// </summary>
-    public struct myStaticDataLong : IRunTimeStaticData
+    public struct MyStaticDataLong : IRunTimeStaticData
     {
         private bool isNew;
         private long dataIndex;
@@ -944,7 +945,7 @@ namespace CaseExecutiveActuator
         private long defaultEnd;
         private long defaultStep;
 
-        public myStaticDataLong(long yourStart, long yourEnd ,long yourStep)
+        public MyStaticDataLong(long yourStart, long yourEnd ,long yourStep)
         {
             isNew = true;
             dataIndex = defaultStart = yourStart;
@@ -954,16 +955,16 @@ namespace CaseExecutiveActuator
 
         public object Clone()
         {
-            return new myStaticDataLong(defaultStart, defaultEnd, defaultStep);
+            return new MyStaticDataLong(defaultStart, defaultEnd, defaultStep);
         }
 
 
-        public string dataCurrent()
+        public string DataCurrent()
         {
             return dataIndex.ToString();
         }
 
-        public string dataMoveNext()
+        public string DataMoveNext()
         {
             if (isNew)
             {
@@ -972,8 +973,8 @@ namespace CaseExecutiveActuator
             }
             if (dataIndex >= defaultEnd)
             {
-                dataReset();
-                return dataMoveNext();
+                DataReset();
+                return DataMoveNext();
             }
             else
             {
@@ -983,14 +984,14 @@ namespace CaseExecutiveActuator
         }
 
 
-        public void dataReset()
+        public void DataReset()
         {
             isNew = true;
             dataIndex = defaultStart;
         }
 
 
-        public bool dataSet(string expectData)
+        public bool DataSet(string expectData)
         {
             long tempData;
             if (long.TryParse(expectData, out tempData))
@@ -1008,13 +1009,13 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 为StaticData提供随机字符串动态数据【IRunTimeStaticData】
     /// </summary>
-    public struct myStaticDataRandomStr : IRunTimeStaticData
+    public struct MyStaticDataRandomStr : IRunTimeStaticData
     {
         string myNowStr;
         int myStrNum;
         int myStrType;
 
-        public myStaticDataRandomStr(int yourStrNum, int yourStrType)
+        public MyStaticDataRandomStr(int yourStrNum, int yourStrType)
         {
             myNowStr = "";
             myStrNum = yourStrNum;
@@ -1023,27 +1024,27 @@ namespace CaseExecutiveActuator
 
         public object Clone()
         {
-            return new myStaticDataRandomStr(myStrNum, myStrType);
+            return new MyStaticDataRandomStr(myStrNum, myStrType);
         }
 
-        public string dataCurrent()
+        public string DataCurrent()
         {
             return myNowStr;
         }
 
-        public string dataMoveNext()
+        public string DataMoveNext()
         {
             myNowStr = myCommonTool.GenerateRandomStr(myStrNum, myStrType);
             return myNowStr;
         }
 
-        public void dataReset()
+        public void DataReset()
         {
             myNowStr = "";
         }
 
 
-        public bool dataSet(string expectData)
+        public bool DataSet(string expectData)
         {
             if (expectData != null)
             {
@@ -1057,12 +1058,12 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 为StaticData提供当前时间的动态数据【IRunTimeStaticData】
     /// </summary>
-    public struct myStaticDataNowTime : IRunTimeStaticData
+    public struct MyStaticDataNowTime : IRunTimeStaticData
     {
         string myNowStr;
         string myDataFormatInfo;
 
-        public myStaticDataNowTime(string yourRormatInfo)
+        public MyStaticDataNowTime(string yourRormatInfo)
         {
             myNowStr = "";
             myDataFormatInfo = yourRormatInfo;
@@ -1070,27 +1071,27 @@ namespace CaseExecutiveActuator
 
         public object Clone()
         {
-            return new myStaticDataNowTime(myDataFormatInfo);
+            return new MyStaticDataNowTime(myDataFormatInfo);
         }
 
-        public string dataCurrent()
+        public string DataCurrent()
         {
             return myNowStr;
         }
 
-        public string dataMoveNext()
+        public string DataMoveNext()
         {
             myNowStr = System.DateTime.Now.ToString(myDataFormatInfo);
             return myNowStr;
         }
 
-        public void dataReset()
+        public void DataReset()
         {
             myNowStr = "";
         }
 
 
-        public bool dataSet(string expectData)
+        public bool DataSet(string expectData)
         {
             if (expectData != null)
             {
@@ -1101,7 +1102,10 @@ namespace CaseExecutiveActuator
         }
     }
 
-    public struct myStaticDataList : IRunTimeStaticData
+    /// <summary>
+    ///  为StaticData提供当基于List的列表数据支持据【IRunTimeStaticData】
+    /// </summary>
+    public struct MyStaticDataList : IRunTimeStaticData
     {
         private bool isNew;
         private string souseData;
@@ -1110,7 +1114,7 @@ namespace CaseExecutiveActuator
         private bool isRandom;
         private Random ran;
 
-        public myStaticDataList(string yourSourceData, bool isRandomNext)
+        public MyStaticDataList(string yourSourceData, bool isRandomNext)
         {
             isNew = true;
             souseData = yourSourceData;
@@ -1129,15 +1133,15 @@ namespace CaseExecutiveActuator
 
         public object Clone()
         {
-            return new myStaticDataList(souseData, isRandom);
+            return new MyStaticDataList(souseData, isRandom);
         }
 
-        public string dataCurrent()
+        public string DataCurrent()
         {
             return souseListData[nowIndex];
         }
 
-        public string dataMoveNext()
+        public string DataMoveNext()
         {
             if (isRandom)
             {
@@ -1162,13 +1166,13 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public void dataReset()
+        public void DataReset()
         {
             isNew = true;
             nowIndex = 0;
         }
 
-        public bool dataSet(string expectData)
+        public bool DataSet(string expectData)
         {
             if(souseListData.Contains(expectData))
             {
@@ -1181,5 +1185,66 @@ namespace CaseExecutiveActuator
     #endregion
 
 
+    #region IRunTimeDataSource 
+    public struct MyStaticDataSource:IRunTimeDataSource
+    {
+        private bool isNew;
+        private int NowRowIndex;
+        private int NowColumnIndex;
+        private List<List<string>> csvData;
 
+        public MyStaticDataSource(List<List<string>> yourCsvData)
+        {
+            isNew = true;
+            NowRowIndex = 0;
+            NowColumnIndex = 0;
+            csvData = yourCsvData;
+        }
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
+        public bool IsConnected
+        {
+            get { return true; }
+        }
+
+        public bool ConnectDataSource()
+        {
+            return true;
+        }
+
+        public bool DisConnectDataSource()
+        {
+            return true;
+        }
+
+        public string GetDataVaule(string vauleAddress)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string DataCurrent()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string DataMoveNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DataReset()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DataSet(string expectData)
+        {
+            throw new NotImplementedException();
+        }
+
+    }
+
+    #endregion
 }

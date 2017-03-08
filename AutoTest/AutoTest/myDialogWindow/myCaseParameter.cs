@@ -123,7 +123,7 @@ namespace AutoTest.myDialogWindow
             {
                 foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.NowStaticDataList)
                 {
-                    listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.dataCurrent() }));
+                    listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
                 }
             }
             listView_CaseParameter.EndUpdate();
@@ -199,7 +199,7 @@ namespace AutoTest.myDialogWindow
                 if(tempKvp.Key==tb_keyAdd.Text)
                 {
                     tempIsFindVaule = true;
-                    tb_valueAdd.Text = tempKvp.Value.dataMoveNext();
+                    tb_valueAdd.Text = tempKvp.Value.DataMoveNext();
                     updatalistView_CaseParameter();
                     break;
                 }
@@ -218,10 +218,10 @@ namespace AutoTest.myDialogWindow
                 if (tempKvp.Key == tb_keyAdd.Text)
                 {
                     tempIsFindVaule = true;
-                    if (!tempKvp.Value.dataSet(tb_valueAdd.Text))
+                    if (!tempKvp.Value.DataSet(tb_valueAdd.Text))
                     {
                         MessageBox.Show("指定值无法匹配该类型运行时参数", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        tb_valueAdd.Text = tempKvp.Value.dataCurrent();
+                        tb_valueAdd.Text = tempKvp.Value.DataCurrent();
                     }
                     updatalistView_CaseParameter();
                     break;
@@ -252,7 +252,7 @@ namespace AutoTest.myDialogWindow
             {
                 foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.NowStaticDataList)
                 {
-                    tempKvp.Value.dataReset();
+                    tempKvp.Value.DataReset();
                 }
                 tb_keyAdd.Text = tb_valueAdd.Text = "";
                 updatalistView_CaseParameter();
