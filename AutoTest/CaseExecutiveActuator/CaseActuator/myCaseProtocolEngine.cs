@@ -514,9 +514,9 @@ namespace CaseExecutiveActuator
     /// 如果您想要添加新类型的【RunTimeStaticData】请在此处添加解释器，并为它添加相应的继承于【IRunTimeStaticData】存储的结构
     /// 然后在CaseStaticDataType枚举中直接新增自己的类型（请与原有格式保持一致），最后您还需要在执行器【LoadScriptRunTime】函数中添加自己的分支
     /// </summary>
-    public class myCaseDataTypeEngine 
+    public class MyCaseDataTypeEngine 
     {
-        public static bool getIndexStaticData(out MyStaticDataIndex yourStaticData, out string errorMes, string yourFormatData)
+        public static bool GetIndexStaticData(out MyStaticDataIndex yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -548,7 +548,7 @@ namespace CaseExecutiveActuator
             return false;
         }
 
-        public static bool getLongStaticData(out MyStaticDataLong yourStaticData, out string errorMes, string yourFormatData)
+        public static bool GetLongStaticData(out MyStaticDataLong yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -580,12 +580,12 @@ namespace CaseExecutiveActuator
             return false;
         }
 
-        public static void getTimeStaticData(out MyStaticDataNowTime yourStaticData, string yourFormatData)
+        public static void GetTimeStaticData(out MyStaticDataNowTime yourStaticData, string yourFormatData)
         {
               yourStaticData=new MyStaticDataNowTime(yourFormatData);
         }
 
-        public static bool getRandomStaticData(out MyStaticDataRandomStr yourStaticData, out string errorMes, string yourFormatData)
+        public static bool GetRandomStaticData(out MyStaticDataRandomStr yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -611,7 +611,7 @@ namespace CaseExecutiveActuator
             return false;
         }
 
-        public static bool getListStaticData(out MyStaticDataList yourStaticData, out string errorMes, string yourFormatData)
+        public static bool GetListStaticData(out MyStaticDataList yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {

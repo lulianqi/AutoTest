@@ -1,0 +1,5 @@
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.pdb

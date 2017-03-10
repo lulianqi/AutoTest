@@ -87,17 +87,52 @@ namespace CaseExecutiveActuator
     /// </summary>
     public interface IRunTimeStaticData : ICloneable
     {
+        /// <summary>
+        /// 获取当前游标地址的值
+        /// </summary>
+        /// <returns></returns>
         string DataCurrent();
+        /// <summary>
+        /// 将游标下移，并返回下移之后的值（如何已经到达上边界，则重置游标）（为方便使用请特殊处理初始游标也包括重置后的DataMoveNext与DataCurrent一致，即此时DataMoveNext不向下移动）
+        /// </summary>
+        /// <returns></returns>
         string DataMoveNext();
+        /// <summary>
+        /// 重置游标
+        /// </summary>
         void DataReset();
+        /// <summary>
+        /// 设置当前游标指示的数据的值
+        /// </summary>
+        /// <param name="expectData">设置是否成功</param>
+        /// <returns></returns>
         bool DataSet(string expectData);
     }
 
     public interface IRunTimeDataSource : IRunTimeStaticData
     {
+        /// <summary>
+        /// 获取一个值指示该数据源是否已经连接
+        /// </summary>
         bool IsConnected { get; }
+
+        /// <summary>
+        /// 连接数据源
+        /// </summary>
+        /// <returns></returns>
         bool ConnectDataSource();
+
+        /// <summary>
+        /// 断开数据源连接
+        /// </summary>
+        /// <returns></returns>
         bool DisConnectDataSource();
+
+        /// <summary>
+        /// 以指定地址返回数据源中的数据（地址无效或错误请返回null）
+        /// </summary>
+        /// <param name="vauleAddress">地址字符串（需要按格式指定并定义）</param>
+        /// <returns>目标数据</returns>
         string GetDataVaule(string vauleAddress);
     }
 

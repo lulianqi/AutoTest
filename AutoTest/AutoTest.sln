@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForProxy", "Test\TestFo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForSpecifiedHttp", "Test\TestForSpecifiedHttp\TestForSpecifiedHttp.csproj", "{8DD0ED71-2BA4-4F30-8A42-C9152D62F9ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForDefaultClass", "Test\TestForDefaultClass\TestForDefaultClass.csproj", "{F2A16124-3851-41F0-9588-776AAC528AEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{8DD0ED71-2BA4-4F30-8A42-C9152D62F9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DD0ED71-2BA4-4F30-8A42-C9152D62F9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DD0ED71-2BA4-4F30-8A42-C9152D62F9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A16124-3851-41F0-9588-776AAC528AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A16124-3851-41F0-9588-776AAC528AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A16124-3851-41F0-9588-776AAC528AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A16124-3851-41F0-9588-776AAC528AEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +121,7 @@ Global
 		{5472A4DB-1E50-4818-A04C-8EE3B2BB0DB9} = {7267D9B6-B9DB-45D6-9616-95F366B1802B}
 		{8127190A-6F1A-49B5-9A31-EF6C12B0329A} = {7267D9B6-B9DB-45D6-9616-95F366B1802B}
 		{8DD0ED71-2BA4-4F30-8A42-C9152D62F9ED} = {7267D9B6-B9DB-45D6-9616-95F366B1802B}
+		{F2A16124-3851-41F0-9588-776AAC528AEC} = {7267D9B6-B9DB-45D6-9616-95F366B1802B}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true

@@ -974,7 +974,7 @@ namespace CaseExecutiveActuator
                                                     case CaseStaticDataType.staticData_index:
                                                         MyStaticDataIndex tempStaticDataIndex;
                                                         string tempTypeError;
-                                                        if (myCaseDataTypeEngine.getIndexStaticData(out tempStaticDataIndex, out tempTypeError, tempVaule))
+                                                        if (MyCaseDataTypeEngine.GetIndexStaticData(out tempStaticDataIndex, out tempTypeError, tempVaule))
                                                         {
                                                             runActuatorStaticDataList.myAdd(tempName, tempStaticDataIndex);
                                                         }
@@ -986,7 +986,7 @@ namespace CaseExecutiveActuator
                                                         break;
                                                     case CaseStaticDataType.staticData_long:
                                                         MyStaticDataLong tempStaticDataLong;
-                                                        if (myCaseDataTypeEngine.getLongStaticData(out tempStaticDataLong, out tempTypeError, tempVaule))
+                                                        if (MyCaseDataTypeEngine.GetLongStaticData(out tempStaticDataLong, out tempTypeError, tempVaule))
                                                         {
                                                             runActuatorStaticDataList.myAdd(tempName, tempStaticDataLong);
                                                         }
@@ -998,7 +998,7 @@ namespace CaseExecutiveActuator
                                                         break;
                                                     case CaseStaticDataType.staticData_random:                                              
                                                         MyStaticDataRandomStr tempStaticDataRandomStr;
-                                                        if(myCaseDataTypeEngine.getRandomStaticData(out tempStaticDataRandomStr,out tempTypeError,tempVaule))
+                                                        if(MyCaseDataTypeEngine.GetRandomStaticData(out tempStaticDataRandomStr,out tempTypeError,tempVaule))
                                                         {
                                                             runActuatorStaticDataList.myAdd(tempName, tempStaticDataRandomStr);
                                                         }
@@ -1010,12 +1010,12 @@ namespace CaseExecutiveActuator
                                                         break;
                                                     case CaseStaticDataType.staticData_time:
                                                         MyStaticDataNowTime tempStaticDataNowTime;
-                                                        myCaseDataTypeEngine.getTimeStaticData(out tempStaticDataNowTime, tempVaule);
+                                                        MyCaseDataTypeEngine.GetTimeStaticData(out tempStaticDataNowTime, tempVaule);
                                                         runActuatorStaticDataList.myAdd(tempName, tempStaticDataNowTime);
                                                         break;
                                                     case CaseStaticDataType.staticData_list:
                                                         MyStaticDataList tempStaticDataList;
-                                                        if (myCaseDataTypeEngine.getListStaticData(out tempStaticDataList, out tempTypeError, tempVaule))
+                                                        if (MyCaseDataTypeEngine.GetListStaticData(out tempStaticDataList, out tempTypeError, tempVaule))
                                                         {
                                                             runActuatorStaticDataList.myAdd(tempName, tempStaticDataList);
                                                         }
@@ -1667,7 +1667,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourParameterVaule">Parameter Vaule</param>
         public void AddRunActuatorParameter(string yourParameterName, string yourParameterVaule)
         {
-            runActuatorParameterList.myAdd(yourParameterName, yourParameterVaule);
+            runActuatorParameterList.MyAdd(yourParameterName, yourParameterVaule);
             if (OnActuatorParameterListChanged!=null)
             {
                 this.OnActuatorParameterListChanged();

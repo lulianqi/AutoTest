@@ -1221,42 +1221,85 @@ namespace CaseExecutiveActuator
 
         public string GetDataVaule(string vauleAddress)
         {
-            throw new NotImplementedException();
+            if (vauleAddress != null)
+            {
+                int[] csvPosition;
+                if (vauleAddress.MySplitToIntArray('-',out csvPosition))
+                {
+                    if(csvPosition.Length==2)
+                    {
+                        return GetDataVaule(csvPosition[0], csvPosition[1]);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public string GetDataVaule(int yourRowIndex,int yourColumnIndex)
+        {
+            if(yourRowIndex<csvData.Count)
+            {
+                if(yourColumnIndex<csvData[yourRowIndex].Count)
+                {
+                    return csvData[yourRowIndex][yourColumnIndex];
+                }
+            }
+            return null;
         }
 
         public string DataCurrent()
         {
             //不需要检查 Index ，索引在内部操作，不可能越界
-            return csvData[nowColumnIndex][nowRowIndex];
+            return csvData[nowRowIndex][nowColumnIndex];
         }
 
         public string DataMoveNext()
         {
-            if (nowRowIndex+1 < csvData[nowColumnIndex].Count)
+            if(isNew)
             {
-                nowRowIndex++;
-            }
-            else if (nowColumnIndex + 1 < csvData.Count)
-            {
-                nowRowIndex = 0;
-                nowColumnIndex++;
+                isNew = false;
             }
             else
             {
-                DataReset();
+                if (nowColumnIndex + 1 < csvData[nowRowIndex].Count)
+                {
+                    nowColumnIndex++;
+                }
+                else if (nowRowIndex + 1 < csvData.Count)
+                {
+                    nowColumnIndex = 0;
+                    nowRowIndex++;
+                }
+                else
+                {
+                    DataReset();
+                }
             }
             return DataCurrent();
         }
 
         public void DataReset()
         {
-            nowColumnIndex = 0;
+            //对于csv文件解析出来的数据不可能出现空行空列的情况，所以（0,0）
             nowRowIndex = 0;
+            nowColumnIndex = 0;
+            isNew = true;
         }
 
         public bool DataSet(string expectData)
         {
-            throw new NotImplementedException();
+            if (expectData!=null)
+            {
+                csvData[nowRowIndex][nowColumnIndex] = expectData;
+                return true;
+            }
+            return false;
+        }
+
+        public bool DataSet(int yourRowIndex,int yourColumnIndex ,string expectData)
+        {
+            //csvData[nowRowIndex].
+            return false;
         }
 
     }

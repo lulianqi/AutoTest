@@ -121,7 +121,7 @@ namespace AutoTest
             myCsvSw.Dispose();
             
 
-            CsvFileHelper myCsv = new CsvFileHelper(@"C:\Users\administer\Desktop\my6.csv", Encoding.UTF8);
+            CsvFileHelper myCsv = new CsvFileHelper(@"C:\Users\administer\Desktop\my8.csv", Encoding.UTF8);
             var xxxx = myCsv.GetListCsvData();
 
             myCsv.Dispose();

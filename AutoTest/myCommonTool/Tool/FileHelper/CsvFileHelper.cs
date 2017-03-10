@@ -24,7 +24,8 @@ namespace MyCommonTool.FileHelper
     /// 可指定元素分割符，行非官方必须为\r\n(\r\n可以作为内容出现在元素中)，转义字符必须为".
     /// 转义所有的引号必须出现在首尾（如果不在首尾，则不会按转义符处理，直接作为引号处理）[excel可以读取转义出现在中间的情况，而本身存储不会使用这种方式，保存时并会强制修复这种异常，所以这里遇到中间转义的情况直接抛出指定异常]
     /// 如果在被转义的情况下需要出现引号，则使用2个引号代替（如果需要在首部使用双引号，则需要转义该元素，其他地方可直接使用）（excel对所有双引号都进行转义，无论其出现位置,对于保存方式可以选择是否按excel的方式进行保存）
-    /// 每一行的结尾是补需要逗号结束的，如果多加一个逗号则标识该行会多一个空元素
+    /// 每一行的结尾是不需要逗号结束的，如果多加一个逗号则标识该行会多一个空元素
+    /// 空行也是一个空元素,一个逗号是2个空元素，所以不可能出现有的行元素为空
     /// 使用问题或疑问可通过mycllq@hotmail.com进行联系
     /// </summary>
     public sealed class CsvFileHelper : IDisposable
@@ -163,11 +164,6 @@ namespace MyCommonTool.FileHelper
             bool isNotEnd = false;  //读取完毕未结束转义
             _columnBuilder.Remove(0, _columnBuilder.Length);
 
-            //空行也是一个空元素,一个逗号是2个空元素
-            if (line=="")
-            {
-                Fields.Add("");
-            }
 
             // Iterate through every character in the line
             for (int i = 0; i < line.Length; i++)
@@ -243,7 +239,9 @@ namespace MyCommonTool.FileHelper
                 }
                 Fields.Add(TrimColumns ? _columnBuilder.ToString().Trim() : _columnBuilder.ToString());
             }
-            else  //如果inColumn为false，说明已经添加，因为最后一个字符为分隔符，所以后面要加上一个空元素
+            //如果inColumn为false，说明已经添加，因为最后一个字符为分隔符，所以后面要加上一个空元素
+            //另外一种情况是line为""空行，（空行也是一个空元素,一个逗号是2个空元素），正好inColumn为默认值false，在此处添加一空元素
+            else  
             {
                 Fields.Add("");
             }
@@ -310,6 +308,7 @@ namespace MyCommonTool.FileHelper
         {
             List<List<string>> tempListCsvData = new List<List<string>>();
             bool isNotEndLine = false;
+            //这里的ReadLine可能把转义的/r/n分割，需要后面单独处理
             string tempCsvRowString = _streamReader.ReadLine();
             while (tempCsvRowString!=null)
             {
@@ -552,25 +551,35 @@ namespace MyCommonTool.FileHelper
         private static void WriteCsvLine(List<string> fields, TextWriter writer)
         {
             StringBuilder myStrBld = new StringBuilder();
+            //对于CSV数据来说不可能出现一行的数据元素的数量是0的情况，所以不用考虑fields.Count为0的情况(如果为0则为错误数据直接忽略)
             //foreach(string tempField in fields)  //使用foreach会产生许多不必要的string拷贝
             for (int i = 0; i < fields.Count; i++)
             {
-                bool quotesRequired = (isSaveAsExcel ? (fields[i].Contains(csvSeparator) || fields[i].Contains("\r\n") || fields[i].Contains("\"")) : (fields[i].Contains(csvSeparator) || fields[i].Contains("\r\n") || fields[i].StartsWith("\"")));
-                if(quotesRequired)
+                //通过文件转换出来的fields是不会为null的，为了兼容外部构建数据源，可能出现null的情况，这里强制转换为""
+                if (fields[i] == null)
                 {
-                    if(fields[i].Contains("\""))
-                    {
-                        myStrBld.Append(String.Format("\"{0}\"", fields[i].Replace("\"", "\"\"")));
-                    }
-                    else
-                    {
-                        myStrBld.Append(String.Format("\"{0}\"", fields[i]));
-                    }
+                    myStrBld.Append("");
                 }
                 else
                 {
-                    myStrBld.Append( fields[i]);
+                    bool quotesRequired = (isSaveAsExcel ? (fields[i].Contains(csvSeparator) || fields[i].Contains("\r\n") || fields[i].Contains("\"")) : (fields[i].Contains(csvSeparator) || fields[i].Contains("\r\n") || fields[i].StartsWith("\"")));
+                    if (quotesRequired)
+                    {
+                        if (fields[i].Contains("\""))
+                        {
+                            myStrBld.Append(String.Format("\"{0}\"", fields[i].Replace("\"", "\"\"")));
+                        }
+                        else
+                        {
+                            myStrBld.Append(String.Format("\"{0}\"", fields[i]));
+                        }
+                    }
+                    else
+                    {
+                        myStrBld.Append(fields[i]);
+                    }
                 }
+
                 if (i < fields.Count - 1)
                 {
                     myStrBld.Append(csvSeparator);

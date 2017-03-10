@@ -21,7 +21,7 @@ using System.Windows.Forms;
 
 namespace MyCommonTool
 {
-    public static class myExtensionMethods
+    public static class MyExtensionMethods
     {
         /// <summary>
         /// 获取文本url编码值
@@ -87,20 +87,29 @@ namespace MyCommonTool
         }
 
         /// <summary>
-        /// 添加键值，若遇到已有key则覆盖
+        /// 以指定字符将字符串分割并转换为int
         /// </summary>
-        /// <param name="dc">Dictionary</param>
-        /// <param name="yourKeyValuePair">KeyValuePair</param>
-        public static void MyAdd(this Dictionary<string, string> dc,  KeyValuePair<string, string> yourKeyValuePair)
+        /// <param name="str">指定字符串</param>
+        /// <param name="yourSplitChar">分割字符</param>
+        /// <param name="yourIntArray">转换结果</param>
+        /// <returns>是否成功（任意一个转换失败都会返回False）</returns>
+        public static bool MySplitToIntArray(this string str,char yourSplitChar, out int[] yourIntArray)
         {
-            if(dc.ContainsKey(yourKeyValuePair.Key))
+            yourIntArray = null;
+            if (str == null)
             {
-                dc[yourKeyValuePair.Key] = yourKeyValuePair.Value;
+                return false;
             }
-            else
+            string[] strArray = str.Split(new char[]{yourSplitChar}, StringSplitOptions.None);
+            yourIntArray = new int[strArray.Length];
+            for(int i =0 ;i<strArray.Length;i++)
             {
-                dc.Add(yourKeyValuePair.Key, yourKeyValuePair.Value);
+                if(!int.TryParse(strArray[i],out yourIntArray[i]))
+                {
+                    return false;
+                }
             }
+            return true;
         }
 
         /// <summary>
@@ -140,13 +149,31 @@ namespace MyCommonTool
             return str;
         }
 
+
+        /// <summary>
+        /// 添加键值，若遇到已有key则覆盖
+        /// </summary>
+        /// <param name="dc">Dictionary</param>
+        /// <param name="yourKeyValuePair">KeyValuePair</param>
+        public static void MyAdd(this Dictionary<string, string> dc,  KeyValuePair<string, string> yourKeyValuePair)
+        {
+            if(dc.ContainsKey(yourKeyValuePair.Key))
+            {
+                dc[yourKeyValuePair.Key] = yourKeyValuePair.Value;
+            }
+            else
+            {
+                dc.Add(yourKeyValuePair.Key, yourKeyValuePair.Value);
+            }
+        }
+
         /// <summary>
         /// 添加键值，若遇到已有key则覆盖
         /// </summary>
         /// <param name="dc">Dictionary</param>
         /// <param name="yourKey">Key</param>
         /// <param name="yourValue">Value</param>
-        public static void myAdd(this Dictionary<string, string> dc, string yourKey,string yourValue)
+        public static void MyAdd(this Dictionary<string, string> dc, string yourKey,string yourValue)
         {
             if (dc.ContainsKey(yourKey))
             {
