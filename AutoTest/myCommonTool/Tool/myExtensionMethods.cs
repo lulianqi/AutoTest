@@ -113,6 +113,38 @@ namespace MyCommonTool
         }
 
         /// <summary>
+        /// 以指定字符将字符串中末尾int数据提取出来
+        /// </summary>
+        /// <param name="str">指定字符串</param>
+        /// <param name="yourSplitChar">分割字符</param>
+        /// <param name="yourStr">提取后的前半截字符串</param>
+        /// <param name="yourInt">提取后的int</param>
+        /// <returns>是否成功 int转换失败后也返回错误</returns>
+        public static bool MySplitIntEnd(this string str,char yourSplitChar, out string yourStr,out int yourInt)
+        {
+            yourStr = null;
+            yourInt = 0;
+            if (str == null)
+            {
+                return false;
+            }
+            if (str.Contains(yourSplitChar))
+            {
+                int lastSplitCharINdex = str.LastIndexOf(yourSplitChar);
+                if (lastSplitCharINdex == str.Length-1) // 如果使用endwith会产生多余的string对象
+                {
+                    return false;
+                }
+                if (int.TryParse(str.Substring(lastSplitCharINdex + 1, str.Length - lastSplitCharINdex), out yourInt))
+                {
+                    yourStr = str.Substring(0, lastSplitCharINdex);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// 去除首尾指定字符串
         /// </summary>
         /// <param name="str">指定字符串</param>

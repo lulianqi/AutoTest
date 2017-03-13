@@ -26,7 +26,7 @@ using System.Xml;
 namespace CaseExecutiveActuator
 {
     /// <summary>
-    /// 在这里绑定UI组件，如果想让运行过程四十反馈到UI界面上，请到此订阅（如果使用了自定义的UI组件，请在相应的位置按原有规则添加反馈）
+    /// 在这里绑定UI组件，如果想让运行过程事实反馈到UI界面上，请到此订阅（如果使用了自定义的UI组件，请在相应的位置按原有规则添加反馈）
     /// </summary>
    class myActionActuator
     {
@@ -522,7 +522,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// RunTimeDataSouce List
         /// </summary>
-        private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataSouceList;
+        private Dictionary<string, IRunTimeDataSource> runActuatorStaticDataSouceList;
 
         /// <summary>
         /// Execution Result List
@@ -579,6 +579,7 @@ namespace CaseExecutiveActuator
             myExecutionDeviceList = new Dictionary<string, ICaseExecutionDevice>();
             runActuatorParameterList = new Dictionary<string, string>();
             runActuatorStaticDataList = new Dictionary<string, IRunTimeStaticData>();
+            runActuatorStaticDataSouceList = new Dictionary<string, IRunTimeDataSource>();
             runExecutionResultList = new List<myExecutionDeviceResult>();
             invalidThreadList = new List<Thread>();
             myErrorInfo = "";
@@ -607,6 +608,7 @@ namespace CaseExecutiveActuator
             cloneActuator.myExecutionDeviceList = myExecutionDeviceList.MyClone();
             cloneActuator.runActuatorParameterList = runActuatorParameterList.MyClone<string,string>();
             cloneActuator.runActuatorStaticDataList = runActuatorStaticDataList.MyClone();
+            cloneActuator.runActuatorStaticDataSouceList = runActuatorStaticDataSouceList.MyClone();
             //cloneActuator.runExecutionResultList = new List<myExecutionDeviceResult>();
             cloneActuator.SetCaseRunTime(this.runTimeCaseDictionary, this.runCellProjctCollection);
             cloneActuator.caseThinkTime = this.caseThinkTime;
@@ -727,6 +729,14 @@ namespace CaseExecutiveActuator
             get
             {
                 return runActuatorStaticDataList;
+            }
+        }
+
+        public Dictionary<string, IRunTimeDataSource> NowStaticDataSouceList
+        {
+            get
+            {
+                return runActuatorStaticDataSouceList;
             }
         }
 
@@ -1026,7 +1036,7 @@ namespace CaseExecutiveActuator
                                                         }
                                                         break;
                                                     default:
-                                                        SetNowActionError("find nonsupport Protocol in RunTimeStaticData - ScriptRunTime ");
+                                                        SetNowActionError(string.Format("find nonsupport Protocol 【{0}】 in RunTimeStaticData - ScriptRunTime ", tempType));
                                                         break;
                                                 }
 
@@ -1044,7 +1054,67 @@ namespace CaseExecutiveActuator
                                 }
                                 break;
                             #endregion
-                            
+
+                            //此处获取静态可运算数据源数据
+                            #region RunTimeDataSource
+                            case "RunTimeDataSouce":
+                                if (tempNode.HasChildNodes)
+                                {
+                                    foreach (XmlNode tempNodeChild in tempNode.ChildNodes)
+                                    {
+                                        if (tempNodeChild.Name == "NewStaticData")
+                                        {
+                                            if (tempNodeChild.Attributes["name"] != null && tempNodeChild.Attributes["type"] != null)
+                                            {
+                                                CaseStaticDataSourceType tempType;
+                                                string tempName = tempNodeChild.Attributes["name"].Value;
+                                                string tempTypeStr = tempNodeChild.Attributes["type"].Value;
+                                                string tempVaule = tempNodeChild.InnerText;
+                                                try
+                                                {
+                                                    tempType = (CaseStaticDataSourceType)Enum.Parse(typeof(CaseStaticDataSourceType), "staticDataSource_" + tempTypeStr);
+                                                }
+                                                catch
+                                                {
+                                                    SetNowActionError("find unknown type in RunTimeStaticData - ScriptRunTime");
+                                                    continue;
+                                                }
+                                                switch (tempType)
+                                                {
+                                                    case CaseStaticDataSourceType.staticDataSource_csv:
+                                                        MyStaticDataSourceCsv tempStaticDataSourceSsv;
+                                                        MyStaticDataIndex tempStaticDataIndex;
+                                                        string tempTypeError;
+                                                        if (MyCaseDataTypeEngine.GetIndexStaticData(out tempStaticDataIndex, out tempTypeError, tempVaule))
+                                                        {
+                                                            runActuatorStaticDataList.myAdd(tempName, tempStaticDataIndex);
+                                                        }
+                                                        else
+                                                        {
+                                                            runActuatorStaticDataList.myAdd(tempName, tempStaticDataIndex);
+                                                            SetNowActionError(string.Format("find error in 【RunTimeStaticData】->【{0}】:value:【{1}】 by {2}", tempName, tempVaule, tempTypeError));
+                                                        }
+                                                        break;
+                                                    default:
+                                                        SetNowActionError(string.Format("find nonsupport Protocol 【{0}】 in RunTimeStaticData - ScriptRunTime ",tempType));
+                                                        break;
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                SetNowActionError("can not find name or type in RunTimeStaticData - ScriptRunTime");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            SetNowActionError("find unkonw data in RunTimeStaticData - ScriptRunTime");
+                                        }
+                                    }
+                                }
+                                break;
+                            #endregion
+
                             default:
                                 SetNowActionError("find unkonw data in ScriptRunTime");
                                 break;

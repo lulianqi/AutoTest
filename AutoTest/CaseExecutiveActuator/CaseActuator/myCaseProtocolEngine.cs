@@ -516,6 +516,8 @@ namespace CaseExecutiveActuator
     /// </summary>
     public class MyCaseDataTypeEngine 
     {
+        #region IRunTimeStaticData
+        
         public static bool GetIndexStaticData(out MyStaticDataIndex yourStaticData, out string errorMes, string yourFormatData)
         {
             try
@@ -639,7 +641,21 @@ namespace CaseExecutiveActuator
             }
             return false;
         }
+      
+        #endregion
 
+        #region IRunTimeDataSource
+        
+        public static bool GetCsvStaticDataSource(out MyStaticDataSourceCsv yourStaticData, out string errorMes,string yourFormatData)
+        {
+            errorMes = null;
+            yourStaticData = new MyStaticDataSourceCsv();
+            string csvPath = yourFormatData.StartsWith("@") ? System.Windows.Forms.Application.StartupPath + yourFormatData : yourFormatData;
+
+            return false;
+        }
+
+        #endregion 
 
     }
 

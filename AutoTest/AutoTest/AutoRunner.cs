@@ -1079,7 +1079,7 @@ namespace AutoTest
             loadMefDriver();
             ////自动载入用例
             //LoadTreeView(tb_caseFilePath.Text);
-            ////改变工作路径
+            ////改变工作路径Environment.CurrentDirectory随程序运行可能会发生改变
             //System.Environment.CurrentDirectory = Application.StartupPath;
 
             //vanelife_config页面加载

@@ -69,6 +69,16 @@ namespace CaseExecutiveActuator
         staticData_list = 4,
     }
 
+    /// <summary>
+    /// 描述框架脚本支持的静态参数化数据数据源(请再此处扩展)
+    /// </summary>
+    public enum CaseStaticDataSourceType
+    {
+        staticDataSource_csv=0,
+        staticDataSource_mysql = 1,
+        staticDataSource_redis = 2,
+    }
+
 
     /// <summary>
     /// 描述框架脚本支持的数据摘取方式(请再此处扩展)
@@ -1186,14 +1196,14 @@ namespace CaseExecutiveActuator
 
 
     #region IRunTimeDataSource 
-    public struct MyStaticDataSource:IRunTimeDataSource
+    public struct MyStaticDataSourceCsv:IRunTimeDataSource
     {
         private bool isNew;
         private int nowRowIndex;
         private int nowColumnIndex;
         private List<List<string>> csvData;
 
-        public MyStaticDataSource(List<List<string>> yourCsvData)
+        public MyStaticDataSourceCsv(List<List<string>> yourCsvData)
         {
             isNew = true;
             nowRowIndex = 0;

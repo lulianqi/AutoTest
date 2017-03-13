@@ -146,5 +146,12 @@ namespace UnitTestForAutoTest
                 Assert.IsTrue(AdditionData.MyValue() == testDataList[testData], "解析失败");
             }
         }
+
+        struct TestData { string _str1; string _str2; int _num; public TestData(string str1, string str2, int num) { _str1 = str1; _str2 = str2; _num = num; } };
+        public void TestMethod_MySplitIntEnd()
+        { 
+            List<TestData> testDataList=new List<TestData>{new TestData("","",1)};
+        }
+
     }
 }

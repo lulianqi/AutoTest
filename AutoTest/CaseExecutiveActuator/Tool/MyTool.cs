@@ -772,7 +772,7 @@ namespace CaseExecutiveActuator
                             {
                                 tempVaule = yourStaticDataList[tempKey].DataMoveNext();
                             }
-                            else if(keyAdditionData.StartsWith("+"))
+                            else if(keyAdditionData.StartsWith("+")) //+10 前移10
                             {
                                 int tempTimes;
                                 if(int.TryParse(keyAdditionData.Remove(0,1),out tempTimes))
