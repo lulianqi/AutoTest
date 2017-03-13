@@ -391,6 +391,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.NowStaticDataListGet">
             <summary>设置 CaseActionActuator.get_NowStaticDataList() 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.NowStaticDataSouceListGet">
+            <summary>设置 CaseActionActuator.get_NowStaticDataSouceList() 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.OnActuatorStateChangedAddCaseActionActuatordelegateGetActuatorStateEventHandler">
             <summary>设置 CaseActionActuator.add_OnActuatorStateChanged(delegateGetActuatorStateEventHandler value) 的 填充码</summary>
         </member>
@@ -558,6 +561,9 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.NowStaticDataListGet">
             <summary>设置 CaseActionActuator.get_NowStaticDataList() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.NowStaticDataSouceListGet">
+            <summary>设置 CaseActionActuator.get_NowStaticDataSouceList() 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.OnActuatorStateChangedAddCaseActionActuatordelegateGetActuatorStateEventHandler">
             <summary>设置 CaseActionActuator.add_OnActuatorStateChanged(delegateGetActuatorStateEventHandler value) 的 填充码</summary>
@@ -871,8 +877,8 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
             <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersData_OldStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
-            <summary>设置 CaseTool.GetCurrentParametersData_Old(String yourSourceData, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
+            <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, String splitStr, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetFullPathString">
             <summary>设置 CaseTool.GetFullPath(String path) 的 填充码</summary>
@@ -931,30 +937,6 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.myConvertNewUrlStringDictionaryOfStringStringStringRef">
             <summary>设置 CaseTool.myConvertNewUrl(String yourNowStr, Dictionary`2&lt;String,String&gt; yourRunParameter, String&amp; errorMes) 的 填充码</summary>
         </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimClass1">
-            <summary>CaseExecutiveActuator.Class1 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimClass1.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimClass1.#ctor(CaseExecutiveActuator.Class1)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimClass1.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimClass1.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimClass1.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimClass1.Constructor">
-            <summary>设置 Class1.Class1() 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimClass1.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimHttpAisleConfig">
             <summary>CaseExecutiveActuator.HttpAisleConfig 的填充码类型</summary>
         </member>
@@ -991,6 +973,75 @@
         <member name="T:CaseExecutiveActuator.Fakes.ShimHttpMultipart.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine">
+            <summary>CaseExecutiveActuator.MyCaseDataTypeEngine 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.#ctor(CaseExecutiveActuator.MyCaseDataTypeEngine)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.Constructor">
+            <summary>设置 MyCaseDataTypeEngine.MyCaseDataTypeEngine() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetCsvStaticDataSourceMyStaticDataSourceCsvOutStringOutString">
+            <summary>设置 MyCaseDataTypeEngine.GetCsvStaticDataSource(MyStaticDataSourceCsv&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetIndexStaticDataMyStaticDataIndexOutStringOutString">
+            <summary>设置 MyCaseDataTypeEngine.GetIndexStaticData(MyStaticDataIndex&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetListStaticDataMyStaticDataListOutStringOutString">
+            <summary>设置 MyCaseDataTypeEngine.GetListStaticData(MyStaticDataList&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetLongStaticDataMyStaticDataLongOutStringOutString">
+            <summary>设置 MyCaseDataTypeEngine.GetLongStaticData(MyStaticDataLong&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetRandomStaticDataMyStaticDataRandomStrOutStringOutString">
+            <summary>设置 MyCaseDataTypeEngine.GetRandomStaticData(MyStaticDataRandomStr&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetTimeStaticDataMyStaticDataNowTimeOutString">
+            <summary>设置 MyCaseDataTypeEngine.GetTimeStaticData(MyStaticDataNowTime&amp; yourStaticData, String yourFormatData) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyConfiguration">
+            <summary>CaseExecutiveActuator.MyConfiguration 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyConfiguration.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyConfiguration.#ctor(CaseExecutiveActuator.MyConfiguration)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyConfiguration.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyConfiguration.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyConfiguration.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyConfiguration.Constructor">
+            <summary>设置 MyConfiguration.MyConfiguration() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyConfiguration.StaticConstructor">
+            <summary>设置 MyConfiguration.MyConfiguration() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyConfiguration.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods">
             <summary>CaseExecutiveActuator.MyExtensionMethods 的填充码类型</summary>
         </member>
@@ -1023,6 +1074,114 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.myAddDictionaryOfStringIRunTimeStaticDataStringIRunTimeStaticData">
             <summary>设置 MyExtensionMethods.myAdd(Dictionary`2&lt;String,IRunTimeStaticData&gt; dc, String yourKey, IRunTimeStaticData yourValue) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataIndex">
+            <summary>CaseExecutiveActuator.MyStaticDataIndex 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataIndex.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataIndex.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataIndex.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyStaticDataIndex.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataIndex.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataList">
+            <summary>CaseExecutiveActuator.MyStaticDataList 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataList.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataList.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataList.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyStaticDataList.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataList.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataLong">
+            <summary>CaseExecutiveActuator.MyStaticDataLong 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataLong.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataLong.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataLong.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyStaticDataLong.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataLong.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataNowTime">
+            <summary>CaseExecutiveActuator.MyStaticDataNowTime 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataNowTime.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataNowTime.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataNowTime.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyStaticDataNowTime.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataNowTime.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataRandomStr">
+            <summary>CaseExecutiveActuator.MyStaticDataRandomStr 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataRandomStr.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataRandomStr.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataRandomStr.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyStaticDataRandomStr.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataRandomStr.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataSourceCsv">
+            <summary>CaseExecutiveActuator.MyStaticDataSourceCsv 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataSourceCsv.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataSourceCsv.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataSourceCsv.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyStaticDataSourceCsv.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataSourceCsv.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimParameterSave">
             <summary>CaseExecutiveActuator.ParameterSave 的填充码类型</summary>
@@ -1193,45 +1352,6 @@
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseAttribute.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine">
-            <summary>CaseExecutiveActuator.myCaseDataTypeEngine 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.#ctor(CaseExecutiveActuator.myCaseDataTypeEngine)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.Constructor">
-            <summary>设置 myCaseDataTypeEngine.myCaseDataTypeEngine() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.getIndexStaticDatamyStaticDataIndexOutStringOutString">
-            <summary>设置 myCaseDataTypeEngine.getIndexStaticData(myStaticDataIndex&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.getListStaticDatamyStaticDataListOutStringOutString">
-            <summary>设置 myCaseDataTypeEngine.getListStaticData(myStaticDataList&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.getLongStaticDatamyStaticDataLongOutStringOutString">
-            <summary>设置 myCaseDataTypeEngine.getLongStaticData(myStaticDataLong&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.getRandomStaticDatamyStaticDataRandomStrOutStringOutString">
-            <summary>设置 myCaseDataTypeEngine.getRandomStaticData(myStaticDataRandomStr&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.getTimeStaticDatamyStaticDataNowTimeOutString">
-            <summary>设置 myCaseDataTypeEngine.getTimeStaticData(myStaticDataNowTime&amp; yourStaticData, String yourFormatData) 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseDataTypeEngine.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseLaodInfo">
@@ -1759,96 +1879,6 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyRunCaseData`1.AllInstances.addErrorMessageString">
             <summary>设置 myRunCaseData`1.addErrorMessage(String yourErrorMessage) 的 填充码</summary>
         </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataIndex">
-            <summary>CaseExecutiveActuator.myStaticDataIndex 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataIndex.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataIndex.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataIndex.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyStaticDataIndex.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataIndex.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataList">
-            <summary>CaseExecutiveActuator.myStaticDataList 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataList.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataList.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataList.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyStaticDataList.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataList.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataLong">
-            <summary>CaseExecutiveActuator.myStaticDataLong 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataLong.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataLong.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataLong.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyStaticDataLong.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataLong.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataNowTime">
-            <summary>CaseExecutiveActuator.myStaticDataNowTime 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataNowTime.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataNowTime.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataNowTime.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyStaticDataNowTime.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataNowTime.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataRandomStr">
-            <summary>CaseExecutiveActuator.myStaticDataRandomStr 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataRandomStr.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataRandomStr.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyStaticDataRandomStr.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyStaticDataRandomStr.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyStaticDataRandomStr.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyTreeTagInfo">
             <summary>CaseExecutiveActuator.myTreeTagInfo 的填充码类型</summary>
         </member>
@@ -2137,24 +2167,6 @@
         <member name="P:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForVanelife_http.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
-        <member name="T:CaseExecutiveActuator.Fakes.StubClass1">
-            <summary>CaseExecutiveActuator.Class1 的存根类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubClass1.#ctor">
-            <summary>初始化新实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubClass1.InitializeStub">
-            <summary>初始化 type StubClass1 的新实例</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubClass1.CallBase">
-            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubClass1.InstanceBehavior">
-            <summary>获取或设置实例行为。</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubClass1.InstanceObserver">
-            <summary>获取或设置实例观察者。</summary>
-        </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubICaseExecutionContent">
             <summary>CaseExecutiveActuator.ICaseExecutionContent 的存根类型</summary>
         </member>
@@ -2257,41 +2269,137 @@
         <member name="P:CaseExecutiveActuator.Fakes.StubIConnectExecutiveData.cea::CaseExecutiveActuator#IConnectExecutiveData#myCaseProtocol">
             <summary>设置 IConnectExecutiveData.get_myCaseProtocol() 的 stub</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource">
+            <summary>CaseExecutiveActuator.IRunTimeDataSource 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.#ctor">
+            <summary>初始化 type StubIRunTimeDataSource 的新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeDataSource#ConnectDataSource">
+            <summary>设置 IRunTimeDataSource.ConnectDataSource() 的 存根</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeDataSource#DisConnectDataSource">
+            <summary>设置 IRunTimeDataSource.DisConnectDataSource() 的 存根</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeDataSource#GetDataVaule(System.String)">
+            <summary>设置 IRunTimeDataSource.GetDataVaule(String vauleAddress) 的 存根</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeStaticData#DataCurrent">
+            <summary>设置 IRunTimeStaticData.DataCurrent() 的 存根</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeStaticData#DataMoveNext">
+            <summary>设置 IRunTimeStaticData.DataMoveNext() 的 存根</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeStaticData#DataReset">
+            <summary>设置 IRunTimeStaticData.DataReset() 的 存根</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeStaticData#DataSet(System.String)">
+            <summary>设置 IRunTimeStaticData.DataSet(String expectData) 的 存根</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.Clone">
+            <summary>设置 ICloneable.Clone() 的 stub</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.ConnectDataSource">
+            <summary>设置 IRunTimeDataSource.ConnectDataSource() 的 stub</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.DataCurrent">
+            <summary>设置 IRunTimeStaticData.DataCurrent() 的 stub</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.DataMoveNext">
+            <summary>设置 IRunTimeStaticData.DataMoveNext() 的 stub</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.DataReset">
+            <summary>设置 IRunTimeStaticData.DataReset() 的 stub</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.DataSetString">
+            <summary>设置 IRunTimeStaticData.DataSet(String expectData) 的 stub</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.DisConnectDataSource">
+            <summary>设置 IRunTimeDataSource.DisConnectDataSource() 的 stub</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.GetDataVauleString">
+            <summary>设置 IRunTimeDataSource.GetDataVaule(String vauleAddress) 的 stub</summary>
+        </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.IsConnectedGet">
+            <summary>设置 IRunTimeDataSource.get_IsConnected() 的 stub</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.global::System#ICloneable#Clone">
+            <summary>设置 ICloneable.Clone() 的 存根</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeDataSource#IsConnected">
+            <summary>设置 IRunTimeDataSource.get_IsConnected() 的 stub</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData">
             <summary>CaseExecutiveActuator.IRunTimeStaticData 的存根类型</summary>
         </member>
         <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.#ctor">
             <summary>初始化 type StubIRunTimeStaticData 的新实例</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#dataCurrent">
-            <summary>设置 IRunTimeStaticData.dataCurrent() 的 存根</summary>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#DataCurrent">
+            <summary>设置 IRunTimeStaticData.DataCurrent() 的 存根</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#dataMoveNext">
-            <summary>设置 IRunTimeStaticData.dataMoveNext() 的 存根</summary>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#DataMoveNext">
+            <summary>设置 IRunTimeStaticData.DataMoveNext() 的 存根</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#dataReset">
-            <summary>设置 IRunTimeStaticData.dataReset() 的 存根</summary>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#DataReset">
+            <summary>设置 IRunTimeStaticData.DataReset() 的 存根</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#dataSet(System.String)">
-            <summary>设置 IRunTimeStaticData.dataSet(String expectData) 的 存根</summary>
+        <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#DataSet(System.String)">
+            <summary>设置 IRunTimeStaticData.DataSet(String expectData) 的 存根</summary>
         </member>
         <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.Clone">
             <summary>设置 ICloneable.Clone() 的 stub</summary>
         </member>
         <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.DataCurrent">
-            <summary>设置 IRunTimeStaticData.dataCurrent() 的 stub</summary>
+            <summary>设置 IRunTimeStaticData.DataCurrent() 的 stub</summary>
         </member>
         <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.DataMoveNext">
-            <summary>设置 IRunTimeStaticData.dataMoveNext() 的 stub</summary>
+            <summary>设置 IRunTimeStaticData.DataMoveNext() 的 stub</summary>
         </member>
         <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.DataReset">
-            <summary>设置 IRunTimeStaticData.dataReset() 的 stub</summary>
+            <summary>设置 IRunTimeStaticData.DataReset() 的 stub</summary>
         </member>
         <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.DataSetString">
-            <summary>设置 IRunTimeStaticData.dataSet(String expectData) 的 stub</summary>
+            <summary>设置 IRunTimeStaticData.DataSet(String expectData) 的 stub</summary>
         </member>
         <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.global::System#ICloneable#Clone">
             <summary>设置 ICloneable.Clone() 的 存根</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubMyCaseDataTypeEngine">
+            <summary>CaseExecutiveActuator.MyCaseDataTypeEngine 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyCaseDataTypeEngine.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyCaseDataTypeEngine.InitializeStub">
+            <summary>初始化 type StubMyCaseDataTypeEngine 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseDataTypeEngine.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseDataTypeEngine.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseDataTypeEngine.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubMyConfiguration">
+            <summary>CaseExecutiveActuator.MyConfiguration 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyConfiguration.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyConfiguration.InitializeStub">
+            <summary>初始化 type StubMyConfiguration 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyConfiguration.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyConfiguration.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyConfiguration.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubcaseActionDescription">
             <summary>CaseExecutiveActuator.caseActionDescription 的存根类型</summary>
@@ -2327,24 +2435,6 @@
             <summary>获取或设置实例行为。</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubmyBasicHttpExecutionContent.InstanceObserver">
-            <summary>获取或设置实例观察者。</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.StubmyCaseDataTypeEngine">
-            <summary>CaseExecutiveActuator.myCaseDataTypeEngine 的存根类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubmyCaseDataTypeEngine.#ctor">
-            <summary>初始化新实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubmyCaseDataTypeEngine.InitializeStub">
-            <summary>初始化 type StubmyCaseDataTypeEngine 的新实例</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCaseDataTypeEngine.CallBase">
-            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCaseDataTypeEngine.InstanceBehavior">
-            <summary>获取或设置实例行为。</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCaseDataTypeEngine.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubmyCaseProtocolEngine">

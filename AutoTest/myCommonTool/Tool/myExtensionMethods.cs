@@ -130,14 +130,14 @@ namespace MyCommonTool
             }
             if (str.Contains(yourSplitChar))
             {
-                int lastSplitCharINdex = str.LastIndexOf(yourSplitChar);
-                if (lastSplitCharINdex == str.Length-1) // 如果使用endwith会产生多余的string对象
+                int lastSplitCharIndex = str.LastIndexOf(yourSplitChar);
+                if (lastSplitCharIndex == str.Length-1) // 如果使用endwith会产生多余的string对象
                 {
                     return false;
                 }
-                if (int.TryParse(str.Substring(lastSplitCharINdex + 1, str.Length - lastSplitCharINdex), out yourInt))
+                if (int.TryParse(str.Substring(lastSplitCharIndex + 1, str.Length - lastSplitCharIndex-1), out yourInt))
                 {
-                    yourStr = str.Substring(0, lastSplitCharINdex);
+                    yourStr = str.Substring(0, lastSplitCharIndex);
                     return true;
                 }
             }

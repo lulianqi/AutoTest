@@ -136,6 +136,72 @@
         <member name="P:MyCommonTool.Fakes.ShimFileService.AllInstances.SaveDataRecordStringArrayInt32String">
             <summary>设置 FileService.SaveDataRecord(String[] DataRecordLines, Int32 lineLen, String yourPath) 的 填充码</summary>
         </member>
+        <member name="T:MyCommonTool.Fakes.ShimMyExtensionMethods">
+            <summary>MyCommonTool.MyExtensionMethods 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonTool.Fakes.ShimMyExtensionMethods.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonTool.Fakes.ShimMyExtensionMethods.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonTool.Fakes.ShimMyExtensionMethods.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:MyCommonTool.Fakes.ShimMyExtensionMethods.CloneExOf1DictionaryOfStringM0``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.Dictionary{System.String,``0},System.Collections.Generic.Dictionary{System.String,``0}})">
+            <summary>设置 MyExtensionMethods.CloneEx(Dictionary`2&lt;String,!!0&gt; dc) 的 填充码</summary>
+        </member>
+        <member name="M:MyCommonTool.Fakes.ShimMyExtensionMethods.LightCloneOf1ListOfM0``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.List{``0},System.Collections.Generic.List{``0}})">
+            <summary>设置 MyExtensionMethods.LightClone(List`1&lt;!!0&gt; souceList) 的 填充码</summary>
+        </member>
+        <member name="M:MyCommonTool.Fakes.ShimMyExtensionMethods.MyGetAppointArrayOf1ListOfM0ArrayInt32``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.List{``0[]},System.Int32,``0[]})">
+            <summary>设置 MyExtensionMethods.MyGetAppointArray(List`1&lt;!!0[]&gt; myArratList, Int32 yourIndex) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyAddArrayListIPAddress">
+            <summary>设置 MyExtensionMethods.MyAdd(ArrayList myArratList, IPAddress yourIp) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyAddDictionaryOfStringStringKeyValuePairOfStringString">
+            <summary>设置 MyExtensionMethods.MyAdd(Dictionary`2&lt;String,String&gt; dc, KeyValuePair`2&lt;String,String&gt; yourKeyValuePair) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyAddDictionaryOfStringStringStringString">
+            <summary>设置 MyExtensionMethods.MyAdd(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyAddExDictionaryOfStringStringStringString">
+            <summary>设置 MyExtensionMethods.MyAddEx(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyAddExNameValueCollectionStringString">
+            <summary>设置 MyExtensionMethods.MyAddEx(NameValueCollection dc, String yourKey, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyAddValueStringString">
+            <summary>设置 MyExtensionMethods.MyAddValue(String str, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MySplitIntEndStringCharStringOutInt32Out">
+            <summary>设置 MyExtensionMethods.MySplitIntEnd(String str, Char yourSplitChar, String&amp; yourStr, Int32&amp; yourInt) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MySplitToIntArrayStringCharInt32ArrayOut">
+            <summary>设置 MyExtensionMethods.MySplitToIntArray(String str, Char yourSplitChar, Int32[]&amp; yourIntArray) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyToStringNameValueCollection">
+            <summary>设置 MyExtensionMethods.MyToString(NameValueCollection nvc) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyTrimStrStringStringString">
+            <summary>设置 MyExtensionMethods.MyTrimStr(String str, String startValue, String endVaule) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.MyValueString">
+            <summary>设置 MyExtensionMethods.MyValue(String str) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.ToXmlValueString">
+            <summary>设置 MyExtensionMethods.ToXmlValue(String str) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.myAddNameValueCollectionStringString">
+            <summary>设置 MyExtensionMethods.myAdd(NameValueCollection nvc, String yourName, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonTool.Fakes.ShimMyExtensionMethods.myTextTextBox">
+            <summary>设置 MyExtensionMethods.myText(TextBox tb) 的 填充码</summary>
+        </member>
         <member name="T:MyCommonTool.Fakes.ShimNewRoll">
             <summary>MyCommonTool.NewRoll 的填充码类型</summary>
         </member>
@@ -405,66 +471,6 @@
         </member>
         <member name="T:MyCommonTool.Fakes.ShimmyEncryption.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:MyCommonTool.Fakes.ShimmyExtensionMethods">
-            <summary>MyCommonTool.myExtensionMethods 的填充码类型</summary>
-        </member>
-        <member name="M:MyCommonTool.Fakes.ShimmyExtensionMethods.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:MyCommonTool.Fakes.ShimmyExtensionMethods.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:MyCommonTool.Fakes.ShimmyExtensionMethods.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="M:MyCommonTool.Fakes.ShimmyExtensionMethods.CloneExOf1DictionaryOfStringM0``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.Dictionary{System.String,``0},System.Collections.Generic.Dictionary{System.String,``0}})">
-            <summary>设置 myExtensionMethods.CloneEx(Dictionary`2&lt;String,!!0&gt; dc) 的 填充码</summary>
-        </member>
-        <member name="M:MyCommonTool.Fakes.ShimmyExtensionMethods.LightCloneOf1ListOfM0``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.List{``0},System.Collections.Generic.List{``0}})">
-            <summary>设置 myExtensionMethods.LightClone(List`1&lt;!!0&gt; souceList) 的 填充码</summary>
-        </member>
-        <member name="M:MyCommonTool.Fakes.ShimmyExtensionMethods.MyGetAppointArrayOf1ListOfM0ArrayInt32``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.List{``0[]},System.Int32,``0[]})">
-            <summary>设置 myExtensionMethods.MyGetAppointArray(List`1&lt;!!0[]&gt; myArratList, Int32 yourIndex) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddArrayListIPAddress">
-            <summary>设置 myExtensionMethods.MyAdd(ArrayList myArratList, IPAddress yourIp) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddDictionaryOfStringStringKeyValuePairOfStringString">
-            <summary>设置 myExtensionMethods.MyAdd(Dictionary`2&lt;String,String&gt; dc, KeyValuePair`2&lt;String,String&gt; yourKeyValuePair) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddExDictionaryOfStringStringStringString">
-            <summary>设置 myExtensionMethods.MyAddEx(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddExNameValueCollectionStringString">
-            <summary>设置 myExtensionMethods.MyAddEx(NameValueCollection dc, String yourKey, String yourValue) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyAddValueStringString">
-            <summary>设置 myExtensionMethods.MyAddValue(String str, String yourValue) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyToStringNameValueCollection">
-            <summary>设置 myExtensionMethods.MyToString(NameValueCollection nvc) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyTrimStrStringStringString">
-            <summary>设置 myExtensionMethods.MyTrimStr(String str, String startValue, String endVaule) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.MyValueString">
-            <summary>设置 myExtensionMethods.MyValue(String str) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.ToXmlValueString">
-            <summary>设置 myExtensionMethods.ToXmlValue(String str) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddDictionaryOfStringStringStringString">
-            <summary>设置 myExtensionMethods.myAdd(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myAddNameValueCollectionStringString">
-            <summary>设置 myExtensionMethods.myAdd(NameValueCollection nvc, String yourName, String yourValue) 的 填充码</summary>
-        </member>
-        <member name="P:MyCommonTool.Fakes.ShimmyExtensionMethods.myTextTextBox">
-            <summary>设置 myExtensionMethods.myText(TextBox tb) 的 填充码</summary>
         </member>
         <member name="T:MyCommonTool.Fakes.ShimmyNetConfig">
             <summary>MyCommonTool.myNetConfig 的填充码类型</summary>

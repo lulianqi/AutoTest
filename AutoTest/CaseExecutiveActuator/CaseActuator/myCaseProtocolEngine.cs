@@ -650,9 +650,39 @@ namespace CaseExecutiveActuator
         {
             errorMes = null;
             yourStaticData = new MyStaticDataSourceCsv();
-            string csvPath = yourFormatData.StartsWith("@") ? System.Windows.Forms.Application.StartupPath + yourFormatData : yourFormatData;
-
-            return false;
+            string csvPath=null;
+            int CodePage= 65001 ;
+            Encoding csvEncoding = null;
+            if (yourFormatData.Contains('-'))
+            {
+                if (!yourFormatData.MySplitIntEnd('-', out csvPath, out CodePage))
+                {
+                    errorMes = string.Format("[GetCsvStaticDataSource]error in [MySplitIntEnd] with :[{0}]", yourFormatData);
+                    return false;
+                }
+            }
+            else
+            {
+                csvPath = yourFormatData;
+            }
+            try
+            {
+                csvEncoding = System.Text.Encoding.GetEncoding(CodePage);
+            }
+            catch
+            {
+                errorMes = string.Format("[GetCsvStaticDataSource]error in 【CodePage】 [{0}]", yourFormatData);
+                return false;
+            }
+            csvPath = csvPath.StartsWith("@") ? System.Windows.Forms.Application.StartupPath + csvPath.Remove(0,1) : csvPath;
+            if(!System.IO.File.Exists(csvPath))
+            {
+                errorMes = string.Format("[GetCsvStaticDataSource]error in csv path [path not exixts] [{0}]", yourFormatData);
+                return false;
+            }
+            MyCommonTool.FileHelper.CsvFileHelper myCsv = new MyCommonTool.FileHelper.CsvFileHelper(csvPath, csvEncoding);
+            yourStaticData = new MyStaticDataSourceCsv(myCsv.GetListCsvData());
+            return true;
         }
 
         #endregion 

@@ -147,10 +147,47 @@ namespace UnitTestForAutoTest
             }
         }
 
-        struct TestData { string _str1; string _str2; int _num; public TestData(string str1, string str2, int num) { _str1 = str1; _str2 = str2; _num = num; } };
+       
+        //struct TestData { string _str1; string _str2; int _num; public TestData(string str1, string str2, int num) { _str1 = str1; _str2 = str2; _num = num; } };
+        [TestMethod]
         public void TestMethod_MySplitIntEnd()
-        { 
-            List<TestData> testDataList=new List<TestData>{new TestData("","",1)};
+        {
+            string str;
+            int num;
+            Console.WriteLine("--------------------------------");
+            Assert.IsTrue("1123456-123".MySplitIntEnd('-', out str, out num));
+            Assert.IsTrue(str == "1123456", "str error");
+            Assert.IsTrue(num == 123, "num error");
+
+            Console.WriteLine("--------------------------------");
+            Assert.IsTrue("1123@@$@$456-13323".MySplitIntEnd('-', out str, out num));
+            Assert.IsTrue(str == "1123@@$@$456", "str error");
+            Assert.IsTrue(num == 13323, "num error");
+
+            Console.WriteLine("--------------------------------");
+            Assert.IsTrue("1-123-456--123".MySplitIntEnd('-', out str, out num));
+            Assert.IsTrue(str == "1-123-456-", "str error");
+            Assert.IsTrue(num == 123, "num error");
+
+            Console.WriteLine("--------------------------------");
+            Assert.IsTrue("--123".MySplitIntEnd('-', out str, out num));
+            Assert.IsTrue(str == "-", "str error");
+            Assert.IsTrue(num == 123, "num error");
+
+            Console.WriteLine("--------------------------------");
+            Assert.IsTrue("-123".MySplitIntEnd('-', out str, out num));
+            Assert.IsTrue(str == "", "str error");
+            Assert.IsTrue(num == 123, "num error");
+
+            Console.WriteLine("--------------------------------");
+            Assert.IsFalse("123333-12d3".MySplitIntEnd('-', out str, out num));
+            Console.WriteLine("--------------------------------");
+            Assert.IsFalse("123333-".MySplitIntEnd('-', out str, out num));
+            Console.WriteLine("--------------------------------");
+            Assert.IsFalse("-".MySplitIntEnd('-', out str, out num));
+            Console.WriteLine("--------------------------------");
+            Assert.IsFalse("".MySplitIntEnd('-', out str, out num));
+            
         }
 
     }

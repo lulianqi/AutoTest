@@ -24,3 +24,16 @@ D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.Properties
 D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.GenerateResource.Cache
 D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
 D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\myCommonTool.dll
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\SpeechLib.dll
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\myCommonTool.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csprojResolveAssemblyReference.cache
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\CBalloon.CBalloonBase.resources
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.DataRecordBox.resources
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.PlayButton.resources
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.Properties.Resources.resources
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.GenerateResource.Cache
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb

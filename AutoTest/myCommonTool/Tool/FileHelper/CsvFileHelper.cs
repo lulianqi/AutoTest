@@ -149,7 +149,7 @@ namespace MyCommonTool.FileHelper
         /// <param name="stream">Stream</param>
         /// <param name="encoding">Encoding</param>
         /// <param name="yourSeparator"> the Separator char</param>
-        public CsvFileHelper(Stream stream, Encoding encoding, char yourSeparator) : this(stream, Encoding.Default)
+        public CsvFileHelper(Stream stream, Encoding encoding, char yourSeparator): this(stream, encoding)
         {
             CsvSeparator = yourSeparator;
         }

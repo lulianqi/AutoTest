@@ -8,7 +8,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
-    <ProjectGuid>79f3c47c-5056-4b41-a383-b5ebdf611827</ProjectGuid>
+    <ProjectGuid>4b488fe7-6463-4a6d-970c-963df752506a</ProjectGuid>
     <!-- update GUID here -->
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -51,7 +51,7 @@
       <Aliases>mqttf</Aliases>
     </Reference>
     <Reference Include="CaseExecutiveActuator">
-      <HintPath>F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll</HintPath>
+      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll</HintPath>
       <Aliases>cea</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -76,12 +76,12 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Newtonsoft.Json.dll</HintPath>
       <Aliases>nj</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="AutoTest">
-      <HintPath>F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe</HintPath>
+      <HintPath>D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
@@ -89,19 +89,19 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="myCommonTool">
-      <HintPath>F:\file\Code\AutoTest\AutoTest\myCommonTool\bin\Debug\myCommonTool.dll</HintPath>
+      <HintPath>D:\my\GitHub\AutoTest\AutoTest\myCommonTool\bin\Debug\myCommonTool.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="MyControl">
-      <HintPath>F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll</HintPath>
+      <HintPath>D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2">
-      <HintPath>F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SYDControls">
-      <HintPath>F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\SYDControls.dll</HintPath>
+      <HintPath>D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\SYDControls.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Runtime.Serialization">
@@ -125,7 +125,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SpeechLib">
-      <HintPath>F:\file\Code\AutoTest\AutoTest\myCommonTool\bin\Debug\SpeechLib.dll</HintPath>
+      <HintPath>D:\my\GitHub\AutoTest\AutoTest\myCommonTool\bin\Debug\SpeechLib.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Management">
