@@ -306,6 +306,7 @@ namespace MyCommonTool.FileHelper
 
         public List<List<string>> GetListCsvData()
         {
+            _stream.Position = 0;
             List<List<string>> tempListCsvData = new List<List<string>>();
             bool isNotEndLine = false;
             //这里的ReadLine可能把转义的/r/n分割，需要后面单独处理

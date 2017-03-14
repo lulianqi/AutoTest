@@ -1035,7 +1035,7 @@ namespace CaseExecutiveActuator
                                                 }
                                                 catch
                                                 {
-                                                    SetNowActionError("find unknown type in RunTimeStaticData - ScriptRunTime");
+                                                    SetNowActionError(string.Format("find unknown type in RunTimeStaticData - ScriptRunTime in [{0}] with [{1}]", tempNodeChild.InnerXml, tempTypeStr));
                                                     continue;
                                                 }
                                                 switch (tempType)
@@ -1121,7 +1121,7 @@ namespace CaseExecutiveActuator
                                 {
                                     foreach (XmlNode tempNodeChild in tempNode.ChildNodes)
                                     {
-                                        if (tempNodeChild.Name == "NewStaticData")
+                                        if (tempNodeChild.Name == "NewDataSouce")
                                         {
                                             if (tempNodeChild.Attributes["name"] != null && tempNodeChild.Attributes["type"] != null)
                                             {
@@ -1135,7 +1135,7 @@ namespace CaseExecutiveActuator
                                                 }
                                                 catch
                                                 {
-                                                    SetNowActionError("find unknown type in RunTimeStaticData - ScriptRunTime");
+                                                    SetNowActionError(string.Format("find unknown type in RunTimeStaticData - ScriptRunTime in [{0}] with [{1}]", tempNodeChild.InnerXml, tempTypeStr));
                                                     continue;
                                                 }
                                                 switch (tempType)

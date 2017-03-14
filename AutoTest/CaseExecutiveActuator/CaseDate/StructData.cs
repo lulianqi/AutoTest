@@ -1243,7 +1243,7 @@ namespace CaseExecutiveActuator
         }
         public object Clone()
         {
-            throw new NotImplementedException();
+            return new MyStaticDataSourceCsv(csvData);
         }
         public bool IsConnected
         {
@@ -1302,6 +1302,7 @@ namespace CaseExecutiveActuator
             }
             else
             {
+                //内部游标没有变化前不会越界
                 if (nowColumnIndex + 1 < csvData[nowRowIndex].Count)
                 {
                     nowColumnIndex++;
@@ -1339,10 +1340,40 @@ namespace CaseExecutiveActuator
 
         public bool DataSet(int yourRowIndex,int yourColumnIndex ,string expectData)
         {
-            //csvData[nowRowIndex].
+            if (yourRowIndex > csvData.Count-1)
+            {
+                for(int i=0 ;i<yourRowIndex-csvData.Count+1;i++)
+                {
+                    csvData.Add(new List<string>{""});
+                }
+            }
+            if (yourColumnIndex > csvData[yourRowIndex].Count-1)
+            {
+                for (int i = 0; i < yourColumnIndex - csvData[yourRowIndex].Count + 1; i++)
+                {
+                    csvData[yourRowIndex].Add("");
+                }
+            }
+            csvData[yourRowIndex][yourColumnIndex] = expectData;
             return false;
         }
 
+        public bool DataSet(string vauleAddress, string expectData)
+        {
+            if (vauleAddress != null)
+            {
+                int[] csvPosition;
+                if (vauleAddress.MySplitToIntArray('-', out csvPosition))
+                {
+                    if (csvPosition.Length == 2)
+                    {
+                        DataSet(csvPosition[0], csvPosition[1], expectData);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 
     #endregion

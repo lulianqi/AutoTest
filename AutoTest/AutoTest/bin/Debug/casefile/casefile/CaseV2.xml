@@ -15,8 +15,9 @@
       <NewStaticData name="StaticData4" type="long">1-15158155511</NewStaticData><!-- 暂时与index逻辑一致，支持更大的数值0到9223372036854775807 -->
     </RunTimeStaticData>
     <RunTimeDataSouce><!--文件或数据库数据源，支持csv --> 
-      <NewDataSouce name="mycsvfile" type="csv">D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\casefile\casefile\csvdatasouce.csv-65001</NewDataSouce>
+      <NewDataSouce name="mycsvfile" type="csv">@D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\casefile\csvdatasouce.csv-65001</NewDataSouce>
       <!--内容包括2个数据用“-”分割(路径及文件名中不要含有分隔符)，第一个为数据相对对路径（于程序运行目录下的casefile\下,如果用@开头则强制使用绝对路径）（路径请不要包含分隔符），第二个数据为编码方式代码页，不填默认为utf8，utf-8为65001 （对照表见https://msdn.microsoft.com/zh-cn/library/system.text.encoding(v=vs.110).aspx） -->
+      <!-- 对csv数据源的clone将使用同一个原数据但会拥有不同的游标信息 -->
     </RunTimeDataSouce>
     <RunTimeActuator>
       <NewActuator name="httpApi" protocol="vanelife_http"><!-- 必须含有name及protocol属性 -->
@@ -359,8 +360,7 @@
       </Expect>
       <Action>
         <Pass action="goto">P100001C10001</Pass>
-        <Fail action="XXXXX">
-        </Fail>
+        <Fail action="XXXXX"></Fail>
       </Action>
       <Attribute>
         <Delay>100</Delay>

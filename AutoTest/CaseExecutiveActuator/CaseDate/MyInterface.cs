@@ -111,8 +111,8 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// 设置当前游标指示的数据的值
         /// </summary>
-        /// <param name="expectData">设置是否成功</param>
-        /// <returns></returns>
+        /// <param name="expectData">期望值</param>
+        /// <returns>设置是否成功</returns>
         bool DataSet(string expectData);
     }
 
@@ -141,6 +141,14 @@ namespace CaseExecutiveActuator
         /// <param name="vauleAddress">地址字符串（需要按格式指定并定义）</param>
         /// <returns>目标数据</returns>
         string GetDataVaule(string vauleAddress);
+
+        /// <summary>
+        /// 设置指定地址的数据值 （IRunTimeStaticData 中的DataSet 设置的是当前值）
+        /// </summary>
+        /// <param name="vauleAddress">地址字符串（需要按格式指定并定义）</param>
+        /// <param name="expectData">期望值</param>
+        /// <returns>是否成功设置</returns>
+        bool DataSet(string vauleAddress, string expectData);
     }
 
 

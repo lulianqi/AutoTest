@@ -674,7 +674,7 @@ namespace CaseExecutiveActuator
                 errorMes = string.Format("[GetCsvStaticDataSource]error in 【CodePage】 [{0}]", yourFormatData);
                 return false;
             }
-            csvPath = csvPath.StartsWith("@") ? csvPath : string.Format("{0}\\casefile\\{1}", CaseTool.rootPath, csvPath.Remove(0, 1));
+            csvPath = csvPath.StartsWith("@") ? csvPath.Remove(0, 1) : string.Format("{0}\\casefile\\{1}", CaseTool.rootPath, csvPath);
             if(!System.IO.File.Exists(csvPath))
             {
                 errorMes = string.Format("[GetCsvStaticDataSource]error in csv path [path not exixts] [{0}]", yourFormatData);
@@ -682,6 +682,7 @@ namespace CaseExecutiveActuator
             }
             MyCommonTool.FileHelper.CsvFileHelper myCsv = new MyCommonTool.FileHelper.CsvFileHelper(csvPath, csvEncoding);
             yourStaticData = new MyStaticDataSourceCsv(myCsv.GetListCsvData());
+            myCsv.Dispose();
             return true;
         }
 
@@ -847,7 +848,7 @@ namespace CaseExecutiveActuator
                                 }
                                 catch
                                 {
-                                    myCaseData.addErrorMessage("Error :find error CaseResult in Action");
+                                    myCaseData.addErrorMessage(string.Format("Error :find error CaseAction in Action with [{0}] in [{1}]", tempNode.InnerXml, tempNode.Name));
                                     continue;
                                 }
                                 try
@@ -856,7 +857,7 @@ namespace CaseExecutiveActuator
                                 }
                                 catch
                                 {
-                                    myCaseData.addErrorMessage("Error :find error CaseAction in Action");
+                                    myCaseData.addErrorMessage(string.Format("Error :find error CaseAction in Action with [{0}] in [{1}]", tempNode.InnerXml, CaseTool.getXmlAttributeVaule(tempNode, "action")));
                                     continue;
                                 }
                                 if (tempNode.InnerText!="")
