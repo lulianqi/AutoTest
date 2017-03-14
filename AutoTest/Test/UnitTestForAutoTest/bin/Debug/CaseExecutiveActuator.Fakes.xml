@@ -649,6 +649,69 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.caseRunTime_OnQueueChangeEventCaseCellString">
             <summary>设置 CaseActionActuator.caseRunTime_OnQueueChangeEvent(CaseCell yourTarget, String yourMessage) 的 填充码</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection">
+            <summary>CaseExecutiveActuator.CaseActionActuator+ActuatorStaticDataCollection 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.#ctor(CaseExecutiveActuator.CaseActionActuator.ActuatorStaticDataCollection)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.Bind(System.ICloneable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.Bind(System.IDisposable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.Clone">
+            <summary>设置 ActuatorStaticDataCollection.Clone() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.Constructor">
+            <summary>设置 ActuatorStaticDataCollection.ActuatorStaticDataCollection() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.ConstructorDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataDictionaryOfStringIRunTimeDataSource">
+            <summary>设置 ActuatorStaticDataCollection.ActuatorStaticDataCollection(Dictionary`2&lt;String,String&gt; yourActuatorParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourActuatorStaticDataList, Dictionary`2&lt;String,IRunTimeDataSource&gt; yourActuatorStaticDataSouceList) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.Dispose">
+            <summary>设置 ActuatorStaticDataCollection.Dispose() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.RunActuatorParameterListGet">
+            <summary>设置 ActuatorStaticDataCollection.get_RunActuatorParameterList() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.RunActuatorStaticDataListGet">
+            <summary>设置 ActuatorStaticDataCollection.get_RunActuatorStaticDataList() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.RunActuatorStaticDataSouceListGet">
+            <summary>设置 ActuatorStaticDataCollection.get_RunActuatorStaticDataSouceList() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.AllInstances.Clone">
+            <summary>设置 ActuatorStaticDataCollection.Clone() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.AllInstances.Dispose">
+            <summary>设置 ActuatorStaticDataCollection.Dispose() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.AllInstances.RunActuatorParameterListGet">
+            <summary>设置 ActuatorStaticDataCollection.get_RunActuatorParameterList() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.AllInstances.RunActuatorStaticDataListGet">
+            <summary>设置 ActuatorStaticDataCollection.get_RunActuatorStaticDataList() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.ShimActuatorStaticDataCollection.AllInstances.RunActuatorStaticDataSouceListGet">
+            <summary>设置 ActuatorStaticDataCollection.get_RunActuatorStaticDataSouceList() 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimCaseDataSource">
             <summary>CaseExecutiveActuator.CaseDataSource 的填充码类型</summary>
         </member>
@@ -727,8 +790,8 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.executionDeviceConnect">
             <summary>设置 CaseProtocolExecutionForHttp.executionDeviceConnect() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.executionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataInt32">
-            <summary>设置 CaseProtocolExecutionForHttp.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Int32 caseId) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.executionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataDictionaryOfStringIRunTimeDataSourceInt32">
+            <summary>设置 CaseProtocolExecutionForHttp.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Dictionary`2&lt;String,IRunTimeDataSource&gt; yourStaticDataSourceList, Int32 caseId) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.getProtocolTypeGet">
             <summary>设置 CaseProtocolExecutionForHttp.get_getProtocolType() 的 填充码</summary>
@@ -754,8 +817,8 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.AllInstances.executionDeviceConnect">
             <summary>设置 CaseProtocolExecutionForHttp.executionDeviceConnect() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.AllInstances.executionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataInt32">
-            <summary>设置 CaseProtocolExecutionForHttp.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Int32 caseId) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.AllInstances.executionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataDictionaryOfStringIRunTimeDataSourceInt32">
+            <summary>设置 CaseProtocolExecutionForHttp.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Dictionary`2&lt;String,IRunTimeDataSource&gt; yourStaticDataSourceList, Int32 caseId) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.AllInstances.getProtocolTypeGet">
             <summary>设置 CaseProtocolExecutionForHttp.get_getProtocolType() 的 填充码</summary>
@@ -808,8 +871,8 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.executionDeviceConnect">
             <summary>设置 CaseProtocolExecutionForVanelife_http.executionDeviceConnect() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.executionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataInt32">
-            <summary>设置 CaseProtocolExecutionForVanelife_http.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Int32 caseId) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.executionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataDictionaryOfStringIRunTimeDataSourceInt32">
+            <summary>设置 CaseProtocolExecutionForVanelife_http.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Dictionary`2&lt;String,IRunTimeDataSource&gt; yourStaticDataSourceList, Int32 caseId) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.getProtocolTypeGet">
             <summary>设置 CaseProtocolExecutionForVanelife_http.get_getProtocolType() 的 填充码</summary>
@@ -838,8 +901,8 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.AllInstances.executionDeviceConnect">
             <summary>设置 CaseProtocolExecutionForVanelife_http.executionDeviceConnect() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.AllInstances.executionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataInt32">
-            <summary>设置 CaseProtocolExecutionForVanelife_http.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Int32 caseId) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.AllInstances.executionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataDictionaryOfStringIRunTimeDataSourceInt32">
+            <summary>设置 CaseProtocolExecutionForVanelife_http.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Dictionary`2&lt;String,IRunTimeDataSource&gt; yourStaticDataSourceList, Int32 caseId) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.AllInstances.getProtocolTypeGet">
             <summary>设置 CaseProtocolExecutionForVanelife_http.get_getProtocolType() 的 填充码</summary>
@@ -877,8 +940,8 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
             <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
-            <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, String splitStr, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataDictionaryOfStringIRunTimeDataSourceNameValueCollectionStringOut">
+            <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, String splitStr, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Dictionary`2&lt;String,IRunTimeDataSource&gt; yourStaticDataSourceList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetFullPathString">
             <summary>设置 CaseTool.GetFullPath(String path) 的 填充码</summary>
@@ -1054,26 +1117,26 @@
         <member name="M:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.BehaveAsNotImplemented">
             <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
         </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyAddOf1DictionaryOfStringM0StringM0``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Action{System.Collections.Generic.Dictionary{System.String,``0},System.String,``0})">
+            <summary>设置 MyExtensionMethods.MyAdd(Dictionary`2&lt;String,!!0&gt; dc, String yourKey, !!0 yourValue) 的 填充码</summary>
+        </member>
         <member name="M:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyCloneOf2DictionaryOfM0M1``2(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.Dictionary{``0,``1}})">
             <summary>设置 MyExtensionMethods.MyClone(Dictionary`2&lt;!!0,!!1&gt; dc) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyCloneDictionaryOfStringICaseExecutionDevice">
-            <summary>设置 MyExtensionMethods.MyClone(Dictionary`2&lt;String,ICaseExecutionDevice&gt; dc) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyAddDictionaryOfStringICaseExecutionDeviceStringICaseExecutionDevice">
+            <summary>设置 MyExtensionMethods.MyAdd(Dictionary`2&lt;String,ICaseExecutionDevice&gt; dc, String yourKey, ICaseExecutionDevice yourValue) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyCloneDictionaryOfStringIRunTimeStaticData">
-            <summary>设置 MyExtensionMethods.MyClone(Dictionary`2&lt;String,IRunTimeStaticData&gt; dc) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyAddDictionaryOfStringIRunTimeStaticDataStringIRunTimeStaticData">
+            <summary>设置 MyExtensionMethods.MyAdd(Dictionary`2&lt;String,IRunTimeStaticData&gt; dc, String yourKey, IRunTimeStaticData yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyCloneDictionaryOfStringICloneable">
+            <summary>设置 MyExtensionMethods.MyClone(Dictionary`2&lt;String,ICloneable&gt; dc) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyCloneListOfIRunTimeStaticData">
             <summary>设置 MyExtensionMethods.MyClone(List`1&lt;IRunTimeStaticData&gt; lt) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.myAddDictionaryOfStringICaseExecutionDeviceStringICaseExecutionDevice">
-            <summary>设置 MyExtensionMethods.myAdd(Dictionary`2&lt;String,ICaseExecutionDevice&gt; dc, String yourKey, ICaseExecutionDevice yourValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.myAddDictionaryOfStringIRunTimeStaticDataStringIRunTimeStaticData">
-            <summary>设置 MyExtensionMethods.myAdd(Dictionary`2&lt;String,IRunTimeStaticData&gt; dc, String yourKey, IRunTimeStaticData yourValue) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataIndex">
             <summary>CaseExecutiveActuator.MyStaticDataIndex 的填充码类型</summary>
@@ -2215,8 +2278,8 @@
         <member name="M:CaseExecutiveActuator.Fakes.StubICaseExecutionDevice.cea::CaseExecutiveActuator#ICaseExecutionDevice#executionDeviceConnect">
             <summary>设置 ICaseExecutionDevice.executionDeviceConnect() 的 存根</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubICaseExecutionDevice.cea::CaseExecutiveActuator#ICaseExecutionDevice#executionDeviceRun(CaseExecutiveActuator.ICaseExecutionContent,CaseExecutiveActuator.delegateGetExecutiveData,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,CaseExecutiveActuator.IRunTimeStaticData},System.Int32)">
-            <summary>设置 ICaseExecutionDevice.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Int32 caseId) 的 存根</summary>
+        <member name="M:CaseExecutiveActuator.Fakes.StubICaseExecutionDevice.cea::CaseExecutiveActuator#ICaseExecutionDevice#executionDeviceRun(CaseExecutiveActuator.ICaseExecutionContent,CaseExecutiveActuator.delegateGetExecutiveData,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,CaseExecutiveActuator.IRunTimeStaticData},System.Collections.Generic.Dictionary{System.String,CaseExecutiveActuator.IRunTimeDataSource},System.Int32)">
+            <summary>设置 ICaseExecutionDevice.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Dictionary`2&lt;String,IRunTimeDataSource&gt; yourStaticDataSourceList, Int32 caseId) 的 存根</summary>
         </member>
         <member name="F:CaseExecutiveActuator.Fakes.StubICaseExecutionDevice.Clone">
             <summary>设置 ICloneable.Clone() 的 stub</summary>
@@ -2227,8 +2290,8 @@
         <member name="F:CaseExecutiveActuator.Fakes.StubICaseExecutionDevice.ExecutionDeviceConnect">
             <summary>设置 ICaseExecutionDevice.executionDeviceConnect() 的 stub</summary>
         </member>
-        <member name="F:CaseExecutiveActuator.Fakes.StubICaseExecutionDevice.ExecutionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataInt32">
-            <summary>设置 ICaseExecutionDevice.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Int32 caseId) 的 stub</summary>
+        <member name="F:CaseExecutiveActuator.Fakes.StubICaseExecutionDevice.ExecutionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataDictionaryOfStringIRunTimeDataSourceInt32">
+            <summary>设置 ICaseExecutionDevice.executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, Dictionary`2&lt;String,IRunTimeDataSource&gt; yourStaticDataSourceList, Int32 caseId) 的 stub</summary>
         </member>
         <member name="F:CaseExecutiveActuator.Fakes.StubICaseExecutionDevice.GetProtocolTypeGet">
             <summary>设置 ICaseExecutionDevice.get_getProtocolType() 的 stub</summary>
@@ -2323,11 +2386,17 @@
         <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.IsConnectedGet">
             <summary>设置 IRunTimeDataSource.get_IsConnected() 的 stub</summary>
         </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.RunTimeStaticDataTypeGet">
+            <summary>设置 IRunTimeStaticData.get_RunTimeStaticDataType() 的 stub</summary>
+        </member>
         <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.global::System#ICloneable#Clone">
             <summary>设置 ICloneable.Clone() 的 存根</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeDataSource#IsConnected">
             <summary>设置 IRunTimeDataSource.get_IsConnected() 的 stub</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubIRunTimeDataSource.cea::CaseExecutiveActuator#IRunTimeStaticData#RunTimeStaticDataType">
+            <summary>设置 IRunTimeStaticData.get_RunTimeStaticDataType() 的 stub</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData">
             <summary>CaseExecutiveActuator.IRunTimeStaticData 的存根类型</summary>
@@ -2362,8 +2431,14 @@
         <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.DataSetString">
             <summary>设置 IRunTimeStaticData.DataSet(String expectData) 的 stub</summary>
         </member>
+        <member name="F:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.RunTimeStaticDataTypeGet">
+            <summary>设置 IRunTimeStaticData.get_RunTimeStaticDataType() 的 stub</summary>
+        </member>
         <member name="M:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.global::System#ICloneable#Clone">
             <summary>设置 ICloneable.Clone() 的 存根</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#RunTimeStaticDataType">
+            <summary>设置 IRunTimeStaticData.get_RunTimeStaticDataType() 的 stub</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubMyCaseDataTypeEngine">
             <summary>CaseExecutiveActuator.MyCaseDataTypeEngine 的存根类型</summary>

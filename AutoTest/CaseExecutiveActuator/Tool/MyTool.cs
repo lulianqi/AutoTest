@@ -33,7 +33,7 @@ namespace CaseExecutiveActuator
         /// <param name="dc">Dictionary</param>
         /// <param name="yourKey">Key</param>
         /// <param name="yourValue">Value</param>
-        public static void myAdd(this Dictionary<string, ICaseExecutionDevice> dc, string yourKey, ICaseExecutionDevice yourValue)
+        public static void MyAdd(this Dictionary<string, ICaseExecutionDevice> dc, string yourKey, ICaseExecutionDevice yourValue)
         {
             if (dc.ContainsKey(yourKey))
             {
@@ -51,7 +51,7 @@ namespace CaseExecutiveActuator
         /// <param name="dc">Dictionary</param>
         /// <param name="yourKey">Key</param>
         /// <param name="yourValue">Value</param>
-        public static void myAdd(this Dictionary<string, IRunTimeStaticData> dc, string yourKey, IRunTimeStaticData yourValue)
+        public static void MyAdd(this Dictionary<string, IRunTimeStaticData> dc, string yourKey, IRunTimeStaticData yourValue)
         {
             if (dc.ContainsKey(yourKey))
             {
@@ -63,7 +63,32 @@ namespace CaseExecutiveActuator
             }
         }
 
+        /// <summary>
+        /// 添加键值，若遇到已有key则覆盖
+        /// </summary>
+        /// <typeparam name="T">T Type</typeparam>
+        /// <param name="dc">Dictionary</param>
+        /// <param name="yourKey">yourKey</param>
+        /// <param name="yourValue">yourValue</param>
+        public static void MyAdd<T>(this Dictionary<string, T> dc, string yourKey, T yourValue)
+        {
+            if (dc.ContainsKey(yourKey))
+            {
+                dc[yourKey] = yourValue;
+            }
+            else
+            {
+                dc.Add(yourKey, yourValue);
+            }
+        }
 
+        /// <summary>
+        /// 返回对象的深度克隆(泛型数据，要求T必须为值类型，或类似string的特殊引用类型)
+        /// </summary>
+        /// <typeparam name="TKey">TKey</typeparam>
+        /// <typeparam name="TValue">TKey</typeparam>
+        /// <param name="dc">目标Dictionary</param>
+        /// <returns>对象的深度克隆</returns>
         public static Dictionary<TKey, TValue> MyClone<TKey, TValue>(this Dictionary<TKey, TValue> dc)
         {
             Dictionary<TKey, TValue> cloneDc = new Dictionary<TKey, TValue>();
@@ -74,27 +99,38 @@ namespace CaseExecutiveActuator
             return cloneDc;
         }
 
+        
+        //public static Dictionary<string, ICaseExecutionDevice> MyClone(this Dictionary<string, ICaseExecutionDevice> dc)
+        //{
+        //    Dictionary<string, ICaseExecutionDevice> cloneDc = new Dictionary<string, ICaseExecutionDevice>();
+        //    foreach(KeyValuePair<string, ICaseExecutionDevice> tempKvp in dc)
+        //    {
+        //        cloneDc.Add(tempKvp.Key, (ICaseExecutionDevice)tempKvp.Value.Clone());
+        //    }
+        //    return cloneDc;
+        //}
+
+        //public static Dictionary<string, IRunTimeStaticData> MyClone(this Dictionary<string, IRunTimeStaticData> dc)
+        //{
+        //    Dictionary<string, IRunTimeStaticData> cloneDc = new Dictionary<string, IRunTimeStaticData>();
+        //    foreach (KeyValuePair<string, IRunTimeStaticData> tempKvp in dc)
+        //    {
+        //        cloneDc.Add(tempKvp.Key, (IRunTimeStaticData)tempKvp.Value.Clone());
+        //    }
+        //    return cloneDc;
+        //}
+
         /// <summary>
         /// 返回对象的深度克隆
         /// </summary>
         /// <param name="dc">目标Dictionary</param>
         /// <returns>对象的深度克隆</returns>
-        public static Dictionary<string, ICaseExecutionDevice> MyClone(this Dictionary<string, ICaseExecutionDevice> dc)
+        public static Dictionary<string, ICloneable> MyClone(this Dictionary<string, ICloneable> dc)
         {
-            Dictionary<string, ICaseExecutionDevice> cloneDc = new Dictionary<string, ICaseExecutionDevice>();
-            foreach(KeyValuePair<string, ICaseExecutionDevice> tempKvp in dc)
+            Dictionary<string, ICloneable> cloneDc = new Dictionary<string, ICloneable>();
+            foreach (KeyValuePair<string, ICloneable> tempKvp in dc)
             {
-                cloneDc.Add(tempKvp.Key, (ICaseExecutionDevice)tempKvp.Value.Clone());
-            }
-            return cloneDc;
-        }
-
-        public static Dictionary<string, IRunTimeStaticData> MyClone(this Dictionary<string, IRunTimeStaticData> dc)
-        {
-            Dictionary<string, IRunTimeStaticData> cloneDc = new Dictionary<string, IRunTimeStaticData>();
-            foreach (KeyValuePair<string, IRunTimeStaticData> tempKvp in dc)
-            {
-                cloneDc.Add(tempKvp.Key, (IRunTimeStaticData)tempKvp.Value.Clone());
+                cloneDc.Add(tempKvp.Key, (ICloneable)tempKvp.Value.Clone());
             }
             return cloneDc;
         }
@@ -715,13 +751,13 @@ namespace CaseExecutiveActuator
         /// <param name="yourStaticDataList">StaticDataList</param>
         /// <param name="errorMessage">error Message</param>
         /// <returns></returns>
-        public static string GetCurrentParametersData(string yourSourceData,string splitStr, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, NameValueCollection yourDataResultCollection, out string errorMessage)
+        public static string GetCurrentParametersData(string yourSourceData, string splitStr, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, Dictionary<string, IRunTimeDataSource> yourStaticDataSourceList, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             errorMessage = null;
             if (yourSourceData.Contains(splitStr))
             {
                 int tempStart, tempEnd = 0;
-                string tempKey = null;
+                string tempKeyVaule = null;
                 string keyParameter = null;
                 string keyAdditionData = null;
                 string tempVaule = null;
@@ -734,43 +770,45 @@ namespace CaseExecutiveActuator
                         errorMessage = string.Format("the identification  not enough in Source[{0}]", yourSourceData);
                         return yourSourceData;
                     }
-                    tempKey = yourSourceData.Substring(tempStart + 2, tempEnd - (tempStart + 2));
-                    keyParameter = TryGetParametersAdditionData(tempKey, out keyAdditionData);
+                    tempKeyVaule = yourSourceData.Substring(tempStart + 2, tempEnd - (tempStart + 2));
+                    keyParameter = TryGetParametersAdditionData(tempKeyVaule, out keyAdditionData);
                     if (keyAdditionData!=null)
                     {
-                        keyAdditionData = GetCurrentParametersData(yourSourceData, MyConfiguration.ParametersExecuteSplitStr, yourParameterList, yourStaticDataList, yourDataResultCollection, out errorMessage);
+                        keyAdditionData = GetCurrentParametersData(yourSourceData, MyConfiguration.ParametersExecuteSplitStr, yourParameterList, yourStaticDataList,yourStaticDataSourceList, yourDataResultCollection, out errorMessage);
                     }
 
-                    //『RunTimeParameter』
+                    Func<string> DealErrorAdditionData = () =>
+                    {
+                        tempVaule = "[ErrorData]";
+                        return string.Format("ParametersAdditionData error find in the runTime data with keyParameter:[{0}] keyAdditionData:[{1}]", keyParameter, keyAdditionData);
+                    };
+
+                    #region RunTimeParameter
                     if (yourParameterList.Keys.Contains(keyParameter))
                     {
                         //RunTimeParameter 不含有参数信息，所以不处理keyParameter
                         tempVaule = yourParameterList[keyParameter];
-                        yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, tempVaule);
-                        yourDataResultCollection.myAdd(tempKey, tempVaule);
+                        yourSourceData = yourSourceData.Replace(splitStr + tempKeyVaule + splitStr, tempVaule);
+                        yourDataResultCollection.myAdd(tempKeyVaule, tempVaule);
                     }
-
-                    //『RunTimeStaticData』
+                    #endregion
+                    
+                    #region RunTimeStaticData
                     else if (yourStaticDataList.Keys.Contains(keyParameter))
                     {
-                        Func<string> DealErrorAdditionData = () =>
-                        {
-                            tempVaule = "[ErrorData]";
-                            return string.Format("ParametersAdditionData error find in the runTime data with [{0}]", tempVaule);
-                        };
                         if (keyAdditionData == null)
                         {
-                            tempVaule = yourStaticDataList[tempKey].DataMoveNext();
+                            tempVaule = yourStaticDataList[tempKeyVaule].DataMoveNext();
                         }
                         else
                         {
                             if(keyAdditionData=="=")
                             {
-                                tempVaule = yourStaticDataList[tempKey].DataCurrent();
+                                tempVaule = yourStaticDataList[tempKeyVaule].DataCurrent();
                             }
                             else if(keyAdditionData=="+")
                             {
-                                tempVaule = yourStaticDataList[tempKey].DataMoveNext();
+                                tempVaule = yourStaticDataList[tempKeyVaule].DataMoveNext();
                             }
                             else if(keyAdditionData.StartsWith("+")) //+10 前移10
                             {
@@ -781,9 +819,9 @@ namespace CaseExecutiveActuator
                                     {
                                         for(int i=0;i>tempTimes;i++)
                                         {
-                                            yourStaticDataList[tempKey].DataMoveNext();
+                                            yourStaticDataList[tempKeyVaule].DataMoveNext();
                                         }
-                                        tempVaule = yourStaticDataList[tempKey].DataCurrent();
+                                        tempVaule = yourStaticDataList[tempKeyVaule].DataCurrent();
                                     }
                                     else
                                     {
@@ -801,51 +839,62 @@ namespace CaseExecutiveActuator
                             }
 
                         }
-                        yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, tempVaule);
-                        yourDataResultCollection.myAdd(tempKey, tempVaule);
+                        yourSourceData = yourSourceData.Replace(splitStr + tempKeyVaule + splitStr, tempVaule);
+                        yourDataResultCollection.myAdd(tempKeyVaule, tempVaule);
                     }
+                    #endregion
 
+                    #region RunTimeStaticDataSource
+                    else if (yourStaticDataSourceList.Keys.Contains(keyParameter))
+                    {
+                        if (keyAdditionData == null)
+                        {
+                            tempVaule = yourStaticDataSourceList[tempKeyVaule].DataMoveNext();
+                        }
+                        else if (keyAdditionData.StartsWith("+")) //+10 前移10
+                        {
+                            int tempTimes;
+                            if (int.TryParse(keyAdditionData.Remove(0, 1), out tempTimes))
+                            {
+                                if (tempTimes > 0)
+                                {
+                                    for (int i = 0; i > tempTimes; i++)
+                                    {
+                                        yourStaticDataSourceList[tempKeyVaule].DataMoveNext();
+                                    }
+                                    tempVaule = yourStaticDataSourceList[tempKeyVaule].DataCurrent();
+                                }
+                                else
+                                {
+                                    errorMessage = DealErrorAdditionData();
+                                }
+                            }
+                            else
+                            {
+                                errorMessage = DealErrorAdditionData();
+                            }
+                        }
+                        else
+                        {
+                            tempVaule = yourStaticDataSourceList[tempKeyVaule].GetDataVaule(keyAdditionData);
+                            if(tempVaule==null)
+                            {
+                                errorMessage = DealErrorAdditionData();
+                            }
+                        }
 
-
-                    //else
-                    //{
-                    //    if (tempKey.EndsWith("+"))
-                    //    {
-                    //        if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
-                    //        {
-                    //            tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
-                    //            yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, tempVaule);
-                    //            yourDataResultCollection.myAdd(tempKey, tempVaule);
-                    //        }
-                    //        else
-                    //        {
-                    //            yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, "[ErrorData]");
-                    //            errorMessage = "your Parameter not find in the runTime data";
-                    //            yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
-                    //        }
-                    //    }
-                    //    else if (tempKey.EndsWith("="))
-                    //    {
-                    //        if (yourStaticDataList.Keys.Contains(tempKey.Remove(tempKey.Length - 1)))
-                    //        {
-                    //            tempVaule = yourStaticDataList[tempKey.Remove(tempKey.Length - 1)].dataMoveNext();
-                    //            yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, tempVaule);
-                    //            yourDataResultCollection.myAdd(tempKey, tempVaule);
-                    //        }
-                    //        else
-                    //        {
-                    //            errorMessage = "your Parameter not find in the runTime data";
-                    //            yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, "[ErrorData]");
-                    //            yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        errorMessage = "your Parameter not find in the runTime data";
-                    //        yourSourceData = yourSourceData.Replace(splitStr + tempKey + splitStr, "[ErrorData]");
-                    //        yourDataResultCollection.myAdd(tempKey, "[ErrorData]");
-                    //    }
-                    //}
+                        yourSourceData = yourSourceData.Replace(splitStr + tempKeyVaule + splitStr, tempVaule);
+                        yourDataResultCollection.myAdd(tempKeyVaule, tempVaule);
+                    }
+                    #endregion
+                    
+                    else
+                    {
+                        tempVaule = "[ErrorData]";
+                        errorMessage = string.Format("can not find your key [{0}] in StaticDataList", keyParameter);
+                        yourSourceData = yourSourceData.Replace(splitStr + tempKeyVaule + splitStr, tempVaule);
+                        yourDataResultCollection.myAdd(tempKeyVaule, tempVaule);
+                    }
                 }
 
             }

@@ -184,13 +184,13 @@ namespace CaseExecutiveActuator
             return false;
         }
 
-        public string getTargetContentData(Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList,NameValueCollection yourDataResultCollection, out string errorMessage)
+        public string getTargetContentData(Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, Dictionary<string, IRunTimeDataSource> yourStaticDataSourceList, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             string myTargetContentData = contentData;
             errorMessage = null;
             if (hasParameter)
             {
-                myTargetContentData = CaseTool.GetCurrentParametersData(contentData, yourParameterList, yourStaticDataList, yourDataResultCollection, out errorMessage);
+                myTargetContentData = CaseTool.GetCurrentParametersData(contentData,MyConfiguration.ParametersDataSplitStr, yourParameterList, yourStaticDataList,yourStaticDataSourceList, yourDataResultCollection, out errorMessage);
             }
             if (encodetype != ParameterizationContentEncodingType.encode_default)
             {
@@ -883,6 +883,11 @@ namespace CaseExecutiveActuator
         private int defaultEnd;
         private int defaultStep;
 
+        public string RunTimeStaticDataType
+        {
+            get { return "staticData_index"; }
+        }
+
         public MyStaticDataIndex(int yourStart, int yourEnd,int yourStep)
         {
             isNew = true;
@@ -942,6 +947,7 @@ namespace CaseExecutiveActuator
             }
             return false;
         }
+
     }
 
     /// <summary>
@@ -955,6 +961,10 @@ namespace CaseExecutiveActuator
         private long defaultEnd;
         private long defaultStep;
 
+        public string RunTimeStaticDataType
+        {
+            get { return "staticData_long"; }
+        }
         public MyStaticDataLong(long yourStart, long yourEnd ,long yourStep)
         {
             isNew = true;
@@ -1014,6 +1024,7 @@ namespace CaseExecutiveActuator
             }
             return false;
         }
+
     }
 
     /// <summary>
@@ -1024,6 +1035,11 @@ namespace CaseExecutiveActuator
         string myNowStr;
         int myStrNum;
         int myStrType;
+
+        public string RunTimeStaticDataType
+        {
+            get { return "staticData_random"; }
+        }
 
         public MyStaticDataRandomStr(int yourStrNum, int yourStrType)
         {
@@ -1072,6 +1088,11 @@ namespace CaseExecutiveActuator
     {
         string myNowStr;
         string myDataFormatInfo;
+
+        public string RunTimeStaticDataType
+        {
+            get { return "staticData_time"; }
+        }
 
         public MyStaticDataNowTime(string yourRormatInfo)
         {
@@ -1123,6 +1144,11 @@ namespace CaseExecutiveActuator
         private int nowIndex;
         private bool isRandom;
         private Random ran;
+
+        public string RunTimeStaticDataType
+        {
+            get { return "staticData_list"; }
+        }
 
         public MyStaticDataList(string yourSourceData, bool isRandomNext)
         {
@@ -1202,6 +1228,11 @@ namespace CaseExecutiveActuator
         private int nowRowIndex;
         private int nowColumnIndex;
         private List<List<string>> csvData;
+
+        public string RunTimeStaticDataType
+        {
+            get { return "staticDataSource_csv"; }
+        }
 
         public MyStaticDataSourceCsv(List<List<string>> yourCsvData)
         {
