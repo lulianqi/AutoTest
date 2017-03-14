@@ -2,3 +2,7 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefault
 F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.exe
 F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.pdb

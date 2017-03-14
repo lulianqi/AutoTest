@@ -28,7 +28,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 在这里绑定UI组件，如果想让运行过程事实反馈到UI界面上，请到此订阅（如果使用了自定义的UI组件，请在相应的位置按原有规则添加反馈）
     /// </summary>
-   class myActionActuator
+    class myActionActuator
     {
         private delegate void delegateTreeNodeChange(TreeNode yourTreeNode);
         private delegate void delegateTreeNodeChangeColor(TreeNode yourTreeNode, Color yourColor);
@@ -380,6 +380,65 @@ namespace CaseExecutiveActuator
 
     }
 
+    public class ActuatorStaticDataCollection : IDisposable, ICloneable
+    {
+        /// <summary>
+        /// RunTimeParameter List
+        /// </summary>
+        private Dictionary<string, string> runActuatorParameterList;
+
+        /// <summary>
+        /// RunTimeStaticData List
+        /// </summary>
+        private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataList;
+
+        /// <summary>
+        /// RunTimeDataSouce List
+        /// </summary>
+        private Dictionary<string, IRunTimeDataSource> runActuatorStaticDataSouceList;
+
+        public ActuatorStaticDataCollection()
+        {
+            runActuatorParameterList = new Dictionary<string, string>();
+            runActuatorStaticDataList = new Dictionary<string, IRunTimeStaticData>();
+            runActuatorStaticDataSouceList = new Dictionary<string, IRunTimeDataSource>();
+        }
+
+        public ActuatorStaticDataCollection(Dictionary<string, string> yourActuatorParameterList, Dictionary<string, IRunTimeStaticData> yourActuatorStaticDataList, Dictionary<string, IRunTimeDataSource> yourActuatorStaticDataSouceList)
+        {
+            runActuatorParameterList = yourActuatorParameterList;
+            runActuatorStaticDataList = yourActuatorStaticDataList;
+            runActuatorStaticDataSouceList = yourActuatorStaticDataSouceList;
+        }
+
+        public Dictionary<string, string> RunActuatorParameterList
+        {
+            get { return runActuatorParameterList; }
+        }
+
+        public Dictionary<string, IRunTimeStaticData> RunActuatorStaticDataList
+        {
+            get { return runActuatorStaticDataList; }
+        }
+
+        public Dictionary<string, IRunTimeDataSource> RunActuatorStaticDataSouceList
+        {
+            get { return runActuatorStaticDataSouceList; }
+        }
+        public object Clone()
+        {
+            return new ActuatorStaticDataCollection(runActuatorParameterList.MyClone<string, string>(), runActuatorStaticDataList.MyClone(), runActuatorStaticDataSouceList.MyClone());
+        }
+
+        public void Dispose()
+        {
+            runActuatorParameterList.Clear();
+            runActuatorStaticDataList.Clear();
+            runActuatorStaticDataSouceList.Clear();
+        }
+
+    }
+
     /// <summary>
     /// CASE执行器
     /// </summary>
@@ -476,65 +535,6 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public class ActuatorStaticDataCollection : IDisposable, ICloneable
-        {
-            /// <summary>
-            /// RunTimeParameter List
-            /// </summary>
-            private Dictionary<string, string> runActuatorParameterList;
-
-            /// <summary>
-            /// RunTimeStaticData List
-            /// </summary>
-            private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataList;
-
-            /// <summary>
-            /// RunTimeDataSouce List
-            /// </summary>
-            private Dictionary<string, IRunTimeDataSource> runActuatorStaticDataSouceList;
-
-            public ActuatorStaticDataCollection()
-            {
-                runActuatorParameterList = new Dictionary<string, string>();
-                runActuatorStaticDataList = new Dictionary<string, IRunTimeStaticData>();
-                runActuatorStaticDataSouceList = new Dictionary<string, IRunTimeDataSource>();
-            }
-
-            public ActuatorStaticDataCollection(Dictionary<string, string> yourActuatorParameterList, Dictionary<string, IRunTimeStaticData> yourActuatorStaticDataList, Dictionary<string, IRunTimeDataSource> yourActuatorStaticDataSouceList)
-            {
-                runActuatorParameterList = yourActuatorParameterList;
-                runActuatorStaticDataList = yourActuatorStaticDataList;
-                runActuatorStaticDataSouceList = yourActuatorStaticDataSouceList;
-            }
-
-            public Dictionary<string, string> RunActuatorParameterList
-            {
-                get { return runActuatorParameterList; }
-            }
-
-            public Dictionary<string, IRunTimeStaticData> RunActuatorStaticDataList
-            {
-                get { return runActuatorStaticDataList; }
-            }
-
-            public Dictionary<string, IRunTimeDataSource> RunActuatorStaticDataSouceList
-            {
-                get { return runActuatorStaticDataSouceList; }
-            }
-            public object Clone()
-            {
-                return new ActuatorStaticDataCollection(runActuatorParameterList.MyClone<string, string>(), runActuatorStaticDataList.MyClone(), runActuatorStaticDataSouceList.MyClone());
-            }
-
-            public void Dispose()
-            {
-                runActuatorParameterList.Clear();
-                runActuatorStaticDataList.Clear();
-                runActuatorStaticDataSouceList.Clear();
-            }
-
-        }
-
         #endregion
 
         /// <summary>
@@ -568,20 +568,25 @@ namespace CaseExecutiveActuator
         /// </summary>
         private Dictionary<string, ICaseExecutionDevice> myExecutionDeviceList;
 
-        /// <summary>
-        /// RunTimeParameter List
-        /// </summary>
-        private Dictionary<string, string> runActuatorParameterList;
+        ///// <summary>
+        ///// RunTimeParameter List
+        ///// </summary>
+        //private Dictionary<string, string> runActuatorParameterList;
+
+        ///// <summary>
+        ///// RunTimeStaticData List
+        ///// </summary>
+        //private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataList;
+
+        ///// <summary>
+        ///// RunTimeDataSouce List
+        ///// </summary>
+        //private Dictionary<string, IRunTimeDataSource> runActuatorStaticDataSouceList;
 
         /// <summary>
-        /// RunTimeStaticData List
+        /// RunActuatorStaticDataCollection
         /// </summary>
-        private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataList;
-
-        /// <summary>
-        /// RunTimeDataSouce List
-        /// </summary>
-        private Dictionary<string, IRunTimeDataSource> runActuatorStaticDataSouceList;
+        private ActuatorStaticDataCollection runActuatorStaticDataCollection;
 
         /// <summary>
         /// Execution Result List
@@ -636,9 +641,7 @@ namespace CaseExecutiveActuator
         {
             rootActuator = null;
             myExecutionDeviceList = new Dictionary<string, ICaseExecutionDevice>();
-            runActuatorParameterList = new Dictionary<string, string>();
-            runActuatorStaticDataList = new Dictionary<string, IRunTimeStaticData>();
-            runActuatorStaticDataSouceList = new Dictionary<string, IRunTimeDataSource>();
+            runActuatorStaticDataCollection = new ActuatorStaticDataCollection();
             runExecutionResultList = new List<myExecutionDeviceResult>();
             invalidThreadList = new List<Thread>();
             myErrorInfo = "";
@@ -665,9 +668,7 @@ namespace CaseExecutiveActuator
             CaseActionActuator cloneActuator = new CaseActionActuator();
             cloneActuator.rootActuator = null;
             cloneActuator.myExecutionDeviceList = myExecutionDeviceList.MyClone();
-            cloneActuator.runActuatorParameterList = runActuatorParameterList.MyClone<string,string>();
-            cloneActuator.runActuatorStaticDataList = runActuatorStaticDataList.MyClone();
-            cloneActuator.runActuatorStaticDataSouceList = runActuatorStaticDataSouceList.MyClone();
+            cloneActuator.runActuatorStaticDataCollection = (ActuatorStaticDataCollection)runActuatorStaticDataCollection.Clone();
             //cloneActuator.runExecutionResultList = new List<myExecutionDeviceResult>();
             cloneActuator.SetCaseRunTime(this.runTimeCaseDictionary, this.runCellProjctCollection);
             cloneActuator.caseThinkTime = this.caseThinkTime;
@@ -776,7 +777,7 @@ namespace CaseExecutiveActuator
         {
             get
             {
-                return runActuatorParameterList;
+                return runActuatorStaticDataCollection.RunActuatorParameterList;
             }
         }
 
@@ -787,15 +788,27 @@ namespace CaseExecutiveActuator
         {
             get
             {
-                return runActuatorStaticDataList;
+                return runActuatorStaticDataCollection.RunActuatorStaticDataList;
             }
         }
 
+        //获取当钱静态数据源数据列表
         public Dictionary<string, IRunTimeDataSource> NowStaticDataSouceList
         {
             get
             {
-                return runActuatorStaticDataSouceList;
+                return runActuatorStaticDataCollection.RunActuatorStaticDataSouceList;
+            }
+        }
+
+        /// <summary>
+        /// 获取数据源管理器
+        /// </summary>
+        public ActuatorStaticDataCollection RunActuatorStaticDataCollection
+        {
+            get
+            {
+                return runActuatorStaticDataCollection;
             }
         }
 
@@ -911,33 +924,6 @@ namespace CaseExecutiveActuator
                     {
                         switch (tempNode.Name)
                         {
-                            //此处获取默认参数化数据
-                            #region RunTimeParameter
-                            case "RunTimeParameter": 
-                                if (tempNode.HasChildNodes)
-                                {
-                                    foreach (XmlNode tempNodeChild in tempNode.ChildNodes)
-                                    {
-                                        if (tempNodeChild.Name == "NewParameter")
-                                        {
-                                            if (tempNodeChild.Attributes["name"] != null)
-                                            {
-                                                AddRunActuatorParameter(tempNodeChild.Attributes["name"].Value, tempNodeChild.InnerText);
-                                            }
-                                            else
-                                            {
-                                                SetNowActionError(string.Format("can not find name in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
-                                            }
-                                        }
-                                        else
-                                        {
-                                            SetNowActionError(string.Format("find unkonw data in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
-                                        }
-                                    }
-                                }
-                                break;
-                            #endregion
-
                             //此处获取默认运行时数据，并使用【AddExecutionDevice】添加
                             #region RunTimeActuator
                             case "RunTimeActuator":
@@ -1014,6 +1000,33 @@ namespace CaseExecutiveActuator
                                 break;
                             #endregion
 
+                            //此处获取默认参数化数据
+                            #region RunTimeParameter
+                            case "RunTimeParameter":
+                                if (tempNode.HasChildNodes)
+                                {
+                                    foreach (XmlNode tempNodeChild in tempNode.ChildNodes)
+                                    {
+                                        if (tempNodeChild.Name == "NewParameter")
+                                        {
+                                            if (tempNodeChild.Attributes["name"] != null)
+                                            {
+                                                AddRunActuatorParameter(tempNodeChild.Attributes["name"].Value, tempNodeChild.InnerText);
+                                            }
+                                            else
+                                            {
+                                                SetNowActionError(string.Format("can not find name in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
+                                            }
+                                        }
+                                        else
+                                        {
+                                            SetNowActionError(string.Format("find unkonw data in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
+                                        }
+                                    }
+                                }
+                                break;
+                            #endregion
+
                             //此处获取静态可运算参数化数据
                             #region RunTimeStaticData
                             case "RunTimeStaticData":
@@ -1045,7 +1058,7 @@ namespace CaseExecutiveActuator
                                                         string tempTypeError;
                                                         if (MyCaseDataTypeEngine.GetIndexStaticData(out tempStaticDataIndex, out tempTypeError, tempVaule))
                                                         {
-                                                            runActuatorStaticDataList.MyAdd(tempName, tempStaticDataIndex);
+                                                            runActuatorStaticDataCollection.RunActuatorStaticDataList.MyAdd(tempName, tempStaticDataIndex);
                                                         }
                                                         else
                                                         {
@@ -1057,7 +1070,7 @@ namespace CaseExecutiveActuator
                                                         MyStaticDataLong tempStaticDataLong;
                                                         if (MyCaseDataTypeEngine.GetLongStaticData(out tempStaticDataLong, out tempTypeError, tempVaule))
                                                         {
-                                                            runActuatorStaticDataList.MyAdd(tempName, tempStaticDataLong);
+                                                            runActuatorStaticDataCollection.RunActuatorStaticDataList.MyAdd(tempName, tempStaticDataLong);
                                                         }
                                                         else
                                                         {
@@ -1069,7 +1082,7 @@ namespace CaseExecutiveActuator
                                                         MyStaticDataRandomStr tempStaticDataRandomStr;
                                                         if(MyCaseDataTypeEngine.GetRandomStaticData(out tempStaticDataRandomStr,out tempTypeError,tempVaule))
                                                         {
-                                                            runActuatorStaticDataList.MyAdd(tempName, tempStaticDataRandomStr);
+                                                            runActuatorStaticDataCollection.RunActuatorStaticDataList.MyAdd(tempName, tempStaticDataRandomStr);
                                                         }
                                                         else
                                                         {
@@ -1080,13 +1093,13 @@ namespace CaseExecutiveActuator
                                                     case CaseStaticDataType.staticData_time:
                                                         MyStaticDataNowTime tempStaticDataNowTime;
                                                         MyCaseDataTypeEngine.GetTimeStaticData(out tempStaticDataNowTime, tempVaule);
-                                                        runActuatorStaticDataList.MyAdd(tempName, tempStaticDataNowTime);
+                                                        runActuatorStaticDataCollection.RunActuatorStaticDataList.MyAdd(tempName, tempStaticDataNowTime);
                                                         break;
                                                     case CaseStaticDataType.staticData_list:
                                                         MyStaticDataList tempStaticDataList;
                                                         if (MyCaseDataTypeEngine.GetListStaticData(out tempStaticDataList, out tempTypeError, tempVaule))
                                                         {
-                                                            runActuatorStaticDataList.MyAdd(tempName, tempStaticDataList);
+                                                            runActuatorStaticDataCollection.RunActuatorStaticDataList.MyAdd(tempName, tempStaticDataList);
                                                         }
                                                         else
                                                         {
@@ -1145,7 +1158,7 @@ namespace CaseExecutiveActuator
                                                         string tempTypeError;
                                                         if (MyCaseDataTypeEngine.GetCsvStaticDataSource(out tempStaticDataSourceSsv, out tempTypeError, tempVaule))
                                                         {
-                                                            runActuatorStaticDataSouceList.MyAdd<IRunTimeDataSource>(tempName, tempStaticDataSourceSsv);
+                                                            runActuatorStaticDataCollection.RunActuatorStaticDataSouceList.MyAdd<IRunTimeDataSource>(tempName, tempStaticDataSourceSsv);
                                                         }
                                                         else
                                                         {
@@ -1369,7 +1382,7 @@ namespace CaseExecutiveActuator
                     {
                         //nowDevice.executionDeviceRun()
                         myActionActuator.SetCaseNodeRunning(nowExecutiveNode);
-                        executionResult = nowDevice.executionDeviceRun(nowRunCaseData.testContent, OnGetExecutiveData, myName, runActuatorParameterList, runActuatorStaticDataList, runActuatorStaticDataSouceList, nowRunCaseData.id);
+                        executionResult = nowDevice.executionDeviceRun(nowRunCaseData.testContent, OnGetExecutiveData, myName, runActuatorStaticDataCollection, nowRunCaseData.id);
                         HandleCaseExecutiveResul(nowRunCaseData, nowExecutiveNode, executionResult,ref nowAdditionalInfo);
 
                     }
@@ -1448,7 +1461,7 @@ namespace CaseExecutiveActuator
                 myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
             }
             yourExecutionResult.expectMethod = yourRunData.caseExpectInfo.myExpectType;
-            yourExecutionResult.expectContent = yourRunData.caseExpectInfo.myExpectContent.getTargetContentData(runActuatorParameterList, runActuatorStaticDataList, runActuatorStaticDataSouceList,yourExecutionResult.staticDataResultCollection, out tempError);
+            yourExecutionResult.expectContent = yourRunData.caseExpectInfo.myExpectContent.getTargetContentData(runActuatorStaticDataCollection, yourExecutionResult.staticDataResultCollection, out tempError);
             if (tempError != null)
             {
                 myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
@@ -1795,7 +1808,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourParameterVaule">Parameter Vaule</param>
         public void AddRunActuatorParameter(string yourParameterName, string yourParameterVaule)
         {
-            runActuatorParameterList.MyAdd(yourParameterName, yourParameterVaule);
+            runActuatorStaticDataCollection.RunActuatorParameterList.MyAdd(yourParameterName, yourParameterVaule);
             if (OnActuatorParameterListChanged!=null)
             {
                 this.OnActuatorParameterListChanged();
@@ -2099,9 +2112,7 @@ namespace CaseExecutiveActuator
                 KillAll();
                 DisconnectExecutionDevice();
                 myExecutionDeviceList.Clear();
-                runActuatorParameterList.Clear();
-                runActuatorStaticDataList.Clear();
-                runActuatorStaticDataSouceList.Clear();
+                runActuatorStaticDataCollection.Dispose();
                 runTimeCaseDictionary = null;
                 runCellProjctCollection = null;
                 if (caseRunTime != null)

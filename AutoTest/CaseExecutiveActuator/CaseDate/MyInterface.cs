@@ -192,7 +192,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourStaticDataList">在执行中可能会使用到的StaticDataList</param>
         /// <param name="caseId"></param>
         /// <returns>返回执行结果 务必保证myExecutionDeviceResult中spanTime,startTime,backContent,caseTarget,caseProtocol在此方法中填充</returns>
-        myExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList,Dictionary<string, IRunTimeDataSource> yourStaticDataSourceList, int caseId);
+        myExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId);
 
         //只包含方法、属性、事件或索引器的签名。(不包含委托,这个委托是类型定义)
         //delegate void delegateGetExecutiveData(string yourContent);

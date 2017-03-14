@@ -272,7 +272,7 @@ namespace CaseExecutiveActuator
         }
 
 
-        public myExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, Dictionary<string, IRunTimeDataSource> yourStaticDataSourceList, int caseId)
+        public myExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             myExecutionDeviceResult myResult = new myExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();//默认该值为null，不会输出参数数据结果（如果不需要输出可以保持该字段为null）
@@ -284,10 +284,10 @@ namespace CaseExecutiveActuator
                 myResult.caseTarget = nowExecutionContent.myExecutionTarget;
                 string tempError;
                 string tempUrlAddress;
-                string vanelifeData = CreatVanelifeSendData(nowExecutionContent.caseExecutionContent.getTargetContentData(yourParameterList, yourStaticDataList,yourStaticDataSourceList, myResult.staticDataResultCollection, out tempError));
+                string vanelifeData = CreatVanelifeSendData(nowExecutionContent.caseExecutionContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
                 if (nowExecutionContent.myHttpAisleConfig.httpAddress.IsFilled())
                 {
-                    tempUrlAddress = nowExecutionContent.myHttpAisleConfig.httpAddress.getTargetContentData(yourParameterList, yourStaticDataList,yourStaticDataSourceList, myResult.staticDataResultCollection, out tempError) + nowExecutionContent.HttpTarget;
+                    tempUrlAddress = nowExecutionContent.myHttpAisleConfig.httpAddress.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError) + nowExecutionContent.HttpTarget;
                 }
                 else
                 {
@@ -303,7 +303,7 @@ namespace CaseExecutiveActuator
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    myWebTool.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourParameterList, yourStaticDataList, yourStaticDataSourceList,myResult.staticDataResultCollection, out tempError)));
+                    myWebTool.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
                 }
                 else
                 {
@@ -440,7 +440,7 @@ namespace CaseExecutiveActuator
         }
 
 
-        public myExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList,Dictionary<string, IRunTimeDataSource> yourStaticDataSourceList, int caseId)
+        public myExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             myExecutionDeviceResult myResult = new myExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
@@ -455,17 +455,17 @@ namespace CaseExecutiveActuator
                 string httpBody = null;
                 List<KeyValuePair<string, string>> httpHeads = null;
 
-                httpUri = nowExecutionContent.httpUri.getTargetContentData(yourParameterList, yourStaticDataList,yourStaticDataSourceList, myResult.staticDataResultCollection, out tempError);
+                httpUri = nowExecutionContent.httpUri.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 if (nowExecutionContent.httpBody.IsFilled())
                 {
-                    httpBody = nowExecutionContent.httpBody.getTargetContentData(yourParameterList, yourStaticDataList,yourStaticDataSourceList, myResult.staticDataResultCollection, out tempError);
+                    httpBody = nowExecutionContent.httpBody.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 }
                 if (nowExecutionContent.httpHeads.Count>0)
                 {
                     httpHeads = new List<KeyValuePair<string, string>>();
                     foreach(var tempHead in nowExecutionContent.httpHeads)
                     {
-                        httpHeads.Add(new KeyValuePair<string, string>(tempHead.Key, tempHead.Value.getTargetContentData(yourParameterList, yourStaticDataList, yourStaticDataSourceList,myResult.staticDataResultCollection, out tempError)));
+                        httpHeads.Add(new KeyValuePair<string, string>(tempHead.Key, tempHead.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
                     }
                 }
                 
@@ -485,7 +485,7 @@ namespace CaseExecutiveActuator
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    myWebTool.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourParameterList, yourStaticDataList,yourStaticDataSourceList, myResult.staticDataResultCollection, out tempError)));
+                    myWebTool.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
                 }
                 else
                 {

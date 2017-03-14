@@ -751,11 +751,14 @@ namespace CaseExecutiveActuator
         /// <param name="yourStaticDataList">StaticDataList</param>
         /// <param name="errorMessage">error Message</param>
         /// <returns></returns>
-        public static string GetCurrentParametersData(string yourSourceData, string splitStr, Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, Dictionary<string, IRunTimeDataSource> yourStaticDataSourceList, NameValueCollection yourDataResultCollection, out string errorMessage)
+        public static string GetCurrentParametersData(string yourSourceData, string splitStr, ActuatorStaticDataCollection yourActuatorStaticDataCollection, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             errorMessage = null;
             if (yourSourceData.Contains(splitStr))
             {
+                var yourParameterList=yourActuatorStaticDataCollection.RunActuatorParameterList;
+                var yourStaticDataList = yourActuatorStaticDataCollection.RunActuatorStaticDataList;
+                var yourStaticDataSourceList = yourActuatorStaticDataCollection.RunActuatorStaticDataSouceList;
                 int tempStart, tempEnd = 0;
                 string tempKeyVaule = null;
                 string keyParameter = null;
@@ -774,7 +777,7 @@ namespace CaseExecutiveActuator
                     keyParameter = TryGetParametersAdditionData(tempKeyVaule, out keyAdditionData);
                     if (keyAdditionData!=null)
                     {
-                        keyAdditionData = GetCurrentParametersData(yourSourceData, MyConfiguration.ParametersExecuteSplitStr, yourParameterList, yourStaticDataList,yourStaticDataSourceList, yourDataResultCollection, out errorMessage);
+                        keyAdditionData = GetCurrentParametersData(yourSourceData, MyConfiguration.ParametersExecuteSplitStr, yourActuatorStaticDataCollection, yourDataResultCollection, out errorMessage);
                     }
 
                     Func<string> DealErrorAdditionData = () =>

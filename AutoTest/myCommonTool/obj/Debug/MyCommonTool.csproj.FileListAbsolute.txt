@@ -9,6 +9,6 @@ D:\my\code\Vane\AutoTest\AutoTest\myCommonTool\obj\Debug\myCommonTool.pdb
 D:\my\code\Vane\AutoTest\AutoTest\myCommonTool\obj\Debug\MyCommonTool.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\myCommonTool\bin\Debug\myCommonTool.dll
 D:\my\GitHub\AutoTest\AutoTest\myCommonTool\bin\Debug\myCommonTool.pdb
-D:\my\GitHub\AutoTest\AutoTest\myCommonTool\obj\Debug\MyCommonTool.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\myCommonTool\obj\Debug\myCommonTool.dll
 D:\my\GitHub\AutoTest\AutoTest\myCommonTool\obj\Debug\myCommonTool.pdb
+D:\my\GitHub\AutoTest\AutoTest\myCommonTool\obj\Debug\MyCommonTool.csprojResolveAssemblyReference.cache

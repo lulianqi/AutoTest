@@ -184,13 +184,13 @@ namespace CaseExecutiveActuator
             return false;
         }
 
-        public string getTargetContentData(Dictionary<string, string> yourParameterList, Dictionary<string, IRunTimeStaticData> yourStaticDataList, Dictionary<string, IRunTimeDataSource> yourStaticDataSourceList, NameValueCollection yourDataResultCollection, out string errorMessage)
+        public string getTargetContentData(ActuatorStaticDataCollection yourActuatorStaticDataCollection, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             string myTargetContentData = contentData;
             errorMessage = null;
             if (hasParameter)
             {
-                myTargetContentData = CaseTool.GetCurrentParametersData(contentData,MyConfiguration.ParametersDataSplitStr, yourParameterList, yourStaticDataList,yourStaticDataSourceList, yourDataResultCollection, out errorMessage);
+                myTargetContentData = CaseTool.GetCurrentParametersData(contentData, MyConfiguration.ParametersDataSplitStr, yourActuatorStaticDataCollection, yourDataResultCollection, out errorMessage);
             }
             if (encodetype != ParameterizationContentEncodingType.encode_default)
             {

@@ -2,3 +2,7 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.exe
 F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.exe
 F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.pdb
