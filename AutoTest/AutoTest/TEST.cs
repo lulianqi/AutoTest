@@ -107,6 +107,7 @@ namespace AutoTest
 
         private void TEST_Load(object sender, EventArgs e)
         {
+            return;
             //string filePath = @"C:\Users\administer\Desktop\asd\encode";
 
             //Stream myStm = CsvFileHelper.OpenFile(@"C:\Users\administer\Desktop\encode");
@@ -435,6 +436,8 @@ namespace AutoTest
 
         private void button1_Click(object sender, EventArgs e)
         {
+            myWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", "a=1&b=2&c=3");
+            myWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", null);
             mySP.openSerialPort("COM6", 57600);
         }
 

@@ -26,6 +26,52 @@ namespace MyCommonTool
 {
     public static class myWebTool
     {
+        public class HttpMultipartDate
+        {
+            /**
+            -----------------8d46c074125a195
+            Content-Disposition: form-data; name="name"; filename="filenmae"
+            Content-Type: application/octet-stream
+
+            testdata
+            -----------------8d46c074125a195--
+             * */
+
+
+            ///name属性值,为null则不加
+            public string Name { get; set; }
+            /// <summary>
+            /// filename属性值,为null则不加
+            /// </summary>
+            public string FileName { get; set; }
+            /// <summary>
+            /// Multipart下Content-Type: application/octet-stream,为null则不加
+            /// </summary>
+            public string ContentType { get; set; }
+            /// <summary>
+            /// 是否把fileData当作文件路径处理
+            /// </summary>
+            public bool IsFile { get; set; }
+            /// <summary>
+            /// 文件牛肉或文件路径。为null则当作""
+            /// </summary>
+            public string FileData { get; set; }
+            public HttpMultipartDate()
+            {
+                Name = FileName = ContentType = FileData = null;
+            }
+
+            public HttpMultipartDate(string yourName,string yourFileName,string yourContentType,bool yourIsFile,string yourFileData)
+            {
+                Name = yourName;
+                FileName = yourFileName;
+                ContentType = yourContentType;
+                IsFile = yourIsFile;
+                FileData = yourFileData;
+            }
+
+        }
+
         public class HttpHelper
         {
             private delegate void SetHeadAttributeCallback(HttpWebRequest yourRequest, string yourHeadValue);
@@ -338,7 +384,6 @@ namespace MyCommonTool
                         }
                     }
                     memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
-
                 }
                 else
                 {
@@ -392,6 +437,182 @@ namespace MyCommonTool
                     else
                     {
                         byte[] myCmd = Encoding.UTF8.GetBytes(filePath);
+                        memStream.Write(myCmd, 0, myCmd.Length);
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    responseContent = ex.Message;
+                    ErrorLog.PutInLog("ID:0090 " + ex.InnerException);
+                }
+
+                return responseContent;
+            }
+
+
+            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyParameter ,int timeOut,Encoding yourBodyEncoding)
+            {
+                string responseContent;
+                Encoding httpBodyEncoding = Encoding.UTF8;
+                NameValueCollection stringDict = new NameValueCollection();
+                if (yourBodyEncoding!=null)
+                {
+                    httpBodyEncoding = yourBodyEncoding;
+                }
+
+                if (bodyParameter != null)
+                {
+                    string[] sArray = bodyParameter.Split('&');
+                    foreach (string tempStr in sArray)
+                    {
+                        int myBreak = tempStr.IndexOf('=');
+                        if (myBreak == -1)
+                        {
+                            return "can't find =";
+                        }
+                        stringDict.Add(tempStr.Substring(0, myBreak), tempStr.Substring(myBreak + 1));
+                    }
+                }
+
+                var memStream = new MemoryStream();
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                //写入http头
+                HttpHelper.AddHttpHeads(webRequest, heads);
+
+                // 边界符
+                var boundary = "---------------" + DateTime.Now.Ticks.ToString("x");
+                // 边界符
+                var beginBoundary = Encoding.ASCII.GetBytes("--" + boundary + "\r\n");
+                // 最后的结束符
+                var endBoundary = Encoding.ASCII.GetBytes("--" + boundary + "--\r\n");
+
+                // 设置属性
+                webRequest.Method = "POST";
+                webRequest.Timeout = timeOut;
+
+                //写如常规body
+                if (bodyData!=null)
+                {
+                    var bodybytes = httpBodyEncoding.GetBytes(bodyData);
+                    memStream.Write(bodybytes, 0, bodybytes.Length);
+                }
+
+                //是否带文件提交
+                if (filePath != null)
+                {
+                    webRequest.ContentType = "multipart/form-data; boundary=" + boundary;
+                    // 写入文件
+                    const string filePartHeader = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\n" + "Content-Type: application/octet-stream\r\n\r\n";
+                    var header = string.Format(filePartHeader, name, filename);
+                    var headerbytes = httpBodyEncoding.GetBytes(header);
+
+                    memStream.Write(beginBoundary, 0, beginBoundary.Length);
+                    memStream.Write(headerbytes, 0, headerbytes.Length);
+
+                    if (isFile)
+                    {
+                        try
+                        {
+                            using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                            {
+                                var buffer = new byte[1024];
+                                int bytesRead; // =0
+                                while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
+                                {
+                                    memStream.Write(buffer, 0, bytesRead);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            responseContent = "Error:  " + ex.Message + "\r\n";
+                            ErrorLog.PutInLog("ID:0544 " + ex.InnerException);
+                            return responseContent;
+                        }
+                    }
+                    else
+                    {
+                        byte[] myCmd = httpBodyEncoding.GetBytes(filePath);
+                        memStream.Write(myCmd, 0, myCmd.Length);
+                    }
+                }
+
+                //写入POST非文件参数
+                if (bodyParameter != null)
+                {
+                    //写入字符串的Key
+                    var stringKeyHeader = "\r\n--" + boundary +
+                                           "\r\nContent-Disposition: form-data; name=\"{0}\"" +
+                                           "\r\n\r\n{1}";
+
+
+                    for (int i = 0; i < stringDict.Count; i++)
+                    {
+                        try
+                        {
+                            byte[] formitembytes = httpBodyEncoding.GetBytes(string.Format(stringKeyHeader, stringDict.GetKey(i), stringDict.Get(i)));
+                            memStream.Write(formitembytes, 0, formitembytes.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            return "can not send :" + ex.Message;
+                        }
+                    }
+                    memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
+                }
+                else
+                {
+                    memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
+                }
+
+                //写入最后的结束边界符
+                //memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
+                memStream.Write(endBoundary, 0, endBoundary.Length);
+
+                webRequest.ContentLength = memStream.Length;
+
+                //开始请求
+                try
+                {
+                    var requestStream = webRequest.GetRequestStream();
+
+                    memStream.Position = 0;
+                    var tempBuffer = new byte[memStream.Length];
+                    memStream.Read(tempBuffer, 0, tempBuffer.Length);
+                    memStream.Close();
+
+                    requestStream.Write(tempBuffer, 0, tempBuffer.Length);
+                    requestStream.Close();
+
+                    var httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                    using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(),
+                                                                    Encoding.GetEncoding("utf-8")))
+                    {
+                        responseContent = httpStreamReader.ReadToEnd();
+                    }
+
+                    httpWebResponse.Close();
+                    webRequest.Abort();
+                }
+                catch (WebException wex)
+                {
+                    responseContent = "Error:  " + wex.Message + "\r\n";
+                    if (wex.Response != null)
+                    {
+                        using (var errorResponse = (HttpWebResponse)wex.Response)
+                        {
+                            responseContent += "StatusCode:  " + Convert.ToInt32(((HttpWebResponse)wex.Response).StatusCode) + "\r\n";
+                            using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                            {
+                                responseContent += reader.ReadToEnd();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        byte[] myCmd = httpBodyEncoding.GetBytes(filePath);
                         memStream.Write(myCmd, 0, myCmd.Length);
                     }
                 }
