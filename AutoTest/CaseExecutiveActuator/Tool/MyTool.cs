@@ -767,17 +767,17 @@ namespace CaseExecutiveActuator
                 while (yourSourceData.Contains(splitStr))
                 {
                     tempStart = yourSourceData.IndexOf(splitStr);
-                    tempEnd = yourSourceData.IndexOf(splitStr, tempStart + 2);
+                    tempEnd = yourSourceData.IndexOf(splitStr, tempStart + splitStr.Length);
                     if (tempEnd == -1)
                     {
                         errorMessage = string.Format("the identification  not enough in Source[{0}]", yourSourceData);
                         return yourSourceData;
                     }
-                    tempKeyVaule = yourSourceData.Substring(tempStart + 2, tempEnd - (tempStart + 2));
+                    tempKeyVaule = yourSourceData.Substring(tempStart + splitStr.Length, tempEnd - (tempStart + splitStr.Length));
                     keyParameter = TryGetParametersAdditionData(tempKeyVaule, out keyAdditionData);
                     if (keyAdditionData!=null)
                     {
-                        keyAdditionData = GetCurrentParametersData(yourSourceData, MyConfiguration.ParametersExecuteSplitStr, yourActuatorStaticDataCollection, yourDataResultCollection, out errorMessage);
+                        keyAdditionData = GetCurrentParametersData(keyAdditionData, MyConfiguration.ParametersExecuteSplitStr, yourActuatorStaticDataCollection, yourDataResultCollection, out errorMessage);
                     }
 
                     Func<string> DealErrorAdditionData = () =>
@@ -801,17 +801,17 @@ namespace CaseExecutiveActuator
                     {
                         if (keyAdditionData == null)
                         {
-                            tempVaule = yourStaticDataList[tempKeyVaule].DataMoveNext();
+                            tempVaule = yourStaticDataList[keyParameter].DataMoveNext();
                         }
                         else
                         {
                             if(keyAdditionData=="=")
                             {
-                                tempVaule = yourStaticDataList[tempKeyVaule].DataCurrent();
+                                tempVaule = yourStaticDataList[keyParameter].DataCurrent();
                             }
                             else if(keyAdditionData=="+")
                             {
-                                tempVaule = yourStaticDataList[tempKeyVaule].DataMoveNext();
+                                tempVaule = yourStaticDataList[keyParameter].DataMoveNext();
                             }
                             else if(keyAdditionData.StartsWith("+")) //+10 前移10
                             {
@@ -820,11 +820,11 @@ namespace CaseExecutiveActuator
                                 {
                                     if(tempTimes>0)
                                     {
-                                        for(int i=0;i>tempTimes;i++)
+                                        for(int i=0;i<tempTimes;i++)
                                         {
-                                            yourStaticDataList[tempKeyVaule].DataMoveNext();
+                                            yourStaticDataList[keyParameter].DataMoveNext();
                                         }
-                                        tempVaule = yourStaticDataList[tempKeyVaule].DataCurrent();
+                                        tempVaule = yourStaticDataList[keyParameter].DataCurrent();
                                     }
                                     else
                                     {
@@ -861,11 +861,11 @@ namespace CaseExecutiveActuator
                             {
                                 if (tempTimes > 0)
                                 {
-                                    for (int i = 0; i > tempTimes; i++)
+                                    for (int i = 0; i < tempTimes; i++)
                                     {
-                                        yourStaticDataSourceList[tempKeyVaule].DataMoveNext();
+                                        yourStaticDataSourceList[keyParameter].DataMoveNext();
                                     }
-                                    tempVaule = yourStaticDataSourceList[tempKeyVaule].DataCurrent();
+                                    tempVaule = yourStaticDataSourceList[keyParameter].DataCurrent();
                                 }
                                 else
                                 {
@@ -879,7 +879,7 @@ namespace CaseExecutiveActuator
                         }
                         else
                         {
-                            tempVaule = yourStaticDataSourceList[tempKeyVaule].GetDataVaule(keyAdditionData);
+                            tempVaule = yourStaticDataSourceList[keyParameter].GetDataVaule(keyAdditionData);
                             if(tempVaule==null)
                             {
                                 errorMessage = DealErrorAdditionData();

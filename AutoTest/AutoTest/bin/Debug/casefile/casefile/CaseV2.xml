@@ -5,9 +5,10 @@
     <!-- 该项的内容可以被case结果修改或新增 并与【RunTimeStaticData】里的内容 一起被用做参数化操作，要使用初始化必须指定isHaveParameters="true"  使用格式如 XXXXX*#name*#XXXXXX ，脚本中的*#name*#将被替换为相应的数据-->
       <NewParameter name="appid1">appid1</NewParameter><!-- name值务必不要使用=，+，-这3个字符结尾开头（该值开头的参数被工具保留） -->
       <NewParameter name="appid2">appid2</NewParameter>
+      <NewParameter name="num">5</NewParameter>
     </RunTimeParameter>
     <RunTimeStaticData><!-- type当前支持index / random / time /list /long如果参数错误不会被抛弃将被强行修正为默认值 (name请勿与RunTimeParameter同名，否则执行器将使用RunTimeParameter的值)(+,-,=,为保留字符请勿在参数名称中使用，数字打头的名称也是不允许的)--><!-- 使用时可以在尾部添加=标识取上一个值 -->
-      <NewStaticData name="StaticData" type="index">1-100-2</NewStaticData><!-- 范围必须在0到2147483647之间，使用第一个-连接[首次的当前值与下一个值都是起始值]若有第二个-则后跟为进制，没有则默认为1 -->
+      <NewStaticData name="StaticData" type="index">1-1000-2</NewStaticData><!-- 范围必须在0到2147483647之间，使用第一个-连接[首次的当前值与下一个值都是起始值]若有第二个-则后跟为进制，没有则默认为1 -->
       <NewStaticData name="StaticData0" type="index">1-1000</NewStaticData>
       <NewStaticData name="StaticData1" type="random">10-6</NewStaticData><!-- 使用-连接2个数字，第一个标识字符串长度，第个标识类型 0-是有可见ASCII / 1-数字 / 2-大写字母 / 3-小写字母 / 4-特殊字符 / 5-大小写字母 / 6-字母和数字 -->
       <NewStaticData name="StaticData2" type="time"></NewStaticData><!-- 当前时间，时间格式支持DateTimeFormatInfo ，如不了解可以不填空，示例"yyyy-MM-ddTHH:mm:ss" -->
@@ -32,7 +33,7 @@
         <default_url></default_url>
       </NewActuator>
       <NewActuator name="http" protocol="http">
-        <default_url>http://www.baidu.com/</default_url>
+        <default_url>http://pv.sohu.com</default_url>
       </NewActuator>
       <NewActuator name="MySql_151" protocol="EXT_MySql">
         <connect_str>连接字符串</connect_str>
@@ -621,5 +622,99 @@
         </Attribute>
       </Case>
     </Repeat>
+  </Project>
+  <Project id="1000010004" name="Project test" remark="case测试">
+    <Case id="1000050201" remark="登录商户端">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="GET" isHaveParameters="true">http://huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Uri>
+        <Heads>
+          <Head name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Head>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+      </Content>
+      <Expect method="contain">"success": true</Expect>
+      <Attribute>
+        <ParameterSave>
+          <NewParameter name="parameter_sellerHltoken" mode="json">token</NewParameter>
+          <NewParameter name="parameter_sellerId" mode="json">sellerId</NewParameter>
+          <NewParameter name="parameter_sellerUserId" mode="json">id</NewParameter>
+        </ParameterSave>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040001" remark="case备注">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">http://pv.sohu.com/cityjson?ie=utf-8</Uri>
+        <!--http执行器使用Uri节点代替ContentData与httpMethod-->
+        <!--@开头表示使用默认地址-->
+        <Heads>
+          <Head name="myThing" isHaveParameters="true">*#StaticData(+`num``num`)*#</Head>
+          <!--HaveParameters的处理-->
+          <!--Parameters静态数据必须以*#包含，可以含有多个静态数据，但静态数据不能使用*#进行嵌套，可以进行平铺，如果平铺的多个静态数据的数据名及参数完全相同，则他们的值也将相同，不会进行新的计算-->
+          <!--Parameters静态数据的参数需要使用()括起来，如果没有可以不加-->
+          <!--Parameters静态数据使用()括起来的参数依然支持包含其他静态数据的运算，需要使用``（键盘tab上的键）括起来，同样支持多个``，但暂时也不支持进一步嵌套-->
+          <!--Parameters静态数据的再运算``只能放在()才能被识别-->
+          <Head name="User-Agent">test man</Head>
+          <Head name="additionalEncoding" isHaveParameters="true" additionalEncoding="encode_base64">additionalEncoding</Head>
+        </Heads>
+        <Body isHaveParameters="true" >testdata</Body>
+        <HttpConfig httpMethod="GET">
+          <AisleConfig>
+          <!--http执行器不支持HttpAddress属性（即使设置也不会处理），用@使用默认地址-->
+            <HttpAddress>http://pv.sohu.com/</HttpAddress>
+          </AisleConfig>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">浙江</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040002" remark="case上传">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">@/cityjson?ie=utf-8</Uri>
+        <Heads>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+        <Body isHaveParameters="true" >testdata</Body>
+        <AisleConfig>
+          <!--http执行器不支持HttpAddress属性（即使设置也不会处理），用@使用默认地址-->
+          <HttpAddress>http://pv.sohu.com/</HttpAddress>
+        </AisleConfig>
+        <HttpMultipart>
+          <!-- 【MultipartData】，【MultipartFile】不能同时出现，若同时出现将只取MultipartData，name及filename为Multipart相应属性描述 -->
+          <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+          <!-- 不可以使用【isHaveParameters】，name，filename不存在则默认为空“” -->
+          <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          <!-- 不可以使用【isHaveParameters】 -->
+        </HttpMultipart>
+      </Content>
+      <Expect method="contain">保持至</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040003" remark="case下载">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">http://pv.sohu.com/cityjson?ie=utf-8</Uri>
+        <Heads>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+        <Body isHaveParameters="true" >testdata</Body>
+        <AisleConfig>
+          <!--http执行器不支持HttpAddress属性（即使设置也不会处理），用@使用默认地址-->
+          <HttpAddress>http://pv.sohu.com/</HttpAddress>
+          <HttpDataDown>fileToDown\sohu.txt</HttpDataDown>
+        </AisleConfig>
+      </Content>
+      <Expect method="contain">保持至</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
   </Project>
 </VaneLife_V1>

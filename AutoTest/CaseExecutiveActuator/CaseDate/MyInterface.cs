@@ -52,27 +52,42 @@ namespace CaseExecutiveActuator
     //用于脚本执行数据结构的接口
     public interface ICaseExecutionContent
     {
+        /// <summary>
+        /// Case的协议类型
+        /// </summary>
         CaseProtocol myCaseProtocol
         {
             get;
             //set;
         }
 
+        /// <summary>
+        /// Case使用的执行器的名称
+        /// </summary>
         string myCaseActuator
         {
             get;
         }
 
+        /// <summary>
+        /// Cace目标地址简述（相对于接口地址，用于UI显示）
+        /// </summary>
         string myExecutionTarget
         {
             get;
         }
 
+        /// <summary>
+        /// Cace执行内容简述（相对于接口参数，用于UI显示）
+        /// </summary>
         string myExecutionContent
         {
             get;
         }
 
+        /// <summary>
+        /// Case内容如果解析有错误，将通过这里指明
+        /// </summary>
         string myErrorMessage
         {
             get;
@@ -170,6 +185,7 @@ namespace CaseExecutiveActuator
         {
             get;
         }
+
 
         /// <summary>
         /// 连接ExecutionDevice

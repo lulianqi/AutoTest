@@ -22,7 +22,7 @@ using MyCommonTool;
 
 namespace CaseExecutiveActuator
 {
-    public class myCaseProtocolEngine
+    public class MyCaseProtocolEngine
     {
         public class vanelife_httpEngine
         {
@@ -166,9 +166,8 @@ namespace CaseExecutiveActuator
                             {
                                 myRunContent.httpMethod = "GET";
                             }
-
-
                             myRunContent.httpUri = CaseTool.getXmlParametContent(tempUriDataNode);
+
                         }
                         else
                         {
@@ -206,6 +205,34 @@ namespace CaseExecutiveActuator
                         if (yourContentNode["AisleConfig"] != null)
                         {
                             myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
+                        }
+                        //HttpMultipart
+                        XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];
+                        if (tempHttpMultipartNode != null)
+                        {
+                            if(tempHttpMultipartNode.HasChildNodes)
+                            {
+                                foreach (XmlNode multipartNode in tempHttpMultipartNode.ChildNodes)
+                                {
+                                    HttpMultipart hmp = new HttpMultipart();
+                                    if (multipartNode.Name == "MultipartData")
+                                    {
+                                        hmp.isFile = false;
+                                    }
+                                    else if (multipartNode.Name == "MultipartFile")
+                                    {                                  
+                                        hmp.isFile = true;       
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
+                                    hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name");
+                                    hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename");
+                                    hmp.fileData = multipartNode.InnerText;
+                                    myRunContent.myMultipartList.Add(hmp);
+                                }
+                            }
                         }
                     }
                     else
@@ -456,6 +483,10 @@ namespace CaseExecutiveActuator
                 List<KeyValuePair<string, string>> httpHeads = null;
 
                 httpUri = nowExecutionContent.httpUri.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                if(httpUri.StartsWith("@"))
+                {
+                    httpUri = myExecutionDeviceInfo.default_url + httpUri.Remove(0, 1);
+                }
                 if (nowExecutionContent.httpBody.IsFilled())
                 {
                     httpBody = nowExecutionContent.httpBody.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
@@ -483,9 +514,17 @@ namespace CaseExecutiveActuator
                 }
 
                 //Start Http 
-                if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
+                if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled() && nowExecutionContent.myMultipartList.Count>0)
+                {
+                    myWebTool.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
+                }
+                else if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled() && nowExecutionContent.myMultipartList.Count == 0)
                 {
                     myWebTool.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                }
+                if (nowExecutionContent.myMultipartList.Count > 0)
+                {
+                    myWebTool.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
                 }
                 else
                 {
@@ -754,7 +793,7 @@ namespace CaseExecutiveActuator
                             switch (contentProtocol)
                             {
                                 case CaseProtocol.vanelife_http:
-                                    myCaseData.testContent = myCaseProtocolEngine.vanelife_httpEngine.getRunContent(tempCaseContent);
+                                    myCaseData.testContent = MyCaseProtocolEngine.vanelife_httpEngine.getRunContent(tempCaseContent);
                                     if (myCaseData.testContent.myErrorMessage != null)
                                     {
                                         myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.myErrorMessage);
@@ -762,7 +801,7 @@ namespace CaseExecutiveActuator
                                     }
                                     break;
                                 case CaseProtocol.http:
-                                    myCaseData.testContent = myCaseProtocolEngine.httpEngine.getRunContent(tempCaseContent);
+                                    myCaseData.testContent = MyCaseProtocolEngine.httpEngine.getRunContent(tempCaseContent);
                                     if (myCaseData.testContent.myErrorMessage != null)
                                     {
                                         myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.myErrorMessage);

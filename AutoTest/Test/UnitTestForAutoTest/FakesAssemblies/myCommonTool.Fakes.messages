@@ -1,20 +1,20 @@
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.FileHelper.CsvFileHelper 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.NewRoll 生成存根: 类型没有系列可见的构造函数。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.MyExtensionMethods 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myShareData 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myWebTool 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.StreamAsynRead 生成存根: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.MyWindowsCmd 生成存根: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 <PrivateImplementationDetails>{4C093372-B04C-4D6F-96EB-A29E184E7630} 生成存根: 类型不受支持，因为存在内部限制。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.FileHelper.CsvFileHelper+Type 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySerialPort+delegateReceiveData 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySerialPort+delegateThrowError 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myShareData 生成填充码: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySocket+ConnectionLosted 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySocket+delegateConnected 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySocket+delegateMyConnected 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySocket+delegateReceiveData 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myWebTool+HttpHelper+SetHeadAttributeCallback 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.StreamAsynRead 生成填充码: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.MyWindowsCmd 生成填充码: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 <PrivateImplementationDetails>{4C093372-B04C-4D6F-96EB-A29E184E7630} 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.FileHelper.CsvFileHelper 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.NewRoll 生成存根: 类型没有系列可见的构造函数。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.MyExtensionMethods 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myShareData 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myWebTool 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.StreamAsynRead 生成存根: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.MyWindowsCmd 生成存根: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 <PrivateImplementationDetails>{5312FC37-7CA7-4652-82A2-178DA2AE3E4C} 生成存根: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.FileHelper.CsvFileHelper+Type 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySerialPort+delegateReceiveData 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySerialPort+delegateThrowError 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myShareData 生成填充码: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySocket+ConnectionLosted 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySocket+delegateConnected 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySocket+delegateMyConnected 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.mySocket+delegateReceiveData 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.myWebTool+HttpHelper+SetHeadAttributeCallback 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.StreamAsynRead 生成填充码: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 MyCommonTool.MyWindowsCmd 生成填充码: 类型对 exported or assembly(myCommonTool.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\myCommonTool.fakes : warning : 无法为 <PrivateImplementationDetails>{5312FC37-7CA7-4652-82A2-178DA2AE3E4C} 生成填充码: 类型不受支持，因为存在内部限制。

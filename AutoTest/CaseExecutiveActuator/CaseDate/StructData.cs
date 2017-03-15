@@ -771,6 +771,7 @@ namespace CaseExecutiveActuator
         public List<KeyValuePair<string, caseParameterizationContent>> httpHeads;
         public caseParameterizationContent httpBody;
         public HttpAisleConfig myHttpAisleConfig;
+        public List<HttpMultipart> myMultipartList;
 
         public myBasicHttpExecutionContent()
         {
@@ -782,6 +783,8 @@ namespace CaseExecutiveActuator
             httpHeads = new List<KeyValuePair<string, caseParameterizationContent>>();
             httpBody = new caseParameterizationContent();
             myHttpAisleConfig = new HttpAisleConfig();
+            myMultipartList = new List<HttpMultipart>();
+            
         }
 
         public CaseProtocol myCaseProtocol
