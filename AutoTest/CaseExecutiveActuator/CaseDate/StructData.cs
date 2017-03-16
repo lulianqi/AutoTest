@@ -1,4 +1,4 @@
-﻿using MyCommonTool;
+﻿using MyCommonHelper;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -1063,7 +1063,7 @@ namespace CaseExecutiveActuator
 
         public string DataMoveNext()
         {
-            myNowStr = myCommonTool.GenerateRandomStr(myStrNum, myStrType);
+            myNowStr = MyCommonTool.GenerateRandomStr(myStrNum, myStrType);
             return myNowStr;
         }
 

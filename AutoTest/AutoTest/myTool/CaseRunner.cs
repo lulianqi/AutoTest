@@ -9,7 +9,7 @@ using System.IO;
 using System.Collections;
 using System.Xml;
 using CaseExecutiveActuator.Cell;
-using MyCommonTool;
+using MyCommonHelper;
 using System.Windows.Forms;
 using AutoTest.myTool;
 using System.Drawing;
@@ -495,7 +495,7 @@ namespace AutoTest
                 {
                     if (MessageBox.Show("报告生成成功是否查看", "ok", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
-                        myCommonTool.OpenPress(myReportPath, "");
+                        MyCommonTool.OpenPress(myReportPath, "");
                     }
                 }
             }

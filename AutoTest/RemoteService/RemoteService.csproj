@@ -131,9 +131,9 @@
       <Project>{2da29bc6-bda9-498e-a6da-5bd9fbc3298b}</Project>
       <Name>CaseExecutiveActuator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\myCommonTool\MyCommonTool.csproj">
+    <ProjectReference Include="..\myCommonTool\MyCommonHelper.csproj">
       <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
-      <Name>MyCommonTool</Name>
+      <Name>MyCommonHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyControl\MyCommonControl.csproj">
       <Project>{aaa8bdb9-2468-4338-a8e8-bc2ce2752051}</Project>

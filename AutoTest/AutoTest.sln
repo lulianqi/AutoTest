@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCommonControl", "MyControl\MyCommonControl.csproj", "{AAA8BDB9-2468-4338-A8E8-BC2CE2752051}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCommonTool", "myCommonTool\MyCommonTool.csproj", "{81C596CB-84D9-4171-80CE-2E08D6DB351B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCommonHelper", "myCommonTool\MyCommonHelper.csproj", "{81C596CB-84D9-4171-80CE-2E08D6DB351B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaseExecutiveActuator", "CaseExecutiveActuator\CaseExecutiveActuator.csproj", "{2DA29BC6-BDA9-498E-A6DA-5BD9FBC3298B}"
 EndProject

@@ -12,11 +12,9 @@ D:\my\code\Vane\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExt
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MefExtendMysqlDriver.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MefExtendMysqlDriver.pdb
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\CaseExecutiveActuator.dll
-F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\myCommonTool.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Newtonsoft.Json.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\SpeechLib.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\CaseExecutiveActuator.pdb
-F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\myCommonTool.pdb
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtendMysqlDriver.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtendMysqlDriver.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtendMysqlDriver.pdb
@@ -31,3 +29,5 @@ D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\myCommonT
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtendMysqlDriver.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtendMysqlDriver.dll
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtendMysqlDriver.pdb
+F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.dll
+F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.pdb

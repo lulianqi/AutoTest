@@ -13,7 +13,7 @@ using System.Net;
 using AutoTest.myTool;
 
 using SYDControls;
-using MyCommonTool;
+using MyCommonHelper;
 
 /*******************************************************************************
 * Copyright (c) 2013,浙江风向标科技有限公司
@@ -45,7 +45,7 @@ namespace AutoTest.myDialogWindow
 
         IPEndPoint myIpEp;
         string myGwID;
-        mySocket nowSocket;
+        MySocket nowSocket;
         System.Windows.Forms.Timer myBeatTimer = new System.Windows.Forms.Timer();
         myVaneConfigRequestData nowVaneConfigRequestData ;
         int myMaxLine;
@@ -115,13 +115,13 @@ namespace AutoTest.myDialogWindow
 
             //set the from name
             this.Text += ("  "+myIpEp.Address.ToString());
-            nowSocket = new mySocket(myIpEp, 500);
+            nowSocket = new MySocket(myIpEp, 500);
             if (!nowSocket.isTcpClientConnected)  
             {
                 if (nowSocket.connectClient())
                 {
-                    nowSocket.OnReceiveData += new mySocket.delegateReceiveData(nowSocket_nowReceiveData);
-                    nowSocket.OnTcpConnectionLosted += new mySocket.ConnectionLosted(nowSocket_OnTcpConnectionLosted);
+                    nowSocket.OnReceiveData += new MySocket.delegateReceiveData(nowSocket_nowReceiveData);
+                    nowSocket.OnTcpConnectionLosted += new MySocket.ConnectionLosted(nowSocket_OnTcpConnectionLosted);
                     myBeatTimer.Enabled = true;
                     MyPutInKey keyWindow = new MyPutInKey();
                     keyWindow.Owner = this;

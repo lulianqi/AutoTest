@@ -22,12 +22,10 @@ F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\RemoteService.exe.config
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\RemoteService.exe
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\RemoteService.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\CaseExecutiveActuator.dll
-F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\myCommonTool.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyControl.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Newtonsoft.Json.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\SpeechLib.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\CaseExecutiveActuator.pdb
-F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\myCommonTool.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyControl.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.MyWindow.AddRunner.resources
@@ -58,3 +56,5 @@ D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.RunnerRemot
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.csproj.GenerateResource.Cache
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.exe
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.pdb
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.pdb

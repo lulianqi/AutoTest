@@ -1,9 +1,7 @@
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\obj\Debug\CaseExecutiveActuator.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.pdb
-F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\myCommonTool.dll
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\SpeechLib.dll
-F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\myCommonTool.pdb
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\obj\Debug\CaseExecutiveActuator.dll
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\obj\Debug\CaseExecutiveActuator.pdb
 D:\my\code\Vane\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll
@@ -22,3 +20,5 @@ D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\myCommonTool.dll
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\SpeechLib.dll
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\myCommonTool.pdb
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\obj\Debug\CaseExecutiveActuator.pdb
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.pdb

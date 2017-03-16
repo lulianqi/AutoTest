@@ -121,9 +121,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\myCommonTool\MyCommonTool.csproj">
+    <ProjectReference Include="..\myCommonTool\MyCommonHelper.csproj">
       <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
-      <Name>MyCommonTool</Name>
+      <Name>MyCommonHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -9,8 +9,8 @@ using System.Windows.Forms;
 
 using AutoTest.myTool;
 using System.Threading;
-using MyCommonTool;
-using MyCommonTool.FileHelper;
+using MyCommonHelper;
+using MyCommonHelper.FileHelper;
 using System.IO;
 
 namespace AutoTest
@@ -23,7 +23,7 @@ namespace AutoTest
             InitializeComponent();
         }
 
-        mySerialPort mySP;
+        MySerialPort mySP;
 
         class cc
         {
@@ -179,23 +179,23 @@ namespace AutoTest
             MessageBox.Show("time:" + myWatch.ElapsedMilliseconds + "*" + myWatch.Elapsed);
             for (int i = 0; i < 100; i++)
             {
-                myRandom.Add(myCommonTool.GenerateRandomStr(30, 10));
+                myRandom.Add(MyCommonTool.GenerateRandomStr(30, 10));
             }
             for (int i = 0; i < 100; i++)
             {
-                myRandom.Add(myCommonTool.GenerateRandomStr(30, 1));
+                myRandom.Add(MyCommonTool.GenerateRandomStr(30, 1));
             }
             for (int i = 0; i < 100; i++)
             {
-                myRandom.Add(myCommonTool.GenerateRandomStr(30, 2));
+                myRandom.Add(MyCommonTool.GenerateRandomStr(30, 2));
             }
             for (int i = 0; i < 100; i++)
             {
-                myRandom.Add(myCommonTool.GenerateRandomStr(30, 3));
+                myRandom.Add(MyCommonTool.GenerateRandomStr(30, 3));
             }
             for (int i = 0; i < 100; i++)
             {
-                myRandom.Add(myCommonTool.GenerateRandomStr(30, 4));
+                myRandom.Add(MyCommonTool.GenerateRandomStr(30, 4));
             }
 
             threadTest3();
@@ -295,10 +295,10 @@ namespace AutoTest
             xx.Add("3");
             xx.Add("4");
             xx.Add("5");
-            mySP = new mySerialPort(this);
+            mySP = new MySerialPort(this);
             mySP.myEncoding = System.Text.Encoding.GetEncoding("utf-8");
-            mySP.OnMySerialPortReceiveData += new mySerialPort.delegateReceiveData(mySP_OnMySerialPortReceiveData);
-            mySP.OnMySerialPortThrowError += new mySerialPort.delegateThrowError(mySP_OnMySerialPortThrowError);
+            mySP.OnMySerialPortReceiveData += new MySerialPort.delegateReceiveData(mySP_OnMySerialPortReceiveData);
+            mySP.OnMySerialPortThrowError += new MySerialPort.delegateThrowError(mySP_OnMySerialPortThrowError);
         }
 
 
@@ -436,8 +436,8 @@ namespace AutoTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            myWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", "a=1&b=2&c=3");
-            myWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", null);
+            MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", "a=1&b=2&c=3");
+            MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", null);
             mySP.openSerialPort("COM6", 57600);
         }
 
@@ -474,11 +474,11 @@ namespace AutoTest
             return;
             for (int i = 0; i < 1; i++)
             {
-                myCommonTool.setRichTextBoxContent(ref richTextBox1, "nmbprivate void button2_Click(object sender, EventArgs e)", Color.Red, true);
-                myCommonTool.setRichTextBoxContent(ref richTextBox1, "nmbprivate void button2_Click(object sender, EventArgs e)", Color.Beige, true);
-                myCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Blue, true);
-                myCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.BurlyWood, true);
-                myCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Black, true);
+                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmbprivate void button2_Click(object sender, EventArgs e)", Color.Red, true);
+                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmbprivate void button2_Click(object sender, EventArgs e)", Color.Beige, true);
+                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Blue, true);
+                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.BurlyWood, true);
+                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Black, true);
             }
 
             return;
@@ -495,7 +495,7 @@ namespace AutoTest
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            myCommonTool.SetControlFreeze(richTextBox1);
+            MyCommonTool.SetControlFreeze(richTextBox1);
             int tempStart = richTextBox1.SelectionStart;
             int tempEnd = richTextBox1.SelectionLength;
 
@@ -504,7 +504,7 @@ namespace AutoTest
             //myCommonTool.setControlContentBottom(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.BurlyWood, true);
             //myCommonTool.setControlContentBottom(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Black, true);
             richTextBox1.Select(tempStart, tempEnd);
-            myCommonTool.SetControlUnfreeze(richTextBox1);
+            MyCommonTool.SetControlUnfreeze(richTextBox1);
 
             dataRecordBox1.AddDate("nmprivate void button2_Click(object sender, EventArgs e)b", Color.Blue, true);
             dataRecordBox1.AddDate("nmprivate void button2_Click(object sender, EventArgs e)b", Color.Black, true);

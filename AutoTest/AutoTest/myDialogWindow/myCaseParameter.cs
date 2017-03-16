@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using AutoTest.myTool;
-using MyCommonTool;
+using MyCommonHelper;
 
 
 /*******************************************************************************
@@ -109,7 +109,7 @@ namespace AutoTest.myDialogWindow
 
         public void updatalistView_CaseParameter()
         {
-            myCommonTool.SetControlFreeze(listView_CaseParameter);
+            MyCommonTool.SetControlFreeze(listView_CaseParameter);
             listView_CaseParameter.BeginUpdate();
             listView_CaseParameter.Items.Clear();
             if (isCaceParameter)
@@ -127,7 +127,7 @@ namespace AutoTest.myDialogWindow
                 }
             }
             listView_CaseParameter.EndUpdate();
-            myCommonTool.SetControlUnfreeze(listView_CaseParameter);
+            MyCommonTool.SetControlUnfreeze(listView_CaseParameter);
         }
 
 

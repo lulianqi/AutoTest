@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\myCommonTool\MyCommonTool.csproj">
+    <ProjectReference Include="..\..\myCommonTool\MyCommonHelper.csproj">
       <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
-      <Name>MyCommonTool</Name>
+      <Name>MyCommonHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MySqlHelper\MySqlHelper.csproj">
       <Project>{6d60ff1a-1672-4fe0-a405-1810b3e72ca2}</Project>

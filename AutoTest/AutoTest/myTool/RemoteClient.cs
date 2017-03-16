@@ -443,7 +443,7 @@ namespace AutoTest.myTool
             }
             catch (Exception ex)
             {
-                MyCommonTool.ErrorLog.PutInLogEx(ex);
+                MyCommonHelper.ErrorLog.PutInLogEx(ex);
                 if (counectTime > 0 && isLive)
                 {
                     counectTime--;
@@ -467,7 +467,7 @@ namespace AutoTest.myTool
                 {
                     SetClientState(RemoteClientState.Break);
                     Thread.Sleep(2000);
-                    MyCommonTool.ErrorLog.PutInLogEx(ex);
+                    MyCommonHelper.ErrorLog.PutInLogEx(ex);
                     counectTime = reCounectTime;
                     goto ReConnect;
                 }

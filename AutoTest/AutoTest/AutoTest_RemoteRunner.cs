@@ -16,7 +16,7 @@ using System.Diagnostics;
 using System.Net.NetworkInformation;
 using AutoTest.myDialogWindow;
 using System.Collections;
-using MyCommonTool;
+using MyCommonHelper;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
 using System.ServiceModel;

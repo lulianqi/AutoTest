@@ -7,7 +7,7 @@ using System;
 using AutoTest.myTool;
 using AutoTest.myDialogWindow;
 using System.Threading;
-using MyCommonTool;
+using MyCommonHelper;
 
 
 /*******************************************************************************
@@ -552,7 +552,7 @@ namespace AutoTest
             myWifiCfgSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
             myVaneConfigRequestData myWifiCfgRequestData = new myVaneConfigRequestData();
             //获取所以网口的广播地址，如果没有则使用限制广播地址
-            IPAddress[] myBroadIpList = myNetConfig.getBroadcasetAddress();
+            IPAddress[] myBroadIpList = MyNetConfig.getBroadcasetAddress();
             if (myBroadIpList.Length == 0)
             {
                 myBroadIpList = new IPAddress[] { IPAddress.Broadcast };

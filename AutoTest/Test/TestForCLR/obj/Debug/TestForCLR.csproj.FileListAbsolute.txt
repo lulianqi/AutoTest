@@ -7,4 +7,3 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.csprojResolveAssemblyReference.cache
-F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.csprojResolveAssemblyReference.cache

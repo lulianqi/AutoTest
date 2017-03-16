@@ -4,10 +4,8 @@ F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\CaseExecutiveActuator.dll
-F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\myCommonTool.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyControl.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\CaseExecutiveActuator.pdb
-F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\myCommonTool.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyControl.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.AutoRunner.resources
@@ -103,3 +101,5 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.TEST.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.csproj.GenerateResource.Cache
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.pdb
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\CaseExecutiveActuator.pdb
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.pdb

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using MyCommonTool;
+using MyCommonHelper;
 
 
 /*******************************************************************************
@@ -307,11 +307,11 @@ namespace MyCommonControl
             {
                 if (isAlwaysGoBottom)
                 {
-                    myCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine);
+                    MyCommonHelper.MyCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine);
                 }
                 else
                 {
-                    myCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine, true);
+                    MyCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine, true);
                 }
                 if(richTextBox_dataContainer.Lines.Length>maxLine)
                 {
@@ -323,12 +323,12 @@ namespace MyCommonControl
                     }
                     Array.Copy(tempLines, tempDropLineLen, tempLines, 0, maxLine / 2);
                     Array.Resize(ref tempLines, maxLine / 2);
-                    myCommonTool.SetControlFreeze(richTextBox_dataContainer);
+                    MyCommonTool.SetControlFreeze(richTextBox_dataContainer);
                     richTextBox_dataContainer.Lines = tempLines;
                     richTextBox_dataContainer.SelectAll();
                     richTextBox_dataContainer.SelectionColor = Color.Gray;
                     richTextBox_dataContainer.DeselectAll();
-                    myCommonTool.SetControlUnfreeze(richTextBox_dataContainer);
+                    MyCommonTool.SetControlUnfreeze(richTextBox_dataContainer);
                 }
                 
             }

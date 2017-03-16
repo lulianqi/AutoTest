@@ -5,13 +5,11 @@ F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySshHelper.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySvnHelper.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySql.Data.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Tamir.SharpSSH.dll
-F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\myCommonTool.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SharpSvn.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SpeechLib.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySqlHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySshHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySvnHelper.pdb
-F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\myCommonTool.pdb
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SharpPlink-x64.svnExe
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.exe
@@ -34,3 +32,5 @@ D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SharpPlink-x64.svn
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb

@@ -16,7 +16,7 @@ using System.Diagnostics;
 using System.Net.NetworkInformation;
 using AutoTest.myDialogWindow;
 using System.Collections;
-using MyCommonTool;
+using MyCommonHelper;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
 using CaseExecutiveActuator.CaseMefHelper;
@@ -964,7 +964,7 @@ namespace AutoTest
         /// <param name="yourResult">your Result</param>
         private void AddExecutiveResultToLvDataAdd(myExecutionDeviceResult yourResult)
         {
-            myCommonTool.SetControlFreeze(listView_DataAdd);
+            MyCommonTool.SetControlFreeze(listView_DataAdd);
             listView_DataAdd.BeginUpdate();
             listView_DataAdd.Items.Add(new ListViewItem(new string[] { listView_DataAdd.Items.Count.ToString(), yourResult.caseId.ToString(), yourResult.startTime, yourResult.spanTime, yourResult.result.ToString(), yourResult.caseTarget + "->" + yourResult.backContent, yourResult.staticDataResultCollection.MyToString() + yourResult.additionalRemark }));
             if (pictureBox_dataAddStopTag)
@@ -972,7 +972,7 @@ namespace AutoTest
                 listView_DataAdd.EnsureVisible(listView_DataAdd.Items.Count - 1);
             }
             listView_DataAdd.EndUpdate();
-            myCommonTool.SetControlUnfreeze(listView_DataAdd);
+            MyCommonTool.SetControlUnfreeze(listView_DataAdd);
 
             nowProjectRunCount.allCount++;
             if (yourResult.result == CaseResult.Pass)
@@ -1244,7 +1244,7 @@ namespace AutoTest
                 {
                     if (MessageBox.Show("报告生成成功是否查看", "ok", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
-                        myCommonTool.OpenPress(myReportPath, "");
+                        MyCommonTool.OpenPress(myReportPath, "");
                     }       
                 }
             }
@@ -1253,7 +1253,7 @@ namespace AutoTest
         // open InterfaceTest_Click
         private void pictureBox_openInterfaceTest_Click(object sender, EventArgs e)
         {
-            if (!myCommonTool.OpenPress(System.Environment.CurrentDirectory + "\\myTool\\InterfaceTest\\HttpDome.exe", ""))
+            if (!MyCommonTool.OpenPress(System.Environment.CurrentDirectory + "\\myTool\\InterfaceTest\\HttpDome.exe", ""))
             {
                 MessageBox.Show("外部组件丢失","stop");
             }
@@ -1298,7 +1298,7 @@ namespace AutoTest
             }
             else
             {
-                string myTempStr = MyCommonTool.myWebTool.MyHttp.SendData(tb_tryTestData.Text, "", "GET");
+                string myTempStr = MyCommonHelper.MyWebTool.MyHttp.SendData(tb_tryTestData.Text, "", "GET");
                 trb_addRecord.AddDate( myTempStr, Color.Gray, true);
             }
         }
@@ -1371,7 +1371,7 @@ namespace AutoTest
             string[] dirs = System.IO.Directory.GetFiles(System.Environment.CurrentDirectory + "\\casefile");
             foreach (string tempPath in dirs)
             {
-                DevComponents.DotNetBar.ButtonItem tempButtomItem = new DevComponents.DotNetBar.ButtonItem(tempPath, myCommonTool.findFileName(tempPath));
+                DevComponents.DotNetBar.ButtonItem tempButtomItem = new DevComponents.DotNetBar.ButtonItem(tempPath, MyCommonTool.findFileName(tempPath));
                 tempButtomItem.Click += new EventHandler(tempButtomItem_Click);
                 itemContainer_case.SubItems.Add(tempButtomItem);
             }

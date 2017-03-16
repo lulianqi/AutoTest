@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using AutoTest.myTool;
-using MyCommonTool;
+using MyCommonHelper;
 
 /*******************************************************************************
 * Copyright (c) 2013,浙江风向标

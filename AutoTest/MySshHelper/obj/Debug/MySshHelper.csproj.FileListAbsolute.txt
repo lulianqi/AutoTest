@@ -1,9 +1,7 @@
 F:\file\Code\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.dll
 F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.pdb
-F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\myCommonTool.dll
 F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\SpeechLib.dll
-F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\myCommonTool.pdb
 F:\file\Code\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.dll
 F:\file\Code\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.dll
@@ -14,3 +12,5 @@ D:\my\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\myCommonTool.pdb
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.pdb

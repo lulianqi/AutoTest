@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using AutoTest.myTool;
 using System.Xml;
 using System.Collections;
-using MyCommonTool;
+using MyCommonHelper;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
 
@@ -64,8 +64,8 @@ namespace AutoTest.myControl
             }
             if(yourCaseRunData.testContent!=null)
             {
-                myCommonTool.myAddRtbStr(ref rtb_Content,"【Actuator】:"+yourCaseRunData.testContent.myCaseActuator,Color.DarkOrchid,true);
-                myCommonTool.myAddRtbStr(ref rtb_Content,yourCaseRunData.testContent.myExecutionContent,Color.Maroon,true);
+                MyCommonTool.myAddRtbStr(ref rtb_Content, "【Actuator】:" + yourCaseRunData.testContent.myCaseActuator, Color.DarkOrchid, true);
+                MyCommonTool.myAddRtbStr(ref rtb_Content, yourCaseRunData.testContent.myExecutionContent, Color.Maroon, true);
                 rtb_Content.AppendText((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
                 rtb_Content.Select(0, 0);
                 rtb_Content.ScrollToCaret();

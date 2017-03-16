@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using MyCommonTool;
+using MyCommonHelper;
 
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
@@ -113,16 +113,16 @@ namespace RemoteService.MyWindow
                 {
                     foreach(string tempError in errorList)
                     {
-                        myCommonTool.setRichTextBoxContent(ref rtb_info, tempError, Color.Black, true);
+                        MyCommonTool.setRichTextBoxContent(ref rtb_info, tempError, Color.Black, true);
                     }
                 }
                 newCaseRunner.RunnerCasePath = tb_caseFilePath.Text;
-                myCommonTool.setRichTextBoxContent(ref rtb_info, "加载完成请继续", Color.Blue, true);
+                MyCommonTool.setRichTextBoxContent(ref rtb_info, "加载完成请继续", Color.Blue, true);
                 LoadFileData();
             }
             else
             {
-                myCommonTool.setRichTextBoxContent(ref rtb_info, errorMessage, Color.Red, true);
+                MyCommonTool.setRichTextBoxContent(ref rtb_info, errorMessage, Color.Red, true);
                 newCaseRunner = null;
                 FreezeAdd();
                 MessageBox.Show(errorMessage);
@@ -180,7 +180,7 @@ namespace RemoteService.MyWindow
                 catch
                 {
                     newCaseRunner.RunerActuator.ExecutiveThinkTime = 0;
-                    myCommonTool.setRichTextBoxContent(ref rtb_info, "WaitTime Set Error", Color.Red, true);
+                    MyCommonTool.setRichTextBoxContent(ref rtb_info, "WaitTime Set Error", Color.Red, true);
                 }
                 try
                 {
@@ -189,7 +189,7 @@ namespace RemoteService.MyWindow
                 catch
                 {
                     tempCloneNum = 0;
-                    myCommonTool.setRichTextBoxContent(ref rtb_info, "CloneNum Set Error", Color.Red, true);
+                    MyCommonTool.setRichTextBoxContent(ref rtb_info, "CloneNum Set Error", Color.Red, true);
                 }
                 newCaseRunner.RunnerName = tempName;
                 try
@@ -198,10 +198,10 @@ namespace RemoteService.MyWindow
                 }
                 catch
                 {
-                    myCommonTool.setRichTextBoxContent(ref rtb_info, "StartCell Set Error", Color.Red, true);
+                    MyCommonTool.setRichTextBoxContent(ref rtb_info, "StartCell Set Error", Color.Red, true);
                 }
                 myOwner.AddRunner(newCaseRunner);
-                myCommonTool.setRichTextBoxContent(ref rtb_info, "新用户 " + tempName + "添加成功", Color.Red, true);
+                MyCommonTool.setRichTextBoxContent(ref rtb_info, "新用户 " + tempName + "添加成功", Color.Red, true);
                 if (tempCloneNum>0)
                 {
                     if (tempCloneNum > 200)
@@ -211,7 +211,7 @@ namespace RemoteService.MyWindow
                             for (int i = 0; i < tempCloneNum; i++)
                             {
                                 myOwner.AddRunner(newCaseRunner.Clone(tempName + "#" + i));
-                                myCommonTool.setRichTextBoxContent(ref rtb_info, "新克隆用户 " + tempName + "#" + i + " 添加成功", Color.Red, true);
+                                MyCommonTool.setRichTextBoxContent(ref rtb_info, "新克隆用户 " + tempName + "#" + i + " 添加成功", Color.Red, true);
                             }
                         }
                     }
@@ -220,7 +220,7 @@ namespace RemoteService.MyWindow
                         for (int i = 0; i < tempCloneNum; i++)
                         {
                             myOwner.AddRunner(newCaseRunner.Clone(tempName + "#" + i));
-                            myCommonTool.setRichTextBoxContent(ref rtb_info, "新克隆用户 " + tempName + "#" + i + " 添加成功", Color.Red, true);
+                            MyCommonTool.setRichTextBoxContent(ref rtb_info, "新克隆用户 " + tempName + "#" + i + " 添加成功", Color.Red, true);
                         }
                     }
                 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using MyCommonTool;
+using MyCommonHelper;
 
 
 /*******************************************************************************
@@ -400,7 +400,7 @@ namespace CaseExecutiveActuator
                 myStrBld.Append(tempKey + myDataTable[tempKey]);
             }
             myStrBld.Append(myExecutionDeviceInfo.dev_secret);
-            tempSign = myEncryption.CreateMD5Key(myStrBld.ToString());
+            tempSign = MyEncryption.CreateMD5Key(myStrBld.ToString());
             #endregion
 
             #region 组合数据
@@ -719,7 +719,7 @@ namespace CaseExecutiveActuator
                 errorMes = string.Format("[GetCsvStaticDataSource]error in csv path [path not exixts] [{0}]", yourFormatData);
                 return false;
             }
-            MyCommonTool.FileHelper.CsvFileHelper myCsv = new MyCommonTool.FileHelper.CsvFileHelper(csvPath, csvEncoding);
+            MyCommonHelper.FileHelper.CsvFileHelper myCsv = new MyCommonHelper.FileHelper.CsvFileHelper(csvPath, csvEncoding);
             yourStaticData = new MyStaticDataSourceCsv(myCsv.GetListCsvData());
             myCsv.Dispose();
             return true;

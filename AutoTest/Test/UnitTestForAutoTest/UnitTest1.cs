@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using MyCommonTool;
+using MyCommonHelper;
 using CaseExecutiveActuator;
 using System.Collections.Generic;
 using System.Reflection;
@@ -35,7 +35,7 @@ namespace UnitTestForAutoTest
             string[] tempResult=new string[100];
              for(int i=0;i<100;i++)
              {
-                tempResult[i]=myCommonTool.GenerateRandomNum(10);
+                 tempResult[i] = MyCommonTool.GenerateRandomNum(10);
                 Console.WriteLine(tempResult[i]);
              }
              for (int i = 0; i < 100; i++)
@@ -57,7 +57,7 @@ namespace UnitTestForAutoTest
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    tempResult[i] = myCommonTool.GenerateRandomStr(15, t);
+                    tempResult[i] = MyCommonTool.GenerateRandomStr(15, t);
                     Console.WriteLine(tempResult[i]);
                 }
                 for (int i = 0; i < 100; i++)
