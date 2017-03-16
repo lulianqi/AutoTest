@@ -552,7 +552,7 @@ namespace AutoTest
             myWifiCfgSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
             myVaneConfigRequestData myWifiCfgRequestData = new myVaneConfigRequestData();
             //获取所以网口的广播地址，如果没有则使用限制广播地址
-            IPAddress[] myBroadIpList = MyNetConfig.getBroadcasetAddress();
+            IPAddress[] myBroadIpList = MyCommonHelper.NetHelper.MyNetConfig.getBroadcasetAddress();
             if (myBroadIpList.Length == 0)
             {
                 myBroadIpList = new IPAddress[] { IPAddress.Broadcast };

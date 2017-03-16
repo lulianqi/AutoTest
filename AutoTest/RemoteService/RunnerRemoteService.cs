@@ -60,7 +60,7 @@ namespace RemoteService
 
         private void ShowIp()
         {
-            IPAddress[] ips = MyCommonHelper.MyNetConfig.getNetworkInterfaceAddress();
+            IPAddress[] ips = MyCommonHelper.NetHelper.MyNetConfig.getNetworkInterfaceAddress();
             if(ips!=null)
             {
                 foreach(IPAddress ip in ips)

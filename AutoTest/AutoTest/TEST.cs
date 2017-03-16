@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using AutoTest.myTool;
 using System.Threading;
 using MyCommonHelper;
+using MyCommonHelper.NetHelper;
 using MyCommonHelper.FileHelper;
 using System.IO;
 
@@ -438,6 +439,19 @@ namespace AutoTest
         {
             MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", "a=1&b=2&c=3");
             MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", null);
+            List<MyWebTool.HttpMultipartDate> ntds = new List<MyWebTool.HttpMultipartDate>();
+            List<KeyValuePair<string,string>> heads=new List<KeyValuePair<string,string>>();
+            heads.Add(new KeyValuePair<string,string>("Hostx","HttpPostData"));
+            heads.Add(new KeyValuePair<string,string>("xxx","HttpPostData"));
+            ntds.Add( new MyWebTool.HttpMultipartDate("name", "filename", null, false, "test data"));
+            ntds.Add(new MyWebTool.HttpMultipartDate("name", "filename", "type", false, "test data"));
+            ntds.Add(new MyWebTool.HttpMultipartDate(null, null, "type", false, ""));
+            ntds.Add(new MyWebTool.HttpMultipartDate(null, null, "type", false, null));
+            ntds.Add( new MyWebTool.HttpMultipartDate("name", "filename", null, true, @"C:\Users\cllq\Desktop\CSV\my.csv"));
+
+            MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", null, null, null, null, 1000, null);
+            MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", null, null, ntds, null, 1000, null);
+            MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", 1000, Encoding.UTF8);
             mySP.openSerialPort("COM6", 57600);
         }
 

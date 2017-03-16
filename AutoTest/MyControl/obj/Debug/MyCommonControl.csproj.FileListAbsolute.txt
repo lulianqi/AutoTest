@@ -24,9 +24,7 @@ D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
 D:\my\code\Vane\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb
 D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll
 D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.pdb
-D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\myCommonTool.dll
 D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\SpeechLib.dll
-D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\myCommonTool.pdb
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\CBalloon.CBalloonBase.resources
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.DataRecordBox.resources
@@ -37,3 +35,5 @@ D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb
 F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.dll
 F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.pdb

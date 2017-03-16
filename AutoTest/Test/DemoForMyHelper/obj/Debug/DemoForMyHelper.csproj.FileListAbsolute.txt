@@ -16,7 +16,6 @@ F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.ex
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\DemoForMyHelper.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\DemoForMyHelper.pdb
-D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\myCommonTool.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySqlHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySshHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySvnHelper.dll
@@ -24,7 +23,6 @@ D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Tamir.SharpSSH.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SpeechLib.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySql.Data.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SharpSvn.dll
-D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\myCommonTool.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySqlHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySshHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySvnHelper.pdb
@@ -34,3 +32,5 @@ D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.ex
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb

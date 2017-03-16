@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using AutoTest.myTool;
 using MyCommonHelper;
+using MyCommonHelper.NetHelper;
 
 /*******************************************************************************
 * Copyright (c) 2013,浙江风向标科技有限公司

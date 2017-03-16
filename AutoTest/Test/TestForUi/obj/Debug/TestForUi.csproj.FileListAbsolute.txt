@@ -60,13 +60,11 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\TestForUi.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\TestForUi.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\CaseExecutiveActuator.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\DevComponents.DotNetBar2.dll
-D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\myCommonTool.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyControl.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Newtonsoft.Json.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\SpeechLib.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\CaseExecutiveActuator.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyControl.pdb
-D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\myCommonTool.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\obj\Debug\TestForUi.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\obj\Debug\Interop.NetFwTypeLib.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\obj\Debug\TestForUi.csproj.ResolveComReference.cache
@@ -77,3 +75,5 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\obj\Debug\TestForUi.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\obj\Debug\TestForUi.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.pdb

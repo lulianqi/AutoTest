@@ -16,9 +16,9 @@ D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\obj\Debug\CaseExecutiveActu
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\obj\Debug\CaseExecutiveActuator.dll
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.pdb
-D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\myCommonTool.dll
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\SpeechLib.dll
-D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\myCommonTool.pdb
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\obj\Debug\CaseExecutiveActuator.pdb
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.dll
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.pdb

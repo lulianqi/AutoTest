@@ -17,6 +17,7 @@ using System.Net.NetworkInformation;
 using AutoTest.myDialogWindow;
 using System.Collections;
 using MyCommonHelper;
+using MyCommonHelper.NetHelper;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
 using CaseExecutiveActuator.CaseMefHelper;
@@ -1298,7 +1299,7 @@ namespace AutoTest
             }
             else
             {
-                string myTempStr = MyCommonHelper.MyWebTool.MyHttp.SendData(tb_tryTestData.Text, "", "GET");
+                string myTempStr = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(tb_tryTestData.Text, "", "GET");
                 trb_addRecord.AddDate( myTempStr, Color.Gray, true);
             }
         }

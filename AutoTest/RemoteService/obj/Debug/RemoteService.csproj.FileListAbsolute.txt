@@ -40,12 +40,10 @@ D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\RemoteService.exe.config
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\RemoteService.exe
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\RemoteService.pdb
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\CaseExecutiveActuator.dll
-D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\myCommonTool.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyControl.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\Newtonsoft.Json.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\SpeechLib.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\CaseExecutiveActuator.pdb
-D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\myCommonTool.pdb
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyControl.pdb
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.MyWindow.AddRunner.resources
@@ -58,3 +56,5 @@ D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.exe
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.pdb
