@@ -97,7 +97,7 @@ namespace MyCommonHelper.NetHelper
                 dicHeadSetFun.Add("Content-Length".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { int tempLen; if (!int.TryParse(yourHeadValue, out tempLen)) tempLen = 0; yourRequest.ContentLength = tempLen; }));
                 dicHeadSetFun.Add("Content-Type".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.ContentType = yourHeadValue));
                 dicHeadSetFun.Add("Expect".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Expect = yourHeadValue));
-                //dicHeadSetFun.Add("Host".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Host = yourHeadValue)); //修改该头需要4.0版本支持，如果升级4.0可以取消该注释，启用该功能
+                dicHeadSetFun.Add("Host".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Host = yourHeadValue)); //修改该头需要4.0版本支持，如果升级4.0可以取消该注释，启用该功能
                 dicHeadSetFun.Add("IfModifiedSince".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Referer = yourHeadValue));
                 dicHeadSetFun.Add("Referer".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Accept = yourHeadValue));
                 dicHeadSetFun.Add("User-Agent".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.UserAgent = yourHeadValue));
@@ -186,6 +186,7 @@ namespace MyCommonHelper.NetHelper
         {
             public static int httpTimeOut = 100000;                                            //http time out , HttpPostData will not use this value   （连接超时）
             public static int httpReadWriteTimeout = 300000;                                   //WebRequest.ReadWriteTimeout 该属性暂时未设置           （读取/写入超时）
+            static readonly string EOF = "\r\n";
 
             /// <summary>
             /// i will Send Data 
@@ -290,7 +291,7 @@ namespace MyCommonHelper.NetHelper
             }
 
             /// <summary>
-            /// i will Send Data with multipart,if you do not want updata any file you can set isFile is false and set filePath is null
+            /// i will Send Data with multipart,if you do not want updata any file you can set isFile is false and set filePath is null (not maintain)
             /// </summary>
             /// <param name="url">url</param>
             /// <param name="timeOut">timeOut</param>
@@ -461,7 +462,19 @@ namespace MyCommonHelper.NetHelper
             }
 
 
-            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyParameter ,int timeOut,Encoding yourBodyEncoding)
+
+            /// <summary>
+            /// post multipart data
+            /// </summary>
+            /// <param name="url">url</param>
+            /// <param name="heads">heads (if not need it ,just set it null)</param>
+            /// <param name="bodyData">normal body (if not need it ,just set it null)</param>
+            /// <param name="HttpMultipartDate">MultipartDate list(if not need it ,just set it null)</param>
+            /// <param name="bodyMultipartParameter">celerity MultipartParameter like "a=1&b=2&c=3" (if not need it ,just set it null)</param>
+            /// <param name="timeOut">timeOut</param>
+            /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
+            /// <returns>back data</returns>
+            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding)
             {
                 string responseContent;
                 Encoding httpBodyEncoding = Encoding.UTF8;
@@ -473,9 +486,9 @@ namespace MyCommonHelper.NetHelper
                 }
 
                 //解析快捷Multipart表单形式post参数
-                if (bodyParameter != null)
+                if (bodyMultipartParameter != null)
                 {
-                    string[] sArray = bodyParameter.Split('&');
+                    string[] sArray = bodyMultipartParameter.Split('&');
                     foreach (string tempStr in sArray)
                     {
                         int myBreak = tempStr.IndexOf('=');
@@ -502,6 +515,7 @@ namespace MyCommonHelper.NetHelper
                 // 设置属性
                 webRequest.Method = "POST";
                 webRequest.Timeout = timeOut;
+                webRequest.ContentType = "multipart/form-data; boundary=" + boundary;
 
                 //写如常规body
                 if (bodyData!=null)
@@ -512,10 +526,9 @@ namespace MyCommonHelper.NetHelper
 
                 if (multipartDateList!=null)
                 {
-                    webRequest.ContentType = "multipart/form-data; boundary=" + boundary;
-
                     foreach(HttpMultipartDate nowMultipart in multipartDateList)
                     {
+                        //Console.WriteLine(System.DateTime.Now.Ticks);
                         //const string filePartHeader = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\n" + "Content-Type: {2}\r\n\r\n";
                         string nowPartHeader = "Content-Disposition: form-data";
                         if(nowMultipart.Name!=null)
@@ -529,7 +542,9 @@ namespace MyCommonHelper.NetHelper
                         nowPartHeader += "\r\n";
                         nowPartHeader += string.Format("Content-Type: {0}", nowMultipart.ContentType == null ? defaultMultipartContentType : nowMultipart.ContentType);
                         nowPartHeader += "\r\n\r\n";
+                        //Console.WriteLine(System.DateTime.Now.Ticks);
                         byte[] nowHeaderbytes = httpBodyEncoding.GetBytes(nowPartHeader);
+                        memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
                         memStream.Write(beginBoundary, 0, beginBoundary.Length);
                         memStream.Write(nowHeaderbytes, 0, nowHeaderbytes.Length);
                         //MultipartDate
@@ -563,7 +578,7 @@ namespace MyCommonHelper.NetHelper
                 }
                  
                 //快捷写入写入POST非文件参数
-                if (bodyParameter != null)
+                if (bodyMultipartParameter != null)
                 {
                     //写入字符串的Key
                     string bodyParameterFormat = "\r\n--" + boundary +
@@ -584,8 +599,11 @@ namespace MyCommonHelper.NetHelper
                 }
 
                 //写入最后的结束边界符
-                memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
-                memStream.Write(endBoundary, 0, endBoundary.Length);
+                if (!(bodyMultipartParameter == null && multipartDateList == null))
+                {
+                    memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
+                    memStream.Write(endBoundary, 0, endBoundary.Length);
+                }
 
                 webRequest.ContentLength = memStream.Length;
 
@@ -641,8 +659,17 @@ namespace MyCommonHelper.NetHelper
                 return responseContent;
             }
 
-           
-
+            
+            /// <summary>
+            /// post multipart data
+            /// </summary>
+            /// <param name="url">url</param>
+            /// <param name="HttpMultipartDate">MultipartDate list(if not need it ,just set it null)</param>
+            /// <returns>back data</returns>
+            public static string HttpPostData(string url,HttpMultipartDate HttpMultipartDate)
+            {
+                return HttpPostData(url, null, null, new List<HttpMultipartDate>() { HttpMultipartDate }, null, 100000, null);
+            }
         }
     }
 }

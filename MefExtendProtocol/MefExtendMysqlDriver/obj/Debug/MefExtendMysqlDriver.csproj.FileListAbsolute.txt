@@ -28,6 +28,6 @@ D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtend
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtendMysqlDriver.dll
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\obj\Debug\MefExtendMysqlDriver.pdb
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.dll
-F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.pdb

@@ -221,7 +221,6 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\UnitTestForAut
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\UnitTestForAutoTest.dll
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\UnitTestForAutoTest.pdb
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\AutoTest.Fakes.fakesconfig
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\at\f.cs
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\UnitTestForAutoTest.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\UnitTestForAutoTest.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\AutoTest.Fakes.fakesconfig
@@ -276,10 +275,10 @@ D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\UnitTestForAut
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\UnitTestForAutoTest.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\UnitTestForAutoTest.pdb
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyCommonHelper.dll
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyCommonHelper.dll
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyCommonHelper.pdb

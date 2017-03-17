@@ -100,6 +100,6 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.csproj.GenerateResour
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.pdb
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\CaseExecutiveActuator.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.dll
-F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.pdb

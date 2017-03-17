@@ -55,6 +55,6 @@ D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.csproj.Gene
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.exe
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\obj\Debug\RemoteService.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.dll
-F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.pdb

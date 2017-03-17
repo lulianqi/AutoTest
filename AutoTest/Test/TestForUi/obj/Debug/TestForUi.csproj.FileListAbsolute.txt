@@ -74,6 +74,6 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\obj\Debug\TestForUi.csproj.Generat
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\obj\Debug\TestForUi.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\obj\Debug\TestForUi.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.dll
-F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.pdb

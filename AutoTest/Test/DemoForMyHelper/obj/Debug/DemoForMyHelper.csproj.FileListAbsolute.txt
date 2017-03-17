@@ -31,6 +31,6 @@ D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.cs
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\obj\Debug\DemoForMyHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.dll
-F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb

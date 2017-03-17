@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml;
 using MyCommonHelper;
 
+using CaseExecutiveActuator.ProtocolExecutive;
 
 /*******************************************************************************
 * Copyright (c) 2015 lijie
@@ -330,18 +331,18 @@ namespace CaseExecutiveActuator
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    myWebTool.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                    HttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
                 }
                 else
                 {
                     if(nowExecutionContent.myHttpMultipart.IsFilled())
                     {
                         //由于vanelife协议要求在Multipart把业务数据全部放在了url中
-                        myWebTool.HttpClient.HttpPostData(tempUrlAddress + "?" + vanelifeData, 30000, nowExecutionContent.myHttpMultipart.name, nowExecutionContent.myHttpMultipart.fileName, nowExecutionContent.myHttpMultipart.isFile, nowExecutionContent.myHttpMultipart.fileData, null, myResult);
+                        HttpProtocol.HttpClient.HttpPostData(tempUrlAddress + "?" + vanelifeData, 30000, nowExecutionContent.myHttpMultipart.name, nowExecutionContent.myHttpMultipart.fileName, nowExecutionContent.myHttpMultipart.isFile, nowExecutionContent.myHttpMultipart.fileData, null, myResult);
                     }
                     else
                     {
-                        myWebTool.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult);
+                        HttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult);
                     }
                 }
 
@@ -516,19 +517,19 @@ namespace CaseExecutiveActuator
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled() && nowExecutionContent.myMultipartList.Count>0)
                 {
-                    myWebTool.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
+                    HttpProtocol.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
                 }
                 else if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled() && nowExecutionContent.myMultipartList.Count == 0)
                 {
-                    myWebTool.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                    HttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
                 }
                 if (nowExecutionContent.myMultipartList.Count > 0)
                 {
-                    myWebTool.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
+                    HttpProtocol.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
                 }
                 else
                 {
-                    myWebTool.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod,httpHeads, myResult);
+                    HttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod,httpHeads, myResult);
                 }
 
                 if (tempError != null)

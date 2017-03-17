@@ -34,6 +34,6 @@ D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.Genera
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb
 F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.dll
-F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.pdb
