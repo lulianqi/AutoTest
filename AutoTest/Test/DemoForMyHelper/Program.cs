@@ -11,7 +11,8 @@ namespace DemoForMyHelper
         {
             //new DemoForMySvn().Run();
             //new DemoForMySsh().RunFileMv();
-            new DemoForMySql().RunTest();
+            //new DemoForMySql().RunTest();
+            new DemoForMyVoice().Run();
             Console.ReadKey();
 
         }

@@ -1,0 +1,4 @@
+D:\my\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.pdb

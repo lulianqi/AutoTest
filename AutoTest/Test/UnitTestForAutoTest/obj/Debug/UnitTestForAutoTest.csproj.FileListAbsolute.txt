@@ -282,3 +282,7 @@ D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\My
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyVoiceHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyVoiceHelper.pdb

@@ -20,7 +20,6 @@ D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySqlHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySshHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySvnHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Tamir.SharpSSH.dll
-D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SpeechLib.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySql.Data.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SharpSvn.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MySqlHelper.pdb
@@ -34,3 +33,6 @@ F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SpeechLib.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyVoiceHelper.pdb

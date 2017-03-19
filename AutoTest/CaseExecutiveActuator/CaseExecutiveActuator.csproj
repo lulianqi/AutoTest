@@ -66,6 +66,10 @@
       <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
       <Name>MyCommonHelper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyVoiceHelper\MyVoiceHelper.csproj">
+      <Project>{a5247da0-53bc-4ccb-8778-329e3f05cb0e}</Project>
+      <Name>MyVoiceHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

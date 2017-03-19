@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Specialized;
 using System.Linq;
 using MyCommonHelper;
+using MyCommonHelper.NetHelper;
 using CaseExecutiveActuator;
 
 
@@ -25,107 +26,107 @@ using CaseExecutiveActuator;
 
 namespace CaseExecutiveActuator.ProtocolExecutive
 {
-    public static class HttpProtocol
+    public static class AtHttpProtocol
     {
-        public class HttpHelper
-        {
-            private delegate void SetHeadAttributeCallback(HttpWebRequest yourRequest, string yourHeadValue);
+        //public class HttpHelper
+        //{
+        //    private delegate void SetHeadAttributeCallback(HttpWebRequest yourRequest, string yourHeadValue);
 
-            private static Dictionary<string, SetHeadAttributeCallback> dicHeadSetFun = new Dictionary<string, SetHeadAttributeCallback>();
-            static HttpHelper()
-            {
-                dicHeadSetFun.Add("Accept".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Accept = yourHeadValue));
-                dicHeadSetFun.Add("Connection".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Connection = yourHeadValue));
-                dicHeadSetFun.Add("Date".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { DateTime tempTime; if (!DateTime.TryParse(yourHeadValue, out tempTime)) tempTime = DateTime.Now; yourRequest.Date = tempTime; }));  //2009-05-01 14:57:32
-                //dicHeadSetFun.Add("KeepAlive".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.KeepAlive = yourHeadValue));////该头可以直接使用Headers.Add
-                dicHeadSetFun.Add("Transfer-Encoding".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.TransferEncoding = yourHeadValue));
-                dicHeadSetFun.Add("Content-Length".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { int tempLen; if (!int.TryParse(yourHeadValue, out tempLen)) tempLen = 0; yourRequest.ContentLength = tempLen; }));
-                dicHeadSetFun.Add("Content-Type".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.ContentType = yourHeadValue));
-                dicHeadSetFun.Add("Expect".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Expect = yourHeadValue));
-                dicHeadSetFun.Add("Host".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Host = yourHeadValue));
-                //dicHeadSetFun.Add("IfModifiedSince".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.IfModifiedSince = yourHeadValue));
-                dicHeadSetFun.Add("Referer".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Referer = yourHeadValue));
-                dicHeadSetFun.Add("User-Agent".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.UserAgent = yourHeadValue));
-            }
+        //    private static Dictionary<string, SetHeadAttributeCallback> dicHeadSetFun = new Dictionary<string, SetHeadAttributeCallback>();
+        //    static HttpHelper()
+        //    {
+        //        dicHeadSetFun.Add("Accept".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Accept = yourHeadValue));
+        //        dicHeadSetFun.Add("Connection".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Connection = yourHeadValue));
+        //        dicHeadSetFun.Add("Date".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { DateTime tempTime; if (!DateTime.TryParse(yourHeadValue, out tempTime)) tempTime = DateTime.Now; yourRequest.Date = tempTime; }));  //2009-05-01 14:57:32
+        //        //dicHeadSetFun.Add("KeepAlive".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.KeepAlive = yourHeadValue));////该头可以直接使用Headers.Add
+        //        dicHeadSetFun.Add("Transfer-Encoding".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.TransferEncoding = yourHeadValue));
+        //        dicHeadSetFun.Add("Content-Length".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { int tempLen; if (!int.TryParse(yourHeadValue, out tempLen)) tempLen = 0; yourRequest.ContentLength = tempLen; }));
+        //        dicHeadSetFun.Add("Content-Type".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.ContentType = yourHeadValue));
+        //        dicHeadSetFun.Add("Expect".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Expect = yourHeadValue));
+        //        dicHeadSetFun.Add("Host".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Host = yourHeadValue));
+        //        //dicHeadSetFun.Add("IfModifiedSince".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.IfModifiedSince = yourHeadValue));
+        //        dicHeadSetFun.Add("Referer".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Referer = yourHeadValue));
+        //        dicHeadSetFun.Add("User-Agent".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.UserAgent = yourHeadValue));
+        //    }
 
-            /// <summary>
-            /// 添加http请求头属性（特殊属性自动转化为dicHeadSetFun中委托完成设置）
-            /// </summary>
-            /// <param name="httpWebRequest">HttpWebRequest</param>
-            /// <param name="heads">属性列表</param>
-            public static void AddHttpHeads(HttpWebRequest httpWebRequest, List<KeyValuePair<string, string>> heads)
-            {
-                if (httpWebRequest == null)
-                {
-                    return;
-                }
-                if (heads != null)
-                {
-                    foreach (var Head in heads)
-                    {
-                        if (dicHeadSetFun.ContainsKey(Head.Key.ToUpper()))
-                        {
-                            (dicHeadSetFun[Head.Key.ToUpper()])(httpWebRequest, Head.Value);
-                        }
-                        else
-                        {
-                            httpWebRequest.Headers.Add(Head.Key, Head.Value);
-                        }
-                    }
-                }
-            }
+        //    /// <summary>
+        //    /// 添加http请求头属性（特殊属性自动转化为dicHeadSetFun中委托完成设置）
+        //    /// </summary>
+        //    /// <param name="httpWebRequest">HttpWebRequest</param>
+        //    /// <param name="heads">属性列表</param>
+        //    public static void AddHttpHeads(HttpWebRequest httpWebRequest, List<KeyValuePair<string, string>> heads)
+        //    {
+        //        if (httpWebRequest == null)
+        //        {
+        //            return;
+        //        }
+        //        if (heads != null)
+        //        {
+        //            foreach (var Head in heads)
+        //            {
+        //                if (dicHeadSetFun.ContainsKey(Head.Key.ToUpper()))
+        //                {
+        //                    (dicHeadSetFun[Head.Key.ToUpper()])(httpWebRequest, Head.Value);
+        //                }
+        //                else
+        //                {
+        //                    httpWebRequest.Headers.Add(Head.Key, Head.Value);
+        //                }
+        //            }
+        //        }
+        //    }
 
-            /// <summary>
-            /// 添加http请求头属性（全部使用默认header.Add进行添加，失败后使用SetHeaderValue进行添加，不过依然可能不超过）
-            /// </summary>
-            /// <param name="header">WebHeaderCollection</param>
-            /// <param name="heads">属性列表</param>
-            public static void AddHttpHeads(WebHeaderCollection header, List<KeyValuePair<string, string>> heads)
-            {
-                if (header == null)
-                {
-                    return;
-                }
-                if (heads != null)
-                {
-                    //wr.Headers.Add(new NameValueCollection());
-                    foreach (var Head in heads)
-                    {
-                        try
-                        {
-                            header.Add(Head.Key, Head.Value);
-                            //((HttpWebRequest)wr).Headers.Add(HttpRequestHeader.Host, "www.contoso.com"); //必须用适当的属性修改host   使用4.0也报必须使用适当的属性或方法修改“Host”标头
-                            //((HttpWebRequest)wr).Headers.Add("Host", "192.168.0.1");//这样一样不行
-                            //SetHeaderValue(wr.Headers, "Host", "www.contoso.com:8080");//即使是4.0也无法直接修改
-                            //((HttpWebRequest)wr).Host = "www.contoso.com:8080";//只有这种方式在4.0可以生效
-                        }
-                        catch (Exception ex)
-                        {
-                            SetHeaderValue(header, Head.Key, Head.Value);
-                            ErrorLog.PutInLog("ID:0929  " + ex.Message);
-                        }
-                    }
-                }
-            }
+        //    /// <summary>
+        //    /// 添加http请求头属性（全部使用默认header.Add进行添加，失败后使用SetHeaderValue进行添加，不过依然可能不超过）
+        //    /// </summary>
+        //    /// <param name="header">WebHeaderCollection</param>
+        //    /// <param name="heads">属性列表</param>
+        //    public static void AddHttpHeads(WebHeaderCollection header, List<KeyValuePair<string, string>> heads)
+        //    {
+        //        if (header == null)
+        //        {
+        //            return;
+        //        }
+        //        if (heads != null)
+        //        {
+        //            //wr.Headers.Add(new NameValueCollection());
+        //            foreach (var Head in heads)
+        //            {
+        //                try
+        //                {
+        //                    header.Add(Head.Key, Head.Value);
+        //                    //((HttpWebRequest)wr).Headers.Add(HttpRequestHeader.Host, "www.contoso.com"); //必须用适当的属性修改host   使用4.0也报必须使用适当的属性或方法修改“Host”标头
+        //                    //((HttpWebRequest)wr).Headers.Add("Host", "192.168.0.1");//这样一样不行
+        //                    //SetHeaderValue(wr.Headers, "Host", "www.contoso.com:8080");//即使是4.0也无法直接修改
+        //                    //((HttpWebRequest)wr).Host = "www.contoso.com:8080";//只有这种方式在4.0可以生效
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    SetHeaderValue(header, Head.Key, Head.Value);
+        //                    ErrorLog.PutInLog("ID:0929  " + ex.Message);
+        //                }
+        //            }
+        //        }
+        //    }
 
-            public static void SetHeaderValue(WebHeaderCollection header, string name, string value)
-            {
+        //    public static void SetHeaderValue(WebHeaderCollection header, string name, string value)
+        //    {
 
-                var property = typeof(WebHeaderCollection).GetProperty("InnerCollection",
+        //        var property = typeof(WebHeaderCollection).GetProperty("InnerCollection",
 
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+        //            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
 
-                if (property != null)
-                {
+        //        if (property != null)
+        //        {
 
-                    var collection = property.GetValue(header, null) as NameValueCollection;
+        //            var collection = property.GetValue(header, null) as NameValueCollection;
 
-                    collection[name] = value;
+        //            collection[name] = value;
 
-                }
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
         public class HttpClient
         {
@@ -173,7 +174,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                     wr.Method = method;
                     wr.ContentType = "application/x-www-form-urlencoded";
 
-                    HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
+                    MyWebTool.HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
                     
                     //((HttpWebRequest)wr).KeepAlive = true;
                     //wr.Headers.Remove(HttpRequestHeader.Connection);
@@ -298,7 +299,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                     wr.Method = method;
                     wr.ContentType = "application/x-www-form-urlencoded";
 
-                    HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
+                    MyWebTool.HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
                     
                     //((HttpWebRequest)wr).KeepAlive = true;
                     //wr.Headers.Remove(HttpRequestHeader.Connection);
@@ -461,7 +462,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                     myEdr.startTime = DateTime.Now.ToString("HH:mm:ss");
                     using (WebClient client = new WebClient())
                     {
-                        HttpHelper.AddHttpHeads(client.Headers, heads);
+                        MyWebTool.HttpHelper.AddHttpHeads(client.Headers, heads);
                         myWatch.Start();
                         client.DownloadFile(tempUrl, saveFileName);
                         myWatch.Stop();
@@ -689,6 +690,206 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                 myEdr.backContent = responseContent;
                 return responseContent;
             }
+
+            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<MyWebTool.HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding, myExecutionDeviceResult myEdr)
+            {
+                string responseContent;
+                Encoding httpBodyEncoding = Encoding.UTF8;
+                string defaultMultipartContentType = "application/octet-stream";
+                NameValueCollection stringDict = new NameValueCollection();
+                if (yourBodyEncoding != null)
+                {
+                    httpBodyEncoding = yourBodyEncoding;
+                }
+
+                //解析快捷Multipart表单形式post参数
+                if (bodyMultipartParameter != null)
+                {
+                    string[] sArray = bodyMultipartParameter.Split('&');
+                    foreach (string tempStr in sArray)
+                    {
+                        int myBreak = tempStr.IndexOf('=');
+                        if (myBreak == -1)
+                        {
+                            myEdr.backContent = "can't find '=' in [bodyMultipartParameter]";
+                            return "can't find =";
+                        }
+                        stringDict.Add(tempStr.Substring(0, myBreak), tempStr.Substring(myBreak + 1));
+                    }
+                }
+
+                var memStream = new MemoryStream();
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                //写入http头
+                MyWebTool.HttpHelper.AddHttpHeads(webRequest, heads);
+
+                // 边界符
+                var boundary = "---------------" + DateTime.Now.Ticks.ToString("x");
+                // 边界符
+                var beginBoundary = Encoding.ASCII.GetBytes("--" + boundary + "\r\n");
+                // 最后的结束符
+                var endBoundary = Encoding.ASCII.GetBytes("--" + boundary + "--\r\n");
+
+                // 设置属性
+                webRequest.Method = "POST";
+                webRequest.Timeout = timeOut;
+                webRequest.ContentType = "multipart/form-data; boundary=" + boundary;
+
+                //写如常规body
+                if (bodyData != null)
+                {
+                    var bodybytes = httpBodyEncoding.GetBytes(bodyData);
+                    memStream.Write(bodybytes, 0, bodybytes.Length);
+                }
+
+                if (multipartDateList != null)
+                {
+                    foreach (MyWebTool.HttpMultipartDate nowMultipart in multipartDateList)
+                    {
+                        //Console.WriteLine(System.DateTime.Now.Ticks);
+                        //const string filePartHeader = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\n" + "Content-Type: {2}\r\n\r\n";
+                        string nowPartHeader = "Content-Disposition: form-data";
+                        if (nowMultipart.Name != null)
+                        {
+                            nowPartHeader += string.Format("; name=\"{0}\"", nowMultipart.Name);
+                        }
+                        if (nowMultipart.FileName != null)
+                        {
+                            nowPartHeader += string.Format("; filename=\"{0}\"", nowMultipart.FileName);
+                        }
+                        nowPartHeader += "\r\n";
+                        nowPartHeader += string.Format("Content-Type: {0}", nowMultipart.ContentType == null ? defaultMultipartContentType : nowMultipart.ContentType);
+                        nowPartHeader += "\r\n\r\n";
+                        //Console.WriteLine(System.DateTime.Now.Ticks);
+                        byte[] nowHeaderbytes = httpBodyEncoding.GetBytes(nowPartHeader);
+                        memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
+                        memStream.Write(beginBoundary, 0, beginBoundary.Length);
+                        memStream.Write(nowHeaderbytes, 0, nowHeaderbytes.Length);
+                        //MultipartDate
+                        if (nowMultipart.IsFile)
+                        {
+                            try
+                            {
+                                using (var fileStream = new FileStream(nowMultipart.FileData, FileMode.Open, FileAccess.Read))
+                                {
+                                    byte[] buffer = new byte[1024];
+                                    int bytesRead; // =0
+                                    while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
+                                    {
+                                        memStream.Write(buffer, 0, bytesRead);
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                responseContent = "Error:  " + ex.Message + "\r\n";
+                                ErrorLog.PutInLog("ID:0544 " + ex.InnerException);
+                                myEdr.backContent = responseContent;
+                                return responseContent;
+                            }
+                        }
+                        else
+                        {
+                            byte[] myCmd = httpBodyEncoding.GetBytes(nowMultipart.FileData == null ? "" : nowMultipart.FileData);
+                            memStream.Write(myCmd, 0, myCmd.Length);
+                        }
+                    }
+                }
+
+                //快捷写入写入POST非文件参数
+                if (bodyMultipartParameter != null)
+                {
+                    //写入字符串的Key
+                    string bodyParameterFormat = "\r\n--" + boundary +
+                                           "\r\nContent-Disposition: form-data; name=\"{0}\"" +
+                                           "\r\n\r\n{1}";
+                    for (int i = 0; i < stringDict.Count; i++)
+                    {
+                        try
+                        {
+                            byte[] formitembytes = httpBodyEncoding.GetBytes(string.Format(bodyParameterFormat, stringDict.GetKey(i), stringDict.Get(i)));
+                            memStream.Write(formitembytes, 0, formitembytes.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            responseContent = "can not send :" + ex.Message;
+                            myEdr.backContent = responseContent;
+                            return responseContent;
+                        }
+                    }
+                }
+
+                //写入最后的结束边界符
+                if (!(bodyMultipartParameter == null && multipartDateList == null))
+                {
+                    memStream.Write(Encoding.ASCII.GetBytes("\r\n"), 0, Encoding.ASCII.GetBytes("\r\n").Length);
+                    memStream.Write(endBoundary, 0, endBoundary.Length);
+                }
+
+                webRequest.ContentLength = memStream.Length;
+
+                Stopwatch myWatch = new Stopwatch();
+                myEdr.startTime = DateTime.Now.ToString("HH:mm:ss");
+                myWatch.Start();
+
+                //开始请求
+                try
+                {
+                    var requestStream = webRequest.GetRequestStream();
+
+                    memStream.Position = 0;
+                    var tempBuffer = new byte[memStream.Length];
+                    memStream.Read(tempBuffer, 0, tempBuffer.Length);
+                    memStream.Close();
+
+                    requestStream.Write(tempBuffer, 0, tempBuffer.Length);
+                    requestStream.Close();
+
+                    HttpWebResponse httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                    using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(), Encoding.GetEncoding("utf-8")))
+                    {
+                        responseContent = httpStreamReader.ReadToEnd();
+                    }
+                    myWatch.Stop();
+                    httpWebResponse.Close();
+                    webRequest.Abort();
+                }
+                catch (WebException wex)
+                {
+                    responseContent = string.Format("Error:{0}\r\n", wex.Message);
+                    if (wex.Response != null)
+                    {
+                        using (var errorResponse = (HttpWebResponse)wex.Response)
+                        {
+                            responseContent += "StatusCode:  " + Convert.ToInt32(((HttpWebResponse)wex.Response).StatusCode) + "\r\n";
+                            using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                            {
+                                responseContent += reader.ReadToEnd();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        responseContent += "WebException->Response is null";
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    responseContent = ex.Message;
+                    ErrorLog.PutInLog("ID:0090 " + ex.InnerException);
+                }
+                if (myWatch.IsRunning)
+                {
+                    myWatch.Stop();
+                }
+                myEdr.spanTime = myWatch.ElapsedMilliseconds.ToString();
+                myEdr.backContent = responseContent;
+
+                return responseContent;
+            }
+
 
         }
     }

@@ -6,4 +6,3 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForSpecifiedHttp\bin\Debug\TestForSpecif
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForSpecifiedHttp\bin\Debug\TestForSpecifiedHttp.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForSpecifiedHttp\obj\Debug\TestForSpecifiedHttp.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForSpecifiedHttp\obj\Debug\TestForSpecifiedHttp.pdb
-D:\my\GitHub\AutoTest\AutoTest\Test\TestForSpecifiedHttp\obj\Debug\TestForSpecifiedHttp.csprojResolveAssemblyReference.cache

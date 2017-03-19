@@ -53,6 +53,7 @@
     <Compile Include="DemoForMySvn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DemoForMyVoice.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MyCommonHelper\MyCommonHelper.csproj">
@@ -70,6 +71,10 @@
     <ProjectReference Include="..\..\MySvnHelper\MySvnHelper.csproj">
       <Project>{73ff2cbb-1dd0-4778-b111-f4d9f8efbefb}</Project>
       <Name>MySvnHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MyVoiceHelper\MyVoiceHelper.csproj">
+      <Project>{a5247da0-53bc-4ccb-8778-329e3f05cb0e}</Project>
+      <Name>MyVoiceHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

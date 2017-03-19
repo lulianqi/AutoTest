@@ -2524,133 +2524,70 @@
         <member name="P:CaseExecutiveActuator.Fakes.StubmyTreeTagInfo.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
-        <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol">
-            <summary>CaseExecutiveActuator.ProtocolExecutive.HttpProtocol 的填充码类型</summary>
+        <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol">
+            <summary>CaseExecutiveActuator.ProtocolExecutive.AtHttpProtocol 的填充码类型</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.#ctor">
+        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.#ctor">
             <summary>初始化新的填充码实例</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.BehaveAsCurrent">
+        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.BehaveAsCurrent">
             <summary>为已填充的类型的所有方法分配“Current”行为</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.BehaveAsNotImplemented">
+        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.BehaveAsNotImplemented">
             <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.Behavior">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
-        <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient">
-            <summary>CaseExecutiveActuator.ProtocolExecutive.HttpProtocol+HttpClient 的填充码类型</summary>
+        <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient">
+            <summary>CaseExecutiveActuator.ProtocolExecutive.AtHttpProtocol+HttpClient 的填充码类型</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.#ctor">
+        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.#ctor">
             <summary>初始化新的填充码实例</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.#ctor(CaseExecutiveActuator.ProtocolExecutive.HttpProtocol.HttpClient)">
+        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.#ctor(CaseExecutiveActuator.ProtocolExecutive.AtHttpProtocol.HttpClient)">
             <summary>初始化给定实例的新填充码</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.BehaveAsCurrent">
+        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.BehaveAsCurrent">
             <summary>为已填充的类型的所有方法分配“Current”行为</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.BehaveAsNotImplemented">
+        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.BehaveAsNotImplemented">
             <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.Behavior">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.Constructor">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.Constructor">
             <summary>设置 HttpClient.HttpClient() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.HttpPostDataStringInt32StringStringBooleanStringStringmyExecutionDeviceResult">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.HttpPostDataStringInt32StringStringBooleanStringStringmyExecutionDeviceResult">
             <summary>设置 HttpClient.HttpPostData(String url, Int32 timeOut, String name, String filename, Boolean isFile, String filePath, String bodyParameter, myExecutionDeviceResult myEdr) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.SendDataSaveExStringStringStringListOfKeyValuePairOfStringStringmyExecutionDeviceResultString">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.HttpPostDataStringListOfKeyValuePairOfStringStringStringListOfMyWebToolHttpMultipartDateStringInt32EncodingmyExecutionDeviceResult">
+            <summary>设置 HttpClient.HttpPostData(String url, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, String bodyData, List`1&lt;HttpMultipartDate&gt; multipartDateList, String bodyMultipartParameter, Int32 timeOut, Encoding yourBodyEncoding, myExecutionDeviceResult myEdr) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataSaveExStringStringStringListOfKeyValuePairOfStringStringmyExecutionDeviceResultString">
             <summary>设置 HttpClient.SendDataSaveEx(String url, String data, String method, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, myExecutionDeviceResult myEdr, String saveFileName) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.SendDataSaveExStringStringStringmyExecutionDeviceResultString">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataSaveExStringStringStringmyExecutionDeviceResultString">
             <summary>设置 HttpClient.SendDataSaveEx(String url, String data, String method, myExecutionDeviceResult myEdr, String saveFileName) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.SendDataStringStringStringListOfKeyValuePairOfStringStringmyExecutionDeviceResult">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataStringStringStringListOfKeyValuePairOfStringStringmyExecutionDeviceResult">
             <summary>设置 HttpClient.SendData(String url, String data, String method, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, myExecutionDeviceResult myEdr) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.SendDataStringStringStringListOfKeyValuePairOfStringStringmyExecutionDeviceResultString">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataStringStringStringListOfKeyValuePairOfStringStringmyExecutionDeviceResultString">
             <summary>设置 HttpClient.SendData(String url, String data, String method, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, myExecutionDeviceResult myEdr, String saveFileName) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.SendDataStringStringStringmyExecutionDeviceResult">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataStringStringStringmyExecutionDeviceResult">
             <summary>设置 HttpClient.SendData(String url, String data, String method, myExecutionDeviceResult myEdr) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.SendDataStringStringStringmyExecutionDeviceResultString">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataStringStringStringmyExecutionDeviceResultString">
             <summary>设置 HttpClient.SendData(String url, String data, String method, myExecutionDeviceResult myEdr, String saveFileName) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.StaticConstructor">
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.StaticConstructor">
             <summary>设置 HttpClient.HttpClient() 的 填充码</summary>
         </member>
-        <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpClient.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper">
-            <summary>CaseExecutiveActuator.ProtocolExecutive.HttpProtocol+HttpHelper 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.#ctor(CaseExecutiveActuator.ProtocolExecutive.HttpProtocol.HttpHelper)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.AddHttpHeadsHttpWebRequestListOfKeyValuePairOfStringString">
-            <summary>设置 HttpHelper.AddHttpHeads(HttpWebRequest httpWebRequest, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.AddHttpHeadsWebHeaderCollectionListOfKeyValuePairOfStringString">
-            <summary>设置 HttpHelper.AddHttpHeads(WebHeaderCollection header, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.Constructor">
-            <summary>设置 HttpHelper.HttpHelper() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.SetHeaderValueWebHeaderCollectionStringString">
-            <summary>设置 HttpHelper.SetHeaderValue(WebHeaderCollection header, String name, String value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.StaticConstructor">
-            <summary>设置 HttpHelper.HttpHelper() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__0HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__0(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__1HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__1(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__2HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__2(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__3HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__3(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__4HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__4(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__5HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__5(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__6HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__6(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__7HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__7(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__8HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__8(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper._cctorb__9HttpWebRequestString">
-            <summary>设置 HttpHelper.&lt;.cctor&gt;b__9(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimHttpProtocol.ShimHttpHelper.AllInstances">
+        <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
         <member name="T:Microsoft.QualityTools.Testing.Fakes.Delegates.CaseExecutiveActuatorDelegates">

@@ -31,3 +31,5 @@ F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonH
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyVoiceHelper.pdb

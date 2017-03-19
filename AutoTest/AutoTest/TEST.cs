@@ -159,8 +159,7 @@ namespace AutoTest
             xxxxx = xxxxx.MyAddValue("cnm3");
             xxxxx = xxxxx.MyAddValue("cn44m");
             return;
-            VoiceService.Beep();
-            VoiceService.Speak("我爱你  i love you 1234");
+            
             System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
             
             threadTest2();

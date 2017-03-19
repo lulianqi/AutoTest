@@ -593,7 +593,8 @@ namespace MyCommonHelper.NetHelper
                         }
                         catch (Exception ex)
                         {
-                            return "can not send :" + ex.Message;
+                            responseContent = "can not send :" + ex.Message;
+                            return responseContent;
                         }
                     }
                 }

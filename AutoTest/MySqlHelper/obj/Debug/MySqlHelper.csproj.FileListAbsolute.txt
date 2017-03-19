@@ -6,4 +6,3 @@ D:\my\GitHub\AutoTest\AutoTest\MySqlHelper\bin\Debug\MySqlHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MySqlHelper\bin\Debug\MySqlHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.pdb
-D:\my\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.csprojResolveAssemblyReference.cache

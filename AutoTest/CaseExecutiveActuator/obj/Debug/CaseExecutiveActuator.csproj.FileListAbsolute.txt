@@ -22,3 +22,5 @@ F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.dl
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyVoiceHelper.pdb

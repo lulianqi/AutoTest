@@ -331,18 +331,18 @@ namespace CaseExecutiveActuator
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    HttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                    AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
                 }
                 else
                 {
                     if(nowExecutionContent.myHttpMultipart.IsFilled())
                     {
                         //由于vanelife协议要求在Multipart把业务数据全部放在了url中
-                        HttpProtocol.HttpClient.HttpPostData(tempUrlAddress + "?" + vanelifeData, 30000, nowExecutionContent.myHttpMultipart.name, nowExecutionContent.myHttpMultipart.fileName, nowExecutionContent.myHttpMultipart.isFile, nowExecutionContent.myHttpMultipart.fileData, null, myResult);
+                        AtHttpProtocol.HttpClient.HttpPostData(tempUrlAddress + "?" + vanelifeData, 30000, nowExecutionContent.myHttpMultipart.name, nowExecutionContent.myHttpMultipart.fileName, nowExecutionContent.myHttpMultipart.isFile, nowExecutionContent.myHttpMultipart.fileData, null, myResult);
                     }
                     else
                     {
-                        HttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult);
+                        AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult);
                     }
                 }
 
@@ -517,19 +517,19 @@ namespace CaseExecutiveActuator
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled() && nowExecutionContent.myMultipartList.Count>0)
                 {
-                    HttpProtocol.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
+                    AtHttpProtocol.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
                 }
                 else if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled() && nowExecutionContent.myMultipartList.Count == 0)
                 {
-                    HttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
                 }
                 if (nowExecutionContent.myMultipartList.Count > 0)
                 {
-                    HttpProtocol.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
+                    AtHttpProtocol.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
                 }
                 else
                 {
-                    HttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod,httpHeads, myResult);
+                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod,httpHeads, myResult);
                 }
 
                 if (tempError != null)

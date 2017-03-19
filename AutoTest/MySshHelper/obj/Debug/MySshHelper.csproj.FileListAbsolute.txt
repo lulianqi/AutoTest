@@ -6,7 +6,6 @@ F:\file\Code\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.dll
 F:\file\Code\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.pdb
-D:\my\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\SpeechLib.dll
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.pdb

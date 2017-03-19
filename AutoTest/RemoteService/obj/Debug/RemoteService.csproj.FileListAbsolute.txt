@@ -58,3 +58,5 @@ F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyVoiceHelper.pdb

@@ -77,3 +77,5 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyVoiceHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyVoiceHelper.pdb

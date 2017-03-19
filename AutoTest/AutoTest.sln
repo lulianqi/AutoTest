@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCommonControl", "MyControl\MyCommonControl.csproj", "{AAA8BDB9-2468-4338-A8E8-BC2CE2752051}"
 EndProject
@@ -38,6 +38,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForSpecifiedHttp", "Test\TestForSpecifiedHttp\TestForSpecifiedHttp.csproj", "{8DD0ED71-2BA4-4F30-8A42-C9152D62F9ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForDefaultClass", "Test\TestForDefaultClass\TestForDefaultClass.csproj", "{F2A16124-3851-41F0-9588-776AAC528AEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVoiceHelper", "MyVoiceHelper\MyVoiceHelper.csproj", "{A5247DA0-53BC-4CCB-8778-329E3F05CB0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +111,10 @@ Global
 		{F2A16124-3851-41F0-9588-776AAC528AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2A16124-3851-41F0-9588-776AAC528AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2A16124-3851-41F0-9588-776AAC528AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5247DA0-53BC-4CCB-8778-329E3F05CB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5247DA0-53BC-4CCB-8778-329E3F05CB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5247DA0-53BC-4CCB-8778-329E3F05CB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5247DA0-53BC-4CCB-8778-329E3F05CB0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
