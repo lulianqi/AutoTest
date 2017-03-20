@@ -913,6 +913,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.getProtocolTypeGet">
             <summary>设置 CaseProtocolExecutionForVanelife_http.get_getProtocolType() 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.getRunContentXmlNode">
+            <summary>设置 CaseProtocolExecutionForVanelife_http.getRunContent(XmlNode yourContentNode) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http.isDeviceConnectGet">
             <summary>设置 CaseProtocolExecutionForVanelife_http.get_isDeviceConnect() 的 填充码</summary>
         </member>
@@ -1115,84 +1118,6 @@
             <summary>设置 MyCaseDataTypeEngine.GetTimeStaticData(MyStaticDataNowTime&amp; yourStaticData, String yourFormatData) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine">
-            <summary>CaseExecutiveActuator.MyCaseProtocolEngine 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.#ctor(CaseExecutiveActuator.MyCaseProtocolEngine)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Constructor">
-            <summary>设置 MyCaseProtocolEngine.MyCaseProtocolEngine() 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine">
-            <summary>CaseExecutiveActuator.MyCaseProtocolEngine+httpEngine 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine.#ctor(CaseExecutiveActuator.MyCaseProtocolEngine.httpEngine)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine.Constructor">
-            <summary>设置 httpEngine.httpEngine() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine.getRunContentXmlNode">
-            <summary>设置 httpEngine.getRunContent(XmlNode yourContentNode) 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.ShimhttpEngine.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine">
-            <summary>CaseExecutiveActuator.MyCaseProtocolEngine+vanelife_httpEngine 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.#ctor(CaseExecutiveActuator.MyCaseProtocolEngine.vanelife_httpEngine)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.Constructor">
-            <summary>设置 vanelife_httpEngine.vanelife_httpEngine() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.getRunContentXmlNode">
-            <summary>设置 vanelife_httpEngine.getRunContent(XmlNode yourContentNode) 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine">
@@ -2372,24 +2297,6 @@
             <summary>获取或设置实例行为。</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseDataTypeEngine.InstanceObserver">
-            <summary>获取或设置实例观察者。</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.StubMyCaseProtocolEngine">
-            <summary>CaseExecutiveActuator.MyCaseProtocolEngine 的存根类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubMyCaseProtocolEngine.#ctor">
-            <summary>初始化新实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubMyCaseProtocolEngine.InitializeStub">
-            <summary>初始化 type StubMyCaseProtocolEngine 的新实例</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseProtocolEngine.CallBase">
-            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseProtocolEngine.InstanceBehavior">
-            <summary>获取或设置实例行为。</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseProtocolEngine.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubMyCaseScriptAnalysisEngine">

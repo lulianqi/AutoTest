@@ -562,7 +562,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// case guide diver
         /// </summary>
-        private myCaseRunTime caseRunTime;
+        private MyCaseRunTime caseRunTime;
 
         /// <summary>
         /// ExecutionDevice List with his name【执行驱动器映射表】
@@ -1816,6 +1816,24 @@ namespace CaseExecutiveActuator
             }
         }
 
+        public void AddRunActuatorStaticData(string yourParameterName, string yourParameterVaule)
+        {
+            runActuatorStaticDataCollection.RunActuatorParameterList.MyAdd(yourParameterName, yourParameterVaule);
+            if (OnActuatorParameterListChanged != null)
+            {
+                this.OnActuatorParameterListChanged();
+            }
+        }
+
+        public void AddRunActuatorStaticDataSouce(string yourParameterName, string yourParameterVaule)
+        {
+            runActuatorStaticDataCollection.RunActuatorParameterList.MyAdd(yourParameterName, yourParameterVaule);
+            if (OnActuatorParameterListChanged != null)
+            {
+                this.OnActuatorParameterListChanged();
+            }
+        }
+
         /// <summary>
         /// 设置 【case guide diver】
         /// </summary>
@@ -1826,7 +1844,7 @@ namespace CaseExecutiveActuator
             {
                 runTimeCaseDictionary = yourCaseDictionary;
                 runCellProjctCollection = yourProjctCollection;
-                caseRunTime = new myCaseRunTime();
+                caseRunTime = new MyCaseRunTime();
                 caseRunTime.OnLoopChangeEvent += caseRunTime_OnLoopChangeEvent;
                 caseRunTime.OnQueueChangeEvent += caseRunTime_OnQueueChangeEvent;
             }

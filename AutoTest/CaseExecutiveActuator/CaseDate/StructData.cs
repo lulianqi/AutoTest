@@ -494,9 +494,9 @@ namespace CaseExecutiveActuator
     /// </summary>
     public struct myNewTestInfo
     {
-        public myCaseRunTime caseRunTime;
+        public MyCaseRunTime caseRunTime;
         public CaseActionActuator actionActuator;
-        public myNewTestInfo(myCaseRunTime yourRunTime, CaseActionActuator yourActuator)
+        public myNewTestInfo(MyCaseRunTime yourRunTime, CaseActionActuator yourActuator)
         {
             caseRunTime = yourRunTime;
             actionActuator = yourActuator;

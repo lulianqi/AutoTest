@@ -127,11 +127,11 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// CsaeQueue it will only used in myCaseRunTime
     /// </summary>
-    class myCsaeQueue
+    class MyCsaeQueue
     {
         private CaseCell startCaseNode;
         private CaseCell nowCaseNode;
-        List<myCaseLoop> myCaseLoopList;
+        List<MyCaseLoop> myCaseLoopList;
 
         private int queueTotalCount;
         private int queueNowCount;
@@ -142,12 +142,12 @@ namespace CaseExecutiveActuator
         /// myCsaeQueue initialize
         /// </summary>
         /// <param name="yourStartCase">your StartCase and make sure it is not null</param>
-        public myCsaeQueue(CaseCell yourStartCase)
+        public MyCsaeQueue(CaseCell yourStartCase)
         {
             queueTotalCount = RunCaseCount.GetCount(yourStartCase);
             startCaseNode = yourStartCase;
             nowCaseNode = null;
-            myCaseLoopList = new List<myCaseLoop>();
+            myCaseLoopList = new List<MyCaseLoop>();
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourTimes">your Times</param>
         private void AddCaseLoop(CaseCell yourStartCase, int yourTimes)
         {
-            myCaseLoopList.Add(new myCaseLoop(yourStartCase, yourTimes));
+            myCaseLoopList.Add(new MyCaseLoop(yourStartCase, yourTimes));
             myCaseLoopList[myCaseLoopList.Count - 1].OnLoopChangeEvent += OnLoopChangeEvent;
         }
 
@@ -202,7 +202,7 @@ namespace CaseExecutiveActuator
         /// i will remove your CaseLoop and unSubscribe 【OnLoopChangeEvent】
         /// </summary>
         /// <param name="yourCaseLoop">yourCaseLoop</param>
-        private void DelCaseLoop(myCaseLoop yourCaseLoop)
+        private void DelCaseLoop(MyCaseLoop yourCaseLoop)
         {
             yourCaseLoop.OnLoopChangeEvent -= OnLoopChangeEvent;
             myCaseLoopList.Remove(yourCaseLoop);
@@ -320,7 +320,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// CaseLoop it will only used in myCsaeQueue
     /// </summary>
-    class myCaseLoop
+    class MyCaseLoop
     {
         private CaseCell startCaseNode;
         private CaseCell nowCaseNode;
@@ -334,7 +334,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="yourStartCase">your StartCase and make sure it is not null</param>
         /// <param name="yourTimes">your Times </param>
-        public myCaseLoop(CaseCell yourStartCase, int yourTimes)
+        public MyCaseLoop(CaseCell yourStartCase, int yourTimes)
         {
             totalTimes = myTimes = yourTimes;
             startCaseNode = yourStartCase;
@@ -433,10 +433,10 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// myCaseRunTime - you can get next case here
     /// </summary>
-    public sealed class myCaseRunTime
+    public sealed class MyCaseRunTime
     {
         
-        private List<myCsaeQueue> myCsaeQueueList;
+        private List<MyCsaeQueue> myCsaeQueueList;
         private bool isThroughAllCase;
 
         /// <summary>
@@ -451,9 +451,9 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// myCaseRunTime initialize
         /// </summary>
-        public myCaseRunTime()
+        public MyCaseRunTime()
         {
-            myCsaeQueueList = new List<myCsaeQueue>();
+            myCsaeQueueList = new List<MyCsaeQueue>();
         }
 
         /// <summary>
@@ -476,7 +476,7 @@ namespace CaseExecutiveActuator
         /// i will add new CsaeQueue and Subscribe 【OnLoopChangeEvent】
         /// </summary>
         /// <param name="yourCsaeQueue">your CsaeQueue that will add</param>
-        private void AddCsaeQueue(myCsaeQueue yourCsaeQueue)
+        private void AddCsaeQueue(MyCsaeQueue yourCsaeQueue)
         {
             myCsaeQueueList.Add(yourCsaeQueue);
             yourCsaeQueue.OnLoopChangeEvent += OnLoopChangeEvent;
@@ -488,7 +488,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourCsaeQueue">your CsaeQueue that will add</param>
         /// <param name="yourProjectId">Project Id to OnQueueChangeEvent</param>
         /// <param name="yourCaseId">Case Id to OnQueueChangeEvent</param>
-        private void AddCsaeQueue(myCsaeQueue yourCsaeQueue, int yourProjectId, int yourCaseId)
+        private void AddCsaeQueue(MyCsaeQueue yourCsaeQueue, int yourProjectId, int yourCaseId)
         {
             ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 1].NowCaseNode, string.Format("▼GoTo Project：{0} Case：{1}", yourProjectId, yourCaseId));
             AddCsaeQueue(yourCsaeQueue);
@@ -499,7 +499,7 @@ namespace CaseExecutiveActuator
         /// i will remove the CaseQueue and unSubscribe 【OnLoopChangeEvent】
         /// </summary>
         /// <param name="yourCsaeQueue">your CsaeQueue that will rwmove</param>
-        private void DelCsaeQueue(myCsaeQueue yourCsaeQueue)
+        private void DelCsaeQueue(MyCsaeQueue yourCsaeQueue)
         {
             if (myCsaeQueueList.Count>1)
             {
@@ -532,7 +532,7 @@ namespace CaseExecutiveActuator
         public void readyStart(CaseCell yourStartCase)
         {
             myCsaeQueueList.Clear();
-            AddCsaeQueue(new myCsaeQueue(yourStartCase));
+            AddCsaeQueue(new MyCsaeQueue(yourStartCase));
             ReportQueueAction(yourStartCase, "◆");
         }
 
@@ -585,7 +585,7 @@ namespace CaseExecutiveActuator
             {
                 if (myRunTimeCaseDictionary[yourProjectId].ContainsKey(yourCaseId))
                 {
-                    AddCsaeQueue(new myCsaeQueue(myRunTimeCaseDictionary[yourProjectId][yourCaseId]), yourProjectId, yourCaseId);
+                    AddCsaeQueue(new MyCsaeQueue(myRunTimeCaseDictionary[yourProjectId][yourCaseId]), yourProjectId, yourCaseId);
                     return true;
                 }
                 else
@@ -606,7 +606,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// myCelerityCaseRunTime same to myCaseRunTime ,but it more higher performance
     /// </summary>
-    public class myCelerityCaseRunTime
+    public class MyCelerityCaseRunTime
     {
         /// <summary>
         /// CsaeQueue it will only used in myCaseRunTime
@@ -803,7 +803,7 @@ namespace CaseExecutiveActuator
         /// myCelerityCaseRunTime initialize
         /// </summary>
         /// <param name="yourCaseDictionary">the Dictionary with all case and his id</param>
-        public myCelerityCaseRunTime(Dictionary<int, Dictionary<int, TreeNode>> yourCaseDictionary)
+        public MyCelerityCaseRunTime(Dictionary<int, Dictionary<int, TreeNode>> yourCaseDictionary)
         {
             myCsaeQueueList = new List<myCsaeQueue>();
             myRunTimeCaseDictionary = yourCaseDictionary;
