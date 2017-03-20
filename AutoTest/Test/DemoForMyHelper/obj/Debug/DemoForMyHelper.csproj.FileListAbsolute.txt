@@ -36,3 +36,5 @@ F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyVoiceHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\SpeechLib.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyVoiceHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyVoiceHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyVoiceHelper.pdb

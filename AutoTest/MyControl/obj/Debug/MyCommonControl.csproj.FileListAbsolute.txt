@@ -1,6 +1,5 @@
 F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll
 F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.pdb
-F:\file\Code\AutoTest\AutoTest\MyControl\bin\Debug\SpeechLib.dll
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Debug\CBalloon.CBalloonBase.resources
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.DataRecordBox.resources

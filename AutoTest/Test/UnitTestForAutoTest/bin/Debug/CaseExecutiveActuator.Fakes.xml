@@ -343,6 +343,33 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimActuatorStaticDataCollection.AllInstances.RunActuatorStaticDataSouceListGet">
             <summary>设置 ActuatorStaticDataCollection.get_RunActuatorStaticDataSouceList() 的 填充码</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars">
+            <summary>CaseExecutiveActuator.BasicProtocolPars 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars.#ctor(CaseExecutiveActuator.BasicProtocolPars)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars.Constructor">
+            <summary>设置 BasicProtocolPars.BasicProtocolPars() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars.getRunContentXmlNode">
+            <summary>设置 BasicProtocolPars.getRunContent(XmlNode yourContentNode) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimBasicProtocolPars.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimCaseActionActuator">
             <summary>CaseExecutiveActuator.CaseActionActuator 的填充码类型</summary>
         </member>
@@ -802,6 +829,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.getProtocolTypeGet">
             <summary>设置 CaseProtocolExecutionForHttp.get_getProtocolType() 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.getRunContentXmlNode">
+            <summary>设置 CaseProtocolExecutionForHttp.getRunContent(XmlNode yourContentNode) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.isDeviceConnectGet">
             <summary>设置 CaseProtocolExecutionForHttp.get_isDeviceConnect() 的 填充码</summary>
         </member>
@@ -949,8 +979,8 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringStringActuatorStaticDataCollectionNameValueCollectionStringOut">
             <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, String splitStr, ActuatorStaticDataCollection yourActuatorStaticDataCollection, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetFullPathString">
-            <summary>设置 CaseTool.GetFullPath(String path) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetFullPathStringString">
+            <summary>设置 CaseTool.GetFullPath(String path, String depthPath) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetJTokenValueExJTokenString">
             <summary>设置 CaseTool.GetJTokenValueEx(JToken yourJToken, String yourKey) 的 填充码</summary>
@@ -990,6 +1020,9 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.getXmlAttributeVauleXmlNodeString">
             <summary>设置 CaseTool.getXmlAttributeVaule(XmlNode sourceNode, String tagAttribute) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.getXmlAttributeVauleXmlNodeStringString">
+            <summary>设置 CaseTool.getXmlAttributeVaule(XmlNode sourceNode, String tagAttribute, String nullData) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.getXmlInnerVauleExXmlNodeString">
             <summary>设置 CaseTool.getXmlInnerVauleEx(XmlNode sourceNode, String tagName) 的 填充码</summary>
@@ -1160,6 +1193,36 @@
             <summary>设置 vanelife_httpEngine.getRunContent(XmlNode yourContentNode) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseProtocolEngine.Shimvanelife_httpEngine.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine">
+            <summary>CaseExecutiveActuator.MyCaseScriptAnalysisEngine 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.#ctor(CaseExecutiveActuator.MyCaseScriptAnalysisEngine)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.Constructor">
+            <summary>设置 MyCaseScriptAnalysisEngine.MyCaseScriptAnalysisEngine() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.getCaseLoadInfoXmlNode">
+            <summary>设置 MyCaseScriptAnalysisEngine.getCaseLoadInfo(XmlNode sourceNode) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.getCaseRunDataXmlNode">
+            <summary>设置 MyCaseScriptAnalysisEngine.getCaseRunData(XmlNode sourceNode) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyConfiguration">
@@ -1603,36 +1666,6 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.readyStartCaseCellBoolean">
             <summary>设置 myCaseRunTime.readyStart(CaseCell yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
         </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine">
-            <summary>CaseExecutiveActuator.myCaseScriptAnalysisEngine 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.#ctor(CaseExecutiveActuator.myCaseScriptAnalysisEngine)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.Constructor">
-            <summary>设置 myCaseScriptAnalysisEngine.myCaseScriptAnalysisEngine() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.getCaseLoadInfoXmlNode">
-            <summary>设置 myCaseScriptAnalysisEngine.getCaseLoadInfo(XmlNode sourceNode) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.getCaseRunDataXmlNode">
-            <summary>设置 myCaseScriptAnalysisEngine.getCaseRunData(XmlNode sourceNode) 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseScriptAnalysisEngine.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime">
             <summary>CaseExecutiveActuator.myCelerityCaseRunTime 的填充码类型</summary>
         </member>
@@ -2014,6 +2047,24 @@
         <member name="P:CaseExecutiveActuator.Fakes.StubActuatorStaticDataCollection.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubBasicProtocolPars">
+            <summary>CaseExecutiveActuator.BasicProtocolPars 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubBasicProtocolPars.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubBasicProtocolPars.InitializeStub">
+            <summary>初始化 type StubBasicProtocolPars 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubBasicProtocolPars.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubBasicProtocolPars.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubBasicProtocolPars.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubCaseActionActuator">
             <summary>CaseExecutiveActuator.CaseActionActuator 的存根类型</summary>
         </member>
@@ -2341,6 +2392,24 @@
         <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseProtocolEngine.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubMyCaseScriptAnalysisEngine">
+            <summary>CaseExecutiveActuator.MyCaseScriptAnalysisEngine 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyCaseScriptAnalysisEngine.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyCaseScriptAnalysisEngine.InitializeStub">
+            <summary>初始化 type StubMyCaseScriptAnalysisEngine 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseScriptAnalysisEngine.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseScriptAnalysisEngine.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseScriptAnalysisEngine.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubMyConfiguration">
             <summary>CaseExecutiveActuator.MyConfiguration 的存根类型</summary>
         </member>
@@ -2393,24 +2462,6 @@
             <summary>获取或设置实例行为。</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubmyBasicHttpExecutionContent.InstanceObserver">
-            <summary>获取或设置实例观察者。</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.StubmyCaseScriptAnalysisEngine">
-            <summary>CaseExecutiveActuator.myCaseScriptAnalysisEngine 的存根类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubmyCaseScriptAnalysisEngine.#ctor">
-            <summary>初始化新实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubmyCaseScriptAnalysisEngine.InitializeStub">
-            <summary>初始化 type StubmyCaseScriptAnalysisEngine 的新实例</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCaseScriptAnalysisEngine.CallBase">
-            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCaseScriptAnalysisEngine.InstanceBehavior">
-            <summary>获取或设置实例行为。</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCaseScriptAnalysisEngine.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubmyCelerityCaseRunTime">

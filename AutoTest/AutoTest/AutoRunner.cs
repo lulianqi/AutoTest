@@ -349,7 +349,7 @@ namespace AutoTest
                 #region Project analyze 
                 foreach (XmlNode tempNode in myCaseProject)
                 {
-                    myCaseLaodInfo tempProjectLoadInfo = myCaseScriptAnalysisEngine.getCaseLoadInfo(tempNode);
+                    myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempNode);
                     string thisErrorTitle = "Project ID:" + tempProjectLoadInfo.id;
                     if (tempProjectLoadInfo.ErrorMessage != "")
                     {
@@ -405,7 +405,7 @@ namespace AutoTest
                         foreach (XmlNode tempChildNode in myTargetCaseList[0].Value)
                         {
                             //load Show Info
-                            myCaseLaodInfo tempCaseLoadInfo = myCaseScriptAnalysisEngine.getCaseLoadInfo(tempChildNode);
+                            myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempChildNode);
                             thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
                             if (tempCaseLoadInfo.ErrorMessage != "")
                             {
@@ -435,7 +435,7 @@ namespace AutoTest
                                         setNodeImageIndex(tempChildTreeNode, 1);
                                     }
                                     //load Run Data
-                                    var tempCaseRunData = myCaseScriptAnalysisEngine.getCaseRunData(tempChildNode);
+                                    var tempCaseRunData = MyCaseScriptAnalysisEngine.getCaseRunData(tempChildNode);
                                     if (tempCaseRunData.errorMessages!=null)
                                     {
                                         foreach(string tempErrorMes in tempCaseRunData.errorMessages)
@@ -575,7 +575,7 @@ namespace AutoTest
 
                 foreach (XmlNode tempNode in myCaseProject)
                 {
-                    myCaseLaodInfo tempProjectLoadInfo = myCaseScriptAnalysisEngine.getCaseLoadInfo(tempNode);
+                    myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempNode);
                     string thisErrorTitle = "Project ID:" + tempProjectLoadInfo.id;
                     if (tempProjectLoadInfo.ErrorMessage != "")
                     {
@@ -630,7 +630,7 @@ namespace AutoTest
                         foreach (XmlNode tempChildNode in myTargetCaseList[0].Value)
                         {
                             //load Show Info
-                            myCaseLaodInfo tempCaseLoadInfo = myCaseScriptAnalysisEngine.getCaseLoadInfo(tempChildNode);
+                            myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempChildNode);
                             thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
                             if (tempCaseLoadInfo.ErrorMessage != "")
                             {
@@ -642,7 +642,7 @@ namespace AutoTest
                                 if (tempCaseLoadInfo.caseType == CaseType.Case)
                                 {
                                     //load Run Data
-                                    var tempCaseRunData = myCaseScriptAnalysisEngine.getCaseRunData(tempChildNode);
+                                    var tempCaseRunData = MyCaseScriptAnalysisEngine.getCaseRunData(tempChildNode);
                                     if (tempCaseRunData.errorMessages != null)
                                     {
                                         foreach (string tempErrorMes in tempCaseRunData.errorMessages)
@@ -735,7 +735,7 @@ namespace AutoTest
             string thisErrorTitle;
             foreach(var tempProjctCell in yourProjctCell.ProjectCells)
             {
-                myCaseLaodInfo tempProjectLoadInfo = myCaseScriptAnalysisEngine.getCaseLoadInfo(tempProjctCell.CaseXmlNode);
+                myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempProjctCell.CaseXmlNode);
                 TreeNode tempProjctTree = new TreeNode(tempProjectLoadInfo.name, 0, 0);
                 tempProjctTree.Tag = tempProjctCell;
                 tempProjctCell.UiTag = tempProjctTree;
@@ -751,7 +751,7 @@ namespace AutoTest
                     {
                         foreach (var tempCell in unDealCaseList[0].Value.ChildCells)
                         {
-                            myCaseLaodInfo tempCaseLoadInfo = myCaseScriptAnalysisEngine.getCaseLoadInfo(tempCell.CaseXmlNode);
+                            myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempCell.CaseXmlNode);
                             thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
                             if (tempCaseLoadInfo.ErrorMessage != "")
                             {

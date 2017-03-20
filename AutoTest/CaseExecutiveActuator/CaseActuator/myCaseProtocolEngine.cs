@@ -23,6 +23,7 @@ using CaseExecutiveActuator.ProtocolExecutive;
 
 namespace CaseExecutiveActuator
 {
+    using HttpMultipartDate = MyCommonHelper.NetHelper.MyWebTool.HttpMultipartDate;
     public class MyCaseProtocolEngine
     {
         public class vanelife_httpEngine
@@ -111,7 +112,7 @@ namespace CaseExecutiveActuator
                                     myRunContent.myHttpMultipart.isFile = true;
                                     myRunContent.myHttpMultipart.name = CaseTool.getXmlAttributeVaule(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"], "name");
                                     myRunContent.myHttpMultipart.fileName = CaseTool.getXmlAttributeVaule(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"], "filename");
-                                    myRunContent.myHttpMultipart.fileData = CaseTool.GetFullPath(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"].InnerText);
+                                    myRunContent.myHttpMultipart.fileData = CaseTool.GetFullPath(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"].InnerText, MyConfiguration.CaseFilePath);
                                 }
                             }
                         }
@@ -219,18 +220,19 @@ namespace CaseExecutiveActuator
                                     if (multipartNode.Name == "MultipartData")
                                     {
                                         hmp.isFile = false;
+                                        hmp.fileData = multipartNode.InnerText;
                                     }
                                     else if (multipartNode.Name == "MultipartFile")
                                     {                                  
-                                        hmp.isFile = true;       
+                                        hmp.isFile = true;
+                                        hmp.fileData = CaseTool.GetFullPath(multipartNode.InnerText, MyConfiguration.CaseFilePath);
                                     }
                                     else
                                     {
                                         continue;
                                     }
-                                    hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name");
-                                    hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename");
-                                    hmp.fileData = multipartNode.InnerText;
+                                    hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name",null);
+                                    hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename",null);
                                     myRunContent.myMultipartList.Add(hmp);
                                 }
                             }
@@ -247,6 +249,19 @@ namespace CaseExecutiveActuator
                 }
                 return myRunContent;
             }
+        }
+    }
+
+    public class BasicProtocolPars
+    {
+        /// <summary>
+        /// 从XML源数据获取可执行case的执行器数据（请使用new关键字隐藏基类方法，在子类中实现解析）
+        /// </summary>
+        /// <param name="yourContentNode">xml 源数据</param>
+        /// <returns>ICaseExecutionContent (在子类实现时返回值可以为实际类型)</returns>
+        public static ICaseExecutionContent getRunContent(XmlNode yourContentNode)
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -331,7 +346,7 @@ namespace CaseExecutiveActuator
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                    AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
                 }
                 else
                 {
@@ -423,12 +438,125 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// Vanelife_http Device 
     /// </summary>
-    public class CaseProtocolExecutionForHttp : ICaseExecutionDevice
+    public class CaseProtocolExecutionForHttp :BasicProtocolPars, ICaseExecutionDevice
     {
         private bool isConnect;
         private myConnectForHttp myExecutionDeviceInfo;
 
         public event delegateGetExecutiveData OnGetExecutiveData;
+
+        public new static myBasicHttpExecutionContent getRunContent(XmlNode yourContentNode)
+        {
+            myBasicHttpExecutionContent myRunContent = new myBasicHttpExecutionContent();
+            if (yourContentNode != null)
+            {
+                if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
+                {
+                    //Content
+                    try
+                    {
+                        myRunContent.caseProtocol = (CaseProtocol)Enum.Parse(typeof(CaseProtocol), yourContentNode.Attributes["protocol"].Value);
+                    }
+                    catch
+                    {
+                        myRunContent.errorMessage = "Error :error protocol in Content";
+                        return myRunContent;
+                    }
+                    myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
+
+                    //Uri
+                    XmlNode tempUriDataNode = yourContentNode["Uri"];
+                    if (tempUriDataNode != null)
+                    {
+                        if (tempUriDataNode.Attributes["httpMethod"] != null)
+                        {
+                            myRunContent.httpMethod = tempUriDataNode.Attributes["httpMethod"].Value;
+                        }
+                        else
+                        {
+                            myRunContent.httpMethod = "GET";
+                        }
+                        myRunContent.httpUri = CaseTool.getXmlParametContent(tempUriDataNode);
+
+                    }
+                    else
+                    {
+                        myRunContent.errorMessage = "Error :http uri (this element is necessary)";
+                        return myRunContent;
+                    }
+
+                    //HttpHeads
+                    XmlNode tempHttpHeadsDataNode = yourContentNode["Heads"];
+                    if (tempHttpHeadsDataNode != null)
+                    {
+                        if (tempHttpHeadsDataNode.HasChildNodes)
+                        {
+                            foreach (XmlNode headNode in tempHttpHeadsDataNode.ChildNodes)
+                            {
+                                if (headNode.Attributes["name"] != null)
+                                {
+                                    myRunContent.httpHeads.Add(new KeyValuePair<string, caseParameterizationContent>(headNode.Attributes["name"].Value, CaseTool.getXmlParametContent(headNode)));
+                                }
+                                else
+                                {
+                                    myRunContent.errorMessage = "Error :can not find http Head name in heads";
+                                }
+                            }
+                        }
+                    }
+
+                    //HttpBody
+                    XmlNode tempHttpBodyDataNode = yourContentNode["Body"];
+                    if (tempHttpHeadsDataNode != null)
+                    {
+                        myRunContent.httpBody = CaseTool.getXmlParametContent(tempHttpBodyDataNode);
+                    }
+                    //AisleConfig
+                    if (yourContentNode["AisleConfig"] != null)
+                    {
+                        myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
+                    }
+                    //HttpMultipart
+                    XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];
+                    if (tempHttpMultipartNode != null)
+                    {
+                        if (tempHttpMultipartNode.HasChildNodes)
+                        {
+                            foreach (XmlNode multipartNode in tempHttpMultipartNode.ChildNodes)
+                            {
+                                HttpMultipart hmp = new HttpMultipart();
+                                if (multipartNode.Name == "MultipartData")
+                                {
+                                    hmp.isFile = false;
+                                    hmp.fileData = multipartNode.InnerText;
+                                }
+                                else if (multipartNode.Name == "MultipartFile")
+                                {
+                                    hmp.isFile = true;
+                                    hmp.fileData = CaseTool.GetFullPath(multipartNode.InnerText, MyConfiguration.CaseFilePath);
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                                hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name", null);
+                                hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename", null);
+                                myRunContent.myMultipartList.Add(hmp);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    myRunContent.errorMessage = "Error :can not find protocol or actuator in Content ";
+                }
+            }
+            else
+            {
+                myRunContent.errorMessage = "Error :yourContentNode is null";
+            }
+            return myRunContent;
+        }
 
         public CaseProtocolExecutionForHttp(myConnectForHttp yourConnectInfo)
         {
@@ -515,21 +643,25 @@ namespace CaseExecutiveActuator
                 }
 
                 //Start Http 
-                if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled() && nowExecutionContent.myMultipartList.Count>0)
-                {
-                    AtHttpProtocol.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
-                }
-                else if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled() && nowExecutionContent.myMultipartList.Count == 0)
-                {
-                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
-                }
                 if (nowExecutionContent.myMultipartList.Count > 0)
                 {
-                    AtHttpProtocol.HttpClient.HttpPostData(httpUri, 100000, nowExecutionContent.myMultipartList[0].name, nowExecutionContent.myMultipartList[0].fileName, nowExecutionContent.myMultipartList[0].isFile, nowExecutionContent.myMultipartList[0].fileData, httpBody, myResult);
+                    List<HttpMultipartDate> myMultiparts = new List<HttpMultipartDate>();
+                    foreach(HttpMultipart tempPt in nowExecutionContent.myMultipartList)
+                    {
+                        if(tempPt.IsFilled())
+                        {
+                            myMultiparts.Add(new HttpMultipartDate(tempPt.name, tempPt.fileName, null, tempPt.isFile, tempPt.fileData));
+                        }
+                    }
+                    AtHttpProtocol.HttpClient.HttpPostData(httpUri, httpHeads, httpBody, myMultiparts, null, MyConfiguration.PostFileTimeOut, null, myResult);
+                }
+                else if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
+                {
+                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
                 }
                 else
                 {
-                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod,httpHeads, myResult);
+                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult);
                 }
 
                 if (tempError != null)
@@ -733,7 +865,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     ///  完成脚本不包含可变协议的通用解析，如果您想新增一种类型的协议支持，这里需要添加支持
     /// </summary>
-    public class myCaseScriptAnalysisEngine
+    public class MyCaseScriptAnalysisEngine
     {
         /// <summary>
         /// i will get a myRunCaseData that will give caseActionActuator from XmlNode

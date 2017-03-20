@@ -105,3 +105,5 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.pdb
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.dll
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.pdb

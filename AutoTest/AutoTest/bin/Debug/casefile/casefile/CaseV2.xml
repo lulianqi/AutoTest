@@ -684,14 +684,17 @@
           <HttpAddress>http://pv.sohu.com/</HttpAddress>
         </AisleConfig>
         <HttpMultipart>
-          <!-- 【MultipartData】，【MultipartFile】不能同时出现，若同时出现将只取MultipartData，name及filename为Multipart相应属性描述 -->
-          <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
-          <!-- 不可以使用【isHaveParameters】，name，filename不存在则默认为空“” -->
-          <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          <!--含有HttpMultipart的case，不会处理AisleConfig的HttpDataDown-->
+          <!-- 【MultipartData】，【MultipartFile】可同时出现，也可存在多份，name（可为空）及filename（可为空）为Multipart相应属性描述 -->
+          <MultipartData name="dp_data" filename="commod">{"door":true}</MultipartData>
+          <!-- 不可以使用【isHaveParameters】，name，filename不存在则默认为空http请求中则不会保护该属性 -->
+          <!-- MultipartFile路径为相对路径（相对于程序执行路径testData\下） -->
+          <MultipartFile name="dp_data" filename="file">fileToUp\path</MultipartFile>
+          <MultipartFile >fileToUp\path</MultipartFile>
           <!-- 不可以使用【isHaveParameters】 -->
         </HttpMultipart>
       </Content>
-      <Expect method="contain">保持至</Expect>
+      <Expect method="contain">浙江</Expect>
       <Attribute>
         <Delay>100</Delay>
         <Level>1</Level>
@@ -705,12 +708,10 @@
         </Heads>
         <Body isHaveParameters="true" >testdata</Body>
         <AisleConfig>
-          <!--http执行器不支持HttpAddress属性（即使设置也不会处理），用@使用默认地址-->
-          <HttpAddress>http://pv.sohu.com/</HttpAddress>
           <HttpDataDown>fileToDown\sohu.txt</HttpDataDown>
         </AisleConfig>
       </Content>
-      <Expect method="contain">保持至</Expect>
+      <Expect method="contain">保存至</Expect>
       <Attribute>
         <Delay>100</Delay>
         <Level>1</Level>

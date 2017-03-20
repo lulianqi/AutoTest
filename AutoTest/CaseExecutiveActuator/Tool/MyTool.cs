@@ -545,8 +545,9 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="sourceNode">source Node(if it is null i will Throw error)</param>
         /// <param name="tagAttribute">the Attribute taht you want</param>
-        /// <returns>data you want (if not find it will be "")</returns>
-        public static string getXmlAttributeVaule(XmlNode sourceNode, string tagAttribute)
+        /// <param name="nullData">if not find it will be nullData</param>
+        /// <returns>data you want (if not find it will be nullData)</returns>
+        public static string getXmlAttributeVaule(XmlNode sourceNode, string tagAttribute ,string nullData)
         {
             if (sourceNode.Attributes[tagAttribute] != null)
             {
@@ -554,8 +555,19 @@ namespace CaseExecutiveActuator
             }
             else
             {
-                return "";
+                return nullData;
             }
+        }
+
+        /// <summary>
+        /// i will get the Attribute in sourceNode child with specified tag attribute
+        /// </summary>
+        /// <param name="sourceNode">source Node(if it is null i will Throw error)</param>
+        /// <param name="tagAttribute">the Attribute taht you want</param>
+        /// <returns>data you want (if not find it will be "")</returns>
+        public static string getXmlAttributeVaule(XmlNode sourceNode, string tagAttribute)
+        {
+            return getXmlAttributeVaule(sourceNode, tagAttribute, "");
         }
 
         /// <summary>
@@ -1338,11 +1350,12 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// 处理case文件路径
+        /// 处理case文件路径 （若以@开头则使用绝对路径，否则使用相对路径相对于程序运行路径）
         /// </summary>
-        /// <param name="path">表述路径</param>
+        /// <param name="path">表述路径 （若使用相对路径则前面不需要加\）</param>
+        /// <param name="depthPath">深目录(前后都不用加\)</param>
         /// <returns>实际路径</returns>
-        public static string GetFullPath(string path)
+        public static string GetFullPath(string path, string depthPath)
         {
             if(path.StartsWith("@"))
             {
@@ -1350,7 +1363,7 @@ namespace CaseExecutiveActuator
             }
             else
             {
-                return rootPath + "\\testData\\" + path;
+                return depthPath == null ? string.Format("{0}\\{1}", rootPath, path) : string.Format("{0}\\{1}\\{2}", rootPath, depthPath, path);
             }
         }
 
