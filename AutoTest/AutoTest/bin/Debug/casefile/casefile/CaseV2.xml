@@ -16,7 +16,7 @@
       <NewStaticData name="StaticData4" type="long">1-15158155511</NewStaticData><!-- 暂时与index逻辑一致，支持更大的数值0到9223372036854775807 -->
     </RunTimeStaticData>
     <RunTimeDataSouce><!--文件或数据库数据源，支持csv --> 
-      <NewDataSouce name="mycsvfile" type="csv">@D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\casefile\csvdatasouce.csv-65001</NewDataSouce>
+      <NewDataSouce name="mycsvfile" type="csv">casefile\csvdatasouce.csv-65001</NewDataSouce>
       <!--内容包括2个数据用“-”分割(路径及文件名中不要含有分隔符)，第一个为数据相对对路径（于程序运行目录下的casefile\下,如果用@开头则强制使用绝对路径）（路径请不要包含分隔符），第二个数据为编码方式代码页，不填默认为utf8，utf-8为65001 （对照表见https://msdn.microsoft.com/zh-cn/library/system.text.encoding(v=vs.110).aspx） -->
       <!-- 对csv数据源的clone将使用同一个原数据但会拥有不同的游标信息 -->
     </RunTimeDataSouce>
@@ -650,6 +650,10 @@
         <!--@开头表示使用默认地址-->
         <Heads>
           <Head name="myThing" isHaveParameters="true">*#StaticData(+`num``num`)*#</Head>
+          <Head name="csvsouce%20Now" isHaveParameters="true">csvsouce is *#mycsvfile*#</Head>
+          <Head name="csvsouce+" isHaveParameters="true">csvsouce is *#mycsvfile*#</Head>
+          <Head name="csvsouceAngin" isHaveParameters="true">csvsouce is *#mycsvfile*#</Head>
+          <Head name="csvsouceAdress" isHaveParameters="true">csvsouce 0-0 is [*#mycsvfile(0-0)*#] 5-2 is [*#mycsvfile(5-2)*#] 100-100 is [*#mycsvfile(100-100)*#] xxx-xxx is [*#mycsvfile(xxx-xxx)*#]</Head>
           <!--HaveParameters的处理-->
           <!--Parameters静态数据必须以*#包含，可以含有多个静态数据，但静态数据不能使用*#进行嵌套，可以进行平铺，如果平铺的多个静态数据的数据名及参数完全相同，则他们的值也将相同，不会进行新的计算-->
           <!--Parameters静态数据的参数需要使用()括起来，如果没有可以不加-->

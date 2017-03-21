@@ -721,8 +721,8 @@ namespace AutoTest
                 lb_msg1.Text = "case file error";
                 ShowMessage(ex.Message);
             }
-
             CreateTree(myProjctCollection);
+
         }
 
         public void CreateTree(ProjctCollection yourProjctCell)
@@ -733,83 +733,86 @@ namespace AutoTest
                 return;
             }
             string thisErrorTitle;
-            foreach(var tempProjctCell in yourProjctCell.ProjectCells)
+            if (yourProjctCell.ProjectCells != null)
             {
-                myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempProjctCell.CaseXmlNode);
-                TreeNode tempProjctTree = new TreeNode(tempProjectLoadInfo.name, 0, 0);
-                tempProjctTree.Tag = tempProjctCell;
-                tempProjctCell.UiTag = tempProjctTree;
-                List<KeyValuePair<TreeNode, CaseCell>> unDealCaseList = new List<KeyValuePair<TreeNode, CaseCell>>();
-                if (tempProjctCell.IsHasChild)
+                foreach (var tempProjctCell in yourProjctCell.ProjectCells)
                 {
-                    unDealCaseList.Add(new KeyValuePair<TreeNode, CaseCell>(tempProjctTree, tempProjctCell));
-                }
-                #region Deal unDealCaseList
-                while (unDealCaseList.Count > 0)
-                {
-                    if (unDealCaseList[0].Value.IsHasChild)
+                    myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempProjctCell.CaseXmlNode);
+                    TreeNode tempProjctTree = new TreeNode(tempProjectLoadInfo.name, 0, 0);
+                    tempProjctTree.Tag = tempProjctCell;
+                    tempProjctCell.UiTag = tempProjctTree;
+                    List<KeyValuePair<TreeNode, CaseCell>> unDealCaseList = new List<KeyValuePair<TreeNode, CaseCell>>();
+                    if (tempProjctCell.IsHasChild)
                     {
-                        foreach (var tempCell in unDealCaseList[0].Value.ChildCells)
+                        unDealCaseList.Add(new KeyValuePair<TreeNode, CaseCell>(tempProjctTree, tempProjctCell));
+                    }
+                    #region Deal unDealCaseList
+                    while (unDealCaseList.Count > 0)
+                    {
+                        if (unDealCaseList[0].Value.IsHasChild)
                         {
-                            myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempCell.CaseXmlNode);
-                            thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
-                            if (tempCaseLoadInfo.ErrorMessage != "")
+                            foreach (var tempCell in unDealCaseList[0].Value.ChildCells)
                             {
-                                ShowMessage(tempCaseLoadInfo.ErrorMessage);
-                                ShowMessage("this error can not be repair so drop it", thisErrorTitle);
-                            }
-                            else
-                            {
-                                TreeNode tempChildTreeNode;
-                                if (tempCaseLoadInfo.caseType == CaseType.Case)
+                                myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempCell.CaseXmlNode);
+                                thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
+                                if (tempCaseLoadInfo.ErrorMessage != "")
                                 {
-                                    if (isShowCaseContent)
-                                    {
-                                        tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ● " + tempCaseLoadInfo.content);
-                                    }
-                                    else
-                                    {
-                                        tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15));
-                                    }
-
-                                    if (tempCaseLoadInfo.actions.Count > 0)
-                                    {
-                                        setNodeImageIndex(tempChildTreeNode, 16);
-                                    }
-                                    else
-                                    {
-                                        setNodeImageIndex(tempChildTreeNode, 1);
-                                    }
-                                    tempChildTreeNode.Tag = tempCell;
-                                    tempCell.UiTag = tempChildTreeNode;
-                                    if (tempCell.CaseRunData.errorMessages != null)
-                                    {
-                                        tempChildTreeNode.BackColor = Color.LemonChiffon;
-                                    }
-                                    unDealCaseList[0].Key.Nodes.Add(tempChildTreeNode);
-                                }
-                                else if (tempCaseLoadInfo.caseType == CaseType.Repeat)
-                                {
-                                    tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("Repeat:" + tempCaseLoadInfo.times, tempCaseLoadInfo.remark, 15));
-                                    setNodeImageIndex(tempChildTreeNode, 9);
-                                    tempChildTreeNode.Tag = tempCell;
-                                    tempCell.UiTag = tempChildTreeNode;
-                                    unDealCaseList.Add(new KeyValuePair<TreeNode, CaseCell>(tempChildTreeNode, tempCell));
-                                    unDealCaseList[0].Key.Nodes.Add(tempChildTreeNode);
+                                    ShowMessage(tempCaseLoadInfo.ErrorMessage);
+                                    ShowMessage("this error can not be repair so drop it", thisErrorTitle);
                                 }
                                 else
                                 {
-                                    //it will cant be project and if it is unknow i will not show it
-                                    ShowMessage("find unkown case so drop it", thisErrorTitle);
+                                    TreeNode tempChildTreeNode;
+                                    if (tempCaseLoadInfo.caseType == CaseType.Case)
+                                    {
+                                        if (isShowCaseContent)
+                                        {
+                                            tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ● " + tempCaseLoadInfo.content);
+                                        }
+                                        else
+                                        {
+                                            tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15));
+                                        }
+
+                                        if (tempCaseLoadInfo.actions.Count > 0)
+                                        {
+                                            setNodeImageIndex(tempChildTreeNode, 16);
+                                        }
+                                        else
+                                        {
+                                            setNodeImageIndex(tempChildTreeNode, 1);
+                                        }
+                                        tempChildTreeNode.Tag = tempCell;
+                                        tempCell.UiTag = tempChildTreeNode;
+                                        if (tempCell.CaseRunData.errorMessages != null)
+                                        {
+                                            tempChildTreeNode.BackColor = Color.LemonChiffon;
+                                        }
+                                        unDealCaseList[0].Key.Nodes.Add(tempChildTreeNode);
+                                    }
+                                    else if (tempCaseLoadInfo.caseType == CaseType.Repeat)
+                                    {
+                                        tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("Repeat:" + tempCaseLoadInfo.times, tempCaseLoadInfo.remark, 15));
+                                        setNodeImageIndex(tempChildTreeNode, 9);
+                                        tempChildTreeNode.Tag = tempCell;
+                                        tempCell.UiTag = tempChildTreeNode;
+                                        unDealCaseList.Add(new KeyValuePair<TreeNode, CaseCell>(tempChildTreeNode, tempCell));
+                                        unDealCaseList[0].Key.Nodes.Add(tempChildTreeNode);
+                                    }
+                                    else
+                                    {
+                                        //it will cant be project and if it is unknow i will not show it
+                                        ShowMessage("find unkown case so drop it", thisErrorTitle);
+                                    }
                                 }
                             }
                         }
+                        unDealCaseList.Remove(unDealCaseList[0]);
                     }
-                    unDealCaseList.Remove(unDealCaseList[0]);
+                    #endregion
+
+                    tvw_Case.Nodes.Add(tempProjctTree);
                 }
-                #endregion
-                
-                tvw_Case.Nodes.Add(tempProjctTree);
             }
         }
 

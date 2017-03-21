@@ -1816,24 +1816,6 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public void AddRunActuatorStaticData(string yourParameterName, string yourParameterVaule)
-        {
-            runActuatorStaticDataCollection.RunActuatorParameterList.MyAdd(yourParameterName, yourParameterVaule);
-            if (OnActuatorParameterListChanged != null)
-            {
-                this.OnActuatorParameterListChanged();
-            }
-        }
-
-        public void AddRunActuatorStaticDataSouce(string yourParameterName, string yourParameterVaule)
-        {
-            runActuatorStaticDataCollection.RunActuatorParameterList.MyAdd(yourParameterName, yourParameterVaule);
-            if (OnActuatorParameterListChanged != null)
-            {
-                this.OnActuatorParameterListChanged();
-            }
-        }
-
         /// <summary>
         /// 设置 【case guide diver】
         /// </summary>

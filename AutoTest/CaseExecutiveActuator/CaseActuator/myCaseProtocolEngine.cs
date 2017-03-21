@@ -732,8 +732,19 @@ namespace CaseExecutiveActuator
                 return false;
             }
             MyCommonHelper.FileHelper.CsvFileHelper myCsv = new MyCommonHelper.FileHelper.CsvFileHelper(csvPath, csvEncoding);
-            yourStaticData = new MyStaticDataSourceCsv(myCsv.GetListCsvData());
-            myCsv.Dispose();
+            try
+            {
+                yourStaticData = new MyStaticDataSourceCsv(myCsv.GetListCsvData());
+            }
+            catch (Exception ex)
+            {
+                errorMes = ex.Message;
+                return false;
+            }
+            finally
+            {
+                myCsv.Dispose();
+            }
             return true;
         }
 

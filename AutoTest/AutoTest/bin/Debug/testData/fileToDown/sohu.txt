@@ -1,1 +1,1 @@
-var returnCitySN = {"cip": "218.72.70.31", "cid": "330100", "cname": "浙江省杭州市"};
+var returnCitySN = {"cip": "60.191.67.195", "cid": "330100", "cname": "浙江省杭州市"};

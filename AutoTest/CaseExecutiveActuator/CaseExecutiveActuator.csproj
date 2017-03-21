@@ -47,12 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaseActuator\CaseActionActuator.cs" />
     <Compile Include="CaseMefHelper\ExportMefAssembly .cs" />
     <Compile Include="CaseMefHelper\MyExtendProtocolDriver.cs" />
     <Compile Include="CaseMefHelper\MefPlugInDriver.cs" />
-    <Compile Include="CaseActuator\myActionActuator.cs" />
     <Compile Include="CaseActuator\MyCaseProtocolEngine.cs" />
-    <Compile Include="CaseActuator\myCaseRunTime.cs" />
+    <Compile Include="CaseActuator\MyCaseRunTime.cs" />
     <Compile Include="CaseDate\CaseCell.cs" />
     <Compile Include="CaseDate\MyInterface.cs" />
     <Compile Include="CaseDate\StructData.cs" />

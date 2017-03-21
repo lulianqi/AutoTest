@@ -400,6 +400,12 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AddRunActuatorParameterStringString">
             <summary>设置 CaseActionActuator.AddRunActuatorParameter(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AddRunActuatorStaticDataSouceStringString">
+            <summary>设置 CaseActionActuator.AddRunActuatorStaticDataSouce(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AddRunActuatorStaticDataStringString">
+            <summary>设置 CaseActionActuator.AddRunActuatorStaticData(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
@@ -582,6 +588,12 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.AddRunActuatorParameterStringString">
             <summary>设置 CaseActionActuator.AddRunActuatorParameter(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.AddRunActuatorStaticDataSouceStringString">
+            <summary>设置 CaseActionActuator.AddRunActuatorStaticDataSouce(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.AddRunActuatorStaticDataStringString">
+            <summary>设置 CaseActionActuator.AddRunActuatorStaticData(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.ClearInvalidThreadList">
             <summary>设置 CaseActionActuator.ClearInvalidThreadList() 的 填充码</summary>
@@ -1120,6 +1132,90 @@
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime">
+            <summary>CaseExecutiveActuator.MyCaseRunTime 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.#ctor(CaseExecutiveActuator.MyCaseRunTime)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.Constructor">
+            <summary>设置 MyCaseRunTime.MyCaseRunTime() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.GetNowCountProgressGet">
+            <summary>设置 MyCaseRunTime.get_GetNowCountProgress() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.OnLoopChangeEventAdddelegateLoopChangeEventHandler">
+            <summary>设置 MyCaseRunTime.add_OnLoopChangeEvent(delegateLoopChangeEventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.OnLoopChangeEventRemovedelegateLoopChangeEventHandler">
+            <summary>设置 MyCaseRunTime.remove_OnLoopChangeEvent(delegateLoopChangeEventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.OnQueueChangeEventAdddelegateQueueChangeEventHandler">
+            <summary>设置 MyCaseRunTime.add_OnQueueChangeEvent(delegateQueueChangeEventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.OnQueueChangeEventRemovedelegateQueueChangeEventHandler">
+            <summary>设置 MyCaseRunTime.remove_OnQueueChangeEvent(delegateQueueChangeEventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.ReportQueueActionCaseCellString">
+            <summary>设置 MyCaseRunTime.ReportQueueAction(CaseCell yourTarget, String yourMessage) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.gotoMyCaseInt32Int32DictionaryOfInt32DictionaryOfInt32CaseCell">
+            <summary>设置 MyCaseRunTime.gotoMyCase(Int32 yourProjectId, Int32 yourCaseId, Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,CaseCell&gt;&gt; myRunTimeCaseDictionary) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.nextCase">
+            <summary>设置 MyCaseRunTime.nextCase() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.readyStartCaseCell">
+            <summary>设置 MyCaseRunTime.readyStart(CaseCell yourStartCase) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.readyStartCaseCellBoolean">
+            <summary>设置 MyCaseRunTime.readyStart(CaseCell yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.GetNowCountProgressGet">
+            <summary>设置 MyCaseRunTime.get_GetNowCountProgress() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.OnLoopChangeEventAdddelegateLoopChangeEventHandler">
+            <summary>设置 MyCaseRunTime.add_OnLoopChangeEvent(delegateLoopChangeEventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.OnLoopChangeEventRemovedelegateLoopChangeEventHandler">
+            <summary>设置 MyCaseRunTime.remove_OnLoopChangeEvent(delegateLoopChangeEventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.OnQueueChangeEventAdddelegateQueueChangeEventHandler">
+            <summary>设置 MyCaseRunTime.add_OnQueueChangeEvent(delegateQueueChangeEventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.OnQueueChangeEventRemovedelegateQueueChangeEventHandler">
+            <summary>设置 MyCaseRunTime.remove_OnQueueChangeEvent(delegateQueueChangeEventHandler value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.ReportQueueActionCaseCellString">
+            <summary>设置 MyCaseRunTime.ReportQueueAction(CaseCell yourTarget, String yourMessage) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.gotoMyCaseInt32Int32DictionaryOfInt32DictionaryOfInt32CaseCell">
+            <summary>设置 MyCaseRunTime.gotoMyCase(Int32 yourProjectId, Int32 yourCaseId, Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,CaseCell&gt;&gt; myRunTimeCaseDictionary) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.nextCase">
+            <summary>设置 MyCaseRunTime.nextCase() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.readyStartCaseCell">
+            <summary>设置 MyCaseRunTime.readyStart(CaseCell yourStartCase) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseRunTime.AllInstances.readyStartCaseCellBoolean">
+            <summary>设置 MyCaseRunTime.readyStart(CaseCell yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine">
             <summary>CaseExecutiveActuator.MyCaseScriptAnalysisEngine 的填充码类型</summary>
         </member>
@@ -1149,6 +1245,60 @@
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime">
+            <summary>CaseExecutiveActuator.MyCelerityCaseRunTime 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.#ctor(CaseExecutiveActuator.MyCelerityCaseRunTime)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.ConstructorDictionaryOfInt32DictionaryOfInt32TreeNode">
+            <summary>设置 MyCelerityCaseRunTime.MyCelerityCaseRunTime(Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,TreeNode&gt;&gt; yourCaseDictionary) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.gotoMyCaseInt32Int32">
+            <summary>设置 MyCelerityCaseRunTime.gotoMyCase(Int32 yourProjectId, Int32 yourCaseId) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.nextCase">
+            <summary>设置 MyCelerityCaseRunTime.nextCase() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.readyStartTreeNode">
+            <summary>设置 MyCelerityCaseRunTime.readyStart(TreeNode yourStartCase) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.readyStartTreeNodeBoolean">
+            <summary>设置 MyCelerityCaseRunTime.readyStart(TreeNode yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.updataRunTimeCaseDictionaryDictionaryOfInt32DictionaryOfInt32TreeNode">
+            <summary>设置 MyCelerityCaseRunTime.updataRunTimeCaseDictionary(Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,TreeNode&gt;&gt; yourCaseDictionary) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.AllInstances.gotoMyCaseInt32Int32">
+            <summary>设置 MyCelerityCaseRunTime.gotoMyCase(Int32 yourProjectId, Int32 yourCaseId) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.AllInstances.nextCase">
+            <summary>设置 MyCelerityCaseRunTime.nextCase() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.AllInstances.readyStartTreeNode">
+            <summary>设置 MyCelerityCaseRunTime.readyStart(TreeNode yourStartCase) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.AllInstances.readyStartTreeNodeBoolean">
+            <summary>设置 MyCelerityCaseRunTime.readyStart(TreeNode yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCelerityCaseRunTime.AllInstances.updataRunTimeCaseDictionaryDictionaryOfInt32DictionaryOfInt32TreeNode">
+            <summary>设置 MyCelerityCaseRunTime.updataRunTimeCaseDictionary(Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,TreeNode&gt;&gt; yourCaseDictionary) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyConfiguration">
             <summary>CaseExecutiveActuator.MyConfiguration 的填充码类型</summary>
@@ -1506,144 +1656,6 @@
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseLaodInfo.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime">
-            <summary>CaseExecutiveActuator.myCaseRunTime 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.#ctor(CaseExecutiveActuator.myCaseRunTime)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.Constructor">
-            <summary>设置 myCaseRunTime.myCaseRunTime() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.GetNowCountProgressGet">
-            <summary>设置 myCaseRunTime.get_GetNowCountProgress() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.OnLoopChangeEventAdddelegateLoopChangeEventHandler">
-            <summary>设置 myCaseRunTime.add_OnLoopChangeEvent(delegateLoopChangeEventHandler value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.OnLoopChangeEventRemovedelegateLoopChangeEventHandler">
-            <summary>设置 myCaseRunTime.remove_OnLoopChangeEvent(delegateLoopChangeEventHandler value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.OnQueueChangeEventAdddelegateQueueChangeEventHandler">
-            <summary>设置 myCaseRunTime.add_OnQueueChangeEvent(delegateQueueChangeEventHandler value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.OnQueueChangeEventRemovedelegateQueueChangeEventHandler">
-            <summary>设置 myCaseRunTime.remove_OnQueueChangeEvent(delegateQueueChangeEventHandler value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.ReportQueueActionCaseCellString">
-            <summary>设置 myCaseRunTime.ReportQueueAction(CaseCell yourTarget, String yourMessage) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.gotoMyCaseInt32Int32DictionaryOfInt32DictionaryOfInt32CaseCell">
-            <summary>设置 myCaseRunTime.gotoMyCase(Int32 yourProjectId, Int32 yourCaseId, Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,CaseCell&gt;&gt; myRunTimeCaseDictionary) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.nextCase">
-            <summary>设置 myCaseRunTime.nextCase() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.readyStartCaseCell">
-            <summary>设置 myCaseRunTime.readyStart(CaseCell yourStartCase) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.readyStartCaseCellBoolean">
-            <summary>设置 myCaseRunTime.readyStart(CaseCell yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.GetNowCountProgressGet">
-            <summary>设置 myCaseRunTime.get_GetNowCountProgress() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.OnLoopChangeEventAdddelegateLoopChangeEventHandler">
-            <summary>设置 myCaseRunTime.add_OnLoopChangeEvent(delegateLoopChangeEventHandler value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.OnLoopChangeEventRemovedelegateLoopChangeEventHandler">
-            <summary>设置 myCaseRunTime.remove_OnLoopChangeEvent(delegateLoopChangeEventHandler value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.OnQueueChangeEventAdddelegateQueueChangeEventHandler">
-            <summary>设置 myCaseRunTime.add_OnQueueChangeEvent(delegateQueueChangeEventHandler value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.OnQueueChangeEventRemovedelegateQueueChangeEventHandler">
-            <summary>设置 myCaseRunTime.remove_OnQueueChangeEvent(delegateQueueChangeEventHandler value) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.ReportQueueActionCaseCellString">
-            <summary>设置 myCaseRunTime.ReportQueueAction(CaseCell yourTarget, String yourMessage) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.gotoMyCaseInt32Int32DictionaryOfInt32DictionaryOfInt32CaseCell">
-            <summary>设置 myCaseRunTime.gotoMyCase(Int32 yourProjectId, Int32 yourCaseId, Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,CaseCell&gt;&gt; myRunTimeCaseDictionary) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.nextCase">
-            <summary>设置 myCaseRunTime.nextCase() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.readyStartCaseCell">
-            <summary>设置 myCaseRunTime.readyStart(CaseCell yourStartCase) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCaseRunTime.AllInstances.readyStartCaseCellBoolean">
-            <summary>设置 myCaseRunTime.readyStart(CaseCell yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime">
-            <summary>CaseExecutiveActuator.myCelerityCaseRunTime 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.#ctor(CaseExecutiveActuator.myCelerityCaseRunTime)">
-            <summary>初始化给定实例的新填充码</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.ConstructorDictionaryOfInt32DictionaryOfInt32TreeNode">
-            <summary>设置 myCelerityCaseRunTime.myCelerityCaseRunTime(Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,TreeNode&gt;&gt; yourCaseDictionary) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.gotoMyCaseInt32Int32">
-            <summary>设置 myCelerityCaseRunTime.gotoMyCase(Int32 yourProjectId, Int32 yourCaseId) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.nextCase">
-            <summary>设置 myCelerityCaseRunTime.nextCase() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.readyStartTreeNode">
-            <summary>设置 myCelerityCaseRunTime.readyStart(TreeNode yourStartCase) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.readyStartTreeNodeBoolean">
-            <summary>设置 myCelerityCaseRunTime.readyStart(TreeNode yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.updataRunTimeCaseDictionaryDictionaryOfInt32DictionaryOfInt32TreeNode">
-            <summary>设置 myCelerityCaseRunTime.updataRunTimeCaseDictionary(Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,TreeNode&gt;&gt; yourCaseDictionary) 的 填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.AllInstances.gotoMyCaseInt32Int32">
-            <summary>设置 myCelerityCaseRunTime.gotoMyCase(Int32 yourProjectId, Int32 yourCaseId) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.AllInstances.nextCase">
-            <summary>设置 myCelerityCaseRunTime.nextCase() 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.AllInstances.readyStartTreeNode">
-            <summary>设置 myCelerityCaseRunTime.readyStart(TreeNode yourStartCase) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.AllInstances.readyStartTreeNodeBoolean">
-            <summary>设置 myCelerityCaseRunTime.readyStart(TreeNode yourStartCase, Boolean yourIsThrough) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyCelerityCaseRunTime.AllInstances.updataRunTimeCaseDictionaryDictionaryOfInt32DictionaryOfInt32TreeNode">
-            <summary>设置 myCelerityCaseRunTime.updataRunTimeCaseDictionary(Dictionary`2&lt;Int32,Dictionary`2&lt;Int32,TreeNode&gt;&gt; yourCaseDictionary) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp">
             <summary>CaseExecutiveActuator.myConnectForHttp 的填充码类型</summary>
@@ -2317,6 +2329,24 @@
         <member name="P:CaseExecutiveActuator.Fakes.StubMyCaseScriptAnalysisEngine.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubMyCelerityCaseRunTime">
+            <summary>CaseExecutiveActuator.MyCelerityCaseRunTime 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyCelerityCaseRunTime.#ctor(System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Windows.Forms.TreeNode}})">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyCelerityCaseRunTime.InitializeStub">
+            <summary>初始化 type StubMyCelerityCaseRunTime 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCelerityCaseRunTime.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCelerityCaseRunTime.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyCelerityCaseRunTime.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubMyConfiguration">
             <summary>CaseExecutiveActuator.MyConfiguration 的存根类型</summary>
         </member>
@@ -2369,24 +2399,6 @@
             <summary>获取或设置实例行为。</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubmyBasicHttpExecutionContent.InstanceObserver">
-            <summary>获取或设置实例观察者。</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.StubmyCelerityCaseRunTime">
-            <summary>CaseExecutiveActuator.myCelerityCaseRunTime 的存根类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubmyCelerityCaseRunTime.#ctor(System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Windows.Forms.TreeNode}})">
-            <summary>初始化新实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubmyCelerityCaseRunTime.InitializeStub">
-            <summary>初始化 type StubmyCelerityCaseRunTime 的新实例</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCelerityCaseRunTime.CallBase">
-            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCelerityCaseRunTime.InstanceBehavior">
-            <summary>获取或设置实例行为。</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.StubmyCelerityCaseRunTime.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubmyExecutionDeviceResult">
