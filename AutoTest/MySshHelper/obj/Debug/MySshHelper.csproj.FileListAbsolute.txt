@@ -12,3 +12,4 @@ F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MySshHelper\bin\Debug\DiffieHellman.dll

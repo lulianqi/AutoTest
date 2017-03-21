@@ -211,7 +211,7 @@ namespace MyCommonHelper.FileHelper
                     }
                     else if (character == '"') //双引号单独出现（这种情况实际上已经是格式错误，为了兼容可暂时不处理）
                     {
-                        throw new Exception("格式错误，错误的双引号转义");
+                        throw new Exception(string.Format("[{0}]:格式错误，错误的双引号转义 near [{1}] ","ParseLine", line));
                     }
                     //其他情况直接跳出，后面正常添加
 
@@ -297,7 +297,7 @@ namespace MyCommonHelper.FileHelper
                 }
                 else if (character == '"') //双引号单独出现（这种情况实际上已经是格式错误，转义用双引号一定是【,"】【",】形式，包含在里面的双引号需要使用一对双引号进行转义）
                 {
-                    throw new Exception(string.Format("格式错误，错误的双引号转义 near [{0}]",line));
+                    throw new Exception(string.Format("[{0}]:格式错误，错误的双引号转义 near [{1}]", "ParseContinueLine", line));
                 }
                 _columnBuilder.Append(character);
             }

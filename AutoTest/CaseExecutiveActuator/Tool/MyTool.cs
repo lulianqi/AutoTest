@@ -727,35 +727,28 @@ namespace CaseExecutiveActuator
                     {
                         if (keyAdditionData == null)
                         {
+                            tempVaule = yourStaticDataList[keyParameter].DataCurrent();
+                        }
+                        else if(keyAdditionData=="=")
+                        {
+                            tempVaule = yourStaticDataList[keyParameter].DataCurrent();
+                        }
+                        else if(keyAdditionData=="+")
+                        {
                             tempVaule = yourStaticDataList[keyParameter].DataMoveNext();
                         }
-                        else
+                        else if(keyAdditionData.StartsWith("+")) //+10 前移10
                         {
-                            if(keyAdditionData=="=")
+                            int tempTimes;
+                            if(int.TryParse(keyAdditionData.Remove(0,1),out tempTimes))
                             {
-                                tempVaule = yourStaticDataList[keyParameter].DataCurrent();
-                            }
-                            else if(keyAdditionData=="+")
-                            {
-                                tempVaule = yourStaticDataList[keyParameter].DataMoveNext();
-                            }
-                            else if(keyAdditionData.StartsWith("+")) //+10 前移10
-                            {
-                                int tempTimes;
-                                if(int.TryParse(keyAdditionData.Remove(0,1),out tempTimes))
+                                if(tempTimes>0)
                                 {
-                                    if(tempTimes>0)
+                                    for(int i=0;i<tempTimes;i++)
                                     {
-                                        for(int i=0;i<tempTimes;i++)
-                                        {
-                                            yourStaticDataList[keyParameter].DataMoveNext();
-                                        }
-                                        tempVaule = yourStaticDataList[keyParameter].DataCurrent();
+                                        yourStaticDataList[keyParameter].DataMoveNext();
                                     }
-                                    else
-                                    {
-                                        errorMessage = DealErrorAdditionData();
-                                    }
+                                    tempVaule = yourStaticDataList[keyParameter].DataCurrent();
                                 }
                                 else
                                 {
@@ -766,8 +759,12 @@ namespace CaseExecutiveActuator
                             {
                                 errorMessage = DealErrorAdditionData();
                             }
-
                         }
+                        else
+                        {
+                            errorMessage = DealErrorAdditionData();
+                        }
+
                         yourSourceData = yourSourceData.Replace(splitStr + tempKeyVaule + splitStr, tempVaule);
                         yourDataResultCollection.myAdd(tempKeyVaule, tempVaule);
                     }
@@ -778,7 +775,15 @@ namespace CaseExecutiveActuator
                     {
                         if (keyAdditionData == null)
                         {
-                            tempVaule = yourStaticDataSourceList[tempKeyVaule].DataMoveNext();
+                            tempVaule = yourStaticDataSourceList[tempKeyVaule].DataCurrent();
+                        }
+                        else if (keyAdditionData == "=")
+                        {
+                            tempVaule = yourStaticDataList[keyParameter].DataCurrent();
+                        }
+                        else if (keyAdditionData == "+")
+                        {
+                            tempVaule = yourStaticDataList[keyParameter].DataMoveNext();
                         }
                         else if (keyAdditionData.StartsWith("+")) //+10 前移10
                         {

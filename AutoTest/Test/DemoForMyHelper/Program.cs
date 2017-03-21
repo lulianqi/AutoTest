@@ -10,7 +10,7 @@ namespace DemoForMyHelper
         static void Main(string[] args)
         {
             //new DemoForMySvn().Run();
-            //new DemoForMySsh().RunFileMv();
+            new DemoForMySsh().RunShellTest();
             //new DemoForMySql().RunTest();
             new DemoForMyVoice().Run();
             Console.ReadKey();

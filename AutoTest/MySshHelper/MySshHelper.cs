@@ -24,6 +24,9 @@ using Tamir.SharpSsh;
 
 //}
 
+/// <summary>
+/// 对于Tamir.SharpSsh的引用（来自于Tamir.SharpSSH.dll），由于Tamir.SharpSSH.dll自身引用了DiffieHellman.dll,Org.Mentalis.Security.dll，所以需要将DiffieHellman.dll,Org.Mentalis.Security.dll放在执行文件同目录（不一定是Tamir.SharpSSH.dll的同级目录），或者直接将DiffieHellman也引用入工程
+/// </summary>
 namespace MySshHelper
 {
 
