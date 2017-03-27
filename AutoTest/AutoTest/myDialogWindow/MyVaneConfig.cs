@@ -231,7 +231,7 @@ namespace AutoTest.myDialogWindow
                     }
                     catch (Exception ex)
                     {
-                        ErrorLog.PutInLogEx(ex);
+                        ErrorLog.PutInLog(ex);
                         MessageBox.Show(ex.Message);
                     }
 
@@ -246,7 +246,7 @@ namespace AutoTest.myDialogWindow
                     }
                     catch (Exception ex)
                     {
-                        ErrorLog.PutInLogEx(ex);
+                        ErrorLog.PutInLog(ex);
                         MessageBox.Show(ex.Message);
                     }
                 }

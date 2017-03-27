@@ -970,7 +970,7 @@ namespace AutoTest
         {
             MyCommonTool.SetControlFreeze(listView_DataAdd);
             listView_DataAdd.BeginUpdate();
-            listView_DataAdd.Items.Add(new ListViewItem(new string[] { listView_DataAdd.Items.Count.ToString(), yourResult.caseId.ToString(), yourResult.startTime, yourResult.spanTime, yourResult.result.ToString(), yourResult.caseTarget + "->" + yourResult.backContent, yourResult.staticDataResultCollection.MyToString() + yourResult.additionalRemark }));
+            listView_DataAdd.Items.Add(new ListViewItem(new string[] { listView_DataAdd.Items.Count.ToString(), yourResult.caseId.ToString(), yourResult.startTime, yourResult.spanTime, yourResult.result.ToString(), yourResult.caseTarget + "->" + yourResult.backContent, yourResult.staticDataResultCollection.MyToFormatString() + yourResult.additionalRemark }));
             if (pictureBox_dataAddStopTag)
             {
                 listView_DataAdd.EnsureVisible(listView_DataAdd.Items.Count - 1);

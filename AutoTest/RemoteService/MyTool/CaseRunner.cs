@@ -386,7 +386,7 @@ namespace RemoteService
             //严重错误
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex);
+                ErrorLog.PutInLog(ex);
                 errorMessage = ex.Message;
                 caseActuator.DisconnectExecutionDevice();
                 caseActuator.Dispose();

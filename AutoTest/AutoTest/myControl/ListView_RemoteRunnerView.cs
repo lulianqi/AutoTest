@@ -126,7 +126,7 @@ namespace AutoTest.myControl
                 }
                 else
                 {
-                    MyCommonHelper.ErrorLog.PutInLogEx("unkonw runnerState find in ListView_RemoteRunnerView");
+                    MyCommonHelper.ErrorLog.PutInLog("unkonw runnerState find in ListView_RemoteRunnerView");
                 }
 
                 if (runnerState.RunnerProgress != null)
@@ -135,7 +135,7 @@ namespace AutoTest.myControl
                 }
                 else
                 {
-                    MyCommonHelper.ErrorLog.PutInLogEx("no RunnerProgress find in ListView_RemoteRunnerView");
+                    MyCommonHelper.ErrorLog.PutInLog("no RunnerProgress find in ListView_RemoteRunnerView");
                 }
 
                 this.Controls.Add(runerProgressBar);
@@ -171,7 +171,7 @@ namespace AutoTest.myControl
                 }
                 else
                 {
-                    MyCommonHelper.ErrorLog.PutInLogEx("unkonw runnerState find in ListView_RemoteRunnerView");
+                    MyCommonHelper.ErrorLog.PutInLog("unkonw runnerState find in ListView_RemoteRunnerView");
                 }
                 return true;
             }

@@ -277,7 +277,12 @@ namespace MyCommonHelper
            }
         }
 
-        public static string MyToString(this NameValueCollection nvc)
+        /// <summary>
+        ///  转换为{[key:value][key:value].......}
+        /// </summary>
+        /// <param name="nvc">NameValueCollection</param>
+        /// <returns>{[key:value][key:value].......}</returns>
+        public static string MyToFormatString(this NameValueCollection nvc)
         {
             if (nvc != null)
             {
@@ -289,12 +294,41 @@ namespace MyCommonHelper
                     }
                     else
                     {
-                        StringBuilder tempStrBld=new StringBuilder("{ ");
+                        StringBuilder tempStrBld = new StringBuilder("{ ", nvc.Count * 32);
                         foreach(string tempKey in nvc.Keys)
                         {
                             tempStrBld.AppendFormat("[{0}:{1}] ", tempKey, nvc[tempKey]);
                         }
                         tempStrBld.Append("}");
+                        return tempStrBld.ToString();
+                    }
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        /// 转换为key:value/r/nkey:value.......
+        /// </summary>
+        /// <param name="nvc">NameValueCollection</param>
+        /// <returns>key:value/r/nkey:value.....</returns>
+        public static string MyToString(this NameValueCollection nvc)
+        {
+            if (nvc != null)
+            {
+                if (nvc.Count > 0)
+                {
+                    if (nvc.Count < 2)
+                    {
+                        return string.Format("{0}:{1}\r\n", nvc.Keys[0], nvc[nvc.Keys[0]]);
+                    }
+                    else
+                    {
+                        StringBuilder tempStrBld = new StringBuilder(nvc.Count * 32);
+                        foreach (string tempKey in nvc.Keys)
+                        {
+                            tempStrBld.AppendFormat("{0}:{1}\r\n", tempKey, nvc[tempKey]);
+                        }
                         return tempStrBld.ToString();
                     }
                 }

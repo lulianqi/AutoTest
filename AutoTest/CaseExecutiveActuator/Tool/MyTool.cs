@@ -1091,7 +1091,7 @@ namespace CaseExecutiveActuator
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex);
+                ErrorLog.PutInLog(ex);
                 return null;
             }
             XmlNodeList tempNodeList = xml.SelectNodes("//" + yourTarget);

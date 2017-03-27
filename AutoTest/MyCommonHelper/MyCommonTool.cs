@@ -185,7 +185,7 @@ namespace MyCommonHelper
                 }
                 catch(Exception ex)
                 {
-                    ErrorLog.PutInLogEx(ex);
+                    ErrorLog.PutInLog(ex);
                     return false;
                 }
                 return true;
@@ -674,6 +674,15 @@ namespace MyCommonHelper
     /// </summary>
     public class FileService
     {
+
+        /* eg:
+                FileStream fs = new FileStream(FilePathEx, File.Exists(FilePathEx) ? FileMode.Append : FileMode.Create, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(fs);
+                swex.WriteLine("++++++++++++++++++++");
+                sw.Close();
+                fs.Close();
+         * */
+
         /// <summary>
         /// 根据文件名返回文件路径（容错上可能受相对路径影响，未测试请勿使用可能出现错误的路径格式）
         /// </summary>
@@ -856,49 +865,6 @@ namespace MyCommonHelper
         }
     }
 
-    ///// <summary>
-    ///// 语音服务
-    ///// </summary>
-    //public class VoiceService
-    //{
-    //    private static SpVoiceClass voic = new SpVoiceClass();
-
-    //    private static void SpVoiceInitialization()
-    //    {
-    //        voic.Voice = voic.GetVoices(null, null).Item(0);
-    //        voic.Volume = 100;
-    //    }
-
-    //    /// <summary>
-    //    /// Speak your data
-    //    /// </summary>
-    //    /// <param name="yourData">your Data to Speak</param>
-    //    public static void Speak(string yourData)
-    //    {
-    //        try
-    //        {
-    //            voic.Speak(yourData, SpeechVoiceSpeakFlags.SVSFDefault);
-    //        }
-    //        catch(Exception ex)
-    //        {
-    //            ErrorLog.PutInLogEx(ex);
-    //        }
-    //    }
-
-    //    /// <param name="iFrequency">声音频率（从37Hz到32767Hz）。在windows95中忽略</param>   
-    //    /// <param name="iDuration">声音的持续时间，以毫秒为单位。</param>   
-    //    [DllImport("Kernel32.dll")] //引入命名空间 using System.Runtime.InteropServices;   
-    //    public static extern bool Beep(int frequency, int duration);
-
-    //    /// <summary>
-    //    /// Warning tone
-    //    /// </summary>
-    //    /// <returns>is ok</returns>
-    //    public static bool Beep()
-    //    {
-    //        return Beep(1600, 800);  
-    //    }
-    //}  
 
     /// <summary>
     /// read and write ini file
@@ -947,9 +913,68 @@ namespace MyCommonHelper
     {
         #region 内部成员
         private static string FilePath = System.Windows.Forms.Application.StartupPath + "\\log\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt";       //log path
+        private static bool isStart = false;
+        private static string logNewLineFlag = "-------------------------------------------------------";
         private static bool isUsing = false;                                                                                                            //this log path may using where you call him
+        private static FileStream fs;
+        private static StreamWriter sw;
         private static List<string> unHandleLogs = new List<string>();                                                                                  //this log you not deal with
         #endregion
+
+        static ErrorLog()
+        {
+            if(!Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\log"))
+            {
+                Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\log");
+            }
+            Start();
+        }
+
+        /// <summary>
+        /// 获取或设置一个值，表示当前日志是否启动
+        /// </summary>
+        public static bool IsStart
+        {
+            get { return isStart; }
+            set
+            {
+                if(value)
+                {
+                    Start();
+                }
+                else
+                {
+                    Stop();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 启动日志
+        /// </summary>
+        public static void Start()
+        {
+            if (!isStart)
+            {
+                fs = new FileStream(FilePath, File.Exists(FilePath) ? FileMode.Append : FileMode.Create, FileAccess.Write);
+                sw = new StreamWriter(fs);
+                isStart = true;
+            }
+        }
+
+        /// <summary>
+        /// 关闭日志
+        /// </summary>
+        public static void Stop()
+        {
+            if (isStart)
+            {
+                closeLog();
+                sw.Close();
+                fs.Close();
+                isStart = false;
+            }
+        }
 
         /// <summary>
         /// get now line
@@ -976,28 +1001,22 @@ namespace MyCommonHelper
         /// </summary>
         private static void savaUnHandleLogs()
         {
+            if (!isStart)
+            {
+                return;
+            }
             if (unHandleLogs.Count > 0)
             {
                 if (isUsing == false)
                 {
                     isUsing = true;
-                    FileStream fs;
-                    if (!File.Exists(FilePath))
-                    {
-                        fs = new FileStream(FilePath, FileMode.Create, FileAccess.Write);//创建写入文件        
-                    }
-                    else
-                    {
-                        fs = new FileStream(FilePath, FileMode.Append, FileAccess.Write);
-                    }
-                    StreamWriter sw = new StreamWriter(fs);
                     foreach (string tempLog in unHandleLogs)
                     {
+                        sw.WriteLine(logNewLineFlag);
                         sw.WriteLine(tempLog);
                     }
+                    sw.Flush();
                     unHandleLogs.Clear();
-                    sw.Close();
-                    fs.Close();
                     isUsing = false;
                 }
             }
@@ -1010,165 +1029,57 @@ namespace MyCommonHelper
         /// <param name="errorMessage"> your message</param>
         public static void PutInLog(string errorMessage)
         {
-            if (isUsing == false)
+            if (!isStart)
             {
-                isUsing = true;
-                if (!File.Exists(FilePath))
-                {
-                    FileStream fs = new FileStream(FilePath, FileMode.Create, FileAccess.Write);//创建写入文件 
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.WriteLine(errorMessage);//开始写入值
-                    sw.Close();
-                    fs.Close();
-                }
-                else
-                {
-                    FileStream fs = new FileStream(FilePath, FileMode.Append, FileAccess.Write);
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.WriteLine("++++++++++");
-                    sw.WriteLine(errorMessage);//开始写入值
-                    sw.Close();
-                    fs.Close();
-                }
-                //else
-                //{
-                //    FileStream fs = new FileStream("F:\\TestTxt.txt", FileMode.Open, FileAccess.Write);
-                //    StreamWriter sr = new StreamWriter(fs);
-                //    sr.WriteLine(this.textBox3.Text.Trim() + "+" + this.textBox4.Text);//开始写入值
-                //    sr.Close();
-                //    fs.Close();
-
-                //}
-                isUsing = false;
+                return;
             }
-            else
-            {
-                unHandleLogs.Add(errorMessage);
-            }
-
-        }
-
-        /// <summary>
-        /// i will pu int log in the file with the error code Position
-        /// </summary>
-        /// <param name="errorMessage">your message</param>
-        public static void PutInLogEx(string errorMessage)
-        {
-            errorMessage = "ErrorFile: " + GetCurSourceFileName(2) + "\r\n" + "ErrorLine: " + GetLineNum(2) + "\r\n" + errorMessage;
-            if (isUsing == false)
-            {
-                isUsing = true;
-                if (!File.Exists(FilePath))
-                {
-                    FileStream fs = new FileStream(FilePath, FileMode.Create, FileAccess.Write);//创建写入文件 
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.WriteLine(errorMessage);//开始写入值
-                    sw.Close();
-                    fs.Close();
-                }
-                else
-                {
-                    FileStream fs = new FileStream(FilePath, FileMode.Append, FileAccess.Write);
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.WriteLine("++++++++++++++++++++");
-                    sw.WriteLine(errorMessage);//开始写入值
-                    sw.Close();
-                    fs.Close();
-                }
-                isUsing = false;
-            }
-            else
-            {
-                unHandleLogs.Add(errorMessage);
-            }
-        }
-
-        /// <summary>
-        /// i will pu int Exception in the file with the error code Position
-        /// </summary>
-        /// <param name="errorMessage">your message</param>
-        public static void PutInLogEx(Exception errorException)
-        {
-            string errorMessage = "ErrorFile: " + GetCurSourceFileName(2) + "\r\n" + "ErrorLine: " + GetLineNum(2) + "\r\n" + errorException.Message + "\r\n" + errorException.Source;
-            if (isUsing == false)
-            {
-                isUsing = true;
-                if (!File.Exists(FilePath))
-                {
-                    FileStream fs = new FileStream(FilePath, FileMode.Create, FileAccess.Write);//创建写入文件 
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.WriteLine(errorMessage);//开始写入值
-                    sw.Close();
-                    fs.Close();
-                }
-                else
-                {
-                    FileStream fs = new FileStream(FilePath, FileMode.Append, FileAccess.Write);
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.WriteLine("++++++++++++++++++++");
-                    sw.WriteLine(errorMessage);//开始写入值
-                    sw.Close();
-                    fs.Close();
-                }
-                isUsing = false;
-            }
-            else
-            {
-                unHandleLogs.Add(errorMessage);
-            }
-        }
-
-        /// <summary>
-        ///  i will pu int log in the file with the error code Position and you can set skipFrames
-        /// </summary>
-        /// <param name="errorMessage"> your message</param>
-        /// <param name="skipFrames">skipFrames</param>
-        public static void PutInLogEx(string errorMessage, int skipFrames)
-        {
-            errorMessage = "ErrorFile: " + GetCurSourceFileName(skipFrames) + "\r\n" + "ErrorLine: " + GetLineNum(skipFrames) + "\r\n" + errorMessage;
-            if (isUsing == false)
-            {
-                isUsing = true;
-                if (!File.Exists(FilePath))
-                {
-                    FileStream fs = new FileStream(FilePath, FileMode.Create, FileAccess.Write);//创建写入文件 
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.WriteLine(errorMessage);//开始写入值
-                    sw.Close();
-                    fs.Close();
-                }
-                else
-                {
-                    FileStream fs = new FileStream(FilePath, FileMode.Append, FileAccess.Write);
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.WriteLine("++++++++++++++++++++");
-                    sw.WriteLine(errorMessage);//开始写入值
-                    sw.Close();
-                    fs.Close();
-                }
-                isUsing = false;
-            }
-            else
-            {
-                unHandleLogs.Add(errorMessage);
-            }
-        }
-
-
-        /// <summary>
-        /// when you close your application you can call me to deal with the log you not put in the file 
-        /// </summary>
-        public static void closeLog()
-        {
             savaUnHandleLogs();
+            if (isUsing == false)
+            {
+                isUsing = true;
+                sw.WriteLine(logNewLineFlag);
+                sw.WriteLine(DateTime.Now.ToString());
+                sw.WriteLine(string.Format("ErrorFile:{0}\r\nErrorLine:{1}\r\n", GetCurSourceFileName(2), GetLineNum(2)));
+                sw.WriteLine(errorMessage);//开始写入值
+                sw.Flush();
+                isUsing = false;
+            }
+            else
+            {
+                unHandleLogs.Add(errorMessage);
+            }
+
+        }
+
+        public static void PutInLog(Exception errorException)
+        {
+            if(!isStart)
+            {
+                return;
+            }
+            savaUnHandleLogs();
+            if (isUsing == false)
+            {
+                isUsing = true;
+                sw.WriteLine(logNewLineFlag);
+                sw.WriteLine(DateTime.Now.ToString());
+                sw.WriteLine(errorException.Message);
+                sw.WriteLine(errorException.StackTrace);
+                sw.Flush();
+                isUsing = false;
+            }
+            else
+            {
+                unHandleLogs.Add(string.Format("{0}/r/n{1}/r/n{2}/r/n", DateTime.Now.ToString(), errorException.Message, errorException.StackTrace));
+            }
+
         }
 
         /*
         private static FileStream fsRecord ;
         public static void StartRecord()
         {
-            string tempPath = System.Windows.Forms.Application.StartupPath + "\\log\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt";
-            fsRecord = new FileStream(tempPath, FileMode.Append, FileAccess.Write);
+         * 
         }
         public static void PutInRecord()
         {
@@ -1180,5 +1091,12 @@ namespace MyCommonHelper
         }
         */
 
+        /// <summary>
+        /// when you close your application you can call me to deal with the log you not put in the file 
+        /// </summary>
+        public static void closeLog()
+        {
+            savaUnHandleLogs();
+        }
     }
 }

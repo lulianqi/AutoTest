@@ -248,7 +248,7 @@ namespace AutoTest.myTool
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex.Message);
+                ErrorLog.PutInLog(ex.Message);
                 return 0;
             }
         }
@@ -393,7 +393,7 @@ namespace AutoTest.myTool
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex);
+                ErrorLog.PutInLog(ex);
                 return ex.Message;
             }
             return "";

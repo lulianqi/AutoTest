@@ -91,7 +91,7 @@ namespace MyCommonHelper.NetHelper
             {
                 dicHeadSetFun.Add("Accept".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Accept = yourHeadValue));
                 dicHeadSetFun.Add("Connection".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Connection = yourHeadValue));
-                //dicHeadSetFun.Add("Date".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { DateTime tempTime; if (!DateTime.TryParse(yourHeadValue, out tempTime)) tempTime = DateTime.Now; yourRequest.Date = tempTime; }));  //2009-05-01 14:57:32 //修改该头需要4.0版本支持，如果升级4.0可以取消该注释，启用该功能
+                dicHeadSetFun.Add("Date".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { DateTime tempTime; if (!DateTime.TryParse(yourHeadValue, out tempTime)) tempTime = DateTime.Now; yourRequest.Date = tempTime; }));  //2009-05-01 14:57:32 //修改该头需要4.0版本支持，如果升级4.0可以取消该注释，启用该功能
                 //dicHeadSetFun.Add("KeepAlive".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.KeepAlive = yourHeadValue));//该头可以直接使用Headers.Add
                 dicHeadSetFun.Add("Transfer-Encoding".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.TransferEncoding = yourHeadValue));
                 dicHeadSetFun.Add("Content-Length".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { int tempLen; if (!int.TryParse(yourHeadValue, out tempLen)) tempLen = 0; yourRequest.ContentLength = tempLen; }));
@@ -184,31 +184,44 @@ namespace MyCommonHelper.NetHelper
 
         public static class MyHttp
         {
-            public static int httpTimeOut = 100000;                                            //http time out , HttpPostData will not use this value   （连接超时）
-            public static int httpReadWriteTimeout = 300000;                                   //WebRequest.ReadWriteTimeout 该属性暂时未设置           （读取/写入超时）
+            public static int httpTimeOut = 100000;                                              //http time out , HttpPostData will not use this value   （连接超时）
+            public static int httpReadWriteTimeout = 300000;                                     //WebRequest.ReadWriteTimeout 该属性暂时未设置           （读取/写入超时）
+            public static bool showResponseHeads = false;                                        //是否返回http返回头
+            public static Encoding responseEncoding = System.Text.Encoding.GetEncoding("UTF-8"); //如果要显示返回数据，返回数据将使用此编码
             static readonly string EOF = "\r\n";
 
             /// <summary>
             /// i will Send Data 
             /// </summary>
             /// <param name="url"> url </param>
-            /// <param name="data"> param if method is not POST it will add to the url</param>
+            /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <returns>back </returns>
             public static string SendData(string url, string data, string method)
             {
-                return SendData(url, data, method, null);
+                return SendData(url, data, method, null,null);
+            }
+
+            /// <summary>
+            /// i will Send Data with Get
+            /// </summary>
+            /// <param name="url">url</param>
+            /// <returns>back</returns>
+            public static string SendData(string url)
+            {
+                return SendData(url, null, "GET", null,null);
             }
 
             /// <summary>
             /// i will Send Data (you can put Head in Request)
             /// </summary>
             /// <param name="url"> url </param>
-            /// <param name="data"> param if method is not POST it will add to the url</param>
+            /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
-            /// <param name="heads">http Head list</param>
+            /// <param name="heads">http Head list （if not need set it null）</param>
+            /// <param name="saveFileName">save your response as file （if not need set it null）</param>
             /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string,string>> heads)
+            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName)
             {
                 string re = "";
                 bool hasBody = !string.IsNullOrEmpty(data);
@@ -254,15 +267,59 @@ namespace MyCommonHelper.NetHelper
 
                     Stream ReceiveStream = result.GetResponseStream();
 
-                    Byte[] read = new Byte[512];
-                    int bytes = ReceiveStream.Read(read, 0, 512);
-
-                    re = "";
-                    while (bytes > 0)
+                    if (saveFileName == null)
                     {
-                        Encoding encode = System.Text.Encoding.GetEncoding("UTF-8");
-                        re += encode.GetString(read, 0, bytes);
-                        bytes = ReceiveStream.Read(read, 0, 512);
+                        Byte[] read = new Byte[512];
+                        int bytes = ReceiveStream.Read(read, 0, 512);
+                        if (showResponseHeads)
+                        {
+                            re = result.Headers.ToString();
+                        }
+                        while (bytes > 0)
+                        {
+                            re += responseEncoding.GetString(read, 0, bytes);
+                            bytes = ReceiveStream.Read(read, 0, 512);
+                        }
+                    }
+                    //save file
+                    else
+                    {
+                        /*
+                        byte[] infbytes = new byte[10240];
+                        int tempLen = 512;
+                        int offset = 0;
+
+                        //数据最多20k可以不需要分段读取
+                        while (tempLen - 512 >= 0)
+                        {
+                            tempLen = ReceiveStream.Read(infbytes, offset, 512);
+                            offset += tempLen;
+                        }
+
+                        byte[] bytesToSave = new byte[offset];
+                        for (int i = 0; i < offset; i++)
+                        {
+                            bytesToSave[i] = infbytes[i];
+                        }
+                        
+                        File.WriteAllBytes(saveFileName, bytesToSave);
+                        */
+
+                        //my way
+                        using (FileStream stream = new FileStream(saveFileName,FileMode.Create,FileAccess.Write,FileShare.Write))
+                        {
+                            int tempReadCount = 1024;
+                            byte[] infbytes = new byte[tempReadCount]; //反复使用前也不要清空，因为后面写入会指定有效长度
+                            int tempLen = tempReadCount;
+                            int offset = 0;
+                            while (tempLen >= tempReadCount )
+                            {
+                                tempLen = ReceiveStream.Read(infbytes, 0, tempReadCount);
+                                stream.Write(infbytes, 0, tempLen);//FileStream 内建缓冲区，不用自己构建缓存写入,FileStream的offset会自动维护，也可以使用stream.Position强制指定
+                                offset += tempLen;
+                            }
+                            re = string.Format("file save sucess in [ {0} ]  with {1}byte", saveFileName, offset);
+                        }
                     }
                 }
 
@@ -285,7 +342,12 @@ namespace MyCommonHelper.NetHelper
                 catch (Exception ex)
                 {
                     re = ex.Message;
-                    ErrorLog.PutInLog("ID:0090 " + ex.InnerException);
+                    ErrorLog.PutInLog(ex);
+                }
+
+                finally
+                {
+
                 }
                 return re;
             }
@@ -422,8 +484,7 @@ namespace MyCommonHelper.NetHelper
 
                     var httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
 
-                    using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(),
-                                                                    Encoding.GetEncoding("utf-8")))
+                    using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(), responseEncoding))
                     {
                         responseContent = httpStreamReader.ReadToEnd();
                     }
@@ -476,7 +537,7 @@ namespace MyCommonHelper.NetHelper
             /// <returns>back data</returns>
             public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding)
             {
-                string responseContent;
+                string responseContent = null;
                 Encoding httpBodyEncoding = Encoding.UTF8;
                 string defaultMultipartContentType = "application/octet-stream";
                 NameValueCollection stringDict = new NameValueCollection();
@@ -612,7 +673,6 @@ namespace MyCommonHelper.NetHelper
                 try
                 {
                     var requestStream = webRequest.GetRequestStream();
-
                     memStream.Position = 0;
                     var tempBuffer = new byte[memStream.Length];
                     memStream.Read(tempBuffer, 0, tempBuffer.Length);
@@ -622,10 +682,13 @@ namespace MyCommonHelper.NetHelper
                     requestStream.Close();
 
                     HttpWebResponse httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
-
-                    using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(),Encoding.GetEncoding("utf-8")))
+                    if (showResponseHeads)
                     {
-                        responseContent = httpStreamReader.ReadToEnd();
+                        responseContent = httpWebResponse.Headers.ToString();
+                    }
+                    using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(), responseEncoding))
+                    {
+                        responseContent += httpStreamReader.ReadToEnd();
                     }
 
                     httpWebResponse.Close();

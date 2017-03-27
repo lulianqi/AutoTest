@@ -141,7 +141,7 @@ namespace MyCommonHelper.NetHelper
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex);
+                ErrorLog.PutInLog(ex);
                 return false;
             }
         }

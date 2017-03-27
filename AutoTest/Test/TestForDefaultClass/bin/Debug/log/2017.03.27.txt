@@ -1,0 +1,35 @@
+------------------------------------
+2017/3/27 19:38:26
+指定的参数已超出有效值的范围。
+参数名: size
+   在 System.Net.ConnectStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 317
+------------------------------------
+2017/3/27 19:39:49
+指定的参数已超出有效值的范围。
+参数名: size
+   在 System.Net.ConnectStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 317
+-------------------------------------------------------
+2017/3/27 19:51:24
+指定的参数已超出有效值的范围。
+参数名: size
+   在 System.Net.ConnectStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 317
+-------------------------------------------------------
+2017/3/27 20:15:06
+指定的参数已超出有效值的范围。
+参数名: size
+   在 System.Net.ConnectStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 317
+-------------------------------------------------------
+2017/3/27 20:17:38
+偏移量和长度超出数组的界限，或者计数大于从索引到源集合结尾处的元素数量。
+   在 System.IO.FileStream.Write(Byte[] array, Int32 offset, Int32 count)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 318
+-------------------------------------------------------
+2017/3/27 20:21:27
+指定的参数已超出有效值的范围。
+参数名: size
+   在 System.Net.ConnectStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 317

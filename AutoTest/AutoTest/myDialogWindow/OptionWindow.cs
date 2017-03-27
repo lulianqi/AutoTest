@@ -54,7 +54,7 @@ namespace AutoTest.myDialogWindow
             catch (Exception ex)
             {
                 cb_ow_postDes.SelectedIndex = 0;
-                ErrorLog.PutInLogEx(ex.Message);
+                ErrorLog.PutInLog(ex.Message);
             }
         }
 

@@ -400,12 +400,6 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AddRunActuatorParameterStringString">
             <summary>设置 CaseActionActuator.AddRunActuatorParameter(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AddRunActuatorStaticDataSouceStringString">
-            <summary>设置 CaseActionActuator.AddRunActuatorStaticDataSouce(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AddRunActuatorStaticDataStringString">
-            <summary>设置 CaseActionActuator.AddRunActuatorStaticData(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
-        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
@@ -588,12 +582,6 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.AddRunActuatorParameterStringString">
             <summary>设置 CaseActionActuator.AddRunActuatorParameter(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.AddRunActuatorStaticDataSouceStringString">
-            <summary>设置 CaseActionActuator.AddRunActuatorStaticDataSouce(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.AddRunActuatorStaticDataStringString">
-            <summary>设置 CaseActionActuator.AddRunActuatorStaticData(String yourParameterName, String yourParameterVaule) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseActionActuator.AllInstances.ClearInvalidThreadList">
             <summary>设置 CaseActionActuator.ClearInvalidThreadList() 的 填充码</summary>
@@ -987,9 +975,6 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.CheckCaseXmlNodeStringStringArray">
             <summary>设置 CaseTool.CheckCase(XmlNode sourceNode, String targetKey, String[] targetValue) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringDictionaryOfStringStringDictionaryOfStringIRunTimeStaticDataNameValueCollectionStringOut">
-            <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, Dictionary`2&lt;String,String&gt; yourParameterList, Dictionary`2&lt;String,IRunTimeStaticData&gt; yourStaticDataList, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetCurrentParametersDataStringStringActuatorStaticDataCollectionNameValueCollectionStringOut">
             <summary>设置 CaseTool.GetCurrentParametersData(String yourSourceData, String splitStr, ActuatorStaticDataCollection yourActuatorStaticDataCollection, NameValueCollection yourDataResultCollection, String&amp; errorMessage) 的 填充码</summary>

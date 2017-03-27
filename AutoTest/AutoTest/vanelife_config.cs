@@ -100,7 +100,7 @@ namespace AutoTest
                 }
                 else
                 {
-                    ErrorLog.PutInLogEx(tempvaneConfig.errorMsg);
+                    ErrorLog.PutInLog(tempvaneConfig.errorMsg);
                 }
 
             }
@@ -256,7 +256,7 @@ namespace AutoTest
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                ErrorLog.PutInLogEx(ex.Message);
+                ErrorLog.PutInLog(ex.Message);
             }
         }
 
@@ -438,7 +438,7 @@ namespace AutoTest
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex);
+                ErrorLog.PutInLog(ex);
             }
         }
 
@@ -456,7 +456,7 @@ namespace AutoTest
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex);
+                ErrorLog.PutInLog(ex);
             }
         }
 

@@ -162,7 +162,7 @@ namespace MyCommonHelper.NetHelper
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex.Message);
+                ErrorLog.PutInLog(ex.Message);
                 myErrorMes = ex.Message;
                 return false;
             }
@@ -185,7 +185,7 @@ namespace MyCommonHelper.NetHelper
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex.Message);
+                ErrorLog.PutInLog(ex.Message);
                 myErrorMes = ex.Message;
                 return false;
             }
@@ -254,7 +254,7 @@ namespace MyCommonHelper.NetHelper
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex.Message);
+                ErrorLog.PutInLog(ex.Message);
                 myErrorMes = ex.Message;
                 return false;
             }
@@ -282,7 +282,7 @@ namespace MyCommonHelper.NetHelper
             }
             catch (Exception ex)
             {
-                ErrorLog.PutInLogEx(ex.Message);
+                ErrorLog.PutInLog(ex.Message);
                 myErrorMes = ex.Message;
                 return false;
             }
