@@ -11,3 +11,4 @@ D:\my\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\SharpPlink-x64.svnExe
 D:\my\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csprojResolveAssemblyReference.cache

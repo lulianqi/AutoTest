@@ -57,7 +57,7 @@ namespace AutoTest.myControl
             }
             if(yourCaseRunData.actions!=null)
             {
-                foreach(KeyValuePair<CaseResult, caseActionDescription> tempAction in yourCaseRunData.actions)
+                foreach(KeyValuePair<CaseResult, CaseActionDescription> tempAction in yourCaseRunData.actions)
                 {
                     listView_action.Items.Add(new ListViewItem(new string[] { tempAction.Key.ToString(), tempAction.Value.caseAction.ToString() + tempAction.Value.addInfo.MyValue()}));
                 }

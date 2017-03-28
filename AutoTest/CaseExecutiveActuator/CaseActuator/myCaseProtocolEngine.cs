@@ -55,9 +55,9 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="yourContentNode">souce XmlNode</param>
         /// <returns>the data your need</returns>
-        public new static myHttpExecutionContent getRunContent(XmlNode yourContentNode)
+        public new static MyVaneHttpExecutionContent getRunContent(XmlNode yourContentNode)
         {
-            myHttpExecutionContent myRunContent = new myHttpExecutionContent();
+            MyVaneHttpExecutionContent myRunContent = new MyVaneHttpExecutionContent();
             if (yourContentNode != null)
             {
                 if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
@@ -194,14 +194,14 @@ namespace CaseExecutiveActuator
         }
 
 
-        public myExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
-            myExecutionDeviceResult myResult = new myExecutionDeviceResult();
+            MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();//默认该值为null，不会输出参数数据结果（如果不需要输出可以保持该字段为null）
             if(yourExecutionContent.myCaseProtocol==CaseProtocol.vanelife_http)
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
-                myHttpExecutionContent nowExecutionContent = yourExecutionContent as myHttpExecutionContent;
+                MyVaneHttpExecutionContent nowExecutionContent = yourExecutionContent as MyVaneHttpExecutionContent;
                 myResult.caseProtocol = CaseProtocol.vanelife_http;
                 myResult.caseTarget = nowExecutionContent.myExecutionTarget;
                 string tempError;
@@ -324,9 +324,9 @@ namespace CaseExecutiveActuator
 
         public event delegateGetExecutiveData OnGetExecutiveData;
 
-        public new static myBasicHttpExecutionContent getRunContent(XmlNode yourContentNode)
+        public new static MyBasicHttpExecutionContent getRunContent(XmlNode yourContentNode)
         {
-            myBasicHttpExecutionContent myRunContent = new myBasicHttpExecutionContent();
+            MyBasicHttpExecutionContent myRunContent = new MyBasicHttpExecutionContent();
             if (yourContentNode != null)
             {
                 if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
@@ -475,14 +475,14 @@ namespace CaseExecutiveActuator
         }
 
 
-        public myExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
-            myExecutionDeviceResult myResult = new myExecutionDeviceResult();
+            MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
             if (yourExecutionContent.myCaseProtocol == CaseProtocol.http)
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
-                myBasicHttpExecutionContent nowExecutionContent = yourExecutionContent as myBasicHttpExecutionContent;
+                MyBasicHttpExecutionContent nowExecutionContent = yourExecutionContent as MyBasicHttpExecutionContent;
                 myResult.caseProtocol = CaseProtocol.vanelife_http;
                 myResult.caseTarget = nowExecutionContent.myExecutionTarget;
                 string tempError;
@@ -924,11 +924,11 @@ namespace CaseExecutiveActuator
                                 }
                                 if (tempNode.InnerText!="")
                                 {
-                                    myCaseData.addCaseAction(tempResult, new caseActionDescription(tempAction, tempNode.InnerText));
+                                    myCaseData.addCaseAction(tempResult, new CaseActionDescription(tempAction, tempNode.InnerText));
                                 }
                                 else
                                 {
-                                    myCaseData.addCaseAction(tempResult, new caseActionDescription(tempAction, null));
+                                    myCaseData.addCaseAction(tempResult, new CaseActionDescription(tempAction, null));
                                 }
                             }
                         }

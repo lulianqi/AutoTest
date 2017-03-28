@@ -387,7 +387,7 @@ namespace RemoteService.MyService
                     {
                         if (tempRunner.RunerActuator.NowExecutionResultList.Count > 0)
                         {
-                            myExecutionDeviceResult tempResult = tempRunner.RunerActuator.NowExecutionResultList[tempRunner.RunerActuator.NowExecutionResultList.Count - 1];
+                            MyExecutionDeviceResult tempResult = tempRunner.RunerActuator.NowExecutionResultList[tempRunner.RunerActuator.NowExecutionResultList.Count - 1];
                             tempRunnerState.RunnerID = runnerList.IndexOf(tempRunner);
                             tempRunnerState.RunnerName = tempRunner.RunnerName;
                             tempRunnerState.NowCell = tempResult.caseId.ToString();

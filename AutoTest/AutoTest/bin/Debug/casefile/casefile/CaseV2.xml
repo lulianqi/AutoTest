@@ -729,6 +729,20 @@
         <Level>1</Level>
       </Attribute>
     </Case>
+    <Case id="1000040010" remark="case https">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">https://pv.sohu.com/cityjson?ie=utf-8</Uri>
+        <Heads>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+        <Body isHaveParameters="true" >testdata</Body>
+      </Content>
+      <Expect method="contain">浙江</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
     <Case id="1000040004" remark="case下载">
       <Content protocol="http" actuator="http">
         <Uri httpMethod="POST" isHaveParameters="true">http://www.baidu.com</Uri>

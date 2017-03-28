@@ -23,12 +23,9 @@ using System.Xml;
 
 namespace CaseExecutiveActuator
 {
-    class StructData
-    {
-    }
 
     /// <summary>
-    /// 
+    /// case 运行状态
     /// </summary>
     public enum CaseActuatorState
     {
@@ -226,11 +223,11 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 描述脚本动作行为及附加信息
     /// </summary>
-    public class caseActionDescription
+    public class CaseActionDescription
     {
         public CaseAction caseAction;
         public string addInfo;
-        public caseActionDescription(CaseAction yourCaseAction, string yourInfo)
+        public CaseActionDescription(CaseAction yourCaseAction, string yourInfo)
         {
             caseAction = yourCaseAction;
             addInfo = yourInfo;
@@ -308,7 +305,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// ExecutionDevice Result
     /// </summary>
-    public class myExecutionDeviceResult
+    public class MyExecutionDeviceResult
     {
         public int caseId;
         public CaseProtocol caseProtocol;
@@ -324,7 +321,7 @@ namespace CaseExecutiveActuator
         public string additionalRemark;
         public string additionalEroor;
         
-        public myExecutionDeviceResult()
+        public MyExecutionDeviceResult()
         {
             caseId = 0;
             caseProtocol = CaseProtocol.unknownProtocol;
@@ -341,13 +338,13 @@ namespace CaseExecutiveActuator
             additionalEroor = null;
         }
 
-        public myExecutionDeviceResult(int yourCaseId, string yourAdditionalError):this()
+        public MyExecutionDeviceResult(int yourCaseId, string yourAdditionalError):this()
         {
             caseId = yourCaseId;
             backContent = yourAdditionalError;
             additionalEroor = yourAdditionalError;
         }
-        public myExecutionDeviceResult(CaseProtocol yourCaseProtocol, string yourSpanTime, string yourStartTime, string yourBackContent):this()
+        public MyExecutionDeviceResult(CaseProtocol yourCaseProtocol, string yourSpanTime, string yourStartTime, string yourBackContent):this()
         {
             caseProtocol = yourCaseProtocol;
             spanTime = yourSpanTime;
@@ -355,7 +352,7 @@ namespace CaseExecutiveActuator
             backContent = yourBackContent;
             expectMethod = CaseExpectType.judge_default;
         }
-        public myExecutionDeviceResult(CaseProtocol yourCaseProtocol, string yourSpanTime, string yourStartTime, string yourBackContent, string yourAdditionalContent): this(yourCaseProtocol, yourStartTime, yourStartTime, yourBackContent)
+        public MyExecutionDeviceResult(CaseProtocol yourCaseProtocol, string yourSpanTime, string yourStartTime, string yourBackContent, string yourAdditionalContent): this(yourCaseProtocol, yourStartTime, yourStartTime, yourBackContent)
         {
             additionalEroor = yourAdditionalContent;
         }
@@ -609,7 +606,7 @@ namespace CaseExecutiveActuator
         public CaseProtocol contentProtocol;
         public T testContent;
         public myExpectInfo caseExpectInfo;
-        public Dictionary<CaseResult, caseActionDescription> actions;
+        public Dictionary<CaseResult, CaseActionDescription> actions;
         public myCaseAttribute caseAttribute;
 
         public myRunCaseData()
@@ -647,11 +644,11 @@ namespace CaseExecutiveActuator
             errorMessages.Add(yourErrorMessage);
         }
 
-        public void addCaseAction(CaseResult yourCaseResult, caseActionDescription yourDescription)
+        public void addCaseAction(CaseResult yourCaseResult, CaseActionDescription yourDescription)
         {
             if (actions == null)
             {
-                actions = new Dictionary<CaseResult, caseActionDescription>();
+                actions = new Dictionary<CaseResult, CaseActionDescription>();
             }
             actions.Add(yourCaseResult, yourDescription);
         }
@@ -665,7 +662,7 @@ namespace CaseExecutiveActuator
     /// vanelife_http协议类型Content内容
     /// 处理时请注意除了ErrorMessage可能为null，其他成员初始化全部不为null(所有请覆盖默认构造函数，为成员指定初始值)
     /// </summary>
-    public class myHttpExecutionContent : ICaseExecutionContent
+    public class MyVaneHttpExecutionContent : ICaseExecutionContent
     {
         public string ErrorMessage;
         public string HttpTarget;
@@ -676,7 +673,7 @@ namespace CaseExecutiveActuator
         public HttpAisleConfig myHttpAisleConfig;
         public HttpMultipart myHttpMultipart;
 
-        public myHttpExecutionContent()
+        public MyVaneHttpExecutionContent()
         {
             ErrorMessage = null;
             caseExecutionContent = new caseParameterizationContent();
@@ -688,7 +685,7 @@ namespace CaseExecutiveActuator
             caseProtocol = CaseProtocol.unknownProtocol;
         }
 
-        public myHttpExecutionContent(string tempVal)
+        public MyVaneHttpExecutionContent(string tempVal)
         {
             ErrorMessage = null;
             caseExecutionContent = new caseParameterizationContent();
@@ -760,7 +757,7 @@ namespace CaseExecutiveActuator
     }
 
 
-    public class myBasicHttpExecutionContent : ICaseExecutionContent
+    public class MyBasicHttpExecutionContent : ICaseExecutionContent
     {
         public string errorMessage;
         public CaseProtocol caseProtocol;
@@ -773,7 +770,7 @@ namespace CaseExecutiveActuator
         public HttpAisleConfig myHttpAisleConfig;
         public List<HttpMultipart> myMultipartList;
 
-        public myBasicHttpExecutionContent()
+        public MyBasicHttpExecutionContent()
         {
             errorMessage = null;
             caseProtocol = CaseProtocol.unknownProtocol;
@@ -833,45 +830,6 @@ namespace CaseExecutiveActuator
     #endregion
 
 
-    /// <summary>
-    /// 老版本使用的结构，避免编译错误。 完成后将删除
-    /// </summary>
-    public struct myHttpConfig
-    {
-        public string ErrorMessage;
-        public string HttpMethod;
-        public string HttpUrl;
-        public string HttpDataDown;
-        public CaseProtocol caseProtocol;
-        public HttpMultipart myHttpMultipart;
-        public ParameterSave_old myParameterSave;
-        public myHttpConfig(string tempVal)
-        {
-            ErrorMessage = null;
-            HttpMethod = tempVal;
-            HttpUrl = tempVal;
-            HttpDataDown = tempVal;
-            myHttpMultipart = new HttpMultipart();
-            myParameterSave = new ParameterSave_old();
-            caseProtocol = CaseProtocol.unknownProtocol;
-        }
-
-        public CaseProtocol myCaseProtocol
-        {
-            get
-            {
-                return caseProtocol;
-            }
-        }
-    }
-
-    /// <summary>
-    /// 老版本使用的结构，避免编译错误。 完成后将删除
-    /// </summary>
-    public struct ParameterSave_old
-    {
-        public Dictionary<string, string> myParameter;
-    }
 
     #region IRunTimeStaticData
 

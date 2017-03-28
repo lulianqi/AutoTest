@@ -274,7 +274,7 @@ namespace AutoTest
             {
                 if (selctRunner!=null)
                 {
-                    List<myExecutionDeviceResult> tempExecutionDeviceResults = selctRunner.RunerActuator.NowExecutionResultList;
+                    List<MyExecutionDeviceResult> tempExecutionDeviceResults = selctRunner.RunerActuator.NowExecutionResultList;
                     listView_SelectRunner.BeginUpdate();
                     if (tempExecutionDeviceResults.Count < listView_SelectRunner.Items.Count)
                     {
@@ -284,7 +284,7 @@ namespace AutoTest
                     {
                         while (tempExecutionDeviceResults.Count > listView_SelectRunner.Items.Count)
                         {
-                            myExecutionDeviceResult tempRseult = tempExecutionDeviceResults[listView_SelectRunner.Items.Count];
+                            MyExecutionDeviceResult tempRseult = tempExecutionDeviceResults[listView_SelectRunner.Items.Count];
                             listView_SelectRunner.Items.Add(new ListViewItem(new string[] { listView_SelectRunner.Items.Count.ToString(), tempRseult.caseId.ToString(), tempRseult.startTime, tempRseult.spanTime, tempRseult.result.ToString(), tempRseult.caseTarget + "->" + tempRseult.backContent, tempRseult.additionalRemark }));
                         }
                     }
@@ -308,7 +308,7 @@ namespace AutoTest
         /// 重新填充ListView Result
         /// </summary>
         /// <param name="yourResults">数据源</param>
-        private void FillExecutionResult(List<myExecutionDeviceResult> yourResults)
+        private void FillExecutionResult(List<MyExecutionDeviceResult> yourResults)
         {
             if(yourResults!=null)
             {
@@ -316,7 +316,7 @@ namespace AutoTest
                 listView_SelectRunner.Items.Clear();
                 listView_SelectRunner.BackColor = Color.AliceBlue;
                 // foreach (myExecutionDeviceResult tempRseult in yourResults) //数据源修改权是又另外一个线程控制，数据可能在遍历时被修改
-                myExecutionDeviceResult tempRseult;
+                MyExecutionDeviceResult tempRseult;
                 for (int i = 0; i < yourResults.Count;i++ )
                 {
                     tempRseult = yourResults[i];

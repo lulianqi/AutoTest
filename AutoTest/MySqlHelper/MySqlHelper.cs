@@ -180,6 +180,7 @@ namespace MySqlHelper
             {
                 StopAliveTask();
                 executeMySqlDrive.Dispose();
+                myManualResetEvent.Dispose();
             }
 
 
@@ -340,6 +341,7 @@ namespace MySqlHelper
             {
                 StopAliveTask();
                 executeMySqlDrive.Dispose();
+                myManualResetEvent.Dispose();
             }
         }
         

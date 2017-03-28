@@ -227,6 +227,7 @@ namespace MySvnHelper
         {
             reporter.Dispose();
             client.Dispose();
+            realtimeTextWriter.Dispose();
         }
 
         ~MySvn()

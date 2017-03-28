@@ -6,6 +6,7 @@ using System.Net;
 using System.IO;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 
 /*******************************************************************************
@@ -131,7 +132,7 @@ namespace MyCommonHelper.NetHelper
             }
 
             /// <summary>
-            /// 添加http请求头属性（全部使用默认header.Add进行添加，失败后使用SetHeaderValue进行添加，不过依然可能不超过）
+            /// 添加http请求头属性（全部使用默认header.Add进行添加，失败后使用SetHeaderValue进行添加，不过依然可能失败）
             /// </summary>
             /// <param name="header">WebHeaderCollection</param>
             /// <param name="heads">属性列表</param>
@@ -190,6 +191,21 @@ namespace MyCommonHelper.NetHelper
             public static Encoding responseEncoding = System.Text.Encoding.GetEncoding("UTF-8"); //如果要显示返回数据，返回数据将使用此编码
             static readonly string EOF = "\r\n";
 
+            static MyHttp()
+            {
+                //ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(
+                //    (sender, certificate, chain, sslPolicyErrors) => { return true; });
+                ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
+                Console.WriteLine(ServicePointManager.DefaultConnectionLimit);               
+            }
+
+            private static bool MyRemoteCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+            {
+                return true;
+            }
+
+
+
             /// <summary>
             /// i will Send Data 
             /// </summary>
@@ -226,6 +242,8 @@ namespace MyCommonHelper.NetHelper
                 string re = "";
                 bool hasBody = !string.IsNullOrEmpty(data);
                 bool needBody = method.ToUpper() == "POST" || method.ToUpper() == "PUT";
+                WebRequest wr = null;
+                WebResponse result = null;
 
                 try
                 {
@@ -235,7 +253,7 @@ namespace MyCommonHelper.NetHelper
                         url += "?" + data;
                         data = null;           //make sure the data is null when Request is not post
                     }
-                    WebRequest wr = WebRequest.Create(url);
+                    wr = WebRequest.Create(url);
                     wr.Timeout = httpTimeOut;
                     wr.Method = method;
                     wr.ContentType = "application/x-www-form-urlencoded";
@@ -263,12 +281,16 @@ namespace MyCommonHelper.NetHelper
                     }
 
 
-                    WebResponse result = wr.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
+                    result = wr.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
 
                     Stream ReceiveStream = result.GetResponseStream();
 
                     if (saveFileName == null)
                     {
+                        //using (var httpStreamReader = new StreamReader(ReceiveStream, responseEncoding))
+                        //{
+                        //    re += httpStreamReader.ReadToEnd();
+                        //}
                         Byte[] read = new Byte[512];
                         int bytes = ReceiveStream.Read(read, 0, 512);
                         if (showResponseHeads)
@@ -284,28 +306,6 @@ namespace MyCommonHelper.NetHelper
                     //save file
                     else
                     {
-                        /*
-                        byte[] infbytes = new byte[10240];
-                        int tempLen = 512;
-                        int offset = 0;
-
-                        //数据最多20k可以不需要分段读取
-                        while (tempLen - 512 >= 0)
-                        {
-                            tempLen = ReceiveStream.Read(infbytes, offset, 512);
-                            offset += tempLen;
-                        }
-
-                        byte[] bytesToSave = new byte[offset];
-                        for (int i = 0; i < offset; i++)
-                        {
-                            bytesToSave[i] = infbytes[i];
-                        }
-                        
-                        File.WriteAllBytes(saveFileName, bytesToSave);
-                        */
-
-                        //my way
                         using (FileStream stream = new FileStream(saveFileName,FileMode.Create,FileAccess.Write,FileShare.Write))
                         {
                             int tempReadCount = 1024;
@@ -347,9 +347,41 @@ namespace MyCommonHelper.NetHelper
 
                 finally
                 {
-
+                    if (result != null)
+                    {
+                        result.Close();
+                    }
                 }
                 return re;
+            }
+
+            /// <summary>
+            /// DownloadFile with http
+            /// </summary>
+            /// <param name="url">url</param>
+            /// <param name="heads">heads</param>
+            /// <param name="saveFileName">save File path</param>
+            public static void DownloadFile(string url, List<KeyValuePair<string, string>> heads, string saveFileName)
+            {
+                using (WebClient client = new WebClient())
+                {
+                    HttpHelper.AddHttpHeads(client.Headers, heads);
+                    client.DownloadFile(url, saveFileName);
+                }
+            }
+
+            /// <summary>
+            /// DownloadFile with http
+            /// </summary>
+            /// <param name="url">url</param>
+            /// <param name="saveFileName">save File path</param>
+            public static void DownloadFile(string url, string saveFileName)
+            {
+                using (WebClient client = new WebClient())
+                {
+                    HttpHelper.AddHttpHeads(client.Headers, null);
+                    client.DownloadFile(url, saveFileName);
+                }
             }
 
             /// <summary>
@@ -541,6 +573,9 @@ namespace MyCommonHelper.NetHelper
                 Encoding httpBodyEncoding = Encoding.UTF8;
                 string defaultMultipartContentType = "application/octet-stream";
                 NameValueCollection stringDict = new NameValueCollection();
+                HttpWebRequest webRequest = null;
+                HttpWebResponse httpWebResponse =null;
+
                 if (yourBodyEncoding!=null)
                 {
                     httpBodyEncoding = yourBodyEncoding;
@@ -562,7 +597,7 @@ namespace MyCommonHelper.NetHelper
                 }
 
                 var memStream = new MemoryStream();
-                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                webRequest = (HttpWebRequest)WebRequest.Create(url);
                 //写入http头
                 HttpHelper.AddHttpHeads(webRequest, heads);
 
@@ -681,7 +716,7 @@ namespace MyCommonHelper.NetHelper
                     requestStream.Write(tempBuffer, 0, tempBuffer.Length);
                     requestStream.Close();
 
-                    HttpWebResponse httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
+                    httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
                     if (showResponseHeads)
                     {
                         responseContent = httpWebResponse.Headers.ToString();
@@ -691,8 +726,6 @@ namespace MyCommonHelper.NetHelper
                         responseContent += httpStreamReader.ReadToEnd();
                     }
 
-                    httpWebResponse.Close();
-                    webRequest.Abort();
                 }
                 catch (WebException wex)
                 {
@@ -718,6 +751,14 @@ namespace MyCommonHelper.NetHelper
                 {
                     responseContent = ex.Message;
                     ErrorLog.PutInLog("ID:0090 " + ex.InnerException);
+                }
+
+                finally
+                {
+                    if(httpWebResponse!=null)
+                    {
+                        httpWebResponse.Close();
+                    }
                 }
 
                 return responseContent;

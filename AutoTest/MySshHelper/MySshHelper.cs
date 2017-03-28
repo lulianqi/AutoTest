@@ -221,6 +221,5 @@ namespace MySshHelper
             sshCp.Close();
             return outResult;
         }
-    
     }
 }

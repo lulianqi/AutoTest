@@ -36,10 +36,6 @@ namespace MyVoiceHelper
             }
         }
 
-        /// <param name="iFrequency">声音频率（从37Hz到32767Hz）。在windows95中忽略</param>   
-        /// <param name="iDuration">声音的持续时间，以毫秒为单位。</param>   
-        [DllImport("Kernel32.dll")] //引入命名空间 using System.Runtime.InteropServices;   
-        public static extern bool Beep(int frequency, int duration);
 
         /// <summary>
         /// Warning tone
@@ -47,7 +43,20 @@ namespace MyVoiceHelper
         /// <returns>is ok</returns>
         public static bool Beep()
         {
-            return Beep(1600, 800);
+            return NativeMethods.Beep(1600, 800);
         }
-    }  
+    }
+
+    /// <summary>
+    /// 将 P/Invoke 移动到 NativeMethods 类
+    /// </summary>
+    [System.Security.SuppressUnmanagedCodeSecurity]  
+    internal static class NativeMethods
+    {
+        /// <param name="iFrequency">声音频率（从37Hz到32767Hz）。在windows95中忽略</param>   
+        /// <param name="iDuration">声音的持续时间，以毫秒为单位。</param>   
+        [DllImport("Kernel32.dll")] //引入命名空间 using System.Runtime.InteropServices;   
+        public static extern bool Beep(int frequency, int duration);
+
+    }
 }

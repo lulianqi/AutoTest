@@ -35,8 +35,6 @@ namespace EXControls
 
         private ArrayList _controls;
 
-        [DllImport("user32.dll")]
-        private static extern bool SendMessage(IntPtr hWnd, UInt32 m, int wParam, int lParam);
 
         protected override void WndProc(ref Message m)
         {
@@ -69,7 +67,7 @@ namespace EXControls
 
         private void ScrollMe(int x, int y)
         {
-            SendMessage((IntPtr)this.Handle, LVM_SCROLL, x, y);
+            MyCommonControl.UnsafeNativeMethods.SendMessage((IntPtr)this.Handle, LVM_SCROLL, x, y);
         }
 
         public EXListView()

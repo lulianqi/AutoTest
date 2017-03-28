@@ -592,7 +592,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// Execution Result List
         /// </summary>
-        private List<myExecutionDeviceResult> runExecutionResultList;
+        private List<MyExecutionDeviceResult> runExecutionResultList;
 
         /// <summary>
         /// RunTimeCaseDictionary
@@ -623,7 +623,7 @@ namespace CaseExecutiveActuator
 
         public delegate void delegateGetExecutiveDataEventHandler(string yourTitle, string yourContent);
         public delegate void delegateGetActionErrorEventHandler(string yourContent);
-        public delegate void delegateGetExecutiveResultEventHandler(string sender, myExecutionDeviceResult yourResult);
+        public delegate void delegateGetExecutiveResultEventHandler(string sender, MyExecutionDeviceResult yourResult);
         public delegate void delegateGetActuatorStateEventHandler(string sender, CaseActuatorState yourState);
         public delegate void delegateActuatorParameterListEventHandler();
 
@@ -643,7 +643,7 @@ namespace CaseExecutiveActuator
             rootActuator = null;
             myExecutionDeviceList = new Dictionary<string, ICaseExecutionDevice>();
             runActuatorStaticDataCollection = new ActuatorStaticDataCollection();
-            runExecutionResultList = new List<myExecutionDeviceResult>();
+            runExecutionResultList = new List<MyExecutionDeviceResult>();
             invalidThreadList = new List<Thread>();
             myErrorInfo = "";
             myName = "Main Actuator";
@@ -763,7 +763,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// 获取当前任务执行结果列表
         /// </summary>
-        public List<myExecutionDeviceResult> NowExecutionResultList
+        public List<MyExecutionDeviceResult> NowExecutionResultList
         {
             get
             {
@@ -1359,7 +1359,7 @@ namespace CaseExecutiveActuator
         private void ExecutiveAnCases(myRunCaseData<ICaseExecutionContent> nowRunCaseData, CaseCell nowExecutiveNode, ref ExecutiveAdditionalInfo nowAdditionalInfo)
         {
             bool tempIsBreakError = false;
-            myExecutionDeviceResult executionResult;
+            MyExecutionDeviceResult executionResult;
 
             if(runState==CaseActuatorState.Pause)
             {
@@ -1402,7 +1402,7 @@ namespace CaseExecutiveActuator
                             myActionActuator.SetCaseNodeConnectInterrupt(nowExecutiveNode);
 
                             tempIsBreakError = true;
-                            executionResult = new myExecutionDeviceResult(nowRunCaseData.id, "CaseActuator连接失败");
+                            executionResult = new MyExecutionDeviceResult(nowRunCaseData.id, "CaseActuator连接失败");
                         }
                     }
                 }
@@ -1414,7 +1414,7 @@ namespace CaseExecutiveActuator
                     myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
 
                     tempIsBreakError = true;
-                    executionResult = new myExecutionDeviceResult(nowRunCaseData.id, "未找到指定CaseActuator");
+                    executionResult = new MyExecutionDeviceResult(nowRunCaseData.id, "未找到指定CaseActuator");
                 }
             }
             else
@@ -1424,7 +1424,7 @@ namespace CaseExecutiveActuator
                 myActionActuator.SetCaseNodeAbnormal(nowExecutiveNode);
 
                 tempIsBreakError = true;
-                executionResult = new myExecutionDeviceResult(nowRunCaseData.id, "执行数据脚本存在错误" + nowRunCaseData.errorMessages);
+                executionResult = new MyExecutionDeviceResult(nowRunCaseData.id, "执行数据脚本存在错误" + nowRunCaseData.errorMessages);
             }
 
             //AddExecutionResult
@@ -1453,7 +1453,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourRunData">确保其不为null</param>
         /// <param name="yourExecutionResult">确保其不为null</param>
         /// <param name="nowAdditionalInfo"></param>
-        private void HandleCaseExecutiveResul(myRunCaseData<ICaseExecutionContent> yourRunData, CaseCell nowExecutiveNode, myExecutionDeviceResult yourExecutionResult, ref ExecutiveAdditionalInfo nowAdditionalInfo)
+        private void HandleCaseExecutiveResul(myRunCaseData<ICaseExecutionContent> yourRunData, CaseCell nowExecutiveNode, MyExecutionDeviceResult yourExecutionResult, ref ExecutiveAdditionalInfo nowAdditionalInfo)
         {
             string tempError;
             yourExecutionResult.caseId = yourRunData.id;
@@ -1771,7 +1771,7 @@ namespace CaseExecutiveActuator
         /// 添加执行结果到结果集并触发【OnExecutiveResult】
         /// </summary>
         /// <param name="yourExecutionResult">your ExecutionResult</param>
-        private void AddExecutionResult(myExecutionDeviceResult yourExecutionResult)
+        private void AddExecutionResult(MyExecutionDeviceResult yourExecutionResult)
         {
             runExecutionResultList.Add(yourExecutionResult);
             if (OnExecutiveResult != null)

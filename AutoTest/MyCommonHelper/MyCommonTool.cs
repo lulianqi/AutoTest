@@ -22,10 +22,15 @@ using System.Windows.Forms;
 
 namespace MyCommonHelper
 {
-    public class MyCommonTool
+    [System.Security.SuppressUnmanagedCodeSecurity]
+    internal static class UnsafeNativeMethods
     {
         [System.Runtime.InteropServices.DllImport("user32")]
-        private static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, IntPtr lParam);
+        public static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, IntPtr lParam);
+    }
+
+    public class MyCommonTool
+    {
         private const int WM_SETREDRAW = 0xB;
 
         /// <summary>
@@ -280,10 +285,10 @@ namespace MyCommonHelper
         /// <param name="yourRtb">目标控件</param>
         public static void setRichTextBoxContentBottom(ref RichTextBox yourRtb)
         {
-            SendMessage(yourRtb.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourRtb.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
             yourRtb.SelectionStart = yourRtb.Text.Length;
             yourRtb.Focus();
-            SendMessage(yourRtb.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourRtb.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
             yourRtb.Refresh();
         }
 
@@ -294,9 +299,9 @@ namespace MyCommonHelper
         /// <param name="yourStr">your content</param>
         public static void setRichTextBoxContent(ref RichTextBox yourRtb, string yourStr)
         {
-            SendMessage(yourRtb.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourRtb.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
             yourRtb.AppendText(yourStr);
-            SendMessage(yourRtb.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourRtb.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
             yourRtb.Refresh();
 
         }
@@ -310,10 +315,10 @@ namespace MyCommonHelper
         /// <param name="isNewLine">是否为新的一行</param>
         public static void setRichTextBoxContent(ref RichTextBox yourRtb, string yourStr, Color fontColor, bool isNewLine)
         {
-            SendMessage(yourRtb.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourRtb.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
             myAddRtbStr(ref yourRtb, yourStr, fontColor, isNewLine);
             //yourRtb.SelectionStart = yourRtb.Text.Length;
-            SendMessage(yourRtb.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourRtb.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
             yourRtb.Refresh();
             //yourRtb.Focus();
             //Application.DoEvents();
@@ -331,13 +336,13 @@ namespace MyCommonHelper
         {
             int tempStart = yourRtb.SelectionStart;
             int tempEnd = yourRtb.SelectionLength;
-            SendMessage(yourRtb.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourRtb.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
             myAddRtbStr(ref yourRtb, yourStr, fontColor, isNewLine);
             if (isSelectNotChange)
             {
                 yourRtb.Select(tempStart, tempEnd);
             }
-            SendMessage(yourRtb.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourRtb.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
             yourRtb.Refresh();
 
         }
@@ -348,7 +353,7 @@ namespace MyCommonHelper
         /// <param name="yourCtr">your Control</param>
         public static void SetControlFreeze(Control yourCtr)
         {
-            SendMessage(yourCtr.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourCtr.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
         }
 
         /// <summary>
@@ -357,7 +362,7 @@ namespace MyCommonHelper
         /// <param name="yourCtr">your Control</param>
         public static void SetControlUnfreeze(Control yourCtr)
         {
-            SendMessage(yourCtr.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+            UnsafeNativeMethods.SendMessage(yourCtr.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
             yourCtr.Refresh();
         }
 
@@ -682,6 +687,8 @@ namespace MyCommonHelper
                 sw.Close();
                 fs.Close();
          * */
+        // or  File.WriteAllBytes(saveFileName, bytesToSave);  or WriteAllText()
+        
 
         /// <summary>
         /// 根据文件名返回文件路径（容错上可能受相对路径影响，未测试请勿使用可能出现错误的路径格式）
@@ -750,7 +757,6 @@ namespace MyCommonHelper
             }
             sw.Write(yourDate);
             sw.Close();
-            fs.Close();
             return true;
         }
 
@@ -782,7 +788,6 @@ namespace MyCommonHelper
             StreamWriter sw = new StreamWriter(fs);
             sw.Write(yourDate);
             sw.Close();
-            fs.Close();
             return true;
         }
 
@@ -826,7 +831,6 @@ namespace MyCommonHelper
                 }
             }
             sw.Close();
-            fs.Close();
         }
 
         public static bool SaveLogFile(string yourDate, string yourPath)

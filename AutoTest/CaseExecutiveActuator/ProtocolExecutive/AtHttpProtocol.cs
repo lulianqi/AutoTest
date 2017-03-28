@@ -28,110 +28,17 @@ namespace CaseExecutiveActuator.ProtocolExecutive
 {
     public static class AtHttpProtocol
     {
-        //public class HttpHelper
-        //{
-        //    private delegate void SetHeadAttributeCallback(HttpWebRequest yourRequest, string yourHeadValue);
-
-        //    private static Dictionary<string, SetHeadAttributeCallback> dicHeadSetFun = new Dictionary<string, SetHeadAttributeCallback>();
-        //    static HttpHelper()
-        //    {
-        //        dicHeadSetFun.Add("Accept".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Accept = yourHeadValue));
-        //        dicHeadSetFun.Add("Connection".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Connection = yourHeadValue));
-        //        dicHeadSetFun.Add("Date".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { DateTime tempTime; if (!DateTime.TryParse(yourHeadValue, out tempTime)) tempTime = DateTime.Now; yourRequest.Date = tempTime; }));  //2009-05-01 14:57:32
-        //        //dicHeadSetFun.Add("KeepAlive".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.KeepAlive = yourHeadValue));////该头可以直接使用Headers.Add
-        //        dicHeadSetFun.Add("Transfer-Encoding".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.TransferEncoding = yourHeadValue));
-        //        dicHeadSetFun.Add("Content-Length".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { int tempLen; if (!int.TryParse(yourHeadValue, out tempLen)) tempLen = 0; yourRequest.ContentLength = tempLen; }));
-        //        dicHeadSetFun.Add("Content-Type".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.ContentType = yourHeadValue));
-        //        dicHeadSetFun.Add("Expect".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Expect = yourHeadValue));
-        //        dicHeadSetFun.Add("Host".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Host = yourHeadValue));
-        //        //dicHeadSetFun.Add("IfModifiedSince".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.IfModifiedSince = yourHeadValue));
-        //        dicHeadSetFun.Add("Referer".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Referer = yourHeadValue));
-        //        dicHeadSetFun.Add("User-Agent".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.UserAgent = yourHeadValue));
-        //    }
-
-        //    /// <summary>
-        //    /// 添加http请求头属性（特殊属性自动转化为dicHeadSetFun中委托完成设置）
-        //    /// </summary>
-        //    /// <param name="httpWebRequest">HttpWebRequest</param>
-        //    /// <param name="heads">属性列表</param>
-        //    public static void AddHttpHeads(HttpWebRequest httpWebRequest, List<KeyValuePair<string, string>> heads)
-        //    {
-        //        if (httpWebRequest == null)
-        //        {
-        //            return;
-        //        }
-        //        if (heads != null)
-        //        {
-        //            foreach (var Head in heads)
-        //            {
-        //                if (dicHeadSetFun.ContainsKey(Head.Key.ToUpper()))
-        //                {
-        //                    (dicHeadSetFun[Head.Key.ToUpper()])(httpWebRequest, Head.Value);
-        //                }
-        //                else
-        //                {
-        //                    httpWebRequest.Headers.Add(Head.Key, Head.Value);
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    /// <summary>
-        //    /// 添加http请求头属性（全部使用默认header.Add进行添加，失败后使用SetHeaderValue进行添加，不过依然可能不超过）
-        //    /// </summary>
-        //    /// <param name="header">WebHeaderCollection</param>
-        //    /// <param name="heads">属性列表</param>
-        //    public static void AddHttpHeads(WebHeaderCollection header, List<KeyValuePair<string, string>> heads)
-        //    {
-        //        if (header == null)
-        //        {
-        //            return;
-        //        }
-        //        if (heads != null)
-        //        {
-        //            //wr.Headers.Add(new NameValueCollection());
-        //            foreach (var Head in heads)
-        //            {
-        //                try
-        //                {
-        //                    header.Add(Head.Key, Head.Value);
-        //                    //((HttpWebRequest)wr).Headers.Add(HttpRequestHeader.Host, "www.contoso.com"); //必须用适当的属性修改host   使用4.0也报必须使用适当的属性或方法修改“Host”标头
-        //                    //((HttpWebRequest)wr).Headers.Add("Host", "192.168.0.1");//这样一样不行
-        //                    //SetHeaderValue(wr.Headers, "Host", "www.contoso.com:8080");//即使是4.0也无法直接修改
-        //                    //((HttpWebRequest)wr).Host = "www.contoso.com:8080";//只有这种方式在4.0可以生效
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    SetHeaderValue(header, Head.Key, Head.Value);
-        //                    ErrorLog.PutInLog("ID:0929  " + ex.Message);
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    public static void SetHeaderValue(WebHeaderCollection header, string name, string value)
-        //    {
-
-        //        var property = typeof(WebHeaderCollection).GetProperty("InnerCollection",
-
-        //            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-
-        //        if (property != null)
-        //        {
-
-        //            var collection = property.GetValue(header, null) as NameValueCollection;
-
-        //            collection[name] = value;
-
-        //        }
-
-        //    }
-        //}
-
         public class HttpClient
         {
             public static int httpTimeOut = 100000;                                            //http time out , HttpPostData will not use this value
             public static int httpReadWriteTimeout = 300000;                                   //WebRequest.ReadWriteTimeout 该属性暂时未设置
+            public static bool showResponseHeads = false;                                      //是否返回http返回头
+
+            static HttpClient()
+            {
+                ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(
+                    (sender, certificate, chain, sslPolicyErrors) => { return true; });                
+            }
 
             /// <summary>
             /// i will Send Data 
@@ -141,7 +48,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="method">GET/POST</param>
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <returns>back </returns>
-            public static string SendData(string url, string data, string method, myExecutionDeviceResult myEdr)
+            public static string SendData(string url, string data, string method, MyExecutionDeviceResult myEdr)
             {
                 return SendData(url, data, method, null, myEdr);
             }
@@ -154,7 +61,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="method">GET/POST</param>
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <returns>back </returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string,string>> heads, myExecutionDeviceResult myEdr)
+            public static string SendData(string url, string data, string method, List<KeyValuePair<string,string>> heads, MyExecutionDeviceResult myEdr)
             {
                 string re = "";
                 bool hasBody = !string.IsNullOrEmpty(data);
@@ -214,7 +121,10 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                     Byte[] read = new Byte[512];
                     int bytes = ReceiveStream.Read(read, 0, 512);
 
-                    re = "";
+                    if (showResponseHeads)
+                    {
+                        re = result.Headers.ToString();
+                    }
                     while (bytes > 0)
                     {
                         Encoding encode = System.Text.Encoding.GetEncoding("UTF-8");
@@ -265,7 +175,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <param name="saveFileName">the file will save with this name</param>
             /// <returns>back</returns>
-            public static string SendDataSaveEx(string url, string data, string method, myExecutionDeviceResult myEdr, string saveFileName)
+            public static string SendDataSaveEx(string url, string data, string method, MyExecutionDeviceResult myEdr, string saveFileName)
             {
                 return SendDataSaveEx(url, data, method, null, myEdr, saveFileName);
             }
@@ -279,7 +189,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <param name="saveFileName">the file will save with this name</param>
             /// <returns>back</returns>
-            public static string SendDataSaveEx(string url, string data, string method, List<KeyValuePair<string, string>> heads, myExecutionDeviceResult myEdr, string saveFileName)
+            public static string SendDataSaveEx(string url, string data, string method, List<KeyValuePair<string, string>> heads, MyExecutionDeviceResult myEdr, string saveFileName)
             {
                 string re = "";
                 bool hasBody = !string.IsNullOrEmpty(data);
@@ -422,7 +332,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <param name="saveFileName">the file will save with this name</param>
             /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, myExecutionDeviceResult myEdr, string saveFileName)
+            public static string SendData(string url, string data, string method, MyExecutionDeviceResult myEdr, string saveFileName)
             {
                 return SendData(url, data, method, null, myEdr, saveFileName);
             }
@@ -436,7 +346,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <param name="saveFileName">the file will save with this name</param>
             /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, myExecutionDeviceResult myEdr, string saveFileName)
+            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, MyExecutionDeviceResult myEdr, string saveFileName)
             {
                 string re = "";
                 bool hasBody = !string.IsNullOrEmpty(data);
@@ -518,9 +428,9 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="bodyParameter">the other Parameter in body</param>
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <returns>back</returns>
-            public static string HttpPostData(string url, int timeOut, string name, string filename, bool isFile, string filePath, string bodyParameter, myExecutionDeviceResult myEdr)
+            public static string HttpPostData(string url, int timeOut, string name, string filename, bool isFile, string filePath, string bodyParameter, MyExecutionDeviceResult myEdr)
             {
-                string responseContent;
+                string responseContent =null;
                 NameValueCollection stringDict = new NameValueCollection();
 
                 if (bodyParameter != null)
@@ -648,6 +558,10 @@ namespace CaseExecutiveActuator.ProtocolExecutive
 
                     using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(), Encoding.GetEncoding("utf-8")))
                     {
+                        if (showResponseHeads)
+                        {
+                            responseContent = httpWebResponse.Headers.ToString();
+                        }
                         responseContent = httpStreamReader.ReadToEnd();
                     }
                     myWatch.Stop();
@@ -691,9 +605,9 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                 return responseContent;
             }
 
-            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<MyWebTool.HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding, myExecutionDeviceResult myEdr)
+            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<MyWebTool.HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding, MyExecutionDeviceResult myEdr)
             {
-                string responseContent;
+                string responseContent = null;
                 Encoding httpBodyEncoding = Encoding.UTF8;
                 string defaultMultipartContentType = "application/octet-stream";
                 NameValueCollection stringDict = new NameValueCollection();
@@ -849,7 +763,11 @@ namespace CaseExecutiveActuator.ProtocolExecutive
 
                     using (var httpStreamReader = new StreamReader(httpWebResponse.GetResponseStream(), Encoding.GetEncoding("utf-8")))
                     {
-                        responseContent = httpStreamReader.ReadToEnd();
+                        if (showResponseHeads)
+                        {
+                            responseContent = httpWebResponse.Headers.ToString();
+                        }
+                        responseContent += httpStreamReader.ReadToEnd();
                     }
                     myWatch.Stop();
                     httpWebResponse.Close();

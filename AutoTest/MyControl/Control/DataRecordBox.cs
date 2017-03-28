@@ -425,7 +425,6 @@ namespace MyCommonControl
                 }
             }
             sw.Close();
-            fs.Close();
         }
 
         protected override void Dispose(bool disposing)

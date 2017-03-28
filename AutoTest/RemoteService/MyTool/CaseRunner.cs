@@ -395,11 +395,11 @@ namespace RemoteService
         }
 
 
-        void runerActuator_OnExecutiveResult(string sender, myExecutionDeviceResult yourResult)
+        void runerActuator_OnExecutiveResult(string sender, MyExecutionDeviceResult yourResult)
         {
             if (tagItem != null)
             {
-                tagItem.ListView.BeginInvoke(new Action<myExecutionDeviceResult>(UpdateDateShow), yourResult);
+                tagItem.ListView.BeginInvoke(new Action<MyExecutionDeviceResult>(UpdateDateShow), yourResult);
             }
             //UpdateDateShow(yourResult);
         }
@@ -531,7 +531,7 @@ namespace RemoteService
         /// 更新当前显示信息
         /// </summary>
         /// <param name="yourResult"></param>
-        private void  UpdateDateShow(myExecutionDeviceResult yourResult)
+        private void  UpdateDateShow(MyExecutionDeviceResult yourResult)
         {
             if (tagItem != null && yourResult!=null)
             {

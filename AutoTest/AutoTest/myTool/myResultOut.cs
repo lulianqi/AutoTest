@@ -32,7 +32,7 @@ namespace AutoTest.myTool
         /// <param name="reportData">reportData souse</param>
         /// <param name="reportAddress">the report path</param>
         /// <returns>is ok</returns>
-        public static bool createReport(string uri, List<myExecutionDeviceResult> reportData, ref string reportAddress)
+        public static bool createReport(string uri, List<MyExecutionDeviceResult> reportData, ref string reportAddress)
         {
             XmlDocument myReport = new XmlDocument();
             
@@ -45,7 +45,7 @@ namespace AutoTest.myTool
                 XmlNode tempTabel = myReport.ChildNodes[1].ChildNodes[0].ChildNodes[14].ChildNodes[0];
 
                 //fill report
-                foreach (myExecutionDeviceResult tempTestData in reportData)
+                foreach (MyExecutionDeviceResult tempTestData in reportData)
                 {
                     XmlElement newChild = myReport.CreateElement("tr");
                     if (tempTestData.result.ToString() == "Fail")
