@@ -143,9 +143,14 @@ namespace CaseExecutiveActuator
     /// </summary>
     public enum ParameterizationContentEncodingType
     {
-        encode_default=0,
-        encode_base64=1,
-        decode_base64=2
+        encode_default = 0,
+        encode_base64 = 1,
+        decode_base64 = 2,
+        encode_hex16 = 3,
+        decode_hex16 = 4,
+        encode_hex2 = 5,
+        decode_hex2 = 6
+
     }
 
 
@@ -170,6 +175,10 @@ namespace CaseExecutiveActuator
             encodetype = ParameterizationContentEncodingType.encode_default;
         }
 
+        /// <summary>
+        ///返回一个值指示该caseParameterizationContent是否有被任何数据填充过
+        /// </summary>
+        /// <returns></returns>
         public bool IsFilled()
         {
             if (contentData != null)
@@ -182,6 +191,13 @@ namespace CaseExecutiveActuator
             return false;
         }
 
+        /// <summary>
+        /// 获取运算后的值，掉用此法的该版本的重载将会改变涉及到的staticData数据的游标
+        /// </summary>
+        /// <param name="yourActuatorStaticDataCollection">可用staticData集合</param>
+        /// <param name="yourDataResultCollection">返回对所有staticData数据运算后的结果列表</param>
+        /// <param name="errorMessage">错误消息（如果没有错误则为null）</param>
+        /// <returns>运算结果</returns>
         public string getTargetContentData(ActuatorStaticDataCollection yourActuatorStaticDataCollection, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             string myTargetContentData = contentData;
@@ -194,6 +210,7 @@ namespace CaseExecutiveActuator
             {
                 switch (encodetype)
                 {
+                    //base64
                     case ParameterizationContentEncodingType.encode_base64:
                         myTargetContentData = Convert.ToBase64String(Encoding.UTF8.GetBytes(myTargetContentData));
                         break;
@@ -207,6 +224,16 @@ namespace CaseExecutiveActuator
                             myTargetContentData = "ContentEncoding Error:" + ex.Message;
                         }
                         break;
+                    //hex 16
+                    case ParameterizationContentEncodingType.encode_hex16:
+                        break;
+                    case ParameterizationContentEncodingType.decode_hex16:
+                        break;
+                    //hex 2
+                    case ParameterizationContentEncodingType.encode_hex2:
+                        break;
+                    case ParameterizationContentEncodingType.decode_hex2:
+                        break;
                     default:
                         errorMessage = "[getTargetContentData] unknow or not supported this encodetype";
                         break;
@@ -215,6 +242,10 @@ namespace CaseExecutiveActuator
             return myTargetContentData;
         }
 
+        /// <summary>
+        /// 获取原始数据，掉用此法的该版本的重载将不会会改变涉及到的staticData数据的游标，也不会对其进行运算
+        /// </summary>
+        /// <returns>原始数据数据</returns>
         public string getTargetContentData()
         {
             return contentData;
@@ -833,6 +864,15 @@ namespace CaseExecutiveActuator
         public caseParameterizationContent showContent;
         public List<KeyValuePair<string, caseParameterizationContent>> staticDataSetList;
 
+        public MyConsoleExecutionContent()
+        {
+            errorMessage = null;
+            caseProtocol = CaseProtocol.unknownProtocol;
+            caseActuator = "";
+            showContent = new caseParameterizationContent();
+            staticDataSetList = new List<KeyValuePair<string, caseParameterizationContent>>();
+        }
+
         public CaseProtocol myCaseProtocol
         {
             get { return caseProtocol; }
@@ -850,7 +890,7 @@ namespace CaseExecutiveActuator
 
         public string myExecutionContent
         {
-            get { return showContent.getTargetContentData(); }
+            get { return null; }
         }
 
         public string myErrorMessage

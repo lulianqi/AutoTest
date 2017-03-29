@@ -70,7 +70,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// Cace目标地址简述（相对于接口地址，用于UI显示）
+        /// Cace目标地址简述(比如于接口地址，用于UI显示，不能返回null）
         /// </summary>
         string myExecutionTarget
         {
@@ -78,7 +78,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// Cace执行内容简述（相对于接口参数，用于UI显示）
+        /// Cace执行内容简述（比如于接口参数，用于UI显示，没有则应该返回为null）
         /// </summary>
         string myExecutionContent
         {
