@@ -475,9 +475,9 @@ namespace CaseExecutiveActuator
         }
 
 
-        public static myRunCaseData<T> getCaseRunData<T>(XmlNode sourceNode) where T : ICaseExecutionContent
+        public static MyRunCaseData<T> getCaseRunData<T>(XmlNode sourceNode) where T : ICaseExecutionContent
         {
-            return new myRunCaseData<T>();
+            return new MyRunCaseData<T>();
         }
 
         /// <summary>

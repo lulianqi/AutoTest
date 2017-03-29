@@ -27,7 +27,7 @@ namespace CaseExecutiveActuator.Cell
 
         private CaseType caseType;
         private XmlNode caseXmlNode;
-        private myRunCaseData<ICaseExecutionContent> caseRunData;
+        private MyRunCaseData<ICaseExecutionContent> caseRunData;
         private object uiTag;
 
         private CaseCell nextCell;
@@ -45,7 +45,7 @@ namespace CaseExecutiveActuator.Cell
         /// <param name="yourCaseType">CaseType</param>
         /// <param name="yourXmlNode">CaseCell脚本原始信息</param>
         /// <param name="yourCaseRunData">CaseCell脚本解析后的信息</param>
-        public CaseCell(CaseType yourCaseType, XmlNode yourXmlNode ,myRunCaseData<ICaseExecutionContent> yourCaseRunData)
+        public CaseCell(CaseType yourCaseType, XmlNode yourXmlNode ,MyRunCaseData<ICaseExecutionContent> yourCaseRunData)
         {
             caseType = yourCaseType;
             caseXmlNode = yourXmlNode;
@@ -55,7 +55,7 @@ namespace CaseExecutiveActuator.Cell
         /// <summary>
         /// 获取或设置CaseCell脚本解析后的信息
         /// </summary>
-        public myRunCaseData<ICaseExecutionContent> CaseRunData
+        public MyRunCaseData<ICaseExecutionContent> CaseRunData
         {
             get { return caseRunData; }
             set { caseRunData = value; }

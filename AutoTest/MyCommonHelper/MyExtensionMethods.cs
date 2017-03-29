@@ -48,7 +48,7 @@ namespace MyCommonHelper
         }
 
         /// <summary>
-        /// 获取String文本，未null时返回NULL
+        /// 获取String文本，为"null"时返回NULL
         /// </summary>
         /// <param name="str">String</param>
         /// <returns>String文本</returns>

@@ -29,7 +29,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 在这里绑定UI组件，如果想让运行过程事实反馈到UI界面上，请到此订阅（如果使用了自定义的UI组件，请在相应的位置按原有规则添加反馈）
     /// </summary>
-    class myActionActuator
+    class MyActionActuator
     {
         private delegate void delegateTreeNodeChange(TreeNode yourTreeNode);
         private delegate void delegateTreeNodeChangeColor(TreeNode yourTreeNode, Color yourColor);
@@ -381,6 +381,9 @@ namespace CaseExecutiveActuator
 
     }
 
+    /// <summary>
+    /// ActuatorStaticData 集合
+    /// </summary>
     public class ActuatorStaticDataCollection : IDisposable, ICloneable
     {
         /// <summary>
@@ -526,10 +529,10 @@ namespace CaseExecutiveActuator
         /// </summary>
         private class ExecutivebasicData
         {
-            myRunCaseData<ICaseExecutionContent> runCaseData;
+            MyRunCaseData<ICaseExecutionContent> runCaseData;
             TreeNode executiveNode;
 
-            public ExecutivebasicData(myRunCaseData<ICaseExecutionContent> yourCaseData,TreeNode yourExecutiveNode)
+            public ExecutivebasicData(MyRunCaseData<ICaseExecutionContent> yourCaseData,TreeNode yourExecutiveNode)
             {
                 runCaseData = yourCaseData;
                 executiveNode = yourExecutiveNode;
@@ -568,21 +571,6 @@ namespace CaseExecutiveActuator
         /// ExecutionDevice List with his name【执行驱动器映射表】
         /// </summary>
         private Dictionary<string, ICaseExecutionDevice> myExecutionDeviceList;
-
-        ///// <summary>
-        ///// RunTimeParameter List
-        ///// </summary>
-        //private Dictionary<string, string> runActuatorParameterList;
-
-        ///// <summary>
-        ///// RunTimeStaticData List
-        ///// </summary>
-        //private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataList;
-
-        ///// <summary>
-        ///// RunTimeDataSouce List
-        ///// </summary>
-        //private Dictionary<string, IRunTimeDataSource> runActuatorStaticDataSouceList;
 
         /// <summary>
         /// RunActuatorStaticDataCollection
@@ -670,7 +658,6 @@ namespace CaseExecutiveActuator
             cloneActuator.rootActuator = null;
             cloneActuator.myExecutionDeviceList = myExecutionDeviceList.MyClone();
             cloneActuator.runActuatorStaticDataCollection = (ActuatorStaticDataCollection)runActuatorStaticDataCollection.Clone();
-            //cloneActuator.runExecutionResultList = new List<myExecutionDeviceResult>();
             cloneActuator.SetCaseRunTime(this.runTimeCaseDictionary, this.runCellProjctCollection);
             cloneActuator.caseThinkTime = this.caseThinkTime;
             return cloneActuator;
@@ -874,7 +861,7 @@ namespace CaseExecutiveActuator
                 if (yourMessage.StartsWith("▲"))
                 {
                     //附加任务起始节点
-                    myActionActuator.SetCaseNodeExpand(yourTarget);
+                    MyActionActuator.SetCaseNodeExpand(yourTarget);
                 }
                 else if (yourMessage.StartsWith("◆"))
                 {
@@ -890,12 +877,12 @@ namespace CaseExecutiveActuator
                             break;
                         }
                     }
-                    myActionActuator.SetCaseNodeExpand(yourTarget);
+                    MyActionActuator.SetCaseNodeExpand(yourTarget);
                 }
                 yourMessage = "【" + yourMessage + "】";
             }
 
-            myActionActuator.SetCaseNodeLoopChange(yourTarget, yourMessage);
+            MyActionActuator.SetCaseNodeLoopChange(yourTarget, yourMessage);
         }
 
         //RunTime Queue 中Loop变化时通知
@@ -903,11 +890,11 @@ namespace CaseExecutiveActuator
         {
             if (yourMessage!="")
             {
-                myActionActuator.SetCaseNodeExpand(yourTarget);
-                myActionActuator.SetCaseNodeLoopRefresh(yourTarget);
+                MyActionActuator.SetCaseNodeExpand(yourTarget);
+                MyActionActuator.SetCaseNodeLoopRefresh(yourTarget);
                 yourMessage = "【" + yourMessage + "】";
             }
-            myActionActuator.SetCaseNodeLoopChange(yourTarget, yourMessage);
+            MyActionActuator.SetCaseNodeLoopChange(yourTarget, yourMessage);
         }
 
 
@@ -947,9 +934,13 @@ namespace CaseExecutiveActuator
                                                 {
                                                     switch (tempActuatorProtocol)
                                                     {
+                                                        case CaseProtocol.console:
+                                                            myConnectForConsole ConnectInfo_console = new myConnectForConsole(tempActuatorProtocol);
+                                                            AddExecutionDevice(tempActuatorName, ConnectInfo_console);
+                                                            break;
                                                         case CaseProtocol.vanelife_http:
-                                                            myConnectForVanelife_http ConnectInfo = new myConnectForVanelife_http(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "dev_key"), CaseTool.getXmlInnerVaule(tempNodeChild, "dev_secret"), CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
-                                                            AddExecutionDevice(tempActuatorName, ConnectInfo);
+                                                            myConnectForVanelife_http ConnectInfo_vanelifeHttp = new myConnectForVanelife_http(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "dev_key"), CaseTool.getXmlInnerVaule(tempNodeChild, "dev_secret"), CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
+                                                            AddExecutionDevice(tempActuatorName, ConnectInfo_vanelifeHttp);
                                                             break;
                                                         case CaseProtocol.http:
                                                             myConnectForHttp ConnectInfo_http = new myConnectForHttp(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
@@ -1208,7 +1199,7 @@ namespace CaseExecutiveActuator
             SetNowExecutiveData("CaseExecutionDevice connecting ......");
             foreach (KeyValuePair<string, ICaseExecutionDevice> tempKvp in myExecutionDeviceList)
             {
-                if (tempKvp.Value.executionDeviceConnect())
+                if (tempKvp.Value.ExecutionDeviceConnect())
                 {
                     SetNowExecutiveData(string.Format("【RunTimeActuator】:{0} 连接成功", tempKvp.Key));
                 }
@@ -1227,7 +1218,7 @@ namespace CaseExecutiveActuator
         {
             foreach (KeyValuePair<string, ICaseExecutionDevice> tempKvp in myExecutionDeviceList)
             {
-                tempKvp.Value.executionDeviceClose();
+                tempKvp.Value.ExecutionDeviceClose();
             }
         }
 
@@ -1260,7 +1251,7 @@ namespace CaseExecutiveActuator
         {
             ConnectExecutionDevice();
             CaseCell nowExecutiveNode = null;
-            myRunCaseData<ICaseExecutionContent> nowRunCaseData = null;
+            MyRunCaseData<ICaseExecutionContent> nowRunCaseData = null;
             ExecutiveAdditionalInfo nowAdditionalInfo;
 
             while((nowExecutiveNode=caseRunTime.nextCase())!=null)
@@ -1332,7 +1323,7 @@ namespace CaseExecutiveActuator
         {
             ConnectExecutionDevice();
             CaseCell nowExecutiveNode = (CaseCell)yourTryNode;
-            myRunCaseData<ICaseExecutionContent> nowRunCaseData = nowExecutiveNode.CaseRunData;
+            MyRunCaseData<ICaseExecutionContent> nowRunCaseData = nowExecutiveNode.CaseRunData;
             ExecutiveAdditionalInfo nowAdditionalInfo;
 
             if (nowRunCaseData != null)
@@ -1356,20 +1347,20 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="nowRunCaseData">myRunCaseData</param>
         /// <param name="nowExecutiveNode">now CaseCell</param>
-        private void ExecutiveAnCases(myRunCaseData<ICaseExecutionContent> nowRunCaseData, CaseCell nowExecutiveNode, ref ExecutiveAdditionalInfo nowAdditionalInfo)
+        private void ExecutiveAnCases(MyRunCaseData<ICaseExecutionContent> nowRunCaseData, CaseCell nowExecutiveNode, ref ExecutiveAdditionalInfo nowAdditionalInfo)
         {
             bool tempIsBreakError = false;
             MyExecutionDeviceResult executionResult;
 
             if(runState==CaseActuatorState.Pause)
             {
-                myActionActuator.SetCaseNodePause(nowExecutiveNode);
+                MyActionActuator.SetCaseNodePause(nowExecutiveNode);
             }
             myManualResetEvent.WaitOne();
             if (runState == CaseActuatorState.Stoping)
             {
                 nowAdditionalInfo = new ExecutiveAdditionalInfo(true);
-                myActionActuator.SetCaseNodeStop(nowExecutiveNode);
+                MyActionActuator.SetCaseNodeStop(nowExecutiveNode);
                 return;
             }
 
@@ -1379,11 +1370,11 @@ namespace CaseExecutiveActuator
                 {
                     var nowDevice = myExecutionDeviceList[nowRunCaseData.testContent.myCaseActuator];
                 ExecutionDeviceRunLink:
-                    if (nowDevice.isDeviceConnect)
+                    if (nowDevice.IsDeviceConnect)
                     {
                         //nowDevice.executionDeviceRun()
-                        myActionActuator.SetCaseNodeRunning(nowExecutiveNode);
-                        executionResult = nowDevice.executionDeviceRun(nowRunCaseData.testContent, OnGetExecutiveData, myName, runActuatorStaticDataCollection, nowRunCaseData.id);
+                        MyActionActuator.SetCaseNodeRunning(nowExecutiveNode);
+                        executionResult = nowDevice.ExecutionDeviceRun(nowRunCaseData.testContent, OnGetExecutiveData, myName, runActuatorStaticDataCollection, nowRunCaseData.id);
                         HandleCaseExecutiveResul(nowRunCaseData, nowExecutiveNode, executionResult,ref nowAdditionalInfo);
 
                     }
@@ -1391,7 +1382,7 @@ namespace CaseExecutiveActuator
                     {
                         //Device没有连接
                         SetNowExecutiveData(string.Format("【ID:{0}】 {1}连接中断，尝试连接中···", nowRunCaseData.id, nowRunCaseData.testContent.myCaseActuator));
-                        if (nowDevice.executionDeviceConnect())
+                        if (nowDevice.ExecutionDeviceConnect())
                         {
                             //nowDevice.executionDeviceRun()
                             goto ExecutionDeviceRunLink;
@@ -1399,7 +1390,7 @@ namespace CaseExecutiveActuator
                         else
                         {
                             SetNowExecutiveData(string.Format("【ID:{0}】 {1}连接失败", nowRunCaseData.id, nowRunCaseData.testContent.myCaseActuator));
-                            myActionActuator.SetCaseNodeConnectInterrupt(nowExecutiveNode);
+                            MyActionActuator.SetCaseNodeConnectInterrupt(nowExecutiveNode);
 
                             tempIsBreakError = true;
                             executionResult = new MyExecutionDeviceResult(nowRunCaseData.id, "CaseActuator连接失败");
@@ -1410,8 +1401,8 @@ namespace CaseExecutiveActuator
                 {
                     //testContent没有找到合适的myCaseActuator
                     SetNowExecutiveData(string.Format("【ID:{0}】 未找到指定CaseActuator", nowRunCaseData.id));
-                    myActionActuator.SetCaseNodeNoActuator(nowExecutiveNode);
-                    myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                    MyActionActuator.SetCaseNodeNoActuator(nowExecutiveNode);
+                    MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
 
                     tempIsBreakError = true;
                     executionResult = new MyExecutionDeviceResult(nowRunCaseData.id, "未找到指定CaseActuator");
@@ -1421,7 +1412,7 @@ namespace CaseExecutiveActuator
             {
                 //nowRunCaseData有错误
                 SetNowActionError(string.Format("【ID:{0}】 执行数据脚本存在错误", nowRunCaseData.id));
-                myActionActuator.SetCaseNodeAbnormal(nowExecutiveNode);
+                MyActionActuator.SetCaseNodeAbnormal(nowExecutiveNode);
 
                 tempIsBreakError = true;
                 executionResult = new MyExecutionDeviceResult(nowRunCaseData.id, "执行数据脚本存在错误" + nowRunCaseData.errorMessages);
@@ -1453,30 +1444,30 @@ namespace CaseExecutiveActuator
         /// <param name="yourRunData">确保其不为null</param>
         /// <param name="yourExecutionResult">确保其不为null</param>
         /// <param name="nowAdditionalInfo"></param>
-        private void HandleCaseExecutiveResul(myRunCaseData<ICaseExecutionContent> yourRunData, CaseCell nowExecutiveNode, MyExecutionDeviceResult yourExecutionResult, ref ExecutiveAdditionalInfo nowAdditionalInfo)
+        private void HandleCaseExecutiveResul(MyRunCaseData<ICaseExecutionContent> yourRunData, CaseCell nowExecutiveNode, MyExecutionDeviceResult yourExecutionResult, ref ExecutiveAdditionalInfo nowAdditionalInfo)
         {
             string tempError;
             yourExecutionResult.caseId = yourRunData.id;
             if (yourExecutionResult.additionalEroor != null)
             {
-                myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
             }
             yourExecutionResult.expectMethod = yourRunData.caseExpectInfo.myExpectType;
             yourExecutionResult.expectContent = yourRunData.caseExpectInfo.myExpectContent.getTargetContentData(runActuatorStaticDataCollection, yourExecutionResult.staticDataResultCollection, out tempError);
             if (tempError != null)
             {
-                myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                 yourExecutionResult.additionalEroor = yourExecutionResult.additionalEroor.MyAddValue(tempError);
             }
             if (CaseTool.CheckBackData(yourExecutionResult.backContent, yourExecutionResult.expectContent, yourRunData.caseExpectInfo.myExpectType))
             {
                 yourExecutionResult.result = CaseResult.Pass;
-                myActionActuator.SetCaseNodePass(nowExecutiveNode);
+                MyActionActuator.SetCaseNodePass(nowExecutiveNode);
             }
             else
             {
                 yourExecutionResult.result = CaseResult.Fail;
-                myActionActuator.SetCaseNodeFial(nowExecutiveNode);
+                MyActionActuator.SetCaseNodeFial(nowExecutiveNode);
             }
 
             #region ParameterSaves
@@ -1503,7 +1494,7 @@ namespace CaseExecutiveActuator
                                 tempError = string.Format("【ID:{0}】ParameterSave 脚本数据不合法", yourRunData.id);
                                 yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                 SetNowActionError(tempError);
-                                myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                                MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                             }
                             
                             break;
@@ -1514,7 +1505,7 @@ namespace CaseExecutiveActuator
                             tempError = string.Format("【ID:{0}】 ParameterSave 暂不支持该数据提取方式", yourRunData.id);
                             yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                             SetNowActionError(tempError);
-                            myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                            MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                             break;
                     }
                     if(tempPickVaule==null)
@@ -1564,7 +1555,7 @@ namespace CaseExecutiveActuator
                                 tempError = string.Format("【ID:{0}】 CaseAction Case数据中部没有发现目的ID", yourRunData.id);
                                 yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                 SetNowActionError(tempError);
-                                myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                                MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                             }
                             else
                             {
@@ -1589,7 +1580,7 @@ namespace CaseExecutiveActuator
                                     tempError = string.Format("【ID:{0}】 CaseAction 目标跳转Case不合法", yourRunData.id);
                                     yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                     SetNowActionError(tempError);
-                                    myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                                    MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                                 }
                             }
                             break;
@@ -1638,7 +1629,7 @@ namespace CaseExecutiveActuator
                                     tempError = string.Format("【ID:{0}】 retry 解析错误", yourRunData.id);
                                     yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                                     SetNowActionError(tempError);
-                                    myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                                    MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                                 }
                             }
                             else
@@ -1661,7 +1652,7 @@ namespace CaseExecutiveActuator
                             tempError = string.Format("【ID:{0}】 CaseAction 未能解析", yourRunData.id);
                             yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
                             SetNowActionError(tempError);
-                            myActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                            MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                             break;
                         default:
                             //do nothing
@@ -1789,6 +1780,9 @@ namespace CaseExecutiveActuator
         {
             switch (yourDeviceConnectInfo.myCaseProtocol)
             {
+                case CaseProtocol.console:
+                    //myExecutionDeviceList.MyAdd(yourDeviceName,new )
+                    break;
                 case CaseProtocol.vanelife_http:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForVanelife_http((myConnectForVanelife_http)yourDeviceConnectInfo));
                     break;

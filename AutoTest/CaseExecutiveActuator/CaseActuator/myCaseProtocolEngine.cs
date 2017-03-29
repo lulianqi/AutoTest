@@ -32,13 +32,175 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="yourContentNode">xml 源数据</param>
         /// <returns>ICaseExecutionContent (在子类实现时返回值可以为实际类型)</returns>
-        public static ICaseExecutionContent getRunContent(XmlNode yourContentNode)
+        public static ICaseExecutionContent GetRunContent(XmlNode yourContentNode)
         {
             throw new NotImplementedException();
         }
     }
 
     #region ExecutionDevice
+
+    public class CaseProtocolExecutionForConsole:BasicProtocolPars, ICaseExecutionDevice
+    {
+        private bool isConnect;
+        private myConnectForConsole myExecutionDeviceInfo;
+        public event delegateGetExecutiveData OnGetExecutiveData;
+
+        public new static MyBasicHttpExecutionContent GetRunContent(XmlNode yourContentNode)
+        {
+            MyBasicHttpExecutionContent myRunContent = new MyBasicHttpExecutionContent();
+            if (yourContentNode != null)
+            {
+                if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
+                {
+                    //Content
+                    try
+                    {
+                        myRunContent.caseProtocol = (CaseProtocol)Enum.Parse(typeof(CaseProtocol), yourContentNode.Attributes["protocol"].Value);
+                    }
+                    catch
+                    {
+                        myRunContent.errorMessage = "Error :error protocol in Content";
+                        return myRunContent;
+                    }
+                    myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
+
+                    //Uri
+                    XmlNode tempUriDataNode = yourContentNode["Uri"];
+                    if (tempUriDataNode != null)
+                    {
+                        if (tempUriDataNode.Attributes["httpMethod"] != null)
+                        {
+                            myRunContent.httpMethod = tempUriDataNode.Attributes["httpMethod"].Value;
+                        }
+                        else
+                        {
+                            myRunContent.httpMethod = "GET";
+                        }
+                        myRunContent.httpUri = CaseTool.getXmlParametContent(tempUriDataNode);
+
+                    }
+                    else
+                    {
+                        myRunContent.errorMessage = "Error :http uri (this element is necessary)";
+                        return myRunContent;
+                    }
+
+                    //HttpHeads
+                    XmlNode tempHttpHeadsDataNode = yourContentNode["Heads"];
+                    if (tempHttpHeadsDataNode != null)
+                    {
+                        if (tempHttpHeadsDataNode.HasChildNodes)
+                        {
+                            foreach (XmlNode headNode in tempHttpHeadsDataNode.ChildNodes)
+                            {
+                                if (headNode.Attributes["name"] != null)
+                                {
+                                    myRunContent.httpHeads.Add(new KeyValuePair<string, caseParameterizationContent>(headNode.Attributes["name"].Value, CaseTool.getXmlParametContent(headNode)));
+                                }
+                                else
+                                {
+                                    myRunContent.errorMessage = "Error :can not find http Head name in heads";
+                                }
+                            }
+                        }
+                    }
+
+                    //HttpBody
+                    XmlNode tempHttpBodyDataNode = yourContentNode["Body"];
+                    if (tempHttpHeadsDataNode != null)
+                    {
+                        myRunContent.httpBody = CaseTool.getXmlParametContent(tempHttpBodyDataNode);
+                    }
+                    //AisleConfig
+                    if (yourContentNode["AisleConfig"] != null)
+                    {
+                        myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
+                    }
+                    //HttpMultipart
+                    XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];
+                    if (tempHttpMultipartNode != null)
+                    {
+                        if (tempHttpMultipartNode.HasChildNodes)
+                        {
+                            foreach (XmlNode multipartNode in tempHttpMultipartNode.ChildNodes)
+                            {
+                                HttpMultipart hmp = new HttpMultipart();
+                                if (multipartNode.Name == "MultipartData")
+                                {
+                                    hmp.isFile = false;
+                                    hmp.fileData = multipartNode.InnerText;
+                                }
+                                else if (multipartNode.Name == "MultipartFile")
+                                {
+                                    hmp.isFile = true;
+                                    hmp.fileData = CaseTool.GetFullPath(multipartNode.InnerText, MyConfiguration.CaseFilePath);
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                                hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name", null);
+                                hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename", null);
+                                myRunContent.myMultipartList.Add(hmp);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    myRunContent.errorMessage = "Error :can not find protocol or actuator in Content ";
+                }
+            }
+            else
+            {
+                myRunContent.errorMessage = "Error :yourContentNode is null";
+            }
+            return myRunContent;
+        }
+        public CaseProtocolExecutionForConsole(myConnectForConsole yourConnectInfo)
+        {
+            myExecutionDeviceInfo = yourConnectInfo;
+        }
+
+        public CaseProtocol ProtocolType
+        {
+            get
+            {
+                return myExecutionDeviceInfo.caseProtocol;
+            }
+        }
+
+        public bool IsDeviceConnect
+        {
+            get
+            {
+                return isConnect;
+            }
+        }
+
+        public bool ExecutionDeviceConnect()
+        {
+            isConnect = true;
+            return true;
+        }
+
+        public void ExecutionDeviceClose()
+        {
+            isConnect = false;
+        }
+
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Clone()
+        {
+            return new CaseProtocolExecutionForConsole(myExecutionDeviceInfo);
+        }
+    }
+
 
     /// <summary>
     /// Vanelife_http Device 
@@ -55,7 +217,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="yourContentNode">souce XmlNode</param>
         /// <returns>the data your need</returns>
-        public new static MyVaneHttpExecutionContent getRunContent(XmlNode yourContentNode)
+        public new static MyVaneHttpExecutionContent GetRunContent(XmlNode yourContentNode)
         {
             MyVaneHttpExecutionContent myRunContent = new MyVaneHttpExecutionContent();
             if (yourContentNode != null)
@@ -69,7 +231,7 @@ namespace CaseExecutiveActuator
                     }
                     catch
                     {
-                        myRunContent.ErrorMessage = "Error :error protocol in Content";
+                        myRunContent.errorMessage = "Error :error protocol in Content";
                         return myRunContent;
                     }
                     myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
@@ -80,11 +242,11 @@ namespace CaseExecutiveActuator
                     {
                         if (tempContentDataNode.Attributes["target"] != null)
                         {
-                            myRunContent.HttpTarget = tempContentDataNode.Attributes["target"].Value;
+                            myRunContent.httpTarget = tempContentDataNode.Attributes["target"].Value;
                         }
                         else
                         {
-                            myRunContent.HttpTarget = "";
+                            myRunContent.httpTarget = "";
                         }
 
                         if (tempContentDataNode.Attributes["isHaveParameters"] != null)
@@ -98,7 +260,7 @@ namespace CaseExecutiveActuator
                     }
                     else
                     {
-                        myRunContent.ErrorMessage = "Error :can not find ContentData , it is necessary in [vanelife_http]";
+                        myRunContent.errorMessage = "Error :can not find ContentData , it is necessary in [vanelife_http]";
                         return myRunContent;
                     }
 
@@ -108,11 +270,11 @@ namespace CaseExecutiveActuator
                     {
                         if (tempHttpConfigDataNode.Attributes["httpMethod"] != null)
                         {
-                            myRunContent.HttpMethod = tempHttpConfigDataNode.Attributes["httpMethod"].Value;
+                            myRunContent.httpMethod = tempHttpConfigDataNode.Attributes["httpMethod"].Value;
                         }
                         else
                         {
-                            myRunContent.HttpMethod = "POST";
+                            myRunContent.httpMethod = "POST";
                         }
 
                         if (tempHttpConfigDataNode["AisleConfig"] != null)
@@ -140,18 +302,18 @@ namespace CaseExecutiveActuator
                     }
                     else
                     {
-                        myRunContent.HttpMethod = "POST";
+                        myRunContent.httpMethod = "POST";
                     }
 
                 }
                 else
                 {
-                    myRunContent.ErrorMessage = "Error :can not find protocol or actuator in Content ";
+                    myRunContent.errorMessage = "Error :can not find protocol or actuator in Content ";
                 }
             }
             else
             {
-                myRunContent.ErrorMessage = "Error :yourContentNode is null";
+                myRunContent.errorMessage = "Error :yourContentNode is null";
             }
             return myRunContent;
         }
@@ -166,7 +328,7 @@ namespace CaseExecutiveActuator
             return new CaseProtocolExecutionForVanelife_http(myExecutionDeviceInfo);
         }
 
-        public CaseProtocol getProtocolType
+        public CaseProtocol ProtocolType
         {
             get
             {
@@ -174,13 +336,13 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public bool executionDeviceConnect()
+        public bool ExecutionDeviceConnect()
         {
             isConnect = true;
             return true;
         }
 
-        public bool isDeviceConnect
+        public bool IsDeviceConnect
         {
             get
             {
@@ -188,13 +350,13 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public void executionDeviceClose()
+        public void ExecutionDeviceClose()
         {
             isConnect = false;
         }
 
 
-        public MyExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();//默认该值为null，不会输出参数数据结果（如果不需要输出可以保持该字段为null）
@@ -209,11 +371,11 @@ namespace CaseExecutiveActuator
                 string vanelifeData = CreatVanelifeSendData(nowExecutionContent.caseExecutionContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
                 if (nowExecutionContent.myHttpAisleConfig.httpAddress.IsFilled())
                 {
-                    tempUrlAddress = nowExecutionContent.myHttpAisleConfig.httpAddress.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError) + nowExecutionContent.HttpTarget;
+                    tempUrlAddress = nowExecutionContent.myHttpAisleConfig.httpAddress.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError) + nowExecutionContent.httpTarget;
                 }
                 else
                 {
-                    tempUrlAddress = myExecutionDeviceInfo.default_url + nowExecutionContent.HttpTarget;
+                    tempUrlAddress = myExecutionDeviceInfo.default_url + nowExecutionContent.httpTarget;
                 }
 
                 //report Executive Data
@@ -225,7 +387,7 @@ namespace CaseExecutiveActuator
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
+                    AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.httpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
                 }
                 else
                 {
@@ -236,7 +398,7 @@ namespace CaseExecutiveActuator
                     }
                     else
                     {
-                        AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.HttpMethod, myResult);
+                        AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.httpMethod, myResult);
                     }
                 }
 
@@ -324,7 +486,7 @@ namespace CaseExecutiveActuator
 
         public event delegateGetExecutiveData OnGetExecutiveData;
 
-        public new static MyBasicHttpExecutionContent getRunContent(XmlNode yourContentNode)
+        public new static MyBasicHttpExecutionContent GetRunContent(XmlNode yourContentNode)
         {
             MyBasicHttpExecutionContent myRunContent = new MyBasicHttpExecutionContent();
             if (yourContentNode != null)
@@ -447,7 +609,7 @@ namespace CaseExecutiveActuator
             return new CaseProtocolExecutionForHttp(myExecutionDeviceInfo);
         }
 
-        public CaseProtocol getProtocolType
+        public CaseProtocol ProtocolType
         {
             get
             {
@@ -455,13 +617,13 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public bool executionDeviceConnect()
+        public bool ExecutionDeviceConnect()
         {
             isConnect = true;
             return true;
         }
 
-        public bool isDeviceConnect
+        public bool IsDeviceConnect
         {
             get
             {
@@ -469,13 +631,13 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public void executionDeviceClose()
+        public void ExecutionDeviceClose()
         {
             isConnect = false;
         }
 
 
-        public MyExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
@@ -762,9 +924,9 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="yourRunNode">your XmlNode</param>
         /// <returns>myRunCaseData you want</returns>
-        public static myRunCaseData<ICaseExecutionContent> getCaseRunData(XmlNode sourceNode)
+        public static MyRunCaseData<ICaseExecutionContent> getCaseRunData(XmlNode sourceNode)
         {
-            myRunCaseData<ICaseExecutionContent> myCaseData = new myRunCaseData<ICaseExecutionContent>();
+            MyRunCaseData<ICaseExecutionContent> myCaseData = new MyRunCaseData<ICaseExecutionContent>();
             CaseProtocol contentProtocol = CaseProtocol.unknownProtocol;
             if (sourceNode == null)
             {
@@ -816,7 +978,7 @@ namespace CaseExecutiveActuator
                             switch (contentProtocol)
                             {
                                 case CaseProtocol.vanelife_http:
-                                    myCaseData.testContent = CaseProtocolExecutionForVanelife_http.getRunContent(tempCaseContent);
+                                    myCaseData.testContent = CaseProtocolExecutionForVanelife_http.GetRunContent(tempCaseContent);
                                     if (myCaseData.testContent.myErrorMessage != null)
                                     {
                                         myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.myErrorMessage);
@@ -824,7 +986,7 @@ namespace CaseExecutiveActuator
                                     }
                                     break;
                                 case CaseProtocol.http:
-                                    myCaseData.testContent = CaseProtocolExecutionForHttp.getRunContent(tempCaseContent);
+                                    myCaseData.testContent = CaseProtocolExecutionForHttp.GetRunContent(tempCaseContent);
                                     if (myCaseData.testContent.myErrorMessage != null)
                                     {
                                         myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.myErrorMessage);

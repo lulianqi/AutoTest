@@ -44,14 +44,15 @@ namespace CaseExecutiveActuator
         extendProtocol = 0,
         unknownProtocol = 1,
         defaultProtocol = 2,
-        vanelife_http = 3,
-        vanelife_comm = 4,
-        vanelife_tcp = 5,
-        vanelife_telnet = 6,
-        http = 7,
-        tcp = 8,
-        comm = 9,
-        telnet = 10
+        console=3,
+        vanelife_http = 4,
+        vanelife_comm = 5,
+        vanelife_tcp = 6,
+        vanelife_telnet = 7,
+        http = 8,
+        tcp = 9,
+        comm = 10,
+        telnet = 11
     }
 
     /// <summary>
@@ -236,6 +237,8 @@ namespace CaseExecutiveActuator
 
     }
 
+    #region ExecutionDevice初始化连接信息
+
     /// <summary>
     /// Vanelife_http 【IConnectExecutiveData】
     /// </summary>
@@ -285,7 +288,28 @@ namespace CaseExecutiveActuator
         }
     }
 
+    /// <summary>
+    /// Console 【IConnectExecutiveData】
+    /// </summary>
+    public struct myConnectForConsole:IConnectExecutiveData
+    {
+        public CaseProtocol caseProtocol;
 
+        public myConnectForConsole(CaseProtocol yourCaseProtocol)
+        {
+            caseProtocol = yourCaseProtocol;
+        }
+        public CaseProtocol myCaseProtocol
+        {
+            get
+            {
+                return caseProtocol;
+            }
+        }
+    }
+    #endregion
+
+    
 
     public struct myHttpBackData
     {
@@ -470,14 +494,14 @@ namespace CaseExecutiveActuator
     {
         public CaseType tagCaseType;
         public XmlNode tagCaseXmlNode;
-        public myRunCaseData<ICaseExecutionContent> tagCaseRunData;
+        public MyRunCaseData<ICaseExecutionContent> tagCaseRunData;
         public myTreeTagInfo(CaseType yourCaseType, XmlNode yourXmlNode)
         {
             tagCaseType = yourCaseType;
             tagCaseXmlNode = yourXmlNode;
         }
 
-        public myTreeTagInfo(CaseType yourCaseType, XmlNode yourXmlNode, myRunCaseData<ICaseExecutionContent> yourCaseRunData)
+        public myTreeTagInfo(CaseType yourCaseType, XmlNode yourXmlNode, MyRunCaseData<ICaseExecutionContent> yourCaseRunData)
         {
             tagCaseType = yourCaseType;
             tagCaseXmlNode = yourXmlNode;
@@ -599,7 +623,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 执行当前case所需要的信息
     /// </summary>
-    public class myRunCaseData<T> where T : ICaseExecutionContent
+    public class MyRunCaseData<T> where T : ICaseExecutionContent
     {
         public List<string> errorMessages;
         public int id;
@@ -609,10 +633,10 @@ namespace CaseExecutiveActuator
         public Dictionary<CaseResult, CaseActionDescription> actions;
         public myCaseAttribute caseAttribute;
 
-        public myRunCaseData()
+        public MyRunCaseData()
         {
         }
-        public myRunCaseData(T yourContent, int yourId, CaseProtocol yourcontentProtocol)
+        public MyRunCaseData(T yourContent, int yourId, CaseProtocol yourcontentProtocol)
         {
             errorMessages = null;
             testContent = yourContent;
@@ -623,7 +647,7 @@ namespace CaseExecutiveActuator
             caseAttribute = new myCaseAttribute();
         }
 
-        public myRunCaseData(T yourContent, int yourId, CaseProtocol yourcontentProtocol, string yourErrorMessage)
+        public MyRunCaseData(T yourContent, int yourId, CaseProtocol yourcontentProtocol, string yourErrorMessage)
         {
             errorMessages = new List<string>();
             errorMessages.Add(yourErrorMessage);
@@ -664,10 +688,10 @@ namespace CaseExecutiveActuator
     /// </summary>
     public class MyVaneHttpExecutionContent : ICaseExecutionContent
     {
-        public string ErrorMessage;
-        public string HttpTarget;
+        public string errorMessage;
+        public string httpTarget;
         public caseParameterizationContent caseExecutionContent;
-        public string HttpMethod;
+        public string httpMethod;
         public string caseActuator;
         public CaseProtocol caseProtocol;
         public HttpAisleConfig myHttpAisleConfig;
@@ -675,10 +699,10 @@ namespace CaseExecutiveActuator
 
         public MyVaneHttpExecutionContent()
         {
-            ErrorMessage = null;
+            errorMessage = null;
             caseExecutionContent = new caseParameterizationContent();
-            HttpMethod = "";
-            HttpTarget = "";
+            httpMethod = "";
+            httpTarget = "";
             caseActuator = "";
             myHttpMultipart = new HttpMultipart();
             myHttpAisleConfig = new HttpAisleConfig();
@@ -687,10 +711,10 @@ namespace CaseExecutiveActuator
 
         public MyVaneHttpExecutionContent(string tempVal)
         {
-            ErrorMessage = null;
+            errorMessage = null;
             caseExecutionContent = new caseParameterizationContent();
-            HttpMethod = tempVal;
-            HttpTarget = tempVal;
+            httpMethod = tempVal;
+            httpTarget = tempVal;
             caseActuator = tempVal;
             myHttpMultipart = new HttpMultipart();
             myHttpAisleConfig = new HttpAisleConfig();
@@ -709,7 +733,7 @@ namespace CaseExecutiveActuator
         {
             get
             {
-                return HttpTarget;
+                return httpTarget;
             }
         }
 
@@ -735,21 +759,7 @@ namespace CaseExecutiveActuator
         {
             get
             {
-                if (ErrorMessage != null)
-                {
-                    if (ErrorMessage == "")
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return ErrorMessage;
-                    }
-                }
-                else
-                {
-                    return null;
-                }
+                return String.IsNullOrEmpty(errorMessage) ? null : errorMessage;
             }
         }
 
@@ -808,25 +818,49 @@ namespace CaseExecutiveActuator
         {
             get
             {
-                if (errorMessage != null)
-                {
-                    if (errorMessage == "")
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return errorMessage;
-                    }
-                }
-                else
-                {
-                    return null;
-                }
+                return String.IsNullOrEmpty(errorMessage) ? null : errorMessage;
             }
         }
     }
 
+
+    public class MyConsoleExecutionContent : ICaseExecutionContent
+    {
+        public string errorMessage;
+        public CaseProtocol caseProtocol;
+        public string caseActuator;
+
+        public caseParameterizationContent showContent;
+        public List<KeyValuePair<string, caseParameterizationContent>> staticDataSetList;
+
+        public CaseProtocol myCaseProtocol
+        {
+            get { return caseProtocol; }
+        }
+
+        public string myCaseActuator
+        {
+            get { return caseActuator; }
+        }
+
+        public string myExecutionTarget
+        {
+            get { return showContent.getTargetContentData(); }
+        }
+
+        public string myExecutionContent
+        {
+            get { return showContent.getTargetContentData(); }
+        }
+
+        public string myErrorMessage
+        {
+            get
+            {
+                return String.IsNullOrEmpty(errorMessage) ? null : errorMessage;
+            }
+        }
+    }
     #endregion
 
 

@@ -173,7 +173,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// 获取ExecutionDevice 协议类型
         /// </summary>
-        CaseProtocol getProtocolType
+        CaseProtocol ProtocolType
         {
             get;
         }
@@ -181,7 +181,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// 是否连接成功
         /// </summary>
-        bool isDeviceConnect
+        bool IsDeviceConnect
         {
             get;
         }
@@ -191,12 +191,12 @@ namespace CaseExecutiveActuator
         /// 连接ExecutionDevice
         /// </summary>
         /// <returns>is sucess</returns>
-        bool executionDeviceConnect();
+        bool ExecutionDeviceConnect();
 
         /// <summary>
         /// 关闭ExecutionDevice
         /// </summary>
-        void executionDeviceClose();
+        void ExecutionDeviceClose();
 
         /// <summary>
         /// 使用case内容在当前执行器中执行该Case
@@ -208,7 +208,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourStaticDataList">在执行中可能会使用到的StaticDataList</param>
         /// <param name="caseId"></param>
         /// <returns>返回执行结果 务必保证myExecutionDeviceResult中spanTime,startTime,backContent,caseTarget,caseProtocol在此方法中填充</returns>
-        MyExecutionDeviceResult executionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId);
+        MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId);
 
         //只包含方法、属性、事件或索引器的签名。(不包含委托,这个委托是类型定义)
         //delegate void delegateGetExecutiveData(string yourContent);

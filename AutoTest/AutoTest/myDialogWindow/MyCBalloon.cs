@@ -32,7 +32,7 @@ namespace AutoTest.myControl
 
         private void analyzeCaseData()
         {
-            myRunCaseData<ICaseExecutionContent> yourCaseRunData = ((CaseCell)myTargetNode.Tag).CaseRunData;
+            MyRunCaseData<ICaseExecutionContent> yourCaseRunData = ((CaseCell)myTargetNode.Tag).CaseRunData;
             if(yourCaseRunData.errorMessages==null)
             {
                 llb_errorInfo.Visible = false;
