@@ -28,7 +28,7 @@ namespace MyCommonHelper
         /// </summary>
         /// <param name="tb">文本框</param>
         /// <returns>文本url编码值</returns>
-        public static string myText(this TextBox tb)
+        public static string MyText(this TextBox tb)
         {
             return System.Web.HttpUtility.UrlEncode(tb.Text);
         }
@@ -87,7 +87,7 @@ namespace MyCommonHelper
         }
 
         /// <summary>
-        /// 以指定字符将字符串分割并转换为int
+        /// 以指定字符将字符串分割并转换为int(eg: "10-11-12-13")
         /// </summary>
         /// <param name="str">指定字符串</param>
         /// <param name="yourSplitChar">分割字符</param>
@@ -113,7 +113,7 @@ namespace MyCommonHelper
         }
 
         /// <summary>
-        /// 以指定字符将字符串中末尾int数据提取出来
+        /// 以指定字符将字符串中末尾int数据提取出来(eg: "testdata-10")
         /// </summary>
         /// <param name="str">指定字符串</param>
         /// <param name="yourSplitChar">分割字符</param>

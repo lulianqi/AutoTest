@@ -63,6 +63,8 @@
         <encoding>GB2312</encoding>
         <baudRate>9600</baudRate>
       </NewActuator>
+      <NewActuator name="console" protocol="console">
+      </NewActuator>
     </RunTimeActuator>
   </ScriptRunTime>
   <Project id="1000010001" name="Project device/active" remark="device_sn测试">
@@ -631,6 +633,20 @@
     </Repeat>
   </Project>
   <Project id="1000010004" name="Project test" remark="case测试">
+    <Case id="1000040001" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Show>
+        <ConsoleTask>
+          <Set key="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Set>
+          <Set key="User-Agent">test man</Set>
+        </ConsoleTask>
+      </Content>
+      <Expect method="contain">"success": true</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
     <Case id="1000050201" remark="登录商户端">
       <Content protocol="http" actuator="http">
         <Uri httpMethod="GET" isHaveParameters="true">http://huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Uri>

@@ -71,6 +71,13 @@ namespace UnitTestForAutoTest
             }
         }
 
+         [TestMethod]
+         public void TestMethod_HexStringToByte()
+         {
+             string testData_1 = " 0x01 0x02 0x03 0x04 0x05 0x06 0x06";
+             byte[] result = MyEncryption.HexStringToByte(testData_1, 16, MyEncryption.ShowHexMode.spitSpace0x);
+         }
+
     }
 
     [TestClass]
