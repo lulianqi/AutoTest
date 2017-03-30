@@ -29,22 +29,36 @@ namespace MyCommonHelper
             space = 1,   //以空格分割
             spit0x = 2,   //以0x分割
             spitSpace0x = 3,   //以 0x分割
+            spit0b = 2,   //以0b分割
+            spitSpace0b = 3,   //以 0b分割
+            spit0d = 2,   //以0d分割
+            spitSpace0d = 3,   //以 0d分割
             spit_= 4,    //以下划线分割
             spitM_ = 5  //以中划线分割
 
         }
 
-        public static string StringToHexString(string yourStr)
+        /// <summary>
+        /// 表示要代表数据的进制
+        /// </summary>
+        public enum HexaDecimal
         {
-            return StringToHexString(yourStr, Encoding.UTF8, 16, ShowHexMode.spit0x);
-        }
-        public static string StringToHexString(string yourStr, Encoding encode, int hexNum, ShowHexMode stringMode)
-        {
-            byte[] tempBytes = encode.GetBytes(yourStr);
-            return ByteToHexString(tempBytes, hexNum, stringMode);
+            hex2 = 2,
+            hex10 = 10,
+            hex16 = 16
         }
 
-        public static string ByteToHexString(byte[] yourBytes, int hexNum, ShowHexMode stringMode)
+        public static string StringToHexString(string yourStr)
+        {
+            return StringToHexString(yourStr, Encoding.UTF8, HexaDecimal.hex16, ShowHexMode.spit0x);
+        }
+        public static string StringToHexString(string yourStr, Encoding encode, HexaDecimal hexaDecimal, ShowHexMode stringMode)
+        {
+            byte[] tempBytes = encode.GetBytes(yourStr);
+            return ByteToHexString(tempBytes, hexaDecimal, stringMode);
+        }
+
+        public static string ByteToHexString(byte[] yourBytes, HexaDecimal hexaDecimal, ShowHexMode stringMode)
         {
             if(yourBytes==null)
             {
@@ -88,7 +102,7 @@ namespace MyCommonHelper
             for (int i = 0; i < yourBytes.Length; i++)
             {
                 result.Append(modeStr);
-                result.Append(Convert.ToString(yourBytes[i], hexNum));
+                result.Append(Convert.ToString(yourBytes[i], (int)hexaDecimal));
             }
             return result.ToString();
         }
@@ -137,7 +151,7 @@ namespace MyCommonHelper
             }
             else
             {
-                hexStrs = yourStr.Split(new string[]{modeStr}, StringSplitOptions.None);
+                hexStrs = yourStr.Split(new string[]{modeStr}, StringSplitOptions.RemoveEmptyEntries);
             }
             resultBytes = new byte[hexStrs.Length];
             for (int i = 0; i < hexStrs.Length;i++ )
