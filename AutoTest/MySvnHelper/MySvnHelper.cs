@@ -116,6 +116,12 @@ namespace MySvnHelper
             //SvnUriTarget repos = new SvnUriTarget(svnUriTarget);
             SvnPathTarget local = new SvnPathTarget(SvnPathTarget);
             //client.GetInfo(repos, out serverInfo);
+            //client.GetLog(SvnPathTarget, out logSvnArgs);
+            if (!client.Update(SvnPathTarget))
+            {
+                ShowState(String.Format("[updata errer] {0}", SvnPathTarget));
+                return false;
+            }
             try
             {
                 client.GetInfo(local, out clientInfo);
@@ -123,12 +129,6 @@ namespace MySvnHelper
             catch (Exception ex)
             {
                 ShowState(String.Format("[updata errer] {0}", ex.Message));
-                return false;
-            }
-            //client.GetLog(SvnPathTarget, out logSvnArgs);
-            if (!client.Update(SvnPathTarget))
-            {
-                ShowState(String.Format("[updata errer] {0}", SvnPathTarget));
                 return false;
             }
             ShowState(string.Format("Svn remote path is :{0} \r\nLocal path is :{1} \r\nLast change revision is :{2} \r\nLast change time is :{3} \r\nLast change author is :{4} \r\n",

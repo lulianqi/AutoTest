@@ -29,12 +29,12 @@ namespace MyCommonHelper
             space = 1,   //以空格分割
             spit0x = 2,   //以0x分割
             spitSpace0x = 3,   //以 0x分割
-            spit0b = 2,   //以0b分割
-            spitSpace0b = 3,   //以 0b分割
-            spit0d = 2,   //以0d分割
-            spitSpace0d = 3,   //以 0d分割
-            spit_= 4,    //以下划线分割
-            spitM_ = 5  //以中划线分割
+            spit0b = 4,   //以0b分割
+            spitSpace0b = 5,   //以 0b分割
+            spit0d = 6,   //以0d分割
+            spitSpace0d = 7,   //以 0d分割
+            spit_= 8,    //以下划线分割
+            spitM_ = 9  //以中划线分割
 
         }
 
@@ -85,6 +85,22 @@ namespace MyCommonHelper
                 case ShowHexMode.spitSpace0x:
                     modeStr = " 0x";
                     stringBuilderCapacity = yourBytes.Length * 5;
+                    break;
+                case ShowHexMode.spit0b:
+                    modeStr = "0b";
+                    stringBuilderCapacity = yourBytes.Length * 10;
+                    break;
+                case ShowHexMode.spitSpace0b:
+                    modeStr = " 0b";
+                    stringBuilderCapacity = yourBytes.Length * 11;
+                    break;
+                case ShowHexMode.spit0d:
+                    modeStr = "0x";
+                    stringBuilderCapacity = yourBytes.Length * 5;
+                    break;
+                case ShowHexMode.spitSpace0d:
+                    modeStr = " 0x";
+                    stringBuilderCapacity = yourBytes.Length * 6;
                     break;
                 case ShowHexMode.spit_:
                     modeStr = "_";

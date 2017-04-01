@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MyCommonHelper;
 
 namespace TestForDefaultClass
 {
@@ -22,6 +23,11 @@ namespace TestForDefaultClass
         public static void RunMyHttpTest()
         {
             Console.ReadLine();
+            string testData_1 = " 0x01 0x02 0x03 0x04 0x05 0x06 0x06";
+            byte[] result = MyEncryption.HexStringToByte(testData_1, 16, MyEncryption.ShowHexMode.spitSpace0x);
+            byte[] tm = new byte[] { 1, 2, 3, 4, 244 };
+            Console.WriteLine(MyCommonHelper.MyEncryption.ByteToHexString(tm, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.spitSpace0x));
+                Console.ReadLine();
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST",null,@"D:\shou.txt"));
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
