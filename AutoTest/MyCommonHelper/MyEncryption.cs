@@ -60,6 +60,7 @@ namespace MyCommonHelper
 
         public static string ByteToHexString(byte[] yourBytes, HexaDecimal hexaDecimal, ShowHexMode stringMode)
         {
+            // 如果只考虑16进制对格式没有特殊要求 可以直接使用 ((byte)233).ToString("X2"); 或 BitConverter.ToString(new byte[]{1,2,3,10,12,233})
             if(yourBytes==null)
             {
                 return null;
@@ -118,7 +119,7 @@ namespace MyCommonHelper
             for (int i = 0; i < yourBytes.Length; i++)
             {
                 result.Append(modeStr);
-                result.Append(Convert.ToString(yourBytes[i], (int)hexaDecimal));
+                result.Append(Convert.ToString(yourBytes[i], (int)hexaDecimal).PadLeft(8,'0'));
             }
             return result.ToString();
         }
