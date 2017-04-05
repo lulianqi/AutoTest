@@ -20,6 +20,8 @@ namespace MyCommonHelper
 {
     public class MyEncryption
     {
+        private static Dictionary<HexaDecimal, int> DictionaryHexaDecimal = new Dictionary<HexaDecimal, int>() { { HexaDecimal.hex2, 8 }, { HexaDecimal.hex10, 3 }, { HexaDecimal.hex16, 3 } };
+        private static Dictionary<ShowHexMode, string> DictionaryShowHexMode = new Dictionary<ShowHexMode, string>() { { ShowHexMode.@null ,""},{ShowHexMode.space," "},{ShowHexMode.spit_,"_"},{ShowHexMode.spitM_,"-"},{ShowHexMode.spit0b,"0b"},{ShowHexMode.spitSpace0b," 0b"},{ShowHexMode.spit0d,"0d"},{ShowHexMode.spitSpace0d," 0d"},{ShowHexMode.spit0x,"0x"},{ShowHexMode.spitSpace0x," 0x"} };
         /// <summary>
         /// hex 字符串显示时的分割方式
         /// </summary>
@@ -27,12 +29,12 @@ namespace MyCommonHelper
         {
             @null = 0,    //不风格每个字节
             space = 1,   //以空格分割
-            spit0x = 2,   //以0x分割
-            spitSpace0x = 3,   //以 0x分割
-            spit0b = 4,   //以0b分割
-            spitSpace0b = 5,   //以 0b分割
-            spit0d = 6,   //以0d分割
-            spitSpace0d = 7,   //以 0d分割
+            spit0x = 2,   //以0x分割 (用于显示16进制)
+            spitSpace0x = 3,   //以 0x分割 (用于显示16进制)
+            spit0b = 4,   //以0b分割 (用于显示2进制)
+            spitSpace0b = 5,   //以 0b分割 (用于显示2进制)
+            spit0d = 6,   //以0d分割 (用于显示10进制)
+            spitSpace0d = 7,   //以 0d分割 (用于显示10进制)
             spit_= 8,    //以下划线分割
             spitM_ = 9  //以中划线分割
 
@@ -66,9 +68,10 @@ namespace MyCommonHelper
                 return null;
             }
             string modeStr = string.Empty;
-            StringBuilder result;
-            int stringBuilderCapacity = 0;
+            StringBuilder result = new StringBuilder(DictionaryHexaDecimal[hexaDecimal] + DictionaryShowHexMode[stringMode].Length);
 
+            /*
+            int stringBuilderCapacity = 0;
             switch (stringMode)
             {
                 case ShowHexMode.@null:
@@ -77,45 +80,47 @@ namespace MyCommonHelper
                     break;
                 case ShowHexMode.space:
                     modeStr = " ";
-                    stringBuilderCapacity = yourBytes.Length * 3;
+                    stringBuilderCapacity = yourBytes.Length * (2+1);
                     break;
                 case ShowHexMode.spit0x:
                     modeStr = "0x";
-                    stringBuilderCapacity = yourBytes.Length * 4;
+                    stringBuilderCapacity = yourBytes.Length * (2+2);
                     break;
                 case ShowHexMode.spitSpace0x:
                     modeStr = " 0x";
-                    stringBuilderCapacity = yourBytes.Length * 5;
+                    stringBuilderCapacity = yourBytes.Length * (2+3);
                     break;
                 case ShowHexMode.spit0b:
                     modeStr = "0b";
-                    stringBuilderCapacity = yourBytes.Length * 10;
+                    stringBuilderCapacity = yourBytes.Length * (8+2);
                     break;
                 case ShowHexMode.spitSpace0b:
                     modeStr = " 0b";
-                    stringBuilderCapacity = yourBytes.Length * 11;
+                    stringBuilderCapacity = yourBytes.Length * (8+3);
                     break;
                 case ShowHexMode.spit0d:
-                    modeStr = "0x";
-                    stringBuilderCapacity = yourBytes.Length * 5;
+                    modeStr = "0d";
+                    stringBuilderCapacity = yourBytes.Length * (3+2);
                     break;
                 case ShowHexMode.spitSpace0d:
-                    modeStr = " 0x";
-                    stringBuilderCapacity = yourBytes.Length * 6;
+                    modeStr = " 0d";
+                    stringBuilderCapacity = yourBytes.Length * (3+3);
                     break;
                 case ShowHexMode.spit_:
                     modeStr = "_";
-                    stringBuilderCapacity = yourBytes.Length * 3;
+                    stringBuilderCapacity = yourBytes.Length * (2+1);
                     break;
                 case ShowHexMode.spitM_:
                     modeStr = "-";
-                    stringBuilderCapacity = yourBytes.Length * 3;
+                    stringBuilderCapacity = yourBytes.Length * (2+1);
                     break;
                 default:
                     //no this way
                     break;
             }
             result = new StringBuilder(stringBuilderCapacity);
+             * */
+
             for (int i = 0; i < yourBytes.Length; i++)
             {
                 result.Append(modeStr);
