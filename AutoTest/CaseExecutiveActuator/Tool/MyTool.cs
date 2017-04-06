@@ -83,7 +83,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// 返回对象的深度克隆(泛型数据，要求T必须为值类型，或类似string的特殊引用类型)
+        /// 返回对象的深度克隆(泛型数据，要求T必须为值类型，或类似string的特殊引用类型[因为虽然使用string的克隆会有相同的引用，但对string进行修改的时都会创建新的对象])
         /// </summary>
         /// <typeparam name="TKey">TKey</typeparam>
         /// <typeparam name="TValue">TKey</typeparam>

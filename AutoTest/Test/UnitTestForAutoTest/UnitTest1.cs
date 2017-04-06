@@ -74,8 +74,11 @@ namespace UnitTestForAutoTest
          [TestMethod]
          public void TestMethod_HexStringToByte()
          {
-             string testData_1 = " 0x01 0x02 0x03 0x04 0x05 0x06 0x06";
-             byte[] result = MyEncryption.HexStringToByte(testData_1, 16, MyEncryption.ShowHexMode.spitSpace0x);
+             string testData_1 = " 0x01 0x02 0x03 0x04 0x05 0x06 0x06 0x00 0xff 0xff";
+             byte[] result = MyEncryption.HexStringToByte(testData_1, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.spitSpace0x);
+             Console.WriteLine(MyEncryption.ByteToHexString(result,MyEncryption.HexaDecimal.hex2,MyEncryption.ShowHexMode.spitSpace0b));
+             Console.WriteLine(MyEncryption.ByteToHexString(result,MyEncryption.HexaDecimal.hex10,MyEncryption.ShowHexMode.spitSpace0d));
+             Console.WriteLine(MyEncryption.ByteToHexString(result,MyEncryption.HexaDecimal.hex16,MyEncryption.ShowHexMode.spitSpace0x));
          }
 
     }

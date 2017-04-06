@@ -23,11 +23,15 @@ namespace TestForDefaultClass
         public static void RunMyHttpTest()
         {
             Console.ReadLine();
-            string testData_1 = " 0x01 0x02 0x03 0x04 0x05 0x06 0x06";
-            byte[] result = MyEncryption.HexStringToByte(testData_1, 16, MyEncryption.ShowHexMode.spitSpace0x);
-            byte[] tm = new byte[] { 1, 2, 3, 4, 244 };
-            Console.WriteLine(MyCommonHelper.MyEncryption.ByteToHexString(tm, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.spitSpace0x));
-                Console.ReadLine();
+            string xxx = "test";
+            List<string> l1 = new List<string>();
+            List<string> l2 = new List<string>();
+            l1.Add(xxx);
+            l2.Add(xxx);
+            l1[0] = "not";
+            Console.WriteLine(l1[0]);
+            Console.WriteLine(l2[0]);
+            Console.ReadLine();
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST",null,@"D:\shou.txt"));
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));

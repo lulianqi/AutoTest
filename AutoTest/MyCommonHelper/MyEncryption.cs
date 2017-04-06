@@ -20,7 +20,7 @@ namespace MyCommonHelper
 {
     public class MyEncryption
     {
-        private static Dictionary<HexaDecimal, int> DictionaryHexaDecimal = new Dictionary<HexaDecimal, int>() { { HexaDecimal.hex2, 8 }, { HexaDecimal.hex10, 3 }, { HexaDecimal.hex16, 3 } };
+        private static Dictionary<HexaDecimal, int> DictionaryHexaDecimal = new Dictionary<HexaDecimal, int>() { { HexaDecimal.hex2, 8 }, { HexaDecimal.hex10, 3 }, { HexaDecimal.hex16, 2 } };
         private static Dictionary<ShowHexMode, string> DictionaryShowHexMode = new Dictionary<ShowHexMode, string>() { { ShowHexMode.@null ,""},{ShowHexMode.space," "},{ShowHexMode.spit_,"_"},{ShowHexMode.spitM_,"-"},{ShowHexMode.spit0b,"0b"},{ShowHexMode.spitSpace0b," 0b"},{ShowHexMode.spit0d,"0d"},{ShowHexMode.spitSpace0d," 0d"},{ShowHexMode.spit0x,"0x"},{ShowHexMode.spitSpace0x," 0x"} };
         /// <summary>
         /// hex 字符串显示时的分割方式
@@ -50,135 +50,98 @@ namespace MyCommonHelper
             hex16 = 16
         }
 
+        /// <summary>
+        /// 将字符串转换成16进制的可读字符串（使用默认UTF8编码）
+        /// </summary>
+        /// <param name="yourStr">用户字符串</param>
+        /// <returns>返回结果</returns>
         public static string StringToHexString(string yourStr)
         {
             return StringToHexString(yourStr, Encoding.UTF8, HexaDecimal.hex16, ShowHexMode.spit0x);
         }
+
+        /// <summary>
+        /// 将字符串转换成指定进制的可读字符串 （使用指定编码指定进制及指定格式）
+        /// </summary>
+        /// <param name="yourStr">用户字符串</param>
+        /// <param name="encode">指定编码</param>
+        /// <param name="hexaDecimal">指定进制</param>
+        /// <param name="stringMode">指定格式</param>
+        /// <returns>返回结果</returns>
         public static string StringToHexString(string yourStr, Encoding encode, HexaDecimal hexaDecimal, ShowHexMode stringMode)
         {
             byte[] tempBytes = encode.GetBytes(yourStr);
             return ByteToHexString(tempBytes, hexaDecimal, stringMode);
         }
 
-        public static string ByteToHexString(byte[] yourBytes, HexaDecimal hexaDecimal, ShowHexMode stringMode)
+        /// <summary>
+        /// 将字节数组转换为指定进制的可读字符串
+        /// </summary>
+        /// <param name="yourBytes">需要转换的字节数组</param>
+        /// <param name="hexDecimal">指定进制</param>
+        /// <param name="stringMode">指定格式</param>
+        /// <returns>返回结果</returns>
+        public static string ByteToHexString(byte[] yourBytes, HexaDecimal hexDecimal, ShowHexMode stringMode)
         {
             // 如果只考虑16进制对格式没有特殊要求 可以直接使用 ((byte)233).ToString("X2"); 或 BitConverter.ToString(new byte[]{1,2,3,10,12,233})
             if(yourBytes==null)
             {
                 return null;
             }
-            string modeStr = string.Empty;
-            StringBuilder result = new StringBuilder(DictionaryHexaDecimal[hexaDecimal] + DictionaryShowHexMode[stringMode].Length);
-
-            /*
-            int stringBuilderCapacity = 0;
-            switch (stringMode)
-            {
-                case ShowHexMode.@null:
-                    modeStr = null;
-                    stringBuilderCapacity = yourBytes.Length * 2;
-                    break;
-                case ShowHexMode.space:
-                    modeStr = " ";
-                    stringBuilderCapacity = yourBytes.Length * (2+1);
-                    break;
-                case ShowHexMode.spit0x:
-                    modeStr = "0x";
-                    stringBuilderCapacity = yourBytes.Length * (2+2);
-                    break;
-                case ShowHexMode.spitSpace0x:
-                    modeStr = " 0x";
-                    stringBuilderCapacity = yourBytes.Length * (2+3);
-                    break;
-                case ShowHexMode.spit0b:
-                    modeStr = "0b";
-                    stringBuilderCapacity = yourBytes.Length * (8+2);
-                    break;
-                case ShowHexMode.spitSpace0b:
-                    modeStr = " 0b";
-                    stringBuilderCapacity = yourBytes.Length * (8+3);
-                    break;
-                case ShowHexMode.spit0d:
-                    modeStr = "0d";
-                    stringBuilderCapacity = yourBytes.Length * (3+2);
-                    break;
-                case ShowHexMode.spitSpace0d:
-                    modeStr = " 0d";
-                    stringBuilderCapacity = yourBytes.Length * (3+3);
-                    break;
-                case ShowHexMode.spit_:
-                    modeStr = "_";
-                    stringBuilderCapacity = yourBytes.Length * (2+1);
-                    break;
-                case ShowHexMode.spitM_:
-                    modeStr = "-";
-                    stringBuilderCapacity = yourBytes.Length * (2+1);
-                    break;
-                default:
-                    //no this way
-                    break;
-            }
-            result = new StringBuilder(stringBuilderCapacity);
-             * */
+            StringBuilder result = new StringBuilder(DictionaryHexaDecimal[hexDecimal] + DictionaryShowHexMode[stringMode].Length);
 
             for (int i = 0; i < yourBytes.Length; i++)
             {
-                result.Append(modeStr);
-                result.Append(Convert.ToString(yourBytes[i], (int)hexaDecimal).PadLeft(8,'0'));
+                result.Append(DictionaryShowHexMode[stringMode]);
+                result.Append(Convert.ToString(yourBytes[i], (int)hexDecimal).PadLeft(DictionaryHexaDecimal[hexDecimal], '0'));
             }
             return result.ToString();
         }
 
-        public static byte[] HexStringToByte(string yourStr, int hexNum, ShowHexMode stringMode)
+        /// <summary>
+        /// 将可读指定进制的数据转换为字节数组（因为用户数据可能会是非法数据，遇到非法数据非法会抛出异常）
+        /// </summary>
+        /// <param name="yourStr">需要转换的字符串</param>
+        /// <param name="hexDecimal">指定进制</param>
+        /// <param name="stringMode">指定格式</param>
+        /// <returns>返回结果</returns>
+        public static byte[] HexStringToByte(string yourStr, HexaDecimal hexDecimal, ShowHexMode stringMode)
         {
             string[] hexStrs;
             byte[] resultBytes;
             string modeStr = string.Empty;   //string.Empty 不等于 null
-            switch (stringMode)
+            if (stringMode != ShowHexMode.@null)
             {
-                case ShowHexMode.@null:
-                    modeStr = null;
-                    break;
-                case ShowHexMode.space:
-                    modeStr = " ";
-                    break;
-                case ShowHexMode.spit0x:
-                    modeStr = "0x";
-                    break;
-                case ShowHexMode.spitSpace0x:
-                    modeStr = " 0x";
-                    break;
-                case ShowHexMode.spit_:
-                    modeStr = "_";
-                    break;
-                case ShowHexMode.spitM_:
-                    modeStr = "-";
-                    break;
-                default:
-                    //no this way
-                    break;
+                modeStr = DictionaryShowHexMode[stringMode];
             }
-            if (modeStr==null)
+            if (modeStr == string.Empty)
             {
-                if (yourStr.Length%2!=0)
+                if (yourStr.Length % DictionaryHexaDecimal[hexDecimal] != 0)
                 {
-                    return null;
+                    throw new Exception("error leng of your data"); 
                 }
-                int tempHexNum = yourStr.Length / 2;
+                long tempHexNum = yourStr.Length / DictionaryHexaDecimal[hexDecimal];
                 hexStrs = new string[tempHexNum];
                 for (int startIndex = 0; startIndex < tempHexNum; startIndex++)
                 {
-                    hexStrs[startIndex] = yourStr.Substring(startIndex * 2, 2);
+                    hexStrs[startIndex] = yourStr.Substring(startIndex * DictionaryHexaDecimal[hexDecimal], DictionaryHexaDecimal[hexDecimal]);
                 }
             }
             else
             {
                 hexStrs = yourStr.Split(new string[]{modeStr}, StringSplitOptions.RemoveEmptyEntries);
             }
-            resultBytes = new byte[hexStrs.Length];
-            for (int i = 0; i < hexStrs.Length;i++ )
+            try
             {
-                resultBytes[i] = Convert.ToByte(hexStrs[i], hexNum);
+                resultBytes = new byte[hexStrs.Length];
+                for (int i = 0; i < hexStrs.Length; i++)
+                {
+                    resultBytes[i] = Convert.ToByte(hexStrs[i], (int)hexDecimal);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("error data ,can not change it to your hex",ex); 
             }
             return resultBytes;
         }
