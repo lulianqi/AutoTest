@@ -38,7 +38,7 @@ namespace AutoTest.myControl
                 llb_errorInfo.Visible = false;
             }
             lb_caseId.Text = "ID:" + yourCaseRunData.id;
-            lb_caseTarget.Text = "->" + yourCaseRunData.testContent.myExecutionTarget;
+            lb_caseTarget.Text = "->" + yourCaseRunData.testContent.MyExecutionTarget;
             lb_protocol.Text = "Protocol:" + yourCaseRunData.contentProtocol.ToString();
             lb_delay.Text = "Delay:" + yourCaseRunData.caseAttribute.attributeDelay + "ms";
             lb_level.Text = "CaseLevel:" + yourCaseRunData.caseAttribute.attributeLevel;
@@ -64,8 +64,8 @@ namespace AutoTest.myControl
             }
             if(yourCaseRunData.testContent!=null)
             {
-                MyCommonTool.myAddRtbStr(ref rtb_Content, "【Actuator】:" + yourCaseRunData.testContent.myCaseActuator, Color.DarkOrchid, true);
-                MyCommonTool.myAddRtbStr(ref rtb_Content, yourCaseRunData.testContent.myExecutionContent, Color.Maroon, true);
+                MyCommonTool.myAddRtbStr(ref rtb_Content, "【Actuator】:" + yourCaseRunData.testContent.MyCaseActuator, Color.DarkOrchid, true);
+                MyCommonTool.myAddRtbStr(ref rtb_Content, yourCaseRunData.testContent.MyExecutionContent, Color.Maroon, true);
                 rtb_Content.AppendText((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
                 rtb_Content.Select(0, 0);
                 rtb_Content.ScrollToCaret();

@@ -287,7 +287,7 @@ namespace CaseExecutiveActuator
             dev_secret = yourDev_secret;
             default_url = yourDefault_url;
         }
-        public CaseProtocol myCaseProtocol
+        public CaseProtocol MyCaseProtocol
         {
             get
             {
@@ -310,7 +310,7 @@ namespace CaseExecutiveActuator
             caseProtocol = yourCaseProtocol;
             default_url = yourDefault_url;
         }
-        public CaseProtocol myCaseProtocol
+        public CaseProtocol MyCaseProtocol
         {
             get
             {
@@ -330,7 +330,7 @@ namespace CaseExecutiveActuator
         {
             caseProtocol = yourCaseProtocol;
         }
-        public CaseProtocol myCaseProtocol
+        public CaseProtocol MyCaseProtocol
         {
             get
             {
@@ -752,7 +752,7 @@ namespace CaseExecutiveActuator
             caseProtocol = CaseProtocol.unknownProtocol;
         }
 
-        public CaseProtocol myCaseProtocol
+        public CaseProtocol MyCaseProtocol
         {
             get
             {
@@ -760,7 +760,7 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public string myExecutionTarget
+        public string MyExecutionTarget
         {
             get
             {
@@ -768,7 +768,7 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public string myExecutionContent
+        public string MyExecutionContent
         {
             get
             {
@@ -777,7 +777,7 @@ namespace CaseExecutiveActuator
         }
 
 
-        public string myCaseActuator
+        public string MyCaseActuator
         {
             get
             {
@@ -786,7 +786,7 @@ namespace CaseExecutiveActuator
         }
 
 
-        public string myErrorMessage
+        public string MyErrorMessage
         {
             get
             {
@@ -825,27 +825,27 @@ namespace CaseExecutiveActuator
             
         }
 
-        public CaseProtocol myCaseProtocol
+        public CaseProtocol MyCaseProtocol
         {
             get { return caseProtocol; }
         }
 
-        public string myCaseActuator
+        public string MyCaseActuator
         {
             get { return caseActuator; }
         }
 
-        public string myExecutionTarget
+        public string MyExecutionTarget
         {
             get { return httpUri.getTargetContentData(); }
         }
 
-        public string myExecutionContent
+        public string MyExecutionContent
         {
             get { return httpBody.getTargetContentData(); }
         }
 
-        public string myErrorMessage
+        public string MyErrorMessage
         {
             get
             {
@@ -873,27 +873,27 @@ namespace CaseExecutiveActuator
             staticDataSetList = new List<KeyValuePair<string, caseParameterizationContent>>();
         }
 
-        public CaseProtocol myCaseProtocol
+        public CaseProtocol MyCaseProtocol
         {
             get { return caseProtocol; }
         }
 
-        public string myCaseActuator
+        public string MyCaseActuator
         {
             get { return caseActuator; }
         }
 
-        public string myExecutionTarget
+        public string MyExecutionTarget
         {
             get { return showContent.getTargetContentData(); }
         }
 
-        public string myExecutionContent
+        public string MyExecutionContent
         {
             get { return null; }
         }
 
-        public string myErrorMessage
+        public string MyErrorMessage
         {
             get
             {

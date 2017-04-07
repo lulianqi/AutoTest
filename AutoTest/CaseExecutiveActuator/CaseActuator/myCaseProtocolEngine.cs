@@ -46,118 +46,109 @@ namespace CaseExecutiveActuator
         private myConnectForConsole myExecutionDeviceInfo;
         public event delegateGetExecutiveData OnGetExecutiveData;
 
-        //public new static MyConsoleExecutionContent GetRunContent(XmlNode yourContentNode)
-        //{
-        //    MyConsoleExecutionContent myRunContent = new MyConsoleExecutionContent();
-        //    if (yourContentNode != null)
-        //    {
-        //        if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
-        //        {
-        //            //Content
-        //            try
-        //            {
-        //                myRunContent.caseProtocol = (CaseProtocol)Enum.Parse(typeof(CaseProtocol), yourContentNode.Attributes["protocol"].Value);
-        //            }
-        //            catch
-        //            {
-        //                myRunContent.errorMessage = "Error :error protocol in Content";
-        //                return myRunContent;
-        //            }
-        //            myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
+        public new static MyConsoleExecutionContent GetRunContent(XmlNode yourContentNode)
+        {
+            MyConsoleExecutionContent myRunContent = new MyConsoleExecutionContent();
+            if (yourContentNode != null)
+            {
+                if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
+                {
+                    //Content
+                    try
+                    {
+                        myRunContent.caseProtocol = (CaseProtocol)Enum.Parse(typeof(CaseProtocol), yourContentNode.Attributes["protocol"].Value);
+                    }
+                    catch
+                    {
+                        myRunContent.errorMessage = "Error :error protocol in Content";
+                        return myRunContent;
+                    }
+                    myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
 
-        //            //Uri
-        //            XmlNode tempUriDataNode = yourContentNode["Uri"];
-        //            if (tempUriDataNode != null)
-        //            {
-        //                if (tempUriDataNode.Attributes["httpMethod"] != null)
-        //                {
-        //                    myRunContent.httpMethod = tempUriDataNode.Attributes["httpMethod"].Value;
-        //                }
-        //                else
-        //                {
-        //                    myRunContent.httpMethod = "GET";
-        //                }
-        //                myRunContent.httpUri = CaseTool.getXmlParametContent(tempUriDataNode);
+                    //Show
+                    XmlNode tempShowDataNode = yourContentNode["Show"];
+                    if (tempShowDataNode != null)
+                    {
+                        myRunContent.showContent = CaseTool.getXmlParametContent(tempShowDataNode);
+                    }
+                    else
+                    {
+                        myRunContent.errorMessage = "Error :can not find [Show] node (this element is necessary)";
+                        return myRunContent;
+                    }
 
-        //            }
-        //            else
-        //            {
-        //                myRunContent.errorMessage = "Error :http uri (this element is necessary)";
-        //                return myRunContent;
-        //            }
+                    //HttpHeads
+                    XmlNode tempHttpHeadsDataNode = yourContentNode["Heads"];
+                    if (tempHttpHeadsDataNode != null)
+                    {
+                        if (tempHttpHeadsDataNode.HasChildNodes)
+                        {
+                            foreach (XmlNode headNode in tempHttpHeadsDataNode.ChildNodes)
+                            {
+                                if (headNode.Attributes["name"] != null)
+                                {
+                                    myRunContent.httpHeads.Add(new KeyValuePair<string, caseParameterizationContent>(headNode.Attributes["name"].Value, CaseTool.getXmlParametContent(headNode)));
+                                }
+                                else
+                                {
+                                    myRunContent.errorMessage = "Error :can not find http Head name in heads";
+                                }
+                            }
+                        }
+                    }
 
-        //            //HttpHeads
-        //            XmlNode tempHttpHeadsDataNode = yourContentNode["Heads"];
-        //            if (tempHttpHeadsDataNode != null)
-        //            {
-        //                if (tempHttpHeadsDataNode.HasChildNodes)
-        //                {
-        //                    foreach (XmlNode headNode in tempHttpHeadsDataNode.ChildNodes)
-        //                    {
-        //                        if (headNode.Attributes["name"] != null)
-        //                        {
-        //                            myRunContent.httpHeads.Add(new KeyValuePair<string, caseParameterizationContent>(headNode.Attributes["name"].Value, CaseTool.getXmlParametContent(headNode)));
-        //                        }
-        //                        else
-        //                        {
-        //                            myRunContent.errorMessage = "Error :can not find http Head name in heads";
-        //                        }
-        //                    }
-        //                }
-        //            }
-
-        //            //HttpBody
-        //            XmlNode tempHttpBodyDataNode = yourContentNode["Body"];
-        //            if (tempHttpHeadsDataNode != null)
-        //            {
-        //                myRunContent.httpBody = CaseTool.getXmlParametContent(tempHttpBodyDataNode);
-        //            }
-        //            //AisleConfig
-        //            if (yourContentNode["AisleConfig"] != null)
-        //            {
-        //                myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
-        //            }
-        //            //HttpMultipart
-        //            XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];
-        //            if (tempHttpMultipartNode != null)
-        //            {
-        //                if (tempHttpMultipartNode.HasChildNodes)
-        //                {
-        //                    foreach (XmlNode multipartNode in tempHttpMultipartNode.ChildNodes)
-        //                    {
-        //                        HttpMultipart hmp = new HttpMultipart();
-        //                        if (multipartNode.Name == "MultipartData")
-        //                        {
-        //                            hmp.isFile = false;
-        //                            hmp.fileData = multipartNode.InnerText;
-        //                        }
-        //                        else if (multipartNode.Name == "MultipartFile")
-        //                        {
-        //                            hmp.isFile = true;
-        //                            hmp.fileData = CaseTool.GetFullPath(multipartNode.InnerText, MyConfiguration.CaseFilePath);
-        //                        }
-        //                        else
-        //                        {
-        //                            continue;
-        //                        }
-        //                        hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name", null);
-        //                        hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename", null);
-        //                        myRunContent.myMultipartList.Add(hmp);
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-        //            myRunContent.errorMessage = "Error :can not find protocol or actuator in Content ";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        myRunContent.errorMessage = "Error :yourContentNode is null";
-        //    }
-        //    return myRunContent;
-        //}
+                    //HttpBody
+                    XmlNode tempHttpBodyDataNode = yourContentNode["Body"];
+                    if (tempHttpHeadsDataNode != null)
+                    {
+                        myRunContent.httpBody = CaseTool.getXmlParametContent(tempHttpBodyDataNode);
+                    }
+                    //AisleConfig
+                    if (yourContentNode["AisleConfig"] != null)
+                    {
+                        myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
+                    }
+                    //HttpMultipart
+                    XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];
+                    if (tempHttpMultipartNode != null)
+                    {
+                        if (tempHttpMultipartNode.HasChildNodes)
+                        {
+                            foreach (XmlNode multipartNode in tempHttpMultipartNode.ChildNodes)
+                            {
+                                HttpMultipart hmp = new HttpMultipart();
+                                if (multipartNode.Name == "MultipartData")
+                                {
+                                    hmp.isFile = false;
+                                    hmp.fileData = multipartNode.InnerText;
+                                }
+                                else if (multipartNode.Name == "MultipartFile")
+                                {
+                                    hmp.isFile = true;
+                                    hmp.fileData = CaseTool.GetFullPath(multipartNode.InnerText, MyConfiguration.CaseFilePath);
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                                hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name", null);
+                                hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename", null);
+                                myRunContent.myMultipartList.Add(hmp);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    myRunContent.errorMessage = "Error :can not find protocol or actuator in Content ";
+                }
+            }
+            else
+            {
+                myRunContent.errorMessage = "Error :yourContentNode is null";
+            }
+            return myRunContent;
+        }
         public CaseProtocolExecutionForConsole(myConnectForConsole yourConnectInfo)
         {
             myExecutionDeviceInfo = yourConnectInfo;
@@ -360,12 +351,12 @@ namespace CaseExecutiveActuator
         {
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();//默认该值为null，不会输出参数数据结果（如果不需要输出可以保持该字段为null）
-            if(yourExecutionContent.myCaseProtocol==CaseProtocol.vanelife_http)
+            if(yourExecutionContent.MyCaseProtocol==CaseProtocol.vanelife_http)
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
                 MyVaneHttpExecutionContent nowExecutionContent = yourExecutionContent as MyVaneHttpExecutionContent;
                 myResult.caseProtocol = CaseProtocol.vanelife_http;
-                myResult.caseTarget = nowExecutionContent.myExecutionTarget;
+                myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
                 string tempError;
                 string tempUrlAddress;
                 string vanelifeData = CreatVanelifeSendData(nowExecutionContent.caseExecutionContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
@@ -641,12 +632,12 @@ namespace CaseExecutiveActuator
         {
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
-            if (yourExecutionContent.myCaseProtocol == CaseProtocol.http)
+            if (yourExecutionContent.MyCaseProtocol == CaseProtocol.http)
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
                 MyBasicHttpExecutionContent nowExecutionContent = yourExecutionContent as MyBasicHttpExecutionContent;
                 myResult.caseProtocol = CaseProtocol.vanelife_http;
-                myResult.caseTarget = nowExecutionContent.myExecutionTarget;
+                myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
                 string tempError;
                 string httpUri;
                 string httpBody = null;
@@ -979,17 +970,17 @@ namespace CaseExecutiveActuator
                             {
                                 case CaseProtocol.vanelife_http:
                                     myCaseData.testContent = CaseProtocolExecutionForVanelife_http.GetRunContent(tempCaseContent);
-                                    if (myCaseData.testContent.myErrorMessage != null)
+                                    if (myCaseData.testContent.MyErrorMessage != null)
                                     {
-                                        myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.myErrorMessage);
+                                        myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.MyErrorMessage);
                                         return myCaseData;
                                     }
                                     break;
                                 case CaseProtocol.http:
                                     myCaseData.testContent = CaseProtocolExecutionForHttp.GetRunContent(tempCaseContent);
-                                    if (myCaseData.testContent.myErrorMessage != null)
+                                    if (myCaseData.testContent.MyErrorMessage != null)
                                     {
-                                        myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.myErrorMessage);
+                                        myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.MyErrorMessage);
                                         return myCaseData;
                                     }
                                     break;

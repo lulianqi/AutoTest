@@ -1366,9 +1366,9 @@ namespace CaseExecutiveActuator
 
             if (nowRunCaseData.errorMessages == null)
             {
-                if (myExecutionDeviceList.ContainsKey(nowRunCaseData.testContent.myCaseActuator))
+                if (myExecutionDeviceList.ContainsKey(nowRunCaseData.testContent.MyCaseActuator))
                 {
-                    var nowDevice = myExecutionDeviceList[nowRunCaseData.testContent.myCaseActuator];
+                    var nowDevice = myExecutionDeviceList[nowRunCaseData.testContent.MyCaseActuator];
                 ExecutionDeviceRunLink:
                     if (nowDevice.IsDeviceConnect)
                     {
@@ -1381,7 +1381,7 @@ namespace CaseExecutiveActuator
                     else
                     {
                         //Device没有连接
-                        SetNowExecutiveData(string.Format("【ID:{0}】 {1}连接中断，尝试连接中···", nowRunCaseData.id, nowRunCaseData.testContent.myCaseActuator));
+                        SetNowExecutiveData(string.Format("【ID:{0}】 {1}连接中断，尝试连接中···", nowRunCaseData.id, nowRunCaseData.testContent.MyCaseActuator));
                         if (nowDevice.ExecutionDeviceConnect())
                         {
                             //nowDevice.executionDeviceRun()
@@ -1389,7 +1389,7 @@ namespace CaseExecutiveActuator
                         }
                         else
                         {
-                            SetNowExecutiveData(string.Format("【ID:{0}】 {1}连接失败", nowRunCaseData.id, nowRunCaseData.testContent.myCaseActuator));
+                            SetNowExecutiveData(string.Format("【ID:{0}】 {1}连接失败", nowRunCaseData.id, nowRunCaseData.testContent.MyCaseActuator));
                             MyActionActuator.SetCaseNodeConnectInterrupt(nowExecutiveNode);
 
                             tempIsBreakError = true;
@@ -1778,7 +1778,7 @@ namespace CaseExecutiveActuator
         /// <returns></returns>
         private bool AddExecutionDevice(string yourDeviceName, IConnectExecutiveData yourDeviceConnectInfo)
         {
-            switch (yourDeviceConnectInfo.myCaseProtocol)
+            switch (yourDeviceConnectInfo.MyCaseProtocol)
             {
                 case CaseProtocol.console:
                     //myExecutionDeviceList.MyAdd(yourDeviceName,new )

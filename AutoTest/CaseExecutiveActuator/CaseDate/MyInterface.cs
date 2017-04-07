@@ -36,13 +36,13 @@ namespace CaseExecutiveActuator
 
     public interface ICaseProtocolExecution
     {
-        string executionProtocolCase();
+        string ExecutionProtocolCase();
     }
 
     //用于连接ExecutiveData数据结构的接口
     public interface IConnectExecutiveData
     {
-        CaseProtocol myCaseProtocol
+        CaseProtocol MyCaseProtocol
         {
             get;
             //set;
@@ -55,7 +55,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// Case的协议类型
         /// </summary>
-        CaseProtocol myCaseProtocol
+        CaseProtocol MyCaseProtocol
         {
             get;
             //set;
@@ -64,7 +64,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// Case使用的执行器的名称
         /// </summary>
-        string myCaseActuator
+        string MyCaseActuator
         {
             get;
         }
@@ -72,7 +72,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// Cace目标地址简述(比如于接口地址，用于UI显示，不能返回null）
         /// </summary>
-        string myExecutionTarget
+        string MyExecutionTarget
         {
             get;
         }
@@ -80,7 +80,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// Cace执行内容简述（比如于接口参数，用于UI显示，没有则应该返回为null）
         /// </summary>
-        string myExecutionContent
+        string MyExecutionContent
         {
             get;
         }
@@ -88,7 +88,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// Case内容如果解析有错误，将通过这里指明
         /// </summary>
-        string myErrorMessage
+        string MyErrorMessage
         {
             get;
         }

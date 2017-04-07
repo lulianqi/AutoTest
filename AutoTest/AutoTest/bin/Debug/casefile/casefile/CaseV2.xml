@@ -635,7 +635,7 @@
   <Project id="1000010004" name="Project test" remark="case测试">
     <Case id="1000040001" remark="console">
       <Content protocol="console" actuator="console">
-        <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Show>
+        <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Show><!--必选项，没有信息也需要填写备注-->
         <ConsoleTask>
           <Set key="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Set>
           <Set key="User-Agent">test man</Set>
