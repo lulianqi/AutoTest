@@ -857,12 +857,23 @@ namespace CaseExecutiveActuator
 
     public class MyConsoleExecutionContent : ICaseExecutionContent
     {
+        #region inner class
+        public class StaticDataAdd
+        {
+            public String StaticDataType { get; set; }
+            public String Name { get; set; }
+            public String Name { get; set; }
+        }
+        #endregion
+
         public string errorMessage;
         public CaseProtocol caseProtocol;
         public string caseActuator;
 
         public caseParameterizationContent showContent;
         public List<KeyValuePair<string, caseParameterizationContent>> staticDataSetList;
+        public List<KeyValuePair<string, caseParameterizationContent>> staticDataAddList;
+        public List<KeyValuePair<string, caseParameterizationContent>> staticDataDelList;
 
         public MyConsoleExecutionContent()
         {

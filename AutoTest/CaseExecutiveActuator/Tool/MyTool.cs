@@ -148,10 +148,6 @@ namespace CaseExecutiveActuator
 
     public static class CaseTool
     {
-        //Current 属性指向集合中的当前成员。
-        //MoveNext 属性将枚举数移到集合中的下一成员
-        //Reset 属性将枚举数移回集合的开始处
-        public static int myStaticAutoVaneIndex = 0;
 
         public static string rootPath = System.Environment.CurrentDirectory;
 

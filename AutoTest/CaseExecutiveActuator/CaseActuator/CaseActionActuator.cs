@@ -854,7 +854,7 @@ namespace CaseExecutiveActuator
         }
 
         //RunTime Queue队列变化时通知
-        void caseRunTime_OnQueueChangeEvent(CaseCell yourTarget, string yourMessage)
+        private void caseRunTime_OnQueueChangeEvent(CaseCell yourTarget, string yourMessage)
         {
             if (yourMessage != "")
             {
@@ -886,7 +886,7 @@ namespace CaseExecutiveActuator
         }
 
         //RunTime Queue 中Loop变化时通知
-        void caseRunTime_OnLoopChangeEvent(CaseCell yourTarget, string yourMessage)
+        private void caseRunTime_OnLoopChangeEvent(CaseCell yourTarget, string yourMessage)
         {
             if (yourMessage!="")
             {
@@ -896,7 +896,6 @@ namespace CaseExecutiveActuator
             }
             MyActionActuator.SetCaseNodeLoopChange(yourTarget, yourMessage);
         }
-
 
         /// <summary>
         /// i will load your ActionActuator (if your have another rule file ,please override or add a new realize)
@@ -952,31 +951,6 @@ namespace CaseExecutiveActuator
                                                     }
                                                 }
 
-                                                /*
-                                                try
-                                                {
-                                                    tempActuatorProtocol = (CaseProtocol)Enum.Parse(typeof(CaseProtocol), tempNodeChild.Attributes["protocol"].Value);
-                                                }
-                                                catch
-                                                {
-                                                    tempActuatorProtocol = CaseProtocol.unknownProtocol;
-                                                    SetNowActionError("find unknown Protocol in ScriptRunTime - RunTimeActuator");
-                                                }
-                                                switch (tempActuatorProtocol)
-                                                {
-                                                    case CaseProtocol.vanelife_http:
-                                                        myConnectForVanelife_http ConnectInfo = new myConnectForVanelife_http(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "dev_key"), CaseTool.getXmlInnerVaule(tempNodeChild, "dev_secret"), CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
-                                                        AddExecutionDevice(tempActuatorName, ConnectInfo);
-                                                        break;
-                                                    case CaseProtocol.http:
-                                                        myConnectForHttp ConnectInfo_http = new myConnectForHttp(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
-                                                        AddExecutionDevice(tempActuatorName, ConnectInfo_http);
-                                                        break;
-                                                    default:
-                                                        SetNowActionError("find nonsupport Protocol in ScriptRunTime ");
-                                                        break;
-                                                }
-                                                */
                                             }
                                             else
                                             {

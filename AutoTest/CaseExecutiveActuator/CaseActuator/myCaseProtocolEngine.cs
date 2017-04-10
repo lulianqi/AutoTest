@@ -77,21 +77,25 @@ namespace CaseExecutiveActuator
                         return myRunContent;
                     }
 
-                    //HttpHeads
-                    XmlNode tempHttpHeadsDataNode = yourContentNode["Heads"];
-                    if (tempHttpHeadsDataNode != null)
+                    //ConsoleTask
+                    XmlNode tempConsoleTaskDataNode = yourContentNode["ConsoleTask"];
+                    if (tempConsoleTaskDataNode != null)
                     {
-                        if (tempHttpHeadsDataNode.HasChildNodes)
+                        if (tempConsoleTaskDataNode.HasChildNodes)
                         {
-                            foreach (XmlNode headNode in tempHttpHeadsDataNode.ChildNodes)
+                            foreach (XmlNode taskNode in tempConsoleTaskDataNode.ChildNodes)
                             {
-                                if (headNode.Attributes["name"] != null)
+                                if (taskNode.Name=="Set")
                                 {
-                                    myRunContent.httpHeads.Add(new KeyValuePair<string, caseParameterizationContent>(headNode.Attributes["name"].Value, CaseTool.getXmlParametContent(headNode)));
-                                }
-                                else
-                                {
-                                    myRunContent.errorMessage = "Error :can not find http Head name in heads";
+                                    if (taskNode.Attributes["name"] != null)
+                                    {
+                                        myRunContent.staticDataSetList.Add(new KeyValuePair<string, caseParameterizationContent>(taskNode.Attributes["name"].Value, CaseTool.getXmlParametContent(taskNode)));
+                                    }
+                                    else
+                                    {
+                                        myRunContent.errorMessage = "Error :can not find name in [Set] node";
+                                        return myRunContent;
+                                    }
                                 }
                             }
                         }
