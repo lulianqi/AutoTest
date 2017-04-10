@@ -151,6 +151,11 @@ namespace CaseExecutiveActuator
 
         public static string rootPath = System.Environment.CurrentDirectory;
 
+        public static Dictionary<CaseStaticDataType, CaseStaticDataClass> DictionaryStaticDataTypeClass = new Dictionary<CaseStaticDataType, CaseStaticDataClass>() { { CaseStaticDataType.caseStaticData_vaule, CaseStaticDataClass.caseStaticDataKey },
+        { CaseStaticDataType.caseStaticData_index, CaseStaticDataClass.caseStaticDataParameter }, { CaseStaticDataType.caseStaticData_long, CaseStaticDataClass.caseStaticDataParameter},{ CaseStaticDataType.caseStaticData_list, CaseStaticDataClass.caseStaticDataParameter},
+        { CaseStaticDataType.caseStaticData_time, CaseStaticDataClass.caseStaticDataParameter},{ CaseStaticDataType.caseStaticData_random, CaseStaticDataClass.caseStaticDataParameter},
+        { CaseStaticDataType.caseStaticData_csv, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_mysql, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_redis, CaseStaticDataClass.caseStaticDataSource}};
+
         /// <summary>
         /// Check Data with my mothod
         /// </summary>

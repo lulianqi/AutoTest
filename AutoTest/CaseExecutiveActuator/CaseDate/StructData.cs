@@ -55,28 +55,31 @@ namespace CaseExecutiveActuator
         telnet = 11
     }
 
+    public enum CaseStaticDataClass
+    {
+        caseStaticDataKey=0,
+        caseStaticDataParameter = 1,
+        caseStaticDataSource=2
+    }
+
     /// <summary>
     /// 描述框架脚本支持的静态参数化数据(请再此处扩展)
     /// </summary>
     public enum CaseStaticDataType
     {
-        staticData_index = 0,
-        staticData_long = 1,
-        staticData_random = 2,
-        staticData_time = 3,
-        staticData_list = 4,
-    }
+        caseStaticData_vaule = 10000,
 
-    /// <summary>
-    /// 描述框架脚本支持的静态参数化数据数据源(请再此处扩展)
-    /// </summary>
-    public enum CaseStaticDataSourceType
-    {
-        staticDataSource_csv=0,
-        staticDataSource_mysql = 1,
-        staticDataSource_redis = 2,
-    }
+        caseStaticData_index = 20000,
+        caseStaticData_long = 20001,
+        caseStaticData_random = 20002,
+        caseStaticData_time = 20003,
+        caseStaticData_list = 20004,
 
+        caseStaticData_csv = 30000,
+        caseStaticData_mysql = 30001,
+        caseStaticData_redis = 30002,
+    }
+ 
 
     /// <summary>
     /// 描述框架脚本支持的数据摘取方式(请再此处扩展)
@@ -861,7 +864,6 @@ namespace CaseExecutiveActuator
         public class StaticDataAdd
         {
             public String StaticDataType { get; set; }
-            public String Name { get; set; }
             public String Name { get; set; }
         }
         #endregion

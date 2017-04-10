@@ -389,12 +389,12 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// RunTimeParameter List
         /// </summary>
-        private Dictionary<string, string> runActuatorParameterList;
+        private Dictionary<string, string> runActuatorStaticDataKeyList;
 
         /// <summary>
         /// RunTimeStaticData List
         /// </summary>
-        private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataList;
+        private Dictionary<string, IRunTimeStaticData> runActuatorStaticDataParameterList;
 
         /// <summary>
         /// RunTimeDataSouce List
@@ -403,26 +403,26 @@ namespace CaseExecutiveActuator
 
         public ActuatorStaticDataCollection()
         {
-            runActuatorParameterList = new Dictionary<string, string>();
-            runActuatorStaticDataList = new Dictionary<string, IRunTimeStaticData>();
+            runActuatorStaticDataKeyList = new Dictionary<string, string>();
+            runActuatorStaticDataParameterList = new Dictionary<string, IRunTimeStaticData>();
             runActuatorStaticDataSouceList = new Dictionary<string, IRunTimeDataSource>();
         }
 
         public ActuatorStaticDataCollection(Dictionary<string, string> yourActuatorParameterList, Dictionary<string, IRunTimeStaticData> yourActuatorStaticDataList, Dictionary<string, IRunTimeDataSource> yourActuatorStaticDataSouceList)
         {
-            runActuatorParameterList = yourActuatorParameterList;
-            runActuatorStaticDataList = yourActuatorStaticDataList;
+            runActuatorStaticDataKeyList = yourActuatorParameterList;
+            runActuatorStaticDataParameterList = yourActuatorStaticDataList;
             runActuatorStaticDataSouceList = yourActuatorStaticDataSouceList;
         }
 
         public Dictionary<string, string> RunActuatorParameterList
         {
-            get { return runActuatorParameterList; }
+            get { return runActuatorStaticDataKeyList; }
         }
 
         public Dictionary<string, IRunTimeStaticData> RunActuatorStaticDataList
         {
-            get { return runActuatorStaticDataList; }
+            get { return runActuatorStaticDataParameterList; }
         }
 
         public Dictionary<string, IRunTimeDataSource> RunActuatorStaticDataSouceList
@@ -431,13 +431,13 @@ namespace CaseExecutiveActuator
         }
         public object Clone()
         {
-            return new ActuatorStaticDataCollection(runActuatorParameterList.MyClone<string, string>(), runActuatorStaticDataList.MyClone(), runActuatorStaticDataSouceList.MyClone());
+            return new ActuatorStaticDataCollection(runActuatorStaticDataKeyList.MyClone<string, string>(), runActuatorStaticDataParameterList.MyClone(), runActuatorStaticDataSouceList.MyClone());
         }
 
         public void Dispose()
         {
-            runActuatorParameterList.Clear();
-            runActuatorStaticDataList.Clear();
+            runActuatorStaticDataKeyList.Clear();
+            runActuatorStaticDataParameterList.Clear();
             runActuatorStaticDataSouceList.Clear();
         }
 

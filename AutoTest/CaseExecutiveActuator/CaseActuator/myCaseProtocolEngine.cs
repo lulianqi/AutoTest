@@ -46,113 +46,113 @@ namespace CaseExecutiveActuator
         private myConnectForConsole myExecutionDeviceInfo;
         public event delegateGetExecutiveData OnGetExecutiveData;
 
-        public new static MyConsoleExecutionContent GetRunContent(XmlNode yourContentNode)
-        {
-            MyConsoleExecutionContent myRunContent = new MyConsoleExecutionContent();
-            if (yourContentNode != null)
-            {
-                if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
-                {
-                    //Content
-                    try
-                    {
-                        myRunContent.caseProtocol = (CaseProtocol)Enum.Parse(typeof(CaseProtocol), yourContentNode.Attributes["protocol"].Value);
-                    }
-                    catch
-                    {
-                        myRunContent.errorMessage = "Error :error protocol in Content";
-                        return myRunContent;
-                    }
-                    myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
+        //public new static MyConsoleExecutionContent GetRunContent(XmlNode yourContentNode)
+        //{
+        //    MyConsoleExecutionContent myRunContent = new MyConsoleExecutionContent();
+        //    if (yourContentNode != null)
+        //    {
+        //        if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
+        //        {
+        //            //Content
+        //            try
+        //            {
+        //                myRunContent.caseProtocol = (CaseProtocol)Enum.Parse(typeof(CaseProtocol), yourContentNode.Attributes["protocol"].Value);
+        //            }
+        //            catch
+        //            {
+        //                myRunContent.errorMessage = "Error :error protocol in Content";
+        //                return myRunContent;
+        //            }
+        //            myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
 
-                    //Show
-                    XmlNode tempShowDataNode = yourContentNode["Show"];
-                    if (tempShowDataNode != null)
-                    {
-                        myRunContent.showContent = CaseTool.getXmlParametContent(tempShowDataNode);
-                    }
-                    else
-                    {
-                        myRunContent.errorMessage = "Error :can not find [Show] node (this element is necessary)";
-                        return myRunContent;
-                    }
+        //            //Show
+        //            XmlNode tempShowDataNode = yourContentNode["Show"];
+        //            if (tempShowDataNode != null)
+        //            {
+        //                myRunContent.showContent = CaseTool.getXmlParametContent(tempShowDataNode);
+        //            }
+        //            else
+        //            {
+        //                myRunContent.errorMessage = "Error :can not find [Show] node (this element is necessary)";
+        //                return myRunContent;
+        //            }
 
-                    //ConsoleTask
-                    XmlNode tempConsoleTaskDataNode = yourContentNode["ConsoleTask"];
-                    if (tempConsoleTaskDataNode != null)
-                    {
-                        if (tempConsoleTaskDataNode.HasChildNodes)
-                        {
-                            foreach (XmlNode taskNode in tempConsoleTaskDataNode.ChildNodes)
-                            {
-                                if (taskNode.Name=="Set")
-                                {
-                                    if (taskNode.Attributes["name"] != null)
-                                    {
-                                        myRunContent.staticDataSetList.Add(new KeyValuePair<string, caseParameterizationContent>(taskNode.Attributes["name"].Value, CaseTool.getXmlParametContent(taskNode)));
-                                    }
-                                    else
-                                    {
-                                        myRunContent.errorMessage = "Error :can not find name in [Set] node";
-                                        return myRunContent;
-                                    }
-                                }
-                            }
-                        }
-                    }
+        //            //ConsoleTask
+        //            XmlNode tempConsoleTaskDataNode = yourContentNode["ConsoleTask"];
+        //            if (tempConsoleTaskDataNode != null)
+        //            {
+        //                if (tempConsoleTaskDataNode.HasChildNodes)
+        //                {
+        //                    foreach (XmlNode taskNode in tempConsoleTaskDataNode.ChildNodes)
+        //                    {
+        //                        if (taskNode.Name=="Set")
+        //                        {
+        //                            if (taskNode.Attributes["name"] != null)
+        //                            {
+        //                                myRunContent.staticDataSetList.Add(new KeyValuePair<string, caseParameterizationContent>(taskNode.Attributes["name"].Value, CaseTool.getXmlParametContent(taskNode)));
+        //                            }
+        //                            else
+        //                            {
+        //                                myRunContent.errorMessage = "Error :can not find name in [Set] node";
+        //                                return myRunContent;
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
 
-                    //HttpBody
-                    XmlNode tempHttpBodyDataNode = yourContentNode["Body"];
-                    if (tempHttpHeadsDataNode != null)
-                    {
-                        myRunContent.httpBody = CaseTool.getXmlParametContent(tempHttpBodyDataNode);
-                    }
-                    //AisleConfig
-                    if (yourContentNode["AisleConfig"] != null)
-                    {
-                        myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
-                    }
-                    //HttpMultipart
-                    XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];
-                    if (tempHttpMultipartNode != null)
-                    {
-                        if (tempHttpMultipartNode.HasChildNodes)
-                        {
-                            foreach (XmlNode multipartNode in tempHttpMultipartNode.ChildNodes)
-                            {
-                                HttpMultipart hmp = new HttpMultipart();
-                                if (multipartNode.Name == "MultipartData")
-                                {
-                                    hmp.isFile = false;
-                                    hmp.fileData = multipartNode.InnerText;
-                                }
-                                else if (multipartNode.Name == "MultipartFile")
-                                {
-                                    hmp.isFile = true;
-                                    hmp.fileData = CaseTool.GetFullPath(multipartNode.InnerText, MyConfiguration.CaseFilePath);
-                                }
-                                else
-                                {
-                                    continue;
-                                }
-                                hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name", null);
-                                hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename", null);
-                                myRunContent.myMultipartList.Add(hmp);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    myRunContent.errorMessage = "Error :can not find protocol or actuator in Content ";
-                }
-            }
-            else
-            {
-                myRunContent.errorMessage = "Error :yourContentNode is null";
-            }
-            return myRunContent;
-        }
+        //            //HttpBody
+        //            XmlNode tempHttpBodyDataNode = yourContentNode["Body"];
+        //            if (tempHttpHeadsDataNode != null)
+        //            {
+        //                myRunContent.httpBody = CaseTool.getXmlParametContent(tempHttpBodyDataNode);
+        //            }
+        //            //AisleConfig
+        //            if (yourContentNode["AisleConfig"] != null)
+        //            {
+        //                myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
+        //            }
+        //            //HttpMultipart
+        //            XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];
+        //            if (tempHttpMultipartNode != null)
+        //            {
+        //                if (tempHttpMultipartNode.HasChildNodes)
+        //                {
+        //                    foreach (XmlNode multipartNode in tempHttpMultipartNode.ChildNodes)
+        //                    {
+        //                        HttpMultipart hmp = new HttpMultipart();
+        //                        if (multipartNode.Name == "MultipartData")
+        //                        {
+        //                            hmp.isFile = false;
+        //                            hmp.fileData = multipartNode.InnerText;
+        //                        }
+        //                        else if (multipartNode.Name == "MultipartFile")
+        //                        {
+        //                            hmp.isFile = true;
+        //                            hmp.fileData = CaseTool.GetFullPath(multipartNode.InnerText, MyConfiguration.CaseFilePath);
+        //                        }
+        //                        else
+        //                        {
+        //                            continue;
+        //                        }
+        //                        hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name", null);
+        //                        hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename", null);
+        //                        myRunContent.myMultipartList.Add(hmp);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            myRunContent.errorMessage = "Error :can not find protocol or actuator in Content ";
+        //        }
+        //    }
+        //    else
+        //    {
+        //        myRunContent.errorMessage = "Error :yourContentNode is null";
+        //    }
+        //    return myRunContent;
+        //}
         public CaseProtocolExecutionForConsole(myConnectForConsole yourConnectInfo)
         {
             myExecutionDeviceInfo = yourConnectInfo;
