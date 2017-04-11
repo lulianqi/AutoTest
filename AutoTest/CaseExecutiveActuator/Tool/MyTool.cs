@@ -151,10 +151,27 @@ namespace CaseExecutiveActuator
 
         public static string rootPath = System.Environment.CurrentDirectory;
 
+        public class StaticDataAnalysisInfo
+        {
+            public CaseStaticDataClass StaticDataClass { get; set; }
+            public Type StaticDataIRunTimeType { get; set; }
+            public GetStaticDataAction StaticDataAction { get; set; }
+
+            public StaticDataAnalysisInfo(CaseStaticDataClass yourStaticDataClass, Type yourStaticDataIRunTimeType, GetStaticDataAction yourStaticDataAction)
+            {
+                StaticDataClass = yourStaticDataClass;
+                StaticDataIRunTimeType = yourStaticDataIRunTimeType;
+                StaticDataAction = yourStaticDataAction;
+            }
+        }
         public static Dictionary<CaseStaticDataType, CaseStaticDataClass> DictionaryStaticDataTypeClass = new Dictionary<CaseStaticDataType, CaseStaticDataClass>() { { CaseStaticDataType.caseStaticData_vaule, CaseStaticDataClass.caseStaticDataKey },
         { CaseStaticDataType.caseStaticData_index, CaseStaticDataClass.caseStaticDataParameter }, { CaseStaticDataType.caseStaticData_long, CaseStaticDataClass.caseStaticDataParameter},{ CaseStaticDataType.caseStaticData_list, CaseStaticDataClass.caseStaticDataParameter},
         { CaseStaticDataType.caseStaticData_time, CaseStaticDataClass.caseStaticDataParameter},{ CaseStaticDataType.caseStaticData_random, CaseStaticDataClass.caseStaticDataParameter},
         { CaseStaticDataType.caseStaticData_csv, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_mysql, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_redis, CaseStaticDataClass.caseStaticDataSource}};
+
+        public delegate bool GetStaticDataAction(out string ag1,string ag2);
+
+        public static Dictionary<CaseStaticDataType, Func<int>> DictionaryStaticDataFunc;
 
         /// <summary>
         /// Check Data with my mothod

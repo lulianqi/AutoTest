@@ -966,6 +966,32 @@ namespace CaseExecutiveActuator
                                 break;
                             #endregion
 
+
+                            case "RunTimeParameter":
+                                if (tempNode.HasChildNodes)
+                                {
+                                    foreach (XmlNode tempNodeChild in tempNode.ChildNodes)
+                                    {
+                                        if (tempNodeChild.Name == "NewParameter")
+                                        {
+                                            if (tempNodeChild.Attributes["name"] != null)
+                                            {
+                                                AddRunActuatorParameter(tempNodeChild.Attributes["name"].Value, tempNodeChild.InnerText);
+                                            }
+                                            else
+                                            {
+                                                SetNowActionError(string.Format("can not find name in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
+                                            }
+                                        }
+                                        else
+                                        {
+                                            SetNowActionError(string.Format("find unkonw data in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
+                                        }
+                                    }
+                                }
+                                break;
+
+
                             //此处获取默认参数化数据
                             #region RunTimeParameter
                             case "RunTimeParameter":
