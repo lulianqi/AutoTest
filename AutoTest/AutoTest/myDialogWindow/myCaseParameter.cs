@@ -245,7 +245,7 @@ namespace AutoTest.myDialogWindow
                         return;
                     }
                 }
-                myParentWindow.nowCaseActionActuator.AddRunActuatorParameter(tb_keyAdd.Text, tb_valueAdd.Text);
+                myParentWindow.nowCaseActionActuator.AddRunActuatorStaticDataKey(tb_keyAdd.Text, tb_valueAdd.Text);
                 tb_keyAdd.Text = tb_valueAdd.Text = "";
             }
             else

@@ -55,6 +55,9 @@ namespace CaseExecutiveActuator
         telnet = 11
     }
 
+    /// <summary>
+    /// 静态参数化数据大分类
+    /// </summary>
     public enum CaseStaticDataClass
     {
         caseStaticDataKey=0,
@@ -865,7 +868,17 @@ namespace CaseExecutiveActuator
         {
             public String StaticDataType { get; set; }
             public String Name { get; set; }
+            public caseParameterizationContent ConfigureData { get; set; }
+
+            public StaticDataAdd(String yourStaticDataType, String yourName, caseParameterizationContent yourConfigureData)
+            {
+                StaticDataType = yourStaticDataType;
+                Name = yourName;
+                ConfigureData = yourConfigureData;
+            }
         }
+
+
         #endregion
 
         public string errorMessage;
@@ -874,7 +887,7 @@ namespace CaseExecutiveActuator
 
         public caseParameterizationContent showContent;
         public List<KeyValuePair<string, caseParameterizationContent>> staticDataSetList;
-        public List<KeyValuePair<string, caseParameterizationContent>> staticDataAddList;
+        public List<StaticDataAdd> staticDataAddList;
         public List<KeyValuePair<string, caseParameterizationContent>> staticDataDelList;
 
         public MyConsoleExecutionContent()
@@ -884,6 +897,8 @@ namespace CaseExecutiveActuator
             caseActuator = "";
             showContent = new caseParameterizationContent();
             staticDataSetList = new List<KeyValuePair<string, caseParameterizationContent>>();
+            staticDataAddList = new List<StaticDataAdd>();
+            staticDataDelList = new List<KeyValuePair<string, caseParameterizationContent>>();
         }
 
         public CaseProtocol MyCaseProtocol

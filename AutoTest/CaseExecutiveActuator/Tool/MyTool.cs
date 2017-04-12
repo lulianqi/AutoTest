@@ -679,8 +679,8 @@ namespace CaseExecutiveActuator
             errorMessage = null;
             if (yourSourceData.Contains(splitStr))
             {
-                var yourParameterList=yourActuatorStaticDataCollection.RunActuatorParameterList;
-                var yourStaticDataList = yourActuatorStaticDataCollection.RunActuatorStaticDataList;
+                var yourParameterList=yourActuatorStaticDataCollection.RunActuatorStaticDataKeyList;
+                var yourStaticDataList = yourActuatorStaticDataCollection.RunActuatorStaticDataParameterList;
                 var yourStaticDataSourceList = yourActuatorStaticDataCollection.RunActuatorStaticDataSouceList;
                 int tempStart, tempEnd = 0;
                 string tempKeyVaule = null;
