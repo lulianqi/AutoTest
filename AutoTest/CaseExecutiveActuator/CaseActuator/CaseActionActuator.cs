@@ -966,7 +966,8 @@ namespace CaseExecutiveActuator
                                 break;
                             #endregion
 
-
+                            // 此处获取默认参数化数据
+                            #region RunTimeParameter
                             case "RunTimeParameter":
                                 if (tempNode.HasChildNodes)
                                 {
@@ -974,13 +975,70 @@ namespace CaseExecutiveActuator
                                     {
                                         if (tempNodeChild.Name == "NewParameter")
                                         {
-                                            if (tempNodeChild.Attributes["name"] != null)
+                                            if (tempNodeChild.Attributes["name"] != null && tempNodeChild.Attributes["type"] != null)
                                             {
-                                                AddRunActuatorParameter(tempNodeChild.Attributes["name"].Value, tempNodeChild.InnerText);
+                                                CaseStaticDataType tempType;
+                                                string tempName = tempNodeChild.Attributes["name"].Value;
+                                                string tempTypeStr = tempNodeChild.Attributes["type"].Value;
+                                                string tempVaule = tempNodeChild.InnerText;
+                                                try
+                                                {
+                                                    tempType = (CaseStaticDataType)Enum.Parse(typeof(CaseStaticDataType), "caseStaticData_" + tempTypeStr);
+                                                }
+                                                catch
+                                                {
+                                                    SetNowActionError(string.Format("find unknown type in RunTimeStaticData - ScriptRunTime in [{0}] with [{1}]", tempNodeChild.InnerXml, tempTypeStr));
+                                                    continue;
+                                                }
+                                                switch (MyCaseDataTypeEngine.dictionaryStaticDataTypeClass[tempType])
+                                                {
+                                                    //caseStaticDataKey 
+                                                    case  CaseStaticDataClass.caseStaticDataKey:
+                                                        if (tempType== CaseStaticDataType.caseStaticData_vaule)
+                                                        {
+                                                            // nothing to do
+                                                        }
+                                                        else
+                                                        {
+                                                            SetNowActionError(string.Format("find nonsupport Protocol 【{0}】with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ", tempType));
+                                                            break;
+                                                        }
+                                                        runActuatorStaticDataCollection.RunActuatorParameterList.MyAdd(new KeyValuePair<string, string>(tempName, tempVaule));
+                                                        break ;
+                                                    //caseStaticDataParameter
+                                                    case CaseStaticDataClass.caseStaticDataParameter:
+                                                        IRunTimeStaticData tempRunTimeStaticData;
+                                                        string tempTypeError;
+                                                        if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[tempType](out tempRunTimeStaticData, out tempTypeError, tempVaule))
+                                                        {
+                                                            runActuatorStaticDataCollection.RunActuatorStaticDataList.MyAdd(tempName, tempRunTimeStaticData);
+                                                        }
+                                                        else
+                                                        {
+                                                            SetNowActionError(string.Format("find error in 【RunTimeStaticData】->【{0}】:value:【{1}】 by {2}", tempName, tempVaule, tempTypeError));
+                                                        }
+                                                        break;
+                                                    //caseStaticDataSource
+                                                    case CaseStaticDataClass.caseStaticDataSource:
+                                                        IRunTimeDataSource tempRunTimeDataSource;
+                                                        if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[tempType](out tempRunTimeDataSource, out tempTypeError, tempVaule))
+                                                        {
+                                                            runActuatorStaticDataCollection.RunActuatorStaticDataSouceList.MyAdd<IRunTimeDataSource>(tempName, tempRunTimeDataSource);
+                                                        }
+                                                        else
+                                                        {
+                                                            SetNowActionError(string.Format("find error in 【RunTimeStaticData】->【{0}】:value:【{1}】 by {2}", tempName, tempVaule, tempTypeError));
+                                                        }
+                                                        break;
+                                                    default:
+                                                        SetNowActionError(string.Format("find nonsupport Protocol 【{0}】with [ CaseStaticDataClass] in - ScriptRunTime ", tempType));
+                                                        break;
+                                                }
+
                                             }
                                             else
                                             {
-                                                SetNowActionError(string.Format("can not find name in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
+                                                SetNowActionError(string.Format("can not find name or type in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
                                             }
                                         }
                                         else
@@ -991,6 +1049,10 @@ namespace CaseExecutiveActuator
                                 }
                                 break;
 
+                            #endregion
+
+                            #region 待删除
+                            /*
 
                             //此处获取默认参数化数据
                             #region RunTimeParameter
@@ -1176,6 +1238,10 @@ namespace CaseExecutiveActuator
                                     }
                                 }
                                 break;
+                            #endregion
+
+                             * */
+
                             #endregion
 
                             default:

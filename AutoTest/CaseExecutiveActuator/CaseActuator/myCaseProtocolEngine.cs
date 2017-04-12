@@ -724,9 +724,42 @@ namespace CaseExecutiveActuator
     /// </summary>
     public class MyCaseDataTypeEngine 
     {
+        #region TypeDictionary
+
+        /// <summary>
+        /// 参数化数据类型映射表
+        /// </summary>
+        public static Dictionary<CaseStaticDataType, CaseStaticDataClass> dictionaryStaticDataTypeClass = new Dictionary<CaseStaticDataType, CaseStaticDataClass>() { { CaseStaticDataType.caseStaticData_vaule, CaseStaticDataClass.caseStaticDataKey },
+        { CaseStaticDataType.caseStaticData_index, CaseStaticDataClass.caseStaticDataParameter }, { CaseStaticDataType.caseStaticData_long, CaseStaticDataClass.caseStaticDataParameter},{ CaseStaticDataType.caseStaticData_list, CaseStaticDataClass.caseStaticDataParameter},
+        { CaseStaticDataType.caseStaticData_time, CaseStaticDataClass.caseStaticDataParameter},{ CaseStaticDataType.caseStaticData_random, CaseStaticDataClass.caseStaticDataParameter},
+        { CaseStaticDataType.caseStaticData_csv, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_mysql, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_redis, CaseStaticDataClass.caseStaticDataSource}};
+
+        //参数化数据处理函数委托
+        public delegate bool GetStaticDataAction<T>(out T yourStaticData, out string errorMes, string yourFormatData) where T : IRunTimeStaticData;
+
+        /// <summary>
+        /// CaseStaticDataType数据与处理函数映射表
+        /// </summary>
+        public static Dictionary<CaseStaticDataType, GetStaticDataAction<IRunTimeStaticData>> dictionaryStaticDataParameterAction = new Dictionary<CaseStaticDataType, GetStaticDataAction<IRunTimeStaticData>>() { 
+        { CaseStaticDataType.caseStaticData_index, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetIndexStaticData) } ,
+        { CaseStaticDataType.caseStaticData_long, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetLongStaticData) } ,
+        { CaseStaticDataType.caseStaticData_list, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetListStaticData) } ,
+        { CaseStaticDataType.caseStaticData_time, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetTimeStaticData) } ,
+        { CaseStaticDataType.caseStaticData_random, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetRandomStaticData) } 
+        };
+
+        /// <summary>
+        /// CaseStaticDataType数据与处理函数映射表
+        /// </summary>
+        public static Dictionary<CaseStaticDataType, GetStaticDataAction<IRunTimeDataSource>> dictionaryStaticDataSourceAction = new Dictionary<CaseStaticDataType, GetStaticDataAction<IRunTimeDataSource>>() { 
+        { CaseStaticDataType.caseStaticData_csv, new GetStaticDataAction<IRunTimeDataSource>(MyCaseDataTypeEngine.GetCsvStaticDataSource) } 
+         };
+
+        #endregion
+
         #region IRunTimeStaticData
-        
-        public static bool GetIndexStaticData(out MyStaticDataIndex yourStaticData, out string errorMes, string yourFormatData)
+
+        public static bool GetIndexStaticData(out IRunTimeStaticData yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -758,7 +791,7 @@ namespace CaseExecutiveActuator
             return false;
         }
 
-        public static bool GetLongStaticData(out MyStaticDataLong yourStaticData, out string errorMes, string yourFormatData)
+        public static bool GetLongStaticData(out IRunTimeStaticData yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -790,9 +823,21 @@ namespace CaseExecutiveActuator
             return false;
         }
 
-        public static void GetTimeStaticData(out MyStaticDataNowTime yourStaticData, string yourFormatData)
+        public static bool GetTimeStaticData(out IRunTimeStaticData yourStaticData, out string errorMes, string yourFormatData)
         {
-              yourStaticData=new MyStaticDataNowTime(yourFormatData);
+            errorMes = null;
+            try
+            {
+                System.DateTime.Now.ToString(yourFormatData);
+            }
+            catch
+            {
+                errorMes = "find error data[myStaticDataNowTime] in RunTimeStaticData - ScriptRunTime ";
+                yourStaticData=new MyStaticDataNowTime("");
+                return false;
+            }
+            yourStaticData=new MyStaticDataNowTime(yourFormatData);
+            return true;
         }
 
         public static bool GetRandomStaticData(out MyStaticDataRandomStr yourStaticData, out string errorMes, string yourFormatData)
@@ -821,7 +866,7 @@ namespace CaseExecutiveActuator
             return false;
         }
 
-        public static bool GetListStaticData(out MyStaticDataList yourStaticData, out string errorMes, string yourFormatData)
+        public static bool GetListStaticData(out IRunTimeStaticData yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
@@ -853,8 +898,8 @@ namespace CaseExecutiveActuator
         #endregion
 
         #region IRunTimeDataSource
-        
-        public static bool GetCsvStaticDataSource(out MyStaticDataSourceCsv yourStaticData, out string errorMes,string yourFormatData)
+
+        public static bool GetCsvStaticDataSource(out IRunTimeDataSource yourStaticData, out string errorMes, string yourFormatData)
         {
             errorMes = null;
             yourStaticData = new MyStaticDataSourceCsv();
