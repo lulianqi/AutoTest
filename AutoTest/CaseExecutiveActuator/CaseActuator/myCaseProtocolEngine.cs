@@ -840,7 +840,7 @@ namespace CaseExecutiveActuator
             return true;
         }
 
-        public static bool GetRandomStaticData(out MyStaticDataRandomStr yourStaticData, out string errorMes, string yourFormatData)
+        public static bool GetRandomStaticData(out IRunTimeStaticData yourStaticData, out string errorMes, string yourFormatData)
         {
             try
             {
