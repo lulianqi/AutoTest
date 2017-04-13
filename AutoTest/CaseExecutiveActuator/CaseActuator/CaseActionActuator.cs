@@ -467,7 +467,7 @@ namespace CaseExecutiveActuator
             return true;
         }
 
-        public bool AddStaticDataParameter(string key,IRunTimeDataSource vaule)
+        public bool AddStaticDataSouce(string key, IRunTimeDataSource vaule)
         {
             if (IsHasSameKey(key, 3) != null)
             {
@@ -477,8 +477,86 @@ namespace CaseExecutiveActuator
             return true;
         }
 
-        public bool DelStaticDataParameter(string key, string filterStr)
+        public bool RemoveStaticData(string key, bool isRegex)
         {
+            if (!isRegex)
+            {
+                var tempDataList = IsHasSameKey(key, 0);
+                if(tempDataList==null)
+                {
+                    return false;
+                }
+                else if (tempDataList == runActuatorStaticDataKeyList)
+                {
+                    runActuatorStaticDataKeyList.Remove(key);
+                }
+                else if (tempDataList == runActuatorStaticDataParameterList)
+                {
+                    runActuatorStaticDataParameterList.Remove(key);
+                }
+                else if (tempDataList == runActuatorStaticDataKeyList)
+                {
+                    runActuatorStaticDataKeyList.Remove(key);
+                }
+                else
+                {
+                    ErrorLog.PutInLog(string.Format("error to [RemoveStaticData] in ActuatorStaticDataCollection  the key is {0} ",key));
+                    return false;
+                }
+            }
+            else
+            {
+                try
+                {
+                    System.Text.RegularExpressions.Regex sr;
+                    sr = new System.Text.RegularExpressions.Regex(key, System.Text.RegularExpressions.RegexOptions.None);
+                    List<string> dataToDel = new List<string>();
+
+                    foreach(var tempKey in runActuatorStaticDataKeyList.Keys)
+                    {
+                        if(sr.IsMatch(tempKey))
+                        {
+                            dataToDel.Add(tempKey);
+                        }
+                    }
+                    foreach (string tempKey in dataToDel)
+                    {
+                        runActuatorStaticDataKeyList.Remove(tempKey);
+                    }
+                    dataToDel.Clear();
+
+                    foreach (var tempKey in runActuatorStaticDataParameterList.Keys)
+                    {
+                        if (sr.IsMatch(tempKey))
+                        {
+                            dataToDel.Add(tempKey);
+                        }
+                    }
+                    foreach (string tempKey in dataToDel)
+                    {
+                        runActuatorStaticDataParameterList.Remove(tempKey);
+                    }
+                    dataToDel.Clear();
+
+                    foreach (var tempKey in runActuatorStaticDataSouceList.Keys)
+                    {
+                        if (sr.IsMatch(tempKey))
+                        {
+                            dataToDel.Add(tempKey);
+                        }
+                    }
+                    foreach (string tempKey in dataToDel)
+                    {
+                        runActuatorStaticDataSouceList.Remove(tempKey);
+                    }
+                    dataToDel.Clear();
+                }
+                catch
+                {
+                    return false;
+                }
+                
+            }
             return true;
         }
 
@@ -980,7 +1058,7 @@ namespace CaseExecutiveActuator
                                                 tempActuatorName = tempNodeChild.Attributes["name"].Value;
                                                 if (!Enum.TryParse<CaseProtocol>(tempNodeChild.Attributes["protocol"].Value,out tempActuatorProtocol))
                                                 {
-
+                                                    SetNowActionError(string.Format("find unknow Protocol in ScriptRunTime  with {0} ", tempActuatorName));
                                                 }
                                                 else
                                                 {
@@ -2055,4 +2133,5 @@ namespace CaseExecutiveActuator
         //    Dispose(false);
         //}
     }
+
 }

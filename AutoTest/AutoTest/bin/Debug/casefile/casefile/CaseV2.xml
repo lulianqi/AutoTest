@@ -649,7 +649,7 @@
           <Add name="mycsvfileAdd" type="csv">casefile\csvdatasouce.csv-65001</Add>
           <Add name="appid" type="vaule">2ewse342</Add>
           <Add name="appidtodel" type="vaule">2ewse342</Add>
-          <Del name="appidtodel" ></Del><!--内容默认为空如果有值则name属性无效，为all为全部删除支持%name%此形式的查找删除-->
+          <Del name="appidtodel" ></Del><!--内容默认为空如果有值则name属性无效，内容为正则表达式-->
         </ConsoleTask>
       </Content>
       <Expect method="contain">"success": true</Expect>

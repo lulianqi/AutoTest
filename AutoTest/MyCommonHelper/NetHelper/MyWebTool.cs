@@ -234,7 +234,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="url"> url </param>
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
-            /// <param name="heads">http Head list （if not need set it null）</param>
+            /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
             /// <param name="saveFileName">save your response as file （if not need set it null）</param>
             /// <returns>back</returns>
             public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName)

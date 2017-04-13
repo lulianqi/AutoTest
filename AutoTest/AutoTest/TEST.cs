@@ -108,7 +108,18 @@ namespace AutoTest
 
         private void TEST_Load(object sender, EventArgs e)
         {
+
+            CaseExecutiveActuator.ActuatorStaticDataCollection xx = new CaseExecutiveActuator.ActuatorStaticDataCollection();
+            xx.AddStaticDataKey("11", null);
+            xx.AddStaticDataKey("12", null);
+            xx.AddStaticDataParameter("21", null);
+            xx.AddStaticDataParameter("22", null);
+            xx.AddStaticDataSouce("31", null);
+            xx.AddStaticDataSouce("32", null);
+            //xx.RemoveStaticData("12",false);
+            xx.RemoveStaticData(@"\d2", true);
             return;
+
             //string filePath = @"C:\Users\administer\Desktop\asd\encode";
 
             //Stream myStm = CsvFileHelper.OpenFile(@"C:\Users\administer\Desktop\encode");
@@ -289,12 +300,6 @@ namespace AutoTest
             //var x =(CaseAction)Enum.Parse(typeof(CaseAction), "Goto");
             //var x = CaseAction.Alarm;
             //string cc = null;
-            List<string> xx = new List<string>();
-            xx.Add("1");
-            xx.Add("2");
-            xx.Add("3");
-            xx.Add("4");
-            xx.Add("5");
             mySP = new MySerialPort(this);
             mySP.myEncoding = System.Text.Encoding.GetEncoding("utf-8");
             mySP.OnMySerialPortReceiveData += new MySerialPort.delegateReceiveData(mySP_OnMySerialPortReceiveData);

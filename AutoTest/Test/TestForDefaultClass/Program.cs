@@ -24,15 +24,6 @@ namespace TestForDefaultClass
         public static void RunMyHttpTest()
         {
             Console.ReadLine();
-            string xxx = "test";
-            List<string> l1 = new List<string>();
-            List<string> l2 = new List<string>();
-            l1.Add(xxx);
-            l2.Add(xxx);
-            l1[0] = "not";
-            Console.WriteLine(l1[0]);
-            Console.WriteLine(l2[0]);
-            Console.ReadLine();
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST",null,@"D:\shou.txt"));
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
