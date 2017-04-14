@@ -23,6 +23,14 @@ using System.Xml;
 
 namespace CaseExecutiveActuator
 {
+    public enum CaseActuatorOutPutType
+    {
+        ExecutiveInfo,
+        ExecutiveError,
+        ActuatorInfo,
+        ActuatorError
+    }
+
 
     /// <summary>
     /// case 运行状态
@@ -368,19 +376,19 @@ namespace CaseExecutiveActuator
     /// </summary>
     public class MyExecutionDeviceResult
     {
-        public int caseId;
-        public CaseProtocol caseProtocol;
-        public string requestTime;
-        public string spanTime;
-        public string startTime;
-        public string caseTarget;
-        public string backContent;
-        public CaseExpectType expectMethod;
-        public string expectContent;
-        public CaseResult result;
-        public NameValueCollection staticDataResultCollection;
-        public string additionalRemark;
-        public string additionalEroor;
+        public int caseId;                                              //case ID
+        public CaseProtocol caseProtocol;                               //case 协议类型
+        public string requestTime;                                      //case 请求或执行时间 （这个时间指确认请求已经发出达到服务端，而不包括服务端的处理时间）
+        public string spanTime;                                         //整个CASE 请求的执行时间
+        public string startTime;                                        //case 请求的开始时间
+        public string caseTarget;                                       //当前case 请求的目标简述如接口名
+        public string backContent;                                      //case 请求的返回数据
+        public CaseExpectType expectMethod;                             //case 断言类型
+        public string expectContent;                                    //case 断言数据
+        public CaseResult result;                                       //case 执行结果    
+        public NameValueCollection staticDataResultCollection;          //当前case在执行中所有静态初始化数据的运算结果
+        public string additionalRemark;                                 //case 辅助备注
+        public string additionalEroor;                                  //case 错误的辅助备注 （主要是请求本身失败或错误）
         
         public MyExecutionDeviceResult()
         {
@@ -866,18 +874,17 @@ namespace CaseExecutiveActuator
         #region inner class
         public class StaticDataAdd
         {
-            public String StaticDataType { get; set; }
+            public CaseStaticDataType StaticDataType { get; set; }
             public String Name { get; set; }
             public caseParameterizationContent ConfigureData { get; set; }
 
-            public StaticDataAdd(String yourStaticDataType, String yourName, caseParameterizationContent yourConfigureData)
+            public StaticDataAdd(CaseStaticDataType yourStaticDataType, String yourName, caseParameterizationContent yourConfigureData)
             {
                 StaticDataType = yourStaticDataType;
                 Name = yourName;
                 ConfigureData = yourConfigureData;
             }
         }
-
 
         #endregion
 
@@ -1391,11 +1398,24 @@ namespace CaseExecutiveActuator
             isNew = true;
         }
 
+        /// <summary>
+        ///  设置源数据（使用|分割数据地址及数据值，如果以|开头则表示设置当前地址的值，不含有|的数据也表示当前值）
+        /// </summary>
+        /// <param name="expectData">数据地址及数据内容字符串</param>
+        /// <returns>是否完成</returns>
         public bool DataSet(string expectData)
         {
             if (expectData!=null)
             {
-                csvData[nowRowIndex][nowColumnIndex] = expectData;
+                int splitIndex = expectData.IndexOf('|');
+                if (splitIndex>0)
+                {
+                    return DataSet(expectData.Substring(0, splitIndex), expectData.Remove(0,splitIndex)+1);
+                }
+                else
+                {
+                    csvData[nowRowIndex][nowColumnIndex] = expectData;
+                }
                 return true;
             }
             return false;

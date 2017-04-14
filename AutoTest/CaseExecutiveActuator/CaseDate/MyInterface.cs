@@ -27,7 +27,7 @@ namespace CaseExecutiveActuator
     #region delegate
     public delegate void delegateBasicAnonymous();
 
-    public delegate void delegateGetExecutiveData(string sender, string yourContent);
+    public delegate void delegateGetExecutiveData(string sender,CaseActuatorOutPutType outType, string yourContent);
 
     //【myCaseRunTime】
     public delegate void delegateQueueChangeEventHandler(CaseCell yourTarget, string yourMessage);

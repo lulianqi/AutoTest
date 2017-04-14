@@ -494,9 +494,9 @@ namespace CaseExecutiveActuator
                 {
                     runActuatorStaticDataParameterList.Remove(key);
                 }
-                else if (tempDataList == runActuatorStaticDataKeyList)
+                else if (tempDataList == runActuatorStaticDataSouceList)
                 {
-                    runActuatorStaticDataKeyList.Remove(key);
+                    runActuatorStaticDataSouceList.Remove(key);
                 }
                 else
                 {
@@ -558,6 +558,33 @@ namespace CaseExecutiveActuator
                 
             }
             return true;
+        }
+
+        public bool SetStaticData(string key, string configVaule)
+        {
+            var tempDataList = IsHasSameKey(key, 0);
+            if (tempDataList == null)
+            {
+                return false;
+            }
+            else if (tempDataList == runActuatorStaticDataKeyList)
+            {
+                runActuatorStaticDataKeyList[key] = configVaule;
+                return true;
+            }
+            else if (tempDataList == runActuatorStaticDataParameterList)
+            {
+                return runActuatorStaticDataParameterList[key].DataSet(configVaule);
+            }
+            else if (tempDataList == runActuatorStaticDataSouceList)
+            {
+                return runActuatorStaticDataSouceList[key].DataSet(configVaule);
+            }
+            else
+            {
+                ErrorLog.PutInLog(string.Format("error to [RemoveStaticData] in ActuatorStaticDataCollection  the key is {0} ", key));
+                return false;
+            }
         }
 
         public object Clone()
@@ -748,7 +775,6 @@ namespace CaseExecutiveActuator
 
 
         public event delegateGetExecutiveData OnGetExecutiveData;
-        public event delegateGetExecutiveData OnGetActionError;
         public event delegateGetExecutiveResultEventHandler OnExecutiveResult;
         public event delegateGetActuatorStateEventHandler OnActuatorStateChanged;
         public delegateActuatorParameterListEventHandler OnActuatorParameterListChanged;  //外部需要访问 event修饰后，会禁止非创建类服务
@@ -1707,7 +1733,7 @@ namespace CaseExecutiveActuator
         {
             if (OnGetExecutiveData != null)
             {
-                this.OnGetExecutiveData(myName, yourContent);
+                this.OnGetExecutiveData(myName,CaseActuatorOutPutType.ActuatorInfo, yourContent);
             }
         }
 
@@ -1720,7 +1746,7 @@ namespace CaseExecutiveActuator
             nowExecutiveData = yourContent;
             if (OnGetExecutiveData != null)
             {
-                this.OnGetExecutiveData(myName, yourContent);
+                this.OnGetExecutiveData(myName,CaseActuatorOutPutType.ActuatorInfo, yourContent);
             }
         }
 
@@ -1730,9 +1756,9 @@ namespace CaseExecutiveActuator
         /// <param name="yourContent">Action Error Content</param>
         private void SetNowActionError(string yourContent)
         {
-            if (OnGetActionError != null)
+            if (OnGetExecutiveData != null)
             {
-                this.OnGetActionError(myName, yourContent);
+                this.OnGetExecutiveData(myName, CaseActuatorOutPutType.ActuatorError, yourContent);
             }
         }
 
@@ -1743,9 +1769,9 @@ namespace CaseExecutiveActuator
         private void SetAndSaveNowActionError(string yourContent)
         {
             myErrorInfo = yourContent;
-            if (OnGetActionError != null)
+            if (OnGetExecutiveData != null)
             {
-                this.OnGetActionError(myName, myErrorInfo);
+                this.OnGetExecutiveData(myName, CaseActuatorOutPutType.ActuatorError, myErrorInfo);
             }
         }
 

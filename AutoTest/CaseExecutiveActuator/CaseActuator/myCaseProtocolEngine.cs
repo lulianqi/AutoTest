@@ -239,7 +239,119 @@ namespace CaseExecutiveActuator
 
         public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
-            throw new NotImplementedException();
+            List<string> errorList = new List<string>();
+            string tempError = null;
+            MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
+            myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
+            Action<string> DealNowError = (errerData) =>
+            {
+                if (errerData != null)
+                {
+                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, tempError);
+                    errorList.Add(errerData);
+                }
+            };
+
+            if (yourExecutionContent.MyCaseProtocol == CaseProtocol.console)
+            {
+                //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
+                MyConsoleExecutionContent nowExecutionContent = yourExecutionContent as MyConsoleExecutionContent;
+                myResult.caseProtocol = CaseProtocol.console;
+                myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
+
+                #region Show
+                yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n【Console】\r\n{1}", caseId, nowExecutionContent.showContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                DealNowError(tempError);
+                #endregion
+
+                #region Add
+                if (nowExecutionContent.staticDataAddList.Count > 0)
+                {
+                    foreach (var addInfo in nowExecutionContent.staticDataAddList)
+                    {
+                        switch (MyCaseDataTypeEngine.dictionaryStaticDataTypeClass[addInfo.StaticDataType])
+                        {
+                            //caseStaticDataKey 
+                            case CaseStaticDataClass.caseStaticDataKey:
+                                if (addInfo.StaticDataType == CaseStaticDataType.caseStaticData_vaule)
+                                {
+                                    //nothing to do
+                                }
+                                else
+                                {
+                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveError, string.Format("find nonsupport Protocol"));
+                                    break;
+                                }
+                                //如果使用提供的方式进行添加是不会出现错误的（遇到重复会覆盖，只有发现多个同名Key才会返回错误）
+                                yourActuatorStaticDataCollection.AddStaticDataKey(addInfo.Name, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
+                                yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
+                                DealNowError(tempError);
+                                break;
+                            //caseStaticDataParameter
+                            case CaseStaticDataClass.caseStaticDataParameter:
+                                IRunTimeStaticData tempRunTimeStaticData;
+                                string tempTypeError;
+                                if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[addInfo.StaticDataType](out tempRunTimeStaticData, out tempTypeError, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
+                                {
+                                    yourActuatorStaticDataCollection.AddStaticDataParameter(addInfo.Name, tempRunTimeStaticData);
+                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
+                                    DealNowError(tempError);
+                                }
+                                else
+                                {
+                                    DealNowError(tempTypeError);
+                                }
+                                break;
+                            //caseStaticDataSource
+                            case CaseStaticDataClass.caseStaticDataSource:
+                                IRunTimeDataSource tempRunTimeDataSource;
+                                if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[addInfo.StaticDataType](out tempRunTimeDataSource, out tempTypeError, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
+                                {
+                                    yourActuatorStaticDataCollection.AddStaticDataSouce(addInfo.Name, tempRunTimeDataSource);
+                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
+                                    DealNowError(tempError);
+                                }
+                                else
+                                {
+                                    DealNowError(tempTypeError);
+                                }
+                                break;
+                            default:
+                                DealNowError("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add] find nonsupport Protocol");
+                                break;
+                        }
+                    }
+                } 
+                #endregion
+
+                #region Set
+                if (nowExecutionContent.staticDataSetList.Count > 0)
+                {
+                    foreach (var addInfo in nowExecutionContent.staticDataSetList)
+                    {
+                        if(yourActuatorStaticDataCollection.SetStaticData(addInfo.Key, addInfo.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                #endregion
+
+                if (tempError != null)
+                {
+                    myResult.additionalEroor = ("error:" + tempError);
+                }
+
+            }
+            else
+            {
+                myResult.additionalEroor = ("error:your CaseProtocol is not Matching RunTimeActuator");
+            }
+            return myResult;
         }
 
         public object Clone()
@@ -428,7 +540,7 @@ namespace CaseExecutiveActuator
                 //report Executive Data
                 if (yourExecutiveDelegate != null)
                 {
-                    yourExecutiveDelegate(sender, string.Format("【ID:{0}】Executive···\r\n{1}\r\n{2}", caseId, tempUrlAddress, vanelifeData));
+                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo , string.Format("【ID:{0}】Executive···\r\n{1}\r\n{2}", caseId, tempUrlAddress, vanelifeData));
                 }
 
                 //Start Http 
@@ -722,11 +834,11 @@ namespace CaseExecutiveActuator
                 {
                     if (httpBody != null)
                     {
-                        yourExecutiveDelegate(sender, string.Format("【ID:{0}】Executive···\r\n{1}\r\n{2}", caseId, httpUri, httpBody));
+                        yourExecutiveDelegate(sender,CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n{1}\r\n{2}", caseId, httpUri, httpBody));
                     }
                     else
                     {
-                        yourExecutiveDelegate(sender, string.Format("【ID:{0}】Executive···\r\n{1}", caseId, httpUri));
+                        yourExecutiveDelegate(sender,CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n{1}", caseId, httpUri));
                     }
                 }
 

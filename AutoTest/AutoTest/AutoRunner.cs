@@ -106,7 +106,6 @@ namespace AutoTest
         public bool pictureBox_dataAddStopTag = true;                                           //图片标记-返回数据底部跟随     
 
         Action<MyExecutionDeviceResult> AddExecutiveResult ;                                    //结果添加委托
-        Action<string> AddExecutiveRecord;                                                      //过程添加委托
         #endregion
 
         #region myfunction
@@ -212,7 +211,6 @@ namespace AutoTest
             nowProjectRunCount = new myRunCount();
             //内置委托
             AddExecutiveResult = new Action<MyExecutionDeviceResult>(AddExecutiveResultToLvDataAdd);
-            AddExecutiveRecord = new Action<string>(AddExecutiveDataToRecord);
             //UI初始位置
             myShareData.sdExpandablePanel_dataAdd_Position = expandablePanel_dataAdd.Location;
             myShareData.sdExpandablePanel_testMode_Position = expandablePanel_testMode.Location;
@@ -335,7 +333,6 @@ namespace AutoTest
             if (nowCaseActionActuator != null)
             {
                 nowCaseActionActuator.DisconnectExecutionDevice();
-                nowCaseActionActuator.OnGetActionError -= nowCaseActionActuator_OnGetErrorData;
                 nowCaseActionActuator.OnGetExecutiveData -= nowCaseActionActuator_OnGetExecutiveData;
                 nowCaseActionActuator.OnActuatorStateChanged -= nowCaseActionActuator_OnActuatorStateChanged;
                 nowCaseActionActuator.OnExecutiveResult -= nowCaseActionActuator_OnExecutiveResult;
@@ -363,7 +360,6 @@ namespace AutoTest
                         if (nowCaseActionActuator == null)
                         {
                             nowCaseActionActuator = new CaseActionActuator();
-                            nowCaseActionActuator.OnGetActionError += nowCaseActionActuator_OnGetErrorData;
                             nowCaseActionActuator.OnGetExecutiveData += nowCaseActionActuator_OnGetExecutiveData;
                             nowCaseActionActuator.OnActuatorStateChanged += nowCaseActionActuator_OnActuatorStateChanged;
                             nowCaseActionActuator.OnExecutiveResult += nowCaseActionActuator_OnExecutiveResult;
@@ -785,26 +781,39 @@ namespace AutoTest
         /// ExecutiveData将由此暴露执行中数据
         /// </summary>
         /// <param name="yourContent">your Content</param>
-        void nowCaseActionActuator_OnGetExecutiveData(string sender, string yourContent)
+        void nowCaseActionActuator_OnGetExecutiveData(string sender, CaseActuatorOutPutType outType ,string yourContent)
         {
             if (trb_addRecord.InvokeRequired)
             {
-                trb_addRecord.BeginInvoke(AddExecutiveRecord, yourContent);
+                trb_addRecord.BeginInvoke(new Action<string,CaseActuatorOutPutType,string>(ShowActuatorExecutiveData), sender, outType, yourContent);
             }
             else
             {
-                trb_addRecord.AddDate(yourContent, Color.Red, true);
+                ShowActuatorExecutiveData(sender, outType, yourContent);
             }
         }
 
-        /// <summary>
-        /// ExecutiveData将由此暴露执行器遇到的非致命性错误或警告
-        /// </summary>
-        /// <param name="yourContent">your Content</param>
-        void nowCaseActionActuator_OnGetErrorData(string sender, string yourContent)
+        private void ShowActuatorExecutiveData(string sender, CaseActuatorOutPutType outType ,string yourContent)
         {
-            //ShowMessage(yourContent);
-            this.BeginInvoke(new Action<string>((str) => ShowMessage(str)), yourContent);
+            switch (outType)
+            {
+                case CaseActuatorOutPutType.ExecutiveInfo:
+                    trb_addRecord.AddDate(yourContent, Color.Black, true);
+                    break;
+                case CaseActuatorOutPutType.ExecutiveError:
+                    trb_addRecord.AddDate(yourContent, Color.Brown, true);
+                    break;
+                case CaseActuatorOutPutType.ActuatorInfo:
+                    trb_addRecord.AddDate(yourContent, Color.DarkGreen, true);
+                    break;
+                case CaseActuatorOutPutType.ActuatorError:
+                    trb_addRecord.AddDate(yourContent, Color.Red, true);
+                    ShowMessage(yourContent);
+                    break;
+                default:
+                    trb_addRecord.AddDate(yourContent, Color.Lime, true);
+                    break;
+            }
         }
 
 
