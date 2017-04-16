@@ -82,6 +82,15 @@ namespace CaseExecutiveActuator
             }
         }
 
+        public static string MyToString(this List<string> lsStr)
+        {
+            if(lsStr!=null)
+            {
+                //if(lsStr)
+            }
+            return null;
+        }
+
         /// <summary>
         /// 返回对象的深度克隆(泛型数据，要求T必须为值类型，或类似string的特殊引用类型[因为虽然使用string的克隆会有相同的引用，但对string进行修改的时都会创建新的对象])
         /// </summary>

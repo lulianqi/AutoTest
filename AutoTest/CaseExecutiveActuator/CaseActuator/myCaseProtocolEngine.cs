@@ -243,13 +243,15 @@ namespace CaseExecutiveActuator
             string tempError = null;
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
-            Action<string> DealNowError = (errerData) =>
+            Func<string ,bool> DealNowError = (errerData) =>
             {
                 if (errerData != null)
                 {
                     yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, tempError);
                     errorList.Add(errerData);
+                    return true;
                 }
+                return false;
             };
 
             if (yourExecutionContent.MyCaseProtocol == CaseProtocol.console)
@@ -282,10 +284,12 @@ namespace CaseExecutiveActuator
                                     yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveError, string.Format("find nonsupport Protocol"));
                                     break;
                                 }
-                                //如果使用提供的方式进行添加是不会出现错误的（遇到重复会覆盖，只有发现多个同名Key才会返回错误）
-                                yourActuatorStaticDataCollection.AddStaticDataKey(addInfo.Name, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
-                                yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
-                                DealNowError(tempError);
+                                //如果使用提供的方式进行添加是不会出现错误的（遇到重复会覆盖，只有发现多个同名Key才会返回错误）, 不过getTargetContentData需要处理用户数据可能出现错误。
+                                if (!DealNowError(tempError))
+                                {
+                                    yourActuatorStaticDataCollection.AddStaticDataKey(addInfo.Name, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
+                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
+                                }
                                 break;
                             //caseStaticDataParameter
                             case CaseStaticDataClass.caseStaticDataParameter:
@@ -293,9 +297,11 @@ namespace CaseExecutiveActuator
                                 string tempTypeError;
                                 if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[addInfo.StaticDataType](out tempRunTimeStaticData, out tempTypeError, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
                                 {
-                                    yourActuatorStaticDataCollection.AddStaticDataParameter(addInfo.Name, tempRunTimeStaticData);
-                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
-                                    DealNowError(tempError);
+                                    if (!DealNowError(tempError))
+                                    {
+                                        yourActuatorStaticDataCollection.AddStaticDataParameter(addInfo.Name, tempRunTimeStaticData);
+                                        yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
+                                    }
                                 }
                                 else
                                 {
@@ -307,9 +313,11 @@ namespace CaseExecutiveActuator
                                 IRunTimeDataSource tempRunTimeDataSource;
                                 if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[addInfo.StaticDataType](out tempRunTimeDataSource, out tempTypeError, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
                                 {
-                                    yourActuatorStaticDataCollection.AddStaticDataSouce(addInfo.Name, tempRunTimeDataSource);
-                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
-                                    DealNowError(tempError);
+                                    if (!DealNowError(tempError))
+                                    {
+                                        yourActuatorStaticDataCollection.AddStaticDataSouce(addInfo.Name, tempRunTimeDataSource);
+                                        yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
+                                    }
                                 }
                                 else
                                 {
@@ -329,21 +337,24 @@ namespace CaseExecutiveActuator
                 {
                     foreach (var addInfo in nowExecutionContent.staticDataSetList)
                     {
-                        if(yourActuatorStaticDataCollection.SetStaticData(addInfo.Key, addInfo.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
+                        string tempSetVauleStr=addInfo.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                        if (!DealNowError(tempError))
                         {
-
-                        }
-                        else
-                        {
-
+                            if (yourActuatorStaticDataCollection.SetStaticData(addInfo.Key, tempSetVauleStr))
+                            {
+                                if(!DealNowError(tempSetVauleStr))
+                                {
+                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Set]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data set sucess with the key :{0} ", addInfo.Key));
+                                }
+                            }
                         }
                     }
                 }
                 #endregion
 
-                if (tempError != null)
+                if (errorList.Count >0)
                 {
-                    myResult.additionalEroor = ("error:" + tempError);
+                    //myResult.additionalEroor = errorList.ToString()
                 }
 
             }

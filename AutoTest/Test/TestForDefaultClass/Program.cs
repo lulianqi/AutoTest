@@ -23,6 +23,28 @@ namespace TestForDefaultClass
 
         public static void RunMyHttpTest()
         {
+            for (int m = 0; m < 100; m++)
+            {
+                Console.ReadLine();
+                Console.WriteLine(Environment.TickCount);
+                long l1 = DateTime.Now.Ticks;
+                StringBuilder xxb = new StringBuilder("");
+                for (int i = 0; i < 100; i++)
+                {
+                    xxb.Append("123456789abcdefg");
+                }
+                xxb.ToString();
+
+                long l2 = DateTime.Now.Ticks;
+                string xx = "";
+                for (int i = 0; i < 100; i++)
+                {
+                    xx += "123456789abcdefg";
+                }
+                
+                long l3 = DateTime.Now.Ticks;
+                Console.WriteLine(string.Format("{0}\r\n{1}\r\n{2}\r\n{3}\r\n{4}", l1, l2, l3, l2 - l1, l3 - l2));
+            }
             Console.ReadLine();
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST",null,@"D:\shou.txt"));
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));

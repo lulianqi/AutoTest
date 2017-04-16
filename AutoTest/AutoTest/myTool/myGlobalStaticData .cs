@@ -57,11 +57,15 @@ namespace AutoTest.myTool
         #endregion
 
         public static Stopwatch myStopWatch = new Stopwatch();//提供给代码测试使用，请勿在场景中使用
+
+        //Stopwatch.IsHighResolution = true  //https://msdn.microsoft.com/zh-cn/library/system.diagnostics.stopwatch.ishighresolution.aspx
+        //Process.GetCurrentProcess().TotalProcessorTime;
+        //Elapsed.Ticks
         public static void startWatch()
         {
             myStopWatch.Reset();
             myStopWatch.Start();
-        }
+        }   
 
         public static string getWatchTime()
         {
