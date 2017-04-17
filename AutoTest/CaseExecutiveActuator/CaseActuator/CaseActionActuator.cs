@@ -1015,12 +1015,12 @@ namespace CaseExecutiveActuator
         {
             if (yourMessage != "")
             {
-                if (yourMessage.StartsWith("▲"))
+                if (yourMessage.StartsWith(MyConfiguration.CaseShowGotoNodeStart))  
                 {
                     //附加任务起始节点
                     MyActionActuator.SetCaseNodeExpand(yourTarget);
                 }
-                else if (yourMessage.StartsWith("◆"))
+                else if (yourMessage.StartsWith(MyConfiguration.CaseShowCaseNodeStart))
                 {
                     //主任务起始节点
                     while(yourTarget.CaseType!=CaseType.Case)
@@ -1811,7 +1811,7 @@ namespace CaseExecutiveActuator
             switch (yourDeviceConnectInfo.MyCaseProtocol)
             {
                 case CaseProtocol.console:
-                    //myExecutionDeviceList.MyAdd(yourDeviceName,new )
+                    myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForConsole((myConnectForConsole)yourDeviceConnectInfo));
                     break;
                 case CaseProtocol.vanelife_http:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForVanelife_http((myConnectForVanelife_http)yourDeviceConnectInfo));

@@ -490,9 +490,9 @@ namespace CaseExecutiveActuator
         /// <param name="yourCaseId">Case Id to OnQueueChangeEvent</param>
         private void AddCsaeQueue(MyCsaeQueue yourCsaeQueue, int yourProjectId, int yourCaseId)
         {
-            ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 1].NowCaseNode, string.Format("▼GoTo Project：{0} Case：{1}", yourProjectId, yourCaseId));
+            ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 1].NowCaseNode, string.Format(MyConfiguration.CaseShowJumpGotoNode+"GoTo Project：{0} Case：{1}", yourProjectId, yourCaseId));
             AddCsaeQueue(yourCsaeQueue);
-            ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 1].NowCaseNode, "▲");
+            ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 1].NowCaseNode, MyConfiguration.CaseShowGotoNodeStart);
         }
 
         /// <summary>
@@ -503,8 +503,8 @@ namespace CaseExecutiveActuator
         {
             if (myCsaeQueueList.Count>1)
             {
-                ReportQueueAction(yourCsaeQueue.NowCaseNode, "▼");
-                ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 2].NowCaseNode, "▼▲");
+                ReportQueueAction(yourCsaeQueue.NowCaseNode, MyConfiguration.CaseShowJumpGotoNode);
+                ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 2].NowCaseNode, MyConfiguration.CaseShowJumpGotoNode + MyConfiguration.CaseShowGotoNodeStart);
             }
             yourCsaeQueue.OnLoopChangeEvent -= OnLoopChangeEvent;
             myCsaeQueueList.Remove(yourCsaeQueue);
@@ -533,7 +533,7 @@ namespace CaseExecutiveActuator
         {
             myCsaeQueueList.Clear();
             AddCsaeQueue(new MyCsaeQueue(yourStartCase));
-            ReportQueueAction(yourStartCase, "◆");
+            ReportQueueAction(yourStartCase, MyConfiguration.CaseShowCaseNodeStart);
         }
 
 
@@ -590,7 +590,7 @@ namespace CaseExecutiveActuator
                 }
                 else
                 {
-                    ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 1].NowCaseNode, "▼GoTo error");
+                    ReportQueueAction(myCsaeQueueList[myCsaeQueueList.Count - 1].NowCaseNode, MyConfiguration.CaseShowJumpGotoNode + "GoTo error");
                     return false;
                 }
             }

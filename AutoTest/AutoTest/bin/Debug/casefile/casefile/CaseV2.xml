@@ -104,7 +104,7 @@
       </Attribute>
     </Case>
     <Case id="1000100001" remark="case备注">
-      <Content protocol="vanelife_http" actuator="httpApi">
+      <Content protocol="vanelife_http" actuator="httpApi">  <!--Content节点必须存在且格式需要以此种格式，节点的第一个子节点回用于辅助显示（扩展协议如果有类似接口地址的属性尽量使用target作为属性明）-->
         <ContentData target="device/update_status" isHaveParameters="true">device_sn=ZkTest000001&amp;device_status={"online":true}</ContentData>
       </Content>
       <Expect method="is">
@@ -640,10 +640,11 @@
   <Project id="1000010004" name="Project test" remark="case测试">
     <Case id="1000040001" remark="console">
       <Content protocol="console" actuator="console">
-        <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Show><!--必选项，没有信息也需要填写备注-->
+        <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#StaticData2(+)*#/*#StaticData4(+3)*#</Show><!--必选项，没有信息也需要填写备注-->
         <ConsoleTask>
           <Set name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Set>
           <Set name="User-Agent">test man</Set>
+          <Add name="StaticDataAdderror" type="nukonw">1-1000-2</Add>
           <Add name="StaticDataAdd" type="index">1-1000-2</Add>
           <Add name="StaticData3Add" type="list">a1,a2,a3,a4-2</Add>
           <Add name="mycsvfileAdd" type="csv">casefile\csvdatasouce.csv-65001</Add>

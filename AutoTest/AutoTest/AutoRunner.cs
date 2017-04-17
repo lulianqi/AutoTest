@@ -539,7 +539,7 @@ namespace AutoTest
                                     {
                                         if (isShowCaseContent)
                                         {
-                                            tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ● " + tempCaseLoadInfo.content);
+                                            tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ◎ " + tempCaseLoadInfo.content);
                                         }
                                         else
                                         {
