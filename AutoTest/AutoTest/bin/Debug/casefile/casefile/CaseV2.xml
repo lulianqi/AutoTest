@@ -649,7 +649,7 @@
           <Add name="mycsvfileAdd" type="csv">casefile\csvdatasouce.csv-65001</Add>
           <Add name="appid" type="vaule">2ewse342</Add>
           <Add name="appidtodel" type="vaule">2ewse342</Add>
-          <Del name="appidtodel" ></Del><!--内容默认为空如果有值则name属性无效，内容为正则表达式-->
+          <Del isRegex="false" isHaveParameters="true">appidtodel</Del><!--isRegex 为true 表示内容为正则表达式匹配，默认不填为false(错误输入也强制为false)，-->
         </ConsoleTask>
       </Content>
       <Expect method="contain">"success": true</Expect>

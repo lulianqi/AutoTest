@@ -86,7 +86,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// Case内容如果解析有错误，将通过这里指明
+        /// Case内容如果解析有错误，将通过这里指明 (一旦设置该错误值则表明该ExecutionContent有错误，执行中也不会运行该case)
         /// </summary>
         string MyErrorMessage
         {

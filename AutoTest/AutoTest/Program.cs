@@ -14,8 +14,8 @@ namespace AutoTest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new AutoRunner());
-            Application.Run(new TEST());
+            Application.Run(new AutoRunner());
+            //Application.Run(new TEST());
         }
     }
 }

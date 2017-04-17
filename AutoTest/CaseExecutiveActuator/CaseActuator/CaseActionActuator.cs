@@ -1478,7 +1478,7 @@ namespace CaseExecutiveActuator
         {
             string tempError;
             yourExecutionResult.caseId = yourRunData.id;
-            if (yourExecutionResult.additionalEroor != null)
+            if (yourExecutionResult.additionalError != null)
             {
                 MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
             }
@@ -1487,7 +1487,7 @@ namespace CaseExecutiveActuator
             if (tempError != null)
             {
                 MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
-                yourExecutionResult.additionalEroor = yourExecutionResult.additionalEroor.MyAddValue(tempError);
+                yourExecutionResult.additionalError = yourExecutionResult.additionalError.MyAddValue(tempError);
             }
             if (CaseTool.CheckBackData(yourExecutionResult.backContent, yourExecutionResult.expectContent, yourRunData.caseExpectInfo.myExpectType))
             {

@@ -84,7 +84,7 @@ namespace AutoTest.myTool
                                     <td width=""700px"">" + @tempTestData.caseTarget.ToXmlValue() + @" -> " + @tempTestData.backContent.ToXmlValue() + @"</td>
                                     <td width=""500px"">" + @tempTestData.expectMethod.ToString() + @" -> " + @tempTestData.expectContent.ToXmlValue() + @"</td>
                                     <td width=""200px"">" + @tempTestData.staticDataResultCollection.MyToFormatString().ToXmlValue() + @"</td>
-                                    <td width=""200px"">" + @tempTestData.additionalRemark.ToXmlValue() + "  " + @tempTestData.additionalEroor.ToXmlValue() + @"</td>
+                                    <td width=""200px"">" + @tempTestData.additionalRemark.ToXmlValue() + "  " + @tempTestData.additionalError.ToXmlValue() + @"</td>
                                     ";
                     tempTabel.AppendChild(newChild);
                 }

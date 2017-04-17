@@ -388,7 +388,7 @@ namespace CaseExecutiveActuator
         public CaseResult result;                                       //case 执行结果    
         public NameValueCollection staticDataResultCollection;          //当前case在执行中所有静态初始化数据的运算结果
         public string additionalRemark;                                 //case 辅助备注
-        public string additionalEroor;                                  //case 错误的辅助备注 （主要是请求本身失败或错误）
+        public string additionalError;                                  //case 错误的辅助备注 （主要是请求本身失败或错误）
         
         public MyExecutionDeviceResult()
         {
@@ -404,14 +404,14 @@ namespace CaseExecutiveActuator
             result = CaseResult.Unknow;
             staticDataResultCollection = null;
             additionalRemark = null;
-            additionalEroor = null;
+            additionalError = null;
         }
 
         public MyExecutionDeviceResult(int yourCaseId, string yourAdditionalError):this()
         {
             caseId = yourCaseId;
             backContent = yourAdditionalError;
-            additionalEroor = yourAdditionalError;
+            additionalError = yourAdditionalError;
         }
         public MyExecutionDeviceResult(CaseProtocol yourCaseProtocol, string yourSpanTime, string yourStartTime, string yourBackContent):this()
         {
@@ -423,7 +423,7 @@ namespace CaseExecutiveActuator
         }
         public MyExecutionDeviceResult(CaseProtocol yourCaseProtocol, string yourSpanTime, string yourStartTime, string yourBackContent, string yourAdditionalContent): this(yourCaseProtocol, yourStartTime, yourStartTime, yourBackContent)
         {
-            additionalEroor = yourAdditionalContent;
+            additionalError = yourAdditionalContent;
         }
     }
 
@@ -895,7 +895,7 @@ namespace CaseExecutiveActuator
         public caseParameterizationContent showContent;
         public List<KeyValuePair<string, caseParameterizationContent>> staticDataSetList;
         public List<StaticDataAdd> staticDataAddList;
-        public List<KeyValuePair<string, caseParameterizationContent>> staticDataDelList;
+        public List<KeyValuePair<bool, caseParameterizationContent>> staticDataDelList;
 
         public MyConsoleExecutionContent()
         {
@@ -905,7 +905,7 @@ namespace CaseExecutiveActuator
             showContent = new caseParameterizationContent();
             staticDataSetList = new List<KeyValuePair<string, caseParameterizationContent>>();
             staticDataAddList = new List<StaticDataAdd>();
-            staticDataDelList = new List<KeyValuePair<string, caseParameterizationContent>>();
+            staticDataDelList = new List<KeyValuePair<bool, caseParameterizationContent>>();
         }
 
         public CaseProtocol MyCaseProtocol

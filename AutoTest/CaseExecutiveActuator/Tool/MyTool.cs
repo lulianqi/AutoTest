@@ -82,13 +82,46 @@ namespace CaseExecutiveActuator
             }
         }
 
-        public static string MyToString(this List<string> lsStr)
+        /// <summary>
+        /// 以指定字符串拼合List<string>
+        /// </summary>
+        /// <param name="lsStr">目标对象</param>
+        /// <param name="splitStr">分割字符串</param>
+        /// <returns>返回数据</returns>
+        public static string MyToString(this List<string> lsStr,string splitStr)
         {
+            string outStr = null;
             if(lsStr!=null)
             {
-                //if(lsStr)
+                if(lsStr.Count>5)
+                {
+                    StringBuilder SbOutStr = new StringBuilder(lsStr.Count * ((lsStr[0].Length > lsStr[4].Length ? lsStr[0].Length : lsStr[1].Length) + splitStr.Length));
+                    foreach(string tempStr in lsStr)
+                    {
+                        SbOutStr.Append(tempStr);
+                        if (splitStr != null)
+                        {
+                            SbOutStr.Append(splitStr);
+                        }
+                    }
+                    outStr = SbOutStr.ToString();
+                }
+                else
+                {
+                    foreach (string tempStr in lsStr)
+                    {
+                        if (splitStr != null)
+                        {
+                            outStr += (tempStr + splitStr);
+                        }
+                        else
+                        {
+                            outStr += tempStr;
+                        }
+                    }
+                }
             }
-            return null;
+            return outStr;
         }
 
         /// <summary>
