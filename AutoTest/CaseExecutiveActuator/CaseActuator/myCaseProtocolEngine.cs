@@ -106,7 +106,7 @@ namespace CaseExecutiveActuator
                                     if (taskNode.Attributes["name"] != null && taskNode.Attributes["type"] != null)
                                     {
                                         CaseStaticDataType nowType;
-                                        if (Enum.TryParse<CaseStaticDataType>(taskNode.Attributes["type"].Value, out nowType))
+                                        if (Enum.TryParse<CaseStaticDataType>("caseStaticData_"+taskNode.Attributes["type"].Value, out nowType))
                                         {
                                             myRunContent.staticDataAddList.Add(new MyConsoleExecutionContent.StaticDataAdd(nowType, taskNode.Attributes["name"].Value, CaseTool.getXmlParametContent(taskNode)));
                                         }
@@ -1186,19 +1186,19 @@ namespace CaseExecutiveActuator
                                     break;
                                 case CaseProtocol.vanelife_http:
                                     myCaseData.testContent = CaseProtocolExecutionForVanelife_http.GetRunContent(tempCaseContent);
-                                    if (myCaseData.testContent.MyErrorMessage != null)
-                                    {
-                                        myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.MyErrorMessage);
-                                        return myCaseData;
-                                    }
+                                    //if (myCaseData.testContent.MyErrorMessage != null)
+                                    //{
+                                    //    myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.MyErrorMessage);
+                                    //    return myCaseData;
+                                    //}
                                     break;
                                 case CaseProtocol.http:
                                     myCaseData.testContent = CaseProtocolExecutionForHttp.GetRunContent(tempCaseContent);
-                                    if (myCaseData.testContent.MyErrorMessage != null)
-                                    {
-                                        myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.MyErrorMessage);
-                                        return myCaseData;
-                                    }
+                                    //if (myCaseData.testContent.MyErrorMessage != null)
+                                    //{
+                                    //    myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.MyErrorMessage);
+                                    //    return myCaseData;
+                                    //}
                                     break;
                                 case CaseProtocol.tcp:
                                     myCaseData.addErrorMessage("Error :this protocol not supported for now");
@@ -1225,7 +1225,11 @@ namespace CaseExecutiveActuator
                                     myCaseData.addErrorMessage("Error :this protocol not supported for now");
                                     break;
                             }
-
+                            if (myCaseData.testContent.MyErrorMessage != null)
+                            {
+                                myCaseData.addErrorMessage("Error :the Content not analyticaled Because:" + myCaseData.testContent.MyErrorMessage);
+                                return myCaseData;
+                            }
 
                         }
                         else
@@ -1401,6 +1405,7 @@ namespace CaseExecutiveActuator
             myCaseLaodInfo myInfo = new myCaseLaodInfo("NULL");
             switch (sourceNode.Name)
             {
+                #region Project show info
                 case "Project":
                     //Type
                     myInfo.caseType = CaseType.Project;
@@ -1438,7 +1443,10 @@ namespace CaseExecutiveActuator
                             myInfo.ErrorMessage = ex.Message;
                         }
                     }
-                    break;
+                    break; 
+                #endregion
+
+                #region Case show info
                 case "Case":
                     //Type
                     myInfo.caseType = CaseType.Case;
@@ -1485,24 +1493,24 @@ namespace CaseExecutiveActuator
                             myInfo.ErrorMessage = "";
                         }
 
-                        XmlNode tempCaseContentData = tempCaseContent.SelectSingleNode("ContentData");
-                        if (tempCaseContentData == null)
+                        if (tempCaseContent.HasChildNodes)
                         {
-                            if (tempCaseContent.HasChildNodes)
+                            string tempTarget = CaseTool.getXmlAttributeVaule(tempCaseContent.ChildNodes[0], "target",null);
+                            if (tempTarget==null)
                             {
                                 myInfo.content = " > " + tempCaseContent.ChildNodes[0].InnerText;
                             }
                             else
                             {
-                                myInfo.ErrorMessage = "can not find TestData";
+                                myInfo.content = " > " + tempTarget + MyConfiguration.CaseShowTargetAndContent + tempCaseContent.ChildNodes[0].InnerText;
                             }
+                                
                         }
                         else
                         {
-                            string tempTarget = CaseTool.getXmlAttributeVaule(tempCaseContentData, "target");
-                            string ContentempData = tempCaseContentData.InnerText;
-                            myInfo.content = " > " + tempTarget + "★" + ContentempData;
+                            myInfo.ErrorMessage = "can not find [ContentData] TestData";
                         }
+
                     }
                     //case action
                     XmlNode tempCaseAction = sourceNode.SelectSingleNode("Action");
@@ -1545,7 +1553,10 @@ namespace CaseExecutiveActuator
                             myInfo.actions.Add(CaseResult.Fail, tempAction);
                         }
                     }
-                    break;
+                    break; 
+                #endregion
+
+                #region Repeat show info
                 case "Repeat":
                     //Type
                     myInfo.caseType = CaseType.Repeat;
@@ -1574,7 +1585,9 @@ namespace CaseExecutiveActuator
                             myInfo.ErrorMessage = "Analytical Repeat Times Fial" + ex.Message;
                         }
                     }
-                    break;
+                    break; 
+                #endregion
+
                 case "ScriptRunTime":
                     myInfo.caseType = CaseType.ScriptRunTime;
                     break;
