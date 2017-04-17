@@ -40,6 +40,9 @@ namespace CaseExecutiveActuator
 
     #region ExecutionDevice
 
+    /// <summary>
+    /// Console Device 
+    /// </summary>
     public class CaseProtocolExecutionForConsole:BasicProtocolPars, ICaseExecutionDevice
     {
         private bool isConnect;
@@ -121,22 +124,15 @@ namespace CaseExecutiveActuator
                                 }
                                 else if (taskNode.Name == "Del")
                                 {
-                                    if (taskNode.InnerText == "")
+                                    bool isRegex=false;
+                                    if (taskNode.Attributes["isRegex"] != null)
                                     {
-                                        if (taskNode.Attributes["name"] != null)
+                                        if(taskNode.Attributes["isRegex"].Value=="true")
                                         {
-                                            myRunContent.staticDataSetList.Add(new KeyValuePair<string, caseParameterizationContent>(taskNode.Attributes["name"].Value, new caseParameterizationContent()));
-                                        }
-                                        else
-                                        {
-                                            myRunContent.errorMessage = "Error :when have no Regex filter [Del] node must have name attribute";
-                                            return myRunContent;
+                                            isRegex = true;
                                         }
                                     }
-                                    else
-                                    {
-                                        myRunContent.staticDataSetList.Add(new KeyValuePair<string, caseParameterizationContent>(null, CaseTool.getXmlParametContent(taskNode)));
-                                    }
+                                    myRunContent.staticDataDelList.Add(new KeyValuePair<bool, caseParameterizationContent>(isRegex, CaseTool.getXmlParametContent(taskNode)));
                                 }
                                 else
                                 {
@@ -146,52 +142,6 @@ namespace CaseExecutiveActuator
                             }
                         }
                     } 
-                    #endregion
-
-                    #region MyRegion
-                    /*
-                    //HttpBody
-                    XmlNode tempHttpBodyDataNode = yourContentNode["Body"];
-                    if (tempHttpHeadsDataNode != null)
-                    {
-                        myRunContent.httpBody = CaseTool.getXmlParametContent(tempHttpBodyDataNode);
-                    }
-                    //AisleConfig
-                    if (yourContentNode["AisleConfig"] != null)
-                    {
-                        myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
-                    }
-                    //HttpMultipart
-                    XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];
-                    if (tempHttpMultipartNode != null)
-                    {
-                        if (tempHttpMultipartNode.HasChildNodes)
-                        {
-                            foreach (XmlNode multipartNode in tempHttpMultipartNode.ChildNodes)
-                            {
-                                HttpMultipart hmp = new HttpMultipart();
-                                if (multipartNode.Name == "MultipartData")
-                                {
-                                    hmp.isFile = false;
-                                    hmp.fileData = multipartNode.InnerText;
-                                }
-                                else if (multipartNode.Name == "MultipartFile")
-                                {
-                                    hmp.isFile = true;
-                                    hmp.fileData = CaseTool.GetFullPath(multipartNode.InnerText, MyConfiguration.CaseFilePath);
-                                }
-                                else
-                                {
-                                    continue;
-                                }
-                                hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name", null);
-                                hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename", null);
-                                myRunContent.myMultipartList.Add(hmp);
-                            }
-                        }
-                    }
-                     * */
-                    
                     #endregion
                 }
                 else
@@ -243,6 +193,7 @@ namespace CaseExecutiveActuator
             string tempError = null;
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
+
             Func<string ,bool> DealNowError = (errerData) =>
             {
                 if (errerData != null)
@@ -254,6 +205,19 @@ namespace CaseExecutiveActuator
                 return false;
             };
 
+            Func<string, string, string, bool> DealNowResultError = (errerData, actionType, keyName) =>
+            {
+                if(DealNowError(errerData))
+                {
+                    yourExecutiveDelegate(string.Format("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][{0}]", actionType), CaseActuatorOutPutType.ExecutiveError, string.Format("static data {0} error with the key :{1} ",actionType ,keyName));
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            };
+
             if (yourExecutionContent.MyCaseProtocol == CaseProtocol.console)
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
@@ -262,8 +226,9 @@ namespace CaseExecutiveActuator
                 myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
 
                 #region Show
-                yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n【Console】\r\n{1}", caseId, nowExecutionContent.showContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                myResult.backContent=nowExecutionContent.showContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 DealNowError(tempError);
+                yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n【Console】\r\n{1}", caseId, myResult.backContent));
                 #endregion
 
                 #region Add
@@ -275,9 +240,10 @@ namespace CaseExecutiveActuator
                         {
                             //caseStaticDataKey 
                             case CaseStaticDataClass.caseStaticDataKey:
+                                string tempRunTimeDataKey;
                                 if (addInfo.StaticDataType == CaseStaticDataType.caseStaticData_vaule)
                                 {
-                                    //nothing to do
+                                    tempRunTimeDataKey=addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                                 }
                                 else
                                 {
@@ -285,9 +251,9 @@ namespace CaseExecutiveActuator
                                     break;
                                 }
                                 //如果使用提供的方式进行添加是不会出现错误的（遇到重复会覆盖，只有发现多个同名Key才会返回错误）, 不过getTargetContentData需要处理用户数据可能出现错误。
-                                if (!DealNowError(tempError))
+                                if (!DealNowResultError(tempError, "Add", addInfo.Name))
                                 {
-                                    yourActuatorStaticDataCollection.AddStaticDataKey(addInfo.Name, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
+                                    yourActuatorStaticDataCollection.AddStaticDataKey(addInfo.Name, tempRunTimeDataKey);
                                     yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
                                 }
                                 break;
@@ -297,7 +263,7 @@ namespace CaseExecutiveActuator
                                 string tempTypeError;
                                 if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[addInfo.StaticDataType](out tempRunTimeStaticData, out tempTypeError, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
                                 {
-                                    if (!DealNowError(tempError))
+                                    if (!DealNowResultError(tempError,"Add",addInfo.Name))
                                     {
                                         yourActuatorStaticDataCollection.AddStaticDataParameter(addInfo.Name, tempRunTimeStaticData);
                                         yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
@@ -305,7 +271,7 @@ namespace CaseExecutiveActuator
                                 }
                                 else
                                 {
-                                    DealNowError(tempTypeError);
+                                    DealNowResultError("[yourActuatorStaticDataCollection][caseStaticDataParameter][GetStaticDataAction] error", "Add", addInfo.Name);
                                 }
                                 break;
                             //caseStaticDataSource
@@ -313,7 +279,7 @@ namespace CaseExecutiveActuator
                                 IRunTimeDataSource tempRunTimeDataSource;
                                 if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[addInfo.StaticDataType](out tempRunTimeDataSource, out tempTypeError, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
                                 {
-                                    if (!DealNowError(tempError))
+                                    if (!DealNowResultError(tempError,"Add",addInfo.Name))
                                     {
                                         yourActuatorStaticDataCollection.AddStaticDataSouce(addInfo.Name, tempRunTimeDataSource);
                                         yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add sucess with the key :{0} ", addInfo.Name));
@@ -321,7 +287,7 @@ namespace CaseExecutiveActuator
                                 }
                                 else
                                 {
-                                    DealNowError(tempTypeError);
+                                    DealNowResultError("[yourActuatorStaticDataCollection][caseStaticDataSource][GetStaticDataAction] error", "Add", addInfo.Name);
                                 }
                                 break;
                             default:
@@ -338,30 +304,53 @@ namespace CaseExecutiveActuator
                     foreach (var addInfo in nowExecutionContent.staticDataSetList)
                     {
                         string tempSetVauleStr=addInfo.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
-                        if (!DealNowError(tempError))
+                        if (!DealNowResultError(tempError,"Set",addInfo.Key))
                         {
                             if (yourActuatorStaticDataCollection.SetStaticData(addInfo.Key, tempSetVauleStr))
                             {
-                                if(!DealNowError(tempSetVauleStr))
-                                {
-                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Set]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data set sucess with the key :{0} ", addInfo.Key));
-                                }
+                                yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Set]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data set sucess with the key :{0} ", addInfo.Key));
+                            }
+                            else
+                            {
+                                DealNowResultError("[yourActuatorStaticDataCollection.SetStaticData] error", "Set", addInfo.Key);
                             }
                         }
                     }
                 }
                 #endregion
 
-                if (errorList.Count >0)
+                #region Del
+                if (nowExecutionContent.staticDataDelList.Count > 0)
                 {
-                    //myResult.additionalEroor = errorList.ToString()
+                    foreach (var delInfo in nowExecutionContent.staticDataDelList)
+                    {
+                        string tempDelVauleStr=delInfo.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                        if (!DealNowResultError(tempError, "Del", delInfo.Value.getTargetContentData()))
+                        {
+                            if (yourActuatorStaticDataCollection.RemoveStaticData(tempDelVauleStr, delInfo.Key))
+                            {
+                                yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Del]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data del sucess with the key :{0} ", tempDelVauleStr));
+                            }
+                            else
+                            {
+                                DealNowResultError("[yourActuatorStaticDataCollection.RemoveStaticData] error", "Del", delInfo.Value.getTargetContentData());
+                                
+                            }
+                        }
+                    }
                 }
-
+                #endregion
             }
             else
             {
-                myResult.additionalEroor = ("error:your CaseProtocol is not Matching RunTimeActuator");
+                DealNowError("error:your CaseProtocol is not Matching RunTimeActuator");
             }
+
+            if (errorList.Count > 0)
+            {
+                myResult.additionalError = errorList.MyToString("\r\n");
+            }
+
             return myResult;
         }
 
@@ -574,13 +563,13 @@ namespace CaseExecutiveActuator
 
                 if (tempError != null)
                 {
-                    myResult.additionalEroor = ("error:" + tempError);
+                    myResult.additionalError = ("error:" + tempError);
                 }
 
             }
             else
             {
-                myResult.additionalEroor=("error:your CaseProtocol is not Matching RunTimeActuator");
+                myResult.additionalError=("error:your CaseProtocol is not Matching RunTimeActuator");
             }
             return myResult;
         }
@@ -647,7 +636,7 @@ namespace CaseExecutiveActuator
     }
 
     /// <summary>
-    /// Vanelife_http Device 
+    /// Http Device 
     /// </summary>
     public class CaseProtocolExecutionForHttp :BasicProtocolPars, ICaseExecutionDevice
     {
@@ -877,13 +866,13 @@ namespace CaseExecutiveActuator
 
                 if (tempError != null)
                 {
-                    myResult.additionalEroor = ("error:" + tempError);
+                    myResult.additionalError = ("error:" + tempError);
                 }
 
             }
             else
             {
-                myResult.additionalEroor = ("error:your CaseProtocol is not Matching RunTimeActuator");
+                myResult.additionalError = ("error:your CaseProtocol is not Matching RunTimeActuator");
             }
             return myResult;
         }
@@ -1192,6 +1181,9 @@ namespace CaseExecutiveActuator
                             }
                             switch (contentProtocol)
                             {
+                                case CaseProtocol.console:
+                                    myCaseData.testContent = CaseProtocolExecutionForConsole.GetRunContent(tempCaseContent);
+                                    break;
                                 case CaseProtocol.vanelife_http:
                                     myCaseData.testContent = CaseProtocolExecutionForVanelife_http.GetRunContent(tempCaseContent);
                                     if (myCaseData.testContent.MyErrorMessage != null)
