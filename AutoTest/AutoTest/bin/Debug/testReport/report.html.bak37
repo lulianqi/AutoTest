@@ -12,7 +12,7 @@
           </td>
           <td>报告生成时间:</td>
           <td>
-            <td width="400px">2017-04-18T11:06:32</td>
+            <td width="400px">2017-04-18T10:41:52</td>
           </td>
         </tr>
       </table>
@@ -79,7 +79,7 @@
           </td>
           <td>执行用例总数:</td>
           <td>
-            <td width="100px">1</td>
+            <td width="100px">2</td>
           </td>
         </tr>
         <tr>
@@ -87,7 +87,7 @@
           </td>
           <td>通过的用例数:</td>
           <td>
-            <td width="100px">1</td>
+            <td width="100px">0</td>
           </td>
         </tr>
         <tr>
@@ -111,7 +111,7 @@
           </td>
           <td>未能解析的用例总数:</td>
           <td>
-            <td width="100px">0</td>
+            <td width="100px">2</td>
           </td>
         </tr>
         <tr>
@@ -180,18 +180,27 @@
             <h5>其他信息</h5>
           </td>
         </tr>
-        <tr bgcolor="#E0FFFF">
+        <tr bgcolor="#FFFACD">
                                     <td width="100px">1000040001</td>
-                                    <td width="100px">console</td>
+                                    <td width="100px">unknownProtocol</td>
                                     <td width="100px"></td>
                                     <td width="100px"></td>
-                                    <td width="100px">Pass</td>
-                                    <td width="700px">http://huala.com/huala/seller/login/*#StaticData2(+)*#/*#StaticData4(+3)*# -&gt; http://huala.com/huala/seller/login/2017/4/18 11:01:00/3</td>
-                                    <td width="500px">judge_contain -&gt; /3</td>
-                                    <td width="200px">{ [StaticData2(+):2017/4/18 11:01:00] [StaticData4(+3):3] [StaticData_sellerId:[ErrorData]] }</td>
-                                    <td width="200px">  can not find your key [StaticData_sellerId] in StaticDataList
-[yourActuatorStaticDataCollection.SetStaticData] error
-</td>
+                                    <td width="100px">Unknow</td>
+                                    <td width="700px"> -&gt; 执行数据脚本存在错误System.Collections.Generic.List`1[System.String]</td>
+                                    <td width="500px">judge_default -&gt; </td>
+                                    <td width="200px"></td>
+                                    <td width="200px">  执行数据脚本存在错误System.Collections.Generic.List`1[System.String]</td>
+                                    </tr>
+        <tr bgcolor="#FFFACD">
+                                    <td width="100px">1000040001</td>
+                                    <td width="100px">unknownProtocol</td>
+                                    <td width="100px"></td>
+                                    <td width="100px"></td>
+                                    <td width="100px">Unknow</td>
+                                    <td width="700px"> -&gt; 执行数据脚本存在错误System.Collections.Generic.List`1[System.String]</td>
+                                    <td width="500px">judge_default -&gt; </td>
+                                    <td width="200px"></td>
+                                    <td width="200px">  执行数据脚本存在错误System.Collections.Generic.List`1[System.String]</td>
                                     </tr>
       </tbody>
     </table>

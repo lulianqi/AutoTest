@@ -1445,7 +1445,7 @@ namespace CaseExecutiveActuator
                 MyActionActuator.SetCaseNodeAbnormal(nowExecutiveNode);
 
                 tempIsBreakError = true;
-                executionResult = new MyExecutionDeviceResult(nowRunCaseData.id, "执行数据脚本存在错误" + nowRunCaseData.errorMessages);
+                executionResult = new MyExecutionDeviceResult(nowRunCaseData.id, "执行数据脚本存在错误" + nowRunCaseData.errorMessages.MyToString("\r\n"));
             }
 
             //AddExecutionResult
