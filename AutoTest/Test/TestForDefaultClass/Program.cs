@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MyCommonHelper;
+using System.Diagnostics;
 
 namespace TestForDefaultClass
 {
@@ -11,6 +12,7 @@ namespace TestForDefaultClass
     {
         static void Main(string[] args)
         {
+            RunMyHiPerformanceTickTest();
             string str = "";
             var tempValue = str.Split(new char[] { ',' }, StringSplitOptions.None);
             string str_more = "123".Substring(2, 1);
@@ -20,6 +22,62 @@ namespace TestForDefaultClass
             RunMyHttpTest();
         }
 
+        public static void RunMyHiPerformanceTickTest()
+        {
+            Console.ReadLine();
+            MyHiPerformanceTick myTick = new MyHiPerformanceTick();
+            Stopwatch myStopWatch = new Stopwatch();
+            long[] ls = new long[100];
+            myStopWatch.Start();
+            for (int i = 0; i < 100; i++)
+            {
+                ls[i] = myStopWatch.ElapsedTicks;
+            }
+            myStopWatch.Stop();
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine(ls[i]);
+            }
+            
+            Console.WriteLine(myStopWatch.ElapsedTicks);
+            long l1, l2, l3, l4, l5 = 0;
+            long [] ll =new long[100];
+            Console.WriteLine(myTick.ToString());
+            for(int i=0; i<100; i++)
+            {
+                ll[i] = myTick.GetTick();
+            }
+            
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine(ll[i]);
+            }
+            myTick.StartTick();
+            myTick.EndTick();
+            Console.WriteLine(myTick.GetElapsedTime());
+            
+            double[] dl = new double[100];
+            for (int i = 0; i < 100; i++)
+            {
+                dl[i] = myTick.GetTime();
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine(dl[i]);
+            }
+            Console.WriteLine("----------------------------------------------");
+            Console.ReadLine();
+            myStopWatch.Restart();
+            myTick.StartTick();
+            for (int i = 0; i < 100; i++)
+            {
+                int temp = i / 4;
+            }
+            myTick.EndTick();
+            myStopWatch.Stop();
+            Console.WriteLine(myStopWatch.ElapsedTicks);
+            Console.WriteLine(myTick.GetElapsedTime());
+        }
 
         public static void RunMyHttpTest()
         {
