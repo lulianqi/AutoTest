@@ -62,6 +62,10 @@ namespace MyCommonHelper
             }
         }
 
+        /// <summary>
+        /// 获取计数器的当前值tick
+        /// </summary>
+        /// <returns>当前值tick</returns>
         public long GetTick()
         {
             long tempTick=0;
@@ -69,6 +73,10 @@ namespace MyCommonHelper
             return tempTick;
         }
 
+        /// <summary>
+        /// 获取计数器的当前值time
+        /// </summary>
+        /// <returns>当前值time</returns>
         public double GetTime()
         {
             long tempTick = 0;
@@ -76,21 +84,35 @@ namespace MyCommonHelper
             return (double)tempTick / ticksPerSecond;
         }
 
+        /// <summary>
+        /// 开始计时器
+        /// </summary>
         public void StartTick()
         {
             QueryPerformanceCounter(ref lastTick);
         }
 
+        /// <summary>
+        /// 结束计时器
+        /// </summary>
         public void EndTick()
         {
             QueryPerformanceCounter(ref nowTick);
         }
 
+        /// <summary>
+        /// 获取计时器StartTick与EndTick的tick差
+        /// </summary>
+        /// <returns>tick差</returns>
         public long GetElapsedTick()
         {
             return nowTick - lastTick;
         }
 
+        /// <summary>
+        /// 获取计时器StartTick与EndTick的时间差
+        /// </summary>
+        /// <returns>时间差</returns>
         public double GetElapsedTime()
         {
             return (double)GetElapsedTick() / ticksPerSecond;
