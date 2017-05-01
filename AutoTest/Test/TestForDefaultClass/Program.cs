@@ -26,6 +26,12 @@ namespace TestForDefaultClass
         {
             Console.ReadLine();
             MyHiPerformanceTick myTick = new MyHiPerformanceTick();
+            myTick.StartTick();
+            System.Threading.Thread.Sleep(1000);
+            myTick.EndTick();
+            Console.WriteLine(myTick.GetElapsedTick().ToString());
+            Console.WriteLine(myTick.ToString());
+            Console.ReadLine();
             Stopwatch myStopWatch = new Stopwatch();
             long[] ls = new long[100];
             myStopWatch.Start();
