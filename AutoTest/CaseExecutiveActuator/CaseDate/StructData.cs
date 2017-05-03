@@ -704,7 +704,7 @@ namespace CaseExecutiveActuator
             caseAttribute = new myCaseAttribute();
         }
 
-        public void addErrorMessage(string yourErrorMessage)
+        public void AddErrorMessage(string yourErrorMessage)
         {
             if (errorMessages == null)
             {
@@ -713,7 +713,7 @@ namespace CaseExecutiveActuator
             errorMessages.Add(yourErrorMessage);
         }
 
-        public void addCaseAction(CaseResult yourCaseResult, CaseActionDescription yourDescription)
+        public void AddCaseAction(CaseResult yourCaseResult, CaseActionDescription yourDescription)
         {
             if (actions == null)
             {

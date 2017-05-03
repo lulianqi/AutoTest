@@ -1134,7 +1134,7 @@ namespace CaseExecutiveActuator
             CaseProtocol contentProtocol = CaseProtocol.unknownProtocol;
             if (sourceNode == null)
             {
-                myCaseData.addErrorMessage("Error :source data is null");
+                myCaseData.AddErrorMessage("Error :source data is null");
             }
             else
             {
@@ -1143,7 +1143,7 @@ namespace CaseExecutiveActuator
                     #region Basic information
                     if (sourceNode.Attributes["id"] == null)
                     {
-                        myCaseData.addErrorMessage("Error :not find the ID");
+                        myCaseData.AddErrorMessage("Error :not find the ID");
                     }
                     else
                     {
@@ -1153,7 +1153,7 @@ namespace CaseExecutiveActuator
                         }
                         catch (Exception)
                         {
-                            myCaseData.addErrorMessage("Error :find the error ID");
+                            myCaseData.AddErrorMessage("Error :find the error ID");
                         }
                     }
                     #endregion
@@ -1163,7 +1163,7 @@ namespace CaseExecutiveActuator
                     XmlNode tempCaseContent = sourceNode["Content"];
                     if (tempCaseContent == null)
                     {
-                        myCaseData.addErrorMessage("Error :can not find Content");
+                        myCaseData.AddErrorMessage("Error :can not find Content");
 
                     }
                     else
@@ -1177,7 +1177,7 @@ namespace CaseExecutiveActuator
                             }
                             catch
                             {
-                                myCaseData.addErrorMessage("Error :error protocol in Content");
+                                myCaseData.AddErrorMessage("Error :error protocol in Content");
                             }
                             switch (contentProtocol)
                             {
@@ -1186,55 +1186,44 @@ namespace CaseExecutiveActuator
                                     break;
                                 case CaseProtocol.vanelife_http:
                                     myCaseData.testContent = CaseProtocolExecutionForVanelife_http.GetRunContent(tempCaseContent);
-                                    //if (myCaseData.testContent.MyErrorMessage != null)
-                                    //{
-                                    //    myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.MyErrorMessage);
-                                    //    return myCaseData;
-                                    //}
                                     break;
                                 case CaseProtocol.http:
                                     myCaseData.testContent = CaseProtocolExecutionForHttp.GetRunContent(tempCaseContent);
-                                    //if (myCaseData.testContent.MyErrorMessage != null)
-                                    //{
-                                    //    myCaseData.addErrorMessage("Error :the Content not analyticaled Because:"+ myCaseData.testContent.MyErrorMessage);
-                                    //    return myCaseData;
-                                    //}
                                     break;
                                 case CaseProtocol.tcp:
-                                    myCaseData.addErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 case CaseProtocol.telnet:
-                                    myCaseData.addErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 case CaseProtocol.comm:
-                                    myCaseData.addErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 case CaseProtocol.vanelife_comm:
-                                    myCaseData.addErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 case CaseProtocol.vanelife_tcp:
-                                    myCaseData.addErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 case CaseProtocol.vanelife_telnet:
-                                    myCaseData.addErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 case CaseProtocol.defaultProtocol:
-                                    myCaseData.addErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 default:
-                                    myCaseData.addErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                             }
-                            if (myCaseData.testContent.MyErrorMessage != null)
+                            if (myCaseData.testContent.MyErrorMessage != null)  //将testContent错误移入MyRunCaseData，执行
                             {
-                                myCaseData.addErrorMessage("Error :the Content not analyticaled Because:" + myCaseData.testContent.MyErrorMessage);
+                                myCaseData.AddErrorMessage("Error :the Content not analyticaled Because:" + myCaseData.testContent.MyErrorMessage);
                                 return myCaseData;
                             }
-
                         }
                         else
                         {
-                            myCaseData.addErrorMessage("Error :can not find protocol or actuator in Content");
+                            myCaseData.AddErrorMessage("Error :can not find protocol or actuator in Content");
                         }
                     }
                     #endregion
@@ -1255,7 +1244,7 @@ namespace CaseExecutiveActuator
                             }
                             catch
                             {
-                                myCaseData.addErrorMessage("Error :find error CaseExpectType in Expect");
+                                myCaseData.AddErrorMessage("Error :find error CaseExpectType in Expect");
                                 myCaseData.caseExpectInfo.myExpectType = CaseExpectType.judge_default;
                             }
                         }
@@ -1283,7 +1272,7 @@ namespace CaseExecutiveActuator
                                 }
                                 catch
                                 {
-                                    myCaseData.addErrorMessage(string.Format("Error :find error CaseAction in Action with [{0}] in [{1}]", tempNode.InnerXml, tempNode.Name));
+                                    myCaseData.AddErrorMessage(string.Format("Error :find error CaseAction in Action with [{0}] in [{1}]", tempNode.InnerXml, tempNode.Name));
                                     continue;
                                 }
                                 try
@@ -1292,16 +1281,16 @@ namespace CaseExecutiveActuator
                                 }
                                 catch
                                 {
-                                    myCaseData.addErrorMessage(string.Format("Error :find error CaseAction in Action with [{0}] in [{1}]", tempNode.InnerXml, CaseTool.getXmlAttributeVaule(tempNode, "action")));
+                                    myCaseData.AddErrorMessage(string.Format("Error :find error CaseAction in Action with [{0}] in [{1}]", tempNode.InnerXml, CaseTool.getXmlAttributeVaule(tempNode, "action")));
                                     continue;
                                 }
                                 if (tempNode.InnerText!="")
                                 {
-                                    myCaseData.addCaseAction(tempResult, new CaseActionDescription(tempAction, tempNode.InnerText));
+                                    myCaseData.AddCaseAction(tempResult, new CaseActionDescription(tempAction, tempNode.InnerText));
                                 }
                                 else
                                 {
-                                    myCaseData.addCaseAction(tempResult, new CaseActionDescription(tempAction, null));
+                                    myCaseData.AddCaseAction(tempResult, new CaseActionDescription(tempAction, null));
                                 }
                             }
                         }
@@ -1322,7 +1311,7 @@ namespace CaseExecutiveActuator
                                 }
                                 catch
                                 {
-                                    myCaseData.addErrorMessage("Error :find error Delay data in Attribute");
+                                    myCaseData.AddErrorMessage("Error :find error Delay data in Attribute");
                                 }
                             }
                             if (tempCaseAttribute["Level"] != null)
@@ -1333,7 +1322,7 @@ namespace CaseExecutiveActuator
                                 }
                                 catch
                                 {
-                                    myCaseData.addErrorMessage("Error :find error Level data in Attribute");
+                                    myCaseData.AddErrorMessage("Error :find error Level data in Attribute");
                                 }
                             }
                             if (tempCaseAttribute["ParameterSave"] != null)
@@ -1350,22 +1339,22 @@ namespace CaseExecutiveActuator
                                             PickOutFunction tempPickOutFunction = PickOutFunction.pick_str;
                                             if (tempParameterName == null)
                                             {
-                                                myCaseData.addErrorMessage("Error :can not find name data in NewParameter in Attribute");
+                                                myCaseData.AddErrorMessage("Error :can not find name data in NewParameter in Attribute");
                                                 continue;
                                             }
                                             if (tempParameterName == "")
                                             {
-                                                myCaseData.addErrorMessage("Error :the name data in NewParameter is empty in Attribute");
+                                                myCaseData.AddErrorMessage("Error :the name data in NewParameter is empty in Attribute");
                                                 continue;
                                             }
                                             if (tempParameterMode == null)
                                             {
-                                                myCaseData.addErrorMessage("Error :can not find mode data in NewParameter in Attribute");
+                                                myCaseData.AddErrorMessage("Error :can not find mode data in NewParameter in Attribute");
                                                 continue;
                                             }
                                             if (tempFindVaule == "")
                                             {
-                                                myCaseData.addErrorMessage("Error :the NewParameter vaule is empty in Attribute");
+                                                myCaseData.AddErrorMessage("Error :the NewParameter vaule is empty in Attribute");
                                                 continue;
                                             }
                                             try
@@ -1374,7 +1363,7 @@ namespace CaseExecutiveActuator
                                             }
                                             catch
                                             {
-                                                myCaseData.addErrorMessage("Error :find error ParameterSave mode in Attribute");
+                                                myCaseData.AddErrorMessage("Error :find error ParameterSave mode in Attribute");
                                                 continue;
                                             }
                                             myCaseData.caseAttribute.addParameterSave(tempParameterName, tempFindVaule, tempPickOutFunction);
@@ -1389,7 +1378,7 @@ namespace CaseExecutiveActuator
                 }
                 else
                 {
-                    myCaseData.addErrorMessage("Error :source data is error");
+                    myCaseData.AddErrorMessage("Error :source data is error");
                 }
             }
             return myCaseData;
