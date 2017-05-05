@@ -198,7 +198,7 @@ namespace CaseExecutiveActuator
             {
                 if (errerData != null)
                 {
-                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, tempError);
+                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
                     errorList.Add(errerData);
                     return true;
                 }
@@ -224,6 +224,9 @@ namespace CaseExecutiveActuator
                 MyConsoleExecutionContent nowExecutionContent = yourExecutionContent as MyConsoleExecutionContent;
                 myResult.caseProtocol = CaseProtocol.console;
                 myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
+                myResult.startTime = DateTime.Now.ToString("HH:mm:ss");
+                System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
+                myWatch.Start();
 
                 #region Show
                 myResult.backContent=nowExecutionContent.showContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
@@ -340,6 +343,8 @@ namespace CaseExecutiveActuator
                     }
                 }
                 #endregion
+                myWatch.Stop();
+                myResult.spanTime = myResult.requestTime = myWatch.ElapsedMilliseconds.ToString();
             }
             else
             {
@@ -1215,7 +1220,7 @@ namespace CaseExecutiveActuator
                                     myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                             }
-                            if (myCaseData.testContent.MyErrorMessage != null)  //将testContent错误移入MyRunCaseData，执行
+                            if (myCaseData.testContent.MyErrorMessage != null)  //将testContent错误移入MyRunCaseData，执行case时会检查MyRunCaseData中的错误
                             {
                                 myCaseData.AddErrorMessage("Error :the Content not analyticaled Because:" + myCaseData.testContent.MyErrorMessage);
                                 return myCaseData;

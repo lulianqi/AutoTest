@@ -1079,21 +1079,6 @@ namespace MyCommonHelper
 
         }
 
-        /*
-        private static FileStream fsRecord ;
-        public static void StartRecord()
-        {
-         * 
-        }
-        public static void PutInRecord()
-        {
-
-        }
-        public static void EndRecord()
-        {
-
-        }
-        */
 
         /// <summary>
         /// when you close your application you can call me to deal with the log you not put in the file 
@@ -1101,6 +1086,7 @@ namespace MyCommonHelper
         public static void closeLog()
         {
             savaUnHandleLogs();
+            Stop();
         }
     }
 }

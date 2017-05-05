@@ -24,14 +24,15 @@ namespace AutoTest.myDialogWindow
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tb_keyAdd = new System.Windows.Forms.TextBox();
             this.tb_valueAdd = new System.Windows.Forms.TextBox();
-            this.lb_info_caceParameter = new System.Windows.Forms.Label();
-            this.lb_info_caceStaticData = new System.Windows.Forms.Label();
+            this.lb_info_keyValue = new System.Windows.Forms.Label();
+            this.lb_info_parameter = new System.Windows.Forms.Label();
             this.pictureBox_set = new System.Windows.Forms.PictureBox();
             this.pictureBox_next = new System.Windows.Forms.PictureBox();
             this.pictureBox_refresh = new System.Windows.Forms.PictureBox();
             this.pictureBox_add = new System.Windows.Forms.PictureBox();
             this.pictureBox_close = new System.Windows.Forms.PictureBox();
             this.toolTip_info = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_set)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_next)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_refresh)).BeginInit();
@@ -78,36 +79,36 @@ namespace AutoTest.myDialogWindow
             this.tb_valueAdd.Size = new System.Drawing.Size(220, 21);
             this.tb_valueAdd.TabIndex = 3;
             // 
-            // lb_info_caceParameter
+            // lb_info_keyValue
             // 
-            this.lb_info_caceParameter.AutoSize = true;
-            this.lb_info_caceParameter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(217)))), ((int)(((byte)(247)))));
-            this.lb_info_caceParameter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lb_info_caceParameter.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb_info_caceParameter.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lb_info_caceParameter.Location = new System.Drawing.Point(8, 9);
-            this.lb_info_caceParameter.Name = "lb_info_caceParameter";
-            this.lb_info_caceParameter.Size = new System.Drawing.Size(111, 13);
-            this.lb_info_caceParameter.TabIndex = 11;
-            this.lb_info_caceParameter.Text = "CaseParameter";
-            this.lb_info_caceParameter.Click += new System.EventHandler(this.lb_info_caceParameter_Click);
-            this.lb_info_caceParameter.MouseLeave += new System.EventHandler(this.lb_info_MouseLeave);
-            this.lb_info_caceParameter.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lb_info_MouseMove);
+            this.lb_info_keyValue.AutoSize = true;
+            this.lb_info_keyValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(217)))), ((int)(((byte)(247)))));
+            this.lb_info_keyValue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lb_info_keyValue.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_info_keyValue.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.lb_info_keyValue.Location = new System.Drawing.Point(8, 9);
+            this.lb_info_keyValue.Name = "lb_info_keyValue";
+            this.lb_info_keyValue.Size = new System.Drawing.Size(71, 13);
+            this.lb_info_keyValue.TabIndex = 11;
+            this.lb_info_keyValue.Text = "KeyValue";
+            this.lb_info_keyValue.Click += new System.EventHandler(this.lb_info_caceParameter_Click);
+            this.lb_info_keyValue.MouseLeave += new System.EventHandler(this.lb_info_MouseLeave);
+            this.lb_info_keyValue.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lb_info_MouseMove);
             // 
-            // lb_info_caceStaticData
+            // lb_info_parameter
             // 
-            this.lb_info_caceStaticData.AutoSize = true;
-            this.lb_info_caceStaticData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lb_info_caceStaticData.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb_info_caceStaticData.ForeColor = System.Drawing.Color.DarkGray;
-            this.lb_info_caceStaticData.Location = new System.Drawing.Point(136, 9);
-            this.lb_info_caceStaticData.Name = "lb_info_caceStaticData";
-            this.lb_info_caceStaticData.Size = new System.Drawing.Size(119, 13);
-            this.lb_info_caceStaticData.TabIndex = 12;
-            this.lb_info_caceStaticData.Text = "CaseStaticData";
-            this.lb_info_caceStaticData.Click += new System.EventHandler(this.lb_info_caceStaticData_Click);
-            this.lb_info_caceStaticData.MouseLeave += new System.EventHandler(this.lb_info_MouseLeave);
-            this.lb_info_caceStaticData.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lb_info_MouseMove);
+            this.lb_info_parameter.AutoSize = true;
+            this.lb_info_parameter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lb_info_parameter.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_info_parameter.ForeColor = System.Drawing.Color.DarkGray;
+            this.lb_info_parameter.Location = new System.Drawing.Point(85, 9);
+            this.lb_info_parameter.Name = "lb_info_parameter";
+            this.lb_info_parameter.Size = new System.Drawing.Size(79, 13);
+            this.lb_info_parameter.TabIndex = 12;
+            this.lb_info_parameter.Text = "Parameter";
+            this.lb_info_parameter.Click += new System.EventHandler(this.lb_info_caceStaticData_Click);
+            this.lb_info_parameter.MouseLeave += new System.EventHandler(this.lb_info_MouseLeave);
+            this.lb_info_parameter.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lb_info_MouseMove);
             // 
             // pictureBox_set
             // 
@@ -174,13 +175,26 @@ namespace AutoTest.myDialogWindow
             this.toolTip_info.SetToolTip(this.pictureBox_close, "关闭");
             this.pictureBox_close.Click += new System.EventHandler(this.pictureBox_close_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.DarkGray;
+            this.label1.Location = new System.Drawing.Point(168, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "DataSouce";
+            // 
             // myCaseParameter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 317);
-            this.Controls.Add(this.lb_info_caceStaticData);
-            this.Controls.Add(this.lb_info_caceParameter);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lb_info_parameter);
+            this.Controls.Add(this.lb_info_keyValue);
             this.Controls.Add(this.pictureBox_close);
             this.Controls.Add(this.tb_valueAdd);
             this.Controls.Add(this.tb_keyAdd);
@@ -221,11 +235,12 @@ namespace AutoTest.myDialogWindow
         private System.Windows.Forms.TextBox tb_valueAdd;
         private System.Windows.Forms.PictureBox pictureBox_close;
         private System.Windows.Forms.PictureBox pictureBox_add;
-        private System.Windows.Forms.Label lb_info_caceParameter;
-        private System.Windows.Forms.Label lb_info_caceStaticData;
+        private System.Windows.Forms.Label lb_info_keyValue;
+        private System.Windows.Forms.Label lb_info_parameter;
         private System.Windows.Forms.PictureBox pictureBox_refresh;
         private System.Windows.Forms.PictureBox pictureBox_next;
         private System.Windows.Forms.PictureBox pictureBox_set;
         private System.Windows.Forms.ToolTip toolTip_info;
+        private System.Windows.Forms.Label label1;
     }
 }

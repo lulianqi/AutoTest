@@ -145,8 +145,8 @@ namespace AutoTest.myDialogWindow
             isCaceParameter = isShowParameter;
             if(isShowParameter)
             {
-                lb_info_caceParameter.ForeColor = Color.SaddleBrown;
-                lb_info_caceStaticData.ForeColor = Color.DarkGray;
+                lb_info_keyValue.ForeColor = Color.SaddleBrown;
+                lb_info_parameter.ForeColor = Color.DarkGray;
                 pictureBox_add.Image = AutoTest.Properties.Resources._20140924023908574_easyicon_net_128;
                 this.toolTip_info.SetToolTip(this.pictureBox_add, "修改&添加数据");
                 tb_valueAdd.Width = 220;
@@ -154,8 +154,8 @@ namespace AutoTest.myDialogWindow
             }
             else
             {
-                lb_info_caceParameter.ForeColor = Color.DarkGray;
-                lb_info_caceStaticData.ForeColor = Color.SaddleBrown;
+                lb_info_keyValue.ForeColor = Color.DarkGray;
+                lb_info_parameter.ForeColor = Color.SaddleBrown;
                 pictureBox_add.Image = (Image)Properties.Resources.ResourceManager.GetObject("2015070304121672223_easyicon_net_128");
                 this.toolTip_info.SetToolTip(this.pictureBox_add, "重置所有数据");
                 tb_valueAdd.Width = 146;

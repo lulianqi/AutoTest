@@ -15,7 +15,7 @@
       <NewParameter name="parameter_sellerPwd" type="vaule">888888</NewParameter>
       <NewParameter name="parameter_userId" type="vaule">908</NewParameter>
       <NewParameter name="parameter_addressId" type="vaule">628</NewParameter>
-      <NewStaticData name="StaticData" type="index">1-100</NewStaticData>
+      <NewParameter name="StaticData" type="index">1-100</NewParameter>
     
       <!--HaveParameters的处理-->
       <!--Parameters静态数据必须以*#包含，可以含有多个静态数据，但静态数据不能使用*#进行嵌套，可以进行平铺，如果平铺的多个静态数据的数据名及参数完全相同，则他们的值也将相同，不会进行新的计算-->
@@ -653,8 +653,7 @@
         <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#StaticData2(+)*#/*#StaticData4(+3)*#</Show><!--必选项，没有信息也需要填写备注-->
         <ConsoleTask>
           <Set name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Set>
-          <Set name="User-Agent">test man</Set>
-          <!--<Add name="StaticDataAdderror" type="nukonw">1-1000-2</Add>-->
+          <Set name="StaticData">500000</Set>
           <Add name="StaticDataAdd" type="index">1-1000-2</Add>
           <Add name="StaticData3Add" type="list">a1,a2,a3,a4-2</Add>
           <Add name="mycsvfileAdd" type="csv">casefile\csvdatasouce.csv-65001</Add>
