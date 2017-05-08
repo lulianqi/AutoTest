@@ -32,7 +32,7 @@ namespace AutoTest.myDialogWindow
             this.pictureBox_add = new System.Windows.Forms.PictureBox();
             this.pictureBox_close = new System.Windows.Forms.PictureBox();
             this.toolTip_info = new System.Windows.Forms.ToolTip(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.lb_info_dataSouce = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_set)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_next)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_refresh)).BeginInit();
@@ -91,7 +91,7 @@ namespace AutoTest.myDialogWindow
             this.lb_info_keyValue.Size = new System.Drawing.Size(71, 13);
             this.lb_info_keyValue.TabIndex = 11;
             this.lb_info_keyValue.Text = "KeyValue";
-            this.lb_info_keyValue.Click += new System.EventHandler(this.lb_info_caceParameter_Click);
+            this.lb_info_keyValue.Click += new System.EventHandler(this.lb_info_runTimeParameter_Click);
             this.lb_info_keyValue.MouseLeave += new System.EventHandler(this.lb_info_MouseLeave);
             this.lb_info_keyValue.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lb_info_MouseMove);
             // 
@@ -106,7 +106,7 @@ namespace AutoTest.myDialogWindow
             this.lb_info_parameter.Size = new System.Drawing.Size(79, 13);
             this.lb_info_parameter.TabIndex = 12;
             this.lb_info_parameter.Text = "Parameter";
-            this.lb_info_parameter.Click += new System.EventHandler(this.lb_info_caceStaticData_Click);
+            this.lb_info_parameter.Click += new System.EventHandler(this.lb_info_runTimeParameter_Click);
             this.lb_info_parameter.MouseLeave += new System.EventHandler(this.lb_info_MouseLeave);
             this.lb_info_parameter.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lb_info_MouseMove);
             // 
@@ -175,24 +175,27 @@ namespace AutoTest.myDialogWindow
             this.toolTip_info.SetToolTip(this.pictureBox_close, "关闭");
             this.pictureBox_close.Click += new System.EventHandler(this.pictureBox_close_Click);
             // 
-            // label1
+            // lb_info_dataSouce
             // 
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.DarkGray;
-            this.label1.Location = new System.Drawing.Point(168, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "DataSouce";
+            this.lb_info_dataSouce.AutoSize = true;
+            this.lb_info_dataSouce.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lb_info_dataSouce.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_info_dataSouce.ForeColor = System.Drawing.Color.DarkGray;
+            this.lb_info_dataSouce.Location = new System.Drawing.Point(168, 9);
+            this.lb_info_dataSouce.Name = "lb_info_dataSouce";
+            this.lb_info_dataSouce.Size = new System.Drawing.Size(79, 13);
+            this.lb_info_dataSouce.TabIndex = 16;
+            this.lb_info_dataSouce.Text = "DataSouce";
+            this.lb_info_dataSouce.Click += new System.EventHandler(this.lb_info_runTimeParameter_Click);
+            this.lb_info_dataSouce.MouseLeave += new System.EventHandler(this.lb_info_MouseLeave);
+            this.lb_info_dataSouce.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lb_info_MouseMove);
             // 
             // myCaseParameter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 317);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lb_info_dataSouce);
             this.Controls.Add(this.lb_info_parameter);
             this.Controls.Add(this.lb_info_keyValue);
             this.Controls.Add(this.pictureBox_close);
@@ -241,6 +244,6 @@ namespace AutoTest.myDialogWindow
         private System.Windows.Forms.PictureBox pictureBox_next;
         private System.Windows.Forms.PictureBox pictureBox_set;
         private System.Windows.Forms.ToolTip toolTip_info;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lb_info_dataSouce;
     }
 }

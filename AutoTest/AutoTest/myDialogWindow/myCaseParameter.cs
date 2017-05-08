@@ -27,6 +27,12 @@ namespace AutoTest.myDialogWindow
 {
     public partial class myCaseParameter : DevComponents.DotNetBar.Office2007RibbonForm
     {
+        public enum ShowRunTimeParameterType
+        {
+            KeyValue,
+            Parameter,
+            DataSouce
+        }
         public myCaseParameter()
         {
             InitializeComponent();
@@ -52,6 +58,7 @@ namespace AutoTest.myDialogWindow
         }
 
         bool isCaceParameter = true;
+        ShowRunTimeParameterType nowShowType = ShowRunTimeParameterType.KeyValue;
         AutoRunner myParentWindow;
         Timer myUpdataTime = new Timer();
        
@@ -107,25 +114,46 @@ namespace AutoTest.myDialogWindow
             }
         }
 
+        private void lb_info_runTimeParameter_Click(object sender, EventArgs e)
+        {
+            ShowRunTimeParameterType hereType;
+            if (Enum.TryParse<ShowRunTimeParameterType>(((Label)sender).Text, out hereType))
+            {
+                ShowInfoChange(hereType);
+            }
+        }
+
+
         public void updatalistView_CaseParameter()
         {
             MyCommonTool.SetControlFreeze(listView_CaseParameter);
             listView_CaseParameter.BeginUpdate();
             listView_CaseParameter.Items.Clear();
-            if (isCaceParameter)
+            switch (nowShowType)
             {
-                foreach (KeyValuePair<string, string> tempKvp in myParentWindow.nowCaseActionActuator.NowParameterList)
-                {
-                    listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value }));
-                }
+                case ShowRunTimeParameterType.KeyValue:
+                    foreach (KeyValuePair<string, string> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataKeyList)
+                    {
+                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value }));
+                    }
+                    break;
+                case ShowRunTimeParameterType.Parameter:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
+                    {
+                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+                    }
+                    break;
+                case ShowRunTimeParameterType.DataSouce:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
+                    {
+                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+                    }
+                    break;
+                default:
+                    //not this way
+                    break;
             }
-            else
-            {
-                foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.NowStaticDataList)
-                {
-                    listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
-                }
-            }
+           
             listView_CaseParameter.EndUpdate();
             MyCommonTool.SetControlUnfreeze(listView_CaseParameter);
         }
@@ -140,52 +168,50 @@ namespace AutoTest.myDialogWindow
             }
         }
 
-        private void ShowInfoChange(bool isShowParameter)
+        private void ShowInfoChange(ShowRunTimeParameterType showParameter)
         {
-            isCaceParameter = isShowParameter;
-            if(isShowParameter)
+            switch (showParameter)
             {
-                lb_info_keyValue.ForeColor = Color.SaddleBrown;
-                lb_info_parameter.ForeColor = Color.DarkGray;
-                pictureBox_add.Image = AutoTest.Properties.Resources._20140924023908574_easyicon_net_128;
-                this.toolTip_info.SetToolTip(this.pictureBox_add, "修改&添加数据");
-                tb_valueAdd.Width = 220;
-                pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = false;
-            }
-            else
-            {
-                lb_info_keyValue.ForeColor = Color.DarkGray;
-                lb_info_parameter.ForeColor = Color.SaddleBrown;
-                pictureBox_add.Image = (Image)Properties.Resources.ResourceManager.GetObject("2015070304121672223_easyicon_net_128");
-                this.toolTip_info.SetToolTip(this.pictureBox_add, "重置所有数据");
-                tb_valueAdd.Width = 146;
-                pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = true;
+                case ShowRunTimeParameterType.KeyValue:
+                    nowShowType = ShowRunTimeParameterType.KeyValue;
+                    lb_info_keyValue.ForeColor = Color.SaddleBrown;
+                    lb_info_parameter.ForeColor = lb_info_dataSouce.ForeColor = Color.DarkGray;
+                    pictureBox_add.Image = AutoTest.Properties.Resources._20140924023908574_easyicon_net_128;
+                    this.toolTip_info.SetToolTip(this.pictureBox_add, "修改&添加数据");
+                    tb_valueAdd.Width = 220;
+                    pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = false;
+                    break;
+                case ShowRunTimeParameterType.Parameter:
+                    nowShowType = ShowRunTimeParameterType.Parameter;
+                    lb_info_parameter.ForeColor = Color.SaddleBrown;
+                    lb_info_keyValue.ForeColor = lb_info_dataSouce.ForeColor = Color.DarkGray;
+                    pictureBox_add.Image = (Image)Properties.Resources.ResourceManager.GetObject("2015070304121672223_easyicon_net_128");
+                    this.toolTip_info.SetToolTip(this.pictureBox_add, "重置所有数据");
+                    tb_valueAdd.Width = 146;
+                    pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = true;
+                    break;
+                case ShowRunTimeParameterType.DataSouce:
+                    nowShowType = ShowRunTimeParameterType.DataSouce;
+                    lb_info_dataSouce.ForeColor = Color.SaddleBrown;
+                    lb_info_keyValue.ForeColor = lb_info_parameter.ForeColor = Color.DarkGray;
+                    pictureBox_add.Image = (Image)Properties.Resources.ResourceManager.GetObject("2015070304121672223_easyicon_net_128");
+                    this.toolTip_info.SetToolTip(this.pictureBox_add, "查看所有数据");
+                    tb_valueAdd.Width = 146;
+                    pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = true;
+                    break;
+                default:
+                    break;
             }
             updatalistView_CaseParameter();
+            
         }
 
-
+        #region pictureBox button
         private void pictureBox_close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void lb_info_caceParameter_Click(object sender, EventArgs e)
-        {
-            if(!isCaceParameter)
-            {
-                ShowInfoChange(true);
-            }
-        }
-
-        private void lb_info_caceStaticData_Click(object sender, EventArgs e)
-        {
-            if (isCaceParameter)
-            {
-                ShowInfoChange(false);
-            }
-        }
-
+     
         private void pictureBox_refresh_Click(object sender, EventArgs e)
         {
             updatalistView_CaseParameter();
@@ -194,38 +220,83 @@ namespace AutoTest.myDialogWindow
         private void pictureBox_next_Click(object sender, EventArgs e)
         {
             bool tempIsFindVaule = false;
-            foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.NowStaticDataList)
+            switch (nowShowType)
             {
-                if(tempKvp.Key==tb_keyAdd.Text)
-                {
-                    tempIsFindVaule = true;
-                    tb_valueAdd.Text = tempKvp.Value.DataMoveNext();
-                    updatalistView_CaseParameter();
+                case ShowRunTimeParameterType.Parameter:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
+                    {
+                        if (tempKvp.Key == tb_keyAdd.Text)
+                        {
+                            tempIsFindVaule = true;
+                            tb_valueAdd.Text = tempKvp.Value.DataMoveNext();
+                            updatalistView_CaseParameter();
+                            break;
+                        }
+                    }
                     break;
-                }
+                case ShowRunTimeParameterType.DataSouce:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
+                    {
+                        if (tempKvp.Key == tb_keyAdd.Text)
+                        {
+                            tempIsFindVaule = true;
+                            tb_valueAdd.Text = tempKvp.Value.DataMoveNext();
+                            updatalistView_CaseParameter();
+                            break;
+                        }
+                    }
+                    break;
+                default:
+                    //not this way
+                    break;
             }
-            if(!tempIsFindVaule)
+            if (!tempIsFindVaule)
             {
                 MessageBox.Show("未发现指定运行时参数", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
+
         private void pictureBox_set_Click(object sender, EventArgs e)
         {
             bool tempIsFindVaule = false;
-            foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.NowStaticDataList)
+            switch (nowShowType)
             {
-                if (tempKvp.Key == tb_keyAdd.Text)
-                {
-                    tempIsFindVaule = true;
-                    if (!tempKvp.Value.DataSet(tb_valueAdd.Text))
+                case ShowRunTimeParameterType.Parameter:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
                     {
-                        MessageBox.Show("指定值无法匹配该类型运行时参数", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        tb_valueAdd.Text = tempKvp.Value.DataCurrent();
+                        if (tempKvp.Key == tb_keyAdd.Text)
+                        {
+                            tempIsFindVaule = true;
+                            if (!tempKvp.Value.DataSet(tb_valueAdd.Text))
+                            {
+                                MessageBox.Show("指定值无法匹配该类型运行时参数", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                tb_valueAdd.Text = tempKvp.Value.DataCurrent();
+                            }
+                            updatalistView_CaseParameter();
+                            break;
+                        }
                     }
-                    updatalistView_CaseParameter();
                     break;
-                }
+                case ShowRunTimeParameterType.DataSouce:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
+                    {
+                        if (tempKvp.Key == tb_keyAdd.Text)
+                        {
+                            tempIsFindVaule = true;
+                            if (!tempKvp.Value.DataSet(tb_valueAdd.Text))
+                            {
+                                MessageBox.Show("指定值无法匹配该类型运行时参数", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                tb_valueAdd.Text = tempKvp.Value.DataCurrent();
+                            }
+                            updatalistView_CaseParameter();
+                            break;
+                        }
+                    }
+                    break;
+                default:
+                    //not this way
+                    break;
             }
             if (!tempIsFindVaule)
             {
@@ -235,9 +306,40 @@ namespace AutoTest.myDialogWindow
 
         private void pictureBox_add_Click(object sender, EventArgs e)
         {
+            //switch (nowShowType)
+            //{
+            //    case ShowRunTimeParameterType.KeyValue:
+            //        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
+            //        {
+            //            if (tempKvp.Key == tb_keyAdd.Text)
+            //            {
+            //                MessageBox.Show("在运行时参数【CaseStaticData】中已经存在该键值", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //                return;
+            //            }
+            //        }
+            //        myParentWindow.nowCaseActionActuator.AddRunActuatorStaticDataKey(tb_keyAdd.Text, tb_valueAdd.Text);
+            //        tb_keyAdd.Text = tb_valueAdd.Text = "";
+            //        break;
+            //    case ShowRunTimeParameterType.Parameter:
+            //        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
+            //        {
+            //            listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+            //        }
+            //        break;
+            //    case ShowRunTimeParameterType.DataSouce:
+            //        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
+            //        {
+            //            listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+            //        }
+            //        break;
+            //    default:
+            //        //not this way
+            //        break;
+            //}
+
             if (isCaceParameter)
             {
-                foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.NowStaticDataList)
+                foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
                 {
                     if (tempKvp.Key == tb_keyAdd.Text)
                     {
@@ -250,14 +352,15 @@ namespace AutoTest.myDialogWindow
             }
             else
             {
-                foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.NowStaticDataList)
+                foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
                 {
                     tempKvp.Value.DataReset();
                 }
                 tb_keyAdd.Text = tb_valueAdd.Text = "";
                 updatalistView_CaseParameter();
             }
-        }
+        } 
+        #endregion
 
 
         #region lb_info click helper
@@ -303,8 +406,6 @@ namespace AutoTest.myDialogWindow
             }
         }
         #endregion
-
-
 
     }
 }

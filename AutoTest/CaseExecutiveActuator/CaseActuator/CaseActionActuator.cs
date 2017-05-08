@@ -401,6 +401,8 @@ namespace CaseExecutiveActuator
         /// </summary>
         private Dictionary<string, IRunTimeDataSource> runActuatorStaticDataSouceList;
 
+        private CaseExecutiveActuator.CaseActionActuator.delegateActuatorParameterListEventHandler innerActuatorParameterListChanged;
+
         public ActuatorStaticDataCollection()
         {
             runActuatorStaticDataKeyList = new Dictionary<string, string>();
@@ -413,6 +415,15 @@ namespace CaseExecutiveActuator
             runActuatorStaticDataKeyList = yourActuatorParameterList;
             runActuatorStaticDataParameterList = yourActuatorStaticDataList;
             runActuatorStaticDataSouceList = yourActuatorStaticDataSouceList;
+        }
+
+        /// <summary>
+        /// set ActuatorParameterListChanged (if your want clone it it need new delegateActuatorParameterListEventHandler)
+        /// </summary>
+        /// <param name="yourActuatorParameterListChanged">delegateActuatorParameterListEventHandler </param>
+        public void SetActuatorParameterListChanged(CaseExecutiveActuator.CaseActionActuator.delegateActuatorParameterListEventHandler yourActuatorParameterListChanged)
+        {
+            innerActuatorParameterListChanged = yourActuatorParameterListChanged;
         }
 
         private object IsHasSameKey(string key, int ignoreListIndex)
@@ -432,6 +443,14 @@ namespace CaseExecutiveActuator
             return null;
         }
 
+        private void OnListChanged()
+        {
+            if(innerActuatorParameterListChanged!=null)
+            {
+                this.innerActuatorParameterListChanged();
+            }
+        }
+
         public Dictionary<string, string> RunActuatorStaticDataKeyList
         {
             get { return runActuatorStaticDataKeyList; }
@@ -447,6 +466,12 @@ namespace CaseExecutiveActuator
             get { return runActuatorStaticDataSouceList; }
         }
 
+        /// <summary>
+        /// Add Data into runActuatorStaticDataKeyList (if has same key retrun false)
+        /// </summary>
+        /// <param name="key">key</param>
+        /// <param name="vaule">vaule</param>
+        /// <returns>is sucess</returns>
         public bool AddStaticDataKey(string key, string vaule)
         {
             if(IsHasSameKey(key,1)!=null)
@@ -454,9 +479,16 @@ namespace CaseExecutiveActuator
                 return false;
             }
             runActuatorStaticDataKeyList.MyAdd(key, vaule);
+            OnListChanged();
             return true;
         }
 
+        /// <summary>
+        /// Add Data into runActuatorStaticDataParameterList (if has same key retrun false)
+        /// </summary>
+        /// <param name="key">key</param>
+        /// <param name="vaule">vaule</param>
+        /// <returns>is sucess</returns>
         public bool AddStaticDataParameter(string key, IRunTimeStaticData vaule)
         {
             if(IsHasSameKey(key,2)!=null)
@@ -464,9 +496,16 @@ namespace CaseExecutiveActuator
                 return false;
             }
             runActuatorStaticDataParameterList.MyAdd<IRunTimeStaticData>(key, vaule);
+            OnListChanged();
             return true;
         }
 
+        /// <summary>
+        /// Add Data into runActuatorStaticDataSouceList (if has same key retrun false)
+        /// </summary>
+        /// <param name="key">key</param>
+        /// <param name="vaule">vaule</param>
+        /// <returns>is sucess</returns>
         public bool AddStaticDataSouce(string key, IRunTimeDataSource vaule)
         {
             if (IsHasSameKey(key, 3) != null)
@@ -474,9 +513,16 @@ namespace CaseExecutiveActuator
                 return false;
             }
             runActuatorStaticDataSouceList.MyAdd<IRunTimeDataSource>(key, vaule);
+            OnListChanged();
             return true;
         }
 
+        /// <summary>
+        /// Remove Static Data in any list (if there has any same key retrun false)
+        /// </summary>
+        /// <param name="key">key or Regex</param>
+        /// <param name="isRegex">is use Regex</param>
+        /// <returns>is sucess</returns>
         public bool RemoveStaticData(string key, bool isRegex)
         {
             if (!isRegex)
@@ -557,9 +603,16 @@ namespace CaseExecutiveActuator
                 }
                 
             }
+            OnListChanged();
             return true;
         }
 
+        /// <summary>
+        /// set or change data in any list
+        /// </summary>
+        /// <param name="key">key</param>
+        /// <param name="configVaule">config Vaule</param>
+        /// <returns>is sucess</returns>
         public bool SetStaticData(string key, string configVaule)
         {
             var tempDataList = IsHasSameKey(key, 0);
@@ -570,14 +623,17 @@ namespace CaseExecutiveActuator
             else if (tempDataList == runActuatorStaticDataKeyList)
             {
                 runActuatorStaticDataKeyList[key] = configVaule;
+                OnListChanged();
                 return true;
             }
             else if (tempDataList == runActuatorStaticDataParameterList)
             {
+                OnListChanged();//may not change
                 return runActuatorStaticDataParameterList[key].DataSet(configVaule);
             }
             else if (tempDataList == runActuatorStaticDataSouceList)
             {
+                OnListChanged();//may not change
                 return runActuatorStaticDataSouceList[key].DataSet(configVaule);
             }
             else
@@ -597,6 +653,7 @@ namespace CaseExecutiveActuator
             runActuatorStaticDataKeyList.Clear();
             runActuatorStaticDataParameterList.Clear();
             runActuatorStaticDataSouceList.Clear();
+            innerActuatorParameterListChanged = null;
         }
 
     }
@@ -788,6 +845,7 @@ namespace CaseExecutiveActuator
             rootActuator = null;
             myExecutionDeviceList = new Dictionary<string, ICaseExecutionDevice>();
             runActuatorStaticDataCollection = new ActuatorStaticDataCollection();
+            runActuatorStaticDataCollection.SetActuatorParameterListChanged(OnActuatorParameterListChanged);
             runExecutionResultList = new List<MyExecutionDeviceResult>();
             invalidThreadList = new List<Thread>();
             myErrorInfo = "";
@@ -815,6 +873,7 @@ namespace CaseExecutiveActuator
             cloneActuator.rootActuator = null;
             cloneActuator.myExecutionDeviceList = myExecutionDeviceList.MyClone();
             cloneActuator.runActuatorStaticDataCollection = (ActuatorStaticDataCollection)runActuatorStaticDataCollection.Clone();
+            cloneActuator.runActuatorStaticDataCollection.SetActuatorParameterListChanged(cloneActuator.OnActuatorParameterListChanged);
             cloneActuator.SetCaseRunTime(this.runTimeCaseDictionary, this.runCellProjctCollection);
             cloneActuator.caseThinkTime = this.caseThinkTime;
             return cloneActuator;
@@ -915,36 +974,6 @@ namespace CaseExecutiveActuator
             }
         }
 
-        /// <summary>
-        /// 获取当前参数化数据列表
-        /// </summary>
-        public Dictionary<string, string> NowParameterList
-        {
-            get
-            {
-                return runActuatorStaticDataCollection.RunActuatorStaticDataKeyList;
-            }
-        }
-
-        /// <summary>
-        /// 获取当前静态参数化数据列表
-        /// </summary>
-        public Dictionary<string, IRunTimeStaticData> NowStaticDataList
-        {
-            get
-            {
-                return runActuatorStaticDataCollection.RunActuatorStaticDataParameterList;
-            }
-        }
-
-        //获取当钱静态数据源数据列表
-        public Dictionary<string, IRunTimeDataSource> NowStaticDataSouceList
-        {
-            get
-            {
-                return runActuatorStaticDataCollection.RunActuatorStaticDataSouceList;
-            }
-        }
 
         /// <summary>
         /// 获取数据源管理器

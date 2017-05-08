@@ -1264,7 +1264,7 @@ namespace CaseExecutiveActuator
         {
             if(souseListData.Contains(expectData))
             {
-                nowIndex = souseListData.IndexOf("expectData");
+                nowIndex = souseListData.IndexOf(expectData);
             }
             return false;
         }
