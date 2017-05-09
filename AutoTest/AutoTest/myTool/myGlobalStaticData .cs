@@ -54,6 +54,7 @@ namespace AutoTest.myTool
 
         //[MethodImplAttribute(MethodImplOptions.Synchronized)] 加在方法前面
         //MethodImplAttribute类的一个构造函数把MethodImplOptions枚举作为其参数，MethodImplOptions 枚举有一个字段Synchronized，，它指定在任一时刻只允许一个线程访问这个方法。
+        //指定同时只能由一个线程执行该方法。 静态方法锁定类型，而实例方法锁定实例(即每个实例都单独锁定)。 在任何实例函数中只能执行一个线程，并且在类的任何静态函数中只能执行一个线程。 
         #endregion
 
         public static Stopwatch myStopWatch = new Stopwatch();//提供给代码测试使用，请勿在场景中使用
@@ -61,16 +62,6 @@ namespace AutoTest.myTool
         //Stopwatch.IsHighResolution = true  //https://msdn.microsoft.com/zh-cn/library/system.diagnostics.stopwatch.ishighresolution.aspx
         //Process.GetCurrentProcess().TotalProcessorTime;
         //Elapsed.Ticks
-        public static void startWatch()
-        {
-            myStopWatch.Reset();
-            myStopWatch.Start();
-        }   
 
-        public static string getWatchTime()
-        {
-            myStopWatch.Stop();
-            return myStopWatch.Elapsed.ToString();
-        }
     }
 }

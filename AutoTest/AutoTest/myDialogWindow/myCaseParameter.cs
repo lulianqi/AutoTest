@@ -71,13 +71,6 @@ namespace AutoTest.myDialogWindow
             {
                 myParentWindow.nowCaseActionActuator.OnActuatorParameterListChanged += nowCaseActionActuator_OnActuatorParameterListChanged;
                 updatalistView_CaseParameter();
-                //for (int i = 0; i < listView_CaseParameter.Items.Count; i++)
-                //{
-                //    Button btn = new Button();
-                //    btn.Tag = listView_CaseParameter.Items[i];
-                //    btn.Location = new Point(listView_CaseParameter.Items[i].SubItems[2].Bounds.Left, listView_CaseParameter.Items[i].SubItems[2].Bounds.Top);
-                //    listView_CaseParameter.Controls.Add(btn);
-                //}
                 myUpdataTime.Interval = 15000;
                 myUpdataTime.Tick += new EventHandler(myUpdataTime_Tick);
                 myUpdataTime.Start();
@@ -109,9 +102,9 @@ namespace AutoTest.myDialogWindow
                 if (myParentWindow.nowCaseActionActuator.OnActuatorParameterListChanged == null)
                 {
                     myParentWindow.nowCaseActionActuator.OnActuatorParameterListChanged += nowCaseActionActuator_OnActuatorParameterListChanged;
-                    updatalistView_CaseParameter();
                 }
             }
+            updatalistView_CaseParameter();
         }
 
         private void lb_info_runTimeParameter_Click(object sender, EventArgs e)
@@ -129,31 +122,37 @@ namespace AutoTest.myDialogWindow
             MyCommonTool.SetControlFreeze(listView_CaseParameter);
             listView_CaseParameter.BeginUpdate();
             listView_CaseParameter.Items.Clear();
-            switch (nowShowType)
+            try
             {
-                case ShowRunTimeParameterType.KeyValue:
-                    foreach (KeyValuePair<string, string> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataKeyList)
-                    {
-                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value }));
-                    }
-                    break;
-                case ShowRunTimeParameterType.Parameter:
-                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
-                    {
-                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
-                    }
-                    break;
-                case ShowRunTimeParameterType.DataSouce:
-                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
-                    {
-                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
-                    }
-                    break;
-                default:
-                    //not this way
-                    break;
+                switch (nowShowType)
+                {
+                    case ShowRunTimeParameterType.KeyValue:
+                        foreach (KeyValuePair<string, string> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataKeyList)
+                        {
+                            listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value }));
+                        }
+                        break;
+                    case ShowRunTimeParameterType.Parameter:
+                        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
+                        {
+                            listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+                        }
+                        break;
+                    case ShowRunTimeParameterType.DataSouce:
+                        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
+                        {
+                            listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+                        }
+                        break;
+                    default:
+                        //not this way
+                        break;
+                }
             }
-           
+            catch
+            {
+                //RunActuatorStaticDataCollection可能在执行线程中被修改
+            }
             listView_CaseParameter.EndUpdate();
             MyCommonTool.SetControlUnfreeze(listView_CaseParameter);
         }
