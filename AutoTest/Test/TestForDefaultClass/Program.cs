@@ -5,13 +5,48 @@ using System.Linq;
 using System.Text;
 using MyCommonHelper;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace TestForDefaultClass
 {
+    class ClassA
+    {
+        [MethodImplAttribute(MethodImplOptions.Synchronized)]
+        public void ThearTest(string str)
+        {
+            
+            for(int i =0;i<10;i++)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine(str);
+            }
+        }
+    }
     class Program
     {
+        public delegate void Mydelegate();
         static void Main(string[] args)
         {
+            Mydelegate md;
+            md = null;
+            md += new Mydelegate(() => { Console.WriteLine("1"); });
+            md += new Mydelegate(() => { Console.WriteLine("2"); });
+            md += new Mydelegate(() => { Console.WriteLine("4"); });
+            md.Invoke();
+            md = null;
+            //md.Invoke();
+            ClassA a = new ClassA();
+            ClassA b = new ClassA();
+            Thread t1 = new Thread(new ThreadStart(() => { a.ThearTest("1"); }));
+            Thread t2 = new Thread(new ThreadStart(() => { a.ThearTest("2"); }));
+            Thread t3 = new Thread(new ThreadStart(() => { b.ThearTest("3"); }));
+            Thread t4 = new Thread(new ThreadStart(() => { b.ThearTest("4"); }));
+            t1.Start();
+            t2.Start();
+            t3.Start();
+            t4.Start();
+            Console.WriteLine("Stort");
             RunMyHiPerformanceTickTest();
             string str = "";
             var tempValue = str.Split(new char[] { ',' }, StringSplitOptions.None);
@@ -141,5 +176,6 @@ namespace TestForDefaultClass
             Console.WriteLine(MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", 1000, Encoding.UTF8));
             Console.ReadLine();
         }
+
     }
 }
