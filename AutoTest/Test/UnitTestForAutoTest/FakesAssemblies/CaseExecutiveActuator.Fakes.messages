@@ -45,7 +45,7 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActua
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyExtensionMethods 生成存根: 类型已密封。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseTool 生成存根: 类型已密封。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ProtocolExecutive.AtHttpProtocol 生成存根: 类型已密封。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{B8CF155F-DDAA-42C6-B349-511687B1DB3C} 生成存根: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{2502B9C7-8D28-4D3D-991F-1DC6BB30AA79} 生成存根: 类型不受支持，因为存在内部限制。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyActionActuator 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActionActuator+ExecutiveAdditionalInfo 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActionActuator+ExecutivebasicData 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
@@ -87,4 +87,4 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActua
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseExpectType 生成填充码: 类型是一个枚举。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterizationContentEncodingType 生成填充码: 类型是一个枚举。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseTool+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{B8CF155F-DDAA-42C6-B349-511687B1DB3C} 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{2502B9C7-8D28-4D3D-991F-1DC6BB30AA79} 生成填充码: 类型不受支持，因为存在内部限制。

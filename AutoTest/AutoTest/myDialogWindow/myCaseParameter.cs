@@ -71,7 +71,7 @@ namespace AutoTest.myDialogWindow
             {
                 myParentWindow.nowCaseActionActuator.OnActuatorParameterListChanged += nowCaseActionActuator_OnActuatorParameterListChanged;
                 updatalistView_CaseParameter();
-                myUpdataTime.Interval = 15000;
+                myUpdataTime.Interval = 20000;
                 myUpdataTime.Tick += new EventHandler(myUpdataTime_Tick);
                 myUpdataTime.Start();
             }
@@ -305,36 +305,36 @@ namespace AutoTest.myDialogWindow
 
         private void pictureBox_add_Click(object sender, EventArgs e)
         {
-            //switch (nowShowType)
-            //{
-            //    case ShowRunTimeParameterType.KeyValue:
-            //        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
-            //        {
-            //            if (tempKvp.Key == tb_keyAdd.Text)
-            //            {
-            //                MessageBox.Show("在运行时参数【CaseStaticData】中已经存在该键值", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //                return;
-            //            }
-            //        }
-            //        myParentWindow.nowCaseActionActuator.AddRunActuatorStaticDataKey(tb_keyAdd.Text, tb_valueAdd.Text);
-            //        tb_keyAdd.Text = tb_valueAdd.Text = "";
-            //        break;
-            //    case ShowRunTimeParameterType.Parameter:
-            //        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
-            //        {
-            //            listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
-            //        }
-            //        break;
-            //    case ShowRunTimeParameterType.DataSouce:
-            //        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
-            //        {
-            //            listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
-            //        }
-            //        break;
-            //    default:
-            //        //not this way
-            //        break;
-            //}
+            switch (nowShowType)
+            {
+                case ShowRunTimeParameterType.KeyValue:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
+                    {
+                        if (tempKvp.Key == tb_keyAdd.Text)
+                        {
+                            MessageBox.Show("在运行时参数【CaseStaticData】中已经存在该键值", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            return;
+                        }
+                    }
+                    myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.AddStaticDataKey(tb_keyAdd.Text, tb_valueAdd.Text);
+                    tb_keyAdd.Text = tb_valueAdd.Text = "";
+                    break;
+                case ShowRunTimeParameterType.Parameter:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
+                    {
+                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+                    }
+                    break;
+                case ShowRunTimeParameterType.DataSouce:
+                    foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
+                    {
+                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+                    }
+                    break;
+                default:
+                    //not this way
+                    break;
+            }
 
             if (isCaceParameter)
             {
