@@ -1618,6 +1618,7 @@ namespace AutoTest
         #endregion
 
         #region RunWindow
+
         #region RunWindowMove
         private void label_moveFlagForRun_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1691,6 +1692,17 @@ namespace AutoTest
             {
                 if (myCase.myFile != "")
                 {
+                    foreach (Form tempFrom in ((Form)this).OwnedForms)
+                    {
+                        if (tempFrom is myCaseParameter)
+                        {
+                            tempFrom.Close();
+                        }
+                        if (tempFrom is AutoTest.myControl.MyCaceCBalloon)
+                        {
+                            tempFrom.Close();
+                        }
+                    }
                     LoadTreeView(myCase.myFile);
                     ShowMessage("刷新完成，请继续操作");
                 }
@@ -1701,9 +1713,16 @@ namespace AutoTest
             }
         }
 
-
         private void pictureBox_caseParameter_Click(object sender, EventArgs e)
         {
+            foreach(Form tempFrom in ((Form)this).OwnedForms)
+            {
+                if(tempFrom is myCaseParameter)
+                {
+                    tempFrom.Location = ((System.Windows.Forms.MouseEventArgs)(e)).Location;
+                    return;
+                }
+            }
             caseParameterToolStripMenuItem_Click(sender, e);
         }
        
@@ -1771,8 +1790,8 @@ namespace AutoTest
                     if (((CaseCell)tvw_Case.SelectedNode.Tag).CaseType == CaseType.Case)
                     {
                         Point myPosition = new Point(tvw_Case.SelectedNode.Bounds.X, tvw_Case.SelectedNode.Bounds.Y + 150);
-                        myControl.MyCBalloon myListViewCBallon = null;
-                        myListViewCBallon = new myControl.MyCBalloon(tvw_Case.SelectedNode);
+                        myControl.MyCaceCBalloon myListViewCBallon = null;
+                        myListViewCBallon = new myControl.MyCaceCBalloon(tvw_Case.SelectedNode);
                         myListViewCBallon.Owner = this;
                         myListViewCBallon.HasShadow = true;
                         myListViewCBallon.setBalloonPosition(this, myPosition, new Size(1, 1));

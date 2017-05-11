@@ -74,7 +74,7 @@ namespace AutoTest.myDialogWindow
             // 
             // tb_valueAdd
             // 
-            this.tb_valueAdd.Location = new System.Drawing.Point(109, 287);
+            this.tb_valueAdd.Location = new System.Drawing.Point(108, 287);
             this.tb_valueAdd.Name = "tb_valueAdd";
             this.tb_valueAdd.Size = new System.Drawing.Size(220, 21);
             this.tb_valueAdd.TabIndex = 3;
@@ -140,7 +140,7 @@ namespace AutoTest.myDialogWindow
             // 
             this.pictureBox_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox_refresh.Image = global::AutoTest.Properties.Resources._20141211063254953_easyicon_net_256;
-            this.pictureBox_refresh.Location = new System.Drawing.Point(258, 286);
+            this.pictureBox_refresh.Location = new System.Drawing.Point(305, 5);
             this.pictureBox_refresh.Name = "pictureBox_refresh";
             this.pictureBox_refresh.Size = new System.Drawing.Size(23, 23);
             this.pictureBox_refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

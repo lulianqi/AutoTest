@@ -99,7 +99,7 @@
       </Content>
       <Expect method="is">
         <!-- 可以使用【isHaveParameters】 method 若你不存在即表示为is ，如果不含有该项即表示断言为default 即无条件通过，可使用的断言【default/is/not/like/endwith/startwith/contain/uncontain】-->
-      </Expect><!-- 内容中[or],[and]为保留字段标识或且，/is断言看含[or]/endwith,starwith断言可含[or]/contain,uncontain可含[or]或and-->
+      </Expect><!-- 内容中[or],[and]为保留字段标识或且，/is断言可含[or]/endwith,starwith断言可含[or]/contain,uncontain可含[or]或[and]-->
       <Action><!-- goto retry stop alarm continue -->
         <Pass action="goto">P100001C10001</Pass>
         <Fail action="retry">10</Fail>
@@ -653,13 +653,14 @@
         <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#StaticData2(+)*#/*#StaticData4(+3)*#</Show><!--必选项，没有信息也需要填写备注-->
         <ConsoleTask>
           <Set name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Set>
-          <Set name="StaticData">500000</Set>
+          <Set name="StaticData">99</Set>
           <Add name="StaticDataAdd" type="index">1-1000-2</Add>
           <Add name="StaticData3Add" type="list">a1,a2,a3,a4-2</Add>
           <Add name="mycsvfileAdd" type="csv">casefile\csvdatasouce.csv-65001</Add>
           <Add name="appid" type="vaule">2ewse342</Add>
           <Add name="appidtodel" type="vaule">2ewse342</Add>
           <Del isRegex="false" isHaveParameters="true">appidtodel</Del><!--isRegex 为true 表示内容为正则表达式匹配，默认不填为false(错误输入也强制为false)，-->
+          <Del isRegex="true" isHaveParameters="true">^StaticDataAdd.*</Del>
         </ConsoleTask>
       </Content>
       <Expect method="contain">/3</Expect>

@@ -66,7 +66,7 @@ namespace AutoTest.myDialogWindow
         {
             this.TopMost = false;
             myParentWindow = (AutoRunner)this.Owner;
-            pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = false;
+            pictureBox_next.Visible = pictureBox_set.Visible = false;
             if (myParentWindow.nowCaseActionActuator!=null)
             {
                 myParentWindow.nowCaseActionActuator.OnActuatorParameterListChanged += nowCaseActionActuator_OnActuatorParameterListChanged;
@@ -178,7 +178,7 @@ namespace AutoTest.myDialogWindow
                     pictureBox_add.Image = AutoTest.Properties.Resources._20140924023908574_easyicon_net_128;
                     this.toolTip_info.SetToolTip(this.pictureBox_add, "修改&添加数据");
                     tb_valueAdd.Width = 220;
-                    pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = false;
+                    pictureBox_next.Visible = pictureBox_set.Visible = false;
                     break;
                 case ShowRunTimeParameterType.Parameter:
                     nowShowType = ShowRunTimeParameterType.Parameter;
@@ -186,8 +186,8 @@ namespace AutoTest.myDialogWindow
                     lb_info_keyValue.ForeColor = lb_info_dataSouce.ForeColor = Color.DarkGray;
                     pictureBox_add.Image = (Image)Properties.Resources.ResourceManager.GetObject("2015070304121672223_easyicon_net_128");
                     this.toolTip_info.SetToolTip(this.pictureBox_add, "重置所有数据");
-                    tb_valueAdd.Width = 146;
-                    pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = true;
+                    tb_valueAdd.Width = 171;
+                    pictureBox_next.Visible = pictureBox_set.Visible = true;
                     break;
                 case ShowRunTimeParameterType.DataSouce:
                     nowShowType = ShowRunTimeParameterType.DataSouce;
@@ -195,8 +195,8 @@ namespace AutoTest.myDialogWindow
                     lb_info_keyValue.ForeColor = lb_info_parameter.ForeColor = Color.DarkGray;
                     pictureBox_add.Image = (Image)Properties.Resources.ResourceManager.GetObject("2015070304121672223_easyicon_net_128");
                     this.toolTip_info.SetToolTip(this.pictureBox_add, "查看所有数据");
-                    tb_valueAdd.Width = 146;
-                    pictureBox_next.Visible = pictureBox_refresh.Visible = pictureBox_set.Visible = true;
+                    tb_valueAdd.Width = 171;
+                    pictureBox_next.Visible = pictureBox_set.Visible = true;
                     break;
                 default:
                     break;
@@ -312,52 +312,38 @@ namespace AutoTest.myDialogWindow
                     {
                         if (tempKvp.Key == tb_keyAdd.Text)
                         {
-                            MessageBox.Show("在运行时参数【CaseStaticData】中已经存在该键值", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            if(!myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.SetStaticData(tb_keyAdd.Text, tb_valueAdd.Text))
+                            {
+                                MessageBox.Show(string.Format("[{0}]不能应用于指定的【CaseStaticData】键", tb_valueAdd.Text), "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            }
                             return;
                         }
                     }
                     myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.AddStaticDataKey(tb_keyAdd.Text, tb_valueAdd.Text);
                     tb_keyAdd.Text = tb_valueAdd.Text = "";
+                    //使用ActuatorStaticDataCollection内方法更新数据会触发委托，不要单独更新页面
                     break;
                 case ShowRunTimeParameterType.Parameter:
                     foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
                     {
-                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+                        tempKvp.Value.DataReset();
                     }
+                    tb_keyAdd.Text = tb_valueAdd.Text = "";
+                    updatalistView_CaseParameter();
                     break;
                 case ShowRunTimeParameterType.DataSouce:
                     foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
                     {
-                        listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
+                        tempKvp.Value.DataReset();
                     }
+                    tb_keyAdd.Text = tb_valueAdd.Text = "";
+                    updatalistView_CaseParameter();
                     break;
                 default:
                     //not this way
                     break;
             }
-
-            if (isCaceParameter)
-            {
-                foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
-                {
-                    if (tempKvp.Key == tb_keyAdd.Text)
-                    {
-                        MessageBox.Show("在运行时参数【CaseStaticData】中已经存在该键值", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        return;
-                    }
-                }
-                myParentWindow.nowCaseActionActuator.AddRunActuatorStaticDataKey(tb_keyAdd.Text, tb_valueAdd.Text);
-                tb_keyAdd.Text = tb_valueAdd.Text = "";
-            }
-            else
-            {
-                foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeStaticData> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataParameterList)
-                {
-                    tempKvp.Value.DataReset();
-                }
-                tb_keyAdd.Text = tb_valueAdd.Text = "";
-                updatalistView_CaseParameter();
-            }
+          
         } 
         #endregion
 

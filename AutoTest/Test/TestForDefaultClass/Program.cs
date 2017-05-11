@@ -28,6 +28,20 @@ namespace TestForDefaultClass
         public delegate void Mydelegate();
         static void Main(string[] args)
         {
+            RunSetAndJudge();
+            Console.ReadKey();
+            RunMyHiPerformanceTickTest();
+            string str = "";
+            var tempValue = str.Split(new char[] { ',' }, StringSplitOptions.None);
+            string str_more = "123".Substring(2, 1);
+
+            List<string> strList = new List<string> { "1","2"};
+            //strList.Insert(4, "4");
+            RunMyHttpTest();
+        }
+
+        public static void RunSynchronizedTest()
+        {
             Mydelegate md;
             md = null;
             md += new Mydelegate(() => { Console.WriteLine("1"); });
@@ -47,16 +61,7 @@ namespace TestForDefaultClass
             t3.Start();
             t4.Start();
             Console.WriteLine("Stort");
-            RunMyHiPerformanceTickTest();
-            string str = "";
-            var tempValue = str.Split(new char[] { ',' }, StringSplitOptions.None);
-            string str_more = "123".Substring(2, 1);
-
-            List<string> strList = new List<string> { "1","2"};
-            //strList.Insert(4, "4");
-            RunMyHttpTest();
         }
-
         public static void RunMyHiPerformanceTickTest()
         {
             Console.ReadLine();
@@ -175,6 +180,35 @@ namespace TestForDefaultClass
             Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "Get"));
             Console.WriteLine(MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", 1000, Encoding.UTF8));
             Console.ReadLine();
+        }
+
+        public static void RunSetAndJudge()
+        {
+            Stopwatch myWatch = new Stopwatch();
+            int myInt = 0;
+            long l1, l2 = 0l;
+            for (int m = 0; m < 100; m++)
+            {
+                myWatch.Restart();
+                for (int i = 0; i < 10000; i++)
+                {
+                    myInt = i;
+                }
+                myWatch.Stop();
+                l1 = myWatch.ElapsedTicks;
+                myWatch.Restart();
+                for (int i = 0; i < 10000; i++)
+                {
+                    if (myInt == i)
+                    {
+
+                    }
+                }
+                myWatch.Stop();
+                l2 = myWatch.ElapsedTicks;
+                Console.WriteLine("Set:  @@@" + l1);
+                Console.WriteLine("Judge:---" + l2);
+            }
         }
 
     }

@@ -1,6 +1,6 @@
 ﻿namespace AutoTest.myControl
 {
-    partial class MyCBalloon
+    partial class MyCaceCBalloon
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyCBalloon));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyCaceCBalloon));
             this.pictureBox_close = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lb_caseId = new System.Windows.Forms.Label();

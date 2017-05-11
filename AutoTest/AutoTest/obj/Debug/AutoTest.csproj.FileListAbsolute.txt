@@ -14,7 +14,6 @@ F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.AboutB
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.AddRemoteHost.resources
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.AddRunner.resources
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.myCaseParameter.resources
-F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCBalloon.resources
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.EditCasebody.resources
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.EditProjiectHead.resources
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.MyCBalloonResultInfo.resources
@@ -107,3 +106,4 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.pdb
+F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCaceCBalloon.resources
