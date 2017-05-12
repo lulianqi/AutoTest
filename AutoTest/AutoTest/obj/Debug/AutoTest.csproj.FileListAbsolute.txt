@@ -107,3 +107,4 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyVoiceHelper.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCaceCBalloon.resources
+F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources

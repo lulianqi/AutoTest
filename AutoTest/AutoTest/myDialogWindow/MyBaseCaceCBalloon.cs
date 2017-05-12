@@ -15,9 +15,9 @@ using CaseExecutiveActuator.Cell;
 
 namespace AutoTest.myControl
 {
-    public partial class MyCaceCBalloon : CBalloon.CBalloonBase
+    public partial class MyBaseCaceCBalloon : CBalloon.CBalloonBase
     {
-        public MyCaceCBalloon(TreeNode yourNode )
+        public MyBaseCaceCBalloon(TreeNode yourNode)
         {
             InitializeComponent();
             myTargetNode = yourNode;

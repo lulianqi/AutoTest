@@ -120,17 +120,23 @@
     <Compile Include="myDialogWindow\AddRunner.Designer.cs">
       <DependentUpon>AddRunner.cs</DependentUpon>
     </Compile>
+    <Compile Include="myDialogWindow\MyBaseCaceCBalloon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myDialogWindow\MyBaseCaceCBalloon.designer.cs">
+      <DependentUpon>MyBaseCaceCBalloon.cs</DependentUpon>
+    </Compile>
     <Compile Include="myDialogWindow\myCaseParameter.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="myDialogWindow\myCaseParameter.Designer.cs">
       <DependentUpon>myCaseParameter.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\MyCBalloon.cs">
+    <Compile Include="myDialogWindow\MyCaceCBalloon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\MyCBalloon.designer.cs">
-      <DependentUpon>MyCBalloon.cs</DependentUpon>
+    <Compile Include="myDialogWindow\MyCaceCBalloon.designer.cs">
+      <DependentUpon>MyCaceCBalloon.cs</DependentUpon>
     </Compile>
     <Compile Include="myDialogWindow\EditCasebody.cs">
       <SubType>Form</SubType>
@@ -237,12 +243,16 @@
     <EmbeddedResource Include="myDialogWindow\AddRunner.resx">
       <DependentUpon>AddRunner.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="myDialogWindow\MyBaseCaceCBalloon.resx">
+      <DependentUpon>MyBaseCaceCBalloon.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="myDialogWindow\myCaseParameter.resx">
       <DependentUpon>myCaseParameter.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\MyCBalloon.resx">
-      <DependentUpon>MyCBalloon.cs</DependentUpon>
+    <EmbeddedResource Include="myDialogWindow\MyCaceCBalloon.resx">
+      <DependentUpon>MyCaceCBalloon.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="myDialogWindow\EditCasebody.resx">
