@@ -69,14 +69,14 @@ namespace AutoTest.myControl
                 rtb_Content.AppendText((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
 
                 XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.LoadXml((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
                 System.IO.StringWriter sw = new System.IO.StringWriter();
                 XmlTextWriter xtw = new XmlTextWriter(sw);
                 xtw.Formatting = Formatting.Indented;
                 xtw.Indentation = 1;
                 xtw.IndentChar = '\t';
-                xtw.WriteRaw((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
                 xmlDoc.WriteTo(xtw);
-                rtb_Content.AppendText(xmlDoc.Value);
+                rtb_Content.AppendText(sw.ToString());
                 rtb_Content.Select(0, 0);
                 rtb_Content.ScrollToCaret();
             }

@@ -11,4 +11,3 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache
-F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache
