@@ -66,17 +66,16 @@ namespace AutoTest.myControl
             {
                 MyCommonTool.myAddRtbStr(ref rtb_Content, "【Actuator】:" + yourCaseRunData.testContent.MyCaseActuator, Color.DarkOrchid, true);
                 MyCommonTool.myAddRtbStr(ref rtb_Content, yourCaseRunData.testContent.MyExecutionContent, Color.Maroon, true);
-                rtb_Content.AppendText((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
-
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.LoadXml((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
-                System.IO.StringWriter sw = new System.IO.StringWriter();
-                XmlTextWriter xtw = new XmlTextWriter(sw);
-                xtw.Formatting = Formatting.Indented;
-                xtw.Indentation = 1;
-                xtw.IndentChar = '\t';
-                xmlDoc.WriteTo(xtw);
-                rtb_Content.AppendText(sw.ToString());
+                //rtb_Content.AppendText((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
+                string xmlContent;
+                if(MyCommonTool.FormatXmlString((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].OuterXml,out xmlContent))
+                {
+                    MyCommonTool.myAddRtbStr(ref rtb_Content, xmlContent, Color.Black, true);
+                }
+                else
+                {
+                    MyCommonTool.myAddRtbStr(ref rtb_Content, xmlContent, Color.Red, true);
+                }
                 rtb_Content.Select(0, 0);
                 rtb_Content.ScrollToCaret();
             }

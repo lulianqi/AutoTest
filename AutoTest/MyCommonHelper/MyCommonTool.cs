@@ -221,6 +221,39 @@ namespace MyCommonHelper
         }
 
         /// <summary>
+        /// 将xml字符串格式化
+        /// </summary>
+        /// <param name="originalString">原始字符串</param>
+        /// <param name="formatString">格式化后的数据，或错误信息</param>
+        /// <returns>是否成功</returns>
+        public static bool FormatXmlString(string originalString,out string formatString)
+        {
+            System.Xml.XmlDocument xmlDoc = new System.Xml.XmlDocument();
+            System.IO.StringWriter sw = new System.IO.StringWriter();
+            System.Xml.XmlTextWriter xtw = new System.Xml.XmlTextWriter(sw);
+            xtw.Formatting = System.Xml.Formatting.Indented;
+            xtw.Indentation = 1;
+            xtw.IndentChar = '\t';
+            try
+            {
+                xmlDoc.LoadXml(originalString);
+                xmlDoc.WriteTo(xtw);
+                formatString = sw.ToString();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                formatString = ex.Message;
+                return false;
+            }
+            finally
+            {
+                sw.Dispose();
+            }
+            
+        }
+
+        /// <summary>
         /// 添加带颜色内容
         /// </summary>
         /// <param name="rtb">目标richtextbox</param>
