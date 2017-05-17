@@ -97,7 +97,7 @@ namespace UnitTestForAutoTest
             Assert.AreNotSame(dc1, dc2, "对象引用相同");
             foreach(string tempKey in dc2.Keys)
             {
-                Assert.AreNotSame(dc1[tempKey], dc2[tempKey], "Value对象引用相同");
+                Assert.AreSame(dc1[tempKey], dc2[tempKey], "Value对象相同");
             }
             
         }
@@ -129,12 +129,11 @@ namespace UnitTestForAutoTest
             dc1.Add("Key3", "V1");
             Dictionary<string, string> dc2 = dc1.MyClone<string, string>();
             Assert.AreNotSame(dc1, dc2, "对象引用相同");
-            dc1["Key1"] = "CH";
             Console.WriteLine(dc1["Key1"]);
             Console.WriteLine(dc2["Key1"]);
             foreach (string tempKey in dc2.Keys)
             {
-                Assert.AreNotSame((object)dc1[tempKey], (object)dc2[tempKey], "Value对象引用相同");
+                Assert.AreSame((object)dc1[tempKey], (object)dc2[tempKey], "Value对象引用不相同");
             }
 
         }

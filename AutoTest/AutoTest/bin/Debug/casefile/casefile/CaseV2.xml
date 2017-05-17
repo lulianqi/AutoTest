@@ -3,11 +3,25 @@
   <ScriptRunTime>
     <RunTimeParameter>
     <!--<RunTimeParameter>-->
-    <!-- 该项的内容可以被case结果修改或新增 并与【RunTimeStaticData】里的内容 一起被用做参数化操作，要使用初始化必须指定isHaveParameters="true"  使用格式如 XXXXX*#name*#XXXXXX ，脚本中的*#name*#将被替换为相应的数据-->
-      <NewParameter name="appid1" type="vaule">appid1</NewParameter><!-- name值务必不要使用=，+，-这3个字符结尾开头（该值开头的参数被工具保留） -->
+    <!--该项的内容可以被case结果修改或新增 并与可以被用与case内容做参数化操作，要使用传输化必须指定isHaveParameters="true"  使用格式如 XXXXX*#name*#XXXXXX ，脚本中的*#name*#将被替换为相应的数据-->
+    <!-- name值务必不要使用=，+，-这3个字符结尾开头（该值开头的参数被工具保留） -->
+    <!--HaveParameters的处理-->
+    <!--Parameters静态数据必须以*#包含，可以含有多个静态数据，但静态数据不能使用*#进行嵌套，可以进行平铺，如果平铺的多个静态数据的数据名及参数完全相同，则他们的值也将相同，不会进行新的计算-->
+    <!--Parameters静态数据的参数需要使用()括起来，如果没有可以不加 eg[ casedata*#parameterName(additionKey)*#casedata ]-->
+    <!--Parameters静态数据使用()括起来的参数依然支持包含其他静态数据的运算，需要使用``（键盘tab上的键）括起来，同样支持多个``，但暂时也不支持进一步嵌套 eg[ casedata*#parameterName(additionKey`parameterName(additionKey)`)*#casedata ]-->
+    <!--Parameters静态数据的再运算``只能放在()才能被正确识别-->
+      
+      <!--<RunTimeStaticKey>-->
+      <!-- type当前支持vaule 该type不支持附加参数-->
+      
+      <!--<RunTimeStaticParameter>-->
+      <!-- type当前支持index / random / time /list /long如果参数错误不会被抛弃将被强行修正为默认值 (name请勿与其他RunTimeParameter的name同名，否则执行器将使用的值)(+,-,=,为保留字符请勿在参数名称中使用，数字打头的名称也是不允许的)-->
+      <!-- 使用时可以在尾部添加=标识取上一个值 -->
+      <!--RunTimeStaticData的参数都支持当前值:(=)/下一个值:(+)/下n个值:(+n)，默认不条件辅助取值参数为默认当前值-->
+      
+      <NewParameter name="appid1" type="vaule">appid1</NewParameter>
       <NewParameter name="appid2" type="vaule">appid2</NewParameter>
       <NewParameter name="num" type="vaule">5</NewParameter>
-
       <NewParameter name="parameter_hltoken" type="vaule">e26d4ee4-7595-49b2-985b-9383a10d3f86</NewParameter>
       <NewParameter name="parameter_sellerHltoken" type="vaule">8543ac1d-7d2e-43f0-9000-55917a98620e</NewParameter>
       <NewParameter name="parameter_sellerId" type="vaule">10000</NewParameter>
@@ -16,17 +30,7 @@
       <NewParameter name="parameter_userId" type="vaule">908</NewParameter>
       <NewParameter name="parameter_addressId" type="vaule">628</NewParameter>
       <NewParameter name="StaticData" type="index">1-100</NewParameter>
-    
-      <!--HaveParameters的处理-->
-      <!--Parameters静态数据必须以*#包含，可以含有多个静态数据，但静态数据不能使用*#进行嵌套，可以进行平铺，如果平铺的多个静态数据的数据名及参数完全相同，则他们的值也将相同，不会进行新的计算-->
-      <!--Parameters静态数据的参数需要使用()括起来，如果没有可以不加-->
-      <!--Parameters静态数据使用()括起来的参数依然支持包含其他静态数据的运算，需要使用``（键盘tab上的键）括起来，同样支持多个``，但暂时也不支持进一步嵌套-->
-      <!--Parameters静态数据的再运算``只能放在()才能被识别-->
-      
-      <!--<RunTimeStaticData>-->
-      <!-- type当前支持index / random / time /list /long如果参数错误不会被抛弃将被强行修正为默认值 (name请勿与RunTimeParameter同名，否则执行器将使用RunTimeParameter的值)(+,-,=,为保留字符请勿在参数名称中使用，数字打头的名称也是不允许的)-->
-      <!-- 使用时可以在尾部添加=标识取上一个值 -->
-      <!--RunTimeStaticData的参数都支持当前值:(=)/下一个值:(+)/下n个值:(+n)，默认不条件辅助取值参数为默认当前值-->
+     
       <NewParameter name="StaticData" type="index">1-1000-2</NewParameter><!-- 范围必须在0到2147483647之间，使用第一个-连接[首次的当前值与下一个值都是起始值]若有第二个-则后跟为进制，没有则默认为1 -->
       <NewParameter name="StaticData0" type="index">1-1000</NewParameter>
       <NewParameter name="StaticData1" type="random">10-6</NewParameter><!-- 使用-连接2个数字，第一个标识字符串长度，第个标识类型 0-是有可见ASCII / 1-数字 / 2-大写字母 / 3-小写字母 / 4-特殊字符 / 5-大小写字母 / 6-字母和数字 -->
@@ -654,7 +658,7 @@
         <ConsoleTask>
           <Set name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Set>
           <Set name="StaticData">99</Set>
-          <Add name="StaticDataAdd" type="index">1-1000-2</Add>
+          <Add name="StaticDataAdd" type="index">1-1000-2</Add> <!--如果遇到同名会进行覆盖-->
           <Add name="StaticData3Add" type="list">a1,a2,a3,a4-2</Add>
           <Add name="mycsvfileAdd" type="csv">casefile\csvdatasouce.csv-65001</Add>
           <Add name="appid" type="vaule">2ewse342</Add>
@@ -671,7 +675,7 @@
     </Case>
     <Case id="1000050201" remark="登录商户端">
       <Content protocol="http" actuator="http">
-        <Uri httpMethod="GET" isHaveParameters="true">http://huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Uri>
+        <Uri httpMethod="GET" isHaveParameters="true">http://wx.huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Uri>
         <Heads>
           <Head name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Head>
           <Head name="User-Agent">test man</Head>
@@ -700,11 +704,6 @@
           <Head name="csvsouce+2" isHaveParameters="true">csvsouce is *#mycsvfile+2*#</Head>
           <Head name="csvsouceAngin" isHaveParameters="true">csvsouce is *#mycsvfile*#</Head>
           <Head name="csvsouceAdress" isHaveParameters="true">csvsouce 0-0 is [*#mycsvfile(0-0)*#] 5-2 is [*#mycsvfile(5-2)*#] 100-100 is [*#mycsvfile(100-100)*#] xxx-xxx is [*#mycsvfile(xxx-xxx)*#]</Head>
-          <!--HaveParameters的处理-->
-          <!--Parameters静态数据必须以*#包含，可以含有多个静态数据，但静态数据不能使用*#进行嵌套，可以进行平铺，如果平铺的多个静态数据的数据名及参数完全相同，则他们的值也将相同，不会进行新的计算-->
-          <!--Parameters静态数据的参数需要使用()括起来，如果没有可以不加-->
-          <!--Parameters静态数据使用()括起来的参数依然支持包含其他静态数据的运算，需要使用``（键盘tab上的键）括起来，同样支持多个``，但暂时也不支持进一步嵌套-->
-          <!--Parameters静态数据的再运算``只能放在()才能被识别-->
           <Head name="User-Agent">test man</Head>
           <Head name="additionalEncoding" isHaveParameters="true" additionalEncoding="encode_base64">additionalEncoding</Head>
         </Heads>

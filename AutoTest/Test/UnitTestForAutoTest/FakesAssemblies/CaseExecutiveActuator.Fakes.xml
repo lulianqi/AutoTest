@@ -328,6 +328,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimActuatorStaticDataCollection.IsHasSameKeyStringInt32">
             <summary>设置 ActuatorStaticDataCollection.IsHasSameKey(String key, Int32 ignoreListIndex) 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimActuatorStaticDataCollection.IsHaveSameKeyString">
+            <summary>设置 ActuatorStaticDataCollection.IsHaveSameKey(String yourKey) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimActuatorStaticDataCollection.OnListChanged">
             <summary>设置 ActuatorStaticDataCollection.OnListChanged() 的 填充码</summary>
         </member>
@@ -369,6 +372,9 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimActuatorStaticDataCollection.AllInstances.IsHasSameKeyStringInt32">
             <summary>设置 ActuatorStaticDataCollection.IsHasSameKey(String key, Int32 ignoreListIndex) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimActuatorStaticDataCollection.AllInstances.IsHaveSameKeyString">
+            <summary>设置 ActuatorStaticDataCollection.IsHaveSameKey(String yourKey) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimActuatorStaticDataCollection.AllInstances.OnListChanged">
             <summary>设置 ActuatorStaticDataCollection.OnListChanged() 的 填充码</summary>

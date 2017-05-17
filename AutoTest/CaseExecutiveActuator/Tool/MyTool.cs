@@ -751,7 +751,7 @@ namespace CaseExecutiveActuator
                         return string.Format("ParametersAdditionData error find in the runTime data with keyParameter:[{0}] keyAdditionData:[{1}]", keyParameter, keyAdditionData);
                     };
 
-                    #region RunTimeParameter
+                    #region RunTimeStaticKey
                     if (yourParameterList.Keys.Contains(keyParameter))
                     {
                         //RunTimeParameter 不含有参数信息，所以不处理keyParameter
@@ -761,7 +761,7 @@ namespace CaseExecutiveActuator
                     }
                     #endregion
                     
-                    #region RunTimeStaticData
+                    #region RunTimeStaticParameter
                     else if (yourStaticDataList.Keys.Contains(keyParameter))
                     {
                         if (keyAdditionData == null)
@@ -925,7 +925,7 @@ namespace CaseExecutiveActuator
             }
             try
             {
-                yourSouce.Trim();
+                yourSouce = yourSouce.Trim();
                 if (yourSouce.StartsWith("["))
                 {
                     JArray jAObj = (JArray)JsonConvert.DeserializeObject(yourSouce);

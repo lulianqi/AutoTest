@@ -473,7 +473,17 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// Add Data into runActuatorStaticDataKeyList (if has same key retrun false)
+        /// Is the StaticDataCollection has th same key name 
+        /// </summary>
+        /// <param name="yourKey">your Key</param>
+        /// <returns>is has </returns>
+        public bool IsHaveSameKey(string yourKey)
+        {
+            return (IsHasSameKey(yourKey, 0) != null) ;
+        }
+
+        /// <summary>
+        /// Add Data into runActuatorStaticDataKeyList (if DataParameter or DataSouce has same key retrun false , if DataKey has same key cover the vaule)
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="vaule">vaule</param>
@@ -491,7 +501,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// Add Data into runActuatorStaticDataParameterList (if has same key retrun false)
+        /// Add Data into runActuatorStaticDataParameterList (if DataKey or DataSouce has same key retrun false , if DataParameter has same key cover the vaule) 
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="vaule">vaule</param>
@@ -509,7 +519,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// Add Data into runActuatorStaticDataSouceList (if has same key retrun false)
+        /// Add Data into runActuatorStaticDataSouceList (if DataKey or DataParameter has same key retrun false , if DataSouce has same key cover the vaule)
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="vaule">vaule</param>
@@ -1192,14 +1202,22 @@ namespace CaseExecutiveActuator
                                                     case  CaseStaticDataClass.caseStaticDataKey:
                                                         if (tempType== CaseStaticDataType.caseStaticData_vaule)
                                                         {
-                                                            // nothing to do
+                                                            if (!runActuatorStaticDataCollection.IsHaveSameKey(tempName))
+                                                            {
+                                                                runActuatorStaticDataCollection.AddStaticDataKey(tempName, tempVaule);
+                                                            }
+                                                            else
+                                                            {
+                                                                SetNowActionError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
+                                                                break;
+                                                            }
+                                                            //runActuatorStaticDataCollection.RunActuatorStaticDataKeyList.MyAdd(new KeyValuePair<string, string>());
                                                         }
                                                         else
                                                         {
                                                             SetNowActionError(string.Format("find nonsupport Protocol 【{0}】with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ", tempType));
                                                             break;
                                                         }
-                                                        runActuatorStaticDataCollection.RunActuatorStaticDataKeyList.MyAdd(new KeyValuePair<string, string>(tempName, tempVaule));
                                                         break ;
                                                     //caseStaticDataParameter
                                                     case CaseStaticDataClass.caseStaticDataParameter:
@@ -1207,7 +1225,16 @@ namespace CaseExecutiveActuator
                                                         string tempTypeError;
                                                         if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[tempType](out tempRunTimeStaticData, out tempTypeError, tempVaule))
                                                         {
-                                                            runActuatorStaticDataCollection.RunActuatorStaticDataParameterList.MyAdd(tempName, tempRunTimeStaticData);
+                                                            if (!runActuatorStaticDataCollection.IsHaveSameKey(tempName))
+                                                            {
+                                                                runActuatorStaticDataCollection.AddStaticDataParameter(tempName, tempRunTimeStaticData);
+                                                            }
+                                                            else
+                                                            {
+                                                                SetNowActionError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
+                                                                break;
+                                                            }
+                                                            //runActuatorStaticDataCollection.RunActuatorStaticDataParameterList.MyAdd(tempName, tempRunTimeStaticData);
                                                         }
                                                         else
                                                         {
@@ -1219,7 +1246,16 @@ namespace CaseExecutiveActuator
                                                         IRunTimeDataSource tempRunTimeDataSource;
                                                         if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[tempType](out tempRunTimeDataSource, out tempTypeError, tempVaule))
                                                         {
-                                                            runActuatorStaticDataCollection.RunActuatorStaticDataSouceList.MyAdd<IRunTimeDataSource>(tempName, tempRunTimeDataSource);
+                                                            if (!runActuatorStaticDataCollection.IsHaveSameKey(tempName))
+                                                            {
+                                                                runActuatorStaticDataCollection.AddStaticDataSouce(tempName, tempRunTimeDataSource);
+                                                            }
+                                                            else
+                                                            {
+                                                                SetNowActionError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
+                                                                break;
+                                                            }
+                                                            //runActuatorStaticDataCollection.RunActuatorStaticDataSouceList.MyAdd<IRunTimeDataSource>(tempName, tempRunTimeDataSource);
                                                         }
                                                         else
                                                         {
