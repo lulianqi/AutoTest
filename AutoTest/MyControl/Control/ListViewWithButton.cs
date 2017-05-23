@@ -89,9 +89,9 @@ namespace MyCommonControl
         }
 
         /// <summary>
-        /// 添加含有Control的ListViewItem
+        /// 添加含有Control的ListViewItem  
         /// </summary>
-        /// <param name="yourItem">ListViewItem 的tag 需要指向目标Control ，且存放Control的列也要在ListViewItem被填充</param>
+        /// <param name="yourItem">ListViewItem 的tag 需要指向目标Control （且Control的tag会在AddItemEx指向yourItem，请勿在应用业务中使用） ，且存放Control的列也要在ListViewItem被填充</param>
         public void AddItemEx(ListViewItem yourItem)
         {
             this.Items.Add(yourItem);
@@ -104,10 +104,19 @@ namespace MyCommonControl
             }
         }
 
+        /*    eg:
+                        ListViewItem tempLvi = new ListViewItem(new string[] {"",""});
+                        tempLvi.Tag = new Button();
+                        ((Button)tempLvi.Tag).Text = "";
+                        lv_orderSnList.AddItemEx(tempLvi);
+         * */
+
+
+
         /// <summary>
         /// 当加入Control被触发Click时，即执行此处（所有Control的click只需要订阅ButtonClickEvent即可）
         /// </summary>
-        /// <param name="sender">被点击的行Control</param>
+        /// <param name="sender">被点击的行的ListViewItem</param>
         /// <param name="e"></param>
         void tempControl_Click(object sender, EventArgs e)
         {
@@ -123,7 +132,7 @@ namespace MyCommonControl
             {
                 this.Controls.Remove(yourItem.Tag as System.Windows.Forms.Control);
             }
-            yourItem = null;
+            yourItem.Tag = null;
             this.Items.Remove(yourItem);
         }
 
