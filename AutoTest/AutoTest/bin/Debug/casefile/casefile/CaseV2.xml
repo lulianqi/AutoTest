@@ -656,10 +656,11 @@
       <Content protocol="console" actuator="console">
         <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#StaticData2(+)*#/*#StaticData4(+3)*#</Show><!--必选项，没有信息也需要填写备注-->
         <ConsoleTask>
-          <!--支持Set/Add/Del 全部支持isHaveParameters/additionalEncoding-->
+          <!--支持Set/Add/Del 全部支持isHaveParameters/additionalEncoding (执行顺序按add,set,del依次进行)-->
           <!--Set/Add/Del 如果设置了非法的数据设置会失败，失败与成功都会有提示信息，但是该条case执行成功与否是以断言决定的，断言将仅对Show节点进行匹配-->
-          <!--Set节点内容即为要设置的值-->
-          <!--Add 必须要带上type属性，可选属性与RunTimeParameter中支持的属性保持一致，内容是要添加参数化数据的初始数据格式与RunTimeParameter要求的格式保持一致，如果添加了同名name的参数化数据将会进行覆盖-->
+          <!--Set 节点内容即为要设置的值-->
+          <!--Add 必须要带上type属性，可选属性与RunTimeParameter中支持的属性保持一致，内容是要添加参数化数据的初始数据格式与RunTimeParameter要求的格式保持一致，如果添加了同名name的参数化数据将会进行覆盖，变相进行对参数化数据进行修改（这里的修改与Set是完全不同的，Set是对该参数化数据当前值的修改，而这里相当于于是对结构的修改）-->
+          <!--Del 内容标识需要删除的参数化数据，支持正则筛选，如果未发现任何可删除数据会有相应失败输出，但并不会直接导致当前case断言失败-->
           <Set name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Set> 
           <Set name="StaticData">99</Set>
           <Add name="StaticDataAdd" type="index">1-1000-2</Add> <!--如果遇到同名会进行覆盖-->
@@ -668,7 +669,7 @@
           <Add name="appid" type="vaule">2ewse342</Add>
           <Add name="appidtodel" type="vaule">2ewse342</Add>
           <Del isRegex="false" isHaveParameters="true">appidtodel</Del><!--isRegex 为true 表示内容为正则表达式匹配，默认不填为false(错误输入也强制为false)，-->
-          <Del isRegex="true" isHaveParameters="true">^StaticDataAdd.*</Del>
+          <Del isRegex="true" isHaveParameters="true">^StaticData.*</Del>
         </ConsoleTask>
       </Content>
       <Expect method="contain">/3</Expect>

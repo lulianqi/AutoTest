@@ -35,16 +35,20 @@
             this.FreezeText_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoSave_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Fill_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShowInNewWindow_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.格式化选中内容ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox_AlwaysGoBottom = new System.Windows.Forms.PictureBox();
             this.pictureBox_dataAddSave = new System.Windows.Forms.PictureBox();
             this.pictureBox_dataAddclean = new System.Windows.Forms.PictureBox();
-            this.pictureBox_AlwaysGoBottom = new System.Windows.Forms.PictureBox();
             this.toolTip_DataRecordBox = new System.Windows.Forms.ToolTip(this.components);
             this.imageListForButton = new System.Windows.Forms.ImageList(this.components);
-            this.ShowInNewWindow_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.richTextBox_dataContainer.SuspendLayout();
             this.contextMenuStrip_RecBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_AlwaysGoBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dataAddSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dataAddclean)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_AlwaysGoBottom)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBox_dataContainer
@@ -52,6 +56,9 @@
             this.richTextBox_dataContainer.BackColor = System.Drawing.Color.Azure;
             this.richTextBox_dataContainer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox_dataContainer.ContextMenuStrip = this.contextMenuStrip_RecBox;
+            this.richTextBox_dataContainer.Controls.Add(this.pictureBox_AlwaysGoBottom);
+            this.richTextBox_dataContainer.Controls.Add(this.pictureBox_dataAddSave);
+            this.richTextBox_dataContainer.Controls.Add(this.pictureBox_dataAddclean);
             this.richTextBox_dataContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox_dataContainer.HideSelection = false;
             this.richTextBox_dataContainer.Location = new System.Drawing.Point(0, 0);
@@ -66,30 +73,78 @@
             this.FreezeText_ToolStripMenuItem,
             this.AutoSave_ToolStripMenuItem,
             this.Fill_ToolStripMenuItem,
-            this.ShowInNewWindow_ToolStripMenuItem});
+            this.ShowInNewWindow_ToolStripMenuItem,
+            this.格式化选中内容ToolStripMenuItem});
             this.contextMenuStrip_RecBox.Name = "contextMenuStrip_RecBox";
-            this.contextMenuStrip_RecBox.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip_RecBox.Size = new System.Drawing.Size(161, 136);
             // 
             // FreezeText_ToolStripMenuItem
             // 
             this.FreezeText_ToolStripMenuItem.Name = "FreezeText_ToolStripMenuItem";
-            this.FreezeText_ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.FreezeText_ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.FreezeText_ToolStripMenuItem.Text = "冻结追加显示";
             this.FreezeText_ToolStripMenuItem.Click += new System.EventHandler(this.FreezeText_ToolStripMenuItem_Click);
             // 
             // AutoSave_ToolStripMenuItem
             // 
             this.AutoSave_ToolStripMenuItem.Name = "AutoSave_ToolStripMenuItem";
-            this.AutoSave_ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AutoSave_ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.AutoSave_ToolStripMenuItem.Text = "自动保存内容";
             this.AutoSave_ToolStripMenuItem.Click += new System.EventHandler(this.AutoSave_ToolStripMenuItem_Click);
             // 
             // Fill_ToolStripMenuItem
             // 
             this.Fill_ToolStripMenuItem.Name = "Fill_ToolStripMenuItem";
-            this.Fill_ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Fill_ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.Fill_ToolStripMenuItem.Text = "最大化显示";
             this.Fill_ToolStripMenuItem.Click += new System.EventHandler(this.Fill_ToolStripMenuItem_Click);
+            // 
+            // ShowInNewWindow_ToolStripMenuItem
+            // 
+            this.ShowInNewWindow_ToolStripMenuItem.Name = "ShowInNewWindow_ToolStripMenuItem";
+            this.ShowInNewWindow_ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.ShowInNewWindow_ToolStripMenuItem.Text = "新窗口中查看";
+            this.ShowInNewWindow_ToolStripMenuItem.Click += new System.EventHandler(this.ShowInNewWindow_ToolStripMenuItem_Click);
+            // 
+            // 格式化选中内容ToolStripMenuItem
+            // 
+            this.格式化选中内容ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xMLToolStripMenuItem,
+            this.jSONToolStripMenuItem});
+            this.格式化选中内容ToolStripMenuItem.Name = "格式化选中内容ToolStripMenuItem";
+            this.格式化选中内容ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.格式化选中内容ToolStripMenuItem.Text = "格式化选中内容";
+            // 
+            // xMLToolStripMenuItem
+            // 
+            this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xMLToolStripMenuItem.Text = "XML格式化";
+            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
+            // 
+            // jSONToolStripMenuItem
+            // 
+            this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
+            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.jSONToolStripMenuItem.Text = "JSON格式化";
+            this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
+            // 
+            // pictureBox_AlwaysGoBottom
+            // 
+            this.pictureBox_AlwaysGoBottom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_AlwaysGoBottom.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox_AlwaysGoBottom.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_AlwaysGoBottom.Image")));
+            this.pictureBox_AlwaysGoBottom.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox_AlwaysGoBottom.InitialImage")));
+            this.pictureBox_AlwaysGoBottom.Location = new System.Drawing.Point(575, 2);
+            this.pictureBox_AlwaysGoBottom.Name = "pictureBox_AlwaysGoBottom";
+            this.pictureBox_AlwaysGoBottom.Size = new System.Drawing.Size(23, 23);
+            this.pictureBox_AlwaysGoBottom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_AlwaysGoBottom.TabIndex = 13;
+            this.pictureBox_AlwaysGoBottom.TabStop = false;
+            this.toolTip_DataRecordBox.SetToolTip(this.pictureBox_AlwaysGoBottom, "始终定位到尾部");
+            this.pictureBox_AlwaysGoBottom.Click += new System.EventHandler(this.pictureBox_pictureBox_AlwaysGoBottom_Click);
+            this.pictureBox_AlwaysGoBottom.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
+            this.pictureBox_AlwaysGoBottom.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
             // 
             // pictureBox_dataAddSave
             // 
@@ -123,23 +178,6 @@
             this.pictureBox_dataAddclean.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
             this.pictureBox_dataAddclean.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
             // 
-            // pictureBox_AlwaysGoBottom
-            // 
-            this.pictureBox_AlwaysGoBottom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_AlwaysGoBottom.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox_AlwaysGoBottom.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_AlwaysGoBottom.Image")));
-            this.pictureBox_AlwaysGoBottom.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox_AlwaysGoBottom.InitialImage")));
-            this.pictureBox_AlwaysGoBottom.Location = new System.Drawing.Point(575, 2);
-            this.pictureBox_AlwaysGoBottom.Name = "pictureBox_AlwaysGoBottom";
-            this.pictureBox_AlwaysGoBottom.Size = new System.Drawing.Size(23, 23);
-            this.pictureBox_AlwaysGoBottom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_AlwaysGoBottom.TabIndex = 13;
-            this.pictureBox_AlwaysGoBottom.TabStop = false;
-            this.toolTip_DataRecordBox.SetToolTip(this.pictureBox_AlwaysGoBottom, "始终定位到尾部");
-            this.pictureBox_AlwaysGoBottom.Click += new System.EventHandler(this.pictureBox_pictureBox_AlwaysGoBottom_Click);
-            this.pictureBox_AlwaysGoBottom.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
-            this.pictureBox_AlwaysGoBottom.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
-            // 
             // imageListForButton
             // 
             this.imageListForButton.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListForButton.ImageStream")));
@@ -151,30 +189,18 @@
             this.imageListForButton.Images.SetKeyName(4, "bt_heat_3.png");
             this.imageListForButton.Images.SetKeyName(5, "bt_heat_2.png");
             // 
-            // ShowInNewWindow_ToolStripMenuItem
-            // 
-            this.ShowInNewWindow_ToolStripMenuItem.Name = "ShowInNewWindow_ToolStripMenuItem";
-            this.ShowInNewWindow_ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ShowInNewWindow_ToolStripMenuItem.Text = "新窗口中查看";
-            this.ShowInNewWindow_ToolStripMenuItem.Click += new System.EventHandler(this.ShowInNewWindow_ToolStripMenuItem_Click);
-            // 
             // DataRecordBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            //this.Controls.Add(this.pictureBox_AlwaysGoBottom);
-            //this.Controls.Add(this.pictureBox_dataAddSave);
-            //this.Controls.Add(this.pictureBox_dataAddclean);
-            richTextBox_dataContainer.Controls.Add(this.pictureBox_AlwaysGoBottom);
-            richTextBox_dataContainer.Controls.Add(this.pictureBox_dataAddSave);
-            richTextBox_dataContainer.Controls.Add(this.pictureBox_dataAddclean);
             this.Controls.Add(this.richTextBox_dataContainer);
             this.Name = "DataRecordBox";
             this.Size = new System.Drawing.Size(652, 182);
+            this.richTextBox_dataContainer.ResumeLayout(false);
             this.contextMenuStrip_RecBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_AlwaysGoBottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dataAddSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dataAddclean)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_AlwaysGoBottom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -192,5 +218,8 @@
         private System.Windows.Forms.ToolStripMenuItem AutoSave_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Fill_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ShowInNewWindow_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 格式化选中内容ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jSONToolStripMenuItem;
     }
 }

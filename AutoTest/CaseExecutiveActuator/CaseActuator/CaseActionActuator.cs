@@ -493,7 +493,10 @@ namespace CaseExecutiveActuator
         {
             if(IsHasSameKey(key,1)!=null)
             {
-                return false;
+                if (!RemoveStaticData(key,false))
+                {
+                    return false;
+                }
             }
             runActuatorStaticDataKeyList.MyAdd(key, vaule);
             OnListChanged();
@@ -511,7 +514,10 @@ namespace CaseExecutiveActuator
         {
             if(IsHasSameKey(key,2)!=null)
             {
-                return false;
+                if (!RemoveStaticData(key, false))
+                {
+                    return false;
+                }
             }
             runActuatorStaticDataParameterList.MyAdd<IRunTimeStaticData>(key, vaule);
             OnListChanged();
@@ -529,7 +535,10 @@ namespace CaseExecutiveActuator
         {
             if (IsHasSameKey(key, 3) != null)
             {
-                return false;
+                if (!RemoveStaticData(key, false))
+                {
+                    return false;
+                }
             }
             runActuatorStaticDataSouceList.MyAdd<IRunTimeDataSource>(key, vaule);
             OnListChanged();
@@ -537,7 +546,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// Remove Static Data in any list (if there has any same key retrun false)
+        /// Remove Static Data in any list (if there not has any same key retrun false)
         /// </summary>
         /// <param name="key">key or Regex</param>
         /// <param name="isRegex">is use Regex</param>
@@ -574,6 +583,7 @@ namespace CaseExecutiveActuator
             {
                 try
                 {
+                    bool isFindAndRegexKey = false;
                     System.Text.RegularExpressions.Regex sr;
                     sr = new System.Text.RegularExpressions.Regex(key, System.Text.RegularExpressions.RegexOptions.None);
                     List<string> dataToDel = new List<string>();
@@ -589,8 +599,12 @@ namespace CaseExecutiveActuator
                     {
                         runActuatorStaticDataKeyList.Remove(tempKey);
                     }
-                    dataToDel.Clear();
-
+                    if(dataToDel.Count>0)
+                    {
+                        isFindAndRegexKey = true;
+                        dataToDel.Clear();
+                    }
+                    
                     foreach (var tempKey in runActuatorStaticDataParameterList.Keys)
                     {
                         if (sr.IsMatch(tempKey))
@@ -602,7 +616,11 @@ namespace CaseExecutiveActuator
                     {
                         runActuatorStaticDataParameterList.Remove(tempKey);
                     }
-                    dataToDel.Clear();
+                    if (dataToDel.Count > 0)
+                    {
+                        isFindAndRegexKey = true;
+                        dataToDel.Clear();
+                    }
 
                     foreach (var tempKey in runActuatorStaticDataSouceList.Keys)
                     {
@@ -615,10 +633,20 @@ namespace CaseExecutiveActuator
                     {
                         runActuatorStaticDataSouceList.Remove(tempKey);
                     }
-                    dataToDel.Clear();
+                    if (dataToDel.Count > 0)
+                    {
+                        isFindAndRegexKey = true;
+                        dataToDel.Clear();
+                    }
+
+                    if(!isFindAndRegexKey)
+                    {
+                        return false;
+                    }
                 }
-                catch
+                catch(Exception ex)
                 {
+                    ErrorLog.PutInLog(ex);
                     return false;
                 }
                 

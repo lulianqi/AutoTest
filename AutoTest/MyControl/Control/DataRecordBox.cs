@@ -63,6 +63,8 @@ namespace MyCommonControl
         private int maxLine = 5000;
 
         private Form showForm;
+        private Form formatForm;
+        private RichTextBox rtb_formatData = new RichTextBox();
 
         /// <summary>
         /// 可用于显示的最大缓存行
@@ -260,11 +262,36 @@ namespace MyCommonControl
             PutOutShowForm(); 
         }
 
+        private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string myXmlStr = null;
+            if (!MyCommonTool.FormatXmlString(richTextBox_dataContainer.SelectedText,out myXmlStr))
+            {
+                MessageBox.Show("选中数据不是正确的XML数据", "STOP", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            if (formatForm != null)
+            {
+                if (!formatForm.IsDisposed)
+                {
+                    PutOutFormatForm(myXmlStr);
+                    return;
+                }
+            }
+            InitializeFormatForm();
+            PutOutFormatForm(myXmlStr); 
+        }
 
+        private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region ShowForm
         private void InitializeShowForm()
         {
             showForm = new Form();
-            showForm.WindowState = System.Windows.Forms.FormWindowState.Maximized; 
+            showForm.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             showForm.Icon = MyCommonControl.Properties.Resources.full_page;
             showForm.FormClosing += showForm_FormClosing;
 
@@ -282,8 +309,32 @@ namespace MyCommonControl
             showForm.Controls.Add(richTextBox_dataContainer);
             richTextBox_dataContainer.Dock = DockStyle.Fill;
             showForm.Show();
+        } 
+        #endregion
+
+
+        #region FormatForm
+        private void InitializeFormatForm()
+        {
+            formatForm = new Form();
+            formatForm.WindowState = System.Windows.Forms.FormWindowState.Normal;
+            formatForm.Icon = MyCommonControl.Properties.Resources.full_page;
+            formatForm.FormClosing += farmatForm_FormClosing;
+            formatForm.Controls.Add(rtb_formatData);
+            rtb_formatData.Dock = DockStyle.Fill;
+            formatForm.Show();
         }
 
+        void farmatForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            formatForm.Controls.Remove(formatForm);
+        }
+
+        private void PutOutFormatForm(string yourData)
+        {
+            rtb_formatData.Text = yourData;
+        } 
+        #endregion
 
         /// <summary>
         /// 向容器中添加数据
@@ -439,6 +490,9 @@ namespace MyCommonControl
             }
             base.Dispose(disposing);
         }
+
+       
+
 
         
 
