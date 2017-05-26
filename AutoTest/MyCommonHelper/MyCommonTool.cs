@@ -253,6 +253,91 @@ namespace MyCommonHelper
             
         }
 
+
+        public static bool FormatJsonString(string originalString,out string formatString)
+        {
+            #region 仅会在函数内使用的匿名函数
+            
+            Func<char,int> GetNowRetractType = (dealChar) =>
+                {
+                    if (dealChar<21)
+                    {
+                        return -99;
+                    }
+                    switch (dealChar)
+                    {
+                        case '{':
+                            return 1;
+                            //break;
+                        case '[':
+                            return 1;
+                            //break;
+                        case '}':
+                            return -1;
+                            //break;
+                        case ']':
+                            return -1;
+                            //break;
+                        case ',':
+                            return 0;
+                            //break;
+                        default:
+                            return -101;
+                            //break;
+                    }
+                };
+
+            Func<int, char[]> GetNowRetractChars = (retractCount) =>
+                {
+                    if(retractCount<0)
+                    { return null; }
+                    char[] retractChars = new char[retractCount];
+                    for(int i =0;i<retractCount;i++)
+                    {
+                        retractChars[i] = jsonRetract;
+                    }
+                    return retractChars;
+                };
+            #endregion
+            // { [ 后面 换行，缩进+1
+            // } ] 前面 缩进-1，换行
+            // ,   后面 换行
+            // ""  名字 或 string 值内含的 {} [] , 不处理
+            // ""  名字 或 string 外的多余空格 去除  （ascii 0x20 以下的不可见字符包括换行回车全部去掉）
+            // ""  内可能含有未转义过的引号，不能以此作为引号的结束
+            formatString = string.Empty;
+            char jsonRetract = '\t';
+            int nowRetractCount = 0;
+            bool isInString = false;
+            if (originalString!=null)
+            {
+                return false;
+            }
+            //char[] jsonArr = originalString.ToArray();
+            //StringBuilder jsonSb = new StringBuilder((int)(originalString.Length * 1.2));
+            StringBuilder jsonSb = new StringBuilder(originalString);
+            int retractTypeRusult = 0;
+            for (int i = 0; i < jsonSb.Length;i++ )
+            {
+                retractTypeRusult = GetNowRetractType(jsonSb[i]);
+                if(retractTypeRusult>-100)
+                {
+                    if(retractTypeRusult==-99)
+                    {
+                        jsonSb.Remove(i, 1);
+                        i--;
+                        break;
+                    }
+                    else if (retractTypeRusult == 1)
+                    {
+                        nowRetractCount++;
+
+                    }
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// 添加带颜色内容
         /// </summary>
