@@ -284,7 +284,22 @@ namespace MyCommonControl
 
         private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string myJsonStr = null;
+            if (!MyCommonTool.FormatJsonString(richTextBox_dataContainer.SelectedText, out myJsonStr))
+            {
+                MessageBox.Show("选中数据不是正确的XML数据", "STOP", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            if (formatForm != null)
+            {
+                if (!formatForm.IsDisposed)
+                {
+                    PutOutFormatForm(myJsonStr);
+                    return;
+                }
+            }
+            InitializeFormatForm();
+            PutOutFormatForm(myJsonStr); 
         }
 
         #region ShowForm
@@ -327,7 +342,7 @@ namespace MyCommonControl
 
         void farmatForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            formatForm.Controls.Remove(formatForm);
+            formatForm.Controls.Remove(rtb_formatData);
         }
 
         private void PutOutFormatForm(string yourData)
