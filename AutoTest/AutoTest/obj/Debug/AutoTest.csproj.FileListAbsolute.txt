@@ -79,7 +79,6 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.AboutB
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.AddRemoteHost.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.AddRunner.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.myCaseParameter.resources
-D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCBalloon.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.EditCasebody.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.EditProjiectHead.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myDialogWindow.MyCBalloonResultInfo.resources
@@ -147,3 +146,5 @@ D:\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.pdb
 D:\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources
 D:\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCaceCBalloon.resources
 F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCaceCBalloon.resources

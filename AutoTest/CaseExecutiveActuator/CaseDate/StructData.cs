@@ -240,8 +240,18 @@ namespace CaseExecutiveActuator
                         break;
                     //hex 16
                     case ParameterizationContentEncodingType.encode_hex16:
+                        myTargetContentData = MyCommonHelper.MyEncryption.StringToHexString(myTargetContentData);
                         break;
                     case ParameterizationContentEncodingType.decode_hex16:
+                        try
+                        {
+                            byte[] nowBytes = MyCommonHelper.MyEncryption.HexStringToByte(myTargetContentData, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.space);
+                            myTargetContentData = Encoding.UTF8.GetString(nowBytes);
+                        }
+                        catch (Exception ex)
+                        {
+                            myTargetContentData = "ContentEncoding Error:" + ex.Message;
+                        }
                         break;
                     //hex 2
                     case ParameterizationContentEncodingType.encode_hex2:

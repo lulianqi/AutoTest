@@ -253,7 +253,12 @@ namespace MyCommonHelper
             
         }
 
-
+        /// <summary>
+        /// 将json字符串格式化
+        /// </summary>
+        /// <param name="originalString">原始字符串</param>
+        /// <param name="formatString">格式化后的数据</param>
+        /// <returns>是否成功（未判断格式是否合法，只要不为null都返回成功）</returns>
         public static bool FormatJsonString(string originalString,out string formatString)
         {
             // { [ 后面 换行，缩进+1
@@ -262,6 +267,8 @@ namespace MyCommonHelper
             // ""  名字 或 string 值内含的 {} [] , 不处理
             // ""  名字 或 string 外的多余空格 去除  （ascii 0x20 以下的不可见字符包括换行回车全部去掉）
             // ""  内可能含有未转义过的引号，不能以此作为引号的结束
+            //去除 unicode  C1 控制符处理 
+
             formatString = string.Empty;
             char jsonRetract = '\t';
             char[] jsonNewLine=new char[]{'\r','\n'};
@@ -269,10 +276,19 @@ namespace MyCommonHelper
             bool isInString = false;
 
             #region 仅会在函数内使用的匿名函数
-            
+
+            Func<char, bool> IsEndString = (dealChar) =>
+                {
+                    if (dealChar=='"')
+                    { 
+
+                    }
+                    return false;
+                };
+
             Func<char,int> GetNowRetractType = (dealChar) =>
                 {
-                    if (dealChar<21)
+                    if (dealChar < 0x21 || (dealChar>127 && dealChar<162))
                     {
                         return -99;
                     }
@@ -293,6 +309,8 @@ namespace MyCommonHelper
                         case ',':
                             return 0;
                             //break;
+                        case '"':
+                            return 2;
                         default:
                             return -101;
                             //break;
@@ -317,47 +335,86 @@ namespace MyCommonHelper
                 return false;
             }
 
-            //char[] jsonArr = originalString.ToArray();
-            //StringBuilder jsonSb = new StringBuilder((int)(originalString.Length * 1.2));
-            StringBuilder jsonSb = new StringBuilder(originalString);
-            int retractTypeRusult = 0;
+            StringBuilder jsonSb = new StringBuilder(originalString);  //不应该直接使用Insert/Remove反复操作StringBuilder，性能明显若与使用新的StringBuilder拼接
+            StringBuilder FormatJsonSb = new StringBuilder((int)(originalString.Length * 1.2));
+            int retractTypeRusult = 0;;
             for (int i = 0; i < jsonSb.Length;i++ )
             {
-                retractTypeRusult = GetNowRetractType(jsonSb[i]);
-                if(retractTypeRusult>-100)
+                if (isInString)
                 {
-                    if(retractTypeRusult==-99)
+                    if (jsonSb[i] == '"')
                     {
-                        jsonSb.Remove(i, 1);
-                        i--;
-                        break;
+                        if(jsonSb[i-1]!='\\')
+                        {
+                            isInString = false;
+                        }
                     }
-                    else if (retractTypeRusult == 1)
+                    FormatJsonSb.Append(jsonSb[i]);
+                }
+                else
+                {
+                    retractTypeRusult = GetNowRetractType(jsonSb[i]);
+                    if (retractTypeRusult > -100)
                     {
-                        nowRetractCount++;
-                        jsonSb.Insert(i+1, jsonNewLine);
-                        i += jsonNewLine.Length;
-                        jsonSb.Insert(i+1, GetNowRetractChars(nowRetractCount));
-                        i += nowRetractCount;
+                        if (retractTypeRusult == -99)
+                        {
+                            //jsonSb.Remove(i, 1);
+                            //i--;
+                            continue;
+                        }
+                        else if (retractTypeRusult == 1)
+                        {
+                            nowRetractCount++;
+                            //jsonSb.Insert(i + 1, jsonNewLine);
+                            //i += jsonNewLine.Length;
+                            //jsonSb.Insert(i + 1, GetNowRetractChars(nowRetractCount));
+                            //i += nowRetractCount;
+                            FormatJsonSb.Append(jsonSb[i]);
+                            FormatJsonSb.Append(jsonNewLine);
+                            FormatJsonSb.Append(GetNowRetractChars(nowRetractCount));
+                            
+                        }
+                        else if (retractTypeRusult == 0)
+                        {
+                            //jsonSb.Insert(i + 1, jsonNewLine);
+                            //i += jsonNewLine.Length;
+                            //jsonSb.Insert(i + 1, GetNowRetractChars(nowRetractCount));
+                            //i += nowRetractCount;
+                            FormatJsonSb.Append(jsonSb[i]);
+                            FormatJsonSb.Append(jsonNewLine);
+                            FormatJsonSb.Append(GetNowRetractChars(nowRetractCount));
+                            
+                        }
+                        else if (retractTypeRusult == -1)
+                        {
+                            nowRetractCount--;
+                            //jsonSb.Insert(i, jsonNewLine);
+                            //i += jsonNewLine.Length;
+                            //jsonSb.Insert(i, GetNowRetractChars(nowRetractCount));
+                            //i += nowRetractCount;
+                            FormatJsonSb.Append(jsonNewLine);
+                            FormatJsonSb.Append(GetNowRetractChars(nowRetractCount));
+                            FormatJsonSb.Append(jsonSb[i]);
+                        }
+                        else if (retractTypeRusult == 2)
+                        {
+                            FormatJsonSb.Append(jsonSb[i]);
+                            if (jsonSb[i - 1] != '\\')
+                            {
+                                isInString = true;
+                            }
+                        }
                     }
-                    else if (retractTypeRusult == 0)
+                    else
                     {
-                        jsonSb.Insert(i+1, jsonNewLine);
-                        i += jsonNewLine.Length;
-                        jsonSb.Insert(i+1, GetNowRetractChars(nowRetractCount));
-                        i += nowRetractCount;
-                    }
-                    else if (retractTypeRusult == -1)
-                    {
-                        nowRetractCount--;
-                        jsonSb.Insert(i, jsonNewLine);
-                        i += jsonNewLine.Length;
-                        jsonSb.Insert(i, GetNowRetractChars(nowRetractCount));
-                        i += nowRetractCount;
+                        FormatJsonSb.Append(jsonSb[i]);
                     }
                 }
             }
-            formatString = jsonSb.ToString();
+
+
+            //formatString = jsonSb.ToString();
+            formatString = FormatJsonSb.ToString();
             return true;;
         }
 

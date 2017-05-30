@@ -57,7 +57,7 @@ namespace MyCommonHelper
         /// <returns>返回结果</returns>
         public static string StringToHexString(string yourStr)
         {
-            return StringToHexString(yourStr, Encoding.UTF8, HexaDecimal.hex16, ShowHexMode.spit0x);
+            return StringToHexString(yourStr, Encoding.UTF8, HexaDecimal.hex16, ShowHexMode.space);
         }
 
         /// <summary>

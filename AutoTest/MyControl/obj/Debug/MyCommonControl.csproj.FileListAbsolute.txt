@@ -22,3 +22,15 @@ F:\file\Code\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.Properties.Re
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.GenerateResource.Cache
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csprojResolveAssemblyReference.cache
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\CBalloon.CBalloonBase.resources
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.DataRecordBox.resources
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.PlayButton.resources
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.Properties.Resources.resources
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.GenerateResource.Cache
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
+D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb
