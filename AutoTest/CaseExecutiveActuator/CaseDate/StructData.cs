@@ -255,8 +255,19 @@ namespace CaseExecutiveActuator
                         break;
                     //hex 2
                     case ParameterizationContentEncodingType.encode_hex2:
+                        myTargetContentData = MyCommonHelper.MyEncryption.StringToHexString(myTargetContentData, Encoding.UTF8, MyEncryption.HexaDecimal.hex2, MyEncryption.ShowHexMode.space);
                         break;
                     case ParameterizationContentEncodingType.decode_hex2:
+                        try
+                        {
+                            byte[] nowBytes = MyCommonHelper.MyEncryption.HexStringToByte(myTargetContentData, MyEncryption.HexaDecimal.hex2, MyEncryption.ShowHexMode.space);
+                            myTargetContentData = Encoding.UTF8.GetString(nowBytes);
+                        }
+                        catch (Exception ex)
+                        {
+                            myTargetContentData = "ContentEncoding Error:" + ex.Message;
+                        }
+                        break;
                         break;
                     default:
                         errorMessage = "[getTargetContentData] unknow or not supported this encodetype";

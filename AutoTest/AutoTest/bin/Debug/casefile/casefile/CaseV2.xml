@@ -678,6 +678,24 @@
         <Level>1</Level>
       </Attribute>
     </Case>
+    <Case id="1000040002" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show isHaveParameters="true" additionalEncoding="encode_hex16">test for encode_hex16</Show>
+        <ConsoleTask>
+          <Add name="sdv_testForHex" type="vaule" additionalEncoding="encode_hex16">test for encode_hex16</Add>
+        </ConsoleTask>
+      </Content>
+      <Expect method="contain">20</Expect>
+    </Case>
+    <Case id="1000040003" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show isHaveParameters="true" additionalEncoding="encode_hex2">test for encode_hex16</Show>
+        <ConsoleTask>
+          <Add name="sdv_testForHexStr" type="vaule" isHaveParameters="true" additionalEncoding="decode_hex16">*#sdv_testForHex*#</Add>
+        </ConsoleTask>
+      </Content>
+      <Expect method="not">test for encode_hex16</Expect>
+    </Case>
     <Case id="1000050201" remark="登录商户端">
       <Content protocol="http" actuator="http">
         <Uri httpMethod="GET" isHaveParameters="true">http://wx.huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Uri>

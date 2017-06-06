@@ -95,7 +95,7 @@ namespace MyCommonHelper
                 result.Append(DictionaryShowHexMode[stringMode]);
                 result.Append(Convert.ToString(yourBytes[i], (int)hexDecimal).PadLeft(DictionaryHexaDecimal[hexDecimal], '0'));
             }
-            return result.ToString();
+            return result.ToString().Trim();
         }
 
         /// <summary>
