@@ -35,24 +35,25 @@
             this.lb_info_clientId = new System.Windows.Forms.Label();
             this.lb_info_address = new System.Windows.Forms.Label();
             this.ck_isDurable = new System.Windows.Forms.CheckBox();
-            this.tb_clientId = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.tb_ConsumerTopic = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.tb_uri = new MyCommonControl.Control.TextBoxWithWatermak();
             this.bt_Subscribe = new System.Windows.Forms.Button();
             this.bt_Connect = new System.Windows.Forms.Button();
-            this.tb_Password = new MyCommonControl.Control.TextBoxWithWatermak();
             this.lb_info_userNmae = new System.Windows.Forms.Label();
             this.lb_info_passWord = new System.Windows.Forms.Label();
-            this.tb_userName = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.cb_sendTopicQueues = new System.Windows.Forms.ComboBox();
+            this.rtb_dataToSend = new System.Windows.Forms.RichTextBox();
+            this.cb_sendTextByte = new System.Windows.Forms.ComboBox();
+            this.Drb_messageReceive = new MyCommonControl.DataRecordBox();
+            this.tb_sendTopic = new MyCommonControl.Control.TextBoxWithWatermak();
             this.lv_pathList = new MyCommonControl.ListViewWithButton();
             this.columnHeader_topicOrQueue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_del = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Drb_messageReceive = new MyCommonControl.DataRecordBox();
-            this.cb_sendTopicQueues = new System.Windows.Forms.ComboBox();
-            this.tb_sendTopic = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.rtb_dataToSend = new System.Windows.Forms.RichTextBox();
-            this.cb_sendTextByte = new System.Windows.Forms.ComboBox();
+            this.tb_Password = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_userName = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_clientId = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_ConsumerTopic = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_uri = new MyCommonControl.Control.TextBoxWithWatermak();
             this.tb_ConsumerName = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_sendCount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // bt_publish
@@ -116,6 +117,141 @@
             this.ck_isDurable.UseVisualStyleBackColor = true;
             this.ck_isDurable.CheckedChanged += new System.EventHandler(this.ck_isDurable_CheckedChanged);
             // 
+            // bt_Subscribe
+            // 
+            this.bt_Subscribe.Location = new System.Drawing.Point(732, 67);
+            this.bt_Subscribe.Name = "bt_Subscribe";
+            this.bt_Subscribe.Size = new System.Drawing.Size(75, 23);
+            this.bt_Subscribe.TabIndex = 31;
+            this.bt_Subscribe.Text = "Subscribe";
+            this.bt_Subscribe.UseVisualStyleBackColor = true;
+            this.bt_Subscribe.Click += new System.EventHandler(this.bt_Subscribe_Click);
+            // 
+            // bt_Connect
+            // 
+            this.bt_Connect.Location = new System.Drawing.Point(651, 10);
+            this.bt_Connect.Name = "bt_Connect";
+            this.bt_Connect.Size = new System.Drawing.Size(75, 23);
+            this.bt_Connect.TabIndex = 30;
+            this.bt_Connect.Text = "Connect";
+            this.bt_Connect.UseVisualStyleBackColor = true;
+            this.bt_Connect.Click += new System.EventHandler(this.bt_Connect_Click);
+            // 
+            // lb_info_userNmae
+            // 
+            this.lb_info_userNmae.AutoSize = true;
+            this.lb_info_userNmae.Location = new System.Drawing.Point(433, 44);
+            this.lb_info_userNmae.Name = "lb_info_userNmae";
+            this.lb_info_userNmae.Size = new System.Drawing.Size(53, 12);
+            this.lb_info_userNmae.TabIndex = 43;
+            this.lb_info_userNmae.Text = "Username";
+            // 
+            // lb_info_passWord
+            // 
+            this.lb_info_passWord.AutoSize = true;
+            this.lb_info_passWord.Location = new System.Drawing.Point(632, 44);
+            this.lb_info_passWord.Name = "lb_info_passWord";
+            this.lb_info_passWord.Size = new System.Drawing.Size(53, 12);
+            this.lb_info_passWord.TabIndex = 44;
+            this.lb_info_passWord.Text = "Password";
+            // 
+            // cb_sendTopicQueues
+            // 
+            this.cb_sendTopicQueues.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_sendTopicQueues.FormattingEnabled = true;
+            this.cb_sendTopicQueues.Items.AddRange(new object[] {
+            "Topic",
+            "Queues"});
+            this.cb_sendTopicQueues.Location = new System.Drawing.Point(8, 391);
+            this.cb_sendTopicQueues.Name = "cb_sendTopicQueues";
+            this.cb_sendTopicQueues.Size = new System.Drawing.Size(70, 20);
+            this.cb_sendTopicQueues.TabIndex = 50;
+            // 
+            // rtb_dataToSend
+            // 
+            this.rtb_dataToSend.BackColor = System.Drawing.Color.Lavender;
+            this.rtb_dataToSend.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_dataToSend.Location = new System.Drawing.Point(3, 418);
+            this.rtb_dataToSend.Name = "rtb_dataToSend";
+            this.rtb_dataToSend.Size = new System.Drawing.Size(603, 68);
+            this.rtb_dataToSend.TabIndex = 51;
+            this.rtb_dataToSend.Text = "";
+            // 
+            // cb_sendTextByte
+            // 
+            this.cb_sendTextByte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_sendTextByte.FormattingEnabled = true;
+            this.cb_sendTextByte.Items.AddRange(new object[] {
+            "Text",
+            "Bytes"});
+            this.cb_sendTextByte.Location = new System.Drawing.Point(441, 390);
+            this.cb_sendTextByte.Name = "cb_sendTextByte";
+            this.cb_sendTextByte.Size = new System.Drawing.Size(70, 20);
+            this.cb_sendTextByte.TabIndex = 52;
+            // 
+            // Drb_messageReceive
+            // 
+            this.Drb_messageReceive.CanFill = true;
+            this.Drb_messageReceive.Location = new System.Drawing.Point(6, 98);
+            this.Drb_messageReceive.MaxLine = 5000;
+            this.Drb_messageReceive.MianDirectory = "DataRecord";
+            this.Drb_messageReceive.Name = "Drb_messageReceive";
+            this.Drb_messageReceive.Size = new System.Drawing.Size(600, 284);
+            this.Drb_messageReceive.TabIndex = 47;
+            // 
+            // tb_sendTopic
+            // 
+            this.tb_sendTopic.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tb_sendTopic.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tb_sendTopic.Location = new System.Drawing.Point(83, 390);
+            this.tb_sendTopic.Name = "tb_sendTopic";
+            this.tb_sendTopic.Size = new System.Drawing.Size(352, 21);
+            this.tb_sendTopic.TabIndex = 49;
+            this.tb_sendTopic.WatermarkText = "发布消息 Topic或Queues";
+            // 
+            // lv_pathList
+            // 
+            this.lv_pathList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lv_pathList.BackColor = System.Drawing.SystemColors.Window;
+            this.lv_pathList.ButtonIndex = 1;
+            this.lv_pathList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader_topicOrQueue,
+            this.columnHeader_del});
+            this.lv_pathList.Location = new System.Drawing.Point(612, 98);
+            this.lv_pathList.MultiSelect = false;
+            this.lv_pathList.Name = "lv_pathList";
+            this.lv_pathList.Size = new System.Drawing.Size(204, 388);
+            this.lv_pathList.TabIndex = 48;
+            this.lv_pathList.UseCompatibleStateImageBehavior = false;
+            this.lv_pathList.View = System.Windows.Forms.View.Details;
+            this.lv_pathList.ButtonClickEvent += new System.EventHandler(this.lv_pathList_ButtonClickEvent);
+            // 
+            // columnHeader_topicOrQueue
+            // 
+            this.columnHeader_topicOrQueue.Text = "Topic/Queue";
+            this.columnHeader_topicOrQueue.Width = 142;
+            // 
+            // columnHeader_del
+            // 
+            this.columnHeader_del.Text = "操作";
+            this.columnHeader_del.Width = 56;
+            // 
+            // tb_Password
+            // 
+            this.tb_Password.Location = new System.Drawing.Point(701, 40);
+            this.tb_Password.Name = "tb_Password";
+            this.tb_Password.Size = new System.Drawing.Size(114, 21);
+            this.tb_Password.TabIndex = 46;
+            this.tb_Password.WatermarkText = "密码（可选）";
+            // 
+            // tb_userName
+            // 
+            this.tb_userName.Location = new System.Drawing.Point(500, 40);
+            this.tb_userName.Name = "tb_userName";
+            this.tb_userName.Size = new System.Drawing.Size(114, 21);
+            this.tb_userName.TabIndex = 45;
+            this.tb_userName.WatermarkText = "用户名（可选）";
+            // 
             // tb_clientId
             // 
             this.tb_clientId.AutoCompleteCustomSource.AddRange(new string[] {
@@ -156,139 +292,6 @@
             this.tb_uri.Text = "tcp://192.168.78.110:61616";
             this.tb_uri.WatermarkText = "链接URI";
             // 
-            // bt_Subscribe
-            // 
-            this.bt_Subscribe.Location = new System.Drawing.Point(732, 67);
-            this.bt_Subscribe.Name = "bt_Subscribe";
-            this.bt_Subscribe.Size = new System.Drawing.Size(75, 23);
-            this.bt_Subscribe.TabIndex = 31;
-            this.bt_Subscribe.Text = "Subscribe";
-            this.bt_Subscribe.UseVisualStyleBackColor = true;
-            this.bt_Subscribe.Click += new System.EventHandler(this.bt_Subscribe_Click);
-            // 
-            // bt_Connect
-            // 
-            this.bt_Connect.Location = new System.Drawing.Point(651, 10);
-            this.bt_Connect.Name = "bt_Connect";
-            this.bt_Connect.Size = new System.Drawing.Size(75, 23);
-            this.bt_Connect.TabIndex = 30;
-            this.bt_Connect.Text = "Connect";
-            this.bt_Connect.UseVisualStyleBackColor = true;
-            this.bt_Connect.Click += new System.EventHandler(this.bt_Connect_Click);
-            // 
-            // tb_Password
-            // 
-            this.tb_Password.Location = new System.Drawing.Point(701, 40);
-            this.tb_Password.Name = "tb_Password";
-            this.tb_Password.Size = new System.Drawing.Size(114, 21);
-            this.tb_Password.TabIndex = 46;
-            this.tb_Password.WatermarkText = "密码（可选）";
-            // 
-            // lb_info_userNmae
-            // 
-            this.lb_info_userNmae.AutoSize = true;
-            this.lb_info_userNmae.Location = new System.Drawing.Point(433, 44);
-            this.lb_info_userNmae.Name = "lb_info_userNmae";
-            this.lb_info_userNmae.Size = new System.Drawing.Size(53, 12);
-            this.lb_info_userNmae.TabIndex = 43;
-            this.lb_info_userNmae.Text = "Username";
-            // 
-            // lb_info_passWord
-            // 
-            this.lb_info_passWord.AutoSize = true;
-            this.lb_info_passWord.Location = new System.Drawing.Point(632, 44);
-            this.lb_info_passWord.Name = "lb_info_passWord";
-            this.lb_info_passWord.Size = new System.Drawing.Size(53, 12);
-            this.lb_info_passWord.TabIndex = 44;
-            this.lb_info_passWord.Text = "Password";
-            // 
-            // tb_userName
-            // 
-            this.tb_userName.Location = new System.Drawing.Point(500, 40);
-            this.tb_userName.Name = "tb_userName";
-            this.tb_userName.Size = new System.Drawing.Size(114, 21);
-            this.tb_userName.TabIndex = 45;
-            this.tb_userName.WatermarkText = "用户名（可选）";
-            // 
-            // lv_pathList
-            // 
-            this.lv_pathList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lv_pathList.BackColor = System.Drawing.SystemColors.Window;
-            this.lv_pathList.ButtonIndex = 1;
-            this.lv_pathList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader_topicOrQueue,
-            this.columnHeader_del});
-            this.lv_pathList.Location = new System.Drawing.Point(612, 98);
-            this.lv_pathList.MultiSelect = false;
-            this.lv_pathList.Name = "lv_pathList";
-            this.lv_pathList.Size = new System.Drawing.Size(204, 388);
-            this.lv_pathList.TabIndex = 48;
-            this.lv_pathList.UseCompatibleStateImageBehavior = false;
-            this.lv_pathList.View = System.Windows.Forms.View.Details;
-            this.lv_pathList.ButtonClickEvent += new System.EventHandler(this.lv_pathList_ButtonClickEvent);
-            // 
-            // columnHeader_topicOrQueue
-            // 
-            this.columnHeader_topicOrQueue.Text = "Topic/Queue";
-            this.columnHeader_topicOrQueue.Width = 142;
-            // 
-            // columnHeader_del
-            // 
-            this.columnHeader_del.Text = "操作";
-            this.columnHeader_del.Width = 56;
-            // 
-            // Drb_messageReceive
-            // 
-            this.Drb_messageReceive.CanFill = true;
-            this.Drb_messageReceive.Location = new System.Drawing.Point(6, 98);
-            this.Drb_messageReceive.MaxLine = 5000;
-            this.Drb_messageReceive.MianDirectory = "DataRecord";
-            this.Drb_messageReceive.Name = "Drb_messageReceive";
-            this.Drb_messageReceive.Size = new System.Drawing.Size(600, 284);
-            this.Drb_messageReceive.TabIndex = 47;
-            // 
-            // cb_sendTopicQueues
-            // 
-            this.cb_sendTopicQueues.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_sendTopicQueues.FormattingEnabled = true;
-            this.cb_sendTopicQueues.Items.AddRange(new object[] {
-            "Topic",
-            "Queues"});
-            this.cb_sendTopicQueues.Location = new System.Drawing.Point(8, 391);
-            this.cb_sendTopicQueues.Name = "cb_sendTopicQueues";
-            this.cb_sendTopicQueues.Size = new System.Drawing.Size(70, 20);
-            this.cb_sendTopicQueues.TabIndex = 50;
-            // 
-            // tb_sendTopic
-            // 
-            this.tb_sendTopic.Location = new System.Drawing.Point(83, 390);
-            this.tb_sendTopic.Name = "tb_sendTopic";
-            this.tb_sendTopic.Size = new System.Drawing.Size(352, 21);
-            this.tb_sendTopic.TabIndex = 49;
-            this.tb_sendTopic.WatermarkText = "发布消息 Topic或Queues";
-            // 
-            // rtb_dataToSend
-            // 
-            this.rtb_dataToSend.BackColor = System.Drawing.Color.Lavender;
-            this.rtb_dataToSend.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_dataToSend.Location = new System.Drawing.Point(3, 418);
-            this.rtb_dataToSend.Name = "rtb_dataToSend";
-            this.rtb_dataToSend.Size = new System.Drawing.Size(603, 68);
-            this.rtb_dataToSend.TabIndex = 51;
-            this.rtb_dataToSend.Text = "";
-            // 
-            // cb_sendTextByte
-            // 
-            this.cb_sendTextByte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_sendTextByte.FormattingEnabled = true;
-            this.cb_sendTextByte.Items.AddRange(new object[] {
-            "Text",
-            "Bytes"});
-            this.cb_sendTextByte.Location = new System.Drawing.Point(441, 390);
-            this.cb_sendTextByte.Name = "cb_sendTextByte";
-            this.cb_sendTextByte.Size = new System.Drawing.Size(70, 20);
-            this.cb_sendTextByte.TabIndex = 52;
-            // 
             // tb_ConsumerName
             // 
             this.tb_ConsumerName.AutoCompleteCustomSource.AddRange(new string[] {
@@ -302,6 +305,14 @@
             this.tb_ConsumerName.TabIndex = 53;
             this.tb_ConsumerName.Visible = false;
             this.tb_ConsumerName.WatermarkText = "可靠连接的ConsumerName（可选）";
+            // 
+            // tb_sendCount
+            // 
+            this.tb_sendCount.Location = new System.Drawing.Point(612, 390);
+            this.tb_sendCount.Name = "tb_sendCount";
+            this.tb_sendCount.Size = new System.Drawing.Size(92, 21);
+            this.tb_sendCount.TabIndex = 54;
+            this.tb_sendCount.Text = "1";
             // 
             // ActiveMQ
             // 
@@ -330,6 +341,7 @@
             this.Controls.Add(this.bt_Subscribe);
             this.Controls.Add(this.bt_Connect);
             this.Controls.Add(this.tb_ConsumerName);
+            this.Controls.Add(this.tb_sendCount);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ActiveMQ";
             this.Text = "ActiveMQ";
@@ -366,6 +378,7 @@
         private System.Windows.Forms.RichTextBox rtb_dataToSend;
         private System.Windows.Forms.ComboBox cb_sendTextByte;
         private MyCommonControl.Control.TextBoxWithWatermak tb_ConsumerName;
+        private System.Windows.Forms.TextBox tb_sendCount;
     }
 }
 

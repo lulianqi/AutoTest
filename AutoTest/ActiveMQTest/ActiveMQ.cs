@@ -377,7 +377,20 @@ namespace ActiveMQTest
                 MessageBox.Show("please put in topic or queues ", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-            IMessageProducer prod = cb_sendTopicQueues.SelectedIndex == 0 ? session.CreateProducer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(tb_sendTopic.Text)) : session.CreateProducer(new Apache.NMS.ActiveMQ.Commands.ActiveMQQueue(tb_sendTopic.Text));
+            IMessageProducer prod;
+            try
+            {
+                prod = cb_sendTopicQueues.SelectedIndex == 0 ? session.CreateProducer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(tb_sendTopic.Text)) : session.CreateProducer(new Apache.NMS.ActiveMQ.Commands.ActiveMQQueue(tb_sendTopic.Text));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            finally
+            {
+
+            }
             IMessage msg;
             if(cb_sendTextByte.SelectedIndex==0)
             {
@@ -398,8 +411,9 @@ namespace ActiveMQTest
                 }
             }
             prod.Send(msg, Apache.NMS.MsgDeliveryMode.NonPersistent, Apache.NMS.MsgPriority.Normal, TimeSpan.MinValue);
+            prod.Dispose();
             ShowState("published");
-            
+            tb_sendTopic.AutoCompleteCustomSource.Add(tb_sendTopic.Text);
         }
 
         private void ActiveMQ_Resize(object sender, EventArgs e)
