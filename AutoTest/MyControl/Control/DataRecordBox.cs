@@ -151,9 +151,9 @@ namespace MyCommonControl
 
         private string defaultSavePath = System.Windows.Forms.Application.StartupPath + "\\DataRecord\\AutoSave\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt";
 
-        private string usersSavePath = System.Windows.Forms.Application.StartupPath + "\\DataRecord\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt";   
-  
-        private List<ValuePair<string, Color>> puaseLines = new List<ValuePair<string, Color>>();
+        private string usersSavePath = System.Windows.Forms.Application.StartupPath + "\\DataRecord\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt";
+
+        private List<KeyValuePair<string, Color>> puaseLines = new List<KeyValuePair<string, Color>>();
 
 
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
@@ -361,16 +361,24 @@ namespace MyCommonControl
         {
             if (isPauseAdd)
             {
-                puaseLines.Add(new ValuePair<string, Color>(yourStr, fontColor));
+                puaseLines.Add(new KeyValuePair<string, Color>(yourStr, fontColor));
                 if (puaseLines.Count>maxLine)
                 {
-                    ValuePair<string, Color>[] tempLine = new ValuePair<string, Color>[maxLine/2];
+                    KeyValuePair<string, Color>[] tempLine = new KeyValuePair<string, Color>[maxLine / 2];
                     puaseLines.CopyTo((maxLine+1) / 2, tempLine, 0, maxLine / 2);
-                    puaseLines = new List<ValuePair<string, Color>>(tempLine);
+                    puaseLines = new List<KeyValuePair<string, Color>>(tempLine);
                 }
             }
             else
             {
+                if (puaseLines.Count>0)
+                {
+                    foreach (KeyValuePair<string, Color> puaseLine in puaseLines)
+                    {
+                        MyCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, puaseLine.Key, puaseLine.Value, isNewLine, true);
+                    }
+                    puaseLines.Clear();
+                }
                 if (isAlwaysGoBottom)
                 {
                     MyCommonHelper.MyCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine);

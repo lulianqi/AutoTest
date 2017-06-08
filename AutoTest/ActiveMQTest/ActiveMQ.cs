@@ -365,6 +365,14 @@ namespace ActiveMQTest
             }
         }
 
+
+        private void lv_pathList_DoubleClick(object sender, EventArgs e)
+        {
+            IMessageConsumer tempConsumer = (IMessageConsumer)((ListView)sender).SelectedItems[0].SubItems[0].Tag;
+            string tempInfoStr = string.Format("Destination : \r\n  {0} \r\nClientId : \r\n  {1} \r\nConsumerId : \r\n  {2}", ((Apache.NMS.ActiveMQ.MessageConsumer)(tempConsumer)).ConsumerInfo.Destination.ToString(), ((Apache.NMS.ActiveMQ.MessageConsumer)(tempConsumer)).ConsumerInfo.ClientId, ((Apache.NMS.ActiveMQ.MessageConsumer)(tempConsumer)).ConsumerInfo.ConsumerId.ToString());
+            MessageBox.Show(tempInfoStr, "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void bt_publish_Click(object sender, EventArgs e)
         {
             if(session==null)
@@ -410,7 +418,19 @@ namespace ActiveMQTest
                     return;
                 }
             }
-            prod.Send(msg, Apache.NMS.MsgDeliveryMode.NonPersistent, Apache.NMS.MsgPriority.Normal, TimeSpan.MinValue);
+            int sendNum =1;
+            try
+            {
+                sendNum = int.Parse(tb_sendCount.Text);
+            }
+            catch
+            {
+                tb_sendCount.Text = "1";
+            }
+            for (int i = 0; i < sendNum;i++ )
+            {
+                prod.Send(msg, Apache.NMS.MsgDeliveryMode.NonPersistent, Apache.NMS.MsgPriority.Normal, TimeSpan.MinValue);
+            }
             prod.Dispose();
             ShowState("published");
             tb_sendTopic.AutoCompleteCustomSource.Add(tb_sendTopic.Text);

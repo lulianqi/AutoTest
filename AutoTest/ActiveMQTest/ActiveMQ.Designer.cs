@@ -225,6 +225,7 @@
             this.lv_pathList.UseCompatibleStateImageBehavior = false;
             this.lv_pathList.View = System.Windows.Forms.View.Details;
             this.lv_pathList.ButtonClickEvent += new System.EventHandler(this.lv_pathList_ButtonClickEvent);
+            this.lv_pathList.DoubleClick += new System.EventHandler(this.lv_pathList_DoubleClick);
             // 
             // columnHeader_topicOrQueue
             // 
