@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVoiceHelper", "MyVoiceHel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveMQTest", "ActiveMQTest\ActiveMQTest.csproj", "{C59A6733-A1F2-4293-94C1-13BEE0D38616}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyActiveMQHelper", "MyActiveMQHelper\MyActiveMQHelper.csproj", "{BDD99B37-D7F4-4B0F-A7E6-1F57FA749D4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{C59A6733-A1F2-4293-94C1-13BEE0D38616}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C59A6733-A1F2-4293-94C1-13BEE0D38616}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C59A6733-A1F2-4293-94C1-13BEE0D38616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDD99B37-D7F4-4B0F-A7E6-1F57FA749D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD99B37-D7F4-4B0F-A7E6-1F57FA749D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDD99B37-D7F4-4B0F-A7E6-1F57FA749D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDD99B37-D7F4-4B0F-A7E6-1F57FA749D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -373,6 +373,30 @@ namespace CaseExecutiveActuator
             }
         }
     }
+
+
+    public struct myConnectForActiveMQ : IConnectExecutiveData
+    {
+        public CaseProtocol caseProtocol;
+
+        public string brokerUri;
+        public string clientId;
+        public string factoryUserName;
+        public string factoryPassword;
+
+        public myConnectForActiveMQ(CaseProtocol yourCaseProtocol)
+        {
+            caseProtocol = yourCaseProtocol;
+            brokerUri = null;
+        }
+        public CaseProtocol MyCaseProtocol
+        {
+            get
+            {
+                return caseProtocol;
+            }
+        }
+    }
     #endregion
 
     
@@ -572,19 +596,6 @@ namespace CaseExecutiveActuator
         }
     }
 
-    /// <summary>
-    /// 为Loop队列提供返回结构(未使用)
-    /// </summary>
-    public struct myLoopNodeInfo
-    {
-        public CaseType loopCaseType;
-        public TreeNode loopCaseTreeNode;
-        public myLoopNodeInfo(CaseType yourCaseType, TreeNode yourTreeNode)
-        {
-            loopCaseType = yourCaseType;
-            loopCaseTreeNode = yourTreeNode;
-        }
-    }
 
     /// <summary>
     ///断言信息

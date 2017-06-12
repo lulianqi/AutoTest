@@ -30,6 +30,7 @@
       <NewParameter name="parameter_userId" type="vaule">908</NewParameter>
       <NewParameter name="parameter_addressId" type="vaule">628</NewParameter>
       <NewParameter name="StaticData" type="index">1-100</NewParameter>
+      <NewParameter name="shopId" type="index">1-1000</NewParameter>
      
       <NewParameter name="StaticData" type="index">1-1000-2</NewParameter><!-- 范围必须在0到2147483647之间，使用第一个-连接[首次的当前值与下一个值都是起始值]若有第二个-则后跟为进制，没有则默认为1 -->
       <NewParameter name="StaticData0" type="index">1-1000</NewParameter>
@@ -820,5 +821,37 @@
         <Level>1</Level>
       </Attribute>
     </Case>
+    <Repeat remark="备注" times="100">  
+      <Case id="1000040005" remark="发布交易(店铺转让)">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://apitest.huala.com/es/market/publish</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json</Head>
+          </Heads>
+          <Body isHaveParameters="true" >{"imgList":["//wxtest.huala.com/hlman-pic/goods/201706/1497264373727.png"],"desc":"转让店铺（*#shopId(+)*#）\n联系电话：15185465555\n地理位置良好，不专不要钱\n看一下也不亏","type":"3","name":"转让店铺（*#shopId(+)*#）","city":"330100"}</Body>
+        </Content>
+        <Expect method="contain">success</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+    <Repeat remark="备注" times="100">
+      <Case id="1000040005" remark="发布交易(商品求购)">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://apitest.huala.com/es/market/publish</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json</Head>
+          </Heads>
+          <Body isHaveParameters="true" >{"imgList":["//wxtest.huala.com/hlman-pic/goods/201706/1497267232108.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267244159.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267249384.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267253669.jpg"],"desc":"求购节操（*#shopId(+)*#）\n联系电话：1652979305\n价格从优","name":"求购节操（*#shopId(+)*#）","type":"1","city":"330100"}</Body>
+        </Content>
+        <Expect method="contain">success</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
   </Project>
 </VaneLife_V1>
