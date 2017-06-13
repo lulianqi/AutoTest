@@ -308,7 +308,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// Vanelife_http 【IConnectExecutiveData】
     /// </summary>
-    public struct myConnectForVanelife_http : IConnectExecutiveData
+    public class myConnectForVanelife_http : IConnectExecutiveData
     {
         public CaseProtocol caseProtocol;
         public string dev_key;
@@ -334,7 +334,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// Http 【IConnectExecutiveData】
     /// </summary>
-    public struct myConnectForHttp : IConnectExecutiveData
+    public class myConnectForHttp : IConnectExecutiveData
     {
 
         public CaseProtocol caseProtocol;
@@ -357,7 +357,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// Console 【IConnectExecutiveData】
     /// </summary>
-    public struct myConnectForConsole:IConnectExecutiveData
+    public class myConnectForConsole : IConnectExecutiveData
     {
         public CaseProtocol caseProtocol;
 
@@ -374,8 +374,10 @@ namespace CaseExecutiveActuator
         }
     }
 
-
-    public struct myConnectForActiveMQ : IConnectExecutiveData
+    /// <summary>
+    /// ActiveMQ 【IConnectExecutiveData】
+    /// </summary>
+    public class myConnectForActiveMQ : IConnectExecutiveData
     {
         public CaseProtocol caseProtocol;
 
@@ -384,10 +386,18 @@ namespace CaseExecutiveActuator
         public string factoryUserName;
         public string factoryPassword;
 
-        public myConnectForActiveMQ(CaseProtocol yourCaseProtocol)
+        public List<KeyValuePair<string, bool>> queuesList;
+        public List<KeyValuePair<string, bool>> topicList;
+
+        public myConnectForActiveMQ(CaseProtocol yourCaseProtocol,string yourBrokerUri,string yourClientId,string yourFactoryUserName,string yourFactoryPassword,List<KeyValuePair<string,bool>> yourQueueList,List<KeyValuePair<string,bool>> yourTopicList)
         {
             caseProtocol = yourCaseProtocol;
-            brokerUri = null;
+            brokerUri = yourBrokerUri;
+            clientId = yourClientId;
+            factoryUserName = yourFactoryUserName;
+            factoryPassword = yourFactoryPassword;
+            queuesList = yourQueueList;
+            topicList = yourTopicList;
         }
         public CaseProtocol MyCaseProtocol
         {

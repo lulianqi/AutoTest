@@ -30,7 +30,7 @@
       <NewParameter name="parameter_userId" type="vaule">908</NewParameter>
       <NewParameter name="parameter_addressId" type="vaule">628</NewParameter>
       <NewParameter name="StaticData" type="index">1-100</NewParameter>
-      <NewParameter name="shopId" type="index">1-1000</NewParameter>
+      <NewParameter name="shopId" type="index">1-5000</NewParameter>
      
       <NewParameter name="StaticData" type="index">1-1000-2</NewParameter><!-- 范围必须在0到2147483647之间，使用第一个-连接[首次的当前值与下一个值都是起始值]若有第二个-则后跟为进制，没有则默认为1 -->
       <NewParameter name="StaticData0" type="index">1-1000</NewParameter>
@@ -61,6 +61,16 @@
       </NewActuator>
       <NewActuator name="http" protocol="http">
         <default_url>http://pv.sohu.com</default_url>
+      </NewActuator>
+      <NewActuator name="mq" protocol="activeMQ">
+        <brokerUri></brokerUri> <!--必填-->
+        <clientId></clientId><!--选填-->
+        <factoryUserName></factoryUserName>
+        <factoryPassword></factoryPassword>
+        <queues></queues>
+        <topic></topic>
+        <queues isDurable="true"></queues>
+        <topic isDurable="true"></topic>
       </NewActuator>
       <NewActuator name="MySql_151" protocol="EXT_MySql">
         <connect_str>连接字符串</connect_str>
@@ -837,14 +847,14 @@
         </Attribute>
       </Case>
     </Repeat>
-    <Repeat remark="备注" times="100">
+    <Repeat remark="备注" times="1000">
       <Case id="1000040005" remark="发布交易(商品求购)">
         <Content protocol="http" actuator="http">
           <Uri httpMethod="POST" isHaveParameters="true">http://apitest.huala.com/es/market/publish</Uri>
           <Heads>
             <Head name="Content-Type">application/json</Head>
           </Heads>
-          <Body isHaveParameters="true" >{"imgList":["//wxtest.huala.com/hlman-pic/goods/201706/1497267232108.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267244159.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267249384.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267253669.jpg"],"desc":"求购节操（*#shopId(+)*#）\n联系电话：1652979305\n价格从优","name":"求购节操（*#shopId(+)*#）","type":"1","city":"330100"}</Body>
+          <Body isHaveParameters="true" >{"imgList":["//wxtest.huala.com/hlman-pic/goods/201706/1497267232108.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267244159.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267249384.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267253669.jpg"],"desc":"求购节操（*#shopId(+)*#）\n联系电话：1652979305\n价格从优","name":"求购节操（*#shopId(+)*#）","type":"1","city":"330200"}</Body>
         </Content>
         <Expect method="contain">success</Expect>
         <Attribute>
