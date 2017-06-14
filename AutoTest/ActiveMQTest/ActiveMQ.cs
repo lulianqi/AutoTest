@@ -85,12 +85,13 @@ namespace ActiveMQTest
                     return;
                 }
             }
+
             connection.Start();
-            ShowState(factory.BrokerUri.AbsoluteUri + " connected");     
+            ShowState(factory.BrokerUri.AbsoluteUri + " connected"); 
             connection.ExceptionListener += connection_ExceptionListener;
             connection.ConnectionInterruptedListener += connection_ConnectionInterruptedListener;
             connection.ConnectionResumedListener += connection_ConnectionResumedListener;
-
+            
             session = connection.CreateSession();
             session.TransactionCommittedListener += session_TransactionCommittedListener;
             session.TransactionRolledBackListener += session_TransactionRolledBackListener;
