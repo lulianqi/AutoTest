@@ -159,15 +159,15 @@ namespace MyActiveMQHelper
             return false;
         }
 
-        public void SubscribeConsumer(string consumerName, bool isQueues, bool isDurable)
+        public void SubscribeConsumer(string consumerName, bool isQueues, string durableName)
         {
             IMessageConsumer consumer;
             //IMessageConsumer consumer = session.CreateDurableConsumer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic("testing"), "testing listener", null, false);
             try
             {
-                if (isDurable)
+                if (!isQueues && durableName!=null)
                 {
-                    consumer = session.CreateDurableConsumer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(tb_ConsumerTopic.Text), (tb_ConsumerName.Text == "" ? null : tb_ConsumerName.Text), null, false);
+                    consumer = session.CreateDurableConsumer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(tb_ConsumerTopic.Text), durableName, null, false);
                 }
                 else
                 {

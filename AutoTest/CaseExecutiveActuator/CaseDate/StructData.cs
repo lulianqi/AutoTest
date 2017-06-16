@@ -386,10 +386,10 @@ namespace CaseExecutiveActuator
         public string factoryUserName;
         public string factoryPassword;
 
-        public List<KeyValuePair<string, bool>> queuesList;
-        public List<KeyValuePair<string, bool>> topicList;
+        public List<string> queuesList;
+        public List<KeyValuePair<string, string>> topicList;
 
-        public myConnectForActiveMQ(CaseProtocol yourCaseProtocol,string yourBrokerUri,string yourClientId,string yourFactoryUserName,string yourFactoryPassword,List<KeyValuePair<string,bool>> yourQueueList,List<KeyValuePair<string,bool>> yourTopicList)
+        public myConnectForActiveMQ(CaseProtocol yourCaseProtocol,string yourBrokerUri,string yourClientId,string yourFactoryUserName,string yourFactoryPassword,List<string> yourQueueList,List<KeyValuePair<string,string>> yourTopicList)
         {
             caseProtocol = yourCaseProtocol;
             brokerUri = yourBrokerUri;

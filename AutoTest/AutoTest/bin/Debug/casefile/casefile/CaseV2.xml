@@ -69,8 +69,7 @@
         <factoryPassword></factoryPassword>
         <queues></queues>
         <topic></topic>
-        <queues isDurable="true"></queues>
-        <topic isDurable="true"></topic>
+        <topic durable=""></topic> <!--如果topic 含有durable属性，则指示该topic为Durable topics，queues暂不支持该种表达方式-->
       </NewActuator>
       <NewActuator name="MySql_151" protocol="EXT_MySql">
         <connect_str>连接字符串</connect_str>
