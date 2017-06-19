@@ -24,18 +24,32 @@ namespace MyActiveMQHelper
         private List<IMessageConsumer> consumerList;
 
         private string nowErrorMes;
+        private bool isWithEvent;
 
         private delegate void GetMQStateMessage(string sender, string message);
         public event GetMQStateMessage OnGetMQStateMessage;
 
-        public MyActiveMQ(string yourBrokerUri, string yourClientId, string yourFactoryUserName, string yourFactoryPassword, List<KeyValuePair<string, bool>> yourQueueList, List<KeyValuePair<string, bool>> yourTopicList)
+        private delegate void GetMQMessage(string sender, string message);
+        public event GetMQMessage OnGetMQMessage;
+
+        public MyActiveMQ(string yourBrokerUri, string yourClientId, string yourFactoryUserName, string yourFactoryPassword, List<KeyValuePair<string, bool>> yourQueueList, List<KeyValuePair<string, bool>> yourTopicList ,bool yourIsWithEvent)
         {
+            isWithEvent = yourIsWithEvent;
+            consumerList = new List<IMessageConsumer>();
             brokerUri = yourBrokerUri;
             clientId = yourClientId;
             factoryUserName = yourFactoryUserName;
             factoryPassword = yourFactoryPassword;
             queuesList = yourQueueList;
             topicList = yourTopicList;
+        }
+
+        public string NowErrorMes
+        {
+            get
+            {
+                return nowErrorMes;
+            }
         }
 
         #region mq event
@@ -75,6 +89,43 @@ namespace MyActiveMQHelper
         } 
         #endregion
 
+        #region function helper
+        private string GetIMessage(IMessage message ,bool ishasNMSInfo)
+        {
+            string outMes="";
+            if (ishasNMSInfo)
+            {
+                outMes = (string.Format("NMSDestination : {0} \r\nNMSCorrelationID: {1} \r\nNMSMessageId: {2} \r\nNMSTimestamp: {3} \r\nNMSTimeToLive: {4} \r\nNMSType:{5} \r\nNMSPriority: {6} \r\n", message.NMSDestination.ToString(), message.NMSCorrelationID, message.NMSMessageId, message.NMSTimestamp.ToLocalTime(), message.NMSTimeToLive.ToString(), message.NMSType, message.NMSPriority.ToString()));
+            }
+            if (message is ITextMessage)
+            {
+                outMes+=(((ITextMessage)message).Text);
+            }
+            else if (message is IBytesMessage)
+            {
+                outMes += BitConverter.ToString(((IBytesMessage)message).Content);
+            }
+            else if (message is IMapMessage)
+            {
+                outMes += ("can not show IMapMessage");
+            }
+            else if (message is IStreamMessage)
+            {
+                outMes += ("can not show IStreamMessage");
+            }
+            else
+            {
+                outMes += ("find nuknow IMessage");
+            }
+            return outMes;
+        }
+        
+        private string GetIMessage(IMessage message)
+        {
+            return GetIMessage(message, false);
+        }
+        #endregion
+
         private void ShowStateMessage(string sender, string message)
         {
             if(OnGetMQStateMessage!=null)
@@ -107,7 +158,7 @@ namespace MyActiveMQHelper
                 factory.ClientId = clientId;
             }
 
-            //connection (a factory can creart 
+            //connection (a factory can creart multiple connection)
             try
             {
                 connection = factory.CreateConnection();
@@ -152,35 +203,124 @@ namespace MyActiveMQHelper
 
         public bool ReConnect()
         {
-            if(factory==null)
+            if (connection != null)
             {
-                return Connect();
-            }
-            return false;
+                DisConnect();
+            }  
+            return Connect();
         }
 
-        public void SubscribeConsumer(string consumerName, bool isQueues, string durableName)
+        public bool SubscribeConsumer(string consumerName, bool isQueues, string durableName)
         {
             IMessageConsumer consumer;
-            //IMessageConsumer consumer = session.CreateDurableConsumer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic("testing"), "testing listener", null, false);
             try
             {
                 if (!isQueues && durableName!=null)
                 {
-                    consumer = session.CreateDurableConsumer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(tb_ConsumerTopic.Text), durableName, null, false);
+                    consumer = session.CreateDurableConsumer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(consumerName), durableName, null, false);
                 }
                 else
                 {
-                    consumer = session.CreateConsumer(((!isQueues) ? ((IDestination)(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(consumerName))) : ((IDestination)(new Apache.NMS.ActiveMQ.Commands.ActiveMQQueue(consumerName)))), null, false);
+                    consumer = session.CreateConsumer(((isQueues) ? ((IDestination)(new Apache.NMS.ActiveMQ.Commands.ActiveMQQueue(consumerName))):((IDestination)(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(consumerName))) ), null, false);
                 }
             }
             catch (Exception ex)
             {
-                ShowError("Subscribe fail");
-                ShowError(ex.Message);
-                return;
+                nowErrorMes = ex.Message;
+                return false;
             }
-            consumer.Listener += consumer_Listener;
+            consumerList.Add(consumer);
+            if (isWithEvent)
+            {
+                consumer.Listener += consumer_Listener;
+            }
+            return true;
+        }
+
+        void consumer_Listener(IMessage message)
+        {
+            if(OnGetMQMessage!=null)
+            {
+                OnGetMQMessage(message.NMSDestination.ToString(), GetIMessage(message));
+            }
+        }
+
+        public List<string> ReadAllConsumerMessage()
+        {
+            List<string> outMessageList = new List<string>();
+            if(isWithEvent)
+            {
+                throw (new Exception("all message will show in the OnGetMQMessage"));
+            }
+            foreach(IMessageConsumer nowConsuner in consumerList)
+            {
+                IMessage tempMessage;
+                tempMessage = nowConsuner.ReceiveNoWait();
+                while(tempMessage!=null)
+                {
+                    outMessageList.Add(GetIMessage(tempMessage));
+                    tempMessage = nowConsuner.ReceiveNoWait();
+                }
+            }
+            return outMessageList;
+        }
+
+        public bool PublishMessage(string senderName,string message,bool isTopic)
+        {
+            if (session == null || senderName == null || message==null)
+            {
+                nowErrorMes = "find null data in PublishMessage";
+                return false;
+            }
+            IMessageProducer prod;
+            try
+            {
+                prod = isTopic ? session.CreateProducer(new Apache.NMS.ActiveMQ.Commands.ActiveMQTopic(senderName)) : session.CreateProducer(new Apache.NMS.ActiveMQ.Commands.ActiveMQQueue(senderName));
+            }
+            catch (Exception ex)
+            {
+                nowErrorMes = ex.Message;
+                return false;
+            }
+            finally
+            {
+
+            }
+            IMessage msg;
+            if (cb_sendTextByte.SelectedIndex == 0)
+            {
+                msg = prod.CreateTextMessage();
+                ((ITextMessage)msg).Text = rtb_dataToSend.Text;
+            }
+            else
+            {
+                msg = prod.CreateBytesMessage();
+                try
+                {
+                    ((IBytesMessage)msg).Content = MyEncryption.HexStringToByte(rtb_dataToSend.Text, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.space);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
+            }
+            int sendNum = 1;
+            try
+            {
+                sendNum = int.Parse(tb_sendCount.Text);
+            }
+            catch
+            {
+                tb_sendCount.Text = "1";
+            }
+            for (int i = 0; i < sendNum; i++)
+            {
+                prod.Send(msg, Apache.NMS.MsgDeliveryMode.NonPersistent, Apache.NMS.MsgPriority.Normal, TimeSpan.MinValue);
+            }
+            prod.Dispose();
+            ShowState("published");
+            tb_sendTopic.AutoCompleteCustomSource.Add(tb_sendTopic.Text);
         }
 
         public void DisConnect()
@@ -194,17 +334,12 @@ namespace MyActiveMQHelper
                     tempConsumer.Dispose();
                 }
 
-
                 session.Close();
                 session.Dispose();
                 session = null;
                 connection.Stop();
                 connection.Close();
                 connection.Dispose();
-            }
-            else
-            {
-                ShowError("not connection");
             }
         }
     }
