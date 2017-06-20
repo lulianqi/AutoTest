@@ -26,10 +26,10 @@ namespace MyActiveMQHelper
         private string nowErrorMes;
         private bool isWithEvent;
 
-        private delegate void GetMQStateMessage(string sender, string message);
+        public delegate void GetMQStateMessage(string sender, string message);
         public event GetMQStateMessage OnGetMQStateMessage;
 
-        private delegate void GetMQMessage(string sender, string message);
+        public delegate void GetMQMessage(string sender, string message);
         public event GetMQMessage OnGetMQMessage;
 
         public MyActiveMQ(string yourBrokerUri, string yourClientId, string yourFactoryUserName, string yourFactoryPassword, List<KeyValuePair<string, bool>> yourQueueList, List<KeyValuePair<string, bool>> yourTopicList ,bool yourIsWithEvent)
@@ -265,7 +265,7 @@ namespace MyActiveMQHelper
             return outMessageList;
         }
 
-        public bool PublishMessage(string senderName,string message,bool isTopic)
+        public bool PublishMessage(string senderName,string message,bool isTopic,MessageType messageType)
         {
             if (session == null || senderName == null || message==null)
             {
@@ -282,45 +282,38 @@ namespace MyActiveMQHelper
                 nowErrorMes = ex.Message;
                 return false;
             }
-            finally
-            {
-
-            }
             IMessage msg;
-            if (cb_sendTextByte.SelectedIndex == 0)
+            switch(messageType)
             {
-                msg = prod.CreateTextMessage();
-                ((ITextMessage)msg).Text = rtb_dataToSend.Text;
+                case MessageType.BytesMessage:
+                    msg = prod.CreateBytesMessage();
+                    string[] hexStrs;
+                    hexStrs = message.Split(new char[]{' '}, StringSplitOptions.RemoveEmptyEntries);
+                    byte[] resultBytes = new byte[hexStrs.Length];
+                    try
+                    {
+                        for (int i = 0; i < hexStrs.Length; i++)
+                        {
+                            resultBytes[i] = Convert.ToByte(hexStrs[i], 16);
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        nowErrorMes ="iit is not hex16 data :" +ex.Message;
+                        return false;
+                    }
+                    ((IBytesMessage)msg).Content = resultBytes;
+                    break;
+                case MessageType.TextMessage:
+                    msg = prod.CreateTextMessage();
+                    ((ITextMessage)msg).Text = message;
+                    break;
+                default:
+                    nowErrorMes = "not support this IMessage";
+                    return false;
             }
-            else
-            {
-                msg = prod.CreateBytesMessage();
-                try
-                {
-                    ((IBytesMessage)msg).Content = MyEncryption.HexStringToByte(rtb_dataToSend.Text, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.space);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    return;
-                }
-            }
-            int sendNum = 1;
-            try
-            {
-                sendNum = int.Parse(tb_sendCount.Text);
-            }
-            catch
-            {
-                tb_sendCount.Text = "1";
-            }
-            for (int i = 0; i < sendNum; i++)
-            {
-                prod.Send(msg, Apache.NMS.MsgDeliveryMode.NonPersistent, Apache.NMS.MsgPriority.Normal, TimeSpan.MinValue);
-            }
-            prod.Dispose();
-            ShowState("published");
-            tb_sendTopic.AutoCompleteCustomSource.Add(tb_sendTopic.Text);
+            prod.Send(msg, Apache.NMS.MsgDeliveryMode.NonPersistent, Apache.NMS.MsgPriority.Normal, TimeSpan.MinValue);
+            return true;
         }
 
         public void DisConnect()
