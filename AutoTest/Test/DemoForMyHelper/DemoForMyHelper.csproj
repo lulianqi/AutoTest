@@ -48,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DemoForActionMQ.cs" />
     <Compile Include="DemoForMySql.cs" />
     <Compile Include="DemoForMySsh.cs" />
     <Compile Include="DemoForMySvn.cs" />
@@ -56,6 +57,10 @@
     <Compile Include="DemoForMyVoice.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MyActiveMQHelper\MyActiveMQHelper.csproj">
+      <Project>{bdd99b37-d7f4-4b0f-a7e6-1f57fa749d4d}</Project>
+      <Name>MyActiveMQHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MyCommonHelper\MyCommonHelper.csproj">
       <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
       <Name>MyCommonHelper</Name>

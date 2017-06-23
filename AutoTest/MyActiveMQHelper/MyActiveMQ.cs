@@ -46,7 +46,7 @@ namespace MyActiveMQHelper
         /// <param name="yourClientId">ClientId（当使用null时会使用默认id）</param>
         /// <param name="yourFactoryUserName">如果不需要认证请传null</param>
         /// <param name="yourFactoryPassword">如果不需要认证请传null</param>
-        /// <param name="yourQueueList">需要订阅的Queue列表</param>
+        /// <param name="yourQueueList">需要订阅的Queue列表(构造函数里的queue/topic为默认就会订阅的消费者，断开重新连接也会进行重新订阅)</param>
         /// <param name="yourTopicList">需要订阅的Topic列表 如果使用durable topic list的value填唯一id，为null则为普通topic</param>
         /// <param name="yourIsWithEvent">是否使用事件来接收消息</param>
         public MyActiveMQ(string yourBrokerUri, string yourClientId, string yourFactoryUserName, string yourFactoryPassword, List<string> yourQueueList, List<KeyValuePair<string, string>> yourTopicList ,bool yourIsWithEvent)
@@ -58,8 +58,14 @@ namespace MyActiveMQHelper
             clientId = yourClientId;
             factoryUserName = yourFactoryUserName;
             factoryPassword = yourFactoryPassword;
-            queuesList = yourQueueList;
-            topicList = yourTopicList;
+            if (yourQueueList != null)
+            {
+                queuesList = yourQueueList;
+            }
+            if (yourTopicList != null)
+            {
+                topicList = yourTopicList;
+            }
         }
 
         /// <summary>
@@ -102,6 +108,23 @@ namespace MyActiveMQHelper
                 isMQMessageWithSender = value;
             }
         }
+
+        /// <summary>
+        /// 获取Consumer列表(key 为 消费者完整名称 value 为ConsumerId)
+        /// </summary>
+        public List<KeyValuePair<string,string>> ConsumerList
+        {
+            get
+            {
+                List<KeyValuePair<string, string>> outList = new List<KeyValuePair<string, string>>();
+                foreach (IMessageConsumer tempConsumer in consumerList)
+                {
+                    outList.Add(new KeyValuePair<string, string>( ((Apache.NMS.ActiveMQ.MessageConsumer)(tempConsumer)).ConsumerInfo.Destination.ToString(), ((Apache.NMS.ActiveMQ.MessageConsumer)(tempConsumer)).ConsumerInfo.ConsumerId.ToString()));
+                }
+                return outList;
+            }
+        }
+
 
         #region mq event
         void session_TransactionStartedListener(ISession session)
@@ -253,7 +276,7 @@ namespace MyActiveMQHelper
             session.TransactionStartedListener += session_TransactionStartedListener;
             #endregion
 
-            return true;
+            return SubscribeInnerConsumer();
         }
 
         /// <summary>
@@ -266,7 +289,11 @@ namespace MyActiveMQHelper
             {
                 DisConnect();
             }  
-            return Connect();
+            if(Connect())
+            {
+                return SubscribeInnerConsumer();
+            }
+            return false;
         }
 
         /// <summary>
@@ -303,6 +330,46 @@ namespace MyActiveMQHelper
             return true;
         }
 
+        private bool SubscribeInnerConsumer()
+        {
+            foreach (string tempQueue in queuesList)
+            {
+                if (!SubscribeConsumer(tempQueue, true, null))
+                {
+                    return false;
+                }
+            }
+            foreach (KeyValuePair<string,string> tempToipc in topicList)
+            {
+                if (!SubscribeConsumer(tempToipc.Key, false, tempToipc.Value))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 取消订阅
+        /// </summary>
+        /// <param name="consumerNameFullName">consumerName （为形如queue://consumerName 格式的数据）</param>
+        /// <returns>被删除的消费者的数量（可能会有重名的会被一起删除）</returns>
+        public int UnSubscribeConsumer(string consumerNameFullName)
+        {
+            int unSubscribeNumber = 0;
+            for (int i = consumerList.Count - 1; i >= 0;i-- )
+            {
+                IMessageConsumer tempConsumer = consumerList[i];
+                if (((Apache.NMS.ActiveMQ.MessageConsumer)(tempConsumer)).ConsumerInfo.Destination.ToString() == consumerNameFullName)
+                {
+                    tempConsumer.Close();
+                    tempConsumer.Dispose();
+                    consumerList.RemoveAt(i);
+                    unSubscribeNumber++;
+                }
+            }
+            return unSubscribeNumber;
+        }
         private void consumer_Listener(IMessage message)
         {
             if(OnGetMQMessage!=null)
@@ -440,6 +507,11 @@ namespace MyActiveMQHelper
                 connection.Close();
                 connection.Dispose();
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", brokerUri);
         }
     }
 }

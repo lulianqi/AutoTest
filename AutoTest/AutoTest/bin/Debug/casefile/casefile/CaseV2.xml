@@ -63,13 +63,14 @@
         <default_url>http://pv.sohu.com</default_url>
       </NewActuator>
       <NewActuator name="mq" protocol="activeMQ">
-        <brokerUri></brokerUri> <!--必填-->
-        <clientId></clientId><!--选填-->
-        <factoryUserName></factoryUserName>
-        <factoryPassword></factoryPassword>
-        <queues></queues>
-        <topic></topic>
-        <topic durable=""></topic> <!--如果topic 含有durable属性，则指示该topic为Durable topics，queues暂不支持该种表达方式-->
+        <brokerUri>tcp://192.168.200.150:61616</brokerUri> <!--必填-->
+        <clientId></clientId><!--选填(不填则不需要此节点)-->
+        <factoryUserName>username</factoryUserName>
+        <factoryPassword>password</factoryPassword>
+        <queues>q1</queues>
+        <queues>q2</queues>
+        <topic>t1</topic>
+        <topic durable="at1">t2</topic> <!--如果topic 含有durable属性，则指示该topic为Durable topics，queues暂不支持该种表达方式-->
       </NewActuator>
       <NewActuator name="MySql_151" protocol="EXT_MySql">
         <connect_str>连接字符串</connect_str>

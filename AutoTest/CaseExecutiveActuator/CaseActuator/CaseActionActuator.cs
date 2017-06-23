@@ -1171,6 +1171,10 @@ namespace CaseExecutiveActuator
                                                             myConnectForConsole ConnectInfo_console = new myConnectForConsole(tempActuatorProtocol);
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_console);
                                                             break;
+                                                        case CaseProtocol.activeMQ:
+                                                            myConnectForActiveMQ ConnectInfo_activeMQ = new myConnectForActiveMQ(tempActuatorProtocol, CaseTool.getXmlInnerVauleEx(tempNodeChild, "brokerUri"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "clientId"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "factoryUserName"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "factoryPassword"), null, null);
+                                                            AddExecutionDevice(tempActuatorName, ConnectInfo_activeMQ);
+                                                            break;
                                                         case CaseProtocol.vanelife_http:
                                                             myConnectForVanelife_http ConnectInfo_vanelifeHttp = new myConnectForVanelife_http(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "dev_key"), CaseTool.getXmlInnerVaule(tempNodeChild, "dev_secret"), CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_vanelifeHttp);

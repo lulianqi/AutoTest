@@ -60,7 +60,8 @@ namespace CaseExecutiveActuator
         http = 8,
         tcp = 9,
         comm = 10,
-        telnet = 11
+        telnet = 11,
+        activeMQ=12
     }
 
     /// <summary>
