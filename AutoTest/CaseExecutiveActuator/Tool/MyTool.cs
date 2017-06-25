@@ -519,6 +519,13 @@ namespace CaseExecutiveActuator
             return new MyRunCaseData<T>();
         }
 
+        /// <summary>
+        /// get the some same name child node in yourNode ,and it can with your attributs (if not find the attribut the attribut data will be null)
+        /// </summary>
+        /// <param name="sourceNode">source Node (if it is null i will Throw error)</param>
+        /// <param name="tagName">the name taht you want</param>
+        /// <param name="tagAttributes">if you do not care the attributs you can set this parameter null</param>
+        /// <returns>data you want (if not find any match data it will be a 0 leng list)</returns>
         public static List<string[]> GetXmlInnerMetaDataListEx(XmlNode sourseNode,string tagName,string[] tagAttributes)
         {
             List<string[]> outData = new List<string[]>();
@@ -528,11 +535,19 @@ namespace CaseExecutiveActuator
                 {
                     if(tempNode.Name == tagName)
                     {
-                        string[] tempOneNodeData = new string[tagAttributes.Length + 1];
-                        tempOneNodeData[0] = tempNode.InnerText;
-                        for(int i=0;i<tagAttributes.Length;i++)
+                        string[] tempOneNodeData ;
+                        if (tagAttributes != null)
                         {
-                            tempOneNodeData[i + 1] = getXmlAttributeVauleEx(tempNode, tagAttributes[i]);
+                            tempOneNodeData = new string[tagAttributes.Length + 1];
+                            tempOneNodeData[0] = tempNode.InnerText;
+                            for (int i = 0; i < tagAttributes.Length; i++)
+                            {
+                                tempOneNodeData[i + 1] = getXmlAttributeVauleEx(tempNode, tagAttributes[i]);
+                            }
+                        }
+                        else
+                        {
+                            tempOneNodeData = new string[] { tempNode.InnerText };
                         }
                         outData.Add(tempOneNodeData);
                     }

@@ -1172,7 +1172,37 @@ namespace CaseExecutiveActuator
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_console);
                                                             break;
                                                         case CaseProtocol.activeMQ:
-                                                            myConnectForActiveMQ ConnectInfo_activeMQ = new myConnectForActiveMQ(tempActuatorProtocol, CaseTool.getXmlInnerVauleEx(tempNodeChild, "brokerUri"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "clientId"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "factoryUserName"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "factoryPassword"), null, null);
+                                                            List<string> tempQueueList = new List<string>();
+                                                            List<KeyValuePair<string,string>> tempTopicList=new List<KeyValuePair<string,string>>();
+                                                            #region Get Queues data
+	                                                     	List<string[]> tempListData = CaseTool.GetXmlInnerMetaDataListEx(tempNodeChild, "queue", null);
+                                                            if(tempListData.Count>0)
+                                                            {
+                                                                foreach(string[] tempOneData in tempListData)
+                                                                {
+                                                                    tempQueueList.Add(tempOneData[0]);
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                tempQueueList = null;
+                                                            } 
+	                                                        #endregion
+                                                            #region Get Topics data
+                                                            tempListData = CaseTool.GetXmlInnerMetaDataListEx(tempNodeChild, "topic", new string[]{"durable"});
+                                                            if(tempListData.Count>0)
+                                                            {
+                                                                foreach(string[] tempOneData in tempListData)
+                                                                {
+                                                                    tempTopicList.Add(new KeyValuePair<string, string>(tempOneData[0], tempOneData[1]));
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                tempTopicList = null;
+                                                            } 
+	                                                        #endregion
+                                                            myConnectForActiveMQ ConnectInfo_activeMQ = new myConnectForActiveMQ(tempActuatorProtocol, CaseTool.getXmlInnerVauleEx(tempNodeChild, "brokerUri"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "clientId"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "factoryUserName"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "factoryPassword"),tempQueueList,tempTopicList);
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_activeMQ);
                                                             break;
                                                         case CaseProtocol.vanelife_http:
