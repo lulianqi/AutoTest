@@ -519,6 +519,28 @@ namespace CaseExecutiveActuator
             return new MyRunCaseData<T>();
         }
 
+        public static List<string[]> GetXmlInnerMetaDataListEx(XmlNode sourseNode,string tagName,string[] tagAttributes)
+        {
+            List<string[]> outData = new List<string[]>();
+            if (sourseNode.HasChildNodes)
+            {
+                foreach (XmlNode tempNode in sourseNode.ChildNodes)
+                {
+                    if(tempNode.Name == tagName)
+                    {
+                        string[] tempOneNodeData = new string[tagAttributes.Length + 1];
+                        tempOneNodeData[0] = tempNode.InnerText;
+                        for(int i=0;i<tagAttributes.Length;i++)
+                        {
+                            tempOneNodeData[i + 1] = getXmlAttributeVauleEx(tempNode, tagAttributes[i]);
+                        }
+                        outData.Add(tempOneNodeData);
+                    }
+                }
+            }
+            return outData;
+        }
+
         /// <summary>
         /// i will get the date in sourceNode child with specified tag name(Ex if it is inexistence i will return null)
         /// </summary>
@@ -541,7 +563,7 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// i will get the date in sourceNode child with specified tag name
+        /// i will get the date in sourceNode child with specified tag name(if it is inexistence i will return "")
         /// </summary>
         /// <param name="sourceNode">source Node(if it is null i will Throw error)</param>
         /// <param name="tagName">the name taht you want(only the fist)</param>
