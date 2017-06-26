@@ -64,7 +64,7 @@
       </NewActuator>
       <NewActuator name="mq" protocol="activeMQ">
         <brokerUri>tcp://192.168.200.150:61616</brokerUri> <!--必填-->
-        <clientId></clientId><!--选填(不填则不需要此节点)-->
+        <clientId></clientId><!--选填(不填则不需要此节点)(下面的节点信息无特殊说明都为非必填)-->
         <factoryUserName>username</factoryUserName>
         <factoryPassword>password</factoryPassword>
         <queue>q1</queue>
@@ -863,5 +863,20 @@
         </Attribute>
       </Case>
     </Repeat>
+    <Case id="1000050001" remark="mq test">
+      <Content protocol="activeMQ" actuator="mq">
+        <Send name="t1" type="topic" isHaveParameters="true">this is test data for topic t1</Send>
+        <Send name="t1" type="topic" isHaveParameters="true">this is another test data for topic t1</Send>
+        <Send name="q1" type="queue" isHaveParameters="true">this is test data for queue q1</Send>
+        <Subscribe type="topic" durable="dur" isHaveParameters="true">newTopic</Subscribe>
+        <UnSubscribe type="topic" isHaveParameters="true">newTopic</UnSubscribe>
+        <Receive type="topic" isHaveParameters="true">t1</Receive>
+      </Content>
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
   </Project>
 </VaneLife_V1>

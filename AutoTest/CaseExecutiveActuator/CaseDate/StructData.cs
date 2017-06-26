@@ -269,7 +269,6 @@ namespace CaseExecutiveActuator
                             myTargetContentData = "ContentEncoding Error:" + ex.Message;
                         }
                         break;
-                        break;
                     default:
                         errorMessage = "[getTargetContentData] unknow or not supported this encodetype";
                         break;
@@ -961,6 +960,73 @@ namespace CaseExecutiveActuator
             }
         }
     }
+   
+    public class MyActiveMQExecutionContent: ICaseExecutionContent
+    {
+        #region inner class
+        public class ConsumerData
+        {
+            public string ConsumerName { get; set; }
+            public string ConsumerType { get; set; }
+            public string ConsumerTopicDurable { get; set; }
+            public ConsumerData(string name, string type, string durable)
+            {
+                ConsumerName = name;
+                ConsumerType = type;
+                ConsumerTopicDurable = durable;
+            }
+        }
+
+        public class ProducerData
+        {
+            public string ProducerName { get; set; }
+            public string ProducerType { get; set; }
+            public string MessageType { get; set; }
+            public string MessageData { get; set; }
+
+            public ProducerData(string name,string type,string messageType,string messageData)
+            {
+                ProducerName = name;
+                ProducerType = type;
+                MessageType=messageType;
+                MessageData=messageData;
+            }
+        }
+
+        #endregion
+
+        public string errorMessage;
+        public CaseProtocol caseProtocol;
+        public string caseActuator;
+
+        public
+
+        public CaseProtocol MyCaseProtocol
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string MyCaseActuator
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string MyExecutionTarget
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string MyExecutionContent
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string MyErrorMessage
+        {
+            get { throw new NotImplementedException(); }
+        }
+    }
+
     #endregion
 
 

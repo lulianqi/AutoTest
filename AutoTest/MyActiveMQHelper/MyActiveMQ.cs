@@ -382,18 +382,36 @@ namespace MyActiveMQHelper
         /// 获取当前所有消费者订阅的消息（当IsWithEvent为false时可用）
         /// </summary>
         /// <returns>消息列表</returns>
-        public List<KeyValuePair<string,string>> ReadAllConsumerMessage()
+        public List<KeyValuePair<string,string>> ReadConsumerMessage()
+        {
+            return ReadConsumerMessage(null);
+        }
+
+        /// <summary>
+        /// 获取当前所有消费者订阅的消息（当IsWithEvent为false时可用）
+        /// </summary>
+        /// <param name="yourConsumerName">指定Consumer 的名字（完整路径名）</param>
+        /// <returns>获取当前所有消费者订阅的消息（当IsWithEvent为false时可用）</returns>
+        public List<KeyValuePair<string, string>> ReadConsumerMessage(string yourConsumerName)
         {
             List<KeyValuePair<string, string>> outMessageList = new List<KeyValuePair<string, string>>();
-            if(isWithEvent)
+            if (isWithEvent)
             {
                 throw (new Exception("all message will show in the OnGetMQMessage"));
             }
-            foreach(IMessageConsumer nowConsuner in consumerList)
+            foreach (IMessageConsumer nowConsuner in consumerList)
             {
+                if (consumerList != null)
+                {
+                    //if ((((Apache.NMS.ActiveMQ.MessageConsumer)(nowConsuner)).ConsumerInfo.Destination).PhysicalName != yourConsumerName)
+                    if (((Apache.NMS.ActiveMQ.MessageConsumer)(nowConsuner)).ConsumerInfo.Destination.ToString() != yourConsumerName)
+                    {
+                        continue;
+                    }
+                }
                 IMessage tempMessage;
                 tempMessage = nowConsuner.ReceiveNoWait();
-                while(tempMessage!=null)
+                while (tempMessage != null)
                 {
                     outMessageList.Add(new KeyValuePair<string, string>(tempMessage.NMSDestination.ToString(), GetIMessage(tempMessage, isMQMessageWithSender)));
                     tempMessage = nowConsuner.ReceiveNoWait();

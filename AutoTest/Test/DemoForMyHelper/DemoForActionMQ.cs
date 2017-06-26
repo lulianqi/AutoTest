@@ -24,7 +24,7 @@ namespace DemoForMyHelper
             mes =  Console.ReadLine();
             while(mes!="e")
             {
-                List<KeyValuePair<string,string>> tempMes = myMq.ReadAllConsumerMessage();
+                List<KeyValuePair<string,string>> tempMes = myMq.ReadConsumerMessage();
                 foreach (var ms in tempMes)
                 {
                     Console.WriteLine(ms.Value+"  "+ms.Key);
