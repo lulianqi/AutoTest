@@ -155,6 +155,7 @@ namespace CaseExecutiveActuator
             }
             return myRunContent;
         }
+       
         public CaseProtocolExecutionForConsole(myConnectForConsole yourConnectInfo)
         {
             myExecutionDeviceInfo = yourConnectInfo;
@@ -365,6 +366,129 @@ namespace CaseExecutiveActuator
         }
     }
 
+
+    public class CaseProtocolExecutionForActiveMQ:BasicProtocolPars, ICaseExecutionDevice
+    {
+        private bool isConnect;
+        private myConnectForActiveMQ myExecutionDeviceInfo;
+        public event delegateGetExecutiveData OnGetExecutiveData;
+
+        public CaseProtocolExecutionForActiveMQ (myConnectForActiveMQ yourConnectInfo)
+        {
+            myExecutionDeviceInfo = yourConnectInfo;
+        }
+
+        public new static MyActiveMQExecutionContent GetRunContent(XmlNode yourContentNode)
+        {
+            MyActiveMQExecutionContent myRunContent = new MyActiveMQExecutionContent();
+            if (yourContentNode != null)
+            {
+                if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
+                {
+                    //Content
+                    try
+                    {
+                        myRunContent.caseProtocol = (CaseProtocol)Enum.Parse(typeof(CaseProtocol), yourContentNode.Attributes["protocol"].Value);
+                    }
+                    catch
+                    {
+                        myRunContent.errorMessage = "Error :error protocol in Content";
+                        return myRunContent;
+                    }
+                    myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
+
+                    //Subscribe List
+                    List<string[]> tempSubscribeRawList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Subscribe", new string[] { "type", "durable"});
+                    foreach(string[] tempOneSubscribeRaw in tempSubscribeRawList)
+                    {
+                        if (tempOneSubscribeRaw[1] != null && tempOneSubscribeRaw[0] != "")
+                        {
+                            myRunContent.consumerSubscribeList.Add(new MyActiveMQExecutionContent.ConsumerData(tempOneSubscribeRaw[0], tempOneSubscribeRaw[1], tempOneSubscribeRaw[2]));
+                        }
+                        else
+                        {
+                            myRunContent.errorMessage = string.Format("Error :error data in Subscribe List with [{0}]", tempOneSubscribeRaw[0]);
+                            return myRunContent;
+                        }
+                    }
+                    //UnSubscribe List
+                    List<string[]> tempUnSubscribeRawList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "UnSubscribe", new string[] { "type" });
+                    foreach (string[] tempOneUnSubscribeRaw in tempUnSubscribeRawList)
+                    {
+                        if (tempOneUnSubscribeRaw[1] != null && tempOneUnSubscribeRaw[0] != "")
+                        {
+                            myRunContent.consumerSubscribeList.Add(new MyActiveMQExecutionContent.ConsumerData(tempOneUnSubscribeRaw[0], tempOneUnSubscribeRaw[1], null));
+                        }
+                        else
+                        {
+                            myRunContent.errorMessage = string.Format("Error :error data in UnSubscribe List with [{0}]", tempOneUnSubscribeRaw[0]);
+                            return myRunContent;
+                        }
+                    }
+                    //Message Send List
+                    List<string[]> tempMessageSendList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Send", new string[] { "name", "type", "isHaveParameters" });
+                    foreach (string[] tempOneMessageSendRaw in tempMessageSendList)
+                    {
+                        if (!string.IsNullOrEmpty(tempOneMessageSendRaw[1]) && tempOneMessageSendRaw[2] != null && tempOneMessageSendRaw[0] != "")
+                        {
+                            MyActiveMQExecutionContent.ProducerData tempProducerData = new MyActiveMQExecutionContent.ProducerData(tempOneMessageSendRaw[1], tempOneMessageSendRaw[2], "text");
+                            caseParameterizationContent tempProducerMessage = new caseParameterizationContent(tempOneMessageSendRaw[0], tempOneMessageSendRaw[2] == "true");
+                            myRunContent.producerDataSendList.Add(new KeyValuePair<MyActiveMQExecutionContent.ProducerData, caseParameterizationContent>(tempProducerData, tempProducerMessage));
+                        }
+                        else
+                        {
+                            myRunContent.errorMessage = string.Format("Error :error data in UnSubscribe List with [{0}]", tempOneMessageSendRaw[0]);
+                            return myRunContent;
+                        }
+                    }
+                    //Receive
+
+                }
+                else
+                {
+                    myRunContent.errorMessage = "Error :can not find protocol or actuator in Content ";
+                }
+            }
+            else
+            {
+                myRunContent.errorMessage = "Error :yourContentNode is null";
+            }
+
+            return myRunContent;
+        }
+
+        public CaseProtocol ProtocolType
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool IsDeviceConnect
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool ExecutionDeviceConnect()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExecutionDeviceClose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public event delegateGetExecutiveData OnGetExecutiveData;
+
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
+    }
 
     /// <summary>
     /// Vanelife_http Device 
@@ -1188,6 +1312,9 @@ namespace CaseExecutiveActuator
                             {
                                 case CaseProtocol.console:
                                     myCaseData.testContent = CaseProtocolExecutionForConsole.GetRunContent(tempCaseContent);
+                                    break;
+                                case CaseProtocol.activeMQ:
+                                    //myCaseData.testContent = CaseProtocolExecutionForConsole.GetRunContent(tempCaseContent);
                                     break;
                                 case CaseProtocol.vanelife_http:
                                     myCaseData.testContent = CaseProtocolExecutionForVanelife_http.GetRunContent(tempCaseContent);

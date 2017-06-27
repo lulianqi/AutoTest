@@ -223,7 +223,7 @@ namespace ActiveMQTest
 
         private void bt_Subscribe_Click(object sender, EventArgs e)
         {
-            if (tb_ConsumerTopic.Text=="")
+            if (tb_ConsumerTopic.Text == "")
             {
                 MessageBox.Show("please put in topic or queues ", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;

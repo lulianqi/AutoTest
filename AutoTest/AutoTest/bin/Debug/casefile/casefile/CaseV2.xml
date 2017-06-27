@@ -868,9 +868,9 @@
         <Send name="t1" type="topic" isHaveParameters="true">this is test data for topic t1</Send>
         <Send name="t1" type="topic" isHaveParameters="true">this is another test data for topic t1</Send>
         <Send name="q1" type="queue" isHaveParameters="true">this is test data for queue q1</Send>
-        <Subscribe type="topic" durable="dur" isHaveParameters="true">newTopic</Subscribe>
-        <UnSubscribe type="topic" isHaveParameters="true">newTopic</UnSubscribe>
-        <Receive type="topic" isHaveParameters="true">t1</Receive>
+        <Subscribe type="topic" durable="dur" >newTopic</Subscribe>
+        <UnSubscribe type="topic" >newTopic</UnSubscribe>
+        <Receive type="topic" >t1</Receive>
       </Content>
       <Expect method="contain">success</Expect>
       <Attribute>

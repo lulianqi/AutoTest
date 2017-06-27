@@ -835,6 +835,7 @@ namespace CaseExecutiveActuator
 
     }
 
+
     public class MyBasicHttpExecutionContent : ICaseExecutionContent
     {
         public string errorMessage;
@@ -890,6 +891,7 @@ namespace CaseExecutiveActuator
             }
         }
     }
+
 
     public class MyConsoleExecutionContent : ICaseExecutionContent
     {
@@ -967,12 +969,6 @@ namespace CaseExecutiveActuator
             public string ConsumerName { get; set; }
             public string ConsumerType { get; set; }
             public string ConsumerTopicDurable { get; set; }
-            /// <summary>
-            /// 构造函数 描述一个MQ消费者
-            /// </summary>
-            /// <param name="name">必填不能为null</param>
-            /// <param name="type">必填不能为null</param>
-            /// <param name="durable">可设置为null</param>
             public ConsumerData(string name, string type, string durable)
             {
                 ConsumerName = name;
@@ -986,18 +982,14 @@ namespace CaseExecutiveActuator
             public string ProducerName { get; set; }
             public string ProducerType { get; set; }
             public string MessageType { get; set; }
+            public string MessageData { get; set; }
 
-            /// <summary>
-            /// 构造函数 描述一个MQ信息发布者
-            /// </summary>
-            /// <param name="name">必填不能为null</param>
-            /// <param name="type">必填不能为null</param>
-            /// <param name="messageType">必填不能为null</param>
-            public ProducerData(string name,string type,string messageType)
+            public ProducerData(string name,string type,string messageType,string messageData)
             {
                 ProducerName = name;
                 ProducerType = type;
                 MessageType=messageType;
+                MessageData=messageData;
             }
         }
 
@@ -1007,77 +999,31 @@ namespace CaseExecutiveActuator
         public CaseProtocol caseProtocol;
         public string caseActuator;
 
-        public List<KeyValuePair<ProducerData, caseParameterizationContent>> producerDataSendList;
-        public List<ConsumerData> consumerSubscribeList;
-        public List<ConsumerData> unConsumerSubscribeList;
-        public List<ConsumerData> consumerMessageReceiveList;
-
-        public MyActiveMQExecutionContent()
-        {
-            errorMessage = null;
-            caseProtocol = CaseProtocol.unknownProtocol;
-            caseActuator = "";
-
-            producerDataSendList = new List<KeyValuePair<ProducerData, caseParameterizationContent>>();
-            consumerSubscribeList = new List<ConsumerData>();
-            unConsumerSubscribeList = new List<ConsumerData>();
-            consumerMessageReceiveList = new List<ConsumerData>();
-        }
+        public
 
         public CaseProtocol MyCaseProtocol
         {
-            get { return caseProtocol; }
+            get { throw new NotImplementedException(); }
         }
 
         public string MyCaseActuator
         {
-            get { return caseActuator; }
+            get { throw new NotImplementedException(); }
         }
 
         public string MyExecutionTarget
         {
-            get 
-            {
-                StringBuilder sb = new StringBuilder();
-                if (consumerSubscribeList.Count>0)
-                {
-                    sb.Append("Subscribe:");
-                    foreach (ConsumerData tempConsumer in consumerSubscribeList)
-                    {
-                        sb.Append(string.Format(" {0}://{1} ", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                    }
-                }
-                if (unConsumerSubscribeList.Count > 0)
-                {
-                    sb.Append("UnSubscribe:");
-                    foreach (ConsumerData tempConsumer in unConsumerSubscribeList)
-                    {
-                        sb.Append(string.Format(" {0}://{1} ", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                    }
-                }
-                if (producerDataSendList.Count > 0)
-                {
-                    sb.Append("Producer:");
-                    foreach (KeyValuePair<ProducerData, caseParameterizationContent> tempProducer in producerDataSendList)
-                    {
-                        sb.Append(string.Format(" {0}://{1} ", tempProducer.Key.ProducerType, tempProducer.Key.ProducerName));
-                    }
-                }
-                return sb.ToString();
-            }
+            get { throw new NotImplementedException(); }
         }
 
         public string MyExecutionContent
         {
-            get { return null; }
+            get { throw new NotImplementedException(); }
         }
 
         public string MyErrorMessage
         {
-            get
-            {
-                return String.IsNullOrEmpty(errorMessage) ? null : errorMessage;
-            }
+            get { throw new NotImplementedException(); }
         }
     }
 
