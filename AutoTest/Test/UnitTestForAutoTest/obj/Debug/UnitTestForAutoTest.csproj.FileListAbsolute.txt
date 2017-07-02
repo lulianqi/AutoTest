@@ -290,3 +290,11 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\My
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyVoiceHelper.dll
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyVoiceHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyVoiceHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\Apache.NMS.ActiveMQ.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\Apache.NMS.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyActiveMQHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MyActiveMQHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyActiveMQHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\Apache.NMS.ActiveMQ.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\Apache.NMS.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyActiveMQHelper.pdb

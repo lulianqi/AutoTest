@@ -62,3 +62,7 @@ D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyVoiceHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyVoiceHelper.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyVoiceHelper.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyVoiceHelper.pdb
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyActiveMQHelper.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Apache.NMS.ActiveMQ.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Apache.NMS.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyActiveMQHelper.pdb

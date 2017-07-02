@@ -211,7 +211,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="yourActuatorStaticDataCollection">可用staticData集合</param>
         /// <param name="yourDataResultCollection">返回对所有staticData数据运算后的结果列表</param>
-        /// <param name="errorMessage">错误消息（如果没有错误则为null）</param>
+        /// <param name="errorMessage">错误消息（如果没有错误则为null）(在获取参数化数据产生错误后因对当前case设置警示)</param>
         /// <returns>运算结果</returns>
         public string getTargetContentData(ActuatorStaticDataCollection yourActuatorStaticDataCollection, NameValueCollection yourDataResultCollection, out string errorMessage)
         {

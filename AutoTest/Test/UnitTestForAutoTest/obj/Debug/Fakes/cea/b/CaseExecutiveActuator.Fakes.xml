@@ -793,6 +793,87 @@
         <member name="T:CaseExecutiveActuator.Fakes.ShimCaseActionDescription.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ">
+            <summary>CaseExecutiveActuator.CaseProtocolExecutionForActiveMQ 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.#ctor(CaseExecutiveActuator.CaseProtocolExecutionForActiveMQ)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.Bind(CaseExecutiveActuator.ICaseExecutionDevice)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.Bind(System.ICloneable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.Clone">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.Clone() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.ConstructormyConnectForActiveMQ">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.CaseProtocolExecutionForActiveMQ(myConnectForActiveMQ yourConnectInfo) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.ExecutionDeviceClose">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.ExecutionDeviceClose() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.ExecutionDeviceConnect">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.ExecutionDeviceConnect() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.ExecutionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringActuatorStaticDataCollectionInt32">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, Int32 caseId) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.GetRunContentXmlNode">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.GetRunContent(XmlNode yourContentNode) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.IsDeviceConnectGet">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.get_IsDeviceConnect() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.OnGetExecutiveDataAdddelegateGetExecutiveData">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.add_OnGetExecutiveData(delegateGetExecutiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.OnGetExecutiveDataRemovedelegateGetExecutiveData">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.remove_OnGetExecutiveData(delegateGetExecutiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.ProtocolTypeGet">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.get_ProtocolType() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances.Clone">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.Clone() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances.ExecutionDeviceClose">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.ExecutionDeviceClose() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances.ExecutionDeviceConnect">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.ExecutionDeviceConnect() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances.ExecutionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringActuatorStaticDataCollectionInt32">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, Int32 caseId) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances.IsDeviceConnectGet">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.get_IsDeviceConnect() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances.OnGetExecutiveDataAdddelegateGetExecutiveData">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.add_OnGetExecutiveData(delegateGetExecutiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances.OnGetExecutiveDataRemovedelegateGetExecutiveData">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.remove_OnGetExecutiveData(delegateGetExecutiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForActiveMQ.AllInstances.ProtocolTypeGet">
+            <summary>设置 CaseProtocolExecutionForActiveMQ.get_ProtocolType() 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForConsole">
             <summary>CaseExecutiveActuator.CaseProtocolExecutionForConsole 的填充码类型</summary>
         </member>
@@ -1084,6 +1165,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetStrPickDataStringStringOutInt32Out">
             <summary>设置 CaseTool.GetStrPickData(String yourSouce, String&amp; yourTarget, Int32&amp; yourStrLen) 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetXmlInnerMetaDataListExXmlNodeStringStringArray">
+            <summary>设置 CaseTool.GetXmlInnerMetaDataListEx(XmlNode sourseNode, String tagName, String[] tagAttributes) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.PickJsonParameterStringString">
             <summary>设置 CaseTool.PickJsonParameter(String yourTarget, String yourSouce) 的 填充码</summary>
         </member>
@@ -1161,6 +1245,183 @@
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimHttpMultipart.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent">
+            <summary>CaseExecutiveActuator.MyActiveMQExecutionContent 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.#ctor(CaseExecutiveActuator.MyActiveMQExecutionContent)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.Bind(CaseExecutiveActuator.ICaseExecutionContent)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.Constructor">
+            <summary>设置 MyActiveMQExecutionContent.MyActiveMQExecutionContent() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.MyCaseActuatorGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyCaseActuator() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.MyCaseProtocolGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.MyErrorMessageGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyErrorMessage() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.MyExecutionContentGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyExecutionContent() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.MyExecutionTargetGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyExecutionTarget() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.AllInstances.MyCaseActuatorGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyCaseActuator() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.AllInstances.MyCaseProtocolGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.AllInstances.MyErrorMessageGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyErrorMessage() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.AllInstances.MyExecutionContentGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyExecutionContent() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.AllInstances.MyExecutionTargetGet">
+            <summary>设置 MyActiveMQExecutionContent.get_MyExecutionTarget() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData">
+            <summary>CaseExecutiveActuator.MyActiveMQExecutionContent+ConsumerData 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.#ctor(CaseExecutiveActuator.MyActiveMQExecutionContent.ConsumerData)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.ConstructorStringStringString">
+            <summary>设置 ConsumerData.ConsumerData(String name, String type, String durable) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.ConsumerNameGet">
+            <summary>设置 ConsumerData.get_ConsumerName() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.ConsumerNameSetString">
+            <summary>设置 ConsumerData.set_ConsumerName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.ConsumerTopicDurableGet">
+            <summary>设置 ConsumerData.get_ConsumerTopicDurable() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.ConsumerTopicDurableSetString">
+            <summary>设置 ConsumerData.set_ConsumerTopicDurable(String value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.ConsumerTypeGet">
+            <summary>设置 ConsumerData.get_ConsumerType() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.ConsumerTypeSetString">
+            <summary>设置 ConsumerData.set_ConsumerType(String value) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.AllInstances.ConsumerNameGet">
+            <summary>设置 ConsumerData.get_ConsumerName() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.AllInstances.ConsumerNameSetString">
+            <summary>设置 ConsumerData.set_ConsumerName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.AllInstances.ConsumerTopicDurableGet">
+            <summary>设置 ConsumerData.get_ConsumerTopicDurable() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.AllInstances.ConsumerTopicDurableSetString">
+            <summary>设置 ConsumerData.set_ConsumerTopicDurable(String value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.AllInstances.ConsumerTypeGet">
+            <summary>设置 ConsumerData.get_ConsumerType() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimConsumerData.AllInstances.ConsumerTypeSetString">
+            <summary>设置 ConsumerData.set_ConsumerType(String value) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData">
+            <summary>CaseExecutiveActuator.MyActiveMQExecutionContent+ProducerData 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.#ctor(CaseExecutiveActuator.MyActiveMQExecutionContent.ProducerData)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.ConstructorStringStringString">
+            <summary>设置 ProducerData.ProducerData(String name, String type, String messageType) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.MessageTypeGet">
+            <summary>设置 ProducerData.get_MessageType() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.MessageTypeSetString">
+            <summary>设置 ProducerData.set_MessageType(String value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.ProducerNameGet">
+            <summary>设置 ProducerData.get_ProducerName() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.ProducerNameSetString">
+            <summary>设置 ProducerData.set_ProducerName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.ProducerTypeGet">
+            <summary>设置 ProducerData.get_ProducerType() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.ProducerTypeSetString">
+            <summary>设置 ProducerData.set_ProducerType(String value) 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.AllInstances.MessageTypeGet">
+            <summary>设置 ProducerData.get_MessageType() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.AllInstances.MessageTypeSetString">
+            <summary>设置 ProducerData.set_MessageType(String value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.AllInstances.ProducerNameGet">
+            <summary>设置 ProducerData.get_ProducerName() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.AllInstances.ProducerNameSetString">
+            <summary>设置 ProducerData.set_ProducerName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.AllInstances.ProducerTypeGet">
+            <summary>设置 ProducerData.get_ProducerType() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyActiveMQExecutionContent.ShimProducerData.AllInstances.ProducerTypeSetString">
+            <summary>设置 ProducerData.set_ProducerType(String value) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyBasicHttpExecutionContent">
             <summary>CaseExecutiveActuator.MyBasicHttpExecutionContent 的填充码类型</summary>
@@ -1945,11 +2206,47 @@
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyCaseLaodInfo.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ">
+            <summary>CaseExecutiveActuator.myConnectForActiveMQ 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.#ctor(CaseExecutiveActuator.myConnectForActiveMQ)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.Bind(CaseExecutiveActuator.IConnectExecutiveData)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.ConstructorCaseProtocolStringStringStringStringListOfStringListOfKeyValuePairOfStringString">
+            <summary>设置 myConnectForActiveMQ.myConnectForActiveMQ(CaseProtocol yourCaseProtocol, String yourBrokerUri, String yourClientId, String yourFactoryUserName, String yourFactoryPassword, List`1&lt;String&gt; yourQueueList, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; yourTopicList) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.MyCaseProtocolGet">
+            <summary>设置 myConnectForActiveMQ.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForActiveMQ.AllInstances.MyCaseProtocolGet">
+            <summary>设置 myConnectForActiveMQ.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole">
             <summary>CaseExecutiveActuator.myConnectForConsole 的填充码类型</summary>
         </member>
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.#ctor">
             <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.#ctor(CaseExecutiveActuator.myConnectForConsole)">
+            <summary>初始化给定实例的新填充码</summary>
         </member>
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.BehaveAsCurrent">
             <summary>为已填充的类型的所有方法分配“Current”行为</summary>
@@ -1957,11 +2254,23 @@
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.BehaveAsNotImplemented">
             <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
         </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.Bind(CaseExecutiveActuator.IConnectExecutiveData)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.ConstructorCaseProtocol">
+            <summary>设置 myConnectForConsole.myConnectForConsole(CaseProtocol yourCaseProtocol) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.MyCaseProtocolGet">
+            <summary>设置 myConnectForConsole.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForConsole.AllInstances.MyCaseProtocolGet">
+            <summary>设置 myConnectForConsole.get_MyCaseProtocol() 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp">
             <summary>CaseExecutiveActuator.myConnectForHttp 的填充码类型</summary>
@@ -1969,17 +2278,32 @@
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.#ctor">
             <summary>初始化新的填充码实例</summary>
         </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.#ctor(CaseExecutiveActuator.myConnectForHttp)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.BehaveAsCurrent">
             <summary>为已填充的类型的所有方法分配“Current”行为</summary>
         </member>
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.BehaveAsNotImplemented">
             <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
         </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.Bind(CaseExecutiveActuator.IConnectExecutiveData)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.ConstructorCaseProtocolString">
+            <summary>设置 myConnectForHttp.myConnectForHttp(CaseProtocol yourCaseProtocol, String yourDefault_url) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.MyCaseProtocolGet">
+            <summary>设置 myConnectForHttp.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.AllInstances.MyCaseProtocolGet">
+            <summary>设置 myConnectForHttp.get_MyCaseProtocol() 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http">
             <summary>CaseExecutiveActuator.myConnectForVanelife_http 的填充码类型</summary>
@@ -1987,17 +2311,32 @@
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.#ctor">
             <summary>初始化新的填充码实例</summary>
         </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.#ctor(CaseExecutiveActuator.myConnectForVanelife_http)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.BehaveAsCurrent">
             <summary>为已填充的类型的所有方法分配“Current”行为</summary>
         </member>
         <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.BehaveAsNotImplemented">
             <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
         </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.Bind(CaseExecutiveActuator.IConnectExecutiveData)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.ConstructorCaseProtocolStringStringString">
+            <summary>设置 myConnectForVanelife_http.myConnectForVanelife_http(CaseProtocol yourCaseProtocol, String yourDev_key, String yourDev_secret, String yourDefault_url) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.MyCaseProtocolGet">
+            <summary>设置 myConnectForVanelife_http.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http.AllInstances.MyCaseProtocolGet">
+            <summary>设置 myConnectForVanelife_http.get_MyCaseProtocol() 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyExpectInfo">
             <summary>CaseExecutiveActuator.myExpectInfo 的填充码类型</summary>
@@ -2033,24 +2372,6 @@
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyHttpBackData.AllInstances">
-            <summary>为所有实例成员定义填充码</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyLoopNodeInfo">
-            <summary>CaseExecutiveActuator.myLoopNodeInfo 的填充码类型</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyLoopNodeInfo.#ctor">
-            <summary>初始化新的填充码实例</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyLoopNodeInfo.BehaveAsCurrent">
-            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
-        </member>
-        <member name="M:CaseExecutiveActuator.Fakes.ShimmyLoopNodeInfo.BehaveAsNotImplemented">
-            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyLoopNodeInfo.Behavior">
-            <summary>为已填充的类型的所有方法分配行为</summary>
-        </member>
-        <member name="T:CaseExecutiveActuator.Fakes.ShimmyLoopNodeInfo.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyNewTestInfo">
@@ -2192,6 +2513,24 @@
             <summary>获取或设置实例行为。</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubCaseActionDescription.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForActiveMQ">
+            <summary>CaseExecutiveActuator.CaseProtocolExecutionForActiveMQ 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForActiveMQ.#ctor(CaseExecutiveActuator.myConnectForActiveMQ)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForActiveMQ.InitializeStub">
+            <summary>初始化 type StubCaseProtocolExecutionForActiveMQ 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForActiveMQ.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForActiveMQ.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForActiveMQ.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForConsole">
@@ -2464,6 +2803,24 @@
         <member name="P:CaseExecutiveActuator.Fakes.StubIRunTimeStaticData.cea::CaseExecutiveActuator#IRunTimeStaticData#RunTimeStaticDataType">
             <summary>设置 IRunTimeStaticData.get_RunTimeStaticDataType() 的 stub</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubMyActiveMQExecutionContent">
+            <summary>CaseExecutiveActuator.MyActiveMQExecutionContent 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyActiveMQExecutionContent.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyActiveMQExecutionContent.InitializeStub">
+            <summary>初始化 type StubMyActiveMQExecutionContent 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyActiveMQExecutionContent.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyActiveMQExecutionContent.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyActiveMQExecutionContent.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubMyBasicHttpExecutionContent">
             <summary>CaseExecutiveActuator.MyBasicHttpExecutionContent 的存根类型</summary>
         </member>
@@ -2642,6 +2999,78 @@
             <summary>获取或设置实例行为。</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubMyVaneHttpExecutionContent.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubmyConnectForActiveMQ">
+            <summary>CaseExecutiveActuator.myConnectForActiveMQ 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForActiveMQ.#ctor(CaseExecutiveActuator.CaseProtocol,System.String,System.String,System.String,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForActiveMQ.InitializeStub">
+            <summary>初始化 type StubmyConnectForActiveMQ 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForActiveMQ.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForActiveMQ.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForActiveMQ.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubmyConnectForConsole">
+            <summary>CaseExecutiveActuator.myConnectForConsole 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForConsole.#ctor(CaseExecutiveActuator.CaseProtocol)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForConsole.InitializeStub">
+            <summary>初始化 type StubmyConnectForConsole 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForConsole.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForConsole.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForConsole.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubmyConnectForHttp">
+            <summary>CaseExecutiveActuator.myConnectForHttp 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.#ctor(CaseExecutiveActuator.CaseProtocol,System.String)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.InitializeStub">
+            <summary>初始化 type StubmyConnectForHttp 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubmyConnectForVanelife_http">
+            <summary>CaseExecutiveActuator.myConnectForVanelife_http 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForVanelife_http.#ctor(CaseExecutiveActuator.CaseProtocol,System.String,System.String,System.String)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForVanelife_http.InitializeStub">
+            <summary>初始化 type StubmyConnectForVanelife_http 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForVanelife_http.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForVanelife_http.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForVanelife_http.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubmyTreeTagInfo">

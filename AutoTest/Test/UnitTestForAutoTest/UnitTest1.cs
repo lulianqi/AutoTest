@@ -90,9 +90,9 @@ namespace UnitTestForAutoTest
         public void TestMethod_MyClone1()
         {
             Dictionary<string, ICaseExecutionDevice> dc1 = new Dictionary<string, ICaseExecutionDevice>();
-            dc1.Add("Key1", new CaseProtocolExecutionForVanelife_http(new myConnectForVanelife_http()));
-            dc1.Add("Key2", new CaseProtocolExecutionForVanelife_http(new myConnectForVanelife_http()));
-            dc1.Add("Key3", new CaseProtocolExecutionForVanelife_http(new myConnectForVanelife_http()));
+            dc1.Add("Key1", new CaseProtocolExecutionForVanelife_http(null));
+            dc1.Add("Key2", new CaseProtocolExecutionForVanelife_http(null));
+            dc1.Add("Key3", new CaseProtocolExecutionForVanelife_http(null));
             Dictionary<string, ICaseExecutionDevice> dc2 = dc1.MyClone();
             Assert.AreNotSame(dc1, dc2, "对象引用相同");
             foreach(string tempKey in dc2.Keys)

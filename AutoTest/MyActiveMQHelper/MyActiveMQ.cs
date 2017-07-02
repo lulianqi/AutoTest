@@ -390,7 +390,7 @@ namespace MyActiveMQHelper
         /// <summary>
         /// 获取当前所有消费者订阅的消息（当IsWithEvent为false时可用）
         /// </summary>
-        /// <param name="yourConsumerName">指定Consumer 的名字（完整路径名）</param>
+        /// <param name="yourConsumerName">指定Consumer 的名字（完整路径名）(当该值设置为null时即表示获取所有consumer消息)</param>
         /// <returns>获取当前所有消费者订阅的消息（当IsWithEvent为false时可用）</returns>
         public List<KeyValuePair<string, string>> ReadConsumerMessage(string yourConsumerName)
         {

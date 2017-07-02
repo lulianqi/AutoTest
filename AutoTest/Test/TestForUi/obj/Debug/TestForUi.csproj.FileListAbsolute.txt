@@ -81,3 +81,7 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyVoiceHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyVoiceHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyVoiceHelper.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyVoiceHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyActiveMQHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Apache.NMS.ActiveMQ.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Apache.NMS.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyActiveMQHelper.pdb

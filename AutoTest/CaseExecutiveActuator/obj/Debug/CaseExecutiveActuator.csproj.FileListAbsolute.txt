@@ -32,3 +32,5 @@ F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.Active
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.dll
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.ActiveMQ.dll
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.dll
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyActiveMQHelper.dll
+F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyActiveMQHelper.pdb
