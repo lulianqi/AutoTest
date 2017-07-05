@@ -355,13 +355,14 @@ namespace MySqlHelper
         public delegate void delegateGetAliveTaskDataTableInfoEventHandler(object sender, DataTable dataTable);
         public delegate void delegateGetMonitorTaskDataTableInfoEventHandler(object sender, string dataVaule);
 
-        public event delegateGetErrorMessageEventHandler OnGetErrorMessage;
-        public event delegateGetInfoMessageEventHandler OnGetInfoMessage;
-        public event delegateDriveStateChangeEventHandler OnDriveStateChange;
+        public event delegateGetErrorMessageEventHandler OnGetErrorMessage;       //报告错误信息
+        public event delegateGetInfoMessageEventHandler OnGetInfoMessage;         //报告提示信息
+        public event delegateDriveStateChangeEventHandler OnDriveStateChange;     //报告状态变化信息
         #endregion
 
         #region field
         private Dictionary<string, AliveTaskInfo> aliveTaskList = new Dictionary<string, AliveTaskInfo>();
+        private Dictionary<string, SqlMonitor> aliveMonitorList = new Dictionary<string, SqlMonitor>();
         private AutoResetEvent myAutoResetEvent = new AutoResetEvent(false);    //由于直接的查询执行公用了MySqlDataAdapter等信息所以要保证同步执行，如果要在未返回结果的时候执行其他查询请使用多个MySqlDrive，或重载ExecuteQuery执行方法（不建议）
         private string data_source = ""; //Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test
         private bool isDriveConnect = false;
@@ -548,6 +549,26 @@ namespace MySqlHelper
             else
             {
                 aliveTaskList.Add(yourName, yourInfo);
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Add a new AliveMonitor (it will be a new Thread)
+        /// </summary>
+        /// <param name="yourName">your monitor name</param>
+        /// <param name="yourInfo">your monitor info</param>
+        /// <returns></returns>
+        private bool AddAliveMonitorInfo(string yourName, SqlMonitor yourInfo)
+        {
+            if (aliveMonitorList.ContainsKey(yourName))
+            {
+                SetErrorMes("existed task name");
+                return false;
+            }
+            else
+            {
+                aliveMonitorList.Add(yourName, yourInfo);
                 return true;
             }
         }
