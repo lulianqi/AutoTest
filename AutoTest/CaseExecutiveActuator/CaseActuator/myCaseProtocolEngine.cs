@@ -426,7 +426,7 @@ namespace CaseExecutiveActuator
                     {
                         if (tempOneUnSubscribeRaw[1] != null && tempOneUnSubscribeRaw[0] != "")
                         {
-                            myRunContent.consumerSubscribeList.Add(new MyActiveMQExecutionContent.ConsumerData(tempOneUnSubscribeRaw[0], tempOneUnSubscribeRaw[1], null));
+                            myRunContent.unConsumerSubscribeList.Add(new MyActiveMQExecutionContent.ConsumerData(tempOneUnSubscribeRaw[0], tempOneUnSubscribeRaw[1], null));
                         }
                         else
                         {
@@ -442,7 +442,7 @@ namespace CaseExecutiveActuator
                     {
                         if (!string.IsNullOrEmpty(tempOneMessageSendRaw[1]) && tempOneMessageSendRaw[2] != null && tempOneMessageSendRaw[0] != "")
                         {
-                            MyActiveMQExecutionContent.ProducerData tempProducerData = new MyActiveMQExecutionContent.ProducerData(tempOneMessageSendRaw[1], tempOneMessageSendRaw[2], "text");
+                            MyActiveMQExecutionContent.ProducerData tempProducerData = new MyActiveMQExecutionContent.ProducerData(tempOneMessageSendRaw[1], tempOneMessageSendRaw[2], "TextMessage");
                             caseParameterizationContent tempProducerMessage = new caseParameterizationContent(tempOneMessageSendRaw[0], tempOneMessageSendRaw[2] == "true");
                             myRunContent.producerDataSendList.Add(new KeyValuePair<MyActiveMQExecutionContent.ProducerData, caseParameterizationContent>(tempProducerData, tempProducerMessage));
                         }
@@ -506,12 +506,14 @@ namespace CaseExecutiveActuator
 
         public bool ExecutionDeviceConnect()
         {
-            return activeMQ.Connect();
+            isConnect = activeMQ.Connect();
+            return isConnect;
         }
 
         public void ExecutionDeviceClose()
         {
             activeMQ.DisConnect();
+            isConnect = false;
         }
 
         public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
@@ -541,6 +543,8 @@ namespace CaseExecutiveActuator
                 System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
                 myWatch.Start();
 
+                yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[activeMQ]Executive···", caseId));
+
                 #region Subscribe
                 foreach (var tempConsumer in nowExecutionContent.consumerSubscribeList)
                 {
@@ -548,16 +552,16 @@ namespace CaseExecutiveActuator
                     {
                         if (activeMQ.SubscribeConsumer(tempConsumer.ConsumerName, tempConsumer.ConsumerType == "queue", tempConsumer.ConsumerTopicDurable))
                         {
-                            yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0};//{1} subscribe sucess", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0}://{1} subscribe sucess", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                         }
                         else
                         {
-                            DealExecutiveError(string.Format("{0};//{1} subscribe fail", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            DealExecutiveError(string.Format("{0}://{1} subscribe fail", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                         }
                     }
                     else
                     {
-                        DealExecutiveError(string.Format("{0};//{1} subscribe fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                        DealExecutiveError(string.Format("{0}://{1} subscribe fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                     }
                 } 
                 #endregion
@@ -567,18 +571,18 @@ namespace CaseExecutiveActuator
                 {
                     if (tempConsumer.ConsumerType == "queue" || tempConsumer.ConsumerType == "topic")
                     {
-                        if (activeMQ.UnSubscribeConsumer(string.Format("{0};//{1}", tempConsumer.ConsumerType, tempConsumer.ConsumerName)) > 0)
+                        if (activeMQ.UnSubscribeConsumer(string.Format("{0}://{1}", tempConsumer.ConsumerType, tempConsumer.ConsumerName)) > 0)
                         {
-                            yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{1};//{2} unsubscribe sucess", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0}://{1} unsubscribe sucess", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                         }
                         else
                         {
-                            DealExecutiveError(string.Format("{0};//{1} unsubscribe fail", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            DealExecutiveError(string.Format("{0}://{1} unsubscribe fail", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                         }
                     }
                     else
                     {
-                        DealExecutiveError(string.Format("{0};//{1} unsubscribe fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                        DealExecutiveError(string.Format("{0}://{1} unsubscribe fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                     }
                 }  
                 #endregion
@@ -592,7 +596,7 @@ namespace CaseExecutiveActuator
                         if (tempError != null)
                         {
                             DealExecutiveError(string.Format("this case get static data errer with [{0}]", tempOneSender.Value.getTargetContentData()));
-                            tempCaseOutContent.AppendLine(string.Format("{0};//{1} send message fail [get static data errer]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
+                            tempCaseOutContent.AppendLine(string.Format("{0}://{1} send message fail [get static data errer]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
                         }
                         else
                         {
@@ -601,45 +605,55 @@ namespace CaseExecutiveActuator
                             {
                                 if (activeMQ.PublishMessage(tempOneSender.Key.ProducerName, tempMessageSend, tempOneSender.Key.ProducerType == "topic", tempMessageType))
                                 {
-                                    tempCaseOutContent.AppendLine(string.Format("{0};//{1} send message sucess", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
+                                    string tempReportStr = string.Format("{0}://{1} send message sucess", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName);
+                                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempReportStr);
+                                    tempCaseOutContent.AppendLine(tempReportStr);
                                 }
                                 else
                                 {
-                                    tempCaseOutContent.AppendLine(string.Format("{0};//{1} send message fail [{2}]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName, activeMQ.NowErrorMes));
+                                    string tempReportStr = string.Format("{0}://{1} send message fail [{2}]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName, activeMQ.NowErrorMes);
+                                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempReportStr);
+                                    tempCaseOutContent.AppendLine(tempReportStr);
                                 }
                             }
                             else
                             {
                                 DealExecutiveError(string.Format("get MessageType errer with [{0}]", tempOneSender.Key.MessageType));
-                                tempCaseOutContent.AppendLine(string.Format("{0};//{1} send message fail [get MessageType errer]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
+                                tempCaseOutContent.AppendLine(string.Format("{0}://{1} send message fail [get MessageType errer]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
                             }
 
                         }
                     }
                     else
                     {
-                        tempCaseOutContent.Append(string.Format("{0};//{1} send message fail [not support this producer type]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
+                        tempCaseOutContent.Append(string.Format("{0}://{1} send message fail [not support this producer type]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
                     }
                 } 
                 #endregion
 
                 #region Receive
+                if (nowExecutionContent.consumerMessageReceiveList.Count>0)
+                {
+                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, "Receive your activeMQ messages");
+                }
                 foreach (var tempConsumer in nowExecutionContent.consumerMessageReceiveList)
                 {
                     if (tempConsumer.ConsumerName != null)
                     {
                         if (tempConsumer.ConsumerType == "queue" || tempConsumer.ConsumerType == "topic")
                         {
-                            List<KeyValuePair<string, string>> oneMessageReceive = activeMQ.ReadConsumerMessage(string.Format("{0};//{1}", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            List<KeyValuePair<string, string>> oneMessageReceive = activeMQ.ReadConsumerMessage(string.Format("{0}://{1}", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                             foreach (KeyValuePair<string, string> tempMessage in oneMessageReceive)
                             {
-                                tempCaseOutContent.AppendLine(string.Format("{0} Receive {1}", tempMessage.Key, tempMessage.Value));
+                                string tempNowReceviceData = string.Format("{0} Receive {1}", tempMessage.Key, tempMessage.Value);
+                                yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempNowReceviceData);
+                                tempCaseOutContent.AppendLine(tempNowReceviceData);
                             }
                         }
                         else
                         {
-                            DealExecutiveError(string.Format("{0};//{1} receive fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                            tempCaseOutContent.AppendLine(string.Format("{0};//{1} receive fail ", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            DealExecutiveError(string.Format("{0}://{1} receive fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            tempCaseOutContent.AppendLine(string.Format("{0}://{1} receive fail ", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                         }
                     }
                     else
@@ -647,7 +661,9 @@ namespace CaseExecutiveActuator
                         List<KeyValuePair<string, string>> oneMessageReceive = activeMQ.ReadConsumerMessage();
                         foreach (KeyValuePair<string, string> tempMessage in oneMessageReceive)
                         {
-                            tempCaseOutContent.AppendLine(string.Format("{0} Receive {1}", tempMessage.Key, tempMessage.Value));
+                            string tempNowReceviceData = string.Format("{0} Receive {1}", tempMessage.Key, tempMessage.Value);
+                            yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempNowReceviceData);
+                            tempCaseOutContent.AppendLine(tempNowReceviceData);
                         }
                     }
                 }  
@@ -676,7 +692,7 @@ namespace CaseExecutiveActuator
 
         public object Clone()
         {
-            throw new NotImplementedException();
+            return new CaseProtocolExecutionForActiveMQ(myExecutionDeviceInfo);
         }
     }
 
@@ -859,7 +875,7 @@ namespace CaseExecutiveActuator
                 //report Executive Data
                 if (yourExecutiveDelegate != null)
                 {
-                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo , string.Format("【ID:{0}】Executive···\r\n{1}\r\n{2}", caseId, tempUrlAddress, vanelifeData));
+                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[vanelife_http]Executive···\r\n{1}\r\n{2}", caseId, tempUrlAddress, vanelifeData));
                 }
 
                 //Start Http 
@@ -1153,11 +1169,11 @@ namespace CaseExecutiveActuator
                 {
                     if (httpBody != null)
                     {
-                        yourExecutiveDelegate(sender,CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n{1}\r\n{2}", caseId, httpUri, httpBody));
+                        yourExecutiveDelegate(sender,CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[http]Executive···\r\n{1}\r\n{2}", caseId, httpUri, httpBody));
                     }
                     else
                     {
-                        yourExecutiveDelegate(sender,CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n{1}", caseId, httpUri));
+                        yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[http]Executive···\r\n{1}", caseId, httpUri));
                     }
                 }
 
@@ -1475,6 +1491,7 @@ namespace CaseExecutiveActuator
                             myCaseData.AddErrorMessage("Error :find the error ID");
                         }
                     }
+                    myCaseData.name = CaseTool.getXmlAttributeVaule(sourceNode, "remark", "NULL");
                     #endregion
 
                     #region Content
@@ -1707,7 +1724,30 @@ namespace CaseExecutiveActuator
         }
 
         /// <summary>
-        /// i will get the csae info that you need to show in your Tree
+        /// i will get the csae info that you need to show in your Tree(使用MyRunCaseData的重载版本针对不同执行协议对content的内容有优化)
+        /// </summary>
+        /// <param name="runCaseData">MyRunCaseData</param>
+        /// <returns>the info with myCaseLaodInfo</returns>
+        public static myCaseLaodInfo getCaseLoadInfo(MyRunCaseData<ICaseExecutionContent> runCaseData)
+        {
+            myCaseLaodInfo myInfo = new myCaseLaodInfo("NULL");
+            myInfo.id = runCaseData.id;
+            myInfo.remark = runCaseData.name;
+            myInfo.caseType = CaseType.Case;
+            myInfo.content = runCaseData.testContent.MyExecutionContent == null ? string.Format("> {0}", runCaseData.testContent.MyExecutionTarget) : string.Format("> {0}{1}{2}", runCaseData.testContent.MyExecutionTarget, MyConfiguration.CaseShowTargetAndContent, runCaseData.testContent.MyExecutionContent);
+            myInfo.caseProtocol = runCaseData.testContent.MyCaseProtocol;
+            if (runCaseData.actions != null)
+            {
+                foreach (var tempAction in runCaseData.actions)
+                {
+                    myInfo.actions.Add(tempAction.Key, tempAction.Value.caseAction);
+                }
+            }
+            return myInfo;
+        }
+
+        /// <summary>
+        /// i will get the csae info that you need to show in your Tree （对于CASE 的content 仅供参考）
         /// </summary>
         /// <param name="sourceNode">source Node</param>
         /// <returns>the info with myCaseLaodInfo</returns>

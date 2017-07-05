@@ -670,13 +670,13 @@ namespace CaseExecutiveActuator
     {
         public string ErrorMessage;
         public int id;
-        public int times;
+        public int times;   //仅repeat节点有意义
         public string remark;
-        public string name;
+        public string name;  //仅project节点有意义
         public CaseType caseType;
-        public CaseProtocol caseProtocol;
-        public string content;
-        public Dictionary<CaseResult, CaseAction> actions;
+        public CaseProtocol caseProtocol;  //仅case节点有意义
+        public string content;  //仅case节点有意义
+        public Dictionary<CaseResult, CaseAction> actions;  //仅case节点有意义
         public myCaseLaodInfo(string tempVal)
         {
             ErrorMessage = "";
@@ -696,6 +696,7 @@ namespace CaseExecutiveActuator
     {
         public List<string> errorMessages;
         public int id;
+        public string name;
         public CaseProtocol contentProtocol;
         public T testContent;
         public myExpectInfo caseExpectInfo;
@@ -710,6 +711,7 @@ namespace CaseExecutiveActuator
             errorMessages = null;
             testContent = yourContent;
             id = yourId;
+            name = null;
             contentProtocol = yourcontentProtocol;
             actions = null;
             caseExpectInfo = new myExpectInfo();
@@ -722,6 +724,7 @@ namespace CaseExecutiveActuator
             errorMessages.Add(yourErrorMessage);
             testContent = yourContent;
             id = yourId;
+            name = null;
             contentProtocol = yourcontentProtocol;
             actions = null;
             caseExpectInfo = new myExpectInfo();
@@ -1057,10 +1060,18 @@ namespace CaseExecutiveActuator
                 }
                 if (producerDataSendList.Count > 0)
                 {
-                    sb.Append("Producer:");
+                    sb.Append("Send:");
                     foreach (KeyValuePair<ProducerData, caseParameterizationContent> tempProducer in producerDataSendList)
                     {
                         sb.Append(string.Format(" {0}://{1} ", tempProducer.Key.ProducerType, tempProducer.Key.ProducerName));
+                    }
+                }
+                if (consumerMessageReceiveList.Count > 0)
+                {
+                    sb.Append("Receive:");
+                    foreach (ConsumerData tempConsumer in consumerMessageReceiveList)
+                    {
+                        sb.Append(string.Format(" {0}://{1} ", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                     }
                 }
                 return sb.ToString();

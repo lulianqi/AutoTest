@@ -194,7 +194,7 @@ namespace CaseExecutiveActuator
         bool ExecutionDeviceConnect();
 
         /// <summary>
-        /// 关闭ExecutionDevice
+        /// 关闭ExecutionDevice (在重新加载CASE文件等地方可能会关闭已经关闭的执行器，所以请务必确保重复调用该方法不会有错误产生)
         /// </summary>
         void ExecutionDeviceClose();
 

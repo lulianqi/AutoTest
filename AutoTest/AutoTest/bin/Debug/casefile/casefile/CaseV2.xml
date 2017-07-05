@@ -863,18 +863,39 @@
         </Attribute>
       </Case>
     </Repeat>
-    <Case id="1000050001" remark="mq test">
+   <Case id="1000050001" remark="mq test">
       <Content protocol="activeMQ" actuator="mq"><!--对于指定的activeMQ执行器，如果重新连接后只会保留默认配置在执行器里面的consumer,在执行过程中添加到consumer都会被删除--> <!--执行顺序为UnSubscribe，UnSubscribe，Send，Receive-->
         <Send name="t1" type="topic" isHaveParameters="true">this is test data for topic t1</Send>
         <Send name="t1" type="topic" isHaveParameters="true">this is another test data for topic t1</Send><!--成功输出{0};//{1} send message sucess  失败输出 {0};//{1} send message fail [{2}]-->
         <Send name="q1" type="queue" isHaveParameters="true">this is test data for queue q1</Send> <!-- Subscribe/UnSubscribebe被视为配置不会对断言产生影响，但其订阅或解除过程中失败或产生错误同样会有错误输出及提示（成功也会有输出）-->
         <Subscribe type="topic" durable="dur" >newTopic</Subscribe>
         <UnSubscribe type="topic" >newTopic</UnSubscribe>
-        <Receive type="topic" >t1</Receive>
+        <Receive type="topic" >t1</Receive>  <!--接收数据格式{0} Receive {1}，失败格式 {0};//{1} receive fail （没有数据则为空）-->
       </Content>   
       <Expect method="contain">success</Expect>
       <Attribute>
-        <Delay>100</Delay>
+        <Delay>10000</Delay>
+        <Level>1</Level>
+      </Attribute>
+   </Case>
+   <Case id="1000050002" remark="mq test">
+      <Content protocol="activeMQ" actuator="mq">
+        <Send name="t1" type="topic" isHaveParameters="true">this is test data for topic t1</Send>
+        <Receive ></Receive>
+      </Content>   
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>1000</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000050003" remark="mq test">
+      <Content protocol="activeMQ" actuator="mq">
+        <Receive ></Receive>
+      </Content>   
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>1000</Delay>
         <Level>1</Level>
       </Attribute>
     </Case>

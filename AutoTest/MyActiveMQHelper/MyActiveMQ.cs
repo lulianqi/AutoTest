@@ -391,7 +391,7 @@ namespace MyActiveMQHelper
         /// 获取当前所有消费者订阅的消息（当IsWithEvent为false时可用）
         /// </summary>
         /// <param name="yourConsumerName">指定Consumer 的名字（完整路径名）(当该值设置为null时即表示获取所有consumer消息)</param>
-        /// <returns>获取当前所有消费者订阅的消息（当IsWithEvent为false时可用）</returns>
+        /// <returns>获取当前所有消费者订阅的消息（当IsWithEvent为false时可用）（没有消失则count为0，返回不会为null）</returns>
         public List<KeyValuePair<string, string>> ReadConsumerMessage(string yourConsumerName)
         {
             List<KeyValuePair<string, string>> outMessageList = new List<KeyValuePair<string, string>>();
@@ -401,7 +401,7 @@ namespace MyActiveMQHelper
             }
             foreach (IMessageConsumer nowConsuner in consumerList)
             {
-                if (consumerList != null)
+                if (yourConsumerName != null)
                 {
                     //if ((((Apache.NMS.ActiveMQ.MessageConsumer)(nowConsuner)).ConsumerInfo.Destination).PhysicalName != yourConsumerName)
                     if (((Apache.NMS.ActiveMQ.MessageConsumer)(nowConsuner)).ConsumerInfo.Destination.ToString() != yourConsumerName)
@@ -518,12 +518,15 @@ namespace MyActiveMQHelper
                     tempConsumer.Dispose();
                 }
                 consumerList.Clear();
-                session.Close();
-                session.Dispose();
-                session = null;
-                connection.Stop();
-                connection.Close();
-                connection.Dispose();
+                if (session != null)
+                {
+                    session.Close();
+                    session.Dispose();
+                    session = null;
+                    connection.Stop();
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
         }
 

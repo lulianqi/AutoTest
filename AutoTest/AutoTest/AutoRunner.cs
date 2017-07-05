@@ -539,7 +539,9 @@ namespace AutoTest
                                     {
                                         if (isShowCaseContent)
                                         {
-                                            tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ◎ " + tempCaseLoadInfo.content);
+                                            //tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ◎ " + tempCaseLoadInfo.content);
+                                            string loadInfoContent = tempCell.CaseRunData.testContent.MyExecutionContent == null ? string.Format("> {0}", tempCell.CaseRunData.testContent.MyExecutionTarget) : string.Format("> {0}{1}{2}", tempCell.CaseRunData.testContent.MyExecutionTarget, MyConfiguration.CaseShowTargetAndContent, tempCell.CaseRunData.testContent.MyExecutionContent);
+                                            tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ◎ " + loadInfoContent);
                                         }
                                         else
                                         {
