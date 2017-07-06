@@ -59,11 +59,21 @@ namespace DemoForMyHelper
                 }
             }));
 
+            Console.WriteLine("__________________________________________________");
+            Console.WriteLine("__________________________________________________");
+            Console.WriteLine("__________________________________________________");
+            mySql.CreateNewMonitorTask("m1","select* from h_sso_log order by id desc limit 20 ",1,2,4000,new MySqlDrive.delegateGetMonitorTaskDataTableInfoEventHandler((sender,str)=>{
+                Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
+                Console.WriteLine(str);
+            }));
+
+
             
             //mySql.DelAliveTask("TestIn");
             //GC.Collect();
             //return;
             mySql.StartAliveTask("TestIn");
+            mySql.StartMonitorTask("m1");
 
         }
 

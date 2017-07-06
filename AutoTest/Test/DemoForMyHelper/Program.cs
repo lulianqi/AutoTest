@@ -11,9 +11,9 @@ namespace DemoForMyHelper
         {
             //new DemoForMySvn().Run();
             //new DemoForMySsh().RunShellTest();
-            //new DemoForMySql().RunTest();
+            new DemoForMySql().RunTest();
             //new DemoForMyVoice().Run();
-            DemoForActionMQ.RunTest();
+            //DemoForActionMQ.RunTest();
             Console.WriteLine("end of demo");
             Console.ReadKey();
 

@@ -610,7 +610,7 @@ namespace MySqlHelper
         {
             get
             {
-                if (aliveTaskList.Count == 0) // aliveTaskList will never null
+                if (aliveTaskList.Count > 0) // aliveTaskList will never null
                 {
                     return (aliveTaskList.Keys).ToArray<string>();
                 }
@@ -704,6 +704,134 @@ namespace MySqlHelper
         }
         #endregion
 
+        #region MonitorTask
+        /// <summary>
+        /// Create New MonitorTask [it will not start ]
+        /// </summary>
+        /// <param name="yourTaskName">Task Name</param>
+        /// <param name="sqlcmd"></param>
+        /// <param name="intervalTime">ms</param>
+        /// <param name="yourAction"></param>
+        /// <returns></returns>
+        public bool CreateNewMonitorTask(string yourTaskName, String sqlcmd, int monitorRowIndex, int monitorColumnIndex, int intervalTime, delegateGetMonitorTaskDataTableInfoEventHandler yourAction)
+        {
+            SqlMonitor tempTaskInfo = new SqlMonitor(yourTaskName, sqlcmd,monitorRowIndex,monitorColumnIndex, intervalTime, this);
+            tempTaskInfo.OnGetMonitorTaskDataTableInfo += yourAction;
+            if (AddAliveMonitorInfo(yourTaskName, tempTaskInfo))
+            {
+                tempTaskInfo.CreateAliveTaskThread();
+                return true;
+            }
+            else
+            {
+                tempTaskInfo.Dispose();
+                tempTaskInfo = null;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// get Monitor TaskList
+        /// </summary>
+        public string[] MonitorTaskList
+        {
+            get
+            {
+                if (aliveMonitorList.Count > 0) // aliveTaskList will never null
+                {
+                    return (aliveMonitorList.Keys).ToArray<string>();
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// you can update the sql cmd by Task name
+        /// </summary>
+        /// <param name="yourName">Task name</param>
+        /// <param name="sqlcmd">sqlcmd</param>
+        /// <returns>is succse</returns>
+        public bool UpdateMonitorTaskSqlCmd(string yourName, String sqlcmd, int monitorRowIndex, int monitorColumnIndex)
+        {
+            if (aliveMonitorList.ContainsKey(yourName))
+            {
+                aliveMonitorList[yourName].TaskSqlcmd = sqlcmd;
+                aliveMonitorList[yourName].MonitorRowIndex = monitorRowIndex;
+                aliveMonitorList[yourName].MonitorRowIndex = monitorRowIndex;
+                return true;
+            }
+            else
+            {
+                SetErrorMes("not find this task name : " + yourName);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Start Monitor（这里的Start/Stop实际上是指恢复暂停任务线程的意思）
+        /// </summary>
+        /// <param name="yourName">Task name</param>
+        /// <returns>is succse</returns>
+        public bool StartMonitorTask(string yourName)
+        {
+            if (aliveMonitorList.ContainsKey(yourName))
+            {
+                aliveMonitorList[yourName].ResumeAliveTask();
+                return true;
+            }
+            else
+            {
+                SetErrorMes("not find this task name : " + yourName);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Stop Monitor （这里的Start/Stop实际上是指恢复暂停任务线程的意思）
+        /// </summary>
+        /// <param name="yourName">task name</param>
+        /// <returns>is sucess</returns>
+        public bool StopMonitorTask(string yourName)
+        {
+            if (aliveMonitorList.ContainsKey(yourName))
+            {
+                aliveMonitorList[yourName].PauseAliveTask();
+                return true;
+            }
+            else
+            {
+                SetErrorMes("not find this task name : " + yourName);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// remove a MonitorTask by his name ( it will remove the list immediately and the Thread will over but not immediately)
+        /// </summary>
+        /// <param name="yourName">task name</param>
+        /// <returns>is succes</returns>
+        public bool DelMonitorTask(string yourName)
+        {
+            if (aliveMonitorList.ContainsKey(yourName))
+            {
+                //GC.SuppressFinalize(aliveTaskList[yourName]); //only for GC test
+                aliveMonitorList[yourName].StopAliveTask();
+                aliveMonitorList[yourName].Dispose();
+                aliveMonitorList[yourName] = null;
+                aliveMonitorList.Remove(yourName);
+                return true;
+            }
+            else
+            {
+                SetErrorMes("not find this task name");
+                return false;
+            }
+        }
+        #endregion
 
         /// <summary>
         /// execute a query command with sql 
