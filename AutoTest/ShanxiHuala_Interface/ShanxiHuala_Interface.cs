@@ -8,9 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 
 using MyCommonHelper.NetHelper;
+using System.Xml;
 
 namespace ShanxiHuala_Interface
 {
+   
     public partial class ShanxiHuala_Interface : Form
     {
         public ShanxiHuala_Interface()
@@ -30,10 +32,16 @@ namespace ShanxiHuala_Interface
 
         private String bearer = "";
 
+
+        public static XmlDocument myTip = new XmlDocument();
+
         private void ShanxiHuala_Interface_Load(object sender, EventArgs e)
         {
             tb_host.Text = host;
             cb_httpMethod.SelectedIndex = 1;
+            LoadApiList();
+            
+
         }
 
         private void bt_oauth_Click(object sender, EventArgs e)
@@ -68,7 +76,51 @@ namespace ShanxiHuala_Interface
             rtb_response.Text = response;
         }
 
+        private void tb_url_TextChanged(object sender, EventArgs e)
+        {
+            //XmlNodeList tempTipNodes = myTip.ChildNodes[1].SelectNodes(string.Format(".{0}", tb_url.Text));
+            XmlNode tempTipNode=FindApiTipNode(tb_url.Text);
+            if(tempTipNode!=null)
+            {
+                rtb_sendBody.Text = tempTipNode.InnerText;
+            }
+        }
+
+        private void listView_InterfaceList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (listView_InterfaceList.SelectedItems.Count != 0)
+            {
+                if (tb_url.Text != listView_InterfaceList.SelectedItems[0].Text)
+                {
+                    tb_url.Text = listView_InterfaceList.SelectedItems[0].Text;
+                }
+            }
+        }
+
+
         #region function
+        private void LoadApiList()
+        {
+            myTip.Load(System.Environment.CurrentDirectory + "\\interfaceData.xml");
+            foreach(XmlNode tempNode in myTip.ChildNodes[1])
+            {
+                ListViewItem tempItem = new ListViewItem(tempNode.Attributes["name"].Value);
+                listView_InterfaceList.Items.Add(tempItem);
+            }
+        }
+
+        private XmlNode FindApiTipNode(string apiName)
+        {
+            foreach (XmlNode tempTipNode in myTip.ChildNodes[1])
+            {
+                if (tempTipNode.Attributes["name"].Value == apiName)
+                {
+                    return tempTipNode;
+                }
+            }
+            return null;
+        }
+
         private string GetAccess_token(string souceData)
         {
             string outStr = null;
@@ -84,6 +136,10 @@ namespace ShanxiHuala_Interface
             return outStr;
         }
         #endregion
+
+
+
+        
 
        
     }

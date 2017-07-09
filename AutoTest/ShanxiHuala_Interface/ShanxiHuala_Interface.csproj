@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestApiDataAnalysis.cs" />
     <EmbeddedResource Include="ShanxiHuala_Interface.resx">
       <DependentUpon>ShanxiHuala_Interface.cs</DependentUpon>
     </EmbeddedResource>

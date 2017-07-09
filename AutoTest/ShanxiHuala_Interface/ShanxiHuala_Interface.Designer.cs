@@ -37,6 +37,7 @@
             this.rtb_response = new System.Windows.Forms.RichTextBox();
             this.tb_host = new System.Windows.Forms.TextBox();
             this.cb_httpMethod = new System.Windows.Forms.ComboBox();
+            this.listView_InterfaceList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // bt_oauth
@@ -53,12 +54,12 @@
             // 
             this.tb_access_token.Location = new System.Drawing.Point(104, 12);
             this.tb_access_token.Name = "tb_access_token";
-            this.tb_access_token.Size = new System.Drawing.Size(464, 21);
+            this.tb_access_token.Size = new System.Drawing.Size(643, 21);
             this.tb_access_token.TabIndex = 1;
             // 
             // tb_sendTime
             // 
-            this.tb_sendTime.Location = new System.Drawing.Point(596, 12);
+            this.tb_sendTime.Location = new System.Drawing.Point(753, 12);
             this.tb_sendTime.Name = "tb_sendTime";
             this.tb_sendTime.Size = new System.Drawing.Size(132, 21);
             this.tb_sendTime.TabIndex = 2;
@@ -86,12 +87,13 @@
             this.tb_url.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tb_url.Location = new System.Drawing.Point(202, 46);
             this.tb_url.Name = "tb_url";
-            this.tb_url.Size = new System.Drawing.Size(438, 21);
+            this.tb_url.Size = new System.Drawing.Size(604, 21);
             this.tb_url.TabIndex = 3;
+            this.tb_url.TextChanged += new System.EventHandler(this.tb_url_TextChanged);
             // 
             // bt_send
             // 
-            this.bt_send.Location = new System.Drawing.Point(12, 290);
+            this.bt_send.Location = new System.Drawing.Point(236, 347);
             this.bt_send.Name = "bt_send";
             this.bt_send.Size = new System.Drawing.Size(79, 23);
             this.bt_send.TabIndex = 4;
@@ -101,17 +103,17 @@
             // 
             // rtb_sendBody
             // 
-            this.rtb_sendBody.Location = new System.Drawing.Point(12, 78);
+            this.rtb_sendBody.Location = new System.Drawing.Point(236, 73);
             this.rtb_sendBody.Name = "rtb_sendBody";
-            this.rtb_sendBody.Size = new System.Drawing.Size(716, 206);
+            this.rtb_sendBody.Size = new System.Drawing.Size(649, 268);
             this.rtb_sendBody.TabIndex = 5;
             this.rtb_sendBody.Text = "";
             // 
             // rtb_response
             // 
-            this.rtb_response.Location = new System.Drawing.Point(8, 319);
+            this.rtb_response.Location = new System.Drawing.Point(236, 375);
             this.rtb_response.Name = "rtb_response";
-            this.rtb_response.Size = new System.Drawing.Size(720, 227);
+            this.rtb_response.Size = new System.Drawing.Size(649, 190);
             this.rtb_response.TabIndex = 6;
             this.rtb_response.Text = "";
             // 
@@ -129,16 +131,28 @@
             this.cb_httpMethod.Items.AddRange(new object[] {
             "GET",
             "POST"});
-            this.cb_httpMethod.Location = new System.Drawing.Point(655, 46);
+            this.cb_httpMethod.Location = new System.Drawing.Point(812, 46);
             this.cb_httpMethod.Name = "cb_httpMethod";
             this.cb_httpMethod.Size = new System.Drawing.Size(73, 20);
             this.cb_httpMethod.TabIndex = 8;
+            // 
+            // listView_InterfaceList
+            // 
+            this.listView_InterfaceList.HideSelection = false;
+            this.listView_InterfaceList.Location = new System.Drawing.Point(12, 73);
+            this.listView_InterfaceList.Name = "listView_InterfaceList";
+            this.listView_InterfaceList.Size = new System.Drawing.Size(218, 492);
+            this.listView_InterfaceList.TabIndex = 9;
+            this.listView_InterfaceList.UseCompatibleStateImageBehavior = false;
+            this.listView_InterfaceList.View = System.Windows.Forms.View.List;
+            this.listView_InterfaceList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_InterfaceList_ItemSelectionChanged);
             // 
             // ShanxiHuala_Interface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 558);
+            this.ClientSize = new System.Drawing.Size(895, 573);
+            this.Controls.Add(this.listView_InterfaceList);
             this.Controls.Add(this.cb_httpMethod);
             this.Controls.Add(this.tb_host);
             this.Controls.Add(this.rtb_response);
@@ -167,6 +181,7 @@
         private System.Windows.Forms.RichTextBox rtb_response;
         private System.Windows.Forms.TextBox tb_host;
         private System.Windows.Forms.ComboBox cb_httpMethod;
+        private System.Windows.Forms.ListView listView_InterfaceList;
     }
 }
 

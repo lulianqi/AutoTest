@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ShanxiHuala_V1>
+  <Api name="/oauth/api/shop/info">
+    {
+        "shopUUID":"",
+        "login":"",
+        "password":"",
+        "shopName":"",
+        "person":"",
+        "socialId":"",
+        "telephone":"",
+        "mobile":"",
+        "QQ":"",
+        "email":"",
+        "province":"",
+        "city":"",
+        "county":"",
+        "postCode":"",
+        "address":"",
+        "lat":"",
+        "lng":"",
+        "status":0,
+        "createTime":"",
+        "updateTime":"",
+        "licenseCode":"",
+        "busiplacesCode":"",
+        "businessLicense":"",
+        "image":"",
+        "areaId":"",
+        "unionCustomerNo":"",
+        "baseType":"",
+        "openTime":"",
+        "endTime":"",
+        "startCost":0,
+        "distributeCost":0,
+        "avoidCost":0,
+        "distributeScope":""
+    }
+  </Api>
+  <Api name="/oauth/api/category/publicCategory">
+    {
+        "categoryUUID":"",
+        "categoryName":"",
+        "status":0,
+        "parent":"",
+        "icon":"",
+        "sort":0,
+        "code":""
+    }
+  </Api>
+  <Api name="/oauth/api/category/shopCategory">
+    {
+        "shopUUID":"",
+        "publicCategoryUUID":"",
+        "categoryUUID":"",
+        "categoryName":"",
+        "status":0,
+        "parent":"",
+        "icon":"",
+        "sort":0,
+        "code":""
+    }
+  </Api>
+  <Api name="/oauth/api/goods/public">
+    {
+        "goodsUUID":"",
+        "goodsCode":"",
+        "name":"",
+        "categoryUUID":"",
+        "brandName":"",
+        "status":0,
+        "type":"",
+        "description":"",
+        "comment":"",
+        "manufacturer":"",
+        "productionPlace":"",
+        "creater":"",
+        "createTime":"",
+        "icon":"",
+        "barCode":""
+    }
+  </Api>
+  <Api name="/oauth/api/goods/shop">
+    {
+        "goodsUUID":"",
+        "shopUUID":"",
+        "publicGoodsUUID":"",
+        "categoryUUID":"",
+        "barCode":"",
+        "name":"",
+        "initStock":"",
+        "lowerLimit":"",
+        "brandName":"",
+        "status":0,
+        "type":"",
+        "icon":"",
+        "comment":"",
+        "manufacturer":"",
+        "productionPlace":"",
+        "spec":""
+    }
+  </Api>
+  <Api name="/oauth/api/order/onlineOrder"></Api>
+  <Api name="/oauth/api/order/terminalOrder"></Api>
+  <Api name="/oauth/api/shop/statusControl">
+    {
+        "shopUUID":"",
+        "status":0
+    }
+  </Api>
+  <Api name="/oauth/api/order/onlineCurrentData"></Api>
+  <Api name="/oauth/api/order/statistics"></Api>
+  <Api name="/oauth/api/order/weekData"></Api>
+  <Api name="/oauth/api/shop/drawBalance"></Api>
+  <Api name="/oauth/api/goods/edit">
+    {
+        "shopUUID":"",
+        "Array":[
+            {
+                "goodsUUID":"",
+                "onlinePrice":"",
+                "status":0
+            }
+        ]
+    }
+  </Api>
+  <Api name="/oauth/api/shop/drawMoney">
+    {
+        "shopUUID":"",
+        "amount":0
+    }
+  </Api>
+  <Api name="/oauth/ap/shop/incomeStatistics">
+    {
+        "shopUUID":"",
+        "beginTime":"",
+        "endTime":""
+    }
+  </Api>
+  <Api name="/oauth/ap/shop/accountStatement">
+    {
+        "shopUUID":"",
+        "startTime":"",
+        "endTime":"",
+        "size":0,
+        "page":0
+    }
+  </Api>
+  <Api name="api"></Api>
+</ShanxiHuala_V1>
