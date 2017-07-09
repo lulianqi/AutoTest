@@ -54,11 +54,12 @@ namespace ShanxiHuala_Interface
 
         private void bt_send_Click(object sender, EventArgs e)
         {
-            tb_sendTime.Text = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000).ToString();
+            tb_sendTime.Text = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
             string sginOrginStr = string.Format("appSecret={0}&sendTime={1}", app_secret, tb_sendTime.Text);
             List<KeyValuePair<string, string>> myHeads = new List<KeyValuePair<string, string>>();
-            myHeads.Add(new KeyValuePair<string, string>("Authorization", tb_access_token.Text));
-            myHeads.Add(new KeyValuePair<string, string>("sign", MyCommonHelper.MyEncryption.CreateMD5Key(sginOrginStr)));
+            myHeads.Add(new KeyValuePair<string, string>("Content-type", "application/json;charset=UTF-8"));
+            myHeads.Add(new KeyValuePair<string, string>("Authorization", "bearer "+tb_access_token.Text));
+            myHeads.Add(new KeyValuePair<string, string>("sign", MyCommonHelper.MyEncryption.CreateMD5Key(sginOrginStr).ToLower()));
             myHeads.Add(new KeyValuePair<string, string>("sendTime",tb_sendTime.Text));
             myHeads.Add(new KeyValuePair<string, string>("User-Agent", "Tester"));
 
