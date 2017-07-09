@@ -36,6 +36,7 @@
             this.rtb_sendBody = new System.Windows.Forms.RichTextBox();
             this.rtb_response = new System.Windows.Forms.RichTextBox();
             this.tb_host = new System.Windows.Forms.TextBox();
+            this.cb_httpMethod = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // bt_oauth
@@ -85,12 +86,12 @@
             this.tb_url.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tb_url.Location = new System.Drawing.Point(202, 46);
             this.tb_url.Name = "tb_url";
-            this.tb_url.Size = new System.Drawing.Size(526, 21);
+            this.tb_url.Size = new System.Drawing.Size(438, 21);
             this.tb_url.TabIndex = 3;
             // 
             // bt_send
             // 
-            this.bt_send.Location = new System.Drawing.Point(8, 290);
+            this.bt_send.Location = new System.Drawing.Point(12, 290);
             this.bt_send.Name = "bt_send";
             this.bt_send.Size = new System.Drawing.Size(79, 23);
             this.bt_send.TabIndex = 4;
@@ -121,11 +122,24 @@
             this.tb_host.Size = new System.Drawing.Size(184, 21);
             this.tb_host.TabIndex = 7;
             // 
+            // cb_httpMethod
+            // 
+            this.cb_httpMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_httpMethod.FormattingEnabled = true;
+            this.cb_httpMethod.Items.AddRange(new object[] {
+            "GET",
+            "POST"});
+            this.cb_httpMethod.Location = new System.Drawing.Point(655, 46);
+            this.cb_httpMethod.Name = "cb_httpMethod";
+            this.cb_httpMethod.Size = new System.Drawing.Size(73, 20);
+            this.cb_httpMethod.TabIndex = 8;
+            // 
             // ShanxiHuala_Interface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 558);
+            this.Controls.Add(this.cb_httpMethod);
             this.Controls.Add(this.tb_host);
             this.Controls.Add(this.rtb_response);
             this.Controls.Add(this.rtb_sendBody);
@@ -152,6 +166,7 @@
         private System.Windows.Forms.RichTextBox rtb_sendBody;
         private System.Windows.Forms.RichTextBox rtb_response;
         private System.Windows.Forms.TextBox tb_host;
+        private System.Windows.Forms.ComboBox cb_httpMethod;
     }
 }
 

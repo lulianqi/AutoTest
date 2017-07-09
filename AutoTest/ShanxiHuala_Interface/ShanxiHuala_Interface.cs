@@ -33,20 +33,38 @@ namespace ShanxiHuala_Interface
         private void ShanxiHuala_Interface_Load(object sender, EventArgs e)
         {
             tb_host.Text = host;
+            cb_httpMethod.SelectedIndex = 1;
         }
 
         private void bt_oauth_Click(object sender, EventArgs e)
         {
             string response = MyWebTool.MyHttp.SendData(string.Format("{0}/oauth/token", host), "grant_type=client_credentials&scope=trust+read+write", "POST",
                 new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("Authorization", string.Format(" Basic {0}", Convert.ToBase64String(Encoding.UTF8.GetBytes(client_id + ":" + client_secret)))) });
-            tb_access_token.Text=(GetAccess_token(response));
+            string nowToken= GetAccess_token(response);
+            if(nowToken==null)
+            {
+                tb_access_token.Text = "";
+                MessageBox.Show(response);
+            }
+            else
+            {
+                tb_access_token.Text = (nowToken);
+            }
         }
 
         private void bt_send_Click(object sender, EventArgs e)
         {
-            tb_sendTime.Text = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
+            tb_sendTime.Text = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000).ToString();
             string sginOrginStr = string.Format("appSecret={0}&sendTime={1}", app_secret, tb_sendTime.Text);
-            List<KeyValuePair<string, string>> myHeads=new 
+            List<KeyValuePair<string, string>> myHeads = new List<KeyValuePair<string, string>>();
+            myHeads.Add(new KeyValuePair<string, string>("Authorization", tb_access_token.Text));
+            myHeads.Add(new KeyValuePair<string, string>("sign", MyCommonHelper.MyEncryption.CreateMD5Key(sginOrginStr)));
+            myHeads.Add(new KeyValuePair<string, string>("sendTime",tb_sendTime.Text));
+            myHeads.Add(new KeyValuePair<string, string>("User-Agent", "Tester"));
+
+            string response = MyWebTool.MyHttp.SendData(string.Format("{0}{1}", tb_host.Text, tb_url.Text), rtb_sendBody.Text, cb_httpMethod.Text, myHeads);
+
+            rtb_response.Text = response;
         }
 
         #region function
