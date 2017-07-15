@@ -466,7 +466,7 @@ namespace AutoTest
                     tvw_Case.Enabled = true;
                     nowCaseActionActuator.SetCaseRunTime(myProjectCaseDictionary, myProjctCollection);
                     //启动数据呈现
-                    lb_msg1.Text = "case load sucess";
+                    lb_msg1.Text = "case load success";
                 }
             }
             //严重错误

@@ -38,6 +38,19 @@ namespace MyCommonControl
             }
         }
 
+        /// <summary>
+        /// 当前状态是否进入新窗口显示
+        /// </summary>
+        public class ShowInNewWindowEventArgs : EventArgs
+        {
+            public ShowInNewWindowEventArgs(bool isYourShow)
+            {
+                this.isShow = isYourShow;
+            }
+
+            public bool isShow;
+        }
+
         public DataRecordBox()
         {
             InitializeComponent();
@@ -58,13 +71,19 @@ namespace MyCommonControl
             FileService.CreateDirectory(defaultDirectory);
         }
 
-        public event Action<object, string> OnSaveDataHendle;
+        
 
         private int maxLine = 5000;
 
         private Form showForm;
         private Form formatForm;
         private RichTextBox rtb_formatData = new RichTextBox();
+
+        [DescriptionAttribute("如果需要重写保存功能，可以订阅该事件，不订阅该事件会使用默认保存方法，将内容保存在默认路径")]
+        public event Action<object, string> OnSaveDataHendle;
+ 
+        [DescriptionAttribute("新窗口显示或恢复，便于调整父容器主页面布局")]
+        public event EventHandler<ShowInNewWindowEventArgs> OnShowInNewWindowChange;
 
         /// <summary>
         /// 可用于显示的最大缓存行
@@ -259,7 +278,12 @@ namespace MyCommonControl
                 }
             }
             InitializeShowForm();
-            PutOutShowForm(); 
+            PutOutShowForm();
+            if (OnShowInNewWindowChange != null)
+            {
+                this.Visible = false;
+                this.OnShowInNewWindowChange(this, new ShowInNewWindowEventArgs(true));
+            }
         }
 
         private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
@@ -287,7 +311,7 @@ namespace MyCommonControl
             string myJsonStr = null;
             if (!MyCommonTool.FormatJsonString(richTextBox_dataContainer.SelectedText, out myJsonStr))
             {
-                MessageBox.Show("选中数据不是正确的XML数据", "STOP", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("选中数据不是正确的JSON数据", "STOP", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             if (formatForm != null)
@@ -317,6 +341,11 @@ namespace MyCommonControl
             showForm.Controls.Remove(richTextBox_dataContainer);
             this.Controls.Add(richTextBox_dataContainer);
             richTextBox_dataContainer.Dock = DockStyle.Fill;
+            if (OnShowInNewWindowChange != null)
+            {
+                this.Visible = true;
+                this.OnShowInNewWindowChange(this, new ShowInNewWindowEventArgs(false));
+            }
         }
 
         private void PutOutShowForm()

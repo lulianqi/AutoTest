@@ -80,6 +80,10 @@
       <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
       <Name>MyCommonHelper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyControl\MyCommonControl.csproj">
+      <Project>{aaa8bdb9-2468-4338-a8e8-bc2ce2752051}</Project>
+      <Name>MyCommonControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -39,7 +39,7 @@ namespace MySshHelper
         /// </summary>
         /// <param name="sshCp">ssh</param>
         /// <param name="FilePath">File Path</param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         public static bool SshFileMkFullDir(SshTransferProtocolBase sshCp, string FilePath)
         {
             string[] files = FilePath.Split('/');
@@ -80,7 +80,7 @@ namespace MySshHelper
         /// <param name="sshCp">ssh</param>
         /// <param name="FilePath">File Path</param>
         /// <param name="errMes"></param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         public static bool SshFileMkDir(SshTransferProtocolBase sshCp, string FilePath, out string errMes)
         {
             errMes = null;
@@ -104,7 +104,7 @@ namespace MySshHelper
         /// <param name="remoteFilePath">remote File Path</param>
         /// <param name="reportProcess">report Process </param>
         /// <param name="reportError">report Error</param>
-        /// <returns>is creat task sucess</returns>
+        /// <returns>is creat task success</returns>
         public static bool SshMvAllFileAsyn(SshTransferProtocolBase sshCp, string LocalFilePath, string remoteFilePath, Action<string> reportProcess, Action<string> reportError)
         {
             string outError = null;

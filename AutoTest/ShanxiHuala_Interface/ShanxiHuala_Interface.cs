@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 using MyCommonHelper.NetHelper;
 using System.Xml;
+using System.Diagnostics;
 
 namespace ShanxiHuala_Interface
 {
@@ -19,6 +20,8 @@ namespace ShanxiHuala_Interface
         {
             InitializeComponent();
         }
+
+        private string tipInfoPath = System.Environment.CurrentDirectory + "\\interfaceData.xml";
 
         private String host = "http://192.168.200.142:8091";
 
@@ -33,12 +36,18 @@ namespace ShanxiHuala_Interface
         private String bearer = "";
 
 
-        public static XmlDocument myTip = new XmlDocument();
+        private XmlDocument myTip = new XmlDocument();
+
+        private XmlNode nowNode;
+
+        private Point initialSendLocation;
 
         private void ShanxiHuala_Interface_Load(object sender, EventArgs e)
         {
             tb_host.Text = host;
             cb_httpMethod.SelectedIndex = 1;
+            ck_isSgin.Checked = true;
+            initialSendLocation = bt_send.Location;
             LoadApiList();
             
 
@@ -62,18 +71,31 @@ namespace ShanxiHuala_Interface
 
         private void bt_send_Click(object sender, EventArgs e)
         {
-            tb_sendTime.Text = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
-            string sginOrginStr = string.Format("appSecret={0}&sendTime={1}", app_secret, tb_sendTime.Text);
             List<KeyValuePair<string, string>> myHeads = new List<KeyValuePair<string, string>>();
-            myHeads.Add(new KeyValuePair<string, string>("Content-type", "application/json;charset=UTF-8"));
-            myHeads.Add(new KeyValuePair<string, string>("Authorization", "bearer "+tb_access_token.Text));
-            myHeads.Add(new KeyValuePair<string, string>("sign", MyCommonHelper.MyEncryption.CreateMD5Key(sginOrginStr).ToLower()));
-            myHeads.Add(new KeyValuePair<string, string>("sendTime",tb_sendTime.Text));
-            myHeads.Add(new KeyValuePair<string, string>("User-Agent", "Tester"));
+            if(ck_isSgin.Checked)
+            {
+                tb_sendTime.Text = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000).ToString();
+                string sginOrginStr = string.Format("appSecret={0}&sendTime={1}", app_secret, tb_sendTime.Text);
+                tb_sign.Text = MyCommonHelper.MyEncryption.CreateMD5Key(sginOrginStr).ToLower();
 
+                myHeads.Add(new KeyValuePair<string, string>("Content-type", "application/json;charset=UTF-8"));
+                myHeads.Add(new KeyValuePair<string, string>("Authorization", "bearer " + tb_access_token.Text));
+                myHeads.Add(new KeyValuePair<string, string>("sign", tb_sign.Text));
+                myHeads.Add(new KeyValuePair<string, string>("sendTime", tb_sendTime.Text));
+                myHeads.Add(new KeyValuePair<string, string>("User-Agent", "Tester"));
+            }
+            
+            //<Api name="api">rtb_sendBody.Text.Replace("    "," ")</Api>
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             string response = MyWebTool.MyHttp.SendData(string.Format("{0}{1}", tb_host.Text, tb_url.Text), rtb_sendBody.Text, cb_httpMethod.Text, myHeads);
-
-            rtb_response.Text = response;
+            if (nowNode!=null)
+            {
+                nowNode.InnerText = rtb_sendBody.Text;
+            }
+            sw.Stop();
+            rtb_response.AddDate(string.Format("耗时：{0} ms", sw.ElapsedMilliseconds), Color.BlueViolet, true);
+            rtb_response.AddDate(response, (response.StartsWith("Error:")) ? Color.Red : Color.Black, true);
         }
 
         private void tb_url_TextChanged(object sender, EventArgs e)
@@ -83,6 +105,15 @@ namespace ShanxiHuala_Interface
             if(tempTipNode!=null)
             {
                 rtb_sendBody.Text = tempTipNode.InnerText;
+                if (tempTipNode.Attributes["method"] != null)
+                {
+                    cb_httpMethod.SelectedIndex = (tempTipNode.Attributes["method"].Value == "GET" ? 0 : 1);
+                }
+                nowNode = tempTipNode;
+            }
+            else
+            {
+                nowNode = null;
             }
         }
 
@@ -98,10 +129,31 @@ namespace ShanxiHuala_Interface
         }
 
 
+        private void rtb_response_OnShowInNewWindowChange(object sender, MyCommonControl.DataRecordBox.ShowInNewWindowEventArgs e)
+        {
+            if(e.isShow)
+            {
+                bt_send.Location = new Point(bt_send.Location.X, this.Height - 70);
+                rtb_sendBody.Height = this.Height - 143;
+            }
+            else
+            {
+                bt_send.Location = initialSendLocation;
+                rtb_sendBody.Height = this.Height - 343;
+            }
+        }
+
+        private void ShanxiHuala_Interface_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myTip.Save(tipInfoPath);
+        }
+
+
+
         #region function
         private void LoadApiList()
         {
-            myTip.Load(System.Environment.CurrentDirectory + "\\interfaceData.xml");
+            myTip.Load(tipInfoPath);
             foreach(XmlNode tempNode in myTip.ChildNodes[1])
             {
                 ListViewItem tempItem = new ListViewItem(tempNode.Attributes["name"].Value);
@@ -136,6 +188,8 @@ namespace ShanxiHuala_Interface
             return outStr;
         }
         #endregion
+
+
 
 
 

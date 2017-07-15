@@ -18,3 +18,5 @@ D:\my\GitHub\AutoTest\AutoTest\ShanxiHuala_Interface\bin\Debug\ShanxiHuala_Inter
 D:\my\GitHub\AutoTest\AutoTest\ShanxiHuala_Interface\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\ShanxiHuala_Interface\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.pdb
+F:\file\Code\AutoTest\AutoTest\ShanxiHuala_Interface\bin\Debug\MyControl.dll
+F:\file\Code\AutoTest\AutoTest\ShanxiHuala_Interface\bin\Debug\MyControl.pdb

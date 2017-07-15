@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShanxiHuala_Interface));
             this.bt_oauth = new System.Windows.Forms.Button();
             this.tb_access_token = new System.Windows.Forms.TextBox();
             this.tb_sendTime = new System.Windows.Forms.TextBox();
             this.tb_url = new System.Windows.Forms.TextBox();
             this.bt_send = new System.Windows.Forms.Button();
             this.rtb_sendBody = new System.Windows.Forms.RichTextBox();
-            this.rtb_response = new System.Windows.Forms.RichTextBox();
             this.tb_host = new System.Windows.Forms.TextBox();
             this.cb_httpMethod = new System.Windows.Forms.ComboBox();
             this.listView_InterfaceList = new System.Windows.Forms.ListView();
+            this.tb_sign = new System.Windows.Forms.TextBox();
+            this.rtb_response = new MyCommonControl.DataRecordBox();
+            this.ck_isSgin = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // bt_oauth
@@ -54,14 +57,14 @@
             // 
             this.tb_access_token.Location = new System.Drawing.Point(104, 12);
             this.tb_access_token.Name = "tb_access_token";
-            this.tb_access_token.Size = new System.Drawing.Size(643, 21);
+            this.tb_access_token.Size = new System.Drawing.Size(407, 21);
             this.tb_access_token.TabIndex = 1;
             // 
             // tb_sendTime
             // 
-            this.tb_sendTime.Location = new System.Drawing.Point(753, 12);
+            this.tb_sendTime.Location = new System.Drawing.Point(521, 12);
             this.tb_sendTime.Name = "tb_sendTime";
-            this.tb_sendTime.Size = new System.Drawing.Size(132, 21);
+            this.tb_sendTime.Size = new System.Drawing.Size(111, 21);
             this.tb_sendTime.TabIndex = 2;
             // 
             // tb_url
@@ -103,19 +106,12 @@
             // 
             // rtb_sendBody
             // 
+            this.rtb_sendBody.BackColor = System.Drawing.Color.LightCyan;
             this.rtb_sendBody.Location = new System.Drawing.Point(236, 73);
             this.rtb_sendBody.Name = "rtb_sendBody";
             this.rtb_sendBody.Size = new System.Drawing.Size(649, 268);
             this.rtb_sendBody.TabIndex = 5;
             this.rtb_sendBody.Text = "";
-            // 
-            // rtb_response
-            // 
-            this.rtb_response.Location = new System.Drawing.Point(236, 375);
-            this.rtb_response.Name = "rtb_response";
-            this.rtb_response.Size = new System.Drawing.Size(649, 190);
-            this.rtb_response.TabIndex = 6;
-            this.rtb_response.Text = "";
             // 
             // tb_host
             // 
@@ -147,23 +143,58 @@
             this.listView_InterfaceList.View = System.Windows.Forms.View.List;
             this.listView_InterfaceList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_InterfaceList_ItemSelectionChanged);
             // 
+            // tb_sign
+            // 
+            this.tb_sign.Location = new System.Drawing.Point(638, 12);
+            this.tb_sign.Name = "tb_sign";
+            this.tb_sign.Size = new System.Drawing.Size(220, 21);
+            this.tb_sign.TabIndex = 11;
+            // 
+            // rtb_response
+            // 
+            this.rtb_response.CanFill = true;
+            this.rtb_response.Location = new System.Drawing.Point(237, 377);
+            this.rtb_response.MaxLine = 5000;
+            this.rtb_response.MianDirectory = "DataRecord";
+            this.rtb_response.Name = "rtb_response";
+            this.rtb_response.Size = new System.Drawing.Size(648, 182);
+            this.rtb_response.TabIndex = 10;
+            this.rtb_response.OnShowInNewWindowChange += new System.EventHandler<MyCommonControl.DataRecordBox.ShowInNewWindowEventArgs>(this.rtb_response_OnShowInNewWindowChange);
+            // 
+            // ck_isSgin
+            // 
+            this.ck_isSgin.AutoSize = true;
+            this.ck_isSgin.Location = new System.Drawing.Point(865, 14);
+            this.ck_isSgin.Name = "ck_isSgin";
+            this.ck_isSgin.Size = new System.Drawing.Size(15, 14);
+            this.ck_isSgin.TabIndex = 12;
+            this.ck_isSgin.UseVisualStyleBackColor = true;
+            // 
             // ShanxiHuala_Interface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 573);
+            this.ClientSize = new System.Drawing.Size(892, 573);
+            this.Controls.Add(this.ck_isSgin);
+            this.Controls.Add(this.tb_sign);
+            this.Controls.Add(this.rtb_response);
             this.Controls.Add(this.listView_InterfaceList);
             this.Controls.Add(this.cb_httpMethod);
             this.Controls.Add(this.tb_host);
-            this.Controls.Add(this.rtb_response);
             this.Controls.Add(this.rtb_sendBody);
             this.Controls.Add(this.bt_send);
             this.Controls.Add(this.tb_url);
             this.Controls.Add(this.tb_sendTime);
             this.Controls.Add(this.tb_access_token);
             this.Controls.Add(this.bt_oauth);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(908, 611);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(908, 611);
             this.Name = "ShanxiHuala_Interface";
             this.Text = "ShanxiHuala_Interface";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShanxiHuala_Interface_FormClosing);
             this.Load += new System.EventHandler(this.ShanxiHuala_Interface_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -178,10 +209,12 @@
         private System.Windows.Forms.TextBox tb_url;
         private System.Windows.Forms.Button bt_send;
         private System.Windows.Forms.RichTextBox rtb_sendBody;
-        private System.Windows.Forms.RichTextBox rtb_response;
         private System.Windows.Forms.TextBox tb_host;
         private System.Windows.Forms.ComboBox cb_httpMethod;
         private System.Windows.Forms.ListView listView_InterfaceList;
+        private MyCommonControl.DataRecordBox rtb_response;
+        private System.Windows.Forms.TextBox tb_sign;
+        private System.Windows.Forms.CheckBox ck_isSgin;
     }
 }
 

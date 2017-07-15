@@ -332,7 +332,7 @@ namespace MyCommonHelper.NetHelper
                                 stream.Write(infbytes, 0, tempLen);//FileStream 内建缓冲区，不用自己构建缓存写入,FileStream的offset会自动维护，也可以使用stream.Position强制指定
                                 offset += tempLen;
                             }
-                            re = string.Format("file save sucess in [ {0} ]  with {1}byte", saveFileName, offset);
+                            re = string.Format("file save success in [ {0} ]  with {1}byte", saveFileName, offset);
                         }
                     }
                 }

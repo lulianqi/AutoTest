@@ -487,7 +487,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="vaule">vaule</param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         [MethodImplAttribute(MethodImplOptions.Synchronized)] 
         public bool AddStaticDataKey(string key, string vaule)
         {
@@ -508,7 +508,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="vaule">vaule</param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         [MethodImplAttribute(MethodImplOptions.Synchronized)] 
         public bool AddStaticDataParameter(string key, IRunTimeStaticData vaule)
         {
@@ -529,7 +529,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="vaule">vaule</param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         [MethodImplAttribute(MethodImplOptions.Synchronized)] 
         public bool AddStaticDataSouce(string key, IRunTimeDataSource vaule)
         {
@@ -550,7 +550,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="key">key or Regex</param>
         /// <param name="isRegex">is use Regex</param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         [MethodImplAttribute(MethodImplOptions.Synchronized)] 
         public bool RemoveStaticData(string key, bool isRegex)
         {
@@ -660,7 +660,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="configVaule">config Vaule</param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         [MethodImplAttribute(MethodImplOptions.Synchronized)] 
         public bool SetStaticData(string key, string configVaule)
         {

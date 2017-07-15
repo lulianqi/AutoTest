@@ -665,7 +665,7 @@ namespace MySqlHelper
         /// Stop Task （这里的Start/Stop实际上是指恢复暂停任务线程的意思）
         /// </summary>
         /// <param name="yourName">task name</param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         public bool StopAliveTask(string yourName)
         {
             if (aliveTaskList.ContainsKey(yourName))
@@ -794,7 +794,7 @@ namespace MySqlHelper
         /// Stop Monitor （这里的Start/Stop实际上是指恢复暂停任务线程的意思）
         /// </summary>
         /// <param name="yourName">task name</param>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         public bool StopMonitorTask(string yourName)
         {
             if (aliveMonitorList.ContainsKey(yourName))

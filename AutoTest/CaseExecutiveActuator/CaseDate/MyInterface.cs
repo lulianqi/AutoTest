@@ -190,7 +190,7 @@ namespace CaseExecutiveActuator
         /// <summary>
         /// 连接ExecutionDevice
         /// </summary>
-        /// <returns>is sucess</returns>
+        /// <returns>is success</returns>
         bool ExecutionDeviceConnect();
 
         /// <summary>
