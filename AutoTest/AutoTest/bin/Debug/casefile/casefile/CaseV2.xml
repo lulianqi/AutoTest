@@ -975,7 +975,7 @@
       <Content protocol="activeMQ" actuator="mq">
         <Receive ></Receive>
       </Content>   
-      <Expect method="contain">success</Expect>
+      <Expect method="is">topic://t1 Receive this is test data for topic t1</Expect>
       <Attribute>
         <Delay>1000</Delay>
         <Level>1</Level>
