@@ -1231,7 +1231,8 @@ namespace CaseExecutiveActuator
         public static Dictionary<CaseStaticDataType, CaseStaticDataClass> dictionaryStaticDataTypeClass = new Dictionary<CaseStaticDataType, CaseStaticDataClass>() { { CaseStaticDataType.caseStaticData_vaule, CaseStaticDataClass.caseStaticDataKey },
         { CaseStaticDataType.caseStaticData_index, CaseStaticDataClass.caseStaticDataParameter }, { CaseStaticDataType.caseStaticData_long, CaseStaticDataClass.caseStaticDataParameter},{ CaseStaticDataType.caseStaticData_list, CaseStaticDataClass.caseStaticDataParameter},
         { CaseStaticDataType.caseStaticData_time, CaseStaticDataClass.caseStaticDataParameter},{ CaseStaticDataType.caseStaticData_random, CaseStaticDataClass.caseStaticDataParameter},
-        { CaseStaticDataType.caseStaticData_csv, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_mysql, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_redis, CaseStaticDataClass.caseStaticDataSource}};
+        { CaseStaticDataType.caseStaticData_csv, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_mysql, CaseStaticDataClass.caseStaticDataSource},{ CaseStaticDataType.caseStaticData_redis, CaseStaticDataClass.caseStaticDataSource},
+        {CaseStaticDataType.caseStaticData_strIndex, CaseStaticDataClass.caseStaticDataParameter}};
 
         //参数化数据处理函数委托
         public delegate bool GetStaticDataAction<T>(out T yourStaticData, out string errorMes, string yourFormatData) where T : IRunTimeStaticData;
@@ -1241,6 +1242,7 @@ namespace CaseExecutiveActuator
         /// </summary>
         public static Dictionary<CaseStaticDataType, GetStaticDataAction<IRunTimeStaticData>> dictionaryStaticDataParameterAction = new Dictionary<CaseStaticDataType, GetStaticDataAction<IRunTimeStaticData>>() { 
         { CaseStaticDataType.caseStaticData_index, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetIndexStaticData) } ,
+        { CaseStaticDataType.caseStaticData_strIndex, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetStrIndexStaticData) } ,
         { CaseStaticDataType.caseStaticData_long, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetLongStaticData) } ,
         { CaseStaticDataType.caseStaticData_list, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetListStaticData) } ,
         { CaseStaticDataType.caseStaticData_time, new GetStaticDataAction<IRunTimeStaticData>(MyCaseDataTypeEngine.GetTimeStaticData) } ,
@@ -1290,6 +1292,54 @@ namespace CaseExecutiveActuator
             return false;
         }
 
+        public static bool GetStrIndexStaticData(out IRunTimeStaticData yourStaticData, out string errorMes, string yourFormatData)
+        {
+            try
+            {
+                string[] tempStartEnd;
+                tempStartEnd = yourFormatData.Split('-');
+                if (tempStartEnd.Length == 2)
+                {
+                    if (tempStartEnd[0].Length == tempStartEnd[0].Length)
+                    {
+                        yourStaticData = new MyStaticDataStrIndex(long.Parse(tempStartEnd[0]), long.Parse(tempStartEnd[1]), 1, tempStartEnd[0].Length);
+                        errorMes = null;
+                        return true;
+                    }
+                    else
+                    {
+                        yourStaticData = new MyStaticDataStrIndex(0, 9223372036854775807, 1,19);
+                        errorMes = "find error data[myStaticDataStrIndex] with error len in RunTimeStaticData - ScriptRunTime ";
+                    }
+
+                }
+                else if (tempStartEnd.Length == 3)
+                {
+                    if (tempStartEnd[0].Length == tempStartEnd[0].Length)
+                    {
+                        yourStaticData = new MyStaticDataStrIndex(long.Parse(tempStartEnd[0]), long.Parse(tempStartEnd[1]), long.Parse(tempStartEnd[2]), tempStartEnd[0].Length);
+                        errorMes = null;
+                        return true;
+                    }
+                    else
+                    {
+                        yourStaticData = new MyStaticDataStrIndex(0, 9223372036854775807, 1, 19);
+                        errorMes = "find error data[myStaticDataStrIndex] with error len in RunTimeStaticData - ScriptRunTime ";
+                    }
+                }
+                else
+                {
+                    yourStaticData = new MyStaticDataStrIndex(0, 9223372036854775807, 1,19);
+                    errorMes = "find error data[myStaticDataLong] in RunTimeStaticData - ScriptRunTime  :(find error number of parameters)";
+                }
+            }
+            catch (Exception)
+            {
+                yourStaticData = new MyStaticDataStrIndex(0, 9223372036854775807, 1,19);
+                errorMes = "find error data[myStaticDataLong] in RunTimeStaticData - ScriptRunTime ";
+            }
+            return false;
+        }
         public static bool GetLongStaticData(out IRunTimeStaticData yourStaticData, out string errorMes, string yourFormatData)
         {
             try

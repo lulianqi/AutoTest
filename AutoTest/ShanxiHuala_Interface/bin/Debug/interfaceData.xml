@@ -1,91 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ShanxiHuala_V1>
   <Api name="/oauth/api/shop/info" method="POST">{
-       "shopUUID":"shopUUID_0004",
-       "login":"shop0004",
+       "shopUUID":"ctt_shopUUID_0001",
+       "login":"ctt_shop0001",
        "password":"21218cca77804d2ba1922c33e0151105",
-       "shopName":"shop0004",
-       "person":"lijie0004",
+       "shopName":"ctt0001",
+       "person":"ctt0001",
        "socialId":"412723197909185262",
-       "telephone":"15150000003",
-       "mobile":"15150000004",
+       "telephone":"15150000001",
+       "mobile":"15140000001",
        "QQ":"15150000001",
        "email":"118662355@qq.com",
        "province":"33",
-       "city":"3301",
-       "county":"330108",
+       "city":"3302",
+       "county":"330205",
        "postCode":"430001",
-       "address":"my address for shopWyj0002",
-       "lat":"120.207184",
-       "lng":"30.212821",
+       "address":"my address for shopWyj0001",
+       "lat":"29.882888",
+       "lng":"121.56452",
        "status":1,
        "createTime":"2017-07-10 01:01:01",
        "updateTime":"2017-07-10 01:01:01",
        "licenseCode":"151581500011",
        "busiplacesCode":"open",
        "businessLicense":"1515815550001",
-       "image":"http://img4.imgtn.bdimg.com/it/u=3147164949,4198630559&amp;fm=26&amp;gp=0.jpg",
+       "image":"http://wxtest.huala.com/hlman-pic/supplierInfo/201605/1463022814140.jpg",
        "areaId":"0001",
        "unionCustomerNo":"0001",
-       "baseType":"Qss",
+       "baseType":"Y",
        "openTime":"09:55:55",
        "endTime":"17:55:55",
        "startCost":20,
-       "distributeCost":10,
+       "distributeCost":100,
        "avoidCost":1000000,
-       "distributeScope":10
+       "distributeScope":100
 }  </Api>
   <Api name="/oauth/api/category/publicCategory" method="POST">
     {
-       "categoryUUID":"categoryUUID_7",
-       "categoryName":"高达_7",
+       "categoryUUID":"categoryUUID_1_2",
+       "categoryName":"高达_1_2",
        "status":1,
-       "parent":"categoryUUID_6' or '1' = '1rr",
-       "icon":"http://img3.imgtn.bdimg.com/it/u=158918749,3472802168&amp;fm=26&amp;gp=0.jpg",
+       "parent":"categoryUUID_1",
+       "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
        "sort":1000,
        "code":"14141140001"
     }
    </Api>
   <Api name="/oauth/api/category/shopCategory" method="POST">
     {
-       "shopUUID":"lj123456",
-       "publicCategoryUUID":"categoryUUID_0003_0001",
-       "categoryUUID":"categoryUUID_lj123456_0002",
-       "categoryName":"店里的高达_2",
+       "shopUUID":"shopUUID_0001",
+       "publicCategoryUUID":"categoryUUID_1_2",
+       "categoryUUID":"categoryUUID_shopUUID_0001_2",
+       "categoryName":"店里的高达_1_2",
        "status":1,
-       "parent":"categoryUUID_lj123456_0001",
-       "icon":"http://img3.imgtn.bdimg.com/it/u=158918749,3472802168&amp;fm=26&amp;gp=0.jpg_",
+       "parent":"categoryUUID_shopUUID_0001_1",
+       "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
        "sort":1110,
-       "code":"123sss456"
+       "code":"123456"
     }
   </Api>
   <Api name="/oauth/api/goods/public" method="POST">
     {
-       "goodsUUID":"goodsUUID_0006",
+       "goodsUUID":"goodsUUID_1",
        "goodsCode":"not use",
-       "name":"拂晓_006",
-       "categoryUUID":"categoryUUID_0002",
+       "name":"拂晓_1",
+       "categoryUUID":"categoryUUID_1",
        "brandName":"万代",
        "status":0,
-       "type":"14444444444444444444444444",
+       "type":"1",
        "description":"it is a test goods description ",
        "comment":"it is a test goods comment",
        "manufacturer":"曙光社",
        "productionPlace":"made in china",
        "creater":"lijie",
        "createTime":"2017-01-01 01:01:01",
-       "icon":"http://img3.imgtn.bdimg.com/it/u=158918749,3472802168&amp;fm=26&amp;gp=0.jpg",
+       "icon":"http://i0.hdslb.com/bfs/archive/b11ab840dc816ef28077127e512cce43e0095858.jpg",
        "barCode":"123456006"
     }
   </Api>
   <Api name="/oauth/api/goods/shop" method="POST">
     {
-       "goodsUUID":"shop_goodsUUID_0003",
-       "shopUUID":"lj123456",
-       "publicGoodsUUID":"goodsUUID_0005",
-       "categoryUUID":"1234567891",
+       "goodsUUID":"shop_goodsUUID_3",
+       "shopUUID":"shopUUID_0001",
+       "publicGoodsUUID":"goodsUUID_1",
+       "categoryUUID":"categoryUUID_shopUUID_0001_1",
        "barCode":"lj123456_barCode0003",
-       "name":"救世主0003",
+       "name":"店里的救世主3",
        "initStock":"1000",
        "lowerLimit":"0",
        "brandName":"万代",
@@ -118,11 +118,11 @@
   </Api>
   <Api name="/oauth/api/goods/edit" method="POST">
     {
-       "shopUUID":"",
-       "Array":[
+       "shopUUID":"shopUUID_0001",
+       "goodsList":[
           {
-             "goodsUUID":"",
-             "onlinePrice":"",
+             "goodsUUID":"shop_goodsUUID_2",
+             "onlinePrice":"10000",
              "status":0
           }
        ]
