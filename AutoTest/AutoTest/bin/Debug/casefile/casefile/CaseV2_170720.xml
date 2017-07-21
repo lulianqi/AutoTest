@@ -76,7 +76,7 @@
       </NewActuator>
       <NewActuator name="mq" protocol="activeMQ">
         <brokerUri>tcp://192.168.200.150:61616</brokerUri> <!--必填-->
-        <clientId></clientId><!--选填(不填则不需要此节点)(下面的节点信息无特殊说明都为非必填)，如果这里使用了指定值将不能同时建立2条使用同样clientId的连接-->
+        <clientId></clientId><!--选填(不填则不需要此节点)(下面的节点信息无特殊说明都为非必填)-->
         <factoryUserName>username</factoryUserName>
         <factoryPassword>password</factoryPassword>
         <queue>q1</queue>
@@ -988,12 +988,6 @@
         <Level>1</Level>
       </Attribute>
     </Case>
-    <Case id="1000080001" remark="console">
-      <Content protocol="console" actuator="console">
-        <Show >开始新建店铺</Show>
-      </Content>
-      <Expect method="contain">店铺</Expect>
-    </Case>
    <Repeat remark="创建店铺" times="9">
       <Case id="1000070002" remark="创建店铺">
         <Content protocol="http" actuator="http">
@@ -1007,14 +1001,14 @@
           </Heads>
           <Body isHaveParameters="true" >
             {
-           "shopUUID":"ATshopUUID_000*#wyj_shopIndex(+)*#",
-           "login":"ATshop000*#wyj_shopIndex(+)*#",
+           "shopUUID":"shopUUID_000*#wyj_shopIndex(+)*#",
+           "login":"shop000*#wyj_shopIndex(+)*#",
            "password":"21218cca77804d2ba1922c33e0151105",
-           "shopName":"ATshop000*#wyj_shopIndex(+)*#",
-           "person":"ATwyj000*#wyj_shopIndex(+)*#",
+           "shopName":"shop000*#wyj_shopIndex(+)*#",
+           "person":"wyj000*#wyj_shopIndex(+)*#",
            "socialId":"412723197909185262",
-           "telephone":"1518000000*#wyj_shopIndex(+)*#",
-           "mobile":"1518000000*#wyj_shopIndex(+)*#",
+           "telephone":"1515000000*#wyj_shopIndex(+)*#",
+           "mobile":"1515000000*#wyj_shopIndex(+)*#",
            "QQ":"15150000001",
            "email":"118662355@qq.com",
            "province":"33",
@@ -1022,14 +1016,14 @@
            "county":"330205",
            "postCode":"430001",
            "address":"my address for shopWyj0001",
-           "lat":"29.875704",
-           "lng":"121.560449",
+           "lat":"29.882888",
+           "lng":"121.56452",
            "status":1,
            "createTime":"2017-07-10 01:01:01",
            "updateTime":"2017-07-10 01:01:01",
-           "licenseCode":"15188150001*#wyj_shopIndex(+)*#",
+           "licenseCode":"15158150001*#wyj_shopIndex(+)*#",
            "busiplacesCode":"open",
-           "businessLicense":"151881555000*#wyj_shopIndex(+)*#",
+           "businessLicense":"151581555000*#wyj_shopIndex(+)*#",
            "image":"http://wxtest.huala.com/hlman-pic/supplierInfo/201605/1463022814140.jpg",
            "areaId":"0001",
            "unionCustomerNo":"0001",
@@ -1050,12 +1044,6 @@
         </Attribute>
       </Case>
     </Repeat>
-     <Case id="1000080002" remark="console">
-      <Content protocol="console" actuator="console">
-        <Show >开始新建商品</Show>
-      </Content>
-      <Expect method="contain">商品</Expect>
-    </Case>
     <Repeat remark="创建SPU and SKU类目" times="9">
       <Case id="1000080001" remark="创建SPU父类目">
         <Content protocol="http" actuator="http">
@@ -1069,8 +1057,8 @@
           </Heads>
           <Body isHaveParameters="true" >
             {
-           "categoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(+)*#",
-           "categoryName":"AT高达_*#wyj_categoryUUID(+)*#",
+           "categoryUUID":"categoryUUID_00*#wyj_categoryUUID(+)*#",
+           "categoryName":"高达_*#wyj_categoryUUID(+)*#",
            "status":1,
            "parent":"",
            "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
@@ -1097,10 +1085,10 @@
           </Heads>
           <Body isHaveParameters="true" >
            {
-           "shopUUID":"ATshopUUID_0001",
-           "publicCategoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#",
-           "categoryUUID":"ATshopCategoryUUID_00*#wyj_categoryUUID(=)*#",
-           "categoryName":"AT店里的高达*#wyj_categoryUUID(=)*#",
+           "shopUUID":"shopUUID_0001",
+           "publicCategoryUUID":"categoryUUID_00*#wyj_categoryUUID(=)*#",
+           "categoryUUID":"shopCategoryUUID_00*#wyj_categoryUUID(=)*#",
+           "categoryName":"店里的高达*#wyj_categoryUUID(=)*#",
            "status":1,
            "parent":"",
            "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
@@ -1128,10 +1116,10 @@
             </Heads>
             <Body isHaveParameters="true" >
               {
-             "categoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(+)*#",
-             "categoryName":"AT高达_*#wyj_categoryUUID(=)*#_高达_*#wyj_categoryChildUUID(+)*#",
+             "categoryUUID":"categoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(+)*#",
+             "categoryName":"高达_*#wyj_categoryUUID(=)*#_高达_*#wyj_categoryChildUUID(+)*#",
              "status":1,
-             "parent":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#",
+             "parent":"categoryUUID_00*#wyj_categoryUUID(=)*#",
              "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
              "sort":1000,
              "code":"14141140001"
@@ -1156,10 +1144,10 @@
             </Heads>
             <Body isHaveParameters="true" >
               {
-               "goodsUUID":"ATgoodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+               "goodsUUID":"goodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
                "goodsCode":"not use",
-               "name":"AT拂晓_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
-               "categoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+               "name":"拂晓_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+               "categoryUUID":"categoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
                "brandName":"万代",
                "status":0,
                "type":"1",
@@ -1170,7 +1158,7 @@
                "creater":"lijie",
                "createTime":"2017-01-01 01:01:01",
                "icon":"http://i0.hdslb.com/bfs/archive/b11ab840dc816ef28077127e512cce43e0095858.jpg",
-               "barCode":"151881500*#wyj_categoryUUID(=)*#00*#wyj_categoryChildUUID(=)*#"
+               "barCode":"151581500*#wyj_categoryUUID(=)*#00*#wyj_categoryChildUUID(=)*#"
               } 
             </Body>
           </Content>
@@ -1192,12 +1180,12 @@
           </Heads>
           <Body isHaveParameters="true" >
            {
-           "shopUUID":"ATshopUUID_0001",
-           "publicCategoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
-           "categoryUUID":"ATshopCategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
-           "categoryName":"AT店里的高达*#wyj_categoryUUID(=)*#_*#wyj_categoryChildUUID(=)*#",
+           "shopUUID":"shopUUID_0001",
+           "publicCategoryUUID":"categoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+           "categoryUUID":"shopCategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+           "categoryName":"店里的高达*#wyj_categoryUUID(=)*#_*#wyj_categoryChildUUID(=)*#",
            "status":1,
-           "parent":"ATshopCategoryUUID_00*#wyj_categoryUUID(=)*#",
+           "parent":"shopCategoryUUID_00*#wyj_categoryUUID(=)*#",
            "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
            "sort":1110,
            "code":"123456"
@@ -1223,12 +1211,12 @@
             </Heads>
             <Body isHaveParameters="true" >
                {
-                 "goodsUUID":"ATshop_goodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
-                 "shopUUID":"ATshopUUID_0001",
-                 "publicGoodsUUID":"ATgoodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
-                 "categoryUUID":"ATshopCategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
-                 "barCode":"151812300*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
-                 "name":"AT店里的拂晓_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
+                 "goodsUUID":"shop_goodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
+                 "shopUUID":"shopUUID_0001",
+                 "publicGoodsUUID":"goodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+                 "categoryUUID":"shopCategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+                 "barCode":"151512300*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
+                 "name":"店里的拂晓_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
                  "initStock":"1000",
                  "lowerLimit":"0",
                  "brandName":"万代",
@@ -1263,7 +1251,7 @@
                    "shopUUID":"shopUUID_0001",
                    "goodsList":[
                       {
-                         "goodsUUID":"ATshop_goodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(=)*#",
+                         "goodsUUID":"shop_goodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(=)*#",
                          "onlinePrice":"10000",
                          "status":0
                       }

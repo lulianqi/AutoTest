@@ -197,11 +197,19 @@ namespace CaseExecutiveActuator
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
 
+            Action<string, CaseActuatorOutPutType, string> ExecutiveDelegate = (innerSender, outType, yourContent) =>
+                {
+                    if(yourExecutiveDelegate!=null)
+                    {
+                        yourExecutiveDelegate(innerSender, outType, yourContent);
+                    }
+                };
+
             Func<string ,bool> DealNowError = (errerData) =>
             {
                 if (errerData != null)
                 {
-                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
+                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
                     errorList.Add(errerData);
                     return true;
                 }
@@ -212,7 +220,7 @@ namespace CaseExecutiveActuator
             {
                 if(DealNowError(errerData))
                 {
-                    yourExecutiveDelegate(string.Format("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][{0}]", actionType), CaseActuatorOutPutType.ExecutiveError, string.Format("static data {0} error with the key :{1} ",actionType ,keyName));
+                    ExecutiveDelegate(string.Format("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][{0}]", actionType), CaseActuatorOutPutType.ExecutiveError, string.Format("static data {0} error with the key :{1} ", actionType, keyName));
                     return true;
                 }
                 else
@@ -234,7 +242,7 @@ namespace CaseExecutiveActuator
                 #region Show
                 myResult.backContent=nowExecutionContent.showContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 DealNowError(tempError);
-                yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n【Console】\r\n{1}", caseId, myResult.backContent));
+                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n【Console】\r\n{1}", caseId, myResult.backContent));
                 #endregion
 
                 #region Add
@@ -253,14 +261,14 @@ namespace CaseExecutiveActuator
                                 }
                                 else
                                 {
-                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveError, string.Format("find nonsupport Protocol"));
+                                    ExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveError, string.Format("find nonsupport Protocol"));
                                     break;
                                 }
                                 //如果使用提供的方式进行添加是不会出现错误的（遇到重复会覆盖，只有发现多个同名Key才会返回错误）, 不过getTargetContentData需要处理用户数据可能出现错误。
                                 if (!DealNowResultError(tempError, "Add", addInfo.Name))
                                 {
                                     yourActuatorStaticDataCollection.AddStaticDataKey(addInfo.Name, tempRunTimeDataKey);
-                                    yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add success with the key :{0} ", addInfo.Name));
+                                    ExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add success with the key :{0} ", addInfo.Name));
                                 }
                                 break;
                             //caseStaticDataParameter
@@ -272,7 +280,7 @@ namespace CaseExecutiveActuator
                                     if (!DealNowResultError(tempError,"Add",addInfo.Name))
                                     {
                                         yourActuatorStaticDataCollection.AddStaticDataParameter(addInfo.Name, tempRunTimeStaticData);
-                                        yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add success with the key :{0} ", addInfo.Name));
+                                        ExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add success with the key :{0} ", addInfo.Name));
                                     }
                                 }
                                 else
@@ -288,7 +296,7 @@ namespace CaseExecutiveActuator
                                     if (!DealNowResultError(tempError,"Add",addInfo.Name))
                                     {
                                         yourActuatorStaticDataCollection.AddStaticDataSouce(addInfo.Name, tempRunTimeDataSource);
-                                        yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add success with the key :{0} ", addInfo.Name));
+                                        ExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Add]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data add success with the key :{0} ", addInfo.Name));
                                     }
                                 }
                                 else
@@ -314,7 +322,7 @@ namespace CaseExecutiveActuator
                         {
                             if (yourActuatorStaticDataCollection.SetStaticData(addInfo.Key, tempSetVauleStr))
                             {
-                                yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Set]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data set success with the key :{0} ", addInfo.Key));
+                                ExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Set]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data set success with the key :{0} ", addInfo.Key));
                             }
                             else
                             {
@@ -335,7 +343,7 @@ namespace CaseExecutiveActuator
                         {
                             if (yourActuatorStaticDataCollection.RemoveStaticData(tempDelVauleStr, delInfo.Key))
                             {
-                                yourExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Del]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data del success with the key :{0} ", tempDelVauleStr));
+                                ExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Del]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data del success with the key :{0} ", tempDelVauleStr));
                             }
                             else
                             {
@@ -522,11 +530,20 @@ namespace CaseExecutiveActuator
             string tempError = null;
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
+
+            Action<string, CaseActuatorOutPutType, string> ExecutiveDelegate = (innerSender, outType, yourContent) =>
+            {
+                if (yourExecutiveDelegate != null)
+                {
+                    yourExecutiveDelegate(innerSender, outType, yourContent);
+                }
+            };
+
             Action<string> DealExecutiveError = (errerData) =>
             {
                 if (errerData != null)
                 {
-                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
+                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
                     errorList.Add(errerData);
                 }
             };
@@ -543,7 +560,7 @@ namespace CaseExecutiveActuator
                 System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
                 myWatch.Start();
 
-                yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[activeMQ]Executive···", caseId));
+                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[activeMQ]Executive···", caseId));
 
                 #region Subscribe
                 foreach (var tempConsumer in nowExecutionContent.consumerSubscribeList)
@@ -552,7 +569,7 @@ namespace CaseExecutiveActuator
                     {
                         if (activeMQ.SubscribeConsumer(tempConsumer.ConsumerName, tempConsumer.ConsumerType == "queue", tempConsumer.ConsumerTopicDurable))
                         {
-                            yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0}://{1} subscribe success", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0}://{1} subscribe success", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                         }
                         else
                         {
@@ -573,7 +590,7 @@ namespace CaseExecutiveActuator
                     {
                         if (activeMQ.UnSubscribeConsumer(string.Format("{0}://{1}", tempConsumer.ConsumerType, tempConsumer.ConsumerName)) > 0)
                         {
-                            yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0}://{1} unsubscribe success", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0}://{1} unsubscribe success", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
                         }
                         else
                         {
@@ -606,13 +623,13 @@ namespace CaseExecutiveActuator
                                 if (activeMQ.PublishMessage(tempOneSender.Key.ProducerName, tempMessageSend, tempOneSender.Key.ProducerType == "topic", tempMessageType))
                                 {
                                     string tempReportStr = string.Format("{0}://{1} send message success", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName);
-                                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempReportStr);
+                                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempReportStr);
                                     tempCaseOutContent.AppendLine(tempReportStr);
                                 }
                                 else
                                 {
                                     string tempReportStr = string.Format("{0}://{1} send message fail [{2}]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName, activeMQ.NowErrorMes);
-                                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempReportStr);
+                                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempReportStr);
                                     tempCaseOutContent.AppendLine(tempReportStr);
                                 }
                             }
@@ -634,7 +651,7 @@ namespace CaseExecutiveActuator
                 #region Receive
                 if (nowExecutionContent.consumerMessageReceiveList.Count>0)
                 {
-                    yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, "Receive your activeMQ messages");
+                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, "Receive your activeMQ messages");
                 }
                 foreach (var tempConsumer in nowExecutionContent.consumerMessageReceiveList)
                 {
@@ -646,7 +663,7 @@ namespace CaseExecutiveActuator
                             foreach (KeyValuePair<string, string> tempMessage in oneMessageReceive)
                             {
                                 string tempNowReceviceData = string.Format("{0} Receive {1}", tempMessage.Key, tempMessage.Value);
-                                yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempNowReceviceData);
+                                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempNowReceviceData);
                                 tempCaseOutContent.AppendLine(tempNowReceviceData);
                             }
                         }
@@ -662,7 +679,7 @@ namespace CaseExecutiveActuator
                         foreach (KeyValuePair<string, string> tempMessage in oneMessageReceive)
                         {
                             string tempNowReceviceData = string.Format("{0} Receive {1}", tempMessage.Key, tempMessage.Value);
-                            yourExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempNowReceviceData);
+                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempNowReceviceData);
                             tempCaseOutContent.AppendLine(tempNowReceviceData);
                         }
                     }

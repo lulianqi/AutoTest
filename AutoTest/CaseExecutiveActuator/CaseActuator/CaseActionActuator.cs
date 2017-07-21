@@ -1372,7 +1372,7 @@ namespace CaseExecutiveActuator
                 }
                 else
                 {
-                    SetNowActionError(tempKvp.Key + "connect fail");
+                    SetNowActionError(string.Format("【RunTimeActuator】:{0} connect fail", tempKvp.Key)); 
                 }
             }
             SetNowExecutiveData("Connect complete");

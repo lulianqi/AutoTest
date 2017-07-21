@@ -233,7 +233,15 @@ namespace MyActiveMQHelper
             }
             if (clientId != null)
             {
-                factory.ClientId = clientId;
+                try
+                {
+                    factory.ClientId = clientId;
+                }
+                catch (Exception ex)
+                {
+                    nowErrorMes = ex.Message;
+                    return false;
+                }
             }
 
             //connection (a factory can creart multiple connection)
@@ -248,7 +256,15 @@ namespace MyActiveMQHelper
             }
             if (clientId != null)
             {
-                connection.ClientId = clientId;
+                try
+                {
+                    connection.ClientId = clientId;
+                }
+                catch (Exception ex)
+                {
+                    nowErrorMes = ex.Message;
+                    return false;
+                }
             }
             connection.Start();
             connection.ExceptionListener += connection_ExceptionListener;
