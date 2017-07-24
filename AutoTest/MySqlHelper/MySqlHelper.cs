@@ -59,6 +59,13 @@ namespace MySqlHelper
 
             public event delegateGetAliveTaskDataTableInfoEventHandler OnGetAliveTaskDataTableInfo;
 
+            /// <summary>
+            /// AliveTaskInfo (只要sql查询有结果即会在每次时间节点到达时触发事件，如果想要以此结果处理业务，可以在处理业务前Pause，处理完成后再Resume)
+            /// </summary>
+            /// <param name="yourTaskName">Task Name</param>
+            /// <param name="sqlcmd">sql</param>
+            /// <param name="intervalTime">interval Time</param>
+            /// <param name="yourExecuteMySqlDrive">SqlDrive</param>
             public AliveTaskInfo(string yourTaskName, String sqlcmd, int intervalTime, MySqlDrive yourExecuteMySqlDrive)
             {
                 Name = yourTaskName;
@@ -242,6 +249,15 @@ namespace MySqlHelper
 
             public event delegateGetMonitorTaskDataTableInfoEventHandler OnGetMonitorTaskDataTableInfo;
 
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="yourTaskName"></param>
+            /// <param name="sqlcmd"></param>
+            /// <param name="monitorRowIndex">start with 0</param>
+            /// <param name="monitorColumnIndex">start with 0</param>
+            /// <param name="intervalTime"></param>
+            /// <param name="yourExecuteMySqlDrive"></param>
             public SqlMonitor(string yourTaskName, String sqlcmd, int monitorRowIndex, int monitorColumnIndex, int intervalTime, MySqlDrive yourExecuteMySqlDrive)
             {
                 Name = yourTaskName;
@@ -582,10 +598,10 @@ namespace MySqlHelper
         /// Create New AliveTask [it will not start ]
         /// </summary>
         /// <param name="yourTaskName">Task Name</param>
-        /// <param name="sqlcmd"></param>
+        /// <param name="sqlcmd">mysql sql (只要sql查询有结果即会在每次时间节点到达时触发事件，如果想要以此结果处理业务，可以在处理业务前Pause（StartAliveTask），处理完成后再Resume（StopAliveTask）)</param>
         /// <param name="intervalTime">ms</param>
-        /// <param name="yourAction"></param>
-        /// <returns></returns>
+        /// <param name="yourAction">delegateGetAliveTaskDataTableInfoEventHandler</param>
+        /// <returns>is sucess</returns>
         public bool CreateNewAliveTask(string yourTaskName, String sqlcmd, int intervalTime, delegateGetAliveTaskDataTableInfoEventHandler yourAction)
         {
             AliveTaskInfo tempTaskInfo = new AliveTaskInfo(yourTaskName, sqlcmd, intervalTime, this);
@@ -931,6 +947,13 @@ namespace MySqlHelper
             return ExecuteQuery(sql, myParameter.ToArray());
         }
 
+        /// <summary>
+        /// execute a query command with sql with rowIndex and columnIndex
+        /// </summary>
+        /// <param name="sql">your sql commod</param>
+        /// <param name="rowIndex">start with 0</param>
+        /// <param name="columnIndex">start with 0</param>
+        /// <returns>the result with string vaule</returns>
         public string ExecuteQuery(String sql, int rowIndex, int columnIndex)
         {
             DataTable tempTable = ExecuteQuery(sql);

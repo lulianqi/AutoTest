@@ -35,7 +35,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourContentNode">xml 源数据</param>
         /// <returns>ICaseExecutionContent (在子类实现时返回值可以为实际类型)</returns>
         public static ICaseExecutionContent GetRunContent(XmlNode yourContentNode)
-        {
+        {  
             throw new NotImplementedException();
         }
     }

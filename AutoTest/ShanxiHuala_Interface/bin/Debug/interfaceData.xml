@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ShanxiHuala_V1>
   <Api name="/oauth/api/shop/info" method="POST">{
-       "shopUUID":"ctt_shopUUID_0001",
-       "login":"ctt_shop0001",
+       "shopUUID":"shopUUID_0001",
+       "login":"shop0001",
        "password":"21218cca77804d2ba1922c33e0151105",
-       "shopName":"ctt0001",
-       "person":"ctt0001",
+       "shopName":"shop0001",
+       "person":"wyj0001",
        "socialId":"412723197909185262",
        "telephone":"15150000001",
-       "mobile":"15140000001",
+       "mobile":"15150000001",
        "QQ":"15150000001",
        "email":"118662355@qq.com",
        "province":"33",
@@ -30,9 +30,9 @@
        "baseType":"Y",
        "openTime":"09:55:55",
        "endTime":"17:55:55",
-       "startCost":20,
-       "distributeCost":100,
-       "avoidCost":1000000,
+       "startCost":1,
+       "distributeCost":1,
+       "avoidCost":1,
        "distributeScope":100
 }  </Api>
   <Api name="/oauth/api/category/publicCategory" method="POST">
@@ -148,6 +148,16 @@
        "endTime":"",
        "size":0,
        "page":0
+    }
+  </Api>
+  <Api name="/oauth/api/shop/bindCard" method="POST">
+    {
+       "shopUUID":"",
+       "bankBranch":"",
+       "cardHolder":"",
+       "cardNo":"",
+	   "ownerCard":"",
+       "openBank":""
     }
   </Api>
   <Api name="api" method="POST">
