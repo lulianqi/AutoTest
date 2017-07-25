@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ShanxiHuala_V1>
   <Api name="/oauth/api/shop/info" method="POST">{
-       "shopUUID":"shopUUID_0001",
-       "login":"shop0001",
+       "shopUUID":"shopUUID_0002",
+       "login":"shop0002",
        "password":"21218cca77804d2ba1922c33e0151105",
-       "shopName":"shop0001",
-       "person":"wyj0001",
+       "shopName":"shop0002",
+       "person":"wyj0002",
        "socialId":"412723197909185262",
-       "telephone":"15150000001",
-       "mobile":"15150000001",
+       "telephone":"15150000002",
+       "mobile":"15150000002",
        "QQ":"15150000001",
        "email":"118662355@qq.com",
        "province":"33",
        "city":"3302",
        "county":"330205",
        "postCode":"430001",
-       "address":"my address for shopWyj0001",
-       "lat":"29.882888",
-       "lng":"121.56452",
+       "address":"my address for shopWyj0002",
+       "lat":"29.882889",
+       "lng":"121.56453",
        "status":1,
        "createTime":"2017-07-10 01:01:01",
        "updateTime":"2017-07-10 01:01:01",
        "licenseCode":"151581500011",
        "busiplacesCode":"open",
-       "businessLicense":"1515815550001",
+       "businessLicense":"1515815550002",
        "image":"http://wxtest.huala.com/hlman-pic/supplierInfo/201605/1463022814140.jpg",
        "areaId":"0001",
        "unionCustomerNo":"0001",
@@ -152,12 +152,12 @@
   </Api>
   <Api name="/oauth/api/shop/bindCard" method="POST">
     {
-       "shopUUID":"",
-       "bankBranch":"",
-       "cardHolder":"",
-       "cardNo":"",
-	   "ownerCard":"",
-       "openBank":""
+       "shopUUID":"shopUUID_0002",
+       "bankBranch":"中国银行杭州支行",
+       "cardHolder":"lijie",
+       "cardNo":"6217001140003662",
+       "ownerCard":"51170219870626850X",
+       "openBank":"BOC"
     }
   </Api>
   <Api name="api" method="POST">

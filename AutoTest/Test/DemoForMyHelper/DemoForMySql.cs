@@ -48,7 +48,7 @@ namespace DemoForMyHelper
             Console.WriteLine("__________________________________________________");
             Console.WriteLine("__________________________________________________");
             Console.WriteLine("__________________________________________________");
-            mySql.CreateNewAliveTask("TestIn", string.Format("select * from h_order  where mobile ='{0}' and order_status='no_pay' order by add_time desc", "15158155511"), 2000, new MySqlDrive.delegateGetAliveTaskDataTableInfoEventHandler((obj,table) => {
+            mySql.CreateNewAliveTask("TestIn", string.Format("select * from h_order  where mobile ='{0}' and order_status='no_pay' order by add_time desc", "15158155511"), 2000, new delegateGetAliveTaskDataTableInfoEventHandler((obj,table) => {
                 foreach (DataRow rows in table.Rows)
                 {
                     Console.WriteLine("");
@@ -62,7 +62,7 @@ namespace DemoForMyHelper
             Console.WriteLine("__________________________________________________");
             Console.WriteLine("__________________________________________________");
             Console.WriteLine("__________________________________________________");
-            mySql.CreateNewMonitorTask("m1","select* from h_sso_log order by id desc limit 20 ",1,2,4000,new MySqlDrive.delegateGetMonitorTaskDataTableInfoEventHandler((sender,str)=>{
+            mySql.CreateNewMonitorTask("m1","select* from h_sso_log order by id desc limit 20 ",1,2,4000,new delegateGetMonitorTaskDataTableInfoEventHandler((sender,str)=>{
                 Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
                 Console.WriteLine(str);
             }));

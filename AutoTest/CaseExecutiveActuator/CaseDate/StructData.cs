@@ -61,7 +61,8 @@ namespace CaseExecutiveActuator
         tcp = 9,
         comm = 10,
         telnet = 11,
-        activeMQ=12
+        activeMQ=12,
+        mysql=13
     }
 
     /// <summary>
@@ -399,6 +400,29 @@ namespace CaseExecutiveActuator
             factoryPassword = yourFactoryPassword;
             queuesList = yourQueueList;
             topicList = yourTopicList;
+        }
+        public CaseProtocol MyCaseProtocol
+        {
+            get
+            {
+                return caseProtocol;
+            }
+        }
+    }
+
+    /// <summary>
+    /// mysql 【IConnectExecutiveData】
+    /// </summary>
+    public class myConnectForMysql : IConnectExecutiveData
+    {
+        public CaseProtocol caseProtocol;
+
+        public string connectStr;
+
+        public myConnectForMysql(CaseProtocol yourCaseProtocol, string yourConnectStr)
+        {
+            caseProtocol = yourCaseProtocol;
+            connectStr = yourConnectStr;
         }
         public CaseProtocol MyCaseProtocol
         {

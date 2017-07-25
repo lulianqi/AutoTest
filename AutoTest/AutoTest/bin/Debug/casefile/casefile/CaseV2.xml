@@ -84,7 +84,7 @@
         <topic>t1</topic>
         <topic durable="at1">t2</topic> <!--如果topic 含有durable属性，则指示该topic为Durable topics，queues暂不支持该种表达方式-->
       </NewActuator>
-      <NewActuator name="MySql_151" protocol="EXT_MySql">
+      <NewActuator name="MySql_151" protocol="mySql">
         <connect_str>连接字符串</connect_str>
         <db_name>数据库名称</db_name>
       </NewActuator>
