@@ -1213,6 +1213,10 @@ namespace CaseExecutiveActuator
                                                             myConnectForHttp ConnectInfo_http = new myConnectForHttp(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_http);
                                                             break;
+                                                        case CaseProtocol.mysql:
+                                                            myConnectForMysql ConnectInfo_mysql = new myConnectForMysql(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "connect_str"));
+                                                            AddExecutionDevice(tempActuatorName, ConnectInfo_mysql);
+                                                            break;
                                                         default:
                                                             SetNowActionError(string.Format("find nonsupport Protocol in ScriptRunTime  with {0} ", tempActuatorName));
                                                             break;

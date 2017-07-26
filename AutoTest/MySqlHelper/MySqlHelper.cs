@@ -207,10 +207,27 @@ namespace MySqlHelper
             return false;
         }
 
+        /// <summary>
+        /// Connect DataBase it will DisConnect fist（and if it need connect it will use new sql connect str）
+        /// </summary>
+        /// <param name="connStr">new connect str (一定会使重新连接)</param>
+        /// <returns>is sucusse</returns>
         public bool ConnectDataBase(string connStr)
         {
+            DisConnect();
             data_source = connStr;
             return ConnectDataBase();
+        }
+
+        /// <summary>
+        /// Dis Connect
+        /// </summary>
+        public void DisConnect()
+        {
+            if (myConnection != null)
+            {
+                myConnection.Close();
+            }
         }
 
         /// <summary>
@@ -598,7 +615,7 @@ namespace MySqlHelper
         /// </summary>
         /// execute a query command with sql in MySqlParameter mode
         /// </summary>
-        /// <param name="sql">your sql commod</param>
+        /// <param name="sql">your sql commod  ( eg : ExecuteQuery("select * from h_order where seller_id=?id and order_amount>?amt limit 10", new Dictionary<string, string> { { "?id", "562" },{ "?amt", "100" } });)</param>
         /// <param name="yourParameterStrings">MySqlParameter with name and value (like { { "?id", "562" },{ "?amt", "100" } })</param>
         /// <returns>the result with DataTable</returns>
         public DataTable ExecuteQuery(String sql, Dictionary<string, string> yourParameterStrings)
@@ -647,7 +664,7 @@ namespace MySqlHelper
         }
 
         /// <summary>
-        /// get data if it is change in the time
+        /// get data if it is change in the time (阻塞的方法)
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="rowIndex"></param>
