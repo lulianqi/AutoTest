@@ -25,6 +25,7 @@ using CaseExecutiveActuator.ProtocolExecutive;
 namespace CaseExecutiveActuator
 {
     using HttpMultipartDate = MyCommonHelper.NetHelper.MyWebTool.HttpMultipartDate;
+    using MySqlHelper;
 
   
     public class BasicProtocolPars
@@ -721,16 +722,16 @@ namespace CaseExecutiveActuator
     public class CaseProtocolExecutionForMysql : BasicProtocolPars, ICaseExecutionDevice
     {
         private bool isConnect;
-        private myConnectForActiveMQ myExecutionDeviceInfo;
+        private myConnectForMysql myExecutionDeviceInfo;
         public event delegateGetExecutiveData OnGetExecutiveData;
 
-        private MyActiveMQ activeMQ;
+        private MySqlDrive mySqlDrive;
 
-        public CaseProtocolExecutionForMysql(myConnectForActiveMQ yourConnectInfo)
+        public CaseProtocolExecutionForMysql(myConnectForMysql yourConnectInfo)
         {
             isConnect = false;
             myExecutionDeviceInfo = yourConnectInfo;
-            activeMQ = new MyActiveMQ(myExecutionDeviceInfo.brokerUri, myExecutionDeviceInfo.clientId, myExecutionDeviceInfo.factoryUserName, myExecutionDeviceInfo.factoryPassword, myExecutionDeviceInfo.queuesList, myExecutionDeviceInfo.topicList, false);
+            mySqlDrive = new MySqlDrive(myExecutionDeviceInfo.connectStr);  
         }
 
         public new static MyActiveMQExecutionContent GetRunContent(XmlNode yourContentNode)

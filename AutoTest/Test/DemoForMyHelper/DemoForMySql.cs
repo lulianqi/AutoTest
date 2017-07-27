@@ -58,7 +58,7 @@ namespace DemoForMyHelper
             }
 
             Console.WriteLine("++++++++++++++++++++++++++updata data++++++++++++++++++++++++++++");
-            myTable = mySql.ExecuteQuery("select * from h_order where seller_id=?id and order_amount>?amt limit 10", new Dictionary<string, string> { { "?id", "56200000" }, { "?amt", "100" } });
+            myTable = mySql.ExecuteQuery("update  h_order set order_status = 'no_pay' where order_sn = 170724185537912003");
             //foreach(DataColumn column in table.Columns)
             foreach (DataRow rows in myTable.Rows)
             {
