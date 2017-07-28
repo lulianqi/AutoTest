@@ -1117,6 +1117,55 @@ namespace CaseExecutiveActuator
         }
     }
 
+    public class MyMySqlExecutionContent : ICaseExecutionContent
+    {
+        public string errorMessage;
+        public CaseProtocol caseProtocol;
+        public string caseActuator;
+
+        public caseParameterizationContent sqlContent;
+        public bool isPosition;
+        public int rowIndex;
+        public int columnIndex;
+
+        public MyMySqlExecutionContent()
+        {
+            errorMessage = null;
+            caseProtocol = CaseProtocol.unknownProtocol;
+            caseActuator = "";
+            sqlContent = new caseParameterizationContent();
+            isPosition = false;
+        }
+
+        public CaseProtocol MyCaseProtocol
+        {
+            get { return caseProtocol; }
+        }
+
+        public string MyCaseActuator
+        {
+            get { return caseActuator; }
+        }
+
+        public string MyExecutionTarget
+        {
+            get { return sqlContent.getTargetContentData(); }
+        }
+
+        public string MyExecutionContent
+        {
+            get { return null; }
+        }
+
+        public string MyErrorMessage
+        {
+            get
+            {
+                return String.IsNullOrEmpty(errorMessage) ? null : errorMessage;
+            }
+        }
+    }
+
     #endregion
 
 

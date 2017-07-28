@@ -734,9 +734,9 @@ namespace CaseExecutiveActuator
             mySqlDrive = new MySqlDrive(myExecutionDeviceInfo.connectStr);  
         }
 
-        public new static MyActiveMQExecutionContent GetRunContent(XmlNode yourContentNode)
+        public new static MyMySqlExecutionContent GetRunContent(XmlNode yourContentNode)
         {
-            MyActiveMQExecutionContent myRunContent = new MyActiveMQExecutionContent();
+            MyMySqlExecutionContent myRunContent = new MyMySqlExecutionContent();
             if (yourContentNode != null)
             {
                 if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
@@ -753,80 +753,31 @@ namespace CaseExecutiveActuator
                     }
                     myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
 
-                    //Subscribe List
-                    #region Subscribe
-                    List<string[]> tempSubscribeRawList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Subscribe", new string[] { "type", "durable" });
-                    foreach (string[] tempOneSubscribeRaw in tempSubscribeRawList)
+                    //List<string[]> tempConsumerReceiveList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "SqlCmd", new string[] { "type" });
+                    XmlNode nowSqlNode = yourContentNode["SqlCmd"];
+                    if(nowSqlNode!=null)
                     {
-                        if (tempOneSubscribeRaw[1] != null && tempOneSubscribeRaw[0] != "")
+                        if(nowSqlNode.Attributes["row"]!=null && nowSqlNode.Attributes["column"]!=null)
                         {
-                            myRunContent.consumerSubscribeList.Add(new MyActiveMQExecutionContent.ConsumerData(tempOneSubscribeRaw[0], tempOneSubscribeRaw[1], tempOneSubscribeRaw[2]));
-                        }
-                        else
-                        {
-                            myRunContent.errorMessage = string.Format("Error :error data in Subscribe List with [{0}]", tempOneSubscribeRaw[0]);
-                            return myRunContent;
-                        }
-                    }
-                    #endregion
-                    //UnSubscribe List
-                    #region UnSubscribe
-                    List<string[]> tempUnSubscribeRawList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "UnSubscribe", new string[] { "type" });
-                    foreach (string[] tempOneUnSubscribeRaw in tempUnSubscribeRawList)
-                    {
-                        if (tempOneUnSubscribeRaw[1] != null && tempOneUnSubscribeRaw[0] != "")
-                        {
-                            myRunContent.unConsumerSubscribeList.Add(new MyActiveMQExecutionContent.ConsumerData(tempOneUnSubscribeRaw[0], tempOneUnSubscribeRaw[1], null));
-                        }
-                        else
-                        {
-                            myRunContent.errorMessage = string.Format("Error :error data in UnSubscribe List with [{0}]", tempOneUnSubscribeRaw[0]);
-                            return myRunContent;
-                        }
-                    }
-                    #endregion
-                    //Message Send List
-                    #region Message Send
-                    List<string[]> tempMessageSendList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Send", new string[] { "name", "type", "isHaveParameters" });
-                    foreach (string[] tempOneMessageSendRaw in tempMessageSendList)
-                    {
-                        if (!string.IsNullOrEmpty(tempOneMessageSendRaw[1]) && tempOneMessageSendRaw[2] != null && tempOneMessageSendRaw[0] != "")
-                        {
-                            MyActiveMQExecutionContent.ProducerData tempProducerData = new MyActiveMQExecutionContent.ProducerData(tempOneMessageSendRaw[1], tempOneMessageSendRaw[2], "TextMessage");
-                            caseParameterizationContent tempProducerMessage = new caseParameterizationContent(tempOneMessageSendRaw[0], tempOneMessageSendRaw[2] == "true");
-                            myRunContent.producerDataSendList.Add(new KeyValuePair<MyActiveMQExecutionContent.ProducerData, caseParameterizationContent>(tempProducerData, tempProducerMessage));
-                        }
-                        else
-                        {
-                            myRunContent.errorMessage = string.Format("Error :error data in UnSubscribe List with [{0}]", tempOneMessageSendRaw[0]);
-                            return myRunContent;
-                        }
-                    }
-                    #endregion
-                    //Receive
-                    #region Receive
-                    List<string[]> tempConsumerReceiveList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Receive", new string[] { "type" });
-                    foreach (string[] tempOneConsumerReceiveRaw in tempConsumerReceiveList)
-                    {
-                        if (tempOneConsumerReceiveRaw[0] == "")
-                        {
-                            myRunContent.consumerMessageReceiveList.Add(new MyActiveMQExecutionContent.ConsumerData(null, null, null));
-                        }
-                        else
-                        {
-                            if (tempOneConsumerReceiveRaw[1] != null)
+                            myRunContent.isPosition = true;
+                            if(!(int.TryParse(nowSqlNode.Attributes["row"].Value,out myRunContent.rowIndex) &&int.TryParse(nowSqlNode.Attributes["column"].Value,out myRunContent.columnIndex)))
                             {
-                                myRunContent.consumerMessageReceiveList.Add(new MyActiveMQExecutionContent.ConsumerData(tempOneConsumerReceiveRaw[0], tempOneConsumerReceiveRaw[1], null));
-                            }
-                            else
-                            {
-                                myRunContent.errorMessage = string.Format("Error :error data in UnSubscribe List with [{0}]", tempOneConsumerReceiveRaw[0]);
-                                return myRunContent;
+                                myRunContent.errorMessage = "Error :yourContentNode is error wirh [row] or [column] attribute";
                             }
                         }
-
+                        if(nowSqlNode.Attributes["isHaveParameters"]!=null)
+                        {
+                            myRunContent.sqlContent = new caseParameterizationContent(nowSqlNode.InnerText, nowSqlNode.Attributes["isHaveParameters"].Value == "true");
+                        }
+                        else
+                        {
+                            myRunContent.sqlContent = new caseParameterizationContent(nowSqlNode.InnerText);
+                        }
                     }
-                    #endregion
+                    else
+                    {
+                        myRunContent.errorMessage = "Error :can not find any SqlCmd ";
+                    }
                 }
                 else
                 {
@@ -856,13 +807,13 @@ namespace CaseExecutiveActuator
 
         public bool ExecutionDeviceConnect()
         {
-            isConnect = activeMQ.Connect();
+            isConnect = mySqlDrive.ConnectDataBase();
             return isConnect;
         }
 
         public void ExecutionDeviceClose()
         {
-            activeMQ.DisConnect();
+            mySqlDrive.DisConnect();
             isConnect = false;
         }
 
@@ -1049,7 +1000,7 @@ namespace CaseExecutiveActuator
 
         public object Clone()
         {
-            return new CaseProtocolExecutionForActiveMQ(myExecutionDeviceInfo);
+            return new CaseProtocolExecutionForMysql(myExecutionDeviceInfo);
         }
     }
 
