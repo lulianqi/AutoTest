@@ -172,7 +172,7 @@ namespace CaseExecutiveActuator
 
 
     /// <summary>
-    /// 描述可参数化数据结构
+    /// 描述可参数化数据结构 (请尽量不要自行解析数据，建议使用getXmlParametContent解析xml数据)
     /// </summary>
     public struct caseParameterizationContent
     {

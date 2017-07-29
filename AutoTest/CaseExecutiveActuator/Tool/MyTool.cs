@@ -526,7 +526,7 @@ namespace CaseExecutiveActuator
         /// <param name="tagName">the name taht you want</param>
         /// <param name="tagAttributes">if you do not care the attributs you can set this parameter null</param>
         /// <returns>data you want (if not find any match data it will be a 0 leng list)</returns>
-        public static List<string[]> GetXmlInnerMetaDataListEx(XmlNode sourseNode,string tagName,string[] tagAttributes)
+        public static List<string[]> GetXmlInnerMetaDataList(XmlNode sourseNode,string tagName,string[] tagAttributes)
         {
             List<string[]> outData = new List<string[]>();
             if (sourseNode.HasChildNodes)
@@ -550,6 +550,43 @@ namespace CaseExecutiveActuator
                             tempOneNodeData = new string[] { tempNode.InnerText };
                         }
                         outData.Add(tempOneNodeData);
+                    }
+                }
+            }
+            return outData;
+        }
+
+        /// <summary>
+        /// get the some same name child node in yourNode ,and it can with your attributs (if not find the attribut the attribut data will be null)(with souce xmlnode)
+        /// </summary>
+        /// <param name="sourceNode">source Node (if it is null i will Throw error)</param>
+        /// <param name="tagName">the name taht you want</param>
+        /// <param name="tagAttributes">if you do not care the attributs you can set this parameter null</param>
+        /// <returns>data you want (if not find any match data it will be a 0 leng list)</returns>
+        public static List<KeyValuePair<XmlNode, string[]>> GetXmlInnerMetaDataListEx(XmlNode sourseNode, string tagName, string[] tagAttributes)
+        {
+            List<KeyValuePair<XmlNode, string[]>> outData = new  List<KeyValuePair<XmlNode, string[]>>;
+            if (sourseNode.HasChildNodes)
+            {
+                foreach (XmlNode tempNode in sourseNode.ChildNodes)
+                {
+                    if (tempNode.Name == tagName)
+                    {
+                        string[] tempOneNodeData;
+                        if (tagAttributes != null)
+                        {
+                            tempOneNodeData = new string[tagAttributes.Length + 1];
+                            tempOneNodeData[0] = tempNode.InnerText;
+                            for (int i = 0; i < tagAttributes.Length; i++)
+                            {
+                                tempOneNodeData[i + 1] = getXmlAttributeVauleEx(tempNode, tagAttributes[i]);
+                            }
+                        }
+                        else
+                        {
+                            tempOneNodeData = new string[] { tempNode.InnerText };
+                        }
+                        outData.Add(new KeyValuePair<XmlNode, string[]>(tempNode,tempOneNodeData));
                     }
                 }
             }

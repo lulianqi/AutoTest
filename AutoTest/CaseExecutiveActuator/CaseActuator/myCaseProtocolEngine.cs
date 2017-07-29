@@ -416,7 +416,7 @@ namespace CaseExecutiveActuator
 
                     //Subscribe List
                     #region Subscribe
-                    List<string[]> tempSubscribeRawList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Subscribe", new string[] { "type", "durable" });
+                    List<string[]> tempSubscribeRawList = CaseTool.GetXmlInnerMetaDataList(yourContentNode, "Subscribe", new string[] { "type", "durable" });
                     foreach (string[] tempOneSubscribeRaw in tempSubscribeRawList)
                     {
                         if (tempOneSubscribeRaw[1] != null && tempOneSubscribeRaw[0] != "")
@@ -432,7 +432,7 @@ namespace CaseExecutiveActuator
                     #endregion
                     //UnSubscribe List
                     #region UnSubscribe
-                    List<string[]> tempUnSubscribeRawList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "UnSubscribe", new string[] { "type" });
+                    List<string[]> tempUnSubscribeRawList = CaseTool.GetXmlInnerMetaDataList(yourContentNode, "UnSubscribe", new string[] { "type" });
                     foreach (string[] tempOneUnSubscribeRaw in tempUnSubscribeRawList)
                     {
                         if (tempOneUnSubscribeRaw[1] != null && tempOneUnSubscribeRaw[0] != "")
@@ -448,25 +448,25 @@ namespace CaseExecutiveActuator
                     #endregion
                     //Message Send List
                     #region Message Send 
-                    List<string[]> tempMessageSendList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Send", new string[] { "name", "type", "isHaveParameters" });
-                    foreach (string[] tempOneMessageSendRaw in tempMessageSendList)
+                    List<KeyValuePair<XmlNode, string[]>> tempMessageSendList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Send", new string[] { "name", "type", "isHaveParameters" });
+                    foreach (KeyValuePair<XmlNode, string[]> tempOneMessageSendRaw in tempMessageSendList)
                     {
-                        if (!string.IsNullOrEmpty(tempOneMessageSendRaw[1]) && tempOneMessageSendRaw[2] != null && tempOneMessageSendRaw[0] != "")
+                        if (!string.IsNullOrEmpty(tempOneMessageSendRaw.Value[1]) && tempOneMessageSendRaw.Value[2] != null && tempOneMessageSendRaw.Value[0] != "")
                         {
-                            MyActiveMQExecutionContent.ProducerData tempProducerData = new MyActiveMQExecutionContent.ProducerData(tempOneMessageSendRaw[1], tempOneMessageSendRaw[2], "TextMessage");
-                            caseParameterizationContent tempProducerMessage = new caseParameterizationContent(tempOneMessageSendRaw[0], tempOneMessageSendRaw[2] == "true");
+                            MyActiveMQExecutionContent.ProducerData tempProducerData = new MyActiveMQExecutionContent.ProducerData(tempOneMessageSendRaw.Value[1], tempOneMessageSendRaw.Value[2], "TextMessage");
+                            caseParameterizationContent tempProducerMessage = CaseTool.getXmlParametContent(tempOneMessageSendRaw.Key);
                             myRunContent.producerDataSendList.Add(new KeyValuePair<MyActiveMQExecutionContent.ProducerData, caseParameterizationContent>(tempProducerData, tempProducerMessage));
                         }
                         else
                         {
-                            myRunContent.errorMessage = string.Format("Error :error data in UnSubscribe List with [{0}]", tempOneMessageSendRaw[0]);
+                            myRunContent.errorMessage = string.Format("Error :error data in Send List with [{0}]", tempOneMessageSendRaw.Value[0]);
                             return myRunContent;
                         }
                     } 
                     #endregion
                     //Receive
                     #region Receive
-                    List<string[]> tempConsumerReceiveList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "Receive", new string[] { "type" });
+                    List<string[]> tempConsumerReceiveList = CaseTool.GetXmlInnerMetaDataList(yourContentNode, "Receive", new string[] { "type" });
                     foreach (string[] tempOneConsumerReceiveRaw in tempConsumerReceiveList)
                     {
                         if (tempOneConsumerReceiveRaw[0] == "")
@@ -481,7 +481,7 @@ namespace CaseExecutiveActuator
                             }
                             else
                             {
-                                myRunContent.errorMessage = string.Format("Error :error data in UnSubscribe List with [{0}]", tempOneConsumerReceiveRaw[0]);
+                                myRunContent.errorMessage = string.Format("Error :error data in Receive List with [{0}]", tempOneConsumerReceiveRaw[0]);
                                 return myRunContent;
                             }
                         }
@@ -753,7 +753,6 @@ namespace CaseExecutiveActuator
                     }
                     myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
 
-                    //List<string[]> tempConsumerReceiveList = CaseTool.GetXmlInnerMetaDataListEx(yourContentNode, "SqlCmd", new string[] { "type" });
                     XmlNode nowSqlNode = yourContentNode["SqlCmd"];
                     if(nowSqlNode!=null)
                     {
@@ -765,14 +764,8 @@ namespace CaseExecutiveActuator
                                 myRunContent.errorMessage = "Error :yourContentNode is error wirh [row] or [column] attribute";
                             }
                         }
-                        if(nowSqlNode.Attributes["isHaveParameters"]!=null)
-                        {
-                            myRunContent.sqlContent = new caseParameterizationContent(nowSqlNode.InnerText, nowSqlNode.Attributes["isHaveParameters"].Value == "true");
-                        }
-                        else
-                        {
-                            myRunContent.sqlContent = new caseParameterizationContent(nowSqlNode.InnerText);
-                        }
+                        myRunContent.sqlContent = CaseTool.getXmlParametContent(nowSqlNode);
+
                     }
                     else
                     {
@@ -841,11 +834,11 @@ namespace CaseExecutiveActuator
                 }
             };
 
-            if (yourExecutionContent.MyCaseProtocol == CaseProtocol.activeMQ)
+            if (yourExecutionContent.MyCaseProtocol == CaseProtocol.mysql)
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
-                MyActiveMQExecutionContent nowExecutionContent = yourExecutionContent as MyActiveMQExecutionContent;
-                myResult.caseProtocol = CaseProtocol.activeMQ;
+                MyMySqlExecutionContent nowExecutionContent = yourExecutionContent as MyMySqlExecutionContent;
+                myResult.caseProtocol = CaseProtocol.mysql;
                 myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
                 myResult.startTime = DateTime.Now.ToString("HH:mm:ss");
                 StringBuilder tempCaseOutContent = new StringBuilder();
@@ -854,92 +847,6 @@ namespace CaseExecutiveActuator
                 myWatch.Start();
 
                 ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[activeMQ]Executive···", caseId));
-
-                #region Subscribe
-                foreach (var tempConsumer in nowExecutionContent.consumerSubscribeList)
-                {
-                    if (tempConsumer.ConsumerType == "queue" || tempConsumer.ConsumerType == "topic")
-                    {
-                        if (activeMQ.SubscribeConsumer(tempConsumer.ConsumerName, tempConsumer.ConsumerType == "queue", tempConsumer.ConsumerTopicDurable))
-                        {
-                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0}://{1} subscribe success", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                        }
-                        else
-                        {
-                            DealExecutiveError(string.Format("{0}://{1} subscribe fail", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                        }
-                    }
-                    else
-                    {
-                        DealExecutiveError(string.Format("{0}://{1} subscribe fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                    }
-                }
-                #endregion
-
-                #region UnSubscribe
-                foreach (var tempConsumer in nowExecutionContent.unConsumerSubscribeList)
-                {
-                    if (tempConsumer.ConsumerType == "queue" || tempConsumer.ConsumerType == "topic")
-                    {
-                        if (activeMQ.UnSubscribeConsumer(string.Format("{0}://{1}", tempConsumer.ConsumerType, tempConsumer.ConsumerName)) > 0)
-                        {
-                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("{0}://{1} unsubscribe success", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                        }
-                        else
-                        {
-                            DealExecutiveError(string.Format("{0}://{1} unsubscribe fail", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                        }
-                    }
-                    else
-                    {
-                        DealExecutiveError(string.Format("{0}://{1} unsubscribe fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                    }
-                }
-                #endregion
-
-                #region Send
-                foreach (var tempOneSender in nowExecutionContent.producerDataSendList)
-                {
-                    if (tempOneSender.Key.ProducerType == "queue" || tempOneSender.Key.ProducerType == "topic")
-                    {
-                        string tempMessageSend = tempOneSender.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
-                        if (tempError != null)
-                        {
-                            DealExecutiveError(string.Format("this case get static data errer with [{0}]", tempOneSender.Value.getTargetContentData()));
-                            tempCaseOutContent.AppendLine(string.Format("{0}://{1} send message fail [get static data errer]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
-                        }
-                        else
-                        {
-                            MessageType tempMessageType;
-                            if (Enum.TryParse<MessageType>(tempOneSender.Key.MessageType, out tempMessageType))
-                            {
-                                if (activeMQ.PublishMessage(tempOneSender.Key.ProducerName, tempMessageSend, tempOneSender.Key.ProducerType == "topic", tempMessageType))
-                                {
-                                    string tempReportStr = string.Format("{0}://{1} send message success", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName);
-                                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempReportStr);
-                                    tempCaseOutContent.AppendLine(tempReportStr);
-                                }
-                                else
-                                {
-                                    string tempReportStr = string.Format("{0}://{1} send message fail [{2}]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName, activeMQ.NowErrorMes);
-                                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempReportStr);
-                                    tempCaseOutContent.AppendLine(tempReportStr);
-                                }
-                            }
-                            else
-                            {
-                                DealExecutiveError(string.Format("get MessageType errer with [{0}]", tempOneSender.Key.MessageType));
-                                tempCaseOutContent.AppendLine(string.Format("{0}://{1} send message fail [get MessageType errer]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
-                            }
-
-                        }
-                    }
-                    else
-                    {
-                        tempCaseOutContent.Append(string.Format("{0}://{1} send message fail [not support this producer type]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
-                    }
-                }
-                #endregion
 
                 #region Receive
                 if (nowExecutionContent.consumerMessageReceiveList.Count > 0)
@@ -978,6 +885,15 @@ namespace CaseExecutiveActuator
                     }
                 }
                 #endregion
+                if(nowExecutionContent.isPosition)
+                {
+                    string sqlResult= mySqlDrive.ExecuteQuery()
+                }
+                else
+                {
+
+                }
+
 
                 myWatch.Stop();
                 myResult.spanTime = myResult.requestTime = myWatch.ElapsedMilliseconds.ToString();

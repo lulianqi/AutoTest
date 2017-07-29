@@ -1175,7 +1175,7 @@ namespace CaseExecutiveActuator
                                                             List<string> tempQueueList = new List<string>();
                                                             List<KeyValuePair<string,string>> tempTopicList=new List<KeyValuePair<string,string>>();
                                                             #region Get Queues data
-	                                                     	List<string[]> tempListData = CaseTool.GetXmlInnerMetaDataListEx(tempNodeChild, "queue", null);
+	                                                     	List<string[]> tempListData = CaseTool.GetXmlInnerMetaDataList(tempNodeChild, "queue", null);
                                                             if(tempListData.Count>0)
                                                             {
                                                                 foreach(string[] tempOneData in tempListData)
@@ -1189,7 +1189,7 @@ namespace CaseExecutiveActuator
                                                             } 
 	                                                        #endregion
                                                             #region Get Topics data
-                                                            tempListData = CaseTool.GetXmlInnerMetaDataListEx(tempNodeChild, "topic", new string[]{"durable"});
+                                                            tempListData = CaseTool.GetXmlInnerMetaDataList(tempNodeChild, "topic", new string[]{"durable"});
                                                             if(tempListData.Count>0)
                                                             {
                                                                 foreach(string[] tempOneData in tempListData)
