@@ -275,14 +275,14 @@ namespace AutoTest
             if(pictureBox_GwListMaxTag!=isMax)
             {
                 pictureBox_GwListMaxTag = isMax;
-                redrawGwListSize();
+                reDrawGwListSize();
             }
         }
 
         /// <summary>
         /// ajust the GwList Size from GwListMaxTag【pictureBox_GwListMaxTag】
         /// </summary>
-        private void redrawGwListSize()
+        private void reDrawGwListSize()
         {
             if (GwListMaxTag)
             {
@@ -342,7 +342,7 @@ namespace AutoTest
             expandablePanel_vaneWifiConfig.Location = new System.Drawing.Point(this.Width-408, expandablePanel_vaneWifiConfig.Location.Y);
 
             //listViewEx_GWlist
-            redrawGwListSize();
+            reDrawGwListSize();
         }
 
         private void pictureBox_gwListMax_Click(object sender, EventArgs e)

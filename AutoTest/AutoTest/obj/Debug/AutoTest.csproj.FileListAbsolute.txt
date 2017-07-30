@@ -152,3 +152,7 @@ F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\Apache.NMS.ActiveMQ.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\Apache.NMS.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\Apache.NMS.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.pdb

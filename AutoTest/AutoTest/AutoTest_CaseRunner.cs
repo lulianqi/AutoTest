@@ -46,6 +46,16 @@ namespace AutoTest
 
         CaseRunner selctRunner = null;
 
+        private bool pictureBox_selRunnerMaxTag = false;                                           //GwList窗口是否处于最大化状态(任何时候都请不要单独设置该值)
+
+        /// <summary>
+        /// get the value that direction is listView_SelectRunner is in max mode 【the value is same as pictureBox_GwListMaxTag】
+        /// </summary>
+        public bool SelRunnerMaxTag
+        {
+            get { return pictureBox_selRunnerMaxTag; }
+        }
+
         #region event
         public void AT_CaseRunnerLoad()
         {
@@ -65,11 +75,11 @@ namespace AutoTest
             listView_CaseRunner.Width = this.Width - 6;
             listView_CaseRunner.Height = this.Height - 167;
 
-            listView_SelectRunner.Width = this.Width - 215;
-
             lb_cr_info1.Location = new Point(lb_cr_info1.Location.X, this.Height - 74);
             lb_cr_info2.Location = new Point(lb_cr_info2.Location.X, this.Height - 74);
             lb_cr_info3.Location = new Point(lb_cr_info3.Location.X, this.Height - 74);
+
+            reDrawSelRunnerSize();
         }
 
         //关闭窗口
@@ -224,6 +234,12 @@ namespace AutoTest
             }
         }
 
+        //listView_SelectRunner 最大化显示
+        private void pictureBox_selRunerMax_Click(object sender, EventArgs e)
+        {
+            setSelRunnerMax(!pictureBox_selRunnerMaxTag);
+        }
+
         #endregion
 
         #region action
@@ -327,6 +343,41 @@ namespace AutoTest
                     listView_SelectRunner.EnsureVisible(listView_SelectRunner.Items.Count - 1);
                 }
                 listView_SelectRunner.EndUpdate();
+            }
+        }
+
+        /// <summary>
+        /// set the listView_SelectRunner size mode
+        /// </summary>
+        /// <param name="isMax">is max</param>
+        public void setSelRunnerMax(bool isMax)
+        {
+            if (pictureBox_selRunnerMaxTag != isMax)
+            {
+                pictureBox_selRunnerMaxTag = isMax;
+                reDrawSelRunnerSize();
+            }
+        }
+
+        /// <summary>
+        /// ajust the listView_SelectRunner Size from GwListMaxTag【pictureBox_SelRunnerMaxTag】
+        /// </summary>
+        private void reDrawSelRunnerSize()
+        {
+            if (pictureBox_selRunnerMaxTag)
+            {
+                listView_SelectRunner.Location = new Point(3, 0);
+                listView_SelectRunner.Size = new System.Drawing.Size(this.Width - 6, this.Height - 84);
+                pictureBox_selRunerMax.Location = new System.Drawing.Point(this.Width - 27, 0);
+                pictureBox_selRunerMax.Image = imageListForButton.Images[7];
+            }
+            else
+            {
+                listView_SelectRunner.Location = new Point(212, 0);
+                listView_SelectRunner.Size = new System.Drawing.Size(785, 90);
+                listView_SelectRunner.Width = this.Width - 215;
+                pictureBox_selRunerMax.Location = new System.Drawing.Point(this.Width - 27, 0);
+                pictureBox_selRunerMax.Image = imageListForButton.Images[6];
             }
         }
 

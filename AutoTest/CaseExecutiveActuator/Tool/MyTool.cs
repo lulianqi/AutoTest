@@ -565,7 +565,7 @@ namespace CaseExecutiveActuator
         /// <returns>data you want (if not find any match data it will be a 0 leng list)</returns>
         public static List<KeyValuePair<XmlNode, string[]>> GetXmlInnerMetaDataListEx(XmlNode sourseNode, string tagName, string[] tagAttributes)
         {
-            List<KeyValuePair<XmlNode, string[]>> outData = new  List<KeyValuePair<XmlNode, string[]>>;
+            List<KeyValuePair<XmlNode, string[]>> outData = new  List<KeyValuePair<XmlNode, string[]>>();
             if (sourseNode.HasChildNodes)
             {
                 foreach (XmlNode tempNode in sourseNode.ChildNodes)

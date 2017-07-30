@@ -34,3 +34,8 @@ D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.Active
 D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.dll
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyActiveMQHelper.dll
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyActiveMQHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyActiveMQHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySqlHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySql.Data.dll
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyActiveMQHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySqlHelper.pdb

@@ -716,6 +716,7 @@ namespace CaseExecutiveActuator
         }
     }
 
+    /*
     /// <summary>
     /// Mysql Device 
     /// </summary>
@@ -919,6 +920,8 @@ namespace CaseExecutiveActuator
             return new CaseProtocolExecutionForMysql(myExecutionDeviceInfo);
         }
     }
+
+     * */
 
     /// <summary>
     /// Vanelife_http Device 
