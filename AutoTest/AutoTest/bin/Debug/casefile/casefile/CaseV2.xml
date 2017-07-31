@@ -88,7 +88,7 @@
         <connect_str>连接字符串</connect_str>
         <db_name>数据库名称</db_name>
       </NewActuator>
-      <NewActuator name="huala_mysql" protocol="mySql">
+      <NewActuator name="huala_mysql" protocol="mysql">
         <connect_str>Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test</connect_str> <!--Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test--> <!--必选项，如果不填为"" 将会导致无法连接-->
         <db_name>数据库名称</db_name>
       </NewActuator>
@@ -1287,7 +1287,7 @@
   </Project>
   <Project id="1000010005" name="sql test" remark="sql测试">
       <Case id="1100050001" remark="sql查询">
-        <Content protocol="mySql" actuator="huala_mysql">
+        <Content protocol="mysql" actuator="huala_mysql">
           <SqlCmd isHaveParameters="true">select* from h_sso_log order by id desc limit 20</SqlCmd><!--必选项-->
         </Content>
         <Expect method="contain">/3</Expect>

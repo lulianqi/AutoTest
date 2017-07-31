@@ -66,3 +66,6 @@ F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyActiveMQHelper.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Apache.NMS.ActiveMQ.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Apache.NMS.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyActiveMQHelper.pdb
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MySqlHelper.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MySql.Data.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MySqlHelper.pdb

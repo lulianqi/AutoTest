@@ -37,6 +37,11 @@ namespace AutoTest.myControl
             {
                 llb_errorInfo.Visible = false;
             }
+            else
+            {
+                llb_errorInfo.Text = yourCaseRunData.errorMessages.MyToString(";");
+                return;
+            }
             lb_caseId.Text = "ID:" + yourCaseRunData.id;
             lb_caseTarget.Text = "->" + yourCaseRunData.testContent.MyExecutionTarget;
             lb_protocol.Text = "Protocol:" + yourCaseRunData.contentProtocol.ToString();

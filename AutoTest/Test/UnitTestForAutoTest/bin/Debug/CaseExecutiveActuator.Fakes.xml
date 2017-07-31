@@ -1036,6 +1036,87 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForHttp.AllInstances.ProtocolTypeGet">
             <summary>设置 CaseProtocolExecutionForHttp.get_ProtocolType() 的 填充码</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql">
+            <summary>CaseExecutiveActuator.CaseProtocolExecutionForMysql 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.#ctor(CaseExecutiveActuator.CaseProtocolExecutionForMysql)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.Bind(CaseExecutiveActuator.ICaseExecutionDevice)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.Bind(System.ICloneable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.Clone">
+            <summary>设置 CaseProtocolExecutionForMysql.Clone() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.ConstructormyConnectForMysql">
+            <summary>设置 CaseProtocolExecutionForMysql.CaseProtocolExecutionForMysql(myConnectForMysql yourConnectInfo) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.ExecutionDeviceClose">
+            <summary>设置 CaseProtocolExecutionForMysql.ExecutionDeviceClose() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.ExecutionDeviceConnect">
+            <summary>设置 CaseProtocolExecutionForMysql.ExecutionDeviceConnect() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.ExecutionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringActuatorStaticDataCollectionInt32">
+            <summary>设置 CaseProtocolExecutionForMysql.ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, Int32 caseId) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.GetRunContentXmlNode">
+            <summary>设置 CaseProtocolExecutionForMysql.GetRunContent(XmlNode yourContentNode) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.IsDeviceConnectGet">
+            <summary>设置 CaseProtocolExecutionForMysql.get_IsDeviceConnect() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.OnGetExecutiveDataAdddelegateGetExecutiveData">
+            <summary>设置 CaseProtocolExecutionForMysql.add_OnGetExecutiveData(delegateGetExecutiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.OnGetExecutiveDataRemovedelegateGetExecutiveData">
+            <summary>设置 CaseProtocolExecutionForMysql.remove_OnGetExecutiveData(delegateGetExecutiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.ProtocolTypeGet">
+            <summary>设置 CaseProtocolExecutionForMysql.get_ProtocolType() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances.Clone">
+            <summary>设置 CaseProtocolExecutionForMysql.Clone() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances.ExecutionDeviceClose">
+            <summary>设置 CaseProtocolExecutionForMysql.ExecutionDeviceClose() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances.ExecutionDeviceConnect">
+            <summary>设置 CaseProtocolExecutionForMysql.ExecutionDeviceConnect() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances.ExecutionDeviceRunICaseExecutionContentdelegateGetExecutiveDataStringActuatorStaticDataCollectionInt32">
+            <summary>设置 CaseProtocolExecutionForMysql.ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, String sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, Int32 caseId) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances.IsDeviceConnectGet">
+            <summary>设置 CaseProtocolExecutionForMysql.get_IsDeviceConnect() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances.OnGetExecutiveDataAdddelegateGetExecutiveData">
+            <summary>设置 CaseProtocolExecutionForMysql.add_OnGetExecutiveData(delegateGetExecutiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances.OnGetExecutiveDataRemovedelegateGetExecutiveData">
+            <summary>设置 CaseProtocolExecutionForMysql.remove_OnGetExecutiveData(delegateGetExecutiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForMysql.AllInstances.ProtocolTypeGet">
+            <summary>设置 CaseProtocolExecutionForMysql.get_ProtocolType() 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimCaseProtocolExecutionForVanelife_http">
             <summary>CaseExecutiveActuator.CaseProtocolExecutionForVanelife_http 的填充码类型</summary>
         </member>
@@ -1167,6 +1248,9 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetXmlInnerMetaDataListExXmlNodeStringStringArray">
             <summary>设置 CaseTool.GetXmlInnerMetaDataListEx(XmlNode sourseNode, String tagName, String[] tagAttributes) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.GetXmlInnerMetaDataListXmlNodeStringStringArray">
+            <summary>设置 CaseTool.GetXmlInnerMetaDataList(XmlNode sourseNode, String tagName, String[] tagAttributes) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimCaseTool.PickJsonParameterStringString">
             <summary>设置 CaseTool.PickJsonParameter(String yourTarget, String yourSouce) 的 填充码</summary>
@@ -1516,6 +1600,9 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetRandomStaticDataIRunTimeStaticDataOutStringOutString">
             <summary>设置 MyCaseDataTypeEngine.GetRandomStaticData(IRunTimeStaticData&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetStrIndexStaticDataIRunTimeStaticDataOutStringOutString">
+            <summary>设置 MyCaseDataTypeEngine.GetStrIndexStaticData(IRunTimeStaticData&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseDataTypeEngine.GetTimeStaticDataIRunTimeStaticDataOutStringOutString">
             <summary>设置 MyCaseDataTypeEngine.GetTimeStaticData(IRunTimeStaticData&amp; yourStaticData, String&amp; errorMes, String yourFormatData) 的 填充码</summary>
         </member>
@@ -1629,6 +1716,9 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.Constructor">
             <summary>设置 MyCaseScriptAnalysisEngine.MyCaseScriptAnalysisEngine() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.getCaseLoadInfoMyRunCaseDataOfICaseExecutionContent">
+            <summary>设置 MyCaseScriptAnalysisEngine.getCaseLoadInfo(MyRunCaseData`1&lt;ICaseExecutionContent&gt; runCaseData) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimMyCaseScriptAnalysisEngine.getCaseLoadInfoXmlNode">
             <summary>设置 MyCaseScriptAnalysisEngine.getCaseLoadInfo(XmlNode sourceNode) 的 填充码</summary>
@@ -1906,6 +1996,63 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimMyExtensionMethods.MyToStringListOfStringString">
             <summary>设置 MyExtensionMethods.MyToString(List`1&lt;String&gt; lsStr, String splitStr) 的 填充码</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent">
+            <summary>CaseExecutiveActuator.MyMySqlExecutionContent 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.#ctor(CaseExecutiveActuator.MyMySqlExecutionContent)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.Bind(CaseExecutiveActuator.ICaseExecutionContent)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.Constructor">
+            <summary>设置 MyMySqlExecutionContent.MyMySqlExecutionContent() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.MyCaseActuatorGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyCaseActuator() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.MyCaseProtocolGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.MyErrorMessageGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyErrorMessage() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.MyExecutionContentGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyExecutionContent() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.MyExecutionTargetGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyExecutionTarget() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.AllInstances.MyCaseActuatorGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyCaseActuator() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.AllInstances.MyCaseProtocolGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.AllInstances.MyErrorMessageGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyErrorMessage() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.AllInstances.MyExecutionContentGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyExecutionContent() 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyMySqlExecutionContent.AllInstances.MyExecutionTargetGet">
+            <summary>设置 MyMySqlExecutionContent.get_MyExecutionTarget() 的 填充码</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyRunCaseData`1">
             <summary>CaseExecutiveActuator.MyRunCaseData`1 的填充码类型</summary>
         </member>
@@ -2054,6 +2201,24 @@
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataSourceCsv.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataStrIndex">
+            <summary>CaseExecutiveActuator.MyStaticDataStrIndex 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataStrIndex.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataStrIndex.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimMyStaticDataStrIndex.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimMyStaticDataStrIndex.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimMyStaticDataStrIndex.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimMyVaneHttpExecutionContent">
@@ -2304,6 +2469,39 @@
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.AllInstances.MyCaseProtocolGet">
             <summary>设置 myConnectForHttp.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql">
+            <summary>CaseExecutiveActuator.myConnectForMysql 的填充码类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.#ctor(CaseExecutiveActuator.myConnectForMysql)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.Bind(CaseExecutiveActuator.IConnectExecutiveData)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.ConstructorCaseProtocolString">
+            <summary>设置 myConnectForMysql.myConnectForMysql(CaseProtocol yourCaseProtocol, String yourConnectStr) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.MyCaseProtocolGet">
+            <summary>设置 myConnectForMysql.get_MyCaseProtocol() 的 填充码</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForMysql.AllInstances.MyCaseProtocolGet">
+            <summary>设置 myConnectForMysql.get_MyCaseProtocol() 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.ShimmyConnectForVanelife_http">
             <summary>CaseExecutiveActuator.myConnectForVanelife_http 的填充码类型</summary>
@@ -2567,6 +2765,24 @@
             <summary>获取或设置实例行为。</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForHttp.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForMysql">
+            <summary>CaseExecutiveActuator.CaseProtocolExecutionForMysql 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForMysql.#ctor(CaseExecutiveActuator.myConnectForMysql)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForMysql.InitializeStub">
+            <summary>初始化 type StubCaseProtocolExecutionForMysql 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForMysql.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForMysql.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForMysql.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubCaseProtocolExecutionForVanelife_http">
@@ -2956,6 +3172,24 @@
         <member name="P:CaseExecutiveActuator.Fakes.StubMyExecutionDeviceResult.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubMyMySqlExecutionContent">
+            <summary>CaseExecutiveActuator.MyMySqlExecutionContent 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyMySqlExecutionContent.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubMyMySqlExecutionContent.InitializeStub">
+            <summary>初始化 type StubMyMySqlExecutionContent 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyMySqlExecutionContent.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyMySqlExecutionContent.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubMyMySqlExecutionContent.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubMyRunCaseData`1">
             <summary>CaseExecutiveActuator.MyRunCaseData`1 的存根类型</summary>
         </member>
@@ -3053,6 +3287,24 @@
             <summary>获取或设置实例行为。</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:CaseExecutiveActuator.Fakes.StubmyConnectForMysql">
+            <summary>CaseExecutiveActuator.myConnectForMysql 的存根类型</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForMysql.#ctor(CaseExecutiveActuator.CaseProtocol,System.String)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForMysql.InitializeStub">
+            <summary>初始化 type StubmyConnectForMysql 的新实例</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForMysql.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForMysql.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Fakes.StubmyConnectForMysql.InstanceObserver">
             <summary>获取或设置实例观察者。</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Fakes.StubmyConnectForVanelife_http">

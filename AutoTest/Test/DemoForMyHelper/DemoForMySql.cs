@@ -33,6 +33,7 @@ namespace DemoForMyHelper
                     Console.Write(filed.ToString());
                 }
             }
+
             Console.WriteLine("__________________________________________________");
             myTable = mySql.ExecuteQuery("select * from h_order where seller_id=?id and order_amount>?amt limit 10", new Dictionary<string, string> { { "?id", "562" },{ "?amt", "100" } });
             //foreach(DataColumn column in table.Columns)

@@ -85,3 +85,6 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyActiveMQHelper.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Apache.NMS.ActiveMQ.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Apache.NMS.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyActiveMQHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySqlHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySql.Data.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySqlHelper.pdb

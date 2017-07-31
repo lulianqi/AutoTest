@@ -145,7 +145,6 @@ D:\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe
 D:\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.pdb
 D:\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources
 D:\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCaceCBalloon.resources
-F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCaceCBalloon.resources
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.dll
@@ -156,3 +155,6 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\Apache.NMS.ActiveMQ.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\Apache.NMS.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.pdb
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MySqlHelper.dll
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MySql.Data.dll
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MySqlHelper.pdb

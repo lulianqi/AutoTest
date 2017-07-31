@@ -1957,6 +1957,9 @@ namespace CaseExecutiveActuator
                 case CaseProtocol.activeMQ:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForActiveMQ((myConnectForActiveMQ)yourDeviceConnectInfo));
                     break;
+                case CaseProtocol.mysql:
+                    myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForMysql((myConnectForMysql)yourDeviceConnectInfo));
+                    break;
                 case CaseProtocol.vanelife_http:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForVanelife_http((myConnectForVanelife_http)yourDeviceConnectInfo));
                     break;

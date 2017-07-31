@@ -120,12 +120,6 @@
     <Compile Include="myDialogWindow\AddRunner.Designer.cs">
       <DependentUpon>AddRunner.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\MyBaseCaceCBalloon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="myDialogWindow\MyBaseCaceCBalloon.designer.cs">
-      <DependentUpon>MyBaseCaceCBalloon.cs</DependentUpon>
-    </Compile>
     <Compile Include="myDialogWindow\myCaseParameter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,10 +236,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="myDialogWindow\AddRunner.resx">
       <DependentUpon>AddRunner.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\MyBaseCaceCBalloon.resx">
-      <DependentUpon>MyBaseCaceCBalloon.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="myDialogWindow\myCaseParameter.resx">
       <DependentUpon>myCaseParameter.cs</DependentUpon>

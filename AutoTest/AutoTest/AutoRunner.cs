@@ -341,7 +341,7 @@ namespace AutoTest
             }
 
             ProjctCollection myProjctCollection = new ProjctCollection();
-            try
+            //try
             {
 
                 #region Project analyze
@@ -469,30 +469,30 @@ namespace AutoTest
                     lb_msg1.Text = "case load success";
                 }
             }
-            //严重错误
-            catch (Exception ex)
-            {
-                int tempErrorIndex1 = 0;
-                string tempErrorIndex2 = "";
-                if (myProjectCaseDictionary.Count != 0)
-                {
-                    tempErrorIndex1 = myProjectCaseDictionary.Count;
-                    if (tempErrorIndex1 > 0)
-                    {
-                        foreach (Dictionary<int, CaseCell> tempProject in myProjectCaseDictionary.Values)
-                        {
-                            tempErrorIndex2 += " ->" + tempProject.Count + 1;
-                        }
-                    }
-                }
-                MessageBox.Show(string.Format("用例脚本错误，请检查\n详见错误日志\n错误代码：{0}X{1}", tempErrorIndex1, tempErrorIndex2), "STOP");
-                tvw_Case.Nodes.Clear();
-                ErrorLog.PutInLog("ID:0527  " + ex.Message);
-                ErrorLog.PutInLog("脚本错误位置  ：第" + tempErrorIndex1 + "个工程，第" + (tempErrorIndex2) + "个用例");
-                //启动数据呈现
-                lb_msg1.Text = "case file error";
-                ShowMessage(ex.Message);
-            }
+            ////严重错误
+            //catch (Exception ex)
+            //{
+            //    int tempErrorIndex1 = 0;
+            //    string tempErrorIndex2 = "";
+            //    if (myProjectCaseDictionary.Count != 0)
+            //    {
+            //        tempErrorIndex1 = myProjectCaseDictionary.Count;
+            //        if (tempErrorIndex1 > 0)
+            //        {
+            //            foreach (Dictionary<int, CaseCell> tempProject in myProjectCaseDictionary.Values)
+            //            {
+            //                tempErrorIndex2 += " ->" + (tempProject.Count + 1);
+            //            }
+            //        }
+            //    }
+            //    MessageBox.Show(string.Format("用例脚本错误，请检查\n详见错误日志\n错误代码：{0}X{1}", tempErrorIndex1, tempErrorIndex2), "STOP");
+            //    tvw_Case.Nodes.Clear();
+            //    ErrorLog.PutInLog("ID:0527  " + ex.Message);
+            //    ErrorLog.PutInLog("脚本错误位置  ：第" + tempErrorIndex1 + "个工程，第" + (tempErrorIndex2) + "个用例");
+            //    //启动数据呈现
+            //    lb_msg1.Text = "case file error";
+            //    ShowMessage(ex.Message);
+            //}
             CreateTree(myProjctCollection);
 
         }
@@ -537,7 +537,7 @@ namespace AutoTest
                                     TreeNode tempChildTreeNode;
                                     if (tempCaseLoadInfo.caseType == CaseType.Case)
                                     {
-                                        if (isShowCaseContent)
+                                        if (isShowCaseContent && tempCell.CaseRunData.testContent != null)
                                         {
                                             //tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ◎ " + tempCaseLoadInfo.content);
                                             string loadInfoContent = tempCell.CaseRunData.testContent.MyExecutionContent == null ? string.Format("> {0}", tempCell.CaseRunData.testContent.MyExecutionTarget) : string.Format("> {0}{1}{2}", tempCell.CaseRunData.testContent.MyExecutionTarget, MyConfiguration.CaseShowTargetAndContent, tempCell.CaseRunData.testContent.MyExecutionContent);

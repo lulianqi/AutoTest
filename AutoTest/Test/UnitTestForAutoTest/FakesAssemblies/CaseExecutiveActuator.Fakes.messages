@@ -33,6 +33,7 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActua
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myCaseAttribute 生成存根: 类型是一个值类型。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myCaseLaodInfo 生成存根: 类型是一个值类型。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataIndex 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataStrIndex 生成存根: 类型是一个值类型。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataLong 生成存根: 类型是一个值类型。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataRandomStr 生成存根: 类型是一个值类型。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataNowTime 生成存根: 类型是一个值类型。
@@ -41,7 +42,7 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActua
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyExtensionMethods 生成存根: 类型已密封。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseTool 生成存根: 类型已密封。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ProtocolExecutive.AtHttpProtocol 生成存根: 类型已密封。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{74E2BE84-0EF4-4139-8319-1A012D3D09DF} 生成存根: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{72777CC8-C497-498E-951E-78C7AE7C8C53} 生成存根: 类型不受支持，因为存在内部限制。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyActionActuator 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActionActuator+ExecutiveAdditionalInfo 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActionActuator+ExecutivebasicData 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
@@ -54,8 +55,9 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActua
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.IExtendProtocolDriver 生成填充码: 类型是一个接口。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.MyExtendProtocolDriver 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ICaseExecutionDevice 生成填充码: 类型是一个接口。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocolExecutionForConsole+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocolExecutionForActiveMQ+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocolExecutionForConsole+<>c__DisplayClass3 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocolExecutionForActiveMQ+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocolExecutionForMysql+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyCaseDataTypeEngine+GetStaticDataAction`1 生成填充码: 类型是一个委托。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.RunCaseCount 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyCsaeQueue 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
@@ -84,4 +86,4 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActua
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseExpectType 生成填充码: 类型是一个枚举。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterizationContentEncodingType 生成填充码: 类型是一个枚举。
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseTool+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
-F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{74E2BE84-0EF4-4139-8319-1A012D3D09DF} 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{72777CC8-C497-498E-951E-78C7AE7C8C53} 生成填充码: 类型不受支持，因为存在内部限制。

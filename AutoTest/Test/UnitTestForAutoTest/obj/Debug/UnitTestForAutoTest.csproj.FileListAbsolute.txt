@@ -298,3 +298,9 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyActiveMQHelp
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\Apache.NMS.ActiveMQ.dll
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\Apache.NMS.dll
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MyActiveMQHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MySqlHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MySql.Data.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\MySqlHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MySql.Data.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MySqlHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MySqlHelper.pdb

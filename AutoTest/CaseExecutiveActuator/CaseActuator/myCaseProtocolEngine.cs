@@ -716,7 +716,6 @@ namespace CaseExecutiveActuator
         }
     }
 
-    /*
     /// <summary>
     /// Mysql Device 
     /// </summary>
@@ -763,6 +762,13 @@ namespace CaseExecutiveActuator
                             if(!(int.TryParse(nowSqlNode.Attributes["row"].Value,out myRunContent.rowIndex) &&int.TryParse(nowSqlNode.Attributes["column"].Value,out myRunContent.columnIndex)))
                             {
                                 myRunContent.errorMessage = "Error :yourContentNode is error wirh [row] or [column] attribute";
+                            }
+                            else
+                            {
+                                if(myRunContent.rowIndex<0||myRunContent.columnIndex<0)
+                                {
+                                    myRunContent.errorMessage = "Error :yourContentNode is error wirh [row] or [column] attribute";
+                                }
                             }
                         }
                         myRunContent.sqlContent = CaseTool.getXmlParametContent(nowSqlNode);
@@ -849,51 +855,41 @@ namespace CaseExecutiveActuator
 
                 ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[activeMQ]Executive···", caseId));
 
-                #region Receive
-                if (nowExecutionContent.consumerMessageReceiveList.Count > 0)
+                string nowSqlCmd = nowExecutionContent.sqlContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                if (tempError != null)
                 {
-                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, "Receive your activeMQ messages");
+                    DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.sqlContent.getTargetContentData()));
+                    tempCaseOutContent.AppendLine("error with static data");
                 }
-                foreach (var tempConsumer in nowExecutionContent.consumerMessageReceiveList)
+                else
                 {
-                    if (tempConsumer.ConsumerName != null)
+                    if (nowExecutionContent.isPosition)
                     {
-                        if (tempConsumer.ConsumerType == "queue" || tempConsumer.ConsumerType == "topic")
+                        string sqlResult = mySqlDrive.ExecuteQuery(nowSqlCmd, nowExecutionContent.rowIndex, nowExecutionContent.columnIndex);
+                        if(sqlResult==null)
                         {
-                            List<KeyValuePair<string, string>> oneMessageReceive = activeMQ.ReadConsumerMessage(string.Format("{0}://{1}", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                            foreach (KeyValuePair<string, string> tempMessage in oneMessageReceive)
-                            {
-                                string tempNowReceviceData = string.Format("{0} Receive {1}", tempMessage.Key, tempMessage.Value);
-                                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempNowReceviceData);
-                                tempCaseOutContent.AppendLine(tempNowReceviceData);
-                            }
+                            tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
                         }
                         else
                         {
-                            DealExecutiveError(string.Format("{0}://{1} receive fail [not support this consumer type]", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
-                            tempCaseOutContent.AppendLine(string.Format("{0}://{1} receive fail ", tempConsumer.ConsumerType, tempConsumer.ConsumerName));
+                            tempCaseOutContent.AppendLine(sqlResult);
                         }
                     }
                     else
                     {
-                        List<KeyValuePair<string, string>> oneMessageReceive = activeMQ.ReadConsumerMessage();
-                        foreach (KeyValuePair<string, string> tempMessage in oneMessageReceive)
+                        System.Data.DataTable sqlResult = mySqlDrive.ExecuteQuery(nowSqlCmd);
+                        if (sqlResult == null)
                         {
-                            string tempNowReceviceData = string.Format("{0} Receive {1}", tempMessage.Key, tempMessage.Value);
-                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempNowReceviceData);
-                            tempCaseOutContent.AppendLine(tempNowReceviceData);
+                            tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
+                        }
+                        else
+                        {
+                            //tempCaseOutContent.AppendLine(sqlResult);
+                            string json = Newtonsoft.Json.JsonConvert.SerializeObject(sqlResult);
                         }
                     }
                 }
-                #endregion
-                if(nowExecutionContent.isPosition)
-                {
-                    string sqlResult= mySqlDrive.ExecuteQuery()
-                }
-                else
-                {
-
-                }
+                
 
 
                 myWatch.Stop();
@@ -921,7 +917,6 @@ namespace CaseExecutiveActuator
         }
     }
 
-     * */
 
     /// <summary>
     /// Vanelife_http Device 
@@ -1800,6 +1795,9 @@ namespace CaseExecutiveActuator
                                 case CaseProtocol.activeMQ:
                                     myCaseData.testContent = CaseProtocolExecutionForActiveMQ.GetRunContent(tempCaseContent);
                                     break;
+                                case CaseProtocol.mysql:
+                                    myCaseData.testContent = CaseProtocolExecutionForMysql.GetRunContent(tempCaseContent);
+                                    break;
                                 case CaseProtocol.vanelife_http:
                                     myCaseData.testContent = CaseProtocolExecutionForVanelife_http.GetRunContent(tempCaseContent);
                                     break;
@@ -1831,10 +1829,13 @@ namespace CaseExecutiveActuator
                                     myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                             }
-                            if (myCaseData.testContent.MyErrorMessage != null)  //将testContent错误移入MyRunCaseData，执行case时会检查MyRunCaseData中的错误
+                            if (myCaseData.testContent!=null)
                             {
-                                myCaseData.AddErrorMessage("Error :the Content not analyticaled Because:" + myCaseData.testContent.MyErrorMessage);
-                                return myCaseData;
+                                if (myCaseData.testContent.MyErrorMessage != null)  //将testContent错误移入MyRunCaseData，执行case时会检查MyRunCaseData中的错误
+                                {
+                                    myCaseData.AddErrorMessage("Error :the Content not analyticaled Because:" + myCaseData.testContent.MyErrorMessage);
+                                    //return myCaseData;
+                                }
                             }
                         }
                         else
