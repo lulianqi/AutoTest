@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaseActuator\CaseActionActuator.cs" />
+    <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForConsole.cs" />
     <Compile Include="CaseMefHelper\ExportMefAssembly .cs" />
     <Compile Include="CaseMefHelper\MyExtendProtocolDriver.cs" />
     <Compile Include="CaseMefHelper\MefPlugInDriver.cs" />

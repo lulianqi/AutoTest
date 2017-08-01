@@ -8,6 +8,7 @@ using MyCommonHelper;
 using MyActiveMQHelper;
 
 using CaseExecutiveActuator.ProtocolExecutive;
+using MySqlHelper;
 
 /*******************************************************************************
 * Copyright (c) 2015 lijie
@@ -22,10 +23,10 @@ using CaseExecutiveActuator.ProtocolExecutive;
 *******************************************************************************/
 
 
-namespace CaseExecutiveActuator
+namespace CaseExecutiveActuator.CaseActuator
 {
     using HttpMultipartDate = MyCommonHelper.NetHelper.MyWebTool.HttpMultipartDate;
-    using MySqlHelper;
+    
 
   
     public class BasicProtocolPars
@@ -884,13 +885,11 @@ namespace CaseExecutiveActuator
                         }
                         else
                         {
-                            //tempCaseOutContent.AppendLine(sqlResult);
-                            string json = Newtonsoft.Json.JsonConvert.SerializeObject(sqlResult);
+                            string json = Newtonsoft.Json.JsonConvert.SerializeObject(sqlResult, Newtonsoft.Json.Formatting.Indented);
+                            tempCaseOutContent.AppendLine(json);
                         }
                     }
                 }
-                
-
 
                 myWatch.Stop();
                 myResult.spanTime = myResult.requestTime = myWatch.ElapsedMilliseconds.ToString();

@@ -13,6 +13,7 @@ using MyCommonHelper;
 using System.Windows.Forms;
 using System.Drawing;
 using RemoteService.MyWindow;
+using CaseExecutiveActuator.CaseActuator;
 
 /*******************************************************************************
 * Copyright (c) 2015 lijie
