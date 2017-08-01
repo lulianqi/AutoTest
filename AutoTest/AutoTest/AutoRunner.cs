@@ -220,10 +220,10 @@ namespace AutoTest
         //加载配置文件
         public void loadIni()
         {
-            myReceiveData.vaneApp_key = myini.IniReadValue("vaneinterface", "app_key", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
-            myReceiveData.vaneApp_secret = myini.IniReadValue("vaneinterface", "app_secret", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
-            myReceiveData.vaneV = myini.IniReadValue("vaneinterface", "v", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
-            myReceiveData.vaneUrl = myini.IniReadValue("vaneinterface", "vaneUrl", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            //myReceiveData.vaneApp_key = myini.IniReadValue("vaneinterface", "app_key", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            //myReceiveData.vaneApp_secret = myini.IniReadValue("vaneinterface", "app_secret", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            //myReceiveData.vaneV = myini.IniReadValue("vaneinterface", "v", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            //myReceiveData.vaneUrl = myini.IniReadValue("vaneinterface", "vaneUrl", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
 
             tb_caseFilePath.Text = myini.IniReadValue("casepath", "defaultpath", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
 
@@ -542,11 +542,11 @@ namespace AutoTest
                                         {
                                             //tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ◎ " + tempCaseLoadInfo.content);
                                             string loadInfoContent = tempCell.CaseRunData.testContent.MyExecutionContent == null ? string.Format("> {0}", tempCell.CaseRunData.testContent.MyExecutionTarget) : string.Format("> {0}{1}{2}", tempCell.CaseRunData.testContent.MyExecutionTarget, MyConfiguration.CaseShowTargetAndContent, tempCell.CaseRunData.testContent.MyExecutionContent);
-                                            tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ◎ " + loadInfoContent);
+                                            tempChildTreeNode = new TreeNode(StringHelper.SameLenStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15) + " ◎ " + loadInfoContent);
                                         }
                                         else
                                         {
-                                            tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15));
+                                            tempChildTreeNode = new TreeNode(StringHelper.SameLenStringAdd("ID:" + tempCaseLoadInfo.id, tempCaseLoadInfo.remark, 15));
                                         }
 
                                         if (tempCaseLoadInfo.actions.Count > 0)
@@ -567,7 +567,7 @@ namespace AutoTest
                                     }
                                     else if (tempCaseLoadInfo.caseType == CaseType.Repeat)
                                     {
-                                        tempChildTreeNode = new TreeNode(myDataAnalysis.myStringAdd("Repeat:" + tempCaseLoadInfo.times, tempCaseLoadInfo.remark, 15));
+                                        tempChildTreeNode = new TreeNode(StringHelper.SameLenStringAdd("Repeat:" + tempCaseLoadInfo.times, tempCaseLoadInfo.remark, 15));
                                         setNodeImageIndex(tempChildTreeNode, 9);
                                         tempChildTreeNode.Tag = tempCell;
                                         tempCell.UiTag = tempChildTreeNode;

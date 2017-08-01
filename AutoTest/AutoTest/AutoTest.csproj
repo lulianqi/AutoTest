@@ -210,7 +210,6 @@
       <DependentUpon>MyResource.resx</DependentUpon>
     </Compile>
     <Compile Include="myTool\CaseRunner.cs" />
-    <Compile Include="myTool\myDataAnalysis.cs" />
     <Compile Include="myTool\myGlobalStaticData .cs" />
     <Compile Include="myTool\myResultOut.cs" />
     <Compile Include="myTool\myShareData.cs" />

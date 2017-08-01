@@ -34,10 +34,10 @@ namespace AutoTest.myDialogWindow
 
         private void EditCasebody_Load(object sender, EventArgs e)
         {
-            myOwner = (AutoRunner)this.Owner;
-            tb_sw_url.Text = myReceiveData.vaneUrl;
-            tb_sw_key.Text = myReceiveData.vaneApp_key;
-            bt_sw_secret.Text = myReceiveData.vaneApp_secret;
+            //myOwner = (AutoRunner)this.Owner;
+            //tb_sw_url.Text = myReceiveData.vaneUrl;
+            //tb_sw_key.Text = myReceiveData.vaneApp_key;
+            //bt_sw_secret.Text = myReceiveData.vaneApp_secret;
         }
 
         private void bt_sw_cancel_Click(object sender, EventArgs e)
@@ -47,13 +47,13 @@ namespace AutoTest.myDialogWindow
 
         private void lb_sw_ok_Click(object sender, EventArgs e)
         {
-            myReceiveData.vaneUrl = tb_sw_url.Text;
-            myReceiveData.vaneApp_key = tb_sw_key.Text;
-            myReceiveData.vaneApp_secret = bt_sw_secret.Text;
+            //myReceiveData.vaneUrl = tb_sw_url.Text;
+            //myReceiveData.vaneApp_key = tb_sw_key.Text;
+            //myReceiveData.vaneApp_secret = bt_sw_secret.Text;
 
-            myini.IniWriteValue("vaneinterface", "vaneUrl", myReceiveData.vaneUrl, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
-            myini.IniWriteValue("vaneinterface", "app_key", myReceiveData.vaneApp_key, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
-            myini.IniWriteValue("vaneinterface", "app_secret", myReceiveData.vaneApp_secret, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            //myini.IniWriteValue("vaneinterface", "vaneUrl", myReceiveData.vaneUrl, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            //myini.IniWriteValue("vaneinterface", "app_key", myReceiveData.vaneApp_key, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            //myini.IniWriteValue("vaneinterface", "app_secret", myReceiveData.vaneApp_secret, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
 
             this.Close();
         }

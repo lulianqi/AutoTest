@@ -56,7 +56,10 @@
     <Compile Include="CaseActuator\MyActionActuator.cs" />
     <Compile Include="CaseActuator\MyCaseDataTypeEngine.cs" />
     <Compile Include="CaseDate\CaseEnum.cs" />
+    <Compile Include="CaseDate\CaseExecutionContent.cs" />
     <Compile Include="CaseDate\ExecutionDeviceConnection.cs" />
+    <Compile Include="CaseDate\RunTimeDataSource.cs" />
+    <Compile Include="CaseDate\RunTimeStaticData.cs" />
     <Compile Include="CaseMefHelper\ExportMefAssembly .cs" />
     <Compile Include="CaseMefHelper\MyExtendProtocolDriver.cs" />
     <Compile Include="CaseMefHelper\MefPlugInDriver.cs" />

@@ -568,6 +568,32 @@ namespace MyCommonHelper
 
     public class StringHelper
     {
+        /// <summary>
+        /// Combination of string increase spaces
+        /// </summary>
+        /// <param name="strA">stringA</param>
+        /// <param name="strB">stringB</param>
+        /// <param name="num">spaces number </param>
+        /// <returns></returns>
+        public static string SameLenStringAdd(string strA, string strB, int num)
+        {
+            try
+            {
+                StringBuilder tempContent = new StringBuilder(strA);
+                while (strA.Length < num)
+                {
+                    tempContent.Append(" ");
+                    num--;
+                }
+                tempContent.Append(strB);
+                return tempContent.ToString();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
         public static string EncodeXml(string strHtml)
         {
             if (string.IsNullOrEmpty(strHtml))
