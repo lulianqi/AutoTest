@@ -1297,7 +1297,7 @@
         </Attribute>
       </Case>
       <Case id="1100050002" remark="sql查询">
-        <Content protocol="mySql" actuator="huala_mysql">
+        <Content protocol="mysql" actuator="huala_mysql">
           <SqlCmd row="1" column="1" isHaveParameters="true">select* from h_sso_log order by id desc limit 20</SqlCmd><!--必选项,且只能有一个，如果有多个仅识别第一个-->
         </Content>
         <Expect method="contain">/3</Expect>

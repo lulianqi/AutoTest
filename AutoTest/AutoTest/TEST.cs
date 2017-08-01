@@ -109,16 +109,7 @@ namespace AutoTest
         private void TEST_Load(object sender, EventArgs e)
         {
 
-            CaseExecutiveActuator.ActuatorStaticDataCollection xx = new CaseExecutiveActuator.ActuatorStaticDataCollection();
-            xx.AddStaticDataKey("11", null);
-            xx.AddStaticDataKey("12", null);
-            xx.AddStaticDataParameter("21", null);
-            xx.AddStaticDataParameter("22", null);
-            xx.AddStaticDataSouce("31", null);
-            xx.AddStaticDataSouce("32", null);
-            //xx.RemoveStaticData("12",false);
-            xx.RemoveStaticData(@"\d2", true);
-            return;
+
 
             //string filePath = @"C:\Users\administer\Desktop\asd\encode";
 

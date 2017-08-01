@@ -22,7 +22,7 @@ using System.Xml;
 *******************************************************************************/
 
 
-namespace CaseExecutiveActuator
+namespace CaseExecutiveActuator.CaseActuator
 {
     class RunCaseCount
     {

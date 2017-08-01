@@ -2,26 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using System.Windows.Forms;
 using System.Xml;
-
-/*******************************************************************************
-* Copyright (c) 2015 lijie
-* All rights reserved.
-* 
-* 文件名称: 
-* 内容摘要: mycllq@hotmail.com
-* 
-* 历史记录:
-* 日	  期:   201505016           创建人: 李杰 15158155511
-* 描    述: 创建
-*******************************************************************************/
 
 namespace CaseExecutiveActuator.Cell
 {
     //using CaseCell = TreeNode;//可让2类完全等价
-    public class CaseCell 
+    public class CaseCell
     {
         List<CaseCell> childCellList;
 
@@ -32,7 +18,7 @@ namespace CaseExecutiveActuator.Cell
 
         private CaseCell nextCell;
         private CaseCell parentCell;
-        
+
 
         public CaseCell()
         {
@@ -45,7 +31,7 @@ namespace CaseExecutiveActuator.Cell
         /// <param name="yourCaseType">CaseType</param>
         /// <param name="yourXmlNode">CaseCell脚本原始信息</param>
         /// <param name="yourCaseRunData">CaseCell脚本解析后的信息</param>
-        public CaseCell(CaseType yourCaseType, XmlNode yourXmlNode ,MyRunCaseData<ICaseExecutionContent> yourCaseRunData)
+        public CaseCell(CaseType yourCaseType, XmlNode yourXmlNode, MyRunCaseData<ICaseExecutionContent> yourCaseRunData)
         {
             caseType = yourCaseType;
             caseXmlNode = yourXmlNode;
@@ -182,9 +168,9 @@ namespace CaseExecutiveActuator.Cell
             }
             yourCaseCell.SetParentCell(this);
             childCellList.Add(yourCaseCell);
-            if(childCellList.Count>1)
+            if (childCellList.Count > 1)
             {
-                childCellList[childCellList.Count-2].SetNextCell(yourCaseCell);
+                childCellList[childCellList.Count - 2].SetNextCell(yourCaseCell);
             }
         }
 
@@ -194,42 +180,4 @@ namespace CaseExecutiveActuator.Cell
         //实现一个NextNode返回层中的下一个CaseCell
     }
 
-    public class ProjctCollection
-    {
-        List<CaseCell> myProjectChilds;
-
-        public List<CaseCell> ProjectCells
-        {
-            get { return myProjectChilds; }
-        }
-
-        public void Add(CaseCell yourCaseCell)
-        {
-            if (myProjectChilds == null)
-            {
-                myProjectChilds = new List<CaseCell>();
-            }
-            myProjectChilds.Add(yourCaseCell);
-        }
-
-        public CaseCell this[int indexP, int indexC]
-        {
-            get
-            {
-                if(myProjectChilds.Count>indexP)
-                {
-                    if (myProjectChilds[indexP].IsHasChild)
-                    {
-                        if (myProjectChilds[indexP].ChildCells.Count > indexC)
-                        {
-                            return myProjectChilds[indexP].ChildCells[indexC];
-                        }
-                    }
-                }
-                return null;
-            }
-        }
-
-        
-    }
 }
