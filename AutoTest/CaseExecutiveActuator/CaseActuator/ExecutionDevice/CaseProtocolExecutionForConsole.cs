@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
+using MyCommonHelper;
+using CaseExecutiveActuator.Tool;
+
 /*******************************************************************************
 * Copyright (c) 2015 lijie
 * All rights reserved.
@@ -54,7 +57,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     XmlNode tempShowDataNode = yourContentNode["Show"];
                     if (tempShowDataNode != null)
                     {
-                        myRunContent.showContent = CaseTool.getXmlParametContent(tempShowDataNode);
+                        myRunContent.showContent = CaseTool.GetXmlParametContent(tempShowDataNode);
                     }
                     else
                     {
@@ -75,7 +78,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                                 {
                                     if (taskNode.Attributes["name"] != null)
                                     {
-                                        myRunContent.staticDataSetList.Add(new KeyValuePair<string, caseParameterizationContent>(taskNode.Attributes["name"].Value, CaseTool.getXmlParametContent(taskNode)));
+                                        myRunContent.staticDataSetList.Add(new KeyValuePair<string, caseParameterizationContent>(taskNode.Attributes["name"].Value, CaseTool.GetXmlParametContent(taskNode)));
                                     }
                                     else
                                     {
@@ -90,7 +93,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                                         CaseStaticDataType nowType;
                                         if (Enum.TryParse<CaseStaticDataType>("caseStaticData_" + taskNode.Attributes["type"].Value, out nowType))
                                         {
-                                            myRunContent.staticDataAddList.Add(new MyConsoleExecutionContent.StaticDataAdd(nowType, taskNode.Attributes["name"].Value, CaseTool.getXmlParametContent(taskNode)));
+                                            myRunContent.staticDataAddList.Add(new MyConsoleExecutionContent.StaticDataAdd(nowType, taskNode.Attributes["name"].Value, CaseTool.GetXmlParametContent(taskNode)));
                                         }
                                         else
                                         {
@@ -114,7 +117,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                                             isRegex = true;
                                         }
                                     }
-                                    myRunContent.staticDataDelList.Add(new KeyValuePair<bool, caseParameterizationContent>(isRegex, CaseTool.getXmlParametContent(taskNode)));
+                                    myRunContent.staticDataDelList.Add(new KeyValuePair<bool, caseParameterizationContent>(isRegex, CaseTool.GetXmlParametContent(taskNode)));
                                 }
                                 else
                                 {
@@ -220,7 +223,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 myWatch.Start();
 
                 #region Show
-                myResult.backContent = nowExecutionContent.showContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                myResult.backContent = nowExecutionContent.showContent.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 DealNowError(tempError);
                 ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】Executive···\r\n【Console】\r\n{1}", caseId, myResult.backContent));
                 #endregion
@@ -237,7 +240,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                                 string tempRunTimeDataKey;
                                 if (addInfo.StaticDataType == CaseStaticDataType.caseStaticData_vaule)
                                 {
-                                    tempRunTimeDataKey = addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                                    tempRunTimeDataKey = addInfo.ConfigureData.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                                 }
                                 else
                                 {
@@ -255,7 +258,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                             case CaseStaticDataClass.caseStaticDataParameter:
                                 IRunTimeStaticData tempRunTimeStaticData;
                                 string tempTypeError;
-                                if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[addInfo.StaticDataType](out tempRunTimeStaticData, out tempTypeError, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
+                                if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[addInfo.StaticDataType](out tempRunTimeStaticData, out tempTypeError, addInfo.ConfigureData.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
                                 {
                                     if (!DealNowResultError(tempError, "Add", addInfo.Name))
                                     {
@@ -271,7 +274,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                             //caseStaticDataSource
                             case CaseStaticDataClass.caseStaticDataSource:
                                 IRunTimeDataSource tempRunTimeDataSource;
-                                if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[addInfo.StaticDataType](out tempRunTimeDataSource, out tempTypeError, addInfo.ConfigureData.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
+                                if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[addInfo.StaticDataType](out tempRunTimeDataSource, out tempTypeError, addInfo.ConfigureData.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
                                 {
                                     if (!DealNowResultError(tempError, "Add", addInfo.Name))
                                     {
@@ -297,7 +300,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 {
                     foreach (var addInfo in nowExecutionContent.staticDataSetList)
                     {
-                        string tempSetVauleStr = addInfo.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                        string tempSetVauleStr = addInfo.Value.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                         if (!DealNowResultError(tempError, "Set", addInfo.Key))
                         {
                             if (yourActuatorStaticDataCollection.SetStaticData(addInfo.Key, tempSetVauleStr))
@@ -318,8 +321,8 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 {
                     foreach (var delInfo in nowExecutionContent.staticDataDelList)
                     {
-                        string tempDelVauleStr = delInfo.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
-                        if (!DealNowResultError(tempError, "Del", delInfo.Value.getTargetContentData()))
+                        string tempDelVauleStr = delInfo.Value.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                        if (!DealNowResultError(tempError, "Del", delInfo.Value.GetTargetContentData()))
                         {
                             if (yourActuatorStaticDataCollection.RemoveStaticData(tempDelVauleStr, delInfo.Key))
                             {
@@ -327,7 +330,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                             }
                             else
                             {
-                                DealNowResultError("[yourActuatorStaticDataCollection.RemoveStaticData] error", "Del", delInfo.Value.getTargetContentData());
+                                DealNowResultError("[yourActuatorStaticDataCollection.RemoveStaticData] error", "Del", delInfo.Value.GetTargetContentData());
 
                             }
                         }

@@ -158,3 +158,6 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MySqlHelper.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MySql.Data.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MySqlHelper.pdb
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\Tamir.SharpSSH.dll
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\DiffieHellman.dll
+F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\Org.Mentalis.Security.dll

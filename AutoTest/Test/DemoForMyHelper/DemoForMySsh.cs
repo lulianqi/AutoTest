@@ -17,7 +17,8 @@ namespace DemoForMyHelper
     class DemoForMySsh
     {
         SshTransferProtocolBase sshCp = new Scp("192.168.200.153", "root", "B2CCentOs7!");
-        SshShell shell = new SshShell("192.168.200.153", "root", "B2CCentOs7!");
+        SshShell shell = new SshShell("192.198.200.153", "root", "B2CCentOs7!");
+        SshExec exec = new SshExec("192.168.200.153", "root", "B2CCentOs7!");
         public DemoForMySsh ()
         {
             sshCp.OnTransferStart += new FileTransferEvent((src, dst, transferredBytes, totalBytes, message) => { Console.WriteLine(string.Format("Put file {0} to {1}   state：{2}", src, dst, message)); });
@@ -55,7 +56,7 @@ namespace DemoForMyHelper
                         tempPath = tempPath.Remove(0, tempPath.IndexOf(@"/"));
                         tempPath = tempPath.Remove(tempPath.LastIndexOf(@"/"));
                         Console.WriteLine("创建文件夹" + tempPath);
-                        if (MySsh.SshFileMkFullDir(sshCp, tempPath))
+                        if (MySshTool.SshFileMkFullDir(sshCp, tempPath))
                         {
                             try
                             {
@@ -80,7 +81,7 @@ namespace DemoForMyHelper
 
         public void RunFileMv()
         {
-            if (MySsh.SshMvAllFileAsyn("192.168.200.153", "root", "B2CCentOs7!", @"F:\file\Code\SharpSSH-1.1.1.13.src", @"/usr/lijie", new Action<string>((str) => Console.WriteLine(str)), new Action<string>((str) => Console.WriteLine("********************************"+str))))
+            if (MySshTool.SshMvAllFileAsyn("192.168.200.153", "root", "B2CCentOs7!", @"F:\file\Code\SharpSSH-1.1.1.13.src", @"/usr/lijie", new Action<string>((str) => Console.WriteLine(str)), new Action<string>((str) => Console.WriteLine("********************************"+str))))
             {
                 Console.WriteLine("______________________________________");
                 Console.WriteLine("SshMvAllFileAsyn TRUE");
@@ -90,7 +91,14 @@ namespace DemoForMyHelper
 
         public void RunShellTest()
         {
-            shell.Connect();
+            try
+            {
+                shell.Connect();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             shell.ExpectPattern = "#";
             Console.WriteLine(shell.Expect());
             shell.WriteLine(@"ls");
@@ -101,7 +109,31 @@ namespace DemoForMyHelper
             Console.WriteLine(shell.Expect());
             shell.WriteLine(@"ll");
             Console.WriteLine(shell.Expect());
+            shell.WriteLine(@"topp");
+            Console.WriteLine(shell.Expect());
+
             shell.Close();
+
+
+            Console.WriteLine("----------------------------------------------");
+
+            exec.Connect();
+            string strRrr = "";
+            string strOut = "";
+            exec.RunCommand("ls",ref strOut,ref strRrr);
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine(strOut);
+            Console.WriteLine(strRrr);
+
+            exec.RunCommand(@"cd /usr/local", ref strOut, ref strRrr);
+            Console.WriteLine(strOut);
+            Console.WriteLine(strRrr);
+
+
+            Console.WriteLine(exec.RunCommand(@"ll"));
+            Console.WriteLine(exec.RunCommand(@"cd /usr/local"));
+
+            exec.Close();
         }
     }
 }

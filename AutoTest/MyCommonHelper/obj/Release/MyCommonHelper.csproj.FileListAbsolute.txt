@@ -1,0 +1,4 @@
+F:\file\Code\AutoTest\AutoTest\MyCommonHelper\bin\Release\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\MyCommonHelper\bin\Release\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MyCommonHelper\obj\Release\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\MyCommonHelper\obj\Release\MyCommonHelper.pdb

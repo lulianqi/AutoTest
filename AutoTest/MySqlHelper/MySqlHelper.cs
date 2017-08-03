@@ -710,8 +710,14 @@ namespace MySqlHelper
             {
                 myConnection.Close();
                 myConnection.Dispose();
-                myCommand.Dispose();
-                myAdapter.Dispose();
+                if (myCommand!=null)
+                {
+                    myCommand.Dispose();
+                }
+                if(myAdapter!=null)
+                {
+                    myAdapter.Dispose();
+                }
                 if (myTransaction != null)
                 {
                     myTransaction.Dispose(); //myTransaction not use here it is null

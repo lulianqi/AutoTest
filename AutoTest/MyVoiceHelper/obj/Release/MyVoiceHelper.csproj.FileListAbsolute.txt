@@ -1,0 +1,5 @@
+F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\bin\Release\MyVoiceHelper.dll
+F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\bin\Release\MyVoiceHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\bin\Release\SpeechLib.dll
+F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\obj\Release\MyVoiceHelper.dll
+F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\obj\Release\MyVoiceHelper.pdb

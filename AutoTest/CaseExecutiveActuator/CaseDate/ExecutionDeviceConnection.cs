@@ -149,6 +149,37 @@ namespace CaseExecutiveActuator
             }
         }
     }
+
+    /// <summary>
+    /// ssh 【IConnectExecutiveData】
+    /// </summary>
+    public class myConnectForSsh : IConnectExecutiveData
+    {
+        public CaseProtocol caseProtocol;
+
+        public string host;
+        public string user;
+        public string password;
+        public string expectPattern;
+
+        public myConnectForSsh(CaseProtocol yourCaseProtocol, string yourHost, string yourUser, string yourPassword, string yourExpectPattern)
+        {
+            caseProtocol = yourCaseProtocol;
+            host = yourHost;
+            user = yourUser;
+            password = yourPassword;
+            expectPattern = yourExpectPattern;
+        }
+        public CaseProtocol MyCaseProtocol
+        {
+            get
+            {
+                return caseProtocol;
+            }
+        }
+    }
+
+
     #endregion
 
 }

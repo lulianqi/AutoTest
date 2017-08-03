@@ -9,6 +9,7 @@ using DevComponents.DotNetBar;
 using AutoTest.myTool;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
+using System.Xml;
 
 /*******************************************************************************
 * Copyright (c) 2013,浙江风向标
@@ -38,7 +39,35 @@ namespace AutoTest.myDialogWindow
         private void EditCasebody_Load(object sender, EventArgs e)
         {
             myOwner = (AutoRunner)this.Owner;
-            rtb_dw2_CaseBody.Text = ((CaseCell)myTreeNode.Tag).CaseXmlNode.InnerXml;
+            XmlNode tempNode = ((CaseCell)myTreeNode.Tag).CaseXmlNode["Content"];
+            string tempStr;
+            if(tempNode!=null)
+            {
+                 MyCommonHelper.MyCommonTool.FormatXmlString(tempNode.OuterXml,out tempStr);
+                 rtb_CaseContent.AppendText(tempStr);
+            }
+            tempNode = ((CaseCell)myTreeNode.Tag).CaseXmlNode["Expect"];
+            if (tempNode != null)
+            {
+                MyCommonHelper.MyCommonTool.FormatXmlString(tempNode.OuterXml, out tempStr);
+                rtb_CaseContent.AppendText("\n");
+                rtb_CaseContent.AppendText(tempStr);
+            }
+            tempNode = ((CaseCell)myTreeNode.Tag).CaseXmlNode["Action"];
+            if (tempNode != null)
+            {
+                MyCommonHelper.MyCommonTool.FormatXmlString(tempNode.OuterXml, out tempStr);
+                rtb_CaseContent.AppendText("\n");
+                rtb_CaseContent.AppendText(tempStr);
+            }
+            tempNode = ((CaseCell)myTreeNode.Tag).CaseXmlNode["Attribute"];
+            if (tempNode != null)
+            {
+                MyCommonHelper.MyCommonTool.FormatXmlString(tempNode.OuterXml, out tempStr);
+                rtb_CaseContent.AppendText("\n");
+                rtb_CaseContent.AppendText(tempStr);
+            }
+            
             tb_dw2_Id.Text = ((CaseCell)myTreeNode.Tag).CaseRunData.id.ToString();
             tb_dw2_Target.Text = ((CaseCell)myTreeNode.Tag).CaseRunData.contentProtocol.ToString();
             return;
@@ -48,16 +77,18 @@ namespace AutoTest.myDialogWindow
         {
             try
             {
-                ((CaseCell)myTreeNode.Tag).CaseXmlNode.InnerXml = rtb_dw2_CaseBody.Text;
+                //((CaseCell)myTreeNode.Tag).CaseXmlNode.InnerXml = rtb_CaseContent.Text;
                 ((CaseCell)myTreeNode.Tag).CaseXmlNode.Attributes[0].Value = tb_dw2_Id.Text;
                 ((CaseCell)myTreeNode.Tag).CaseXmlNode.Attributes[1].Value = tb_dw2_Target.Text;
+
+                ((CaseCell)myTreeNode.Tag).CaseXmlNode.InnerXml = rtb_CaseContent.Text;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "STOP");
                 return;
             }
-            //myOwner.myCase.mySave();
+            myOwner.myCase.mySave();
             this.Close();
         }
 

@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
+using MyCommonHelper;
+using CaseExecutiveActuator.Tool;
+
 /*******************************************************************************
 * Copyright (c) 2015 lijie
 * All rights reserved.
@@ -13,7 +16,7 @@ using System.Xml;
 * 内容摘要: mycllq@hotmail.com
 * 
 * 历史记录:
-* 日	  期:   201505016           创建人: 李杰 15158155511
+* 日	  期:   201708001           创建人: 李杰 15158155511
 * 描    述: 创建
 *
 * 历史记录:
@@ -78,7 +81,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                                 }
                             }
                         }
-                        myRunContent.sqlContent = CaseTool.getXmlParametContent(nowSqlNode);
+                        myRunContent.sqlContent = CaseTool.GetXmlParametContent(nowSqlNode);
 
                     }
                     else
@@ -131,6 +134,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
 
+            //向UI推送执行过程信息
             Action<string, CaseActuatorOutPutType, string> ExecutiveDelegate = (innerSender, outType, yourContent) =>
             {
                 if (yourExecutiveDelegate != null)
@@ -139,6 +143,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 }
             };
 
+            //处理执行错误（执行器无法执行的错误）
             Action<string> DealExecutiveError = (errerData) =>
             {
                 if (errerData != null)
@@ -160,12 +165,12 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
                 myWatch.Start();
 
-                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[activeMQ]Executive···", caseId));
+                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[mysql]Executive···", caseId));
 
-                string nowSqlCmd = nowExecutionContent.sqlContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                string nowSqlCmd = nowExecutionContent.sqlContent.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 if (tempError != null)
                 {
-                    DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.sqlContent.getTargetContentData()));
+                    DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.sqlContent.GetTargetContentData()));
                     tempCaseOutContent.AppendLine("error with static data");
                 }
                 else
@@ -176,10 +181,12 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                         if (sqlResult == null)
                         {
                             tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
+                            DealExecutiveError(mySqlDrive.NowError);
                         }
                         else
                         {
                             tempCaseOutContent.AppendLine(sqlResult);
+                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, sqlResult);
                         }
                     }
                     else
@@ -188,10 +195,12 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                         if (sqlResult == null)
                         {
                             tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
+                            DealExecutiveError(mySqlDrive.NowError);
                         }
                         else
                         {
                             string json = Newtonsoft.Json.JsonConvert.SerializeObject(sqlResult, Newtonsoft.Json.Formatting.Indented);
+                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, json);
                             tempCaseOutContent.AppendLine(json);
                         }
                     }

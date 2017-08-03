@@ -1,4 +1,5 @@
 ﻿using CaseExecutiveActuator.ProtocolExecutive;
+using CaseExecutiveActuator.Tool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +65,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                         {
                             myRunContent.httpMethod = "GET";
                         }
-                        myRunContent.httpUri = CaseTool.getXmlParametContent(tempUriDataNode);
+                        myRunContent.httpUri = CaseTool.GetXmlParametContent(tempUriDataNode);
 
                     }
                     else
@@ -83,7 +84,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                             {
                                 if (headNode.Attributes["name"] != null)
                                 {
-                                    myRunContent.httpHeads.Add(new KeyValuePair<string, caseParameterizationContent>(headNode.Attributes["name"].Value, CaseTool.getXmlParametContent(headNode)));
+                                    myRunContent.httpHeads.Add(new KeyValuePair<string, caseParameterizationContent>(headNode.Attributes["name"].Value, CaseTool.GetXmlParametContent(headNode)));
                                 }
                                 else
                                 {
@@ -97,7 +98,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     XmlNode tempHttpBodyDataNode = yourContentNode["Body"];
                     if (tempHttpHeadsDataNode != null)
                     {
-                        myRunContent.httpBody = CaseTool.getXmlParametContent(tempHttpBodyDataNode);
+                        myRunContent.httpBody = CaseTool.GetXmlParametContent(tempHttpBodyDataNode);
                     }
                     //AisleConfig
                     if (yourContentNode["AisleConfig"] != null)
@@ -127,8 +128,8 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                                 {
                                     continue;
                                 }
-                                hmp.name = CaseTool.getXmlAttributeVaule(multipartNode, "name", null);
-                                hmp.fileName = CaseTool.getXmlAttributeVaule(multipartNode, "filename", null);
+                                hmp.name = CaseTool.GetXmlAttributeVauleEx(multipartNode, "name", null);
+                                hmp.fileName = CaseTool.GetXmlAttributeVauleEx(multipartNode, "filename", null);
                                 myRunContent.myMultipartList.Add(hmp);
                             }
                         }
@@ -199,21 +200,21 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 string httpBody = null;
                 List<KeyValuePair<string, string>> httpHeads = null;
 
-                httpUri = nowExecutionContent.httpUri.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                httpUri = nowExecutionContent.httpUri.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 if (httpUri.StartsWith("@"))
                 {
                     httpUri = myExecutionDeviceInfo.default_url + httpUri.Remove(0, 1);
                 }
                 if (nowExecutionContent.httpBody.IsFilled())
                 {
-                    httpBody = nowExecutionContent.httpBody.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                    httpBody = nowExecutionContent.httpBody.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 }
                 if (nowExecutionContent.httpHeads.Count > 0)
                 {
                     httpHeads = new List<KeyValuePair<string, string>>();
                     foreach (var tempHead in nowExecutionContent.httpHeads)
                     {
-                        httpHeads.Add(new KeyValuePair<string, string>(tempHead.Key, tempHead.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
+                        httpHeads.Add(new KeyValuePair<string, string>(tempHead.Key, tempHead.Value.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)));
                     }
                 }
 
@@ -245,7 +246,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 }
                 else if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
+                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
                 }
                 else
                 {

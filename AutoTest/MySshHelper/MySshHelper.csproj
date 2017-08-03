@@ -43,7 +43,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MySshHelper.cs" />
+    <Compile Include="MySsh.cs" />
+    <Compile Include="MySshTool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

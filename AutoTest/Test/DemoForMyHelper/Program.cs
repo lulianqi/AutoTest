@@ -10,8 +10,8 @@ namespace DemoForMyHelper
         static void Main(string[] args)
         {
             //new DemoForMySvn().Run();
-            //new DemoForMySsh().RunShellTest();
-            new DemoForMySql().RunTest();
+            new DemoForMySsh().RunShellTest();
+            //new DemoForMySql().RunTest();
             //new DemoForMyVoice().Run();
             //DemoForActionMQ.RunTest();
             Console.WriteLine("end of demo");

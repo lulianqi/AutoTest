@@ -1,6 +1,7 @@
 ﻿using CaseExecutiveActuator.CaseActuator;
 using CaseExecutiveActuator.CaseActuator.ExecutionDevice;
 using CaseExecutiveActuator.Cell;
+using CaseExecutiveActuator.Tool;
 using MyCommonHelper;
 using MyVoiceHelper;
 using System;
@@ -851,20 +852,24 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 tempTopicList = null;
                                                             } 
 	                                                        #endregion
-                                                            myConnectForActiveMQ ConnectInfo_activeMQ = new myConnectForActiveMQ(tempActuatorProtocol, CaseTool.getXmlInnerVauleEx(tempNodeChild, "brokerUri"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "clientId"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "factoryUserName"), CaseTool.getXmlInnerVauleEx(tempNodeChild, "factoryPassword"),tempQueueList,tempTopicList);
+                                                            myConnectForActiveMQ ConnectInfo_activeMQ = new myConnectForActiveMQ(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "brokerUri"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "clientId"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "factoryUserName"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "factoryPassword"),tempQueueList,tempTopicList);
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_activeMQ);
                                                             break;
                                                         case CaseProtocol.vanelife_http:
-                                                            myConnectForVanelife_http ConnectInfo_vanelifeHttp = new myConnectForVanelife_http(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "dev_key"), CaseTool.getXmlInnerVaule(tempNodeChild, "dev_secret"), CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
+                                                            myConnectForVanelife_http ConnectInfo_vanelifeHttp = new myConnectForVanelife_http(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "dev_key"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "dev_secret"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "default_url"));
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_vanelifeHttp);
                                                             break;
                                                         case CaseProtocol.http:
-                                                            myConnectForHttp ConnectInfo_http = new myConnectForHttp(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "default_url"));
+                                                            myConnectForHttp ConnectInfo_http = new myConnectForHttp(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "default_url"));
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_http);
                                                             break;
                                                         case CaseProtocol.mysql:
-                                                            myConnectForMysql ConnectInfo_mysql = new myConnectForMysql(tempActuatorProtocol, CaseTool.getXmlInnerVaule(tempNodeChild, "connect_str"));
+                                                            myConnectForMysql ConnectInfo_mysql = new myConnectForMysql(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "connect_str"));
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_mysql);
+                                                            break;
+                                                        case CaseProtocol.ssh:
+                                                            myConnectForSsh ConnectInfo_ssh = new myConnectForSsh(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "host"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "user"),CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "password"), CaseTool.GetXmlInnerVaule(tempNodeChild, "expect_pattern"));
+                                                            AddExecutionDevice(tempActuatorName, ConnectInfo_ssh);
                                                             break;
                                                         default:
                                                             SetNowActionError(string.Format("find nonsupport Protocol in ScriptRunTime  with {0} ", tempActuatorName));
@@ -1019,9 +1024,10 @@ namespace CaseExecutiveActuator.CaseActuator
             SetNowExecutiveData("CaseExecutionDevice connecting ......");
             foreach (KeyValuePair<string, ICaseExecutionDevice> tempKvp in myExecutionDeviceList)
             {
+                SetNowExecutiveData(string.Format("【RunTimeActuator】:{0} connecting······", tempKvp.Key));
                 if (tempKvp.Value.ExecutionDeviceConnect())
                 {
-                    SetNowExecutiveData(string.Format("【RunTimeActuator】:{0} 连接成功", tempKvp.Key));
+                    SetNowExecutiveData(string.Format("【RunTimeActuator】:{0} connect scusess", tempKvp.Key));
                 }
                 else
                 {
@@ -1273,13 +1279,13 @@ namespace CaseExecutiveActuator.CaseActuator
                 MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
             }
             yourExecutionResult.expectMethod = yourRunData.caseExpectInfo.myExpectType;
-            yourExecutionResult.expectContent = yourRunData.caseExpectInfo.myExpectContent.getTargetContentData(runActuatorStaticDataCollection, yourExecutionResult.staticDataResultCollection, out tempError);
+            yourExecutionResult.expectContent = yourRunData.caseExpectInfo.myExpectContent.GetTargetContentData(runActuatorStaticDataCollection, yourExecutionResult.staticDataResultCollection, out tempError);
             if (tempError != null)
             {
                 MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                 yourExecutionResult.additionalError = yourExecutionResult.additionalError.MyAddValue(tempError);
             }
-            if (CaseTool.CheckBackData(yourExecutionResult.backContent, yourExecutionResult.expectContent, yourRunData.caseExpectInfo.myExpectType))
+            if (MyAssert.CheckBackData(yourExecutionResult.backContent, yourExecutionResult.expectContent, yourRunData.caseExpectInfo.myExpectType))
             {
                 yourExecutionResult.result = CaseResult.Pass;
                 MyActionActuator.SetCaseNodePass(nowExecutiveNode);
@@ -1299,15 +1305,15 @@ namespace CaseExecutiveActuator.CaseActuator
                     switch (tempParameterSave.parameterFunction)
                     {
                         case PickOutFunction.pick_json:
-                            tempPickVaule = CaseTool.PickJsonParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
+                            tempPickVaule = MyAssert.PickJsonParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
                             break;
                         case PickOutFunction.pick_str:
                             string tempFindVaule;
                             int tempLen;
-                            CaseTool.GetStrPickData(tempParameterSave.parameterFindVaule,out tempFindVaule,out tempLen);
+                            MyAssert.GetStrPickData(tempParameterSave.parameterFindVaule, out tempFindVaule, out tempLen);
                             if (tempFindVaule!=null)
                             {
-                                tempPickVaule = CaseTool.PickStrParameter(tempFindVaule, tempLen , yourExecutionResult.backContent);
+                                tempPickVaule = MyAssert.PickStrParameter(tempFindVaule, tempLen, yourExecutionResult.backContent);
                             }
                             else
                             {
@@ -1319,7 +1325,7 @@ namespace CaseExecutiveActuator.CaseActuator
                             
                             break;
                         case PickOutFunction.pick_xml:
-                            tempPickVaule = CaseTool.PickXmlParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
+                            tempPickVaule = MyAssert.PickXmlParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
                             break;
                         default:
                             tempError = string.Format("【ID:{0}】 ParameterSave 暂不支持该数据提取方式", yourRunData.id);
@@ -1347,6 +1353,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 {
                     switch (yourRunData.actions[yourExecutionResult.result].caseAction)
                     {
+                        #region action_alarm
                         case CaseAction.action_alarm:
                             if (yourRunData.actions[yourExecutionResult.result].addInfo != null)
                             {
@@ -1357,15 +1364,21 @@ namespace CaseExecutiveActuator.CaseActuator
                             {
                                 VoiceService.Beep();
                             }
-                            break;
+                            break; 
+                        #endregion
+
+                        #region action_continue
                         case CaseAction.action_continue:
                             //do nothing
-                            break;
+                            break; 
+                        #endregion
+
+                        #region action_goto
                         case CaseAction.action_goto:
                             if (nowAdditionalInfo != null)
                             {
                                 //定项不执行goto
-                                if(nowAdditionalInfo.IsTryCase)
+                                if (nowAdditionalInfo.IsTryCase)
                                 {
                                     break;
                                 }
@@ -1383,7 +1396,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                 int tempProjectID;
                                 if (CaseTool.getTargetCaseID(yourRunData.actions[yourExecutionResult.result].addInfo, out tempProjectID, out tempCaseID))
                                 {
-                                    if (caseRunTime.gotoMyCase(tempProjectID, tempCaseID, runTimeCaseDictionary ))
+                                    if (caseRunTime.gotoMyCase(tempProjectID, tempCaseID, runTimeCaseDictionary))
                                     {
                                         SetNowExecutiveData("【action_goto】");
                                         yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(string.Format("【action_goto】触发，已经跳转到Project：{0}  Case：{1}", tempProjectID, tempCaseID));
@@ -1403,7 +1416,10 @@ namespace CaseExecutiveActuator.CaseActuator
                                     MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
                                 }
                             }
-                            break;
+                            break; 
+                        #endregion
+
+                        #region action_retry
                         case CaseAction.action_retry:
                             if (nowAdditionalInfo != null)
                             {
@@ -1436,7 +1452,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                         {
                                             nowAdditionalInfo.TryTimes--;
                                             yourExecutionResult.additionalRemark += string.Format("retry: {0}/{1}", tempTryTimes, tempTryTimes - nowAdditionalInfo.TryTimes);
-                                            if(  nowAdditionalInfo.TryTimes > 0)
+                                            if (nowAdditionalInfo.TryTimes > 0)
                                             {
                                                 nowAdditionalInfo.IsReTry = true;
                                             }
@@ -1464,10 +1480,15 @@ namespace CaseExecutiveActuator.CaseActuator
                                     nowAdditionalInfo.IsReTry = true;
                                 }
                             }
-                            break;
+                            break; 
+                        #endregion
+
+                        #region action_stop
                         case CaseAction.action_stop:
                             PauseCaseScript();
-                            break;
+                            break; 
+                        #endregion
+
                         case CaseAction.action_unknow:
                             tempError = string.Format("【ID:{0}】 CaseAction 未能解析", yourRunData.id);
                             yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
@@ -1608,6 +1629,9 @@ namespace CaseExecutiveActuator.CaseActuator
                     break;
                 case CaseProtocol.mysql:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForMysql((myConnectForMysql)yourDeviceConnectInfo));
+                    break;
+                case CaseProtocol.ssh:
+                    myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForSsh((myConnectForSsh)yourDeviceConnectInfo));
                     break;
                 case CaseProtocol.vanelife_http:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForVanelife_http((myConnectForVanelife_http)yourDeviceConnectInfo));

@@ -1,4 +1,5 @@
 ﻿using CaseExecutiveActuator.CaseActuator;
+using CaseExecutiveActuator.Tool;
 using MyCommonHelper;
 using System;
 using System.Collections.Generic;
@@ -71,7 +72,7 @@ namespace CaseExecutiveActuator
         /// <param name="yourDataResultCollection">返回对所有staticData数据运算后的结果列表</param>
         /// <param name="errorMessage">错误消息（如果没有错误则为null）(在获取参数化数据产生错误后因对当前case设置警示)</param>
         /// <returns>运算结果</returns>
-        public string getTargetContentData(ActuatorStaticDataCollection yourActuatorStaticDataCollection, NameValueCollection yourDataResultCollection, out string errorMessage)
+        public string GetTargetContentData(ActuatorStaticDataCollection yourActuatorStaticDataCollection, NameValueCollection yourDataResultCollection, out string errorMessage)
         {
             string myTargetContentData = contentData;
             errorMessage = null;
@@ -139,7 +140,7 @@ namespace CaseExecutiveActuator
         /// 获取原始数据，掉用此法的该版本的重载将不会会改变涉及到的staticData数据的游标，也不会对其进行运算
         /// </summary>
         /// <returns>原始数据数据</returns>
-        public string getTargetContentData()
+        public string GetTargetContentData()
         {
             return contentData;
         }

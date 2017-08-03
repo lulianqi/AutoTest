@@ -1,0 +1,7 @@
+F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\bin\Release\MyActiveMQHelper.dll
+F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\bin\Release\MyActiveMQHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\bin\Release\Apache.NMS.ActiveMQ.dll
+F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\bin\Release\Apache.NMS.dll
+F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\obj\Release\MyActiveMQHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\obj\Release\MyActiveMQHelper.dll
+F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\obj\Release\MyActiveMQHelper.pdb

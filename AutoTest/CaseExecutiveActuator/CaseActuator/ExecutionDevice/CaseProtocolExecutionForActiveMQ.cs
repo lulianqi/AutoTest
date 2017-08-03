@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
+using MyCommonHelper;
+using CaseExecutiveActuator.Tool;
+
 /*******************************************************************************
 * Copyright (c) 2015 lijie
 * All rights reserved.
@@ -100,7 +103,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                         if (!string.IsNullOrEmpty(tempOneMessageSendRaw.Value[1]) && tempOneMessageSendRaw.Value[2] != null && tempOneMessageSendRaw.Value[0] != "")
                         {
                             MyActiveMQExecutionContent.ProducerData tempProducerData = new MyActiveMQExecutionContent.ProducerData(tempOneMessageSendRaw.Value[1], tempOneMessageSendRaw.Value[2], "TextMessage");
-                            caseParameterizationContent tempProducerMessage = CaseTool.getXmlParametContent(tempOneMessageSendRaw.Key);
+                            caseParameterizationContent tempProducerMessage = CaseTool.GetXmlParametContent(tempOneMessageSendRaw.Key);
                             myRunContent.producerDataSendList.Add(new KeyValuePair<MyActiveMQExecutionContent.ProducerData, caseParameterizationContent>(tempProducerData, tempProducerMessage));
                         }
                         else
@@ -258,10 +261,10 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 {
                     if (tempOneSender.Key.ProducerType == "queue" || tempOneSender.Key.ProducerType == "topic")
                     {
-                        string tempMessageSend = tempOneSender.Value.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                        string tempMessageSend = tempOneSender.Value.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                         if (tempError != null)
                         {
-                            DealExecutiveError(string.Format("this case get static data errer with [{0}]", tempOneSender.Value.getTargetContentData()));
+                            DealExecutiveError(string.Format("this case get static data errer with [{0}]", tempOneSender.Value.GetTargetContentData()));
                             tempCaseOutContent.AppendLine(string.Format("{0}://{1} send message fail [get static data errer]", tempOneSender.Key.ProducerType, tempOneSender.Key.ProducerName));
                         }
                         else

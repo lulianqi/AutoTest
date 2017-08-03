@@ -1,4 +1,5 @@
 ﻿using CaseExecutiveActuator.ProtocolExecutive;
+using CaseExecutiveActuator.Tool;
 using MyCommonHelper;
 using System;
 using System.Collections;
@@ -110,15 +111,15 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                             if (tempHttpConfigDataNode["HttpMultipart"]["MultipartData"] != null)
                             {
                                 myRunContent.myHttpMultipart.isFile = false;
-                                myRunContent.myHttpMultipart.name = CaseTool.getXmlAttributeVaule(tempHttpConfigDataNode["HttpMultipart"]["MultipartData"], "name");
-                                myRunContent.myHttpMultipart.fileName = CaseTool.getXmlAttributeVaule(tempHttpConfigDataNode["HttpMultipart"]["MultipartData"], "filename");
+                                myRunContent.myHttpMultipart.name = CaseTool.GetXmlAttributeVauleWithEmpty(tempHttpConfigDataNode["HttpMultipart"]["MultipartData"], "name");
+                                myRunContent.myHttpMultipart.fileName = CaseTool.GetXmlAttributeVauleWithEmpty(tempHttpConfigDataNode["HttpMultipart"]["MultipartData"], "filename");
                                 myRunContent.myHttpMultipart.fileData = tempHttpConfigDataNode["HttpMultipart"]["MultipartData"].InnerText;
                             }
                             else if (tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"] != null)
                             {
                                 myRunContent.myHttpMultipart.isFile = true;
-                                myRunContent.myHttpMultipart.name = CaseTool.getXmlAttributeVaule(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"], "name");
-                                myRunContent.myHttpMultipart.fileName = CaseTool.getXmlAttributeVaule(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"], "filename");
+                                myRunContent.myHttpMultipart.name = CaseTool.GetXmlAttributeVauleWithEmpty(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"], "name");
+                                myRunContent.myHttpMultipart.fileName = CaseTool.GetXmlAttributeVauleWithEmpty(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"], "filename");
                                 myRunContent.myHttpMultipart.fileData = CaseTool.GetFullPath(tempHttpConfigDataNode["HttpMultipart"]["MultipartFile"].InnerText, MyConfiguration.CaseFilePath);
                             }
                         }
@@ -191,10 +192,10 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
                 string tempError;
                 string tempUrlAddress;
-                string vanelifeData = CreatVanelifeSendData(nowExecutionContent.caseExecutionContent.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
+                string vanelifeData = CreatVanelifeSendData(nowExecutionContent.caseExecutionContent.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError));
                 if (nowExecutionContent.myHttpAisleConfig.httpAddress.IsFilled())
                 {
-                    tempUrlAddress = nowExecutionContent.myHttpAisleConfig.httpAddress.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError) + nowExecutionContent.httpTarget;
+                    tempUrlAddress = nowExecutionContent.myHttpAisleConfig.httpAddress.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError) + nowExecutionContent.httpTarget;
                 }
                 else
                 {
@@ -210,7 +211,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.httpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.getTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
+                    AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.httpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
                 }
                 else
                 {

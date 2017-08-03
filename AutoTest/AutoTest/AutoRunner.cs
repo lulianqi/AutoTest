@@ -22,7 +22,7 @@ using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
 using CaseExecutiveActuator.CaseMefHelper;
 using CaseExecutiveActuator.CaseActuator;
-
+using CaseExecutiveActuator.Tool;
 
 /*******************************************************************************
 * Copyright (c) 2015 lijie
@@ -473,23 +473,23 @@ namespace AutoTest
             ////严重错误
             //catch (Exception ex)
             //{
-            //    int tempErrorIndex1 = 0;
-            //    string tempErrorIndex2 = "";
+            //    int projectErrorIndex = 0;
+            //    string caseErrorIndex = "";
             //    if (myProjectCaseDictionary.Count != 0)
             //    {
-            //        tempErrorIndex1 = myProjectCaseDictionary.Count;
-            //        if (tempErrorIndex1 > 0)
+            //        projectErrorIndex = myProjectCaseDictionary.Count;
+            //        if (projectErrorIndex > 0)
             //        {
             //            foreach (Dictionary<int, CaseCell> tempProject in myProjectCaseDictionary.Values)
             //            {
-            //                tempErrorIndex2 += " ->" + (tempProject.Count + 1);
+            //                caseErrorIndex += " ->" + (tempProject.Count + 1);
             //            }
             //        }
             //    }
-            //    MessageBox.Show(string.Format("用例脚本错误，请检查\n详见错误日志\n错误代码：{0}X{1}", tempErrorIndex1, tempErrorIndex2), "STOP");
+            //    MessageBox.Show(string.Format("用例脚本错误，请检查\n详见错误日志\n错误代码：{0}X{1}", projectErrorIndex, caseErrorIndex), "STOP");
             //    tvw_Case.Nodes.Clear();
             //    ErrorLog.PutInLog("ID:0527  " + ex.Message);
-            //    ErrorLog.PutInLog("脚本错误位置  ：第" + tempErrorIndex1 + "个工程，第" + (tempErrorIndex2) + "个用例");
+            //    ErrorLog.PutInLog("脚本错误位置  ：第" + projectErrorIndex + "个工程，第" + (caseErrorIndex) + "个用例");
             //    //启动数据呈现
             //    lb_msg1.Text = "case file error";
             //    ShowMessage(ex.Message);

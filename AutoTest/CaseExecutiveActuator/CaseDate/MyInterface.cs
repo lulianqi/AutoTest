@@ -203,7 +203,7 @@ namespace CaseExecutiveActuator
         /// 使用case内容在当前执行器中执行该Case
         /// </summary>
         /// <param name="yourExecutionContent">执行数据</param>
-        /// <param name="yourExecutiveDelegate">执行引擎委托（请使用此委托向外暴露执行过程）(如果执行器没有被订阅显示执行过程该参数可能为空)</param>
+        /// <param name="yourExecutiveDelegate">执行引擎委托（请使用此委托向外暴露执行过程）(如果执行器没有被订阅显示执行过程该参数可能为空,实现时需要考虑到这种情况)</param>
         /// <param name="sender">调用该执行器的执行引擎的标识</param>
         /// <param name="yourParameterList">在执行中可能会使用到的ParameterList</param>
         /// <param name="yourStaticDataList">在执行中可能会使用到的StaticDataList</param>

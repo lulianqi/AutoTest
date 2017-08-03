@@ -31,9 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DiffieHellman">
+      <HintPath>bin\Debug\DiffieHellman.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Org.Mentalis.Security">
+      <HintPath>bin\Debug\Org.Mentalis.Security.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -45,6 +51,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tamir.SharpSSH">
+      <HintPath>bin\Debug\Tamir.SharpSSH.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaseActuator\CaseActionActuator.cs" />
@@ -52,6 +61,7 @@
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForConsole.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForHttp.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForMysql.cs" />
+    <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForSsh.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForVanelife_http.cs" />
     <Compile Include="CaseActuator\MyActionActuator.cs" />
     <Compile Include="CaseActuator\MyCaseDataTypeEngine.cs" />
@@ -71,6 +81,8 @@
     <Compile Include="Cell\ProjctCollection.cs" />
     <Compile Include="MyConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tool\MyAssert.cs" />
+    <Compile Include="Tool\MyExtensionMethods.cs" />
     <Compile Include="Tool\MyTool.cs" />
     <Compile Include="ProtocolExecutive\AtHttpProtocol.cs" />
   </ItemGroup>

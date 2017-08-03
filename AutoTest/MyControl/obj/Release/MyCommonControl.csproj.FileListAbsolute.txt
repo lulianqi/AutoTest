@@ -1,8 +1,5 @@
 F:\file\Code\AutoTest\AutoTest\MyControl\bin\Release\MyControl.dll
 F:\file\Code\AutoTest\AutoTest\MyControl\bin\Release\MyControl.pdb
-F:\file\Code\AutoTest\AutoTest\MyControl\bin\Release\myCommonTool.dll
-F:\file\Code\AutoTest\AutoTest\MyControl\bin\Release\SpeechLib.dll
-F:\file\Code\AutoTest\AutoTest\MyControl\bin\Release\myCommonTool.pdb
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Release\MyCommonControl.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Release\CBalloon.CBalloonBase.resources
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Release\MyCommonControl.DataRecordBox.resources
@@ -11,3 +8,5 @@ F:\file\Code\AutoTest\AutoTest\MyControl\obj\Release\MyCommonControl.Properties.
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Release\MyCommonControl.csproj.GenerateResource.Cache
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Release\MyControl.dll
 F:\file\Code\AutoTest\AutoTest\MyControl\obj\Release\MyControl.pdb
+F:\file\Code\AutoTest\AutoTest\MyControl\bin\Release\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\MyControl\bin\Release\MyCommonHelper.pdb

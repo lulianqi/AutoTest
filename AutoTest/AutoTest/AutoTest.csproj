@@ -102,106 +102,106 @@
     <Compile Include="myControl\RemoteClientNode.Designer.cs">
       <DependentUpon>RemoteClientNode.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\AboutBox.cs">
+    <Compile Include="MyDialogWindow\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\AboutBox.Designer.cs">
+    <Compile Include="MyDialogWindow\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\AddRemoteHost.cs">
+    <Compile Include="MyDialogWindow\AddRemoteHost.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\AddRemoteHost.Designer.cs">
+    <Compile Include="MyDialogWindow\AddRemoteHost.Designer.cs">
       <DependentUpon>AddRemoteHost.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\AddRunner.cs">
+    <Compile Include="MyDialogWindow\AddRunner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\AddRunner.Designer.cs">
+    <Compile Include="MyDialogWindow\AddRunner.Designer.cs">
       <DependentUpon>AddRunner.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\myCaseParameter.cs">
+    <Compile Include="MyDialogWindow\myCaseParameter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\myCaseParameter.Designer.cs">
+    <Compile Include="MyDialogWindow\myCaseParameter.Designer.cs">
       <DependentUpon>myCaseParameter.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\MyCaceCBalloon.cs">
+    <Compile Include="MyDialogWindow\MyCaceCBalloon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\MyCaceCBalloon.designer.cs">
+    <Compile Include="MyDialogWindow\MyCaceCBalloon.designer.cs">
       <DependentUpon>MyCaceCBalloon.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\EditCasebody.cs">
+    <Compile Include="MyDialogWindow\EditCasebody.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\EditCasebody.designer.cs">
+    <Compile Include="MyDialogWindow\EditCasebody.designer.cs">
       <DependentUpon>EditCasebody.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\EditProjiectHead.cs">
+    <Compile Include="MyDialogWindow\EditProjiectHead.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\EditProjiectHead.designer.cs">
+    <Compile Include="MyDialogWindow\EditProjiectHead.designer.cs">
       <DependentUpon>EditProjiectHead.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\MyCBalloonResultInfo.cs">
+    <Compile Include="MyDialogWindow\MyCBalloonResultInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\MyCBalloonResultInfo.Designer.cs">
+    <Compile Include="MyDialogWindow\MyCBalloonResultInfo.Designer.cs">
       <DependentUpon>MyCBalloonResultInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\myDirectionalTestForDevEpAdd.cs">
+    <Compile Include="MyDialogWindow\myDirectionalTestForDevEpAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\myDirectionalTestForDevEpAdd.Designer.cs">
+    <Compile Include="MyDialogWindow\myDirectionalTestForDevEpAdd.Designer.cs">
       <DependentUpon>myDirectionalTestForDevEpAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\MyMessageListWindow.cs">
+    <Compile Include="MyDialogWindow\MyMessageListWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\MyMessageListWindow.Designer.cs">
+    <Compile Include="MyDialogWindow\MyMessageListWindow.Designer.cs">
       <DependentUpon>MyMessageListWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\MyPutInKey.cs">
+    <Compile Include="MyDialogWindow\MyPutInKey.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\MyPutInKey.Designer.cs">
+    <Compile Include="MyDialogWindow\MyPutInKey.Designer.cs">
       <DependentUpon>MyPutInKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\MyVaneConfig.cs">
+    <Compile Include="MyDialogWindow\MyVaneConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\MyVaneConfig.Designer.cs">
+    <Compile Include="MyDialogWindow\MyVaneConfig.Designer.cs">
       <DependentUpon>MyVaneConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\OptionWindow.cs">
+    <Compile Include="MyDialogWindow\OptionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\OptionWindow.Designer.cs">
+    <Compile Include="MyDialogWindow\OptionWindow.Designer.cs">
       <DependentUpon>OptionWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\RemoteRunner.cs">
+    <Compile Include="MyDialogWindow\RemoteRunner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\RemoteRunner.Designer.cs">
+    <Compile Include="MyDialogWindow\RemoteRunner.Designer.cs">
       <DependentUpon>RemoteRunner.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\RunnerSet.cs">
+    <Compile Include="MyDialogWindow\RunnerSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\RunnerSet.Designer.cs">
+    <Compile Include="MyDialogWindow\RunnerSet.Designer.cs">
       <DependentUpon>RunnerSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\SetingWindow.cs">
+    <Compile Include="MyDialogWindow\SetingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\SetingWindow.designer.cs">
+    <Compile Include="MyDialogWindow\SetingWindow.designer.cs">
       <DependentUpon>SetingWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDialogWindow\testWindow.cs">
+    <Compile Include="MyDialogWindow\testWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myDialogWindow\testWindow.Designer.cs">
+    <Compile Include="MyDialogWindow\testWindow.Designer.cs">
       <DependentUpon>testWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="MyResource.Designer.cs">
@@ -226,67 +226,67 @@
       <DependentUpon>myChildWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\AboutBox.resx">
+    <EmbeddedResource Include="MyDialogWindow\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\AddRemoteHost.resx">
+    <EmbeddedResource Include="MyDialogWindow\AddRemoteHost.resx">
       <DependentUpon>AddRemoteHost.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\AddRunner.resx">
+    <EmbeddedResource Include="MyDialogWindow\AddRunner.resx">
       <DependentUpon>AddRunner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\myCaseParameter.resx">
+    <EmbeddedResource Include="MyDialogWindow\myCaseParameter.resx">
       <DependentUpon>myCaseParameter.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\MyCaceCBalloon.resx">
+    <EmbeddedResource Include="MyDialogWindow\MyCaceCBalloon.resx">
       <DependentUpon>MyCaceCBalloon.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\EditCasebody.resx">
+    <EmbeddedResource Include="MyDialogWindow\EditCasebody.resx">
       <DependentUpon>EditCasebody.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\EditProjiectHead.resx">
+    <EmbeddedResource Include="MyDialogWindow\EditProjiectHead.resx">
       <DependentUpon>EditProjiectHead.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\MyCBalloonResultInfo.resx">
+    <EmbeddedResource Include="MyDialogWindow\MyCBalloonResultInfo.resx">
       <DependentUpon>MyCBalloonResultInfo.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\myDirectionalTestForDevEpAdd.resx">
+    <EmbeddedResource Include="MyDialogWindow\myDirectionalTestForDevEpAdd.resx">
       <DependentUpon>myDirectionalTestForDevEpAdd.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\MyMessageListWindow.resx">
+    <EmbeddedResource Include="MyDialogWindow\MyMessageListWindow.resx">
       <DependentUpon>MyMessageListWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\MyPutInKey.resx">
+    <EmbeddedResource Include="MyDialogWindow\MyPutInKey.resx">
       <DependentUpon>MyPutInKey.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\MyVaneConfig.resx">
+    <EmbeddedResource Include="MyDialogWindow\MyVaneConfig.resx">
       <DependentUpon>MyVaneConfig.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\OptionWindow.resx">
+    <EmbeddedResource Include="MyDialogWindow\OptionWindow.resx">
       <DependentUpon>OptionWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\RemoteRunner.resx">
+    <EmbeddedResource Include="MyDialogWindow\RemoteRunner.resx">
       <DependentUpon>RemoteRunner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\RunnerSet.resx">
+    <EmbeddedResource Include="MyDialogWindow\RunnerSet.resx">
       <DependentUpon>RunnerSet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\SetingWindow.resx">
+    <EmbeddedResource Include="MyDialogWindow\SetingWindow.resx">
       <DependentUpon>SetingWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="myDialogWindow\testWindow.resx">
+    <EmbeddedResource Include="MyDialogWindow\testWindow.resx">
       <DependentUpon>testWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

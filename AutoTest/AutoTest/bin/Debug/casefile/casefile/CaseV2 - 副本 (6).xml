@@ -1,0 +1,1279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VaneLife_V1>
+  <ScriptRunTime>
+    <RunTimeParameter>
+      <NewParameter name="wyj_access_token" type="vaule">74aaa626-aca2-4f95-8bfe-141910ebc792</NewParameter>
+      <NewParameter name="wyj_sendTime" type="vaule">1500373325853</NewParameter>
+      <NewParameter name="wyj_sign" type="vaule">a2705ea57bb73e9059ae66f24560a344</NewParameter>
+      <NewParameter name="wyj_goodsIndex" type="index">1-100000</NewParameter>
+      <NewParameter name="wyj_shopGoodsIndex" type="index">1-100000</NewParameter>
+      <NewParameter name="wyj_shopIndex" type="index">1-100</NewParameter>
+      <NewParameter name="wyj_categoryUUID" type="index">1-100</NewParameter>
+      <NewParameter name="wyj_categoryChildUUID" type="index">1-2</NewParameter>
+      <NewParameter name="wyj_skuGoodId" type="index">1-5</NewParameter>
+      <NewParameter name="appid1" type="vaule">appid1</NewParameter>
+      <NewParameter name="appid2" type="vaule">appid2</NewParameter>
+      <NewParameter name="num" type="vaule">5</NewParameter>
+      <NewParameter name="parameter_hltoken" type="vaule">e26d4ee4-7595-49b2-985b-9383a10d3f86</NewParameter>
+      <NewParameter name="parameter_sellerHltoken" type="vaule">8543ac1d-7d2e-43f0-9000-55917a98620e</NewParameter>
+      <NewParameter name="parameter_sellerId" type="vaule">10000</NewParameter>
+      <NewParameter name="parameter_sellerUserId" type="vaule">10000</NewParameter>
+      <NewParameter name="parameter_sellerPwd" type="vaule">888888</NewParameter>
+      <NewParameter name="parameter_userId" type="vaule">908</NewParameter>
+      <NewParameter name="parameter_addressId" type="vaule">628</NewParameter>
+      <NewParameter name="StaticData" type="index">1-100</NewParameter>
+      <NewParameter name="shopId" type="index">1-5000</NewParameter>
+      <NewParameter name="StaticData" type="index">1-1000-2</NewParameter>
+      <NewParameter name="StaticData0" type="index">1-1000</NewParameter>
+      <NewParameter name="StaticData1" type="random">10-6</NewParameter>
+      <NewParameter name="StaticData2" type="time">
+      </NewParameter>
+      <NewParameter name="StaticData3" type="list">a1,a2,a3,a4-2</NewParameter>
+      <NewParameter name="StaticData4" type="long">1-15158155511</NewParameter>
+      <NewParameter name="StaticData5" type="strIndex">000000001-999999999-2</NewParameter>
+      <NewParameter name="mycsvfile" type="csv">casefile\csvdatasouce.csv-65001</NewParameter>
+    </RunTimeParameter>
+    <RunTimeActuator>
+      <NewActuator name="httpApi" protocol="vanelife_http">
+        <dev_key>405E6D199E33596E4CE04B6417B8A267</dev_key>
+        <dev_secret>405E6D199E33596E4CE04B6417B8A267</dev_secret>
+        <default_url>http://api.vanelife.com/v1/</default_url>
+      </NewActuator>
+      <NewActuator name="httpApi2" protocol="vanelife_http">
+        <dev_key>
+        </dev_key>
+        <dev_secret>
+        </dev_secret>
+        <default_url>
+        </default_url>
+      </NewActuator>
+      <NewActuator name="http" protocol="http">
+        <default_url>http://pv.sohu.com</default_url>
+      </NewActuator>
+      <NewActuator name="mq" protocol="activeMQ">
+        <brokerUri>tcp://192.168.200.150:61616</brokerUri>
+        <clientId>
+        </clientId>
+        <factoryUserName>username</factoryUserName>
+        <factoryPassword>password</factoryPassword>
+        <queue>q1</queue>
+        <queue>q2</queue>
+        <topic>t1</topic>
+        <topic durable="at1">t2</topic>
+      </NewActuator>
+      <NewActuator name="MySql_151" protocol="EXT_MySql">
+        <connect_str>连接字符串</connect_str>
+        <db_name>数据库名称</db_name>
+      </NewActuator>
+      <NewActuator name="huala_mysql" protocol="mysql">
+        <connect_str>Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test</connect_str>
+        <db_name>数据库名称</db_name>
+      </NewActuator>
+      <NewActuator name="telnet1" protocol="telnet">
+        <login>admin</login>
+        <password>admin</password>
+        <default_ip>192.168.1.101</default_ip>
+        <default_port>23</default_port>
+      </NewActuator>
+      <NewActuator name="telnet2" protocol="telnet">
+        <login>admin</login>
+        <password>admin</password>
+        <default_ip>192.168.1.102</default_ip>
+        <default_port>23</default_port>
+      </NewActuator>
+      <NewActuator name="COM1" protocol="comm">
+        <portName>COM1</portName>
+        <encoding>GB2312</encoding>
+        <baudRate>9600</baudRate>
+      </NewActuator>
+      <NewActuator name="console" protocol="console">
+      </NewActuator>
+    </RunTimeActuator>
+  </ScriptRunTime>
+  <Project id="1000010001" name="Project device/active" remark="device_sn测试">
+    <Case id="1000010001" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>http://api.vanelife.com/v1/</HttpAddress>
+            <HttpDataDown>123</HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Action>
+        <Pass action="goto">P100001C10001</Pass>
+        <Fail action="retry">10</Fail>
+      </Action>
+      <Attribute>
+        <ParameterSave>
+          <NewParameter name="myDevId_1" mode="json">dev_id</NewParameter>
+          <NewParameter name="myAppId_1" mode="json">app_id</NewParameter>
+        </ParameterSave>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100001" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/update_status" isHaveParameters="true">device_sn=ZkTest000001&amp;device_status={"online":true}</ContentData>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100002" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/get_status" isHaveParameters="true">access_id=29F55306F9546A19D8A98F95595C6B8B&amp;ep_id=ZkTest000001&amp;dp_id=1</ContentData>
+      </Content>
+      <Expect method="contain">"online":true</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100003" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="datapoint/publish" isHaveParameters="true">access_id=29F55306F9546A19D8A98F95595C6B8B&amp;ep_id=ZkTest000001&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <HttpMultipart name="dp_data">
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100004" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="datapoint/publish" isHaveParameters="true">access_id=29F55306F9546A19D8A98F95595C6B8B&amp;ep_id=ZkTest000001&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <HttpMultipart>
+            <MultipartFile name="dp_data" filename="123">fileToUp\path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100005" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/get_info" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD</ContentData>
+        <HttpConfig httpMethod="GET">
+          <AisleConfig>
+            <HttpDataDown isHaveParameters="true">fileToDown\123</HttpDataDown>
+          </AisleConfig>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">保存</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100006" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/get_info" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD</ContentData>
+        <HttpConfig httpMethod="GET">
+          <AisleConfig>
+            <HttpDataDown isHaveParameters="true">fileToDown\123_*#StaticData2*#</HttpDataDown>
+          </AisleConfig>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">保存</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100007" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/get_info" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD</ContentData>
+        <HttpConfig httpMethod="GET">
+          <AisleConfig>
+            <HttpDataDown isHaveParameters="true">fileToDown\123</HttpDataDown>
+          </AisleConfig>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">保存</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100008" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/get_info" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD</ContentData>
+        <HttpConfig httpMethod="GET">
+          <AisleConfig>
+            <HttpDataDown isHaveParameters="true">fileToDown\123_*#StaticData0*#</HttpDataDown>
+          </AisleConfig>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">保存</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100009" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="datapoint/publish">access_id=29F55306F9546A19D8A98F95595C6B8B&amp;ep_id=ZkTest000001&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <HttpMultipart name="dp_data">
+            <MultipartData name="dp_data" filename="123">{"door":*#StaticData1*#}</MultipartData>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000100010" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="datapoint/publish">access_id=29F55306F9546A19D8A98F95595C6B8B&amp;ep_id=ZkTest000001&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <HttpMultipart name="dp_data">
+            <MultipartData name="dp_data" filename="123" isHaveParameters="true">{"door":*#StaticData1*#}</MultipartData>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010002" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="datapoint/publish" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <ParameterSave>
+          <NewParameter name="myDevId_1" mode="json">dev_id</NewParameter>
+          <NewParameter name="myAppId_1" mode="json">app_id</NewParameter>
+        </ParameterSave>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010003" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Repeat remark="备注" times="2">
+      <Case id="1000020001" remark="case备注">
+        <Content protocol="vanelife_http" actuator="httpApi">
+          <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+        </Content>
+        <Expect method="contain">ZkTest000001</Expect>
+        <Action>
+          <Pass action="goto">P1000010002C1000010001</Pass>
+        </Action>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+      <Repeat remark="备注" times="10">
+      </Repeat>
+      <Repeat remark="备注" times="50">
+        <Case id="1000030001" remark="case备注">
+          <Content protocol="vanelife_http" actuator="httpApi">
+            <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+          </Content>
+          <Expect method="contain">ZkTest000001</Expect>
+        </Case>
+        <Case id="1000030002" remark="case备注">
+          <Content protocol="vanelife_http" actuator="httpApi">
+            <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+          </Content>
+          <Expect method="contain" isHaveParameters="true">
+            ZkTest000001[or]ZkTest000002
+          </Expect>
+        </Case>
+        <Case id="1000030003" remark="case备注">
+          <Content protocol="vanelife_http" actuator="httpApi">
+            <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+          </Content>
+          <Expect method="contain">ZkTest000001</Expect>
+        </Case>
+      </Repeat>
+      <Case id="1000020002" remark="case备注">
+        <Content protocol="vanelife_http" actuator="httpApi">
+          <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+        </Content>
+        <Expect method="contain" isHaveParameters="true">
+          ZkTest000001[or]ZkTest000002
+        </Expect>
+        <Action>
+          <Fail action="stop">
+          </Fail>
+        </Action>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+      <Case id="1000020003" remark="case备注">
+        <Content protocol="vanelife_http" actuator="httpApi">
+          <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+        </Content>
+        <Expect method="contain">ZkTest000001</Expect>
+      </Case>
+    </Repeat>
+    <Case id="1000010004" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Action>
+        <Pass action="goto">P100001C10001</Pass>
+        <Fail action="XXXXX">
+        </Fail>
+      </Action>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010005" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="default">19</Expect>
+      <Action>
+        <Pass action="goto">P1000010002C1000010001</Pass>
+        <Fail action="retry">
+        </Fail>
+      </Action>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010006" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Action>
+        <Pass action="goto">P1000010002C10001</Pass>
+        <Fail action="retry">19</Fail>
+      </Action>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010007" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Action>
+        <Pass action="goto">P1000010002C10001</Pass>
+        <Fail action="alarm">发现错误</Fail>
+      </Action>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+  </Project>
+  <Project id="1000010002" name="Project device/active" remark="device_sn测试">
+    <Case id="1000010001" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010002" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010003" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Repeat remark="备注" times="100">
+      <Case id="1000020001" remark="case备注">
+        <Content protocol="vanelife_http" actuator="httpApi">
+          <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+        </Content>
+        <Expect method="contain">ZkTest000001</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+      <Case id="1000020002" remark="case备注">
+        <Content protocol="vanelife_http" actuator="httpApi">
+          <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+        </Content>
+        <Expect method="contain" isHaveParameters="true">
+          ZkTest000001[or]ZkTest000002
+        </Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+      <Case id="1000020003" remark="case备注">
+        <Content protocol="vanelife_http" actuator="httpApi">
+          <ContentData target="device/list_ep" isHaveParameters="true">access_id=2966E520EA90DCCB605CD9ED9C0E0592</ContentData>
+        </Content>
+        <Expect method="contain">ZkTest000001</Expect>
+      </Case>
+    </Repeat>
+    <Case id="1000010004" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="device/active" isHaveParameters="true">access_id=FD3318A540AA14292757218592220CFD&amp;ep_id=VaneTest0005&amp;dp_id=1</ContentData>
+        <HttpConfig httpMethod="POST">
+          <AisleConfig>
+            <HttpAddress>
+            </HttpAddress>
+            <HttpDataDown>
+            </HttpDataDown>
+          </AisleConfig>
+          <HttpMultipart>
+            <MultipartData name="dp_data" filename="123">{"door":true}</MultipartData>
+            <MultipartFile name="dp_data" filename="123">path</MultipartFile>
+          </HttpMultipart>
+        </HttpConfig>
+      </Content>
+      <Expect method="is">
+      </Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+  </Project>
+  <Project id="1000010003" name="Project http" remark="http测试">
+    <Case id="1000020001" remark="case备注">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="GET">http://www.m.baidu.com</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+        <Body>lj is good</Body>
+      </Content>
+      <Expect method="contain">baidu</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010001" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="cityjson">ie=utf-8</ContentData>
+        <HttpConfig httpMethod="GET">
+          <AisleConfig>
+            <HttpAddress>http://pv.sohu.com/</HttpAddress>
+          </AisleConfig>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">浙江</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Repeat remark="备注" times="2000">
+      <Case id="1000010002" remark="case备注">
+        <Content protocol="vanelife_http" actuator="httpApi">
+          <ContentData target="cityjson">ie=utf-8</ContentData>
+          <HttpConfig httpMethod="GET">
+            <AisleConfig>
+              <HttpAddress>http://pv.sohu.com/</HttpAddress>
+            </AisleConfig>
+          </HttpConfig>
+        </Content>
+        <Expect method="contain">浙江</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+  </Project>
+  <Project id="1000010004" name="Project test" remark="case测试">
+    <Case id="1000040001" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show isHaveParameters="true">http://huala.com/huala/seller/login/*#StaticData2(+)*#/*#StaticData4(+3)*#</Show>
+        <ConsoleTask>
+          <Set name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Set>
+          <Set name="StaticData">99</Set>
+          <Add name="StaticDataAdd" type="index">1-1000-2</Add>
+          <Add name="StaticData3Add" type="list">a1,a2,a3,a4-2</Add>
+          <Add name="mycsvfileAdd" type="csv">casefile\csvdatasouce.csv-65001</Add>
+          <Add name="appid" type="vaule">2ewse342</Add>
+          <Add name="appidtodel" type="vaule">2ewse342</Add>
+          <Del isRegex="false" isHaveParameters="true">appidtodel</Del>
+          <Del isRegex="true" isHaveParameters="true">^StaticData.*</Del>
+        </ConsoleTask>
+      </Content>
+      <Expect method="contain">/3</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040002" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show isHaveParameters="true" additionalEncoding="encode_hex16">test for encode_hex16</Show>
+        <ConsoleTask>
+          <Add name="sdv_testForHex" type="vaule" additionalEncoding="encode_hex16">test for encode_hex16</Add>
+        </ConsoleTask>
+      </Content>
+      <Expect method="contain">20</Expect>
+    </Case>
+    <Case id="1000040003" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show isHaveParameters="true" additionalEncoding="encode_hex2">test for encode_hex16</Show>
+        <ConsoleTask>
+          <Add name="sdv_testForHexStr" type="vaule" isHaveParameters="true" additionalEncoding="decode_hex16">*#sdv_testForHex*#</Add>
+        </ConsoleTask>
+      </Content>
+      <Expect method="not">test for encode_hex16</Expect>
+    </Case>
+    <Case id="1000050201" remark="登录商户端">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="GET" isHaveParameters="true">http://wx.huala.com/huala/seller/login/*#HLSHTYD*#/*#888888*#</Uri>
+        <Heads>
+          <Head name="myThing" isHaveParameters="true">*#StaticData_sellerId*#</Head>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+      </Content>
+      <Expect method="contain">"success": true</Expect>
+      <Attribute>
+        <ParameterSave>
+          <NewParameter name="parameter_sellerHltoken" mode="json">token</NewParameter>
+          <NewParameter name="parameter_sellerId" mode="json">sellerId</NewParameter>
+          <NewParameter name="parameter_sellerUserId" mode="json">id</NewParameter>
+        </ParameterSave>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040001" remark="case备注">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">http://pv.sohu.com/cityjson?ie=utf-8</Uri>
+        <Heads>
+          <Head name="myThing" isHaveParameters="true">*#StaticData(+`num``num`)*#</Head>
+          <Head name="csvsouce%20Now" isHaveParameters="true">csvsouce is *#mycsvfile*#</Head>
+          <Head name="csvsouce+" isHaveParameters="true">csvsouce is *#mycsvfile+*#</Head>
+          <Head name="csvsouce+2" isHaveParameters="true">csvsouce is *#mycsvfile+2*#</Head>
+          <Head name="csvsouceAngin" isHaveParameters="true">csvsouce is *#mycsvfile*#</Head>
+          <Head name="csvsouceAdress" isHaveParameters="true">csvsouce 0-0 is [*#mycsvfile(0-0)*#] 5-2 is [*#mycsvfile(5-2)*#] 100-100 is [*#mycsvfile(100-100)*#] xxx-xxx is [*#mycsvfile(xxx-xxx)*#]</Head>
+          <Head name="User-Agent">test man</Head>
+          <Head name="additionalEncoding" isHaveParameters="true" additionalEncoding="encode_base64">additionalEncoding</Head>
+        </Heads>
+        <Body isHaveParameters="true">testdata</Body>
+        <HttpConfig httpMethod="GET">
+          <AisleConfig>
+            <HttpAddress>http://pv.sohu.com/</HttpAddress>
+          </AisleConfig>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">浙江</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040002" remark="case上传">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">@/cityjson?ie=utf-8</Uri>
+        <Heads>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+        <Body isHaveParameters="true">testdata</Body>
+        <AisleConfig>
+          <HttpAddress>http://pv.sohu.com/</HttpAddress>
+        </AisleConfig>
+        <HttpMultipart>
+          <MultipartData name="dp_data" filename="commod">{"door":true}</MultipartData>
+          <MultipartFile name="dp_data" filename="file">fileToUp\path</MultipartFile>
+          <MultipartFile>fileToUp\path</MultipartFile>
+        </HttpMultipart>
+      </Content>
+      <Expect method="contain">浙江</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040003" remark="case下载">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">http://pv.sohu.com/cityjson?ie=utf-8</Uri>
+        <Heads>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+        <Body isHaveParameters="true">testdata</Body>
+        <AisleConfig>
+          <HttpDataDown>fileToDown\sohu.txt</HttpDataDown>
+        </AisleConfig>
+      </Content>
+      <Expect method="contain">保存至</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040010" remark="case https">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">https://pv.sohu.com/cityjson?ie=utf-8</Uri>
+        <Heads>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+        <Body isHaveParameters="true">testdata</Body>
+      </Content>
+      <Expect method="contain">浙江</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000040004" remark="case下载">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST" isHaveParameters="true">http://www.baidu.com</Uri>
+        <Heads>
+          <Head name="User-Agent">test man</Head>
+        </Heads>
+        <Body isHaveParameters="true">testdata</Body>
+        <AisleConfig>
+          <HttpDataDown>fileToDown\baidu.txt</HttpDataDown>
+        </AisleConfig>
+      </Content>
+      <Expect method="contain">保存至</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Repeat remark="备注" times="100">
+      <Case id="1000040005" remark="发布交易(店铺转让)">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://apitest.huala.com/es/market/publish</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json</Head>
+          </Heads>
+          <Body isHaveParameters="true">{"imgList":["//wxtest.huala.com/hlman-pic/goods/201706/1497264373727.png"],"desc":"转让店铺（*#shopId(+)*#）\n联系电话：15185465555\n地理位置良好，不专不要钱\n看一下也不亏","type":"3","name":"转让店铺（*#shopId(+)*#）","city":"330100"}</Body>
+        </Content>
+        <Expect method="contain">success</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+    <Repeat remark="备注" times="1000">
+      <Case id="1000040005" remark="发布交易(商品求购)">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://apitest.huala.com/es/market/publish</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json</Head>
+          </Heads>
+          <Body isHaveParameters="true">{"imgList":["//wxtest.huala.com/hlman-pic/goods/201706/1497267232108.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267244159.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267249384.jpg","//wxtest.huala.com/hlman-pic/goods/201706/1497267253669.jpg"],"desc":"求购节操（*#shopId(+)*#）\n联系电话：1652979305\n价格从优","name":"求购节操（*#shopId(+)*#）","type":"1","city":"330200"}</Body>
+        </Content>
+        <Expect method="contain">success</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+    <Repeat remark="创建商品" times="100">
+      <Case id="1000060001" remark="创建商品">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/goods/public</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json;charset=UTF-8</Head>
+            <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+            <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+            <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+            <Head name="User-Agent">AT</Head>
+          </Heads>
+          <Body isHaveParameters="true">
+            {
+            "goodsUUID":"AutoAddgoodsUUID01*#wyj_goodsIndex(+)*#",
+            "goodsCode":"123456001",
+            "name":"好多高达_001*#wyj_goodsIndex(+)*#",
+            "categoryUUID":"categoryUUID_0002_0002",
+            "brandName":"万代",
+            "status":0,
+            "type":"1",
+            "description":"it is a test goods description ",
+            "comment":"it is a test goods comment",
+            "manufacturer":"曙光社",
+            "productionPlace":"made in china",
+            "creater":"lijie",
+            "createTime":"2018-01-01 01:01:01",
+            "icon":"http://img3.imgtn.bdimg.com/it/u=158918749,3472802168&amp;fm=26&amp;gp=0.jpg",
+            "barCode":"AutoAddSn001*#wyj_goodsIndex(+)*#"
+            }
+          </Body>
+        </Content>
+        <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+    <Repeat remark="创建店铺商品" times="100">
+      <Case id="1000060002" remark="创建店铺商品">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/goods/shop</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json;charset=UTF-8</Head>
+            <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+            <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+            <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+            <Head name="User-Agent">AT</Head>
+          </Heads>
+          <Body isHaveParameters="true">
+            {
+            "goodsUUID":"shop_goodsUUID_000*#wyj_shopGoodsIndex(+)*#",
+            "shopUUID":"lj123456",
+            "publicGoodsUUID":"goodsUUID_0005",
+            "categoryUUID":"categoryUUID_lj123456_0002",
+            "barCode":"lj123456_barCode000*#wyj_shopGoodsIndex(+)*#",
+            "name":"圣约000*#wyj_shopGoodsIndex(+)*#",
+            "initStock":"1000",
+            "lowerLimit":"0",
+            "brandName":"万代",
+            "shopPrice":110000,
+            "type":1,
+            "icon":"http://img3.imgtn.bdimg.com/it/u=158918749,3472802168&amp;fm=26&amp;gp=0.jpg",
+            "comment":"comment",
+            "manufacturer":"曙光社",
+            "productionPlace":"productionPlace",
+            "spec":"spec"
+            }
+          </Body>
+        </Content>
+        <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+    <Case id="1000050001" remark="mq test">
+      <Content protocol="activeMQ" actuator="mq">
+        <Send name="t1" type="topic" isHaveParameters="true">this is test data for topic t1</Send>
+        <Send name="t1" type="topic" isHaveParameters="true">this is another test data for topic t1</Send>
+        <Send name="q1" type="queue" isHaveParameters="true">this is test data for queue q1</Send>
+        <Subscribe type="topic" durable="dur">newTopic</Subscribe>
+        <UnSubscribe type="topic">newTopic</UnSubscribe>
+        <Receive type="topic">t1</Receive>
+      </Content>
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>10000</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000050002" remark="mq test">
+      <Content protocol="activeMQ" actuator="mq">
+        <Send name="t1" type="topic" isHaveParameters="true">this is test data for topic t1</Send>
+        <Receive>
+        </Receive>
+      </Content>
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>1000</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000050003" remark="mq test">
+      <Content protocol="activeMQ" actuator="mq">
+        <Receive>
+        </Receive>
+      </Content>
+      <Expect method="is">topic://t1 Receive this is test data for topic t1</Expect>
+      <Attribute>
+        <Delay>1000</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000080001" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show>开始新建店铺</Show>
+      </Content>
+      <Expect method="contain">店铺</Expect>
+    </Case>
+    <Repeat remark="创建店铺" times="9">
+      <Case id="1000070002" remark="创建店铺">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/shop/info</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json;charset=UTF-8</Head>
+            <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+            <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+            <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+            <Head name="User-Agent">AT</Head>
+          </Heads>
+          <Body isHaveParameters="true">
+            {
+           "shopUUID":"ATshopUUID_000*#wyj_shopIndex(+)*#",
+           "login":"ATshop000*#wyj_shopIndex(+)*#",
+           "password":"21218cca77804d2ba1922c33e0151105",
+           "shopName":"ATshop000*#wyj_shopIndex(+)*#",
+           "person":"ATwyj000*#wyj_shopIndex(+)*#",
+           "socialId":"412723197909185262",
+           "telephone":"1518000000*#wyj_shopIndex(+)*#",
+           "mobile":"1518000000*#wyj_shopIndex(+)*#",
+           "QQ":"15150000001",
+           "email":"118662355@qq.com",
+           "province":"33",
+           "city":"3302",
+           "county":"330205",
+           "postCode":"430001",
+           "address":"my address for shopWyj0001",
+           "lat":"29.875704",
+           "lng":"121.560449",
+           "status":1,
+           "createTime":"2017-07-10 01:01:01",
+           "updateTime":"2017-07-10 01:01:01",
+           "licenseCode":"15188150001*#wyj_shopIndex(+)*#",
+           "busiplacesCode":"open",
+           "businessLicense":"151881555000*#wyj_shopIndex(+)*#",
+           "image":"http://wxtest.huala.com/hlman-pic/supplierInfo/201605/1463022814140.jpg",
+           "areaId":"0001",
+           "unionCustomerNo":"0001",
+           "baseType":"Y",
+           "openTime":"09:55:55",
+           "endTime":"17:55:55",
+           "startCost":20,
+           "distributeCost":100,
+           "avoidCost":1000000,
+           "distributeScope":100
+            } 
+        </Body>
+        </Content>
+        <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+    <Case id="1000080002" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show>开始新建商品</Show>
+      </Content>
+      <Expect method="contain">商品</Expect>
+    </Case>
+    <Repeat remark="创建SPU and SKU类目" times="9">
+      <Case id="1000080001" remark="创建SPU父类目">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/category/publicCategory</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json;charset=UTF-8</Head>
+            <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+            <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+            <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+            <Head name="User-Agent">AT</Head>
+          </Heads>
+          <Body isHaveParameters="true">
+            {
+           "categoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(+)*#",
+           "categoryName":"AT高达_*#wyj_categoryUUID(+)*#",
+           "status":1,
+           "parent":"",
+           "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
+           "sort":1000,
+           "code":"14141140001"
+            }    
+        </Body>
+        </Content>
+        <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+      <Case id="1000080002" remark="创建SKU父类目">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/category/shopCategory</Uri>
+          <Heads>
+            <Head name="Content-Type">application/json;charset=UTF-8</Head>
+            <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+            <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+            <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+            <Head name="User-Agent">AT</Head>
+          </Heads>
+          <Body isHaveParameters="true">
+           {
+           "shopUUID":"ATshopUUID_0001",
+           "publicCategoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#",
+           "categoryUUID":"ATshopCategoryUUID_00*#wyj_categoryUUID(=)*#",
+           "categoryName":"AT店里的高达*#wyj_categoryUUID(=)*#",
+           "status":1,
+           "parent":"",
+           "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
+           "sort":1110,
+           "code":"123456"
+           }    
+        </Body>
+        </Content>
+        <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+      <Repeat remark="创建子类目" times="2">
+        <Case id="1000080003" remark="创建SPU子类目">
+          <Content protocol="http" actuator="http">
+            <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/category/publicCategory</Uri>
+            <Heads>
+              <Head name="Content-Type">application/json;charset=UTF-8</Head>
+              <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+              <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+              <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+              <Head name="User-Agent">AT</Head>
+            </Heads>
+            <Body isHaveParameters="true">
+              {
+             "categoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(+)*#",
+             "categoryName":"AT高达_*#wyj_categoryUUID(=)*#_高达_*#wyj_categoryChildUUID(+)*#",
+             "status":1,
+             "parent":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#",
+             "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
+             "sort":1000,
+             "code":"14141140001"
+              }    
+          </Body>
+          </Content>
+          <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+          <Attribute>
+            <Delay>100</Delay>
+            <Level>1</Level>
+          </Attribute>
+        </Case>
+        <Case id="1000080013" remark="创建SPU商品">
+          <Content protocol="http" actuator="http">
+            <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/goods/public</Uri>
+            <Heads>
+              <Head name="Content-Type">application/json;charset=UTF-8</Head>
+              <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+              <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+              <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+              <Head name="User-Agent">AT</Head>
+            </Heads>
+            <Body isHaveParameters="true">
+              {
+               "goodsUUID":"ATgoodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+               "goodsCode":"not use",
+               "name":"AT拂晓_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+               "categoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+               "brandName":"万代",
+               "status":0,
+               "type":"1",
+               "description":"it is a test goods description ",
+               "comment":"it is a test goods comment",
+               "manufacturer":"曙光社",
+               "productionPlace":"made in china",
+               "creater":"lijie",
+               "createTime":"2017-01-01 01:01:01",
+               "icon":"http://i0.hdslb.com/bfs/archive/b11ab840dc816ef28077127e512cce43e0095858.jpg",
+               "barCode":"151881500*#wyj_categoryUUID(=)*#00*#wyj_categoryChildUUID(=)*#"
+              } 
+            </Body>
+          </Content>
+          <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+          <Attribute>
+            <Delay>100</Delay>
+            <Level>1</Level>
+          </Attribute>
+        </Case>
+        <Case id="1000080004" remark="创建SKU子类目">
+          <Content protocol="http" actuator="http">
+            <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/category/shopCategory</Uri>
+            <Heads>
+              <Head name="Content-Type">application/json;charset=UTF-8</Head>
+              <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+              <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+              <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+              <Head name="User-Agent">AT</Head>
+            </Heads>
+            <Body isHaveParameters="true">
+           {
+           "shopUUID":"ATshopUUID_0001",
+           "publicCategoryUUID":"ATcategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+           "categoryUUID":"ATshopCategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+           "categoryName":"AT店里的高达*#wyj_categoryUUID(=)*#_*#wyj_categoryChildUUID(=)*#",
+           "status":1,
+           "parent":"ATshopCategoryUUID_00*#wyj_categoryUUID(=)*#",
+           "icon":"http://pic.58pic.com/58pic/15/96/59/05f58PICQ7K_1024.jpg",
+           "sort":1110,
+           "code":"123456"
+           }    
+        </Body>
+          </Content>
+          <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+          <Attribute>
+            <Delay>100</Delay>
+            <Level>1</Level>
+          </Attribute>
+        </Case>
+        <Repeat remark="创建SKU商品" times="5">
+          <Case id="1000080014" remark="创建SKU商品">
+            <Content protocol="http" actuator="http">
+              <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/goods/shop</Uri>
+              <Heads>
+                <Head name="Content-Type">application/json;charset=UTF-8</Head>
+                <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+                <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+                <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+                <Head name="User-Agent">AT</Head>
+              </Heads>
+              <Body isHaveParameters="true">
+               {
+                 "goodsUUID":"ATshop_goodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
+                 "shopUUID":"ATshopUUID_0001",
+                 "publicGoodsUUID":"ATgoodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+                 "categoryUUID":"ATshopCategoryUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#",
+                 "barCode":"151812300*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
+                 "name":"AT店里的拂晓_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(+)*#",
+                 "initStock":"1000",
+                 "lowerLimit":"0",
+                 "brandName":"万代",
+                 "shopPrice":110000,
+                 "type":1,
+                 "icon":"http://i0.hdslb.com/bfs/archive/b11ab840dc816ef28077127e512cce43e0095858.jpg",
+                 "comment":"comment",
+                 "manufacturer":"曙光社",
+                 "productionPlace":"productionPlace",
+                 "spec":"spec"
+              }
+          </Body>
+            </Content>
+            <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+            <Attribute>
+              <Delay>100</Delay>
+              <Level>1</Level>
+            </Attribute>
+          </Case>
+          <Case id="1000080014" remark="商品上架">
+            <Content protocol="http" actuator="http">
+              <Uri httpMethod="POST" isHaveParameters="true">http://192.168.200.142:8091/oauth/api/goods/edit</Uri>
+              <Heads>
+                <Head name="Content-Type">application/json;charset=UTF-8</Head>
+                <Head name="Authorization" isHaveParameters="true">bearer *#wyj_access_token*#</Head>
+                <Head name="sign" isHaveParameters="true">*#wyj_sign*#</Head>
+                <Head name="sendTime" isHaveParameters="true">*#wyj_sendTime*#</Head>
+                <Head name="User-Agent">AT</Head>
+              </Heads>
+              <Body isHaveParameters="true">
+               {
+                   "shopUUID":"shopUUID_0001",
+                   "goodsList":[
+                      {
+                         "goodsUUID":"ATshop_goodsUUID_00*#wyj_categoryUUID(=)*#_00*#wyj_categoryChildUUID(=)*#_00*#wyj_skuGoodId(=)*#",
+                         "onlinePrice":"10000",
+                         "status":0
+                      }
+                   ]
+                }
+          </Body>
+            </Content>
+            <Expect method="contain">"resultCode":"00000"[and]操作成功</Expect>
+            <Attribute>
+              <Delay>100</Delay>
+              <Level>1</Level>
+            </Attribute>
+          </Case>
+        </Repeat>
+      </Repeat>
+    </Repeat>
+  </Project>
+  <Project id="1000010005" name="sql test" remark="sql测试">
+    <Case id="1100050001" remark="sql查询">
+      <Content protocol="mysql" actuator="huala_mysql">
+        <SqlCmd isHaveParameters="true">select* from h_sso_log order by id desc limit 20</SqlCmd>
+      </Content>
+      <Expect method="contain">/3</Expect>
+      <Attribute>
+        <Delay>20000</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100050002" remark="mysql">
+      <Content protocol="mysql" actuator="huala_mysql">
+	      <SqlCmd row="1" column="1" isHaveParameters="true">select* from h_sso_log order by id desc limit 20</SqlCmd>
+      </Content>
+      <Expect method="contain">2</Expect>
+      <Attribute>
+	      <Delay>122</Delay>
+	      <Level>1</Level>
+      </Attribute>
+  </Case>
+  </Project>
+</VaneLife_V1>

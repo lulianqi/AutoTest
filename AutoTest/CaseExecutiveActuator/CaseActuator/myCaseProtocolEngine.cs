@@ -9,6 +9,7 @@ using MyActiveMQHelper;
 
 using CaseExecutiveActuator.CaseActuator.ExecutionDevice;
 using CaseExecutiveActuator.ProtocolExecutive;
+using CaseExecutiveActuator.Tool;
 using MySqlHelper;
 
 /*******************************************************************************
@@ -86,7 +87,7 @@ namespace CaseExecutiveActuator.CaseActuator
                             myCaseData.AddErrorMessage("Error :find the error ID");
                         }
                     }
-                    myCaseData.name = CaseTool.getXmlAttributeVaule(sourceNode, "remark", "NULL");
+                    myCaseData.name = CaseTool.GetXmlAttributeVauleEx(sourceNode, "remark", "NULL");
                     #endregion
 
                     #region Content
@@ -120,6 +121,9 @@ namespace CaseExecutiveActuator.CaseActuator
                                     break;
                                 case CaseProtocol.mysql:
                                     myCaseData.testContent = CaseProtocolExecutionForMysql.GetRunContent(tempCaseContent);
+                                    break;
+                                case CaseProtocol.ssh:
+                                    myCaseData.testContent = CaseProtocolExecutionForSsh.GetRunContent(tempCaseContent);
                                     break;
                                 case CaseProtocol.vanelife_http:
                                     myCaseData.testContent = CaseProtocolExecutionForVanelife_http.GetRunContent(tempCaseContent);
@@ -192,7 +196,7 @@ namespace CaseExecutiveActuator.CaseActuator
                         {
                             myCaseData.caseExpectInfo.myExpectType = CaseExpectType.judge_is;
                         }
-                        myCaseData.caseExpectInfo.myExpectContent = CaseTool.getXmlParametContent(tempCaseExpect);
+                        myCaseData.caseExpectInfo.myExpectContent = CaseTool.GetXmlParametContent(tempCaseExpect);
                     }
                     #endregion
 
@@ -217,11 +221,11 @@ namespace CaseExecutiveActuator.CaseActuator
                                 }
                                 try
                                 {
-                                    tempAction = (CaseAction)Enum.Parse(typeof(CaseAction), "action_" + CaseTool.getXmlAttributeVaule(tempNode, "action"));
+                                    tempAction = (CaseAction)Enum.Parse(typeof(CaseAction), "action_" + CaseTool.GetXmlAttributeVauleWithEmpty(tempNode, "action"));
                                 }
                                 catch
                                 {
-                                    myCaseData.AddErrorMessage(string.Format("Error :find error CaseAction in Action with [{0}] in [{1}]", tempNode.InnerXml, CaseTool.getXmlAttributeVaule(tempNode, "action")));
+                                    myCaseData.AddErrorMessage(string.Format("Error :find error CaseAction in Action with [{0}] in [{1}]", tempNode.InnerXml, CaseTool.GetXmlAttributeVauleWithEmpty(tempNode, "action")));
                                     continue;
                                 }
                                 if (tempNode.InnerText!="")
@@ -273,8 +277,8 @@ namespace CaseExecutiveActuator.CaseActuator
                                     {
                                         if (tempNode.Name == "NewParameter")
                                         {
-                                            string tempParameterName = CaseTool.getXmlAttributeVauleEx(tempNode, "name");
-                                            string tempParameterMode = CaseTool.getXmlAttributeVauleEx(tempNode, "mode");
+                                            string tempParameterName = CaseTool.GetXmlAttributeVaule(tempNode, "name");
+                                            string tempParameterMode = CaseTool.GetXmlAttributeVaule(tempNode, "mode");
                                             string tempFindVaule = tempNode.InnerText;
                                             PickOutFunction tempPickOutFunction = PickOutFunction.pick_str;
                                             if (tempParameterName == null)
@@ -447,7 +451,7 @@ namespace CaseExecutiveActuator.CaseActuator
 
                         if (tempCaseContent.HasChildNodes)
                         {
-                            string tempTarget = CaseTool.getXmlAttributeVaule(tempCaseContent.ChildNodes[0], "target",null);
+                            string tempTarget = CaseTool.GetXmlAttributeVauleEx(tempCaseContent.ChildNodes[0], "target",null);
                             if (tempTarget==null)
                             {
                                 myInfo.content = " > " + tempCaseContent.ChildNodes[0].InnerText;

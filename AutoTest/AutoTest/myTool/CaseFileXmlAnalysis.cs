@@ -62,6 +62,8 @@ namespace AutoTest.myTool
                 {
                     XmlReaderSettings settings = new XmlReaderSettings();
                     settings.IgnoreComments = true;
+                    //settings.LineNumberOffset = 2;
+                    //settings.LinePositionOffset = 2;
                     using (XmlReader reader = XmlReader.Create(tempFileName, settings))
                     {
                         xml.Load(reader);

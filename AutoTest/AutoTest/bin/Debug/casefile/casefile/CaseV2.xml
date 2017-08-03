@@ -2,14 +2,14 @@
 <VaneLife_V1><!-- 基本规则，节点名首字母大写，属性首字母小写 -->
   <ScriptRunTime>
     <RunTimeParameter>
-    <!--<RunTimeParameter>-->
-    <!--该项的内容可以被case结果修改或新增 并与可以被用与case内容做参数化操作，要使用传输化必须指定isHaveParameters="true"  使用格式如 XXXXX*#name*#XXXXXX ，脚本中的*#name*#将被替换为相应的数据-->
-    <!-- name值务必不要使用=，+，-这3个字符结尾开头（该值开头的参数被工具保留） -->
-    <!--HaveParameters的处理-->
-    <!--Parameters静态数据必须以*#包含，可以含有多个静态数据，但静态数据不能使用*#进行嵌套，可以进行平铺，如果平铺的多个静态数据的数据名及参数完全相同，则他们的值也将相同，不会进行新的计算-->
-    <!--Parameters静态数据的参数需要使用()括起来，如果没有可以不加 eg[ casedata*#parameterName(additionKey)*#casedata ]-->
-    <!--Parameters静态数据使用()括起来的参数依然支持包含其他静态数据的运算，需要使用``（键盘tab上的键）括起来，同样支持多个``，但暂时也不支持进一步嵌套 eg[ casedata*#parameterName(additionKey`parameterName(additionKey)`)*#casedata ]-->
-    <!--Parameters静态数据的再运算``只能放在()才能被正确识别-->
+      <!--<RunTimeParameter>-->
+      <!--该项的内容可以被case结果修改或新增 并与可以被用与case内容做参数化操作，要使用传输化必须指定isHaveParameters="true"  使用格式如 XXXXX*#name*#XXXXXX ，脚本中的*#name*#将被替换为相应的数据-->
+      <!-- name值务必不要使用=，+，-这3个字符结尾开头（该值开头的参数被工具保留） -->
+      <!--HaveParameters的处理-->
+      <!--Parameters静态数据必须以*#包含，可以含有多个静态数据，但静态数据不能使用*#进行嵌套，可以进行平铺，如果平铺的多个静态数据的数据名及参数完全相同，则他们的值也将相同，不会进行新的计算-->
+      <!--Parameters静态数据的参数需要使用()括起来，如果没有可以不加 eg[ casedata*#parameterName(additionKey)*#casedata ]-->
+      <!--Parameters静态数据使用()括起来的参数依然支持包含其他静态数据的运算，需要使用``（键盘tab上的键）括起来，同样支持多个``，但暂时也不支持进一步嵌套 eg[ casedata*#parameterName(additionKey`parameterName(additionKey)`)*#casedata ]-->
+      <!--Parameters静态数据的再运算``只能放在()才能被正确识别-->
       
       <!--<RunTimeStaticKey>-->
       <!-- type当前支持vaule 该type不支持附加参数-->
@@ -90,7 +90,12 @@
       </NewActuator>
       <NewActuator name="huala_mysql" protocol="mysql">
         <connect_str>Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test</connect_str> <!--Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test--> <!--必选项，如果不填为"" 将会导致无法连接-->
-        <db_name>数据库名称</db_name>
+      </NewActuator>
+      <NewActuator name="ssh153" protocol="ssh">
+        <host>192.168.201.153</host>
+        <user>root</user>
+        <password>B2CCentOs7!</password>
+        <expect_pattern>#</expect_pattern>   <!--中断符非必填-->
       </NewActuator>
       <NewActuator name="telnet1" protocol="telnet">
         <login>admin</login>
@@ -1288,11 +1293,11 @@
   <Project id="1000010005" name="sql test" remark="sql测试">
       <Case id="1100050001" remark="sql查询">
         <Content protocol="mysql" actuator="huala_mysql">
-          <SqlCmd isHaveParameters="true">select* from h_sso_log order by id desc limit 20</SqlCmd><!--必选项-->
+          <SqlCmd isHaveParameters="true">select* from h_sso_log order by id desc limit 20</SqlCmd><!--必选项,返回数据为表的json格式，支持isHaveParameters属性-->
         </Content>
         <Expect method="contain">/3</Expect>
         <Attribute>
-          <Delay>200</Delay>
+          <Delay>20000</Delay>
           <Level>1</Level>
         </Attribute>
       </Case>
@@ -1307,4 +1312,36 @@
         </Attribute>
       </Case>
     </Project>
+  <Project id="1000010006" name="ssh test" remark="ssh测试">
+    <Case id="1100060001" remark="ssh">
+      <Content protocol="ssh" actuator="ssh153">
+        <SshCmd isHaveParameters="true">ll -a</SshCmd>
+      </Content>
+      <Expect method="contain">/3</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100060002" remark="ssh">
+      <Content protocol="ssh" actuator="ssh153">
+        <SshCmd isHaveParameters="true">cd /usr</SshCmd>
+      </Content>
+      <Expect method="contain">/3</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100060003" remark="ssh">
+      <Content protocol="ssh" actuator="ssh153">
+        <SshCmd isHaveParameters="true">ll -a</SshCmd>
+      </Content>
+      <Expect method="contain">/3</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+  </Project>
 </VaneLife_V1>

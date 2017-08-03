@@ -183,6 +183,48 @@ namespace MyCommonHelper
 
 
         /// <summary>
+        /// 以指定字符串拼合List<string>
+        /// </summary>
+        /// <param name="lsStr">目标对象</param>
+        /// <param name="splitStr">分割字符串</param>
+        /// <returns>返回数据</returns>
+        public static string MyToString(this List<string> lsStr, string splitStr)
+        {
+            string outStr = null;
+            if (lsStr != null)
+            {
+                if (lsStr.Count > 5)
+                {
+                    StringBuilder SbOutStr = new StringBuilder(lsStr.Count * ((lsStr[0].Length > lsStr[4].Length ? lsStr[0].Length : lsStr[1].Length) + splitStr.Length));
+                    foreach (string tempStr in lsStr)
+                    {
+                        SbOutStr.Append(tempStr);
+                        if (splitStr != null)
+                        {
+                            SbOutStr.Append(splitStr);
+                        }
+                    }
+                    outStr = SbOutStr.ToString();
+                }
+                else
+                {
+                    foreach (string tempStr in lsStr)
+                    {
+                        if (splitStr != null)
+                        {
+                            outStr += (tempStr + splitStr);
+                        }
+                        else
+                        {
+                            outStr += tempStr;
+                        }
+                    }
+                }
+            }
+            return outStr;
+        }
+
+        /// <summary>
         /// 添加键值，若遇到已有key则覆盖
         /// </summary>
         /// <param name="dc">Dictionary</param>
@@ -336,45 +378,6 @@ namespace MyCommonHelper
             return "";
         }
 
-        /*
-        /// <summary>
-        /// 添加键值，若遇到已有key则覆盖
-        /// </summary>
-        /// <param name="dc">Dictionary</param>
-        /// <param name="yourKey">Key</param>
-        /// <param name="yourValue">Value</param>
-        public static void myAdd(this Dictionary<string, ICaseExecutionDevice> dc, string yourKey, ICaseExecutionDevice yourValue)
-        {
-            if (dc.ContainsKey(yourKey))
-            {
-                dc[yourKey] = yourValue;
-            }
-            else
-            {
-                dc.Add(yourKey, yourValue);
-            }
-        }
-         * */
-
-        /*
-        /// <summary>
-        /// 添加键值，若遇到已有key则覆盖
-        /// </summary>
-        /// <param name="dc">Dictionary</param>
-        /// <param name="yourKey">Key</param>
-        /// <param name="yourValue">Value</param>
-        public static void myAdd(this Dictionary<string, IRunTimeStaticData> dc, string yourKey, IRunTimeStaticData yourValue)
-        {
-            if (dc.ContainsKey(yourKey))
-            {
-                dc[yourKey] = yourValue;
-            }
-            else
-            {
-                dc.Add(yourKey, yourValue);
-            }
-        }
-         * */
 
         /// <summary>
         /// 添加键值，若遇到已有则不添加
@@ -419,6 +422,21 @@ namespace MyCommonHelper
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// 返回对象的深度克隆
+        /// </summary>
+        /// <param name="dc">目标Dictionary</param>
+        /// <returns>对象的深度克隆</returns>
+        public static Dictionary<string, ICloneable> MyClone(this Dictionary<string, ICloneable> dc)
+        {
+            Dictionary<string, ICloneable> cloneDc = new Dictionary<string, ICloneable>();
+            foreach (KeyValuePair<string, ICloneable> tempKvp in dc)
+            {
+                cloneDc.Add(tempKvp.Key, (ICloneable)tempKvp.Value.Clone());
+            }
+            return cloneDc;
         }
 
         /// <summary>

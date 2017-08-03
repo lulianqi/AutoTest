@@ -60,7 +60,8 @@ namespace CaseExecutiveActuator
         comm = 10,
         telnet = 11,
         activeMQ = 12,
-        mysql = 13
+        mysql = 13,
+        ssh = 14
     }
 
     /// <summary>
