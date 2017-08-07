@@ -84,7 +84,7 @@ namespace MyCommonHelper.NetHelper
         /// Connect Thread To Connect 
         /// </summary>
         /// <param name="ConnectTcpClient"> List<object> { TcpClient, IPEndPoint } </param>
-        public void newConnectThread(object ConnectTcpClient)
+        private void newConnectThread(object ConnectTcpClient)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace MyCommonHelper.NetHelper
         /// Initialization a mySocket
         /// </summary>
         /// <param name="yourIPEndPoint"></param>
-        /// <param name="yourReceiveTick">the receive time</param>
+        /// <param name="yourReceiveTick">the receive time(ms)</param>
         public MySocket(IPEndPoint yourIPEndPoint,int yourReceiveTick)
         {
             myErrorMes = "";
@@ -113,6 +113,15 @@ namespace MyCommonHelper.NetHelper
             myReceiveTimer.AutoReset = true;
             myReceiveTimer.Enabled = false;
         }
+
+        /// <summary>
+        /// Initialization a mySocket (it may thow an error you need try catch it)
+        /// </summary>
+        /// <param name="endPointStr">a ip str like 10.10.10.10:80</param>
+        /// <param name="yourReceiveTick">the receive time (ms)</param>
+        public MySocket(string endPointStr, int yourReceiveTick)
+            : this(new IPEndPoint(IPAddress.Parse(endPointStr.Split(':')[0]), int.Parse(endPointStr.Split(':')[1])), yourReceiveTick)
+        {}
 
         //Receive date in temer with a new thread
         void myReceiveTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -255,7 +264,7 @@ namespace MyCommonHelper.NetHelper
             catch (Exception ex)
             {
                 ErrorLog.PutInLog(ex.Message);
-                myErrorMes = ex.Message;
+                myErrorMes = ex.Message; 
                 return false;
             }
             return true;
@@ -287,6 +296,11 @@ namespace MyCommonHelper.NetHelper
                 return false;
             }
             return true;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     
     }

@@ -655,6 +655,21 @@ namespace AutoTest
         }
 
         /// <summary>
+        /// 强制停止
+        /// </summary>
+        public void StopCaseForce()
+        {
+            if (nowCaseActionActuator != null)
+            {
+                nowCaseActionActuator.KillAll();
+            }
+            else
+            {
+                MessageBox.Show("请先加载工程");
+            }
+        }
+
+        /// <summary>
         /// 暂停
         /// </summary>
         public void PauseCase()
@@ -1307,6 +1322,13 @@ namespace AutoTest
             StopCase();
         }
 
+        //强制停止
+        private void stopRunForceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StopCaseForce();
+        }
+
+
         //修改脚本
         private void ModifyToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1845,7 +1867,6 @@ namespace AutoTest
         #endregion 
 
 
-       
 
 
     }

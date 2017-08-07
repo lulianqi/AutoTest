@@ -1,0 +1,18 @@
+-------------------------------------------------------
+2017/8/7 19:54:30
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:168
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:18132
+-------------------------------------------------------
+2017/8/7 19:56:10
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:168
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:18132
+-------------------------------------------------------
+2017/8/7 19:58:03
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:168
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:18132
