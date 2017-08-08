@@ -8,10 +8,10 @@ namespace DemoForMyHelper
 {
     class DemoForMySocket
     {
-        MySocket ms;
+        MyTcpClient ms;
         public DemoForMySocket()
         {
-            ms = new MySocket("192.168.78.110:60000", 1000);
+            ms = new MyTcpClient("192.168.78.110:60000");
             ms.OnReceiveData += ms_OnReceiveData;
             ms.OnTcpConnected += ms_OnTcpConnected;
             ms.OnTcpConnectionLosted += ms_OnTcpConnectionLosted;
@@ -21,23 +21,38 @@ namespace DemoForMyHelper
         public void StartTcp()
         {
 
-            if(!ms.connectClient())
+            //if(!ms.ConnectClient())
+            if (!ms.ConnectAsync())
             {
-                Console.WriteLine(ms.myErroerMessage);
+                Console.WriteLine(ms.ErroerMessage);
             }
+            System.Threading.Thread.Sleep(2000);
             for (int i = 0; i < 10; i++)
             {
-                if(!ms.sendData("it is test data", Encoding.UTF8))
+                if(!ms.SendData("it is test data", Encoding.UTF8))
                 {
-                    Console.WriteLine(ms.myErroerMessage);
+                    Console.WriteLine(ms.ErroerMessage);
                 }
             }
 
             Console.WriteLine("any key to disconnect");
             Console.ReadKey();
-            if (!ms.sendData("it is test data", Encoding.UTF8))
+            for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine(ms.myErroerMessage);
+                System.Threading.Thread.Sleep(10);
+                if (!ms.SendData("it is test data", Encoding.UTF8))
+                {
+                    Console.WriteLine(ms.ErroerMessage);
+                }
+            }
+
+            
+            for (int i = 0; i < 10; i++)
+            {
+                Console.ReadKey();
+                byte[] bs = ms.ReceiveAllData();
+                if(bs !=null)
+                 ms_OnReceiveData(bs);
             }
             //ms.disConnectClient();
         }
@@ -50,6 +65,7 @@ namespace DemoForMyHelper
         void ms_OnTcpConnected(string yourInfo)
         {
             Console.WriteLine("ms_OnTcpConnected");
+            Console.WriteLine(yourInfo);
         }
 
         void ms_OnReceiveData(byte[] yourData)

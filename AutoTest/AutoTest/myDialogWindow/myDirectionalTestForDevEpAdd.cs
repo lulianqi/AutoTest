@@ -88,7 +88,7 @@ namespace AutoTest.myDialogWindow
         bool isTest;                    //是否正在进行测试
         int mywaitTime;                 //请求间隔时间
         int myTimeOut;                  //超时时间
-        MySocket nowSocket;             
+        MyTcpClient nowSocket;             
         System.Windows.Forms.Timer myBeatTimer = new System.Windows.Forms.Timer();
         myVaneConfigRequestData nowVaneConfigRequestData ;
         myTestState nowTestState;       //测试结果记录
@@ -112,10 +112,10 @@ namespace AutoTest.myDialogWindow
 
         public bool doConfiguration(string yourKey)
         {
-            if (nowSocket.isTcpClientConnected)
+            if (nowSocket.IsTcpClientConnected)
             {
                 byte[] tempDataToSend = nowVaneConfigRequestData.devConfigurationQuery(myGwSn, yourKey);
-                nowSocket.sendData(tempDataToSend);
+                nowSocket.SendData(tempDataToSend);
             }
             else
             {
@@ -128,7 +128,7 @@ namespace AutoTest.myDialogWindow
         {
             byte[] tempDataToSend;
             tempDataToSend = nowVaneConfigRequestData.devHeartBeatRequest();
-            nowSocket.sendData(tempDataToSend);
+            nowSocket.SendData(tempDataToSend);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace AutoTest.myDialogWindow
         {
             addMessage("连接中断");
 Found:
-            if (nowSocket.connectClient())
+            if (nowSocket.Connect())
             {
                 addMessage("重连成功");
                 if (isTest)
@@ -149,7 +149,7 @@ Found:
             }
             else
             {
-                addMessage(nowSocket.myErroerMessage);
+                addMessage(nowSocket.ErroerMessage);
                 addMessage("重连失败");
                 goto Found;
             }
@@ -281,19 +281,19 @@ Found:
             //set the from name
             this.Text += ("  " + myIpEp.Address.ToString());
 
-            nowSocket = new MySocket(myIpEp, 500);
-            if (!nowSocket.isTcpClientConnected)
+            nowSocket = new MyTcpClient(myIpEp, 500);
+            if (!nowSocket.IsTcpClientConnected)
             {
-                if (nowSocket.connectClient())
+                if (nowSocket.Connect())
                 {
-                    nowSocket.OnReceiveData += new MySocket.delegateReceiveData(nowSocket_nowReceiveData);
-                    nowSocket.OnTcpConnectionLosted += new MySocket.ConnectionLosted(nowSocket_OnTcpConnectionLosted);
+                    nowSocket.OnReceiveData += new MyTcpClient.delegateReceiveData(nowSocket_nowReceiveData);
+                    nowSocket.OnTcpConnectionLosted += new MyTcpClient.ConnectionLosted(nowSocket_OnTcpConnectionLosted);
                     myBeatTimer.Enabled = true;
                     addMessage("coonect success");
                 }
                 else
                 {
-                    MessageBox.Show(nowSocket.myErroerMessage);
+                    MessageBox.Show(nowSocket.ErroerMessage);
                     this.Close();
                 }
             }
@@ -414,7 +414,7 @@ Found:
         {
             byte[] tempDataToSend;
             tempDataToSend = nowVaneConfigRequestData.devEpAddRequest(tb_EpId.Text, tb_EpName.Text);
-            nowSocket.sendData(tempDataToSend);
+            nowSocket.SendData(tempDataToSend);
             addMessage("开始添加");
         }
 
@@ -425,7 +425,7 @@ Found:
         {
             byte[] tempDataToSend;
             tempDataToSend = nowVaneConfigRequestData.devEpRemoveRequest(tb_EpId.Text);
-            nowSocket.sendData(tempDataToSend);
+            nowSocket.SendData(tempDataToSend);
             addMessage("开始删除");
         }
 
@@ -459,14 +459,14 @@ Found:
         {
             byte[] tempDataToSend;
             tempDataToSend = nowVaneConfigRequestData.devEpAddRequest(tb_EpId.Text, tb_EpName.Text);
-            nowSocket.sendData(tempDataToSend);
+            nowSocket.SendData(tempDataToSend);
         }
 
         private void bt_del_Click(object sender, EventArgs e)
         {
             byte[] tempDataToSend;
             tempDataToSend = nowVaneConfigRequestData.devEpRemoveRequest(tb_EpId.Text);
-            nowSocket.sendData(tempDataToSend);
+            nowSocket.SendData(tempDataToSend);
         }
     }
 }

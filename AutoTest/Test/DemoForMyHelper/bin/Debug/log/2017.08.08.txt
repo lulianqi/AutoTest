@@ -1,0 +1,36 @@
+-------------------------------------------------------
+2017/8/8 15:09:08
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:290
+
+无法将数据写入传输连接: 您的主机中的软件中止了一个已建立的连接。。
+-------------------------------------------------------
+2017/8/8 15:14:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:168
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/8 15:15:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:290
+
+无法将数据写入传输连接: 您的主机中的软件中止了一个已建立的连接。。
+-------------------------------------------------------
+2017/8/8 15:46:42
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:291
+
+未将对象引用设置到对象的实例。
+-------------------------------------------------------
+2017/8/8 15:49:57
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:291
+
+无法将数据写入传输连接: 您的主机中的软件中止了一个已建立的连接。。
+-------------------------------------------------------
+2017/8/8 19:03:23
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:275
+
+无法将数据写入传输连接: 您的主机中的软件中止了一个已建立的连接。。

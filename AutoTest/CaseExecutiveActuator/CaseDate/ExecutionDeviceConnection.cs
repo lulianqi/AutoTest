@@ -151,6 +151,31 @@ namespace CaseExecutiveActuator
     }
 
     /// <summary>
+    /// tcp 【IConnectExecutiveData】
+    /// </summary>
+    public class myConnectForTcp : IConnectExecutiveData
+    {
+        public CaseProtocol caseProtocol;
+
+        public string host;
+        public int port;
+
+        public myConnectForTcp(CaseProtocol yourCaseProtocol, string yourHost,int yourPort)
+        {
+            caseProtocol = yourCaseProtocol;
+            host = yourHost;
+            port = yourPort;
+        }
+        public CaseProtocol MyCaseProtocol
+        {
+            get
+            {
+                return caseProtocol;
+            }
+        }
+    }
+
+    /// <summary>
     /// ssh 【IConnectExecutiveData】
     /// </summary>
     public class myConnectForSsh : IConnectExecutiveData

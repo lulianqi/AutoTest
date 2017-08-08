@@ -46,7 +46,7 @@ namespace AutoTest.myDialogWindow
 
         IPEndPoint myIpEp;
         string myGwID;
-        MySocket nowSocket;
+        MyTcpClient nowSocket;
         System.Windows.Forms.Timer myBeatTimer = new System.Windows.Forms.Timer();
         myVaneConfigRequestData nowVaneConfigRequestData ;
         int myMaxLine;
@@ -85,10 +85,10 @@ namespace AutoTest.myDialogWindow
         /// <returns>返回结果</returns>
         public bool doConfiguration(string yourKey)
         {
-            if (nowSocket.isTcpClientConnected)
+            if (nowSocket.IsTcpClientConnected)
             {
                 byte[] tempDataToSend = nowVaneConfigRequestData.devConfigurationQuery(myGwID, yourKey);
-                nowSocket.sendData(tempDataToSend);
+                nowSocket.SendData(tempDataToSend);
             }
             else
             {
@@ -116,13 +116,13 @@ namespace AutoTest.myDialogWindow
 
             //set the from name
             this.Text += ("  "+myIpEp.Address.ToString());
-            nowSocket = new MySocket(myIpEp, 500);
-            if (!nowSocket.isTcpClientConnected)  
+            nowSocket = new MyTcpClient(myIpEp, 500);
+            if (!nowSocket.IsTcpClientConnected)  
             {
-                if (nowSocket.connectClient())
+                if (nowSocket.Connect())
                 {
-                    nowSocket.OnReceiveData += new MySocket.delegateReceiveData(nowSocket_nowReceiveData);
-                    nowSocket.OnTcpConnectionLosted += new MySocket.ConnectionLosted(nowSocket_OnTcpConnectionLosted);
+                    nowSocket.OnReceiveData += new MyTcpClient.delegateReceiveData(nowSocket_nowReceiveData);
+                    nowSocket.OnTcpConnectionLosted += new MyTcpClient.ConnectionLosted(nowSocket_OnTcpConnectionLosted);
                     myBeatTimer.Enabled = true;
                     MyPutInKey keyWindow = new MyPutInKey();
                     keyWindow.Owner = this;
@@ -142,7 +142,7 @@ namespace AutoTest.myDialogWindow
                 }
                 else
                 {
-                    MessageBox.Show(nowSocket.myErroerMessage);
+                    MessageBox.Show(nowSocket.ErroerMessage);
                     this.Close();
                 }
             }
@@ -152,7 +152,7 @@ namespace AutoTest.myDialogWindow
         {
             byte[] tempDataToSend;
             tempDataToSend = nowVaneConfigRequestData.devHeartBeatRequest();
-            nowSocket.sendData(tempDataToSend);
+            nowSocket.SendData(tempDataToSend);
             if(isMyAlive)
             {
                 pictureBox_headHeart.Image = ((AutoRunner)(this.Parent.Parent.Parent.Parent)).imageListForButton.Images[3];
@@ -167,14 +167,14 @@ namespace AutoTest.myDialogWindow
             DialogResult yourResult = MessageBox.Show("连接中断！是否关闭该窗口", myIpEp.Address.ToString(), MessageBoxButtons.AbortRetryIgnore);
             if (yourResult == DialogResult.Retry)
             {
-                if (nowSocket.connectClient())
+                if (nowSocket.Connect())
                 {
                 }
                 else
                 {
                     pictureBox_headHeart.Image = ((AutoRunner)(this.Parent.Parent.Parent.Parent)).imageListForButton.Images[2];
                     this.Text += " DisConnect";
-                    MessageBox.Show(nowSocket.myErroerMessage, "STOP");
+                    MessageBox.Show(nowSocket.ErroerMessage, "STOP");
                 }
             }
             else if (yourResult == DialogResult.Abort)
@@ -381,7 +381,7 @@ namespace AutoTest.myDialogWindow
                     break;
             }
             richTextBox_vaneConfigRequest.Text = myVaneConfigTool.getHexByBytes(tempDataToSend);
-            nowSocket.sendData(tempDataToSend);
+            nowSocket.SendData(tempDataToSend);
         }
 
         private void pictureBox_doRequest_Click(object sender, EventArgs e)
@@ -394,7 +394,7 @@ namespace AutoTest.myDialogWindow
             }
             else
             {
-                nowSocket.sendData(tempDataToSend);
+                nowSocket.SendData(tempDataToSend);
             }
         }
         #endregion
@@ -431,9 +431,9 @@ namespace AutoTest.myDialogWindow
         {
             if (nowSocket != null)
             {
-                if (nowSocket.isTcpClientConnected)
+                if (nowSocket.IsTcpClientConnected)
                 {
-                    nowSocket.disConnectClient();
+                    nowSocket.DisConnect();
                 }
             }
             isMyAlive = false;

@@ -822,37 +822,37 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_console);
                                                             break;
                                                         case CaseProtocol.activeMQ:
-                                                            List<string> tempQueueList = new List<string>();
-                                                            List<KeyValuePair<string,string>> tempTopicList=new List<KeyValuePair<string,string>>();
+                                                            List<string> tempMqQueueList = new List<string>();
+                                                            List<KeyValuePair<string,string>> tempMqTopicList=new List<KeyValuePair<string,string>>();
                                                             #region Get Queues data
-	                                                     	List<string[]> tempListData = CaseTool.GetXmlInnerMetaDataList(tempNodeChild, "queue", null);
-                                                            if(tempListData.Count>0)
+	                                                     	List<string[]> tempMqListData = CaseTool.GetXmlInnerMetaDataList(tempNodeChild, "queue", null);
+                                                            if(tempMqListData.Count>0)
                                                             {
-                                                                foreach(string[] tempOneData in tempListData)
+                                                                foreach(string[] tempOneData in tempMqListData)
                                                                 {
-                                                                    tempQueueList.Add(tempOneData[0]);
+                                                                    tempMqQueueList.Add(tempOneData[0]);
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                tempQueueList = null;
+                                                                tempMqQueueList = null;
                                                             } 
 	                                                        #endregion
                                                             #region Get Topics data
-                                                            tempListData = CaseTool.GetXmlInnerMetaDataList(tempNodeChild, "topic", new string[]{"durable"});
-                                                            if(tempListData.Count>0)
+                                                            tempMqListData = CaseTool.GetXmlInnerMetaDataList(tempNodeChild, "topic", new string[]{"durable"});
+                                                            if(tempMqListData.Count>0)
                                                             {
-                                                                foreach(string[] tempOneData in tempListData)
+                                                                foreach(string[] tempOneData in tempMqListData)
                                                                 {
-                                                                    tempTopicList.Add(new KeyValuePair<string, string>(tempOneData[0], tempOneData[1]));
+                                                                    tempMqTopicList.Add(new KeyValuePair<string, string>(tempOneData[0], tempOneData[1]));
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                tempTopicList = null;
+                                                                tempMqTopicList = null;
                                                             } 
 	                                                        #endregion
-                                                            myConnectForActiveMQ ConnectInfo_activeMQ = new myConnectForActiveMQ(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "brokerUri"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "clientId"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "factoryUserName"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "factoryPassword"),tempQueueList,tempTopicList);
+                                                            myConnectForActiveMQ ConnectInfo_activeMQ = new myConnectForActiveMQ(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "brokerUri"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "clientId"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "factoryUserName"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "factoryPassword"),tempMqQueueList,tempMqTopicList);
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_activeMQ);
                                                             break;
                                                         case CaseProtocol.vanelife_http:
@@ -866,6 +866,29 @@ namespace CaseExecutiveActuator.CaseActuator
                                                         case CaseProtocol.mysql:
                                                             myConnectForMysql ConnectInfo_mysql = new myConnectForMysql(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "connect_str"));
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_mysql);
+                                                            break;
+                                                        case CaseProtocol.tcp:
+                                                            #region Get EndPoint
+                                                            string tempTcpHost = CaseTool.GetXmlInnerVaule(tempNodeChild, "host");
+                                                            string tempTcpPort = CaseTool.GetXmlInnerVaule(tempNodeChild, "port");
+                                                            int tempTcpNowPort = 0;
+                                                            if (tempTcpHost != null && tempTcpPort!=null)
+                                                            {
+                                                                System.Net.IPAddress tempIp;
+                                                                if (!(System.Net.IPAddress.TryParse(tempTcpHost, out tempIp) && int.TryParse(tempTcpPort, out tempTcpNowPort) && tempTcpNowPort < 65536 && tempTcpNowPort >0))
+                                                                {
+                                                                    SetNowActionError(string.Format("[add sql actuator ]find error data in host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                SetNowActionError(string.Format("[add sql actuator ]can not find host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                break;
+                                                            }
+                                                            #endregion
+                                                            myConnectForTcp ConnectInfo_tcp = new myConnectForTcp(tempActuatorProtocol, tempTcpHost,tempTcpNowPort);
+                                                            AddExecutionDevice(tempActuatorName, ConnectInfo_tcp);
                                                             break;
                                                         case CaseProtocol.ssh:
                                                             myConnectForSsh ConnectInfo_ssh = new myConnectForSsh(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "host"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "user"),CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "password"), CaseTool.GetXmlInnerVaule(tempNodeChild, "expect_pattern"));
@@ -1629,6 +1652,9 @@ namespace CaseExecutiveActuator.CaseActuator
                     break;
                 case CaseProtocol.mysql:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForMysql((myConnectForMysql)yourDeviceConnectInfo));
+                    break;
+                case CaseProtocol.tcp:
+                    //myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForTcp((myConnectForSsh)yourDeviceConnectInfo));
                     break;
                 case CaseProtocol.ssh:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForSsh((myConnectForSsh)yourDeviceConnectInfo));

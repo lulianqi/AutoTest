@@ -68,6 +68,10 @@
       <NewActuator name="huala_mysql" protocol="mysql">
         <connect_str>Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test</connect_str>
       </NewActuator>
+      <NewActuator name="test_tcp" protocol="tcp">
+        <host>192.168.110.78</host>
+        <port>60000</port>
+      </NewActuator>
       <NewActuator name="ssh153" protocol="ssh">
         <host>192.168.200.153</host>
         <user>root</user>
@@ -1315,6 +1319,18 @@
     <Case id="1100060004" remark="ssh">
       <Content protocol="ssh" actuator="ssh153">
         <SshCmd isHaveParameters="true">ll -a</SshCmd>
+      </Content>
+      <Expect method="contain">/</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+  </Project>
+  <Project id="1000010007" name="tcp test" remark="tcp测试">
+    <Case id="1100070001" remark="ssh">
+      <Content protocol="tcp" actuator="tcp_test">
+        <send isHaveParameters="true">ll -a</send>
       </Content>
       <Expect method="contain">/</Expect>
       <Attribute>
