@@ -45,9 +45,9 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             }
         }
 
-        public new static MyMySshExecutionContent GetRunContent(XmlNode yourContentNode)
+        public new static MySshExecutionContent GetRunContent(XmlNode yourContentNode)
         {
-            MyMySshExecutionContent myRunContent = new MyMySshExecutionContent();
+            MySshExecutionContent myRunContent = new MySshExecutionContent();
             if (yourContentNode != null)
             {
                 if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
@@ -151,7 +151,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             if (yourExecutionContent.MyCaseProtocol == CaseProtocol.ssh)
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
-                MyMySshExecutionContent nowExecutionContent = yourExecutionContent as MyMySshExecutionContent;
+                MySshExecutionContent nowExecutionContent = yourExecutionContent as MySshExecutionContent;
                 myResult.caseProtocol = CaseProtocol.ssh;
                 myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
                 myResult.startTime = DateTime.Now.ToString("HH:mm:ss");

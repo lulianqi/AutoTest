@@ -410,7 +410,82 @@ namespace CaseExecutiveActuator
         }
     }
 
-    public class MyMySshExecutionContent : ICaseExecutionContent
+    public class MyTcpExecutionContent : ICaseExecutionContent
+    {
+        public string errorMessage;
+        public CaseProtocol caseProtocol;
+        public string caseActuator;
+
+        public caseParameterizationContent tcpContentToSend;
+        public Encoding tcpSendEncoding;     //null 表示raw
+        public bool isSend;
+        public int tcpSleepTime;         //<0 表示为发送
+        public Encoding tcpReceiveEncoding;     //null 表示raw
+        public bool isReceive;
+
+        public MyTcpExecutionContent()
+        {
+            errorMessage = null;
+            caseProtocol = CaseProtocol.unknownProtocol;
+            caseActuator = "";
+            tcpContentToSend = new caseParameterizationContent();
+            tcpSendEncoding = null;
+            isSend = false;
+            tcpReceiveEncoding = null;
+            isReceive = false;
+            tcpSleepTime = -1;
+        }
+
+        public bool IsSendOrder
+        {
+            get { return isSend; }
+        }
+
+        public bool IsReceiveOrder
+        {
+            get { return isReceive; }
+        }
+
+        public CaseProtocol MyCaseProtocol
+        {
+            get { return caseProtocol; }
+        }
+
+        public string MyCaseActuator
+        {
+            get { return caseActuator; }
+        }
+
+        public string MyExecutionTarget
+        {
+            get 
+            {
+                if (IsSendOrder)
+                {
+                    return string.Format("send {0}", tcpContentToSend.GetTargetContentData());
+                }
+                else
+                {
+                    return "receive";
+                }
+            }
+        }
+
+        public string MyExecutionContent
+        {
+            get { return null; }
+        }
+
+        public string MyErrorMessage
+        {
+            get
+            {
+                return String.IsNullOrEmpty(errorMessage) ? null : errorMessage;
+            }
+        }
+    }
+
+    public class MySshExecutionContent : ICaseExecutionContent
     {
         public string errorMessage;
         public CaseProtocol caseProtocol;
@@ -419,7 +494,7 @@ namespace CaseExecutiveActuator
         public caseParameterizationContent sshContent;
 
 
-        public MyMySshExecutionContent()
+        public MySshExecutionContent()
         {
             errorMessage = null;
             caseProtocol = CaseProtocol.unknownProtocol;

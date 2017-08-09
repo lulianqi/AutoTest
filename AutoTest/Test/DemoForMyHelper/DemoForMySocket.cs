@@ -71,7 +71,7 @@ namespace DemoForMyHelper
         void ms_OnReceiveData(byte[] yourData)
         {
             Console.WriteLine(Encoding.UTF8.GetString(yourData));
-            Console.WriteLine(MyCommonHelper.MyEncryption.ByteToHexString(yourData,MyCommonHelper.MyEncryption.HexaDecimal.hex16,MyCommonHelper.MyEncryption.ShowHexMode.space));
+            Console.WriteLine(MyCommonHelper.MyBytes.ByteToHexString(yourData, MyCommonHelper.HexaDecimal.hex16, MyCommonHelper.ShowHexMode.space));
         }
         
     }

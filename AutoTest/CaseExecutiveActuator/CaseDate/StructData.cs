@@ -100,12 +100,12 @@ namespace CaseExecutiveActuator
                         break;
                     //hex 16
                     case ParameterizationContentEncodingType.encode_hex16:
-                        myTargetContentData = MyCommonHelper.MyEncryption.StringToHexString(myTargetContentData);
+                        myTargetContentData = MyCommonHelper.MyBytes.StringToHexString(myTargetContentData);
                         break;
                     case ParameterizationContentEncodingType.decode_hex16:
                         try
                         {
-                            byte[] nowBytes = MyCommonHelper.MyEncryption.HexStringToByte(myTargetContentData, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.space);
+                            byte[] nowBytes = MyCommonHelper.MyBytes.HexStringToByte(myTargetContentData, HexaDecimal.hex16, ShowHexMode.space);
                             myTargetContentData = Encoding.UTF8.GetString(nowBytes);
                         }
                         catch (Exception ex)
@@ -115,12 +115,12 @@ namespace CaseExecutiveActuator
                         break;
                     //hex 2
                     case ParameterizationContentEncodingType.encode_hex2:
-                        myTargetContentData = MyCommonHelper.MyEncryption.StringToHexString(myTargetContentData, Encoding.UTF8, MyEncryption.HexaDecimal.hex2, MyEncryption.ShowHexMode.space);
+                        myTargetContentData = MyCommonHelper.MyBytes.StringToHexString(myTargetContentData, Encoding.UTF8, HexaDecimal.hex2,ShowHexMode.space);
                         break;
                     case ParameterizationContentEncodingType.decode_hex2:
                         try
                         {
-                            byte[] nowBytes = MyCommonHelper.MyEncryption.HexStringToByte(myTargetContentData, MyEncryption.HexaDecimal.hex2, MyEncryption.ShowHexMode.space);
+                            byte[] nowBytes = MyCommonHelper.MyBytes.HexStringToByte(myTargetContentData, HexaDecimal.hex2, ShowHexMode.space);
                             myTargetContentData = Encoding.UTF8.GetString(nowBytes);
                         }
                         catch (Exception ex)

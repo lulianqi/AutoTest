@@ -1,4 +1,5 @@
-﻿using MyCommonHelper.NetHelper;
+﻿using CaseExecutiveActuator.Tool;
+using MyCommonHelper.NetHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ using System.Xml;
 
 namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
 {
-    public class CaseProtocolExecutionForTcp
+    public class CaseProtocolExecutionForTcp : BasicProtocolPars, ICaseExecutionDevice
     {
         private bool isConnect;
         private myConnectForTcp myExecutionDeviceInfo;
@@ -35,9 +36,9 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             myTcpClient = new MyTcpClient(new IPEndPoint(IPAddress.Parse(myExecutionDeviceInfo.host), myExecutionDeviceInfo.port));
         }
 
-        public new static MyMySqlExecutionContent GetRunContent(XmlNode yourContentNode)
+        public new static MyTcpExecutionContent GetRunContent(XmlNode yourContentNode)
         {
-            MyMySqlExecutionContent myRunContent = new MyMySqlExecutionContent();
+            MyTcpExecutionContent myRunContent = new MyTcpExecutionContent();
             if (yourContentNode != null)
             {
                 if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
@@ -54,30 +55,61 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     }
                     myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
 
-                    XmlNode nowSqlNode = yourContentNode["SqlCmd"];
-                    if (nowSqlNode != null)
+                    XmlNode nowTcpNode = yourContentNode["Send"];
+                    if (nowTcpNode != null)
                     {
-                        if (nowSqlNode.Attributes["row"] != null && nowSqlNode.Attributes["column"] != null)
+                        myRunContent.tcpSendEncoding = null;
+                        if (nowTcpNode.Attributes["encoding"] != null)
                         {
-                            myRunContent.isPosition = true;
-                            if (!(int.TryParse(nowSqlNode.Attributes["row"].Value, out myRunContent.rowIndex) && int.TryParse(nowSqlNode.Attributes["column"].Value, out myRunContent.columnIndex)))
+                            if (nowTcpNode.Attributes["encoding"].Value!="raw")
                             {
-                                myRunContent.errorMessage = "Error :yourContentNode is error wirh [row] or [column] attribute";
-                            }
-                            else
-                            {
-                                if (myRunContent.rowIndex < 0 || myRunContent.columnIndex < 0)
+                                try
                                 {
-                                    myRunContent.errorMessage = "Error :yourContentNode is error wirh [row] or [column] attribute";
+                                    myRunContent.tcpSendEncoding = Encoding.GetEncoding(nowTcpNode.Attributes["encoding"].Value);
+                                }
+                                catch
+                                {
+                                    myRunContent.tcpSendEncoding = null;
+                                }
+                            } 
+                        }
+                        myRunContent.tcpContentToSend = CaseTool.GetXmlParametContent(nowTcpNode);
+                        myRunContent.isSend = true;
+                    }
+                    nowTcpNode = yourContentNode["Receive"];
+                    if (nowTcpNode != null)
+                    {
+                        myRunContent.tcpSendEncoding = null;
+                        if (nowTcpNode.Attributes["encoding"] != null)
+                        {
+                            if (nowTcpNode.Attributes["encoding"].Value != "raw")
+                            {
+                                try
+                                {
+                                    myRunContent.tcpSendEncoding = Encoding.GetEncoding(nowTcpNode.Attributes["encoding"].Value);
+                                }
+                                catch
+                                {
+                                    myRunContent.tcpSendEncoding = null;
                                 }
                             }
                         }
-                        myRunContent.sqlContent = CaseTool.GetXmlParametContent(nowSqlNode);
-
+                        if (nowTcpNode.InnerText != "")
+                        {
+                            if (!int.TryParse(nowTcpNode.InnerText, out myRunContent.tcpSleepTime))
+                            {
+                                myRunContent.tcpSleepTime = -1;
+                            }
+                        }
+                        else
+                        {
+                            myRunContent.tcpSleepTime = -1;
+                        }
+                        myRunContent.isReceive=true;
                     }
-                    else
+                    if (!(myRunContent.isReceive && myRunContent.isSend))
                     {
-                        myRunContent.errorMessage = "Error :can not find any SqlCmd ";
+                        myRunContent.errorMessage = "Error :can not find any send or receive node in Content ";
                     }
                 }
                 else
@@ -125,93 +157,93 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
 
-            //向UI推送执行过程信息
-            Action<string, CaseActuatorOutPutType, string> ExecutiveDelegate = (innerSender, outType, yourContent) =>
-            {
-                if (yourExecutiveDelegate != null)
-                {
-                    yourExecutiveDelegate(innerSender, outType, yourContent);
-                }
-            };
+            ////向UI推送执行过程信息
+            //Action<string, CaseActuatorOutPutType, string> ExecutiveDelegate = (innerSender, outType, yourContent) =>
+            //{
+            //    if (yourExecutiveDelegate != null)
+            //    {
+            //        yourExecutiveDelegate(innerSender, outType, yourContent);
+            //    }
+            //};
 
-            //处理执行错误（执行器无法执行的错误）
-            Action<string> DealExecutiveError = (errerData) =>
-            {
-                if (errerData != null)
-                {
-                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
-                    errorList.Add(errerData);
-                }
-            };
+            ////处理执行错误（执行器无法执行的错误）
+            //Action<string> DealExecutiveError = (errerData) =>
+            //{
+            //    if (errerData != null)
+            //    {
+            //        ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
+            //        errorList.Add(errerData);
+            //    }
+            //};
 
-            if (yourExecutionContent.MyCaseProtocol == CaseProtocol.mysql)
-            {
-                //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
-                MyMySqlExecutionContent nowExecutionContent = yourExecutionContent as MyMySqlExecutionContent;
-                myResult.caseProtocol = CaseProtocol.mysql;
-                myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
-                myResult.startTime = DateTime.Now.ToString("HH:mm:ss");
-                StringBuilder tempCaseOutContent = new StringBuilder();
+            //if (yourExecutionContent.MyCaseProtocol == CaseProtocol.mysql)
+            //{
+            //    //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
+            //    MyMySqlExecutionContent nowExecutionContent = yourExecutionContent as MyMySqlExecutionContent;
+            //    myResult.caseProtocol = CaseProtocol.mysql;
+            //    myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
+            //    myResult.startTime = DateTime.Now.ToString("HH:mm:ss");
+            //    StringBuilder tempCaseOutContent = new StringBuilder();
 
-                System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
-                myWatch.Start();
+            //    System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
+            //    myWatch.Start();
 
-                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[mysql]Executive···", caseId));
+            //    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[mysql]Executive···", caseId));
 
-                string nowSqlCmd = nowExecutionContent.sqlContent.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
-                if (tempError != null)
-                {
-                    DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.sqlContent.GetTargetContentData()));
-                    tempCaseOutContent.AppendLine("error with static data");
-                }
-                else
-                {
-                    if (nowExecutionContent.isPosition)
-                    {
-                        string sqlResult = mySqlDrive.ExecuteQuery(nowSqlCmd, nowExecutionContent.rowIndex, nowExecutionContent.columnIndex);
-                        if (sqlResult == null)
-                        {
-                            tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
-                            DealExecutiveError(mySqlDrive.NowError);
-                        }
-                        else
-                        {
-                            tempCaseOutContent.AppendLine(sqlResult);
-                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, sqlResult);
-                        }
-                    }
-                    else
-                    {
-                        System.Data.DataTable sqlResult = mySqlDrive.ExecuteQuery(nowSqlCmd);
-                        if (sqlResult == null)
-                        {
-                            tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
-                            DealExecutiveError(mySqlDrive.NowError);
-                        }
-                        else
-                        {
-                            string json = Newtonsoft.Json.JsonConvert.SerializeObject(sqlResult, Newtonsoft.Json.Formatting.Indented);
-                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, json);
-                            tempCaseOutContent.AppendLine(json);
-                        }
-                    }
-                }
+            //    string nowSqlCmd = nowExecutionContent.sqlContent.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+            //    if (tempError != null)
+            //    {
+            //        DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.sqlContent.GetTargetContentData()));
+            //        tempCaseOutContent.AppendLine("error with static data");
+            //    }
+            //    else
+            //    {
+            //        if (nowExecutionContent.isPosition)
+            //        {
+            //            string sqlResult = mySqlDrive.ExecuteQuery(nowSqlCmd, nowExecutionContent.rowIndex, nowExecutionContent.columnIndex);
+            //            if (sqlResult == null)
+            //            {
+            //                tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
+            //                DealExecutiveError(mySqlDrive.NowError);
+            //            }
+            //            else
+            //            {
+            //                tempCaseOutContent.AppendLine(sqlResult);
+            //                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, sqlResult);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            System.Data.DataTable sqlResult = mySqlDrive.ExecuteQuery(nowSqlCmd);
+            //            if (sqlResult == null)
+            //            {
+            //                tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
+            //                DealExecutiveError(mySqlDrive.NowError);
+            //            }
+            //            else
+            //            {
+            //                string json = Newtonsoft.Json.JsonConvert.SerializeObject(sqlResult, Newtonsoft.Json.Formatting.Indented);
+            //                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, json);
+            //                tempCaseOutContent.AppendLine(json);
+            //            }
+            //        }
+            //    }
 
-                myWatch.Stop();
-                myResult.spanTime = myResult.requestTime = myWatch.ElapsedMilliseconds.ToString();
+            //    myWatch.Stop();
+            //    myResult.spanTime = myResult.requestTime = myWatch.ElapsedMilliseconds.ToString();
 
-                myResult.backContent = tempCaseOutContent.ToString();
-            }
-            else
-            {
-                DealExecutiveError("error:your CaseProtocol is not Matching RunTimeActuator");
-            }
+            //    myResult.backContent = tempCaseOutContent.ToString();
+            //}
+            //else
+            //{
+            //    DealExecutiveError("error:your CaseProtocol is not Matching RunTimeActuator");
+            //}
 
 
-            if (errorList.Count > 0)
-            {
-                myResult.additionalError = errorList.MyToString("\r\n");
-            }
+            //if (errorList.Count > 0)
+            //{
+            //    myResult.additionalError = errorList.MyToString("\r\n");
+            //}
 
             return myResult;
         }
