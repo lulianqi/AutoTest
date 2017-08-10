@@ -1,4 +1,5 @@
 ﻿using CaseExecutiveActuator.Tool;
+using MyCommonHelper;
 using MyCommonHelper.NetHelper;
 using System;
 using System.Collections.Generic;
@@ -55,28 +56,8 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     }
                     myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
 
+                    #region send
                     XmlNode nowTcpNode = yourContentNode["Send"];
-                    if (nowTcpNode != null)
-                    {
-                        myRunContent.tcpSendEncoding = null;
-                        if (nowTcpNode.Attributes["encoding"] != null)
-                        {
-                            if (nowTcpNode.Attributes["encoding"].Value!="raw")
-                            {
-                                try
-                                {
-                                    myRunContent.tcpSendEncoding = Encoding.GetEncoding(nowTcpNode.Attributes["encoding"].Value);
-                                }
-                                catch
-                                {
-                                    myRunContent.tcpSendEncoding = null;
-                                }
-                            } 
-                        }
-                        myRunContent.tcpContentToSend = CaseTool.GetXmlParametContent(nowTcpNode);
-                        myRunContent.isSend = true;
-                    }
-                    nowTcpNode = yourContentNode["Receive"];
                     if (nowTcpNode != null)
                     {
                         myRunContent.tcpSendEncoding = null;
@@ -94,6 +75,30 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                                 }
                             }
                         }
+                        myRunContent.tcpContentToSend = CaseTool.GetXmlParametContent(nowTcpNode);
+                        myRunContent.isSend = true;
+                    } 
+                    #endregion
+
+                    #region receive
+                    nowTcpNode = yourContentNode["Receive"];
+                    if (nowTcpNode != null)
+                    {
+                        myRunContent.tcpSendEncoding = null;
+                        if (nowTcpNode.Attributes["encoding"] != null)
+                        {
+                            if (nowTcpNode.Attributes["encoding"].Value != "raw")
+                            {
+                                try
+                                {
+                                    myRunContent.tcpReceiveEncoding = Encoding.GetEncoding(nowTcpNode.Attributes["encoding"].Value);
+                                }
+                                catch
+                                {
+                                    myRunContent.tcpReceiveEncoding = null;
+                                }
+                            }
+                        }
                         if (nowTcpNode.InnerText != "")
                         {
                             if (!int.TryParse(nowTcpNode.InnerText, out myRunContent.tcpSleepTime))
@@ -105,9 +110,11 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                         {
                             myRunContent.tcpSleepTime = -1;
                         }
-                        myRunContent.isReceive=true;
-                    }
-                    if (!(myRunContent.isReceive && myRunContent.isSend))
+                        myRunContent.isReceive = true;
+                    } 
+                    #endregion
+
+                    if (!(myRunContent.isReceive || myRunContent.isSend))
                     {
                         myRunContent.errorMessage = "Error :can not find any send or receive node in Content ";
                     }
@@ -157,93 +164,153 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();
 
-            ////向UI推送执行过程信息
-            //Action<string, CaseActuatorOutPutType, string> ExecutiveDelegate = (innerSender, outType, yourContent) =>
-            //{
-            //    if (yourExecutiveDelegate != null)
-            //    {
-            //        yourExecutiveDelegate(innerSender, outType, yourContent);
-            //    }
-            //};
+            //向UI推送执行过程信息
+            Action<string, CaseActuatorOutPutType, string> ExecutiveDelegate = (innerSender, outType, yourContent) =>
+            {
+                if (yourExecutiveDelegate != null)
+                {
+                    yourExecutiveDelegate(innerSender, outType, yourContent);
+                }
+            };
 
-            ////处理执行错误（执行器无法执行的错误）
-            //Action<string> DealExecutiveError = (errerData) =>
-            //{
-            //    if (errerData != null)
-            //    {
-            //        ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
-            //        errorList.Add(errerData);
-            //    }
-            //};
+            //处理执行错误（执行器无法执行的错误）
+            Action<string> DealExecutiveError = (errerData) =>
+            {
+                if (errerData != null)
+                {
+                    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, errerData);
+                    errorList.Add(errerData);
+                }
+            };
 
-            //if (yourExecutionContent.MyCaseProtocol == CaseProtocol.mysql)
-            //{
-            //    //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
-            //    MyMySqlExecutionContent nowExecutionContent = yourExecutionContent as MyMySqlExecutionContent;
-            //    myResult.caseProtocol = CaseProtocol.mysql;
-            //    myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
-            //    myResult.startTime = DateTime.Now.ToString("HH:mm:ss");
-            //    StringBuilder tempCaseOutContent = new StringBuilder();
+            if (yourExecutionContent.MyCaseProtocol == CaseProtocol.tcp)
+            {
+                //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
+                MyTcpExecutionContent nowExecutionContent = yourExecutionContent as MyTcpExecutionContent;
+                myResult.caseProtocol = CaseProtocol.mysql;
+                myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
+                myResult.startTime = DateTime.Now.ToString("HH:mm:ss");
+                StringBuilder tempCaseOutContent = new StringBuilder();
 
-            //    System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
-            //    myWatch.Start();
+                System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
+                myWatch.Start();
 
-            //    ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[mysql]Executive···", caseId));
+                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[tcp]Executive···", caseId));
 
-            //    string nowSqlCmd = nowExecutionContent.sqlContent.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
-            //    if (tempError != null)
-            //    {
-            //        DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.sqlContent.GetTargetContentData()));
-            //        tempCaseOutContent.AppendLine("error with static data");
-            //    }
-            //    else
-            //    {
-            //        if (nowExecutionContent.isPosition)
-            //        {
-            //            string sqlResult = mySqlDrive.ExecuteQuery(nowSqlCmd, nowExecutionContent.rowIndex, nowExecutionContent.columnIndex);
-            //            if (sqlResult == null)
-            //            {
-            //                tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
-            //                DealExecutiveError(mySqlDrive.NowError);
-            //            }
-            //            else
-            //            {
-            //                tempCaseOutContent.AppendLine(sqlResult);
-            //                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, sqlResult);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            System.Data.DataTable sqlResult = mySqlDrive.ExecuteQuery(nowSqlCmd);
-            //            if (sqlResult == null)
-            //            {
-            //                tempCaseOutContent.AppendLine(string.Format("error in [ExecuteQuery] :{0}", mySqlDrive.NowError));
-            //                DealExecutiveError(mySqlDrive.NowError);
-            //            }
-            //            else
-            //            {
-            //                string json = Newtonsoft.Json.JsonConvert.SerializeObject(sqlResult, Newtonsoft.Json.Formatting.Indented);
-            //                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, json);
-            //                tempCaseOutContent.AppendLine(json);
-            //            }
-            //        }
-            //    }
+                #region Send
+                if (nowExecutionContent.isSend)
+                {
+                    string nowTcpData = nowExecutionContent.tcpContentToSend.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                    if (tempError != null)
+                    {
+                        DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.tcpContentToSend.GetTargetContentData()));
+                        tempCaseOutContent.AppendLine("error with static data");
+                    }
+                    else
+                    {
+                        byte[] nowSendBytes;
+                        if (nowExecutionContent.tcpSendEncoding == null)
+                        {
+                            try
+                            {
+                                nowSendBytes = MyBytes.HexStringToByte(nowTcpData, HexaDecimal.hex16, ShowHexMode.space);
+                            }
+                            catch
+                            {
+                                nowSendBytes = null;
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                nowSendBytes = nowExecutionContent.tcpSendEncoding.GetBytes(nowTcpData);
+                            }
+                            catch
+                            {
+                                nowSendBytes = null;
+                            }
+                        }
+                        if (nowSendBytes == null)
+                        {
+                            DealExecutiveError(string.Format("can not change data to bytes with [{0}]", nowExecutionContent.tcpContentToSend.GetTargetContentData()));
+                            tempCaseOutContent.AppendLine("error with tcp data");
+                        }
+                        else
+                        {
+                            if (myTcpClient.SendData(nowSendBytes))
+                            {
+                                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, "send sucess");
+                                tempCaseOutContent.AppendLine("send sucess");
+                            }
+                            else
+                            {
+                                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, myTcpClient.ErroerMessage);
+                                tempCaseOutContent.AppendLine(myTcpClient.ErroerMessage);
+                            }
+                        }
+                    }
+                }
+                #endregion
 
-            //    myWatch.Stop();
-            //    myResult.spanTime = myResult.requestTime = myWatch.ElapsedMilliseconds.ToString();
+                #region receive
+                if (nowExecutionContent.isReceive)
+                {
+                    if (nowExecutionContent.tcpSleepTime > 0)
+                    {
+                        System.Threading.Thread.Sleep(nowExecutionContent.tcpSleepTime);
+                    }
+                    byte[] recweiveBytes = myTcpClient.ReceiveAllData();
+                    if (recweiveBytes != null)
+                    {
+                        string receiveStr;
+                        if (nowExecutionContent.tcpReceiveEncoding == null)
+                        {
+                            receiveStr = MyBytes.ByteToHexString(recweiveBytes, HexaDecimal.hex16, ShowHexMode.space);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                receiveStr = nowExecutionContent.tcpReceiveEncoding.GetString(recweiveBytes);
+                            }
+                            catch
+                            {
+                                receiveStr = null;
+                            }
+                        }
+                        if (receiveStr != null)
+                        {
+                            tempCaseOutContent.AppendLine(receiveStr);
+                        }
+                        else
+                        {
+                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveError, string.Format("can not Encoding your data with {0}", MyBytes.ByteToHexString(recweiveBytes, HexaDecimal.hex16, ShowHexMode.space)));
+                            tempCaseOutContent.AppendLine("[error]receive data error can not encoding receive data");
+                        }
+                    }
 
-            //    myResult.backContent = tempCaseOutContent.ToString();
-            //}
-            //else
-            //{
-            //    DealExecutiveError("error:your CaseProtocol is not Matching RunTimeActuator");
-            //}
+                } 
+                #endregion
+
+                
+
+                myWatch.Stop();
+                myResult.spanTime = myResult.requestTime = myWatch.ElapsedMilliseconds.ToString();
+
+                myResult.backContent = tempCaseOutContent.ToString();
+            }
+            else
+            {
+                myResult.backContent = "error:your CaseProtocol is not Matching RunTimeActuator";
+                DealExecutiveError(myResult.backContent);
+            }
 
 
-            //if (errorList.Count > 0)
-            //{
-            //    myResult.additionalError = errorList.MyToString("\r\n");
-            //}
+            if (errorList.Count > 0)
+            {
+                myResult.additionalError = errorList.MyToString("\r\n");
+            }
 
             return myResult;
         }

@@ -193,7 +193,8 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             }
             else
             {
-                DealExecutiveError("error:your CaseProtocol is not Matching RunTimeActuator");
+                myResult.backContent = "error:your CaseProtocol is not Matching RunTimeActuator";
+                DealExecutiveError(myResult.backContent);
             }
 
 

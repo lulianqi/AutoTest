@@ -1654,7 +1654,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForMysql((myConnectForMysql)yourDeviceConnectInfo));
                     break;
                 case CaseProtocol.tcp:
-                    //myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForTcp((myConnectForSsh)yourDeviceConnectInfo));
+                    myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForTcp((myConnectForTcp)yourDeviceConnectInfo));
                     break;
                 case CaseProtocol.ssh:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForSsh((myConnectForSsh)yourDeviceConnectInfo));

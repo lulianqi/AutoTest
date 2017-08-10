@@ -211,7 +211,7 @@ namespace MyCommonHelper.NetHelper
         }
 
         /// <summary>
-        /// receive data
+        /// receive data (如果连接断开或没有任何数据返回null)
         /// </summary>
         /// <returns>data</returns>
         public byte[] ReceiveData()
@@ -229,7 +229,7 @@ namespace MyCommonHelper.NetHelper
         }
 
         /// <summary>
-        /// receive all data
+        /// receive all data (如果连接断开或没有任何数据返回null)
         /// </summary>
         /// <returns>all data</returns>
         public byte[] ReceiveAllData()
