@@ -145,7 +145,6 @@ D:\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe
 D:\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.pdb
 D:\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources
 D:\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCaceCBalloon.resources
-D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyBaseCaceCBalloon.resources
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Debug\AutoTest.myControl.MyCaceCBalloon.resources
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MyActiveMQHelper.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\Apache.NMS.ActiveMQ.dll
@@ -161,3 +160,9 @@ F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\MySqlHelper.pdb
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\Tamir.SharpSSH.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\DiffieHellman.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\Org.Mentalis.Security.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MySqlHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\Tamir.SharpSSH.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MySql.Data.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\DiffieHellman.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\Org.Mentalis.Security.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MySqlHelper.pdb

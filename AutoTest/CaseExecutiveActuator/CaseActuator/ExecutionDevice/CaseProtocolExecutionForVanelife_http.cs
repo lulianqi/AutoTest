@@ -1,6 +1,7 @@
 ﻿using CaseExecutiveActuator.ProtocolExecutive;
 using CaseExecutiveActuator.Tool;
 using MyCommonHelper;
+using MyCommonHelper.EncryptionHelper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
