@@ -5,6 +5,7 @@ using System.Text;
 
 namespace MyCommonHelper.EncryptionHelper
 {
+    public class MyRSA
     {
     }
 }
