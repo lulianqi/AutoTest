@@ -54,6 +54,7 @@ namespace MyCommonHelper.NetHelper
         OnePointFive
     }
 
+
     public class MySerialPort
     {
         private string myErrorMes = "";
@@ -88,6 +89,7 @@ namespace MyCommonHelper.NetHelper
         public delegate void delegateThrowError(string errorMes);
         public event delegateThrowError OnMySerialPortThrowError;
 
+        #region attribute
         /// <summary>
         /// get now Erroer Message
         /// </summary>
@@ -96,6 +98,17 @@ namespace MyCommonHelper.NetHelper
             get
             {
                 return myErrorMes;
+            }
+        }
+
+        /// <summary>
+        /// get is the com opened
+        /// </summary>
+        public bool IsOpen
+        {
+            get
+            {
+                return comm.IsOpen;
             }
         }
 
@@ -116,8 +129,8 @@ namespace MyCommonHelper.NetHelper
 
         public string PortName
         {
-            get { return comm.PortName;}
-            set { comm.PortName=value; }
+            get { return comm.PortName; }
+            set { comm.PortName = value; }
         }
 
         public int BaudRate
@@ -170,7 +183,8 @@ namespace MyCommonHelper.NetHelper
         {
             get { return comm.Encoding; }
             set { comm.Encoding = value; }
-        }
+        } 
+        #endregion
 
         public MySerialPort() : this(false) { }
 
@@ -189,6 +203,7 @@ namespace MyCommonHelper.NetHelper
             myBuilder = new StringBuilder();
         }
 
+        #region action
 
         private void TriggerError(string yourMes)
         {
@@ -198,6 +213,68 @@ namespace MyCommonHelper.NetHelper
                 OnMySerialPortThrowError(yourMes);
             }
         }
+
+        //here i deal with the data i Received
+        void Comm_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            if (isWantByte)
+            {
+                int tempLen = 0;
+                try
+                {
+                    tempLen = comm.BytesToRead;
+                }
+                catch (Exception ex)
+                {
+                    TriggerError(ex.Message);
+                    return;
+                }
+                if (tempLen > 0)
+                {
+                    byte[] tempBytes = new byte[tempLen];
+                    int tempByte = 0;
+                    for (int i = 0; i < tempLen; i++)
+                    {
+                        tempByte = comm.ReadByte();
+                        if (tempByte == -1)
+                        {
+                            TriggerError("read the end in BytesToRead");
+                            break;
+                        }
+                        else
+                        {
+                            tempBytes[i] = (byte)tempByte;
+                        }
+                    }
+                    if (OnMySerialPortReceiveData != null)
+                    {
+                        OnMySerialPortReceiveData(tempBytes, null);
+                    }
+                }
+                else
+                {
+                    TriggerError("received error len");
+                }
+            }
+            else
+            {
+                if (comm.IsOpen)
+                {
+                    if (OnMySerialPortReceiveData != null)
+                    {
+                        OnMySerialPortReceiveData(null, comm.ReadExisting());
+                    }
+                }
+                else
+                {
+                    TriggerError("the port is closed");
+                }
+            }
+        } 
+        #endregion
+
+
+        #region function
 
         public bool OpenSerialPort()
         {
@@ -230,7 +307,7 @@ namespace MyCommonHelper.NetHelper
         {
             if (comm == null)
             {
-                TriggerError( "this SerialPort is null");
+                TriggerError("this SerialPort is null");
                 return false;
             }
             else
@@ -256,7 +333,7 @@ namespace MyCommonHelper.NetHelper
         /// <returns>接收到字符串，没有数据时返回""</returns>
         public string ReadAllStr()
         {
-            if(isAutoReceive)
+            if (isAutoReceive)
             {
                 throw (new Exception("if you want read just set your isAutoReceive false"));
             }
@@ -308,20 +385,20 @@ namespace MyCommonHelper.NetHelper
 
         public bool Send(byte[] yourData)
         {
-            if(comm==null)
+            if (comm == null)
             {
                 TriggerError("this SerialPort is null");
             }
             else
             {
-                if(comm.IsOpen)
+                if (comm.IsOpen)
                 {
                     try
                     {
                         comm.Write(yourData, 0, yourData.Length);
                         return true;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         TriggerError(ex.Message);
                     }
@@ -362,64 +439,8 @@ namespace MyCommonHelper.NetHelper
             return false;
         }
 
-
-        //here i deal with the data i Received
-        void Comm_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
-        {
-            if (isWantByte)
-            {
-                int tempLen = 0;
-                try
-                {
-                    tempLen = comm.BytesToRead;
-                }
-                catch (Exception ex)
-                {
-                    TriggerError(ex.Message);
-                    return;
-                }
-                if (tempLen > 0)
-                {
-                    byte[] tempBytes = new byte[tempLen];
-                    int tempByte = 0;
-                    for (int i = 0; i < tempLen; i++)
-                    {
-                        tempByte = comm.ReadByte();
-                        if (tempByte == -1)
-                        {
-                            TriggerError("read the end in BytesToRead");
-                            break;
-                        }
-                        else
-                        {
-                            tempBytes[i] = (byte)tempByte;
-                        }
-                    }
-                    if (OnMySerialPortReceiveData != null)
-                    {
-                        OnMySerialPortReceiveData(tempBytes, null);
-                    } 
-                }
-                else
-                {
-                    TriggerError("received error len");
-                }
-            }
-            else
-            {
-                if (comm.IsOpen)
-                {
-                    if (OnMySerialPortReceiveData != null)
-                    {
-                        OnMySerialPortReceiveData(null, comm.ReadExisting());
-                    }
-                }
-                else
-                {
-                    TriggerError("the port is closed");
-                }
-            }
-        }
-
+        
+        #endregion
+        
     }
 }

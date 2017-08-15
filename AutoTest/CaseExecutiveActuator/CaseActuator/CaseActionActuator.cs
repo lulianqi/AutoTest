@@ -3,6 +3,7 @@ using CaseExecutiveActuator.CaseActuator.ExecutionDevice;
 using CaseExecutiveActuator.Cell;
 using CaseExecutiveActuator.Tool;
 using MyCommonHelper;
+using MyCommonHelper.NetHelper;
 using MyVoiceHelper;
 using System;
 using System.Collections.Generic;
@@ -896,24 +897,84 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             break;
                                                         case CaseProtocol.com:
                                                             #region ComInfo
+                                                            string tempComStr;
                                                             string tempComPortName;
-                                                            int tempComBaudRate;
-                                                            MyCommonHelper.NetHelper.SerialPortParity parity;
-                                                            int tempComDataBits;
-                                                            MyCommonHelper.NetHelper.SerialPortStopBits tempComStopBits;
-                                                            Encoding tempComEncoding;
+                                                            int tempComBaudRate ;
+                                                            int tempComDataBits =8;
+                                                            SerialPortParity tempComParity= SerialPortParity.None;
+                                                            SerialPortStopBits tempComStopBits= SerialPortStopBits.One;
+                                                            Encoding tempComEncoding=Encoding.UTF8;
+                                                            //portName
                                                             tempComPortName=CaseTool.GetXmlInnerVaule(tempNodeChild,"portName");
                                                             if(tempComPortName==null)
                                                             {
                                                                 SetNowActionError(string.Format("[add com actuator ]can not find portName when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
-                                                            if (CaseTool.GetXmlInnerVaule(tempNodeChild, "baudRate")!=null)
+                                                            //baudRate
+                                                            if (int.TryParse(CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "baudRate"),out tempComBaudRate ))
                                                             {
-
+                                                                if(tempComBaudRate<1)
+                                                                {
+                                                                    SetNowActionError(string.Format("[add com actuator ] your baudRate is illegal (it must >0) when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
                                                             }
-                                                            
+                                                            else
+                                                            {
+                                                                SetNowActionError(string.Format("[add com actuator ]can not find baudRate or your baudRate is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                break;
+                                                            }
+                                                            //dataBits
+                                                            tempComStr = CaseTool.GetXmlInnerVaule(tempNodeChild, "dataBits");
+                                                            if (tempComStr!=null)
+                                                            {
+                                                                if (int.TryParse(tempComStr, out tempComDataBits))
+                                                                {
+                                                                    if(tempComDataBits<5 || tempComDataBits>8)
+                                                                    {
+                                                                        SetNowActionError(string.Format("[add com actuator ] your dataBits is illegal (it must in [5,8]) when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                            //parity
+                                                            tempComStr=CaseTool.GetXmlInnerVaule(tempNodeChild, "parity");
+                                                            if (tempComStr != null)
+                                                            {
+                                                                if (!Enum.TryParse<SerialPortParity>(tempComStr, out tempComParity))
+                                                                {
+                                                                    SetNowActionError(string.Format("[add com actuator ] your parity is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
+                                                            }
+                                                            //stopBits
+                                                            tempComStr=CaseTool.GetXmlInnerVaule(tempNodeChild, "stopBits");
+                                                            if (tempComStr != null)
+                                                            {
+                                                                if (!Enum.TryParse<SerialPortStopBits>(tempComStr, out tempComStopBits))
+                                                                {
+                                                                    SetNowActionError(string.Format("[add com actuator ] your stopBits is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
+                                                            }
+                                                            //encoding
+                                                            tempComStr = CaseTool.GetXmlInnerVaule(tempNodeChild, "encoding");
+                                                            if (tempComStr != null)
+                                                            {
+                                                                try
+                                                                {
+                                                                    tempComEncoding = Encoding.GetEncoding(tempComStr);
+                                                                }
+                                                                catch
+                                                                {
+                                                                    SetNowActionError(string.Format("[add com actuator ] your encoding is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
+                                                            }
                                                             #endregion
+                                                            myConnectForCom ConnectInfo_com = new myConnectForCom(tempActuatorProtocol, tempComPortName, tempComBaudRate, tempComParity, tempComDataBits, tempComStopBits, tempComEncoding);
+                                                            AddExecutionDevice(tempActuatorName, ConnectInfo_com);
                                                             break;
                                                         default:
                                                             SetNowActionError(string.Format("find nonsupport Protocol in ScriptRunTime  with {0} ", tempActuatorName));
@@ -1676,6 +1737,9 @@ namespace CaseExecutiveActuator.CaseActuator
                     break;
                 case CaseProtocol.tcp:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForTcp((myConnectForTcp)yourDeviceConnectInfo));
+                    break;
+                case CaseProtocol.com:
+                    //myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForCom((myConnectForCom)yourDeviceConnectInfo));
                     break;
                 case CaseProtocol.ssh:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForSsh((myConnectForSsh)yourDeviceConnectInfo));

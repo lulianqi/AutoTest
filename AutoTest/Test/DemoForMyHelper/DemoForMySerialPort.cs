@@ -12,7 +12,7 @@ namespace DemoForMyHelper
         MySerialPort myComm = new MySerialPort();
         public DemoForMySerialPort()
         {
-            myComm.BaudRate = 0;
+            //myComm.BaudRate = 0;
             myComm.IsWantByte = false;
             myComm.PortName = "COM2";
             myComm.Encoding = Encoding.UTF8;
