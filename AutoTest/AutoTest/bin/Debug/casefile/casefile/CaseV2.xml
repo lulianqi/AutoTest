@@ -101,6 +101,22 @@
         <host>192.168.78.110</host>
         <port>60000</port>
       </NewActuator>
+      <NewActuator name="COM2" protocol="com">
+        <portName>COM2</portName><!--端口名必填-->
+        <encoding>utf-8</encoding><!--默认编码方式，不填则使用默认值-->
+        <baudRate>9600</baudRate><!--波特率，建议必填，不填写则进行自适应-->
+        <parity>None</parity><!--校验位，非必选，默认为None-->
+        <!--None 不发生奇偶校验检查。
+        Odd 设置奇偶校验位，使位数等于奇数。
+        Even 设置奇偶校验位，使位数等于偶数。
+        Mark 将奇偶校验位保留为 1。
+        Space 将奇偶校验位保留为 0。-->
+        <dataBits>8</dataBits><!--数据位，非必填，默认为8-->
+        <StopBits>One</StopBits><!--停止位，非必填,默认为One-->
+        <!-- 不使用停止位。 StopBits  属性不支持此值。
+        One 使用一个停止位。
+        Two 使用两个停止位。-->
+      </NewActuator>
       <NewActuator name="telnet1" protocol="telnet">
         <login>admin</login>
         <password>admin</password>
@@ -1365,10 +1381,12 @@
         <!--只能包含send或receive,可以同时含有，但是每一种只能有一个，如果有多个send/receive节点则仅处理第一个，如有多份需要发送的数据请构建多个case，必须含有encoding属性，支持isHaveParameters-->
         <!--encoding属性可以选择绝大多数编码方式如utf-8（详见https://msdn.microsoft.com/zh-cn/library/system.text.encoding(v=vs.110).aspx），同时支持raw，表示使用原始16进制数据，形如1a 1b ff-->
         <!--错误的encoding属性都会被当作raw-->
+        <!--不填写则所以默认编码方式utf-8-->
         <!--发送完成后返回数据中添加send sucess（由于系统缓存，不一定真的发送成功）-->
         <Receive encoding="utf-8">5000</Receive>
         <!--receive可包含一个以毫秒为单位的等待延时，不填或错误的数据即表示0，不等待直接获取-->
         <!--接收完成后直接将返回添加的结果中，如果没有任何数据被接收，则不会添加任何值-->
+        <!--不填写则所以默认编码方式utf-8-->
       </Content>
       <Expect method="contain">send sucess</Expect>
       <Attribute>
@@ -1401,6 +1419,25 @@
         <Receive encoding="utf-8">10000</Receive>
       </Content>
       <Expect method="contain">wo</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+  </Project>
+  <Project id="1000010008" name="tcp com" remark="串口测试">
+    <Case id="1100080001" remark="tcp">
+      <Content protocol="tcp" actuator="串口测试">
+        <Send isHaveParameters="true" encoding="raw">31 31 31 31 31 31</Send>
+        <!--只能包含send或receive,可以同时含有，但是每一种只能有一个，如果有多个send/receive节点则仅处理第一个，如有多份需要发送的数据请构建多个case，必须含有encoding属性，支持isHaveParameters-->
+        <!--encoding属性可以选择绝大多数编码方式如utf-8（详见https://msdn.microsoft.com/zh-cn/library/system.text.encoding(v=vs.110).aspx），同时支持raw，表示使用原始16进制数据，形如1a 1b ff-->
+        <!--错误的encoding属性都会被当作raw-->
+        <!--不填写则使用com默认编码方式发送-->
+        <Receive encoding="utf-8">5000</Receive>
+        <!--receive可包含一个以毫秒为单位的等待延时，不填或错误的数据即表示0，不等待直接获取-->
+        <!--接收完成后直接将返回添加的结果中，如果没有任何数据被接收，则不会添加任何值-->
+      </Content>
+      <Expect method="contain">send sucess</Expect>
       <Attribute>
         <Delay>200</Delay>
         <Level>1</Level>

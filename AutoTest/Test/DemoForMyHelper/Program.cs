@@ -14,7 +14,8 @@ namespace DemoForMyHelper
             //new DemoForMySql().RunTest();
             //new DemoForMyVoice().Run();
             //DemoForActionMQ.RunTest();
-            new DemoForMySocket().StartTcp();
+            //new DemoForMySocket().StartTcp();
+            new DemoForMySerialPort().MySerialPortStart();
             Console.WriteLine("end of demo");
             Console.ReadKey();
 

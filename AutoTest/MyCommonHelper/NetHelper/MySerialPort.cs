@@ -19,21 +19,62 @@ using System.IO.Ports;
 *******************************************************************************/
 
 
-namespace MyCommonHelper
+namespace MyCommonHelper.NetHelper
 {
+
+    /// <summary>
+    ///校验位
+    ///None 不发生奇偶校验检查。 
+    ///Odd 设置奇偶校验位，使位数等于奇数。 
+    ///Even 设置奇偶校验位，使位数等于偶数。 
+    ///Mark 将奇偶校验位保留为 1。 
+    ///Space 将奇偶校验位保留为 0。 
+    /// </summary>
+    public enum SerialPortParity
+    {
+        None,
+        Odd,
+        Even,
+        Mark,
+        Space
+    }
+
+    /// <summary>
+    /// 停止位
+    /// None 不使用停止位。 StopBits  属性不支持此值。  
+    ///One 使用一个停止位。 
+    ///Two 使用两个停止位。 
+    ///OnePointFive 使用 1.5 个停止位。 
+    /// </summary>
+    public enum SerialPortStopBits
+    {
+        None,
+        One,
+        Two,
+        OnePointFive
+    }
+
     public class MySerialPort
     {
-        private System.Windows.Forms.Control myControl;
-        private bool isControlInvoke  = false;
-
         private string myErrorMes = "";
-
         public SerialPort comm;
         private StringBuilder myBuilder ;
         private bool isWantByte = false;
+        private bool isAutoReceive = false;
 
-        public string myNewLine = "\r\n";
-        public Encoding myEncoding = System.Text.Encoding.GetEncoding("GB2312");
+        //public Encoding myEncoding = System.Text.Encoding.GetEncoding("GB2312");
+        //public string myNewLine = "\r\n";
+
+        /// <summary>
+        /// get Serial name list
+        /// </summary>
+        /// <returns>names</returns>
+        public static string[] MyGetSerialList()
+        {
+            return SerialPort.GetPortNames();
+        }
+
+
 
         //ReceiveData
         public delegate void delegateReceiveData(byte[] yourbytes, string yourStr);
@@ -50,7 +91,7 @@ namespace MyCommonHelper
         /// <summary>
         /// get now Erroer Message
         /// </summary>
-        public string myErroerMessage
+        public string ErroerMessage
         {
             get
             {
@@ -61,7 +102,7 @@ namespace MyCommonHelper
         /// <summary>
         /// get or set that wath data you want (string or bytes)
         /// </summary>
-        public bool myIsByte
+        public bool IsWantByte
         {
             get
             {
@@ -73,32 +114,83 @@ namespace MyCommonHelper
             }
         }
 
+        public string PortName
+        {
+            get { return comm.PortName;}
+            set { comm.PortName=value; }
+        }
+
+        public int BaudRate
+        {
+            get { return comm.BaudRate; }
+            set { comm.BaudRate = value; }
+        }
+
         /// <summary>
-        /// get the mode the event will do ,if it is true the even will do in the control thread
+        ///校验位
+        ///None 不发生奇偶校验检查。 
+        ///Odd 设置奇偶校验位，使位数等于奇数。 
+        ///Even 设置奇偶校验位，使位数等于偶数。 
+        ///Mark 将奇偶校验位保留为 1。 
+        ///Space 将奇偶校验位保留为 0。 
         /// </summary>
-        public bool myIsWantInvoke
+        public SerialPortParity Parity
         {
-            get
+            get { return (SerialPortParity)Enum.Parse(typeof(SerialPortParity), comm.Parity.ToString()); }
+            set { comm.Parity = (Parity)Enum.Parse(typeof(Parity), value.ToString()); }
+        }
+
+        /// <summary>
+        /// 数据位
+        /// </summary>
+        public int DataBits
+        {
+            get { return comm.DataBits; }
+            set { comm.DataBits = value; }
+        }
+
+        /// <summary>
+        /// 停止位
+        /// None 不使用停止位。 StopBits  属性不支持此值。  
+        ///One 使用一个停止位。 
+        ///Two 使用两个停止位。 
+        ///OnePointFive 使用 1.5 个停止位。 
+        /// </summary>
+        public SerialPortStopBits StopBits
+        {
+            get { return (SerialPortStopBits)Enum.Parse(typeof(SerialPortStopBits), comm.StopBits.ToString()); }
+            set { comm.StopBits = (StopBits)Enum.Parse(typeof(StopBits), value.ToString()); }
+        }
+
+        /// <summary>
+        /// 获取或设置传输前后文本转换的字节编码
+        /// SerialPort  类支持以下编码：ASCIIEncoding、UTF8Encoding、UnicodeEncoding、UTF32Encoding，以及 mscorlib.dll 中定义的、代码页小于 50000 或者为 54936 的所有编码。 可以使用备用编码，但必须使用 ReadByte 或 Write 方法并自己执行编码。 
+        /// </summary>
+        public Encoding Encoding
+        {
+            get { return comm.Encoding; }
+            set { comm.Encoding = value; }
+        }
+
+        public MySerialPort() : this(false) { }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="yourIsAutoReceive">是否使用事件模型接收数据，如果为true则需要订阅OnMySerialPortReceiveData</param>
+        public MySerialPort(bool yourIsAutoReceive)
+        {
+            comm = new SerialPort();
+            isAutoReceive = yourIsAutoReceive;
+            if (isAutoReceive)
             {
-                return isControlInvoke;
+                comm.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(Comm_DataReceived);
             }
-        }
-
-        public MySerialPort()
-        {
-            creatNewSerialPort();
             myBuilder = new StringBuilder();
         }
 
-        public MySerialPort(System.Windows.Forms.Control yourControl)
-        {
-            myControl = yourControl;
-            isControlInvoke = true;
-            creatNewSerialPort();
-            myBuilder = new StringBuilder();
-        }
 
-        private void triggerError(string yourMes)
+        private void TriggerError(string yourMes)
         {
             myErrorMes = yourMes;
             if (OnMySerialPortThrowError != null)
@@ -107,67 +199,172 @@ namespace MyCommonHelper
             }
         }
 
-        private void creatNewSerialPort()
-        {
-            comm = new SerialPort();
-            //comm.NewLine = myNewLine;
-            comm.Encoding = myEncoding;
-            comm.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(comm_DataReceived);
-        }
-
-        /// <summary>
-        /// get Serial name list
-        /// </summary>
-        /// <returns>names</returns>
-        public string[] myGetSerialList()
-        {
-            return SerialPort.GetPortNames();
-        }
-
-
-        public bool openSerialPort(string yourPortName, int yourBaudRate)
+        public bool OpenSerialPort()
         {
             if (comm == null)
             {
-                myErrorMes = "this SerialPort is null";
+                TriggerError("this SerialPort is null");
                 return false;
             }
             else
             {
                 if (comm.IsOpen)
                 {
-                    myErrorMes = "this SerialPort is opened";
+                    TriggerError("this SerialPort is opened");
                     return false;
                 }
                 try
                 {
-                    comm.PortName = yourPortName;
-                    comm.BaudRate = yourBaudRate;
                     comm.Open();
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    myErrorMes = ex.Message;
-                    comm.DataReceived -= new SerialDataReceivedEventHandler(comm_DataReceived);
-                    creatNewSerialPort();
+                    TriggerError(ex.Message);
                     return false;
                 }
             }
+        }
 
+        public bool OpenSerialPort(string yourPortName, int yourBaudRate)
+        {
+            if (comm == null)
+            {
+                TriggerError( "this SerialPort is null");
+                return false;
+            }
+            else
+            {
+                comm.PortName = yourPortName;
+                comm.BaudRate = yourBaudRate;
+                return OpenSerialPort();
+            }
         }
 
         /// <summary>
         /// close the SerialPort
         /// </summary>
-        public void closeSerialPort()
+        public void CloseSerialPort()
         {
-            comm.DataReceived -= new SerialDataReceivedEventHandler(comm_DataReceived);
+            comm.DataReceived -= new SerialDataReceivedEventHandler(Comm_DataReceived);
             comm.Close();
         }
 
+        /// <summary>
+        /// 读取缓冲区所有字符串（使用指定编码comm.Encoding）
+        /// </summary>
+        /// <returns>接收到字符串，没有数据时返回""</returns>
+        public string ReadAllStr()
+        {
+            if(isAutoReceive)
+            {
+                throw (new Exception("if you want read just set your isAutoReceive false"));
+            }
+            return comm.ReadExisting();
+        }
+
+
+        /// <summary>
+        /// 读取缓冲区所有字节
+        /// </summary>
+        /// <returns>接收到字节，没有数据时返回null</returns>
+        public byte[] ReadAllBytes()
+        {
+            if (isAutoReceive)
+            {
+                throw (new Exception("if you want read just set your isAutoReceive false"));
+            }
+            int tempLen = 0;
+            try
+            {
+                tempLen = comm.BytesToRead;
+            }
+            catch (Exception ex)
+            {
+                TriggerError(ex.Message);
+                return null;
+            }
+            if (tempLen > 0)
+            {
+                byte[] tempBytes = new byte[tempLen];
+                int tempByte = 0;
+                for (int i = 0; i < tempLen; i++)
+                {
+                    tempByte = comm.ReadByte();
+                    if (tempByte == -1)
+                    {
+                        TriggerError("read the end in BytesToRead");
+                        break;
+                    }
+                    else
+                    {
+                        tempBytes[i] = (byte)tempByte;
+                    }
+                }
+                return tempBytes;
+            }
+            return null;
+        }
+
+        public bool Send(byte[] yourData)
+        {
+            if(comm==null)
+            {
+                TriggerError("this SerialPort is null");
+            }
+            else
+            {
+                if(comm.IsOpen)
+                {
+                    try
+                    {
+                        comm.Write(yourData, 0, yourData.Length);
+                        return true;
+                    }
+                    catch(Exception ex)
+                    {
+                        TriggerError(ex.Message);
+                    }
+                }
+                else
+                {
+                    TriggerError("this SerialPort is closed");
+                }
+            }
+            return false;
+        }
+
+        public bool Send(string yourData)
+        {
+            if (comm == null)
+            {
+                TriggerError("this SerialPort is null");
+            }
+            else
+            {
+                if (comm.IsOpen)
+                {
+                    try
+                    {
+                        comm.Write(yourData);
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        TriggerError(ex.Message);
+                    }
+                }
+                else
+                {
+                    TriggerError("this SerialPort is closed");
+                }
+            }
+            return false;
+        }
+
+
         //here i deal with the data i Received
-        void comm_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        void Comm_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             if (isWantByte)
             {
@@ -178,7 +375,7 @@ namespace MyCommonHelper
                 }
                 catch (Exception ex)
                 {
-                    triggerError(ex.Message);
+                    TriggerError(ex.Message);
                     return;
                 }
                 if (tempLen > 0)
@@ -190,7 +387,7 @@ namespace MyCommonHelper
                         tempByte = comm.ReadByte();
                         if (tempByte == -1)
                         {
-                            triggerError("read the end in BytesToRead");
+                            TriggerError("read the end in BytesToRead");
                             break;
                         }
                         else
@@ -198,49 +395,28 @@ namespace MyCommonHelper
                             tempBytes[i] = (byte)tempByte;
                         }
                     }
-                    if (isControlInvoke)
+                    if (OnMySerialPortReceiveData != null)
                     {
-                        if (OnMySerialPortReceiveData != null)
-                        {
-                            myControl.Invoke(OnMySerialPortReceiveData, tempBytes, null);
-                        }
-                    }
-                    else
-                    {
-                        if (OnMySerialPortReceiveData != null)
-                        {
-                            OnMySerialPortReceiveData(tempBytes, null);
-                        }
-                    }
+                        OnMySerialPortReceiveData(tempBytes, null);
+                    } 
                 }
                 else
                 {
-                    triggerError("received error len");
+                    TriggerError("received error len");
                 }
             }
             else
             {
                 if (comm.IsOpen)
                 {
-                    if (isControlInvoke)
+                    if (OnMySerialPortReceiveData != null)
                     {
-                        if (OnMySerialPortReceiveData != null)
-                        {
-                            myControl.Invoke(OnMySerialPortReceiveData, null, comm.ReadExisting());
-                            //OnMySerialPortReceiveData(null, comm.ReadExisting());
-                        }
-                    }
-                    else
-                    {
-                        if (OnMySerialPortReceiveData != null)
-                        {
-                            OnMySerialPortReceiveData(null, comm.ReadExisting());
-                        }
+                        OnMySerialPortReceiveData(null, comm.ReadExisting());
                     }
                 }
                 else
                 {
-                    triggerError("the port is closed");
+                    TriggerError("the port is closed");
                 }
             }
         }

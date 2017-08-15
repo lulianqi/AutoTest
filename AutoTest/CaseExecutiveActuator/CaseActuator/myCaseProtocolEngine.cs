@@ -137,7 +137,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                 case CaseProtocol.telnet:
                                     myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
-                                case CaseProtocol.comm:
+                                case CaseProtocol.com:
                                     myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 case CaseProtocol.vanelife_comm:

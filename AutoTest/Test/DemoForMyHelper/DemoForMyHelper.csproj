@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DemoForActionMQ.cs" />
+    <Compile Include="DemoForMySerialPort.cs" />
     <Compile Include="DemoForMySocket.cs" />
     <Compile Include="DemoForMySql.cs" />
     <Compile Include="DemoForMySsh.cs" />

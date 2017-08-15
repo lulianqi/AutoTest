@@ -61,7 +61,11 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     if (nowTcpNode != null)
                     {
                         myRunContent.tcpSendEncoding = null;
-                        if (nowTcpNode.Attributes["encoding"] != null)
+                        if (nowTcpNode.Attributes["encoding"] == null)
+                        {
+                            myRunContent.tcpSendEncoding = Encoding.UTF8;
+                        }
+                        else
                         {
                             if (nowTcpNode.Attributes["encoding"].Value != "raw")
                             {
@@ -85,7 +89,11 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     if (nowTcpNode != null)
                     {
                         myRunContent.tcpSendEncoding = null;
-                        if (nowTcpNode.Attributes["encoding"] != null)
+                        if (nowTcpNode.Attributes["encoding"] == null)
+                        {
+                            myRunContent.tcpReceiveEncoding = Encoding.UTF8;
+                        }
+                        else
                         {
                             if (nowTcpNode.Attributes["encoding"].Value != "raw")
                             {

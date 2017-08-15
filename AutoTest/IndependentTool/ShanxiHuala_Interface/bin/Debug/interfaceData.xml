@@ -155,6 +155,12 @@
        "openBank":"BOC"
     }
   </Api>
+  <Api name="/oauth/api/order/status" method="POST">
+    {
+    "orderNo":"170719160408133001"
+    "status":2
+    }
+  </Api>
   <Api name="api" method="POST">
   </Api>
 </ShanxiHuala_V1>

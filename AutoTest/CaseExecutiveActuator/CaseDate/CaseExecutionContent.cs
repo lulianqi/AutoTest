@@ -529,6 +529,51 @@ namespace CaseExecutiveActuator
             }
         }
     }
-    
+
+    public class MyComExecutionContent : ICaseExecutionContent
+    {
+        public string errorMessage;
+        public CaseProtocol caseProtocol;
+        public string caseActuator;
+
+        public caseParameterizationContent sshContent;
+
+
+        public MyComExecutionContent()
+        {
+            errorMessage = null;
+            caseProtocol = CaseProtocol.unknownProtocol;
+            sshContent = new caseParameterizationContent();
+        }
+
+        public CaseProtocol MyCaseProtocol
+        {
+            get { return caseProtocol; }
+        }
+
+        public string MyCaseActuator
+        {
+            get { return caseActuator; }
+        }
+
+        public string MyExecutionTarget
+        {
+            get { return sshContent.GetTargetContentData(); }
+        }
+
+        public string MyExecutionContent
+        {
+            get { return null; }
+        }
+
+        public string MyErrorMessage
+        {
+            get
+            {
+                return String.IsNullOrEmpty(errorMessage) ? null : errorMessage;
+            }
+        }
+    }
+
     #endregion
 }

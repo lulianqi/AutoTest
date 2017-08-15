@@ -57,7 +57,7 @@ namespace CaseExecutiveActuator
         vanelife_telnet = 7,
         http = 8,
         tcp = 9,
-        comm = 10,
+        com = 10,
         telnet = 11,
         activeMQ = 12,
         mysql = 13,

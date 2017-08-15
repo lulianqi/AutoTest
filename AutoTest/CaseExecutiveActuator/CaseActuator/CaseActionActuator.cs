@@ -894,6 +894,27 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             myConnectForSsh ConnectInfo_ssh = new myConnectForSsh(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "host"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "user"),CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "password"), CaseTool.GetXmlInnerVaule(tempNodeChild, "expect_pattern"));
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_ssh);
                                                             break;
+                                                        case CaseProtocol.com:
+                                                            #region ComInfo
+                                                            string tempComPortName;
+                                                            int tempComBaudRate;
+                                                            MyCommonHelper.NetHelper.SerialPortParity parity;
+                                                            int tempComDataBits;
+                                                            MyCommonHelper.NetHelper.SerialPortStopBits tempComStopBits;
+                                                            Encoding tempComEncoding;
+                                                            tempComPortName=CaseTool.GetXmlInnerVaule(tempNodeChild,"portName");
+                                                            if(tempComPortName==null)
+                                                            {
+                                                                SetNowActionError(string.Format("[add com actuator ]can not find portName when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                break;
+                                                            }
+                                                            if (CaseTool.GetXmlInnerVaule(tempNodeChild, "baudRate")!=null)
+                                                            {
+
+                                                            }
+                                                            
+                                                            #endregion
+                                                            break;
                                                         default:
                                                             SetNowActionError(string.Format("find nonsupport Protocol in ScriptRunTime  with {0} ", tempActuatorName));
                                                             break;

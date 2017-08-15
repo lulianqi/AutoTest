@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MyCommonHelper.NetHelper;
 using System.Xml;
 using System.Diagnostics;
+using MyCommonHelper.EncryptionHelper;
 
 namespace ShanxiHuala_Interface
 {
@@ -76,7 +77,7 @@ namespace ShanxiHuala_Interface
             {
                 tb_sendTime.Text = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000).ToString();
                 string sginOrginStr = string.Format("appSecret={0}&sendTime={1}", app_secret, tb_sendTime.Text);
-                tb_sign.Text = MyCommonHelper.MyEncryption.CreateMD5Key(sginOrginStr).ToLower();
+                tb_sign.Text = MyEncryption.CreateMD5Key(sginOrginStr).ToLower();
 
                 myHeads.Add(new KeyValuePair<string, string>("Content-type", "application/json;charset=UTF-8"));
                 myHeads.Add(new KeyValuePair<string, string>("Authorization", "bearer " + tb_access_token.Text));

@@ -291,8 +291,8 @@ namespace AutoTest
             //var x =(CaseAction)Enum.Parse(typeof(CaseAction), "Goto");
             //var x = CaseAction.Alarm;
             //string cc = null;
-            mySP = new MySerialPort(this);
-            mySP.myEncoding = System.Text.Encoding.GetEncoding("utf-8");
+            mySP = new MySerialPort(true);
+            mySP.Encoding = System.Text.Encoding.GetEncoding("utf-8");
             mySP.OnMySerialPortReceiveData += new MySerialPort.delegateReceiveData(mySP_OnMySerialPortReceiveData);
             mySP.OnMySerialPortThrowError += new MySerialPort.delegateThrowError(mySP_OnMySerialPortThrowError);
         }

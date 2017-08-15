@@ -204,6 +204,39 @@ namespace CaseExecutiveActuator
         }
     }
 
+    /// <summary>
+    /// com 【IConnectExecutiveData】
+    /// </summary>
+    public class myConnectForCom : IConnectExecutiveData
+    {
+        public CaseProtocol caseProtocol;
+
+        public string portName;
+        public int baudRate;
+        public MyCommonHelper.NetHelper.SerialPortParity parity;
+        public int dataBits;
+        public MyCommonHelper.NetHelper.SerialPortStopBits stopBits;
+        public Encoding encoding;
+
+        public myConnectForCom(CaseProtocol yourCaseProtocol, string yourPortName, int yourBaudRate, MyCommonHelper.NetHelper.SerialPortParity yourParity, int yourDataBits, MyCommonHelper.NetHelper.SerialPortStopBits yourStopBits,Encoding yourEncoding)
+        {
+            caseProtocol = yourCaseProtocol;
+            portName = yourPortName;
+            baudRate = yourBaudRate;
+            parity = yourParity;
+            dataBits = yourDataBits;
+            stopBits = yourStopBits;
+            encoding = yourEncoding;
+        }
+        public CaseProtocol MyCaseProtocol
+        {
+            get
+            {
+                return caseProtocol;
+            }
+        }
+    }
+
 
     #endregion
 

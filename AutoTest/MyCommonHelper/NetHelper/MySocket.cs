@@ -216,6 +216,10 @@ namespace MyCommonHelper.NetHelper
         /// <returns>data</returns>
         public byte[] ReceiveData()
         {
+            if (isAutoReceive)
+            {
+                throw (new Exception("if you want read just set your isAutoReceive false"));
+            }
             byte[] outData = null;
             if (myTcpClient.Connected)
             {
@@ -234,6 +238,10 @@ namespace MyCommonHelper.NetHelper
         /// <returns>all data</returns>
         public byte[] ReceiveAllData()
         {
+            if (isAutoReceive)
+            {
+                throw (new Exception("if you want read just set your isAutoReceive false"));
+            }
             byte[] outData = null;
             if (myTcpClient.Connected)
             {
