@@ -88,7 +88,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     nowTcpNode = yourContentNode["Receive"];
                     if (nowTcpNode != null)
                     {
-                        myRunContent.tcpSendEncoding = null;
+                        myRunContent.tcpReceiveEncoding = null;
                         if (nowTcpNode.Attributes["encoding"] == null)
                         {
                             myRunContent.tcpReceiveEncoding = Encoding.UTF8;
@@ -289,6 +289,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                         }
                         if (receiveStr != null)
                         {
+                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, receiveStr);
                             tempCaseOutContent.AppendLine(receiveStr);
                         }
                         else

@@ -1739,7 +1739,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForTcp((myConnectForTcp)yourDeviceConnectInfo));
                     break;
                 case CaseProtocol.com:
-                    //myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForCom((myConnectForCom)yourDeviceConnectInfo));
+                    myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForCom((myConnectForCom)yourDeviceConnectInfo));
                     break;
                 case CaseProtocol.ssh:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForSsh((myConnectForSsh)yourDeviceConnectInfo));

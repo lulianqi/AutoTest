@@ -24,13 +24,13 @@ namespace DemoForMyHelper
         public void MySerialPortStart()
         {
             myComm.OpenSerialPort();
-            for(int i =0 ;i<5;i++)
+            for(int i =0 ;i<2;i++)
             {
                 Console.ReadLine();
                 myComm.Send("sss 订单");
             }
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 byte[] myBytes = Encoding.UTF8.GetBytes("sss 订单");
                 Console.ReadLine();

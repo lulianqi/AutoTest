@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="CaseActuator\CaseActionActuator.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForActiveMQ.cs" />
+    <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForCom.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForConsole.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForHttp.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForMysql.cs" />

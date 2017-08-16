@@ -138,7 +138,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                     myCaseData.AddErrorMessage("Error :this protocol not supported for now");
                                     break;
                                 case CaseProtocol.com:
-                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.testContent = CaseProtocolExecutionForCom.GetRunContent(tempCaseContent);
                                     break;
                                 case CaseProtocol.vanelife_comm:
                                     myCaseData.AddErrorMessage("Error :this protocol not supported for now");

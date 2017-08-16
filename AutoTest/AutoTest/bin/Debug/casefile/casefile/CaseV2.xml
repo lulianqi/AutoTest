@@ -117,6 +117,10 @@
         One 使用一个停止位。
         Two 使用两个停止位。-->
       </NewActuator>
+      <NewActuator name="COM3" protocol="com">
+        <portName>COM3</portName>
+        <baudRate>9600</baudRate>
+      </NewActuator>
       <NewActuator name="telnet1" protocol="telnet">
         <login>admin</login>
         <password>admin</password>
@@ -1382,6 +1386,7 @@
         <!--encoding属性可以选择绝大多数编码方式如utf-8（详见https://msdn.microsoft.com/zh-cn/library/system.text.encoding(v=vs.110).aspx），同时支持raw，表示使用原始16进制数据，形如1a 1b ff-->
         <!--错误的encoding属性都会被当作raw-->
         <!--不填写则所以默认编码方式utf-8-->
+        <!--成功"send sucess"将被添加至结果，失败会将将错误信息添加至结果-->
         <!--发送完成后返回数据中添加send sucess（由于系统缓存，不一定真的发送成功）-->
         <Receive encoding="utf-8">5000</Receive>
         <!--receive可包含一个以毫秒为单位的等待延时，不填或错误的数据即表示0，不等待直接获取-->
@@ -1426,18 +1431,50 @@
     </Case>
   </Project>
   <Project id="1000010008" name="tcp com" remark="串口测试">
-    <Case id="1100080001" remark="tcp">
-      <Content protocol="tcp" actuator="串口测试">
+    <Case id="1100080000" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show isHaveParameters="true" >监听模式10秒</Show>
+      </Content>
+      <Expect method="contain">10</Expect>
+      <Attribute>
+        <Delay>10000</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100080001" remark="com">
+      <Content protocol="com" actuator="COM2">
         <Send isHaveParameters="true" encoding="raw">31 31 31 31 31 31</Send>
         <!--只能包含send或receive,可以同时含有，但是每一种只能有一个，如果有多个send/receive节点则仅处理第一个，如有多份需要发送的数据请构建多个case，必须含有encoding属性，支持isHaveParameters-->
         <!--encoding属性可以选择绝大多数编码方式如utf-8（详见https://msdn.microsoft.com/zh-cn/library/system.text.encoding(v=vs.110).aspx），同时支持raw，表示使用原始16进制数据，形如1a 1b ff-->
         <!--错误的encoding属性都会被当作raw-->
-        <!--不填写则使用com默认编码方式发送-->
+        <!--不填写则使用默认编码方式发送(utf-8)-->
+        <!--成功"send sucess"将被添加至结果，失败会将将错误信息添加至结果-->
         <Receive encoding="utf-8">5000</Receive>
         <!--receive可包含一个以毫秒为单位的等待延时，不填或错误的数据即表示0，不等待直接获取-->
         <!--接收完成后直接将返回添加的结果中，如果没有任何数据被接收，则不会添加任何值-->
       </Content>
       <Expect method="contain">send sucess</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100080002" remark="com">
+      <Content protocol="com" actuator="COM3">
+        <Send isHaveParameters="true">31 31 31 31 31 31</Send>
+        <Receive encoding="utf-8">1000</Receive>
+      </Content>
+      <Expect method="is">send sucess111111</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100080003" remark="com">
+      <Content protocol="com" actuator="COM2">
+        <Receive encoding="utf-8">1000</Receive>
+      </Content>
+      <Expect method="contain">31</Expect>
       <Attribute>
         <Delay>200</Delay>
         <Level>1</Level>

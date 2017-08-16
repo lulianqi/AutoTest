@@ -536,14 +536,34 @@ namespace CaseExecutiveActuator
         public CaseProtocol caseProtocol;
         public string caseActuator;
 
-        public caseParameterizationContent sshContent;
-
+        public caseParameterizationContent  comContentToSend;
+        public Encoding comSendEncoding;     //null 表示raw
+        public bool isSend;
+        public int comSleepTime;         //<0 表示为发送
+        public Encoding comReceiveEncoding;     //null 表示raw
+        public bool isReceive;
 
         public MyComExecutionContent()
         {
             errorMessage = null;
             caseProtocol = CaseProtocol.unknownProtocol;
-            sshContent = new caseParameterizationContent();
+            caseActuator = "";
+            comContentToSend = new caseParameterizationContent();
+            comSendEncoding = null;
+            isSend = false;
+            comReceiveEncoding = null;
+            isReceive = false;
+            comSleepTime = -1;
+        }
+
+        public bool IsSendOrder
+        {
+            get { return isSend; }
+        }
+
+        public bool IsReceiveOrder
+        {
+            get { return isReceive; }
         }
 
         public CaseProtocol MyCaseProtocol
@@ -558,7 +578,17 @@ namespace CaseExecutiveActuator
 
         public string MyExecutionTarget
         {
-            get { return sshContent.GetTargetContentData(); }
+            get 
+            {
+                if (IsSendOrder)
+                {
+                    return string.Format("send {0}", comContentToSend.GetTargetContentData());
+                }
+                else
+                {
+                    return "receive";
+                }
+            }
         }
 
         public string MyExecutionContent
