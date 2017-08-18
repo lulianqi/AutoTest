@@ -23,6 +23,30 @@ namespace MyCommonHelper
 {
     public static class MyExtensionMethods
     {
+
+        public static int MyIndexOf(this byte[] bytes,byte targetByte,int startIndex,int leng)
+        {
+            for (int i = startIndex; i < leng;i++ )
+            {
+                if(bytes[i]==targetByte)
+                {
+                    return startIndex + i;
+                }
+            }
+                return -1;
+        }
+
+        public static int MyIndexOf(this byte[] bytes, byte targetByte)
+        {
+
+            return MyIndexOf(bytes, targetByte, 0, bytes.Length);
+        }
+
+        public static int MyIndexOf(this byte[] bytes, byte targetByte, int startIndex)
+        {
+            return MyIndexOf(bytes, targetByte, startIndex, bytes.Length - startIndex);
+        }
+
         /// <summary>
         /// 获取文本url编码值
         /// </summary>

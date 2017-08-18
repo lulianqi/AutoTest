@@ -58,6 +58,7 @@
     <Compile Include="DemoForMySql.cs" />
     <Compile Include="DemoForMySsh.cs" />
     <Compile Include="DemoForMySvn.cs" />
+    <Compile Include="DemoForMyTelnet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DemoForMyVoice.cs" />

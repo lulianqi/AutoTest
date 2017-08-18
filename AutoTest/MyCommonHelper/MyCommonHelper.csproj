@@ -50,6 +50,7 @@
     <Compile Include="EncryptionHelper\MyXOR.cs" />
     <Compile Include="MyBytes.cs" />
     <Compile Include="MyHiPerformanceTick.cs" />
+    <Compile Include="NetHelper\MyTelnet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FileHelper\CsvFileHelper.cs" />
     <Compile Include="MyCommonTool.cs" />

@@ -296,6 +296,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                         }
                         if (receiveStr != null)
                         {
+                            ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, receiveStr);
                             tempCaseOutContent.AppendLine(receiveStr);
                         }
                         else
