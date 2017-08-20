@@ -16,38 +16,68 @@ namespace MyCommonHelper.NetHelper
         /// <summary>        
         /// 标志符,代表是一个TELNET 指令        
         /// </summary>        
-        readonly byte IAC = 255;
+        const byte IAC = 255;
         /// <summary>        
         /// 表示一方要求另一方使用，或者确认你希望另一方使用指定的选项。
         /// </summary>        
-        readonly byte DO = 253;
+        const byte DO = 253;
         /// <summary>
         /// 表示一方要求另一方停止使用，或者确认你不再希望另一方使用指定的选项。       
         /// </summary>       
-        readonly byte DONT = 254;
+        const byte DONT = 254;
         /// <summary>
         /// 表示希望开始使用或者确认所使用的是指定的选项。
         /// </summary>
-        readonly byte WILL = 251;
+        const byte WILL = 251;
         /// <summary>
         /// 表示拒绝使用或者继续使用指定的选项。
         /// </summary>
-        readonly byte WONT = 252;
+        const byte WONT = 252;
         /// <summary>
         /// 表示后面所跟的是对需要的选项的子谈判
         /// </summary>
-        readonly byte SB = 250;
+        const byte SB = 250;
         /// <summary>
         /// 子谈判参数的结束
         /// </summary>
-        readonly byte SE = 240;
-        const byte IS = 0;
-        const byte SEND = 1;
-        const byte INFO = 2;
-        const byte VAR = 0;
-        const byte VALUE = 1;
-        const byte ESC = 2;
-        const byte USERVAR = 3;
+        const byte SE = 240;
+
+        //Assigned Number
+
+        /// <summary>
+        /// 回显
+        /// </summary>
+        const byte SHOWBACK = 1;
+        /// <summary>
+        /// 抑制继续进行
+        /// </summary>
+        const byte RESTRAIN = 3;
+        /// <summary>
+        /// 终端类型
+        /// </summary>
+        const byte TERMINAL = 24;
+
+
+        //字选项协商
+
+        // some constants
+        const byte ESC = 27;
+        const byte CR = 13;
+        const byte LF = 10;
+        const String F1 = "\033OP"; // function key
+        const String F2 = "\033OQ";
+        const String F3 = "\033OR";
+        const String F4 = "\033OS";
+        const String F5 = "\033[15~";
+        const String F6 = "\033[17~";
+        const String F7 = "\033[18~";
+        const String F8 = "\033[19~";
+        const String F9 = "\033[20~";
+        const String F10 = "\033[21~";
+        const String F11 = "\033[23~";
+        const String F12 = "\033[24~";
+
+        const string ENDOFLINE = "\r\n"; // CR LF
         /// <summary> 
         /// 流
         /// /// </summary>
@@ -55,7 +85,7 @@ namespace MyCommonHelper.NetHelper
         /// <summary>
         /// 收到的控制信息
         /// </summary>
-        private ArrayList m_ListOptions = new ArrayList();
+        private ArrayList optionsList = new ArrayList();
         /// <summary>
         /// 存储准备发送的信息
         /// </summary>
@@ -72,24 +102,35 @@ namespace MyCommonHelper.NetHelper
 
         private string nowErrorMes;
 
-        private string strWorkingData = "";     // 保存从服务器端接收到的数据
-        private string strFullLog = "";
-        //====================================================           
+        private string nowShowData = "";     
+        private StringBuilder allShowData = new StringBuilder();
 
-        private string strWorkingDataX = "";
-        //用于获取当前工作的数据内容
 
         public string WorkingData
         {
-            get { return strWorkingDataX; }
+            get { return nowShowData; }
         }
-        
+
+
+        public string SessionLog
+        {
+            get
+            {
+                return allShowData.ToString();
+            }
+        }
+
         /// <summary>
         /// 获取最近的错误信息
         /// </summary>
         public string NowErrorMes
         {
             get { return nowErrorMes; }
+        }
+
+        private void ReportErrorMes(string errorMes)
+        {
+
         }
 
         /// <summary>
@@ -135,86 +176,72 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
+
         /// <summary>        
         /// 当接收完成后,执行的方法(供委托使用)       
         /// </summary>      
         /// <param name="ar"></param>       
         private void OnRecievedData(IAsyncResult ar)
         {
-            try
-            {
-                //从参数中获得给的socket 对象           
-                Socket so = (Socket)ar.AsyncState;
 
-                //EndReceive方法为结束挂起的异步读取         
-                int recLen = so.EndReceive(ar);
-                //如果有接收到数据的话            
-                if (recLen > 0)
-                {
+            //从参数中获得给的socket 对象           
+            Socket so = (Socket)ar.AsyncState;
+
+            //EndReceive方法为结束挂起的异步读取         
+            int recLen = so.EndReceive(ar);
+            //如果有接收到数据的话            
+            if (recLen > 0)
+            {
 #if INTEST
-                    byte[] tempByte = new byte[recLen];
-                    Array.Copy(telnetReceiveBuff, 0, tempByte, 0, recLen);
-                    System.Diagnostics.Debug.WriteLine("-------------------------------------");
-                    System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(tempByte, HexaDecimal.hex16, ShowHexMode.space));
-                    System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(tempByte, HexaDecimal.hex10, ShowHexMode.space));
-                    System.Diagnostics.Debug.WriteLine(Encoding.ASCII.GetString(tempByte));
-                    System.Diagnostics.Debug.WriteLine(Encoding.UTF8.GetString(tempByte));
+                byte[] tempByte = new byte[recLen];
+                Array.Copy(telnetReceiveBuff, 0, tempByte, 0, recLen);
+                System.Diagnostics.Debug.WriteLine("-------------------------------------");
+                System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(tempByte, HexaDecimal.hex16, ShowHexMode.space));
+                System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(tempByte, HexaDecimal.hex10, ShowHexMode.space));
+                System.Diagnostics.Debug.WriteLine(Encoding.ASCII.GetString(tempByte));
+                System.Diagnostics.Debug.WriteLine(Encoding.UTF8.GetString(tempByte));
 #endif
                    
-                    try
-                    {
-
-                        byte[] tempShowByte = DealOptions(tempByte);
-                        if (tempShowByte.Length>0)
-                        {
-                            strWorkingData = encoding.GetString(tempShowByte);
-                            strFullLog += mOutText;
-                        }
-                        RespondToOptions();
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("接收数据的时候出错了! " + ex.Message);
-                    }
-                }
-                else// 如果没有接收到任何数据的话           
+                try
                 {
-                    // 关闭连接            
-                    // 关闭socket               
-                    so.Shutdown(SocketShutdown.Both);
-                    so.Close();
+
+                    byte[] tempShowByte = DealRawBytes(tempByte);
+                    if (tempShowByte.Length>0)
+                    {
+                        nowShowData = encoding.GetString(tempShowByte);
+                        allShowData.Append(nowShowData);
+                    }
+                    DealOptions();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("控制选项错误 " + ex.Message);
                 }
             }
-            catch { }
+            else// 如果没有接收到任何数据， 关闭连接           
+            {          
+                so.Shutdown(SocketShutdown.Both);
+                so.Close();
+            }
+           
         }
         /// <summary>        
         ///  发送数据的函数       
         /// </summary>        
-        private void RespondToOptions()
+        private void DealOptions()
         {
-            try
+            if (optionsList.Count>0)
             {
-                //声明一个字符串,来存储 接收到的参数            
-                string strOption;
-                /*               
-                 * 此处的控制信息参数,是之前接受到信息之后保存的              
-                 * 例如 255   253   23   等等                                
-                 */
-                for (int i = 0; i < m_ListOptions.Count; i++)
+                byte[] nowResponseOption=null;
+                foreach(byte[] tempOption in optionsList)
                 {
-                    //获得一个控制信息参数                   
-                    strOption = (string)m_ListOptions[i];
-                    //根据这个参数,进行处理                   
-                    ArrangeReply(strOption);
+                    nowResponseOption = GetResponseOption(tempOption);
+                    if(nowResponseOption!=null)
+                    {
+                        DispatchMessage(nowResponseOption);
+                    }
                 }
-                DispatchMessage(m_strResp);
-                m_strResp = "";
-                m_ListOptions.Clear();
-            }
-            catch (Exception ers)
-            {
-                Console.WriteLine("出错了,在回发数据的时候 " + ers.Message);
-
+                optionsList.Clear();
             }
         }
         
@@ -223,7 +250,7 @@ namespace MyCommonHelper.NetHelper
         ///</summary>       
         ///<param name="yourRawBytes">原始数据</param>     
         /// <returns>可显示数据</returns>     
-        private byte[] DealOptions(byte[] yourRawBytes)
+        private byte[] DealRawBytes(byte[] yourRawBytes)
         {
 
             List<byte> showByteList = new List<byte>();
@@ -242,7 +269,7 @@ namespace MyCommonHelper.NetHelper
                         if((i + 2)<yourRawBytes.Length)
                         {
                             byte[] tempOptionCmd = new byte[] { yourRawBytes[i], yourRawBytes[i + 1], yourRawBytes[i + 2] };
-                            m_ListOptions.Add(tempOptionCmd);
+                            optionsList.Add(tempOptionCmd);
                         }
                         else
                         {
@@ -264,7 +291,7 @@ namespace MyCommonHelper.NetHelper
                         {
                             byte[] tempSBOptionCmd = new byte[sbEndIndex-i];
                             Array.Copy(yourRawBytes, i, tempSBOptionCmd, 0, sbEndIndex - i);
-                            m_ListOptions.Add(tempSBOptionCmd);
+                            optionsList.Add(tempSBOptionCmd);
                         }
                         else
                         {
@@ -286,124 +313,118 @@ namespace MyCommonHelper.NetHelper
         
        
         #region magic Function
-        //解析传过来的参数,生成回发的数据到m_strResp   
-        private void ArrangeReply(string strOption)
+
+        /// <summary>
+        /// 获取协商答复
+        /// </summary>
+        /// <param name="optionBytes">协商</param>
+        /// <returns>答复（无法答复或错误返回null）</returns>
+        private byte[] GetResponseOption(byte[] optionBytes)
         {
-            try
+
+            byte[] responseOption=new byte[3];
+            responseOption[0]=IAC;
+            //协商选项命令为3字节，附加选项超过3个             
+            if (optionBytes.Length < 3)
             {
-                Char Verb;
-                Char Option;
-                Char Modifier;
-                Char ch;
-                bool bDefined = false;
-                //排错选项,无啥意义              
-                if (strOption.Length < 3) return;
-                //获得命令码               
-                Verb = strOption[1];
-                //获得选项码             
-                Option = strOption[2];
-                //如果选项码为 回显(1) 或者是抑制继续进行(3)
-                if (Option == 1 || Option == 3)
+                ReportErrorMes(string.Format("error option by errer length with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
+                return null;
+            }
+            if(optionBytes[0]==IAC)
+            {
+                switch(optionBytes[1])
                 {
-                    bDefined = true;
-                }
-                // 设置回发消息,首先为标志位255         
-                m_strResp += IAC;
-                //如果选项码为 回显(1) 或者是抑制继续进行(3) ==true   
-                if (bDefined == true)
-                {
-                    #region 继续判断
-                    //如果命令码为253 (DO)             
-                    if (Verb == DO)
-                    {
-                        //我设置我应答的命令码为 251(WILL) 即为支持 回显或抑制继续进行     
-                        ch = WILL;
-                        m_strResp += ch;
-                        m_strResp += Option;
-                    }
-                    //如果命令码为 254(DONT)     
-                    if (Verb == DONT)
-                    {
-                        //我设置我应答的命令码为 252(WONT) 即为我也会"拒绝启动" 回显或抑制继续进行
-                        ch = WONT;
-                        m_strResp += ch;
-                        m_strResp += Option;
-                    }
-                    //如果命令码为251(WILL)   
-                    if (Verb == WILL)
-                    {
-                        //我设置我应答的命令码为 253(DO) 即为我认可你使用回显或抑制继续进行 
-                        ch = DO;
-                        m_strResp += ch;
-                        m_strResp += Option;
-                        //break;               
-                    }
-                    //如果接受到的命令码为251(WONT)         
-                    if (Verb == WONT)
-                    {
-                        //应答  我也拒绝选项请求回显或抑制继续进行       
-                        ch = DONT;
-                        m_strResp += ch;
-                        m_strResp += Option;
-                        //break;            
-                    }
-                    //如果接受到250(sb,标志子选项开始)            
-                    if (Verb == SB)
-                    {
-                        /*                  
-                         * 因为启动了子标志位,命令长度扩展到了4字节,                    
-                         * 取最后一个标志字节为选项码                     
-                         * 如果这个选项码字节为1(send)                    
-                         * 则回发为 250(SB子选项开始) + 获取的第二个字节 + 0(is) + 255(标志位IAC) + 240(SE子选项结束)               
-                         */
-                        Modifier = strOption[3];
-                        if (Modifier == SEND)
+                    //WILL： 发送方本身将激活( e n a b l e )选项
+                    case WILL:
+                        if(optionBytes[2]==SHOWBACK||optionBytes[2]==SHOWBACK)
                         {
-                            ch = SB;
-                            m_strResp += ch;
-                            m_strResp += Option;
-                            m_strResp += IS;
-                            m_strResp += IAC;
-                            m_strResp += SE;
+                            responseOption[1]=optionBytes[1];
+                            responseOption[2]=DO;
                         }
-                    }
-                    #endregion
+                        else if(optionBytes[2]==TERMINAL)
+                        {
+                            responseOption[1]=optionBytes[1];
+                            responseOption[2]=WONT;
+                        }
+                        else
+                        {
+                            ReportErrorMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
+                            return null;
+                        }
+                        break;
+                    //DO ：发送方想叫接收端激活选项。
+                    case DO:
+                        if(optionBytes[2]==SHOWBACK||optionBytes[2]==SHOWBACK)
+                        {
+                            responseOption[1]=optionBytes[1];
+                            responseOption[2]=WILL;
+                        }
+                        else if(optionBytes[2]==TERMINAL)
+                        {
+                            responseOption[1]=optionBytes[1];
+                            responseOption[2]=WONT;
+                        }
+                        else
+                        {
+                            ReportErrorMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
+                            return null;
+                        }
+                        break;
+                    //WONT ：发送方本身想禁止选项。
+                    case WONT:
+                        if(optionBytes[2]==SHOWBACK||optionBytes[2]==SHOWBACK)
+                        {
+                            responseOption[1]=optionBytes[1];
+                            responseOption[2]=DONT;
+                        }
+                        else if(optionBytes[2]==TERMINAL)
+                        {
+                            responseOption[1]=optionBytes[1];
+                            responseOption[2]=DONT;
+                        }
+                        else
+                        {
+                            ReportErrorMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
+                            return null;
+                        }
+                        break;
+                    //DON’T：发送方想让接收端去禁止选项。
+                    case DONT:
+                        if(optionBytes[2]==SHOWBACK||optionBytes[2]==SHOWBACK)
+                        {
+                            responseOption[1]=optionBytes[1];
+                            responseOption[2]=WONT;
+                        }
+                        else if(optionBytes[2]==TERMINAL)
+                        {
+                            responseOption[1]=optionBytes[1];
+                            responseOption[2]=WONT;
+                        }
+                        else
+                        {
+                            ReportErrorMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
+                            return null;
+                        }
+                        break;
+                    //子选项协商 (暂不处理)
+                    case SB:
+                        ReportErrorMes(string.Format("unsuport SB/SE option with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)));
+                        return null;
+                    default:
+                        ReportErrorMes(string.Format("unknow option with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)));
+                        return null;
                 }
-                else //如果选项码不是1 或者3 
-                {
-                    #region 底下一系列代表,无论你发那种请求,我都不干
-                    if (Verb == DO)
-                    {
-                        ch = WONT;
-                        m_strResp += ch;
-                        m_strResp += Option;
-                    }
-                    if (Verb == DONT)
-                    {
-                        ch = WONT;
-                        m_strResp += ch;
-                        m_strResp += Option;
-                    }
-                    if (Verb == WILL)
-                    {
-                        ch = DONT;
-                        m_strResp += ch;
-                        m_strResp += Option;
-                    }
-                    if (Verb == WONT)
-                    {
-                        ch = DONT;
-                        m_strResp += ch;
-                        m_strResp += Option;
-                    }
-                    #endregion
-                }
+
             }
-            catch (Exception eeeee)
+            else
             {
-                throw new Exception("解析参数时出错:" + eeeee.Message);
+                ReportErrorMes(string.Format("error option by no IAC with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
+                return null;
             }
+            return responseOption;
         }
+
+
         /// <summary>     
         /// 将信息转化成charp[] 流的形式,使用socket 进行发出   
         /// 发出结束之后,使用一个匿名委托,进行接收,  
@@ -457,7 +478,7 @@ namespace MyCommonHelper.NetHelper
             long lngStart = DateTime.Now.AddSeconds(this.timeout).Ticks;
             long lngCurTime = 0;
 
-            while (strWorkingData.ToLower().IndexOf(DataToWaitFor.ToLower()) == -1)
+            while (nowShowData.ToLower().IndexOf(DataToWaitFor.ToLower()) == -1)
             {
                 lngCurTime = DateTime.Now.Ticks;
                 if (lngCurTime > lngStart)
@@ -466,7 +487,7 @@ namespace MyCommonHelper.NetHelper
                 }
                 Thread.Sleep(1);
             }
-            strWorkingData = "";
+            nowShowData = "";
             return 0;
         }
 
@@ -478,16 +499,7 @@ namespace MyCommonHelper.NetHelper
         }
         #endregion
 
-        /// <summary>
-        /// 取完整日志
-        /// </summary>
-        public string SessionLog
-        {
-            get
-            {
-                return strFullLog;
-            }
-        }
+       
 
         //======================================================================================
         /// <summary>
