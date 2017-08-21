@@ -11,7 +11,7 @@ namespace DemoForMyHelper
         MyTelnet telnet;
         public DemoForMyTelnet()
         {
-            telnet = new MyTelnet("192.168.200.150", 23, 100);
+            telnet = new MyTelnet("192.168.200.150", 23, 5);
         }
 
         public void Strat()
@@ -24,23 +24,23 @@ namespace DemoForMyHelper
             else
             {
                 telnet.WaitFor("login");
-                telnet.Send("telnet");
+                telnet.WriteLine("telnet");
                 telnet.WaitFor("password");
-                telnet.Send("lijie1515");
+                telnet.WriteLine("lijie1515");
                 Console.WriteLine(telnet.WorkingData);
 
-                Console.WriteLine("-------------------------------------------");
-                Console.WriteLine(telnet.SessionLog);
-                Console.WriteLine("-------------------------------------------");
+                //Console.WriteLine("-------------------------------------------");
+                //Console.WriteLine(telnet.SessionLog);
+                //Console.WriteLine("-------------------------------------------");
 
                 Console.ReadLine();
-                telnet.Send("ls");
+                telnet.WriteLine("ls");
                 telnet.WaitFor("$");
                 Console.WriteLine(telnet.WorkingData);
 
-                Console.WriteLine("-------------------------------------------");
-                Console.WriteLine(telnet.SessionLog);
-                Console.WriteLine("-------------------------------------------");
+                //Console.WriteLine("-------------------------------------------");
+                //Console.WriteLine(telnet.SessionLog);
+                //Console.WriteLine("-------------------------------------------");
             }
         }
     }

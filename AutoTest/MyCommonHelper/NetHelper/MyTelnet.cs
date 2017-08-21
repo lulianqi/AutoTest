@@ -10,21 +10,17 @@ using System.Threading;
 
 namespace MyCommonHelper.NetHelper
 {
+    public enum TelnetMessageType
+    {
+        Error,
+        ShowData,
+        Message,
+        Warning
+    }
+
     public class MyTelnet
     {
         #region telnet的数据定义
-        /// <summary>        
-        /// 标志符,代表是一个TELNET 指令        
-        /// </summary>        
-        const byte IAC = 255;
-        /// <summary>        
-        /// 表示一方要求另一方使用，或者确认你希望另一方使用指定的选项。
-        /// </summary>        
-        const byte DO = 253;
-        /// <summary>
-        /// 表示一方要求另一方停止使用，或者确认你不再希望另一方使用指定的选项。       
-        /// </summary>       
-        const byte DONT = 254;
         /// <summary>
         /// 表示希望开始使用或者确认所使用的是指定的选项。
         /// </summary>
@@ -33,6 +29,19 @@ namespace MyCommonHelper.NetHelper
         /// 表示拒绝使用或者继续使用指定的选项。
         /// </summary>
         const byte WONT = 252;
+        /// <summary>        
+        /// 表示一方要求另一方使用，或者确认你希望另一方使用指定的选项。
+        /// </summary>        
+        const byte DO = 253;
+        /// <summary>
+        /// 表示一方要求另一方停止使用，或者确认你不再希望另一方使用指定的选项。       
+        /// </summary>       
+        const byte DONT = 254;
+        /// <summary>        
+        /// 标志符,代表是一个TELNET 指令        
+        /// </summary>        
+        const byte IAC = 255;
+
         /// <summary>
         /// 表示后面所跟的是对需要的选项的子谈判
         /// </summary>
@@ -98,14 +107,18 @@ namespace MyCommonHelper.NetHelper
 
         private IPEndPoint iep;
         private int timeout;
-        private Encoding encoding = Encoding.ASCII;
+        private Encoding encoding = Encoding.UTF8;
 
         private string nowErrorMes;
 
         private string nowShowData = "";     
         private StringBuilder allShowData = new StringBuilder();
 
+        public delegate void delegateDataOut(string mesStr, TelnetMessageType mesType);
+        public event delegateDataOut OnMesageReport;
 
+
+        AsyncCallback recieveData;
         public string WorkingData
         {
             get { return nowShowData; }
@@ -128,9 +141,16 @@ namespace MyCommonHelper.NetHelper
             get { return nowErrorMes; }
         }
 
-        private void ReportErrorMes(string errorMes)
+        private void ReportMes(string mesInfo, TelnetMessageType mesType)
         {
-
+#if INTEST
+            System.Diagnostics.Debug.WriteLine("-------------------------------------");
+            System.Diagnostics.Debug.WriteLine(mesType.ToString() + mesInfo);
+#endif
+            if(OnMesageReport!=null)
+            {
+                OnMesageReport(mesInfo, mesType);
+            }
         }
 
         /// <summary>
@@ -138,22 +158,24 @@ namespace MyCommonHelper.NetHelper
         /// </summary>
         /// <param name="Address">主机ip地址 (可以使用Dns.GetHostEntry(host)获取使用主机名的ip)</param>
         /// <param name="Port">端口</param>
-        /// <param name="CommandTimeout">超时</param>
+        /// <param name="CommandTimeout">查询字符串超时时间，单位秒（0，为不超时）</param>
         public MyTelnet(string Address, int Port, int CommandTimeout)
         {
             iep = new IPEndPoint(IPAddress.Parse(Address), Port);
             timeout = CommandTimeout;
+            recieveData = new AsyncCallback(OnRecievedData);
         }
 
         public MyTelnet(IPEndPoint yourEp, int CommandTimeout)
         {
             iep = yourEp;
             timeout = CommandTimeout;
+            recieveData = new AsyncCallback(OnRecievedData);
         }
 
         /// <summary>        
         /// 连接telnet     
-        /// </summary>       
+        /// </summary>                                                                
         public bool Connect()
         {
             //启动socket 进行telnet操作   
@@ -163,8 +185,7 @@ namespace MyCommonHelper.NetHelper
                 mySocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 mySocket.Connect(iep);
 
-                //异步回调
-                AsyncCallback recieveData = new AsyncCallback(OnRecievedData);
+                //接收数据
                 mySocket.BeginReceive(telnetReceiveBuff, 0, telnetReceiveBuff.Length, SocketFlags.None, recieveData, mySocket);
 
                 return true;
@@ -177,40 +198,47 @@ namespace MyCommonHelper.NetHelper
         }
 
 
-        /// <summary>        
-        /// 当接收完成后,执行的方法(供委托使用)       
-        /// </summary>      
-        /// <param name="ar"></param>       
+
         private void OnRecievedData(IAsyncResult ar)
         {
-
-            //从参数中获得给的socket 对象           
+        
             Socket so = (Socket)ar.AsyncState;
 
             //EndReceive方法为结束挂起的异步读取         
             int recLen = so.EndReceive(ar);
+
+            mySocket.BeginReceive(telnetReceiveBuff, 0, telnetReceiveBuff.Length, SocketFlags.None, recieveData, mySocket);
+
             //如果有接收到数据的话            
             if (recLen > 0)
             {
-#if INTEST
+
+                if (recLen > telnetReceiveBuff.Length)
+                {
+                    ReportMes(string.Format("ReceiveBuff is out of memory [{0}] [{1}]", telnetReceiveBuff.Length, recLen),TelnetMessageType.Error);
+                    recLen = telnetReceiveBuff.Length;
+                }
+
                 byte[] tempByte = new byte[recLen];
                 Array.Copy(telnetReceiveBuff, 0, tempByte, 0, recLen);
+#if INTEST
                 System.Diagnostics.Debug.WriteLine("-------------------------------------");
-                System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(tempByte, HexaDecimal.hex16, ShowHexMode.space));
-                System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(tempByte, HexaDecimal.hex10, ShowHexMode.space));
-                System.Diagnostics.Debug.WriteLine(Encoding.ASCII.GetString(tempByte));
+                //System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(tempByte, HexaDecimal.hex16, ShowHexMode.space));
+                //System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(tempByte, HexaDecimal.hex10, ShowHexMode.space));
+                //System.Diagnostics.Debug.WriteLine(Encoding.ASCII.GetString(tempByte));
                 System.Diagnostics.Debug.WriteLine(Encoding.UTF8.GetString(tempByte));
 #endif
-                   
+
                 try
                 {
 
                     byte[] tempShowByte = DealRawBytes(tempByte);
-                    if (tempShowByte.Length>0)
+                    if (tempShowByte.Length > 0)
                     {
                         nowShowData = encoding.GetString(tempShowByte);
                         allShowData.Append(nowShowData);
                     }
+                    //超过接收缓存的数据也不可是选项数据，即不用考虑选项被截断的情况
                     DealOptions();
                 }
                 catch (Exception ex)
@@ -232,14 +260,27 @@ namespace MyCommonHelper.NetHelper
         {
             if (optionsList.Count>0)
             {
+                byte[] sendResponseOption = null;
                 byte[] nowResponseOption=null;
                 foreach(byte[] tempOption in optionsList)
                 {
                     nowResponseOption = GetResponseOption(tempOption);
                     if(nowResponseOption!=null)
                     {
-                        DispatchMessage(nowResponseOption);
+                        if(sendResponseOption==null)
+                        {
+                            sendResponseOption = nowResponseOption;
+                        }
+                        else
+                         {
+                            Array.Resize(ref sendResponseOption, sendResponseOption.Length + nowResponseOption.Length);
+                            nowResponseOption.CopyTo(sendResponseOption, sendResponseOption.Length - nowResponseOption.Length);
+                        }
                     }
+                }
+                if (sendResponseOption!=null)
+                {
+                    WriteRawData(sendResponseOption);
                 }
                 optionsList.Clear();
             }
@@ -327,7 +368,7 @@ namespace MyCommonHelper.NetHelper
             //协商选项命令为3字节，附加选项超过3个             
             if (optionBytes.Length < 3)
             {
-                ReportErrorMes(string.Format("error option by errer length with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
+                ReportMes(string.Format("error option by errer length with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)),TelnetMessageType.Error);
                 return null;
             }
             if(optionBytes[0]==IAC)
@@ -336,192 +377,168 @@ namespace MyCommonHelper.NetHelper
                 {
                     //WILL： 发送方本身将激活( e n a b l e )选项
                     case WILL:
-                        if(optionBytes[2]==SHOWBACK||optionBytes[2]==SHOWBACK)
+                        if (optionBytes[2] == SHOWBACK || optionBytes[2] == RESTRAIN)
                         {
-                            responseOption[1]=optionBytes[1];
-                            responseOption[2]=DO;
+                            responseOption[2]=optionBytes[2];
+                            responseOption[1]=DO;
                         }
                         else if(optionBytes[2]==TERMINAL)
                         {
-                            responseOption[1]=optionBytes[1];
-                            responseOption[2]=WONT;
+                            responseOption[2]=optionBytes[2];
+                            responseOption[1]=WONT;
                         }
                         else
                         {
-                            ReportErrorMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
-                            return null;
+                            ReportMes(string.Format("unknow Assigned Number with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)), TelnetMessageType.Warning);
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WONT;
                         }
                         break;
                     //DO ：发送方想叫接收端激活选项。
                     case DO:
-                        if(optionBytes[2]==SHOWBACK||optionBytes[2]==SHOWBACK)
+                        if (optionBytes[2] == SHOWBACK || optionBytes[2] == RESTRAIN)
                         {
-                            responseOption[1]=optionBytes[1];
-                            responseOption[2]=WILL;
+                            responseOption[2]=optionBytes[2];
+                            responseOption[1]=WILL;
                         }
                         else if(optionBytes[2]==TERMINAL)
                         {
-                            responseOption[1]=optionBytes[1];
-                            responseOption[2]=WONT;
+                            responseOption[2]=optionBytes[2];
+                            responseOption[1]=WONT;
                         }
                         else
                         {
-                            ReportErrorMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
-                            return null;
+                            ReportMes(string.Format("unknow Assigned Number with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)), TelnetMessageType.Warning);
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WONT;
                         }
                         break;
                     //WONT ：发送方本身想禁止选项。
                     case WONT:
-                        if(optionBytes[2]==SHOWBACK||optionBytes[2]==SHOWBACK)
+                        if (optionBytes[2] == SHOWBACK || optionBytes[2] == RESTRAIN)
                         {
-                            responseOption[1]=optionBytes[1];
-                            responseOption[2]=DONT;
+                            responseOption[2]=optionBytes[2];
+                            responseOption[1]=DONT;
                         }
                         else if(optionBytes[2]==TERMINAL)
                         {
-                            responseOption[1]=optionBytes[1];
-                            responseOption[2]=DONT;
+                            responseOption[2]=optionBytes[2];
+                            responseOption[1]=DONT;
                         }
                         else
                         {
-                            ReportErrorMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
-                            return null;
+                            ReportMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)),TelnetMessageType.Warning);
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WONT;
                         }
                         break;
                     //DON’T：发送方想让接收端去禁止选项。
                     case DONT:
-                        if(optionBytes[2]==SHOWBACK||optionBytes[2]==SHOWBACK)
+                        if (optionBytes[2] == SHOWBACK || optionBytes[2] == RESTRAIN)
                         {
-                            responseOption[1]=optionBytes[1];
-                            responseOption[2]=WONT;
+                            responseOption[2]=optionBytes[2];
+                            responseOption[1]=WONT;
                         }
                         else if(optionBytes[2]==TERMINAL)
                         {
-                            responseOption[1]=optionBytes[1];
-                            responseOption[2]=WONT;
+                            responseOption[2]=optionBytes[2];
+                            responseOption[1]=WONT;
                         }
                         else
                         {
-                            ReportErrorMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
-                            return null;
+                            ReportMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)),TelnetMessageType.Warning);
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WONT;
                         }
                         break;
                     //子选项协商 (暂不处理)
                     case SB:
-                        ReportErrorMes(string.Format("unsuport SB/SE option with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)));
+                        ReportMes(string.Format("unsuport SB/SE option with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)), TelnetMessageType.Warning);
                         return null;
                     default:
-                        ReportErrorMes(string.Format("unknow option with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)));
-                        return null;
+                        ReportMes(string.Format("unknow option with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)), TelnetMessageType.Warning);
+                        responseOption[2] = optionBytes[2];
+                        responseOption[1] = WONT;
+                        break;
                 }
 
             }
             else
             {
-                ReportErrorMes(string.Format("error option by no IAC with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)));
+                ReportMes(string.Format("error option by no IAC with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)), TelnetMessageType.Warning);
                 return null;
             }
             return responseOption;
         }
 
 
-        /// <summary>     
-        /// 将信息转化成charp[] 流的形式,使用socket 进行发出   
-        /// 发出结束之后,使用一个匿名委托,进行接收,  
-        /// 之后这个委托里,又有个委托,意思是接受完了之后执行OnRecieveData 方法 
-        ///       
-        /// </summary>       
-        /// <param name="strText"></param>  
-        void DispatchMessage(string strText)
+        void WriteRawData(byte[] yourData)
         {
-            try
-            {
-                //申请一个与字符串相当长度的char流      
-                Byte[] smk = new Byte[strText.Length];
-                for (int i = 0; i < strText.Length; i++)
+            mySocket.BeginSend(yourData, 0, yourData.Length, SocketFlags.None,new AsyncCallback((IAsyncResult ar)=>{
+                try
                 {
-                    //解析字符串,将其存储到char流中去   
-                    Byte ss = Convert.ToByte(strText[i]);
-                    smk[i] = ss;
+                    Socket client = (Socket)ar.AsyncState;
+                    int bytesSent = client.EndSend(ar);
+                   
+#if INTEST_
+                    System.Diagnostics.Debug.WriteLine("-------------------------------------");
+                    System.Diagnostics.Debug.WriteLine(string.Format("Sent {0} bytes to server.", bytesSent));
+                    System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(yourData, HexaDecimal.hex16, ShowHexMode.space));
+                    System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(yourData, HexaDecimal.hex10, ShowHexMode.space));
+                    System.Diagnostics.Debug.WriteLine(Encoding.ASCII.GetString(yourData));
+                    System.Diagnostics.Debug.WriteLine(Encoding.UTF8.GetString(yourData));
+#endif
                 }
-                //发送char流,之后发送完毕后执行委托中的方法(此处为匿名委托)    
-                IAsyncResult ar2 = mySocket.BeginSend(smk, 0, smk.Length, SocketFlags.None, delegate(IAsyncResult ar)
+                catch (Exception ex)
                 {
-                    //当执行完"发送数据" 这个动作后                  
-                    // 获取Socket对象,对象从beginsend 中的最后个参数上获得          
-                    Socket sock1 = (Socket)ar.AsyncState;
-                    if (sock1.Connected)//如果连接还是有效                    
-                    {
-                        //这里建立一个委托      
-                        AsyncCallback recieveData = new AsyncCallback(OnRecievedData);
+                    ReportMes(string.Format("error in send data with :{0}", ex.Message), TelnetMessageType.Error);
+                }
 
-                        sock1.BeginReceive(telnetReceiveBuff, 0, telnetReceiveBuff.Length, SocketFlags.None, recieveData, sock1);
-                      
-                    }
-                }, mySocket);
+            }), mySocket);
 
-                mySocket.EndSend(ar2);
-            }
-            catch (Exception ers)
-            {
-                Console.WriteLine("出错了,在回发数据的时候:" + ers.Message);
-            }
         }
 
         /// <summary>
-        /// 等待指定的字符串返回
+        /// 指定时间内等待指定的字符串
         /// </summary>
-        /// <param name="DataToWaitFor">等待的字符串</param>
-        /// <returns>返回0</returns>
-        public int WaitFor(string DataToWaitFor)
+        /// <param name="waitStr">等待字符串</param>
+        /// <returns>查询到返回true，否则为false</returns>
+        public bool WaitFor(string waitStr)
         {
-            long lngStart = DateTime.Now.AddSeconds(this.timeout).Ticks;
-            long lngCurTime = 0;
-
-            while (nowShowData.ToLower().IndexOf(DataToWaitFor.ToLower()) == -1)
+            if(timeout>0)
             {
-                lngCurTime = DateTime.Now.Ticks;
-                if (lngCurTime > lngStart)
+                long endTicks = DateTime.Now.AddSeconds(timeout).Ticks;
+                while (nowShowData.ToLower().IndexOf(waitStr.ToLower()) == -1)
                 {
-                    throw new Exception("Timed Out waiting for : " + DataToWaitFor);
+                    if (DateTime.Now.Ticks > endTicks)
+                    {
+                        return false;
+                    }
+                    Thread.Sleep(100);
                 }
-                Thread.Sleep(1);
+                return true;
             }
-            nowShowData = "";
-            return 0;
+            else
+            {
+                return (nowShowData.ToLower().Contains(waitStr.ToLower()));
+            }
         }
 
-        public void Send(string message)
+        public void Write(string message)
         {
-            DispatchMessage(message);
-            //因为每发送一行都没有发送回车,故在此处补上         
-            DispatchMessage("\r\n");
+            WriteRawData(encoding.GetBytes(message));
+        }
+
+        public void Write(byte[] bytes)
+        {
+            WriteRawData(bytes);
+        }
+
+        public void WriteLine(string message)
+        {
+            WriteRawData(encoding.GetBytes(message + ENDOFLINE));
         }
         #endregion
 
-       
-
-        //======================================================================================
-        /// <summary>
-        /// 字符串编码转换，解决汉字显示乱码问题。
-
-        /// 原始字符串中的汉字存储的是汉字内码，此代码实质是将汉字内码转换为GB2312编码。（夏春涛20110531）
-        /// </summary>
-        /// <param name="str_origin">需要转换的字符串</param>
-        /// <returns>转换后的字符串</returns>
-        private string ConvertToGB2312(string str_origin)
-        {
-            char[] chars = str_origin.ToCharArray();
-            byte[] bytes = new byte[chars.Length];
-            for (int i = 0; i < chars.Length; i++)
-            {
-                int c = (int)chars[i];
-                bytes[i] = (byte)c;
-            }
-            Encoding Encoding_GB2312 = Encoding.GetEncoding("GB2312");
-            string str_converted = Encoding_GB2312.GetString(bytes);
-            return str_converted;
-        }
-        //======================================================================================
     }
 }
