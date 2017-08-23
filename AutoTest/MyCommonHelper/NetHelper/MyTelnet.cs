@@ -87,6 +87,11 @@ namespace MyCommonHelper.NetHelper
         const String F12 = "\033[24~";
 
         const string ENDOFLINE = "\r\n"; // CR LF
+        #endregion
+
+        private static AutoResetEvent sendDone = new AutoResetEvent(true); //false 非终止状态
+        private static AutoResetEvent receiveDone = new AutoResetEvent(true);
+
         /// <summary> 
         /// 流
         /// /// </summary>
@@ -103,16 +108,36 @@ namespace MyCommonHelper.NetHelper
         /// 一个Socket套接字
         /// </summary>
         private Socket mySocket;
-        #endregion
+        
 
         private IPEndPoint iep;
         private int timeout;
         private Encoding encoding = Encoding.UTF8;
 
         private string nowErrorMes;
+        private int maxSaveData=10000000;
 
-        private string nowShowData = "";     
+        private StringBuilder nowShowData = new StringBuilder();
+        private void AddNowShowData(string yourData)
+        {
+            if((nowShowData.Length+yourData.Length)>maxSaveData)
+            {
+                AddAllShowData(nowShowData);
+                nowShowData.Clear();
+            }
+            nowShowData.Append(yourData);
+        }
+
         private StringBuilder allShowData = new StringBuilder();
+
+        private void AddAllShowData(StringBuilder yourData)
+        {
+            if ((allShowData.Length + yourData.Length) > maxSaveData)
+            {
+                allShowData.Clear();
+            }
+            allShowData.Append(yourData.ToString());
+        }
 
         public delegate void delegateDataOut(string mesStr, TelnetMessageType mesType);
         public event delegateDataOut OnMesageReport;
@@ -121,7 +146,13 @@ namespace MyCommonHelper.NetHelper
         AsyncCallback recieveData;
         public string WorkingData
         {
-            get { return nowShowData; }
+            get 
+            {
+                AddAllShowData(nowShowData);
+                string tempOutStr= nowShowData.ToString();
+                nowShowData.Clear();
+                return tempOutStr;
+            }
         }
 
 
@@ -201,12 +232,13 @@ namespace MyCommonHelper.NetHelper
 
         private void OnRecievedData(IAsyncResult ar)
         {
-        
+            
             Socket so = (Socket)ar.AsyncState;
-
+            receiveDone.WaitOne();
             //EndReceive方法为结束挂起的异步读取         
             int recLen = so.EndReceive(ar);
 
+            //可以在OnRecievedData直接调用BeginReceive，因为有同步线程锁，msdn示例也是如此
             mySocket.BeginReceive(telnetReceiveBuff, 0, telnetReceiveBuff.Length, SocketFlags.None, recieveData, mySocket);
 
             //如果有接收到数据的话            
@@ -235,7 +267,7 @@ namespace MyCommonHelper.NetHelper
                     byte[] tempShowByte = DealRawBytes(tempByte);
                     if (tempShowByte.Length > 0)
                     {
-                        nowShowData = encoding.GetString(tempShowByte);
+                        AddNowShowData(encoding.GetString(tempShowByte));
                         allShowData.Append(nowShowData);
                     }
                     //超过接收缓存的数据也不可是选项数据，即不用考虑选项被截断的情况
@@ -245,6 +277,10 @@ namespace MyCommonHelper.NetHelper
                 {
                     throw new Exception("控制选项错误 " + ex.Message);
                 }
+                finally
+                {
+                    receiveDone.Set(); //要在数据处理完成后开锁，然后在接收完成后也会有可能出现数据错位
+                }
             }
             else// 如果没有接收到任何数据， 关闭连接           
             {          
@@ -253,6 +289,8 @@ namespace MyCommonHelper.NetHelper
             }
            
         }
+        
+        
         /// <summary>        
         ///  发送数据的函数       
         /// </summary>        
@@ -474,11 +512,13 @@ namespace MyCommonHelper.NetHelper
 
         void WriteRawData(byte[] yourData)
         {
+            sendDone.WaitOne();
             mySocket.BeginSend(yourData, 0, yourData.Length, SocketFlags.None,new AsyncCallback((IAsyncResult ar)=>{
                 try
                 {
                     Socket client = (Socket)ar.AsyncState;
                     int bytesSent = client.EndSend(ar);
+                    
                    
 #if INTEST_
                     System.Diagnostics.Debug.WriteLine("-------------------------------------");
@@ -492,6 +532,10 @@ namespace MyCommonHelper.NetHelper
                 catch (Exception ex)
                 {
                     ReportMes(string.Format("error in send data with :{0}", ex.Message), TelnetMessageType.Error);
+                }
+                finally
+                {
+                    sendDone.Set();
                 }
 
             }), mySocket);
@@ -508,7 +552,7 @@ namespace MyCommonHelper.NetHelper
             if(timeout>0)
             {
                 long endTicks = DateTime.Now.AddSeconds(timeout).Ticks;
-                while (nowShowData.ToLower().IndexOf(waitStr.ToLower()) == -1)
+                while (((nowShowData.ToString()).ToLower()).IndexOf(waitStr.ToLower()) == -1)
                 {
                     if (DateTime.Now.Ticks > endTicks)
                     {
@@ -520,7 +564,7 @@ namespace MyCommonHelper.NetHelper
             }
             else
             {
-                return (nowShowData.ToLower().Contains(waitStr.ToLower()));
+                return ((nowShowData.ToString()).ToLower().Contains(waitStr.ToLower()));
             }
         }
 
