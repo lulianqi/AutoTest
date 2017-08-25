@@ -23,24 +23,57 @@ namespace DemoForMyHelper
             }
             else
             {
-                telnet.WaitFor("login");
+                telnet.WaitStr("login");
                 telnet.WriteLine("telnet");
-                telnet.WaitFor("password");
+                telnet.WaitStr("password");
                 telnet.WriteLine("lijie1515");
-                Console.WriteLine(telnet.WorkingData);
+                telnet.WaitStr("$");
+                Console.WriteLine(telnet.GetAndMoveShowData());
 
                 //Console.WriteLine("-------------------------------------------");
                 //Console.WriteLine(telnet.SessionLog);
                 //Console.WriteLine("-------------------------------------------");
+
+                
+                
+                Console.WriteLine(telnet.GetAndMoveShowData());
+                telnet.WriteLine("ls");
+                telnet.WaitStr("$");
+                Console.WriteLine(telnet.GetAndMoveShowData());
+
+                Console.WriteLine("-------------------------------------------");
+                Console.WriteLine(telnet.AllLogData);
+                Console.WriteLine("-------------------------------------------");
 
                 Console.ReadLine();
-                telnet.WriteLine("ls");
-                telnet.WaitFor("$");
-                Console.WriteLine(telnet.WorkingData);
+                telnet.OnMesageReport += telnet_OnMesageReport;
+                for(int i=0;i<10;i++)
+                {
+                    telnet.WriteLine("netstat");
+                }
+                telnet.OnMesageReport -= telnet_OnMesageReport;
 
-                //Console.WriteLine("-------------------------------------------");
-                //Console.WriteLine(telnet.SessionLog);
-                //Console.WriteLine("-------------------------------------------");
+                Console.ReadLine();
+                Console.WriteLine("******************************************");
+                Console.WriteLine(telnet.DoRequest("ll",'$'));
+                Console.WriteLine("******************************************");
+                Console.WriteLine(telnet.DoRequest("mkdir 123", '$'));
+                Console.WriteLine("******************************************");
+                Console.WriteLine(telnet.DoRequest("ll", '$'));
+                Console.WriteLine("******************************************");
+
+
+            }
+        }
+
+        void telnet_OnMesageReport(string mesStr, TelnetMessageType mesType)
+        {
+            if(mesType== TelnetMessageType.ShowData)
+            {
+                Console.Write(mesStr);
+            }else
+            {
+                Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             }
         }
     }

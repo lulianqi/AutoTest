@@ -28,8 +28,9 @@ namespace TestForDefaultClass
         public delegate void Mydelegate();
         static void Main(string[] args)
         {
+            Console.ReadKey(); 
             RunTestForManualResetEvent();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 500; i++)
             {
                 Console.ReadKey();
                 manualResetEvent.Set();
@@ -222,9 +223,9 @@ namespace TestForDefaultClass
         public static AutoResetEvent manualResetEvent = new AutoResetEvent(false);
         public static void RunTestForManualResetEvent()
         {
-            for(int i=0;i<10;i++)
+            for(int i=0;i<100000;i++)
             {
-                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); Console.WriteLine("id is " + ((int)ob).ToString()); }));
+                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); Console.WriteLine("id is " + ((int)ob).ToString()); }), 0);
                 td.Start(i);
             }
             

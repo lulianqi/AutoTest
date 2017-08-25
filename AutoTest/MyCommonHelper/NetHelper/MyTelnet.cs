@@ -91,22 +91,13 @@ namespace MyCommonHelper.NetHelper
 
         private static AutoResetEvent sendDone = new AutoResetEvent(true); //false 非终止状态
         private static AutoResetEvent receiveDone = new AutoResetEvent(true);
+        private static readonly object nowShowDataLock = new object();
 
-        /// <summary> 
-        /// 流
-        /// /// </summary>
+
         byte[] telnetReceiveBuff = new byte[1024*128];
-        /// <summary>
-        /// 收到的控制信息
-        /// </summary>
+
         private ArrayList optionsList = new ArrayList();
-        /// <summary>
-        /// 存储准备发送的信息
-        /// </summary>
-        string m_strResp;
-        /// <summary>
-        /// 一个Socket套接字
-        /// </summary>
+
         private Socket mySocket;
         
 
@@ -120,12 +111,14 @@ namespace MyCommonHelper.NetHelper
         private StringBuilder nowShowData = new StringBuilder();
         private void AddNowShowData(string yourData)
         {
-            if((nowShowData.Length+yourData.Length)>maxSaveData)
+            lock (nowShowDataLock)
             {
-                AddAllShowData(nowShowData);
-                nowShowData.Clear();
+                if ((nowShowData.Length + yourData.Length) > maxSaveData)
+                {
+                    nowShowData.Clear();
+                }
+                nowShowData.Append(yourData);
             }
-            nowShowData.Append(yourData);
         }
 
         private StringBuilder allShowData = new StringBuilder();
@@ -144,19 +137,23 @@ namespace MyCommonHelper.NetHelper
 
 
         AsyncCallback recieveData;
-        public string WorkingData
+
+        /// <summary>
+        /// 获取当前显示数据（递增）
+        /// </summary>
+        public string NowShowData
         {
             get 
             {
-                AddAllShowData(nowShowData);
-                string tempOutStr= nowShowData.ToString();
-                nowShowData.Clear();
-                return tempOutStr;
+                return nowShowData.ToString();
             }
         }
 
 
-        public string SessionLog
+        /// <summary>
+        /// 获取整个输出（但超过最大长度后，会清除前面的内容）
+        /// </summary>
+        public string AllLogData
         {
             get
             {
@@ -170,6 +167,12 @@ namespace MyCommonHelper.NetHelper
         public string NowErrorMes
         {
             get { return nowErrorMes; }
+        }
+
+        public int MaxSaveData
+        {
+            get { return maxSaveData; }
+            set { maxSaveData = value; }
         }
 
         private void ReportMes(string mesInfo, TelnetMessageType mesType)
@@ -228,11 +231,11 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
-
+        #region MyFunction
 
         private void OnRecievedData(IAsyncResult ar)
         {
-            
+
             Socket so = (Socket)ar.AsyncState;
             receiveDone.WaitOne();
             //EndReceive方法为结束挂起的异步读取         
@@ -247,7 +250,7 @@ namespace MyCommonHelper.NetHelper
 
                 if (recLen > telnetReceiveBuff.Length)
                 {
-                    ReportMes(string.Format("ReceiveBuff is out of memory [{0}] [{1}]", telnetReceiveBuff.Length, recLen),TelnetMessageType.Error);
+                    ReportMes(string.Format("ReceiveBuff is out of memory [{0}] [{1}]", telnetReceiveBuff.Length, recLen), TelnetMessageType.Error);
                     recLen = telnetReceiveBuff.Length;
                 }
 
@@ -267,8 +270,10 @@ namespace MyCommonHelper.NetHelper
                     byte[] tempShowByte = DealRawBytes(tempByte);
                     if (tempShowByte.Length > 0)
                     {
-                        AddNowShowData(encoding.GetString(tempShowByte));
-                        allShowData.Append(nowShowData);
+                        string tempNowStr = encoding.GetString(tempShowByte);
+                        ReportMes(tempNowStr, TelnetMessageType.ShowData);
+                        AddNowShowData(tempNowStr);
+
                     }
                     //超过接收缓存的数据也不可是选项数据，即不用考虑选项被截断的情况
                     DealOptions();
@@ -283,47 +288,47 @@ namespace MyCommonHelper.NetHelper
                 }
             }
             else// 如果没有接收到任何数据， 关闭连接           
-            {          
+            {
                 so.Shutdown(SocketShutdown.Both);
                 so.Close();
             }
-           
+
         }
-        
-        
+
+
         /// <summary>        
         ///  发送数据的函数       
         /// </summary>        
         private void DealOptions()
         {
-            if (optionsList.Count>0)
+            if (optionsList.Count > 0)
             {
                 byte[] sendResponseOption = null;
-                byte[] nowResponseOption=null;
-                foreach(byte[] tempOption in optionsList)
+                byte[] nowResponseOption = null;
+                foreach (byte[] tempOption in optionsList)
                 {
                     nowResponseOption = GetResponseOption(tempOption);
-                    if(nowResponseOption!=null)
+                    if (nowResponseOption != null)
                     {
-                        if(sendResponseOption==null)
+                        if (sendResponseOption == null)
                         {
                             sendResponseOption = nowResponseOption;
                         }
                         else
-                         {
+                        {
                             Array.Resize(ref sendResponseOption, sendResponseOption.Length + nowResponseOption.Length);
                             nowResponseOption.CopyTo(sendResponseOption, sendResponseOption.Length - nowResponseOption.Length);
                         }
                     }
                 }
-                if (sendResponseOption!=null)
+                if (sendResponseOption != null)
                 {
                     WriteRawData(sendResponseOption);
                 }
                 optionsList.Clear();
             }
         }
-        
+
         /// <summary>        
         /// 处理原始报文，提取可显示数据，及控制命令   
         ///</summary>       
@@ -334,9 +339,9 @@ namespace MyCommonHelper.NetHelper
 
             List<byte> showByteList = new List<byte>();
 
-            for (int i = 0; i < yourRawBytes.Length;i++ )
+            for (int i = 0; i < yourRawBytes.Length; i++)
             {
-                if(yourRawBytes[i]==IAC)
+                if (yourRawBytes[i] == IAC)
                 {
                     if ((i + 1) >= yourRawBytes.Length)
                     {
@@ -345,7 +350,7 @@ namespace MyCommonHelper.NetHelper
                     byte nextByte = yourRawBytes[i + 1];
                     if (nextByte == DO || nextByte == DONT || nextByte == WILL || nextByte == WONT)
                     {
-                        if((i + 2)<yourRawBytes.Length)
+                        if ((i + 2) < yourRawBytes.Length)
                         {
                             byte[] tempOptionCmd = new byte[] { yourRawBytes[i], yourRawBytes[i + 1], yourRawBytes[i + 2] };
                             optionsList.Add(tempOptionCmd);
@@ -366,9 +371,9 @@ namespace MyCommonHelper.NetHelper
                     else if (nextByte == SB)
                     {
                         int sbEndIndex = yourRawBytes.MyIndexOf(SE, i + 1);
-                        if (sbEndIndex>0)
+                        if (sbEndIndex > 0)
                         {
-                            byte[] tempSBOptionCmd = new byte[sbEndIndex-i];
+                            byte[] tempSBOptionCmd = new byte[sbEndIndex - i];
                             Array.Copy(yourRawBytes, i, tempSBOptionCmd, 0, sbEndIndex - i);
                             optionsList.Add(tempSBOptionCmd);
                         }
@@ -389,9 +394,8 @@ namespace MyCommonHelper.NetHelper
             }
             return showByteList.ToArray();
         }
-        
-       
-        #region magic Function
+
+
 
         /// <summary>
         /// 获取协商答复
@@ -401,29 +405,29 @@ namespace MyCommonHelper.NetHelper
         private byte[] GetResponseOption(byte[] optionBytes)
         {
 
-            byte[] responseOption=new byte[3];
-            responseOption[0]=IAC;
+            byte[] responseOption = new byte[3];
+            responseOption[0] = IAC;
             //协商选项命令为3字节，附加选项超过3个             
             if (optionBytes.Length < 3)
             {
-                ReportMes(string.Format("error option by errer length with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)),TelnetMessageType.Error);
+                ReportMes(string.Format("error option by errer length with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)), TelnetMessageType.Error);
                 return null;
             }
-            if(optionBytes[0]==IAC)
+            if (optionBytes[0] == IAC)
             {
-                switch(optionBytes[1])
+                switch (optionBytes[1])
                 {
                     //WILL： 发送方本身将激活( e n a b l e )选项
                     case WILL:
                         if (optionBytes[2] == SHOWBACK || optionBytes[2] == RESTRAIN)
                         {
-                            responseOption[2]=optionBytes[2];
-                            responseOption[1]=DO;
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = DO;
                         }
-                        else if(optionBytes[2]==TERMINAL)
+                        else if (optionBytes[2] == TERMINAL)
                         {
-                            responseOption[2]=optionBytes[2];
-                            responseOption[1]=WONT;
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WONT;
                         }
                         else
                         {
@@ -436,13 +440,13 @@ namespace MyCommonHelper.NetHelper
                     case DO:
                         if (optionBytes[2] == SHOWBACK || optionBytes[2] == RESTRAIN)
                         {
-                            responseOption[2]=optionBytes[2];
-                            responseOption[1]=WILL;
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WILL;
                         }
-                        else if(optionBytes[2]==TERMINAL)
+                        else if (optionBytes[2] == TERMINAL)
                         {
-                            responseOption[2]=optionBytes[2];
-                            responseOption[1]=WONT;
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WONT;
                         }
                         else
                         {
@@ -455,17 +459,17 @@ namespace MyCommonHelper.NetHelper
                     case WONT:
                         if (optionBytes[2] == SHOWBACK || optionBytes[2] == RESTRAIN)
                         {
-                            responseOption[2]=optionBytes[2];
-                            responseOption[1]=DONT;
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = DONT;
                         }
-                        else if(optionBytes[2]==TERMINAL)
+                        else if (optionBytes[2] == TERMINAL)
                         {
-                            responseOption[2]=optionBytes[2];
-                            responseOption[1]=DONT;
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = DONT;
                         }
                         else
                         {
-                            ReportMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)),TelnetMessageType.Warning);
+                            ReportMes(string.Format("unknow Assigned Number with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)), TelnetMessageType.Warning);
                             responseOption[2] = optionBytes[2];
                             responseOption[1] = WONT;
                         }
@@ -474,17 +478,17 @@ namespace MyCommonHelper.NetHelper
                     case DONT:
                         if (optionBytes[2] == SHOWBACK || optionBytes[2] == RESTRAIN)
                         {
-                            responseOption[2]=optionBytes[2];
-                            responseOption[1]=WONT;
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WONT;
                         }
-                        else if(optionBytes[2]==TERMINAL)
+                        else if (optionBytes[2] == TERMINAL)
                         {
-                            responseOption[2]=optionBytes[2];
-                            responseOption[1]=WONT;
+                            responseOption[2] = optionBytes[2];
+                            responseOption[1] = WONT;
                         }
                         else
                         {
-                            ReportMes(string.Format("unknow Assigned Number with :{0}",MyBytes.ByteToHexString(optionBytes,HexaDecimal.hex16,ShowHexMode.space)),TelnetMessageType.Warning);
+                            ReportMes(string.Format("unknow Assigned Number with :{0}", MyBytes.ByteToHexString(optionBytes, HexaDecimal.hex16, ShowHexMode.space)), TelnetMessageType.Warning);
                             responseOption[2] = optionBytes[2];
                             responseOption[1] = WONT;
                         }
@@ -513,13 +517,14 @@ namespace MyCommonHelper.NetHelper
         void WriteRawData(byte[] yourData)
         {
             sendDone.WaitOne();
-            mySocket.BeginSend(yourData, 0, yourData.Length, SocketFlags.None,new AsyncCallback((IAsyncResult ar)=>{
+            mySocket.BeginSend(yourData, 0, yourData.Length, SocketFlags.None, new AsyncCallback((IAsyncResult ar) =>
+            {
                 try
                 {
                     Socket client = (Socket)ar.AsyncState;
                     int bytesSent = client.EndSend(ar);
-                    
-                   
+
+
 #if INTEST_
                     System.Diagnostics.Debug.WriteLine("-------------------------------------");
                     System.Diagnostics.Debug.WriteLine(string.Format("Sent {0} bytes to server.", bytesSent));
@@ -541,13 +546,14 @@ namespace MyCommonHelper.NetHelper
             }), mySocket);
 
         }
-
+        
+        #endregion
         /// <summary>
         /// 指定时间内等待指定的字符串
         /// </summary>
         /// <param name="waitStr">等待字符串</param>
         /// <returns>查询到返回true，否则为false</returns>
-        public bool WaitFor(string waitStr)
+        public bool WaitStr(string waitStr)
         {
             if(timeout>0)
             {
@@ -568,6 +574,44 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
+        public bool WaitExpectPattern(char expectPattern)
+        {
+            bool isFind = false; ;
+            if (timeout > 0)
+            {
+                long endTicks = DateTime.Now.AddSeconds(timeout).Ticks;
+                while (!isFind)
+                {
+                    lock (nowShowDataLock)
+                    {
+                        if (nowShowData.Length>1)
+                        {
+                            isFind = nowShowData[nowShowData.Length - 2] == expectPattern;
+                        }
+                        else
+                        {
+                            isFind = false;
+                        }
+
+                    }
+                    if (DateTime.Now.Ticks > endTicks)
+                    {
+                        return false;
+                    }
+                    Thread.Sleep(100);
+                }
+                return true;
+            }
+            else
+            {
+                lock (nowShowDataLock)
+                {
+                    isFind = (nowShowData[nowShowData.Length - 1] == expectPattern);
+                }
+                return (isFind);
+            }
+        }
+
         public void Write(string message)
         {
             WriteRawData(encoding.GetBytes(message));
@@ -582,7 +626,78 @@ namespace MyCommonHelper.NetHelper
         {
             WriteRawData(encoding.GetBytes(message + ENDOFLINE));
         }
-        #endregion
+
+        /// <summary>
+        /// 获取当前显示数据（获取之后即从该缓存中移除）
+        /// </summary>
+        /// <returns></returns>
+        public string GetAndMoveShowData()
+        {
+            AddAllShowData(nowShowData);
+            string tempOutStr= nowShowData.ToString();
+            lock(nowShowDataLock)
+            {
+                nowShowData.Clear();
+            }
+            return tempOutStr;
+        }
+
+        /// <summary>
+        /// 清除当前显示缓存，并将其移至全局缓存
+        /// </summary>
+        public void ClearShowData()
+        {
+            if(nowShowData.Length>0)
+            {
+                AddAllShowData(nowShowData);
+                lock(nowShowDataLock)
+                {
+                    nowShowData.Clear();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 阻塞的形式发起一个命令（获取expectPattern时返回）
+        /// </summary>
+        /// <param name="cmd">命令</param>
+        /// <param name="expectPattern">expectPattern（如#$等）</param>
+        /// <returns>命令返回</returns>
+        public string DoRequest(string cmd, char expectPattern)
+        {
+            ClearShowData();
+            WriteLine(cmd);
+            bool cc = WaitExpectPattern(expectPattern);
+            return GetAndMoveShowData();
+        }
+
+        /// <summary>
+        /// 阻塞的形式发起一个命令（获取指定查找字符串时返回）
+        /// </summary>
+        /// <param name="cmd">命令</param>
+        /// <param name="waitStr">指定查找字符串</param>
+        /// <returns>命令返回</returns>
+        public string DoRequest(string cmd, string waitStr)
+        {
+            ClearShowData();
+            WriteLine(cmd);
+            WaitStr(waitStr);
+            return GetAndMoveShowData();
+        }
+
+        /// <summary>
+        /// 阻塞的形式发起一个命令（指定延时时间到达时时返回）
+        /// </summary>
+        /// <param name="cmd">命令</param>
+        /// <param name="waitTime">指定延时时间毫秒为单位</param>
+        /// <returns>命令返回</returns>
+        public string DoRequest(string cmd, int waitTime)
+        {
+            ClearShowData();
+            WriteLine(cmd);
+            Thread.Sleep(waitTime);
+            return GetAndMoveShowData();
+        }
 
     }
 }
