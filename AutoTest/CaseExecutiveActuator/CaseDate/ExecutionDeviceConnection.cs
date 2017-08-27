@@ -205,6 +205,39 @@ namespace CaseExecutiveActuator
     }
 
     /// <summary>
+    /// telnet 【IConnectExecutiveData】
+    /// </summary>
+    public class myConnectForTelnet : IConnectExecutiveData
+    {
+        public CaseProtocol caseProtocol;
+
+        public string host;
+        public int port;
+        public string user;
+        public string password;
+        public Encoding encoding;
+        public string expectPattern;
+
+        public myConnectForTelnet(CaseProtocol yourCaseProtocol, string yourHost,int yourPort, string yourUser, string yourPassword,Encoding yourEncoding, string yourExpectPattern)
+        {
+            caseProtocol = yourCaseProtocol;
+            host = yourHost;
+            port = yourPort;
+            user = yourUser;
+            password = yourPassword;
+            encoding = yourEncoding;
+            expectPattern = yourExpectPattern;
+        }
+        public CaseProtocol MyCaseProtocol
+        {
+            get
+            {
+                return caseProtocol;
+            }
+        }
+    }
+
+    /// <summary>
     /// com 【IConnectExecutiveData】
     /// </summary>
     public class myConnectForCom : IConnectExecutiveData

@@ -46,3 +46,5 @@ F:\file\Code\AutoTest\AutoTest\AutoTest\obj\Release\AutoTest.myControl.MyCaceCBa
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Release\Tamir.SharpSSH.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Release\DiffieHellman.dll
 F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Release\Org.Mentalis.Security.dll
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Release\AutoTest.exe.config
+D:\my\GitHub\AutoTest\AutoTest\AutoTest\obj\Release\AutoTest.exe

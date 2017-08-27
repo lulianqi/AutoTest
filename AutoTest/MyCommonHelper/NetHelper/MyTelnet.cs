@@ -8,6 +8,19 @@ using System.Net.Sockets;
 using System.Collections;
 using System.Threading;
 
+
+/*******************************************************************************
+* Copyright (c) 2017 lijie
+* All rights reserved.
+* 
+* 文件名称: 
+* 内容摘要: mycllq@hotmail.com
+* 
+* 历史记录:
+* 日	  期:   20170827           创建人: 李杰 15158155511
+* 描    述: 创建
+*******************************************************************************/
+
 namespace MyCommonHelper.NetHelper
 {
     public enum TelnetMessageType
@@ -89,6 +102,7 @@ namespace MyCommonHelper.NetHelper
         const string ENDOFLINE = "\r\n"; // CR LF
         #endregion
 
+        
         private static AutoResetEvent sendDone = new AutoResetEvent(true); //false 非终止状态
         private static AutoResetEvent receiveDone = new AutoResetEvent(true);
         private static readonly object nowShowDataLock = new object();
@@ -99,7 +113,7 @@ namespace MyCommonHelper.NetHelper
         private ArrayList optionsList = new ArrayList();
 
         private Socket mySocket;
-        
+        private AsyncCallback recieveData;
 
         private IPEndPoint iep;
         private int timeout;
@@ -133,10 +147,13 @@ namespace MyCommonHelper.NetHelper
         }
 
         public delegate void delegateDataOut(string mesStr, TelnetMessageType mesType);
+        /// <summary>
+        /// telnet接收到新消息后返回（请区分TelnetMessageType）
+        /// </summary>
         public event delegateDataOut OnMesageReport;
 
 
-        AsyncCallback recieveData;
+        
 
         /// <summary>
         /// 获取当前显示数据（递增）
@@ -169,10 +186,31 @@ namespace MyCommonHelper.NetHelper
             get { return nowErrorMes; }
         }
 
+        /// <summary>
+        /// 获取或设置当前缓存返回打印的打最大长度
+        /// </summary>
         public int MaxSaveData
         {
             get { return maxSaveData; }
             set { maxSaveData = value; }
+        }
+
+        /// <summary>
+        /// 获取或设置查找打印时的最大超时WaitExpectPattern WaitStr 时使用（单位为秒）
+        /// </summary>
+        public int WaitTimeout
+        {
+            get { return timeout; }
+            set { timeout = value; }
+        }
+
+        /// <summary>
+        /// 获取或设置当前终端使用的编码（默认为UTF8）
+        /// </summary>
+        public Encoding Encoding
+        {
+            get { return encoding; }
+            set { encoding = value; }
         }
 
         private void ReportMes(string mesInfo, TelnetMessageType mesType)
@@ -206,6 +244,9 @@ namespace MyCommonHelper.NetHelper
             timeout = CommandTimeout;
             recieveData = new AsyncCallback(OnRecievedData);
         }
+
+        public MyTelnet(IPEndPoint yourEp) : this(yourEp, 5) { }
+
 
         /// <summary>        
         /// 连接telnet     
@@ -548,8 +589,9 @@ namespace MyCommonHelper.NetHelper
         }
         
         #endregion
+        
         /// <summary>
-        /// 指定时间内等待指定的字符串
+        /// 指定时间内等待指定的字符串 （若期望获取较高性能应尽量避免使用wait）
         /// </summary>
         /// <param name="waitStr">等待字符串</param>
         /// <returns>查询到返回true，否则为false</returns>
@@ -574,7 +616,7 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
-        public bool WaitExpectPattern(char expectPattern)
+        public bool WaitExpectPattern(string expectPattern)
         {
             bool isFind = false; ;
             if (timeout > 0)
@@ -584,9 +626,9 @@ namespace MyCommonHelper.NetHelper
                 {
                     lock (nowShowDataLock)
                     {
-                        if (nowShowData.Length>1)
+                        if (nowShowData.Length > expectPattern.Length)
                         {
-                            isFind = nowShowData[nowShowData.Length - 2] == expectPattern;
+                            isFind = nowShowData.ToString(nowShowData.Length-expectPattern.Length,expectPattern.Length) == expectPattern;
                         }
                         else
                         {
@@ -606,7 +648,14 @@ namespace MyCommonHelper.NetHelper
             {
                 lock (nowShowDataLock)
                 {
-                    isFind = (nowShowData[nowShowData.Length - 1] == expectPattern);
+                    if (nowShowData.Length > expectPattern.Length)
+                    {
+                        isFind = nowShowData.ToString(nowShowData.Length - expectPattern.Length, expectPattern.Length) == expectPattern;
+                    }
+                    else
+                    {
+                        isFind = false;
+                    }
                 }
                 return (isFind);
             }
@@ -658,26 +707,26 @@ namespace MyCommonHelper.NetHelper
         }
 
         /// <summary>
-        /// 阻塞的形式发起一个命令（获取expectPattern时返回）
+        /// 发起一个命令并以阻塞的形式获取返回（获取expectPattern时返回）
         /// </summary>
         /// <param name="cmd">命令</param>
         /// <param name="expectPattern">expectPattern（如#$等）</param>
         /// <returns>命令返回</returns>
-        public string DoRequest(string cmd, char expectPattern)
+        public string DoRequest(string cmd, string expectPattern)
         {
             ClearShowData();
             WriteLine(cmd);
-            bool cc = WaitExpectPattern(expectPattern);
+            WaitExpectPattern(expectPattern);
             return GetAndMoveShowData();
         }
 
         /// <summary>
-        /// 阻塞的形式发起一个命令（获取指定查找字符串时返回）
+        /// 发起一个命令并以阻塞的形式获取返回（获取指定查找字符串时返回）
         /// </summary>
         /// <param name="cmd">命令</param>
         /// <param name="waitStr">指定查找字符串</param>
         /// <returns>命令返回</returns>
-        public string DoRequest(string cmd, string waitStr)
+        public string DoRequestWithWaitStr(string cmd, string waitStr)
         {
             ClearShowData();
             WriteLine(cmd);
@@ -686,7 +735,7 @@ namespace MyCommonHelper.NetHelper
         }
 
         /// <summary>
-        /// 阻塞的形式发起一个命令（指定延时时间到达时时返回）
+        /// 发起一个命令并以阻塞的形式获取返回（指定延时时间到达时时返回）
         /// </summary>
         /// <param name="cmd">命令</param>
         /// <param name="waitTime">指定延时时间毫秒为单位</param>

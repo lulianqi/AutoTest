@@ -878,13 +878,13 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 System.Net.IPAddress tempIp;
                                                                 if (!(System.Net.IPAddress.TryParse(tempTcpHost, out tempIp) && int.TryParse(tempTcpPort, out tempTcpNowPort) && tempTcpNowPort < 65536 && tempTcpNowPort >0))
                                                                 {
-                                                                    SetNowActionError(string.Format("[add sql actuator ]find error data in host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    SetNowActionError(string.Format("[add tcp actuator ]find error data in host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                     break;
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                SetNowActionError(string.Format("[add sql actuator ]can not find host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                SetNowActionError(string.Format("[add tcp actuator ]can not find host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
                                                             #endregion
@@ -894,6 +894,57 @@ namespace CaseExecutiveActuator.CaseActuator
                                                         case CaseProtocol.ssh:
                                                             myConnectForSsh ConnectInfo_ssh = new myConnectForSsh(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "host"), CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "user"),CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "password"), CaseTool.GetXmlInnerVaule(tempNodeChild, "expect_pattern"));
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_ssh);
+                                                            break;
+                                                        case CaseProtocol.telnet:
+                                                            #region Get telnet connect info
+                                                            string tempTelnetHost = CaseTool.GetXmlInnerVaule(tempNodeChild, "host");
+                                                            string tempTelnetPort = CaseTool.GetXmlInnerVaule(tempNodeChild, "port");
+                                                            string tempTelnetUser = CaseTool.GetXmlInnerVaule(tempNodeChild, "user");
+                                                            string tempTelnetPassword = CaseTool.GetXmlInnerVaule(tempNodeChild, "password");
+                                                            string tempTelnetExpectPattern = CaseTool.GetXmlInnerVaule(tempNodeChild, "expect_pattern");
+                                                            string tempTelnetEncoding = CaseTool.GetXmlInnerVaule(tempNodeChild, "encoding");
+                                                            Encoding tempTelnetnowEncoding = Encoding.UTF8;
+                                                            //char nowExpectPattern = '\x0000';  // Hexadecimal:'\x0058'  integral type:(char)88 Unicode:'\u0058'
+                                                            int tempTelnetNowPort = 0;
+                                                            //endpoint
+                                                            if (tempTelnetHost != null && tempTelnetPort != null)
+                                                            {
+                                                                System.Net.IPAddress tempIp;
+                                                                if (!(System.Net.IPAddress.TryParse(tempTelnetHost, out tempIp) && int.TryParse(tempTelnetPort, out tempTelnetNowPort) && tempTelnetNowPort < 65536 && tempTelnetNowPort > 0))
+                                                                {
+                                                                    SetNowActionError(string.Format("[add telnet actuator ]find error data in host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                SetNowActionError(string.Format("[add telnet actuator ]can not find host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                break;
+                                                            }
+                                                            //user name
+                                                            if (tempTelnetUser == null || tempTelnetPassword == null)
+                                                            {
+                                                                SetNowActionError(string.Format("[add telnet actuator ]can not find user name or password data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                break;
+                                                            }
+                                                            //encodeing
+                                                            //encoding
+
+                                                            if (tempTelnetEncoding != null)
+                                                            {
+                                                                try
+                                                                {
+                                                                    nowTelnetEncoding = Encoding.GetEncoding(tempTelnetEncoding);
+                                                                }
+                                                                catch
+                                                                {
+                                                                    SetNowActionError(string.Format("[add telnet actuator ] your encoding is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
+                                                            }
+                                                            #endregion
+                                                            myConnectForTelnet ConnectInfo_telnet = new myConnectForTelnet(tempActuatorProtocol, tempTelnetHost, tempTelnetNowPort, tempTelnetUser, tempTelnetPassword, tempTelnetnowEncoding, tempTelnetExpectPattern);
+                                                            AddExecutionDevice(tempActuatorName, ConnectInfo_telnet);
                                                             break;
                                                         case CaseProtocol.com:
                                                             #region ComInfo
@@ -1744,6 +1795,10 @@ namespace CaseExecutiveActuator.CaseActuator
                 case CaseProtocol.ssh:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForSsh((myConnectForSsh)yourDeviceConnectInfo));
                     break;
+                case CaseProtocol.telnet:
+                    myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForTelnet((myConnectForTelnet)yourDeviceConnectInfo));
+                    break;
+
                 case CaseProtocol.vanelife_http:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForVanelife_http((myConnectForVanelife_http)yourDeviceConnectInfo));
                     break;

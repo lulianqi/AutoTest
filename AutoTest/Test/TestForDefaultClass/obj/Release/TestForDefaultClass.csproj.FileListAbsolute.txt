@@ -1,0 +1,7 @@
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\TestForDefaultClass.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\TestForDefaultClass.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.csprojResolveAssemblyReference.cache
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.pdb

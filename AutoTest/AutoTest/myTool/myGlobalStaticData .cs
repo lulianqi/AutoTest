@@ -33,7 +33,7 @@ namespace AutoTest.myTool
         //myAutoResetEvent.WaitOne(); 调用后主动上锁，即一个WaitOne通过会阻断所有其他的WaitOne，直到Set才会再通过一个WaitOne  （就是说正常情况下一个AutoResetEvent只能激活一个线程）
 
         public static ManualResetEvent myManualResetEvent = new ManualResetEvent(false); //如果为 true，则将初始状态设置为终止（等待 ManualResetEvent 的线程不阻塞）；如果为 false，则将初始状态设置为非终止(阻止状态)。
-        //WaitOne调用后不会主动上锁  (调用set后所有WaitOne都会通过，需要手动调用Reset)
+        //WaitOne调用后不会主动上锁  (调用set后所有WaitOne都会通过，需要手动调用Reset)（并且即使set后马上Reset，所有WaitOne也会通过，即ResetEvent使用的都是通知模式）
         //Set()    开锁
         //Reset()  上锁
         //WaitOne()可加时间间隔

@@ -1,6 +1,7 @@
 ﻿using Apache.NMS;
 using Apache.NMS.ActiveMQ;
 using MyCommonHelper;
+using MyCommonHelper.EncryptionHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -300,7 +301,7 @@ namespace ActiveMQTest
             }
             else if (message is IBytesMessage)
             {
-                ShowMessage("[HEX16:]" + MyEncryption.ByteToHexString(((IBytesMessage)message).Content, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.space));
+                ShowMessage("[HEX16:]" + MyBytes.ByteToHexString(((IBytesMessage)message).Content, HexaDecimal.hex16, ShowHexMode.space));
                 try
                 {
                     ShowMessage(Encoding.UTF8.GetString(((IBytesMessage)message).Content));
@@ -411,7 +412,7 @@ namespace ActiveMQTest
                 msg = prod.CreateBytesMessage();
                 try
                 {
-                    ((IBytesMessage)msg).Content = MyEncryption.HexStringToByte(rtb_dataToSend.Text, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.space);
+                    ((IBytesMessage)msg).Content = MyBytes.HexStringToByte(rtb_dataToSend.Text, HexaDecimal.hex16, ShowHexMode.space);
                 }
                 catch(Exception ex)
                 {

@@ -103,7 +103,7 @@
       </NewActuator>
       <NewActuator name="COM2" protocol="com">
         <portName>COM2</portName><!--端口名必填-->
-        <encoding>utf-8</encoding><!--默认编码方式，不填则使用默认值-->
+        <encoding>utf-8</encoding><!--默认编码方式，不填则使用默认值,在发送或接收时也可能重新指定编码方式-->
         <baudRate>9600</baudRate><!--波特率必填-->
         <parity>None</parity><!--校验位，非必选，默认为None-->
         <!--None 不发生奇偶校验检查。
@@ -121,19 +121,21 @@
         <portName>COM3</portName>
         <baudRate>9600</baudRate>
       </NewActuator>
-      <NewActuator name="telnet1" protocol="telnet">
-        <login>admin</login>
-        <password>admin</password>
-        <default_ip>192.168.1.101</default_ip>
-        <default_port>23</default_port>
+      <NewActuator name="telnet150" protocol="telnet">
+        <host>192.168.200.151</host>
+        <port>23</port>
+        <user>telnet</user>
+        <password>lijie1515</password>
+        <encoding>utf-8</encoding><!--默认编码方式，不填则使用默认值,在发送或接收时会固定使用该编码方式-->
+        <expect_pattern># </expect_pattern><!--确认一条命令的结束，如果不填则表示使用等待1s的方式标识结束-->
       </NewActuator>
-      <NewActuator name="telnet2" protocol="telnet">
+      <NewActuator name="telnet2" protocol="telnetx">
         <login>admin</login>
         <password>admin</password>
         <default_ip>192.168.1.102</default_ip>
         <default_port>23</default_port>
       </NewActuator>
-      <NewActuator name="COM1" protocol="comm">
+      <NewActuator name="COM1" protocol="comx">
         <portName>COM1</portName>
         <encoding>GB2312</encoding>
         <baudRate>9600</baudRate>
