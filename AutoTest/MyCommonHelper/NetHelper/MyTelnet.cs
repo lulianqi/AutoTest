@@ -1,4 +1,4 @@
-﻿#define INTEST
+﻿#define INTEST_
 
 using System;
 using System.Collections.Generic;
@@ -103,9 +103,9 @@ namespace MyCommonHelper.NetHelper
         #endregion
 
         
-        private static AutoResetEvent sendDone = new AutoResetEvent(true); //false 非终止状态
-        private static AutoResetEvent receiveDone = new AutoResetEvent(true);
-        private static readonly object nowShowDataLock = new object();
+        private  AutoResetEvent sendDone = new AutoResetEvent(true); //false 非终止状态
+        private  AutoResetEvent receiveDone = new AutoResetEvent(true);
+        private  readonly object nowShowDataLock = new object();
 
 
         byte[] telnetReceiveBuff = new byte[1024*128];
@@ -118,6 +118,7 @@ namespace MyCommonHelper.NetHelper
         private IPEndPoint iep;
         private int timeout;
         private Encoding encoding = Encoding.UTF8;
+        private string defaultExpectPattern = null;
 
         private string nowErrorMes;
         private int maxSaveData=10000000;
@@ -213,6 +214,15 @@ namespace MyCommonHelper.NetHelper
             set { encoding = value; }
         }
 
+        /// <summary>
+        /// 获取或设置ExpectPattern（用于时标shell命令结算）
+        /// </summary>
+        public string ExpectPattern
+        {
+            get { return defaultExpectPattern; }
+            set { defaultExpectPattern = value; }
+        }
+
         private void ReportMes(string mesInfo, TelnetMessageType mesType)
         {
 #if INTEST
@@ -260,6 +270,8 @@ namespace MyCommonHelper.NetHelper
                 mySocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 mySocket.Connect(iep);
 
+                receiveDone.Set();
+                sendDone.Set();
                 //接收数据
                 mySocket.BeginReceive(telnetReceiveBuff, 0, telnetReceiveBuff.Length, SocketFlags.None, recieveData, mySocket);
 
@@ -276,14 +288,30 @@ namespace MyCommonHelper.NetHelper
 
         private void OnRecievedData(IAsyncResult ar)
         {
-
-            Socket so = (Socket)ar.AsyncState;
             receiveDone.WaitOne();
+            Socket so = (Socket)ar.AsyncState;
+            if (so==null)
+            {
+                receiveDone.Set();
+                return;
+            }
+            if(!so.Connected)
+            {
+                receiveDone.Set();
+                return;
+            }
             //EndReceive方法为结束挂起的异步读取         
             int recLen = so.EndReceive(ar);
 
             //可以在OnRecievedData直接调用BeginReceive，因为有同步线程锁，msdn示例也是如此
-            mySocket.BeginReceive(telnetReceiveBuff, 0, telnetReceiveBuff.Length, SocketFlags.None, recieveData, mySocket);
+            try
+            {
+                mySocket.BeginReceive(telnetReceiveBuff, 0, telnetReceiveBuff.Length, SocketFlags.None, recieveData, mySocket);
+            }
+            catch (Exception ex) //BeginReceive时Socket可能被异步关闭
+            {
+                ReportMes(ex.Message, TelnetMessageType.Error);
+            }
 
             //如果有接收到数据的话            
             if (recLen > 0)
@@ -330,8 +358,8 @@ namespace MyCommonHelper.NetHelper
             }
             else// 如果没有接收到任何数据， 关闭连接           
             {
-                so.Shutdown(SocketShutdown.Both);
-                so.Close();
+                DisConnect();
+                receiveDone.Set();
             }
 
         }
@@ -555,8 +583,12 @@ namespace MyCommonHelper.NetHelper
         }
 
 
-        void WriteRawData(byte[] yourData)
+        private bool WriteRawData(byte[] yourData)
         {
+            if(!mySocket.Connected)
+            {
+                return false;
+            }
             sendDone.WaitOne();
             mySocket.BeginSend(yourData, 0, yourData.Length, SocketFlags.None, new AsyncCallback((IAsyncResult ar) =>
             {
@@ -566,7 +598,7 @@ namespace MyCommonHelper.NetHelper
                     int bytesSent = client.EndSend(ar);
 
 
-#if INTEST_
+#if INTEST
                     System.Diagnostics.Debug.WriteLine("-------------------------------------");
                     System.Diagnostics.Debug.WriteLine(string.Format("Sent {0} bytes to server.", bytesSent));
                     System.Diagnostics.Debug.WriteLine(MyBytes.ByteToHexString(yourData, HexaDecimal.hex16, ShowHexMode.space));
@@ -585,7 +617,7 @@ namespace MyCommonHelper.NetHelper
                 }
 
             }), mySocket);
-
+            return true;
         }
         
         #endregion
@@ -640,7 +672,7 @@ namespace MyCommonHelper.NetHelper
                     {
                         return false;
                     }
-                    Thread.Sleep(100);
+                    Thread.Sleep(20);
                 }
                 return true;
             }
@@ -661,19 +693,19 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
-        public void Write(string message)
+        public bool Write(string message)
         {
-            WriteRawData(encoding.GetBytes(message));
+            return WriteRawData(encoding.GetBytes(message));
         }
 
-        public void Write(byte[] bytes)
+        public bool Write(byte[] bytes)
         {
-            WriteRawData(bytes);
+            return WriteRawData(bytes);
         }
 
-        public void WriteLine(string message)
+        public bool WriteLine(string message)
         {
-            WriteRawData(encoding.GetBytes(message + ENDOFLINE));
+            return WriteRawData(encoding.GetBytes(message + ENDOFLINE));
         }
 
         /// <summary>
@@ -706,19 +738,6 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
-        /// <summary>
-        /// 发起一个命令并以阻塞的形式获取返回（获取expectPattern时返回）
-        /// </summary>
-        /// <param name="cmd">命令</param>
-        /// <param name="expectPattern">expectPattern（如#$等）</param>
-        /// <returns>命令返回</returns>
-        public string DoRequest(string cmd, string expectPattern)
-        {
-            ClearShowData();
-            WriteLine(cmd);
-            WaitExpectPattern(expectPattern);
-            return GetAndMoveShowData();
-        }
 
         /// <summary>
         /// 发起一个命令并以阻塞的形式获取返回（获取指定查找字符串时返回）
@@ -735,6 +754,21 @@ namespace MyCommonHelper.NetHelper
         }
 
         /// <summary>
+        /// 发起一个命令并以阻塞的形式获取返回（获取expectPattern时返回）
+        /// </summary>
+        /// <param name="cmd">命令</param>
+        /// <param name="expectPattern">expectPattern（如#$等）</param>
+        /// <returns>命令返回</returns>
+        public string DoRequest(string cmd, string expectPattern)
+        {
+            ClearShowData();
+            WriteLine(cmd);
+            WaitExpectPattern(expectPattern);
+            return GetAndMoveShowData();
+        }
+
+
+        /// <summary>
         /// 发起一个命令并以阻塞的形式获取返回（指定延时时间到达时时返回）
         /// </summary>
         /// <param name="cmd">命令</param>
@@ -747,6 +781,37 @@ namespace MyCommonHelper.NetHelper
             Thread.Sleep(waitTime);
             return GetAndMoveShowData();
         }
+
+        /// <summary>
+        /// 发起一个命令并以阻塞的形式获取返回（如果设置过ExpectPattern，则使用ExpectPattern作为达时时返回，如果没有则使用2000毫秒的延时作为达到时返回）
+        /// </summary>
+        /// <param name="cmd">命令</param>
+        /// <returns>命令返回</returns>
+        public string DoRequest(string cmd)
+        {
+            if(defaultExpectPattern==null)
+            {
+                return DoRequest(cmd, 2000);
+            }
+            else
+            {
+                return DoRequest(cmd, defaultExpectPattern);
+            }
+        }
+
+        public void DisConnect()
+        {
+            if (mySocket==null)
+            {
+                return;
+            }
+            if (mySocket.Connected)
+            {
+                mySocket.Shutdown(SocketShutdown.Both);
+                mySocket.Close();
+            }
+        }
+
 
     }
 }

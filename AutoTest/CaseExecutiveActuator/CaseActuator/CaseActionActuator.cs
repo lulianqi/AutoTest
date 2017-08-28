@@ -1,4 +1,5 @@
-﻿using CaseExecutiveActuator.CaseActuator;
+﻿#define INTEST
+using CaseExecutiveActuator.CaseActuator;
 using CaseExecutiveActuator.CaseActuator.ExecutionDevice;
 using CaseExecutiveActuator.Cell;
 using CaseExecutiveActuator.Tool;
@@ -345,7 +346,7 @@ namespace CaseExecutiveActuator.CaseActuator
 
         public object Clone()
         {
-            return new ActuatorStaticDataCollection(runActuatorStaticDataKeyList.MyClone<string, string>(), runActuatorStaticDataParameterList.MyClone(), runActuatorStaticDataSouceList.MyClone());
+            return new ActuatorStaticDataCollection(runActuatorStaticDataKeyList.MyClone<string, string>(), runActuatorStaticDataParameterList.MyDeepClone(), runActuatorStaticDataSouceList.MyDeepClone());
         }
 
         public void Dispose()
@@ -570,7 +571,7 @@ namespace CaseExecutiveActuator.CaseActuator
         {
             CaseActionActuator cloneActuator = new CaseActionActuator();
             cloneActuator.rootActuator = null;
-            cloneActuator.myExecutionDeviceList = myExecutionDeviceList.MyClone();
+            cloneActuator.myExecutionDeviceList = myExecutionDeviceList.MyDeepClone<string, ICaseExecutionDevice>();
             cloneActuator.runActuatorStaticDataCollection = (ActuatorStaticDataCollection)runActuatorStaticDataCollection.Clone();
             cloneActuator.runActuatorStaticDataCollection.SetCaseActionActuator(cloneActuator);
             cloneActuator.SetCaseRunTime(this.runTimeCaseDictionary, this.runCellProjctCollection);
@@ -903,7 +904,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             string tempTelnetPassword = CaseTool.GetXmlInnerVaule(tempNodeChild, "password");
                                                             string tempTelnetExpectPattern = CaseTool.GetXmlInnerVaule(tempNodeChild, "expect_pattern");
                                                             string tempTelnetEncoding = CaseTool.GetXmlInnerVaule(tempNodeChild, "encoding");
-                                                            Encoding tempTelnetnowEncoding = Encoding.UTF8;
+                                                            Encoding tempTelnetNowEncoding = Encoding.UTF8;
                                                             //char nowExpectPattern = '\x0000';  // Hexadecimal:'\x0058'  integral type:(char)88 Unicode:'\u0058'
                                                             int tempTelnetNowPort = 0;
                                                             //endpoint
@@ -934,7 +935,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             {
                                                                 try
                                                                 {
-                                                                    nowTelnetEncoding = Encoding.GetEncoding(tempTelnetEncoding);
+                                                                    tempTelnetNowEncoding = Encoding.GetEncoding(tempTelnetEncoding);
                                                                 }
                                                                 catch
                                                                 {
@@ -943,7 +944,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 }
                                                             }
                                                             #endregion
-                                                            myConnectForTelnet ConnectInfo_telnet = new myConnectForTelnet(tempActuatorProtocol, tempTelnetHost, tempTelnetNowPort, tempTelnetUser, tempTelnetPassword, tempTelnetnowEncoding, tempTelnetExpectPattern);
+                                                            myConnectForTelnet ConnectInfo_telnet = new myConnectForTelnet(tempActuatorProtocol, tempTelnetHost, tempTelnetNowPort, tempTelnetUser, tempTelnetPassword, tempTelnetNowEncoding, tempTelnetExpectPattern);
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_telnet);
                                                             break;
                                                         case CaseProtocol.com:
@@ -1181,13 +1182,22 @@ namespace CaseExecutiveActuator.CaseActuator
             foreach (KeyValuePair<string, ICaseExecutionDevice> tempKvp in myExecutionDeviceList)
             {
                 SetNowExecutiveData(string.Format("【RunTimeActuator】:{0} connecting······", tempKvp.Key));
+#if INTEST
+                System.Diagnostics.Trace.WriteLine(string.Format("[{0}]: connecting······{1}", myName, tempKvp.Key));
+#endif
                 if (tempKvp.Value.ExecutionDeviceConnect())
                 {
                     SetNowExecutiveData(string.Format("【RunTimeActuator】:{0} connect scusess", tempKvp.Key));
+#if INTEST
+                    System.Diagnostics.Trace.WriteLine(string.Format("[{0}]: connect scusess······{1}", myName, tempKvp.Key));
+#endif
                 }
                 else
                 {
-                    SetNowActionError(string.Format("【RunTimeActuator】:{0} connect fail", tempKvp.Key)); 
+                    SetNowActionError(string.Format("【RunTimeActuator】:{0} connect fail", tempKvp.Key));
+#if INTEST
+                    System.Diagnostics.Trace.WriteLine(string.Format("[{0}]: connect fail······{1}", myName, tempKvp.Key));
+#endif
                 }
             }
             SetNowExecutiveData("Connect complete");
