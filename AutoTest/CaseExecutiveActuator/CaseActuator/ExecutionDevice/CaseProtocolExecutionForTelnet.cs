@@ -1,53 +1,39 @@
-﻿using MySqlHelper;
+﻿using CaseExecutiveActuator.Tool;
+using MyCommonHelper;
+using MyCommonHelper.NetHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
 
-using MyCommonHelper;
-using CaseExecutiveActuator.Tool;
-using Tamir.SharpSsh;
-
-/*******************************************************************************
-* Copyright (c) 2015 lijie
-* All rights reserved.
-* 
-* 文件名称: 
-* 内容摘要: mycllq@hotmail.com
-* 
-* 历史记录:
-* 日	  期:   201708003           创建人: 李杰 15158155511
-* 描    述: 创建
-*******************************************************************************/
-
 namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
 {
     /// <summary>
     /// Ssh Device 
     /// </summary>
-    class CaseProtocolExecutionForSsh : BasicProtocolPars, ICaseExecutionDevice
+    class CaseProtocolExecutionForTelnet : BasicProtocolPars, ICaseExecutionDevice
     {
         private bool isConnect;
-        private myConnectForSsh myExecutionDeviceInfo;
+        private myConnectForTelnet myExecutionDeviceInfo;
         public event delegateGetExecutiveData OnGetExecutiveData;
 
-        private SshShell sshShell;
+        private MyTelnet telnetShell;
 
-        public CaseProtocolExecutionForSsh(myConnectForSsh yourConnectInfo)
+        public CaseProtocolExecutionForTelnet(myConnectForTelnet yourConnectInfo)
         {
             isConnect = false;
             myExecutionDeviceInfo = yourConnectInfo;
-            sshShell = new SshShell(myExecutionDeviceInfo.host, myExecutionDeviceInfo.user, myExecutionDeviceInfo.password);
-            if(myExecutionDeviceInfo.expectPattern!=null)
+            telnetShell = new MyTelnet(myExecutionDeviceInfo.host, myExecutionDeviceInfo.port, 5);
+            if (myExecutionDeviceInfo.expectPattern != null)
             {
-                sshShell.ExpectPattern = myExecutionDeviceInfo.expectPattern;
+                telnetShell.ExpectPattern = myExecutionDeviceInfo.expectPattern;
             }
         }
 
-        public new static MySshExecutionContent GetRunContent(XmlNode yourContentNode)
+        public new static MyTelnetExecutionContent GetRunContent(XmlNode yourContentNode)
         {
-            MySshExecutionContent myRunContent = new MySshExecutionContent();
+            MyTelnetExecutionContent myRunContent = new MyTelnetExecutionContent();
             if (yourContentNode != null)
             {
                 if (yourContentNode.Attributes["protocol"] != null && yourContentNode.Attributes["actuator"] != null)
@@ -64,14 +50,14 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     }
                     myRunContent.caseActuator = yourContentNode.Attributes["actuator"].Value;
 
-                    XmlNode nowSshNode = yourContentNode["SshCmd"];
+                    XmlNode nowSshNode = yourContentNode["TelnetCmd"];
                     if (nowSshNode != null)
                     {
-                        myRunContent.sshContent = CaseTool.GetXmlParametContent(nowSshNode);
+                        myRunContent.telnetContent = CaseTool.GetXmlParametContent(nowSshNode);
                     }
                     else
                     {
-                        myRunContent.errorMessage = "Error :can not find any SshCmd ";
+                        myRunContent.errorMessage = "Error :can not find any TelnetCmd ";
                     }
                 }
                 else
@@ -104,11 +90,22 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
         {
             try
             {
-                sshShell.Connect();
-                sshShell.Expect();
-                isConnect = true;
+                if(telnetShell.Connect())
+                {
+                    telnetShell.WaitStr("login");
+                    telnetShell.WriteLine(myExecutionDeviceInfo.user);
+                    telnetShell.WaitStr("password");
+                    telnetShell.ClearShowData();
+                    telnetShell.WriteLine(myExecutionDeviceInfo.password);
+                    isConnect = telnetShell.WaitStr("Last login");
+                }
+                else
+                {
+                    isConnect = false;
+                }
+                
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ErrorLog.PutInLog(ex);
                 isConnect = false;
@@ -118,7 +115,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
 
         public void ExecutionDeviceClose()
         {
-            sshShell.Close();
+            telnetShell.DisConnect();
             isConnect = false;
         }
 
@@ -148,11 +145,11 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 }
             };
 
-            if (yourExecutionContent.MyCaseProtocol == CaseProtocol.ssh)
+            if (yourExecutionContent.MyCaseProtocol == CaseProtocol.telnet)
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
-                MySshExecutionContent nowExecutionContent = yourExecutionContent as MySshExecutionContent;
-                myResult.caseProtocol = CaseProtocol.ssh;
+                MyTelnetExecutionContent nowExecutionContent = yourExecutionContent as MyTelnetExecutionContent;
+                myResult.caseProtocol = CaseProtocol.telnet;
                 myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
                 myResult.startTime = DateTime.Now.ToString("HH:mm:ss");
                 StringBuilder tempCaseOutContent = new StringBuilder();
@@ -160,30 +157,29 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 System.Diagnostics.Stopwatch myWatch = new System.Diagnostics.Stopwatch();
                 myWatch.Start();
 
-                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[ssh]Executive···", caseId));
+                ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, string.Format("【ID:{0}】[telnet]Executive···", caseId));
 
-                string nowSshCmd = nowExecutionContent.sshContent.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
+                string nowTelnetCmd = nowExecutionContent.telnetContent.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                 if (tempError != null)
                 {
-                    DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.sshContent.GetTargetContentData()));
+                    DealExecutiveError(string.Format("this case get static data errer with [{0}]", nowExecutionContent.telnetContent.GetTargetContentData()));
                     tempCaseOutContent.AppendLine("error with static data");
                 }
                 else
                 {
                     try
                     {
-                        sshShell.WriteLine(nowSshCmd);
-                        string tempResult = sshShell.Expect();
+                        string tempResult = telnetShell.DoRequest(nowTelnetCmd);
 
                         ExecutiveDelegate(sender, CaseActuatorOutPutType.ExecutiveInfo, tempResult);
                         tempCaseOutContent.AppendLine(tempResult);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         DealExecutiveError(ex.Message);
                         tempCaseOutContent.AppendLine(ex.Message);
                     }
-                    
+
                 }
 
                 myWatch.Stop();
@@ -208,8 +204,9 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
 
         public object Clone()
         {
-            return new CaseProtocolExecutionForSsh(myExecutionDeviceInfo);
+            return new CaseProtocolExecutionForTelnet(myExecutionDeviceInfo);
         }
 
     }
 }
+

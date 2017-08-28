@@ -64,6 +64,7 @@
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForMysql.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForSsh.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForTcp.cs" />
+    <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForTelnet.cs" />
     <Compile Include="CaseActuator\ExecutionDevice\CaseProtocolExecutionForVanelife_http.cs" />
     <Compile Include="CaseActuator\MyActionActuator.cs" />
     <Compile Include="CaseActuator\MyCaseDataTypeEngine.cs" />

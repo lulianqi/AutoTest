@@ -530,6 +530,51 @@ namespace CaseExecutiveActuator
         }
     }
 
+    public class MyTelnetExecutionContent : ICaseExecutionContent
+    {
+        public string errorMessage;
+        public CaseProtocol caseProtocol;
+        public string caseActuator;
+
+        public caseParameterizationContent telnetContent;
+
+
+        public MyTelnetExecutionContent()
+        {
+            errorMessage = null;
+            caseProtocol = CaseProtocol.unknownProtocol;
+            telnetContent = new caseParameterizationContent();
+        }
+
+        public CaseProtocol MyCaseProtocol
+        {
+            get { return caseProtocol; }
+        }
+
+        public string MyCaseActuator
+        {
+            get { return caseActuator; }
+        }
+
+        public string MyExecutionTarget
+        {
+            get { return telnetContent.GetTargetContentData(); }
+        }
+
+        public string MyExecutionContent
+        {
+            get { return null; }
+        }
+
+        public string MyErrorMessage
+        {
+            get
+            {
+                return String.IsNullOrEmpty(errorMessage) ? null : errorMessage;
+            }
+        }
+    }
+
     public class MyComExecutionContent : ICaseExecutionContent
     {
         public string errorMessage;

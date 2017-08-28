@@ -24,7 +24,10 @@ using MyCommonHelper;
 namespace CaseExecutiveActuator
 {
 
-    #region IRunTimeStaticData
+    
+    #region IRunTimeStaticData  
+
+    //这里的IRunTimeStaticData全部是struct，如果要修改为class 请重新检查深度克隆的逻辑
 
     /// <summary>
     /// 为StaticData提供类似索引递增的动态数据【IRunTimeStaticData】

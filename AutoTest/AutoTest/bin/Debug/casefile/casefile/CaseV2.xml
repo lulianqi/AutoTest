@@ -122,12 +122,12 @@
         <baudRate>9600</baudRate>
       </NewActuator>
       <NewActuator name="telnet150" protocol="telnet">
-        <host>192.168.200.151</host>
+        <host>192.168.200.150</host>
         <port>23</port>
         <user>telnet</user>
         <password>lijie1515</password>
         <encoding>utf-8</encoding><!--默认编码方式，不填则使用默认值,在发送或接收时会固定使用该编码方式-->
-        <expect_pattern># </expect_pattern><!--确认一条命令的结束，如果不填则表示使用等待1s的方式标识结束-->
+        <expect_pattern>$ </expect_pattern><!--确认一条命令的结束，如果不填则表示使用等待1s的方式标识结束-->
       </NewActuator>
       <NewActuator name="telnet2" protocol="telnetx">
         <login>admin</login>
@@ -1342,6 +1342,7 @@
     <Case id="1100060001" remark="ssh">
       <Content protocol="ssh" actuator="ssh153">
         <SshCmd isHaveParameters="true">ll -a</SshCmd>
+        <!--SshCmd为必填项，且一个case只允许存在一个SshCmd，如需要多个请创建多个case-->
       </Content>
       <Expect method="contain">/</Expect>
       <Attribute>
@@ -1477,6 +1478,59 @@
         <Receive encoding="utf-8">1000</Receive>
       </Content>
       <Expect method="contain">31</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+  </Project>
+  <Project id="1000010009" name="telnet test" remark="telnet 测试">
+    <Case id="1000090000" remark="console">
+      <Content protocol="console" actuator="console">
+        <Show >等待10s</Show>
+      </Content>
+      <Expect method="contain">等待</Expect>
+      <Attribute>
+        <Delay>10000</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100090001" remark="telnet">
+      <Content protocol="telnet" actuator="telnet150">
+        <TelnetCmd isHaveParameters="true">ll -a</TelnetCmd>
+        <!--TelnetCmd为必填项，且一个case只允许存在一个TelnetCmd，如需要多个请创建多个case-->
+      </Content>
+      <Expect method="contain">/</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100090002" remark="telnet">
+      <Content protocol="telnet" actuator="telnet150">
+        <TelnetCmd isHaveParameters="true">cd /usr</TelnetCmd>
+    </Content>
+      <Expect method="contain">/</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100090003" remark="telnet">
+      <Content protocol="telnet" actuator="telnet150">
+        <TelnetCmd isHaveParameters="true">ps -ef</TelnetCmd>
+    </Content>
+      <Expect method="contain">java</Expect>
+      <Attribute>
+        <Delay>200</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1100090004" remark="telnet">
+      <Content protocol="telnet" actuator="telnet150">
+        <TelnetCmd isHaveParameters="true">ll -a</TelnetCmd>
+      </Content>
+      <Expect method="contain">/</Expect>
       <Attribute>
         <Delay>200</Delay>
         <Level>1</Level>

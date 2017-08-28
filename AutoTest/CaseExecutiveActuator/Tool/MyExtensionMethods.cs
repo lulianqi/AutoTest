@@ -81,6 +81,32 @@ namespace CaseExecutiveActuator.Tool
             return cloneDc;
         }
 
+        /// <summary>
+        /// 返回对象的深度克隆(泛型数据，要求T必须为值类型，或类似string的特殊引用类型[因为虽然使用string的克隆会有相同的引用，但对string进行修改的时都会创建新的对象](该重载可以约束支持clone的TValue))
+        /// </summary>
+        /// <typeparam name="TKey">TKey</typeparam>
+        /// <typeparam name="TValue">TKey</typeparam>
+        /// <param name="dc">目标Dictionary</param>
+        /// <returns>对象的深度克隆</returns>
+        public static Dictionary<TKey, TValue> MyDeepClone<TKey, TValue>(this Dictionary<TKey, TValue> dc)  where TValue:ICloneable
+        {
+            Dictionary<TKey, TValue> cloneDc = new Dictionary<TKey, TValue>();
+            foreach (KeyValuePair<TKey, TValue> tempKvp in dc)
+            {
+                cloneDc.Add(tempKvp.Key, (TValue)tempKvp.Value.Clone());
+            }
+            return cloneDc;
+        }
+
+        //public static Dictionary<string, ICaseExecutionDevice> MyClone(this Dictionary<string, ICaseExecutionDevice> dc)
+        //{
+        //    Dictionary<string, ICaseExecutionDevice> cloneDc = new Dictionary<string, ICaseExecutionDevice>();
+        //    foreach (KeyValuePair<string, ICaseExecutionDevice> tempKvp in dc)
+        //    {
+        //        cloneDc.Add(tempKvp.Key, (ICaseExecutionDevice)tempKvp.Value.Clone());
+        //    }
+        //    return cloneDc;
+        //}
 
         public static List<IRunTimeStaticData> MyClone(this List<IRunTimeStaticData> lt)
         {

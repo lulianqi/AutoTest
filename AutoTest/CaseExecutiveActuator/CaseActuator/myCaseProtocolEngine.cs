@@ -135,7 +135,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                     myCaseData.testContent = CaseProtocolExecutionForTcp.GetRunContent(tempCaseContent);
                                     break;
                                 case CaseProtocol.telnet:
-                                    myCaseData.AddErrorMessage("Error :this protocol not supported for now");
+                                    myCaseData.testContent = CaseProtocolExecutionForTelnet.GetRunContent(tempCaseContent);
                                     break;
                                 case CaseProtocol.com:
                                     myCaseData.testContent = CaseProtocolExecutionForCom.GetRunContent(tempCaseContent);

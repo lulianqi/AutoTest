@@ -55,12 +55,15 @@ namespace DemoForMyHelper
 
                 Console.ReadLine();
                 Console.WriteLine("******************************************");
-                Console.WriteLine(telnet.DoRequest("ll",'$'));
+                Console.WriteLine(telnet.DoRequest("ll","$ "));
                 Console.WriteLine("******************************************");
-                Console.WriteLine(telnet.DoRequest("mkdir 123", '$'));
+                Console.WriteLine(telnet.DoRequest("mkdir 123", "$ "));
                 Console.WriteLine("******************************************");
-                Console.WriteLine(telnet.DoRequest("ll", '$'));
+                Console.WriteLine(telnet.DoRequest("ll", "$ "));
                 Console.WriteLine("******************************************");
+
+                Console.ReadLine();
+                telnet.DisConnect();
 
 
             }
