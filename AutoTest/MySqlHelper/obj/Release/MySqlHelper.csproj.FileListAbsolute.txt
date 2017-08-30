@@ -3,3 +3,4 @@ F:\file\Code\AutoTest\AutoTest\MySqlHelper\bin\Release\MySqlHelper.pdb
 F:\file\Code\AutoTest\AutoTest\MySqlHelper\bin\Release\MySql.Data.dll
 F:\file\Code\AutoTest\AutoTest\MySqlHelper\obj\Release\MySqlHelper.dll
 F:\file\Code\AutoTest\AutoTest\MySqlHelper\obj\Release\MySqlHelper.pdb
+F:\file\Code\AutoTest\AutoTest\MySqlHelper\obj\Release\MySqlHelper.csprojResolveAssemblyReference.cache

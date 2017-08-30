@@ -28,13 +28,19 @@ namespace TestForDefaultClass
         public delegate void Mydelegate();
         static void Main(string[] args)
         {
+            Process myProcess = Process.GetCurrentProcess();
+            myProcess.StartInfo.FileName = "new test ";
+            myProcess.PriorityClass = ProcessPriorityClass.High;
+
+            ExecutionContext.SuppressFlow();
+
             Console.ReadKey(); 
             RunTestForManualResetEvent();
             //for (int i = 0; i < 500; i++)
             {
                 Console.ReadKey();
                 manualResetEvent.Set();
-                manualResetEvent.Reset();
+                //manualResetEvent.Reset();
             }
             Console.WriteLine("end of RunTestForManualResetEvent");
             Console.ReadKey(); 
@@ -225,13 +231,14 @@ namespace TestForDefaultClass
         public static ManualResetEvent manualResetEvent = new ManualResetEvent(false);
         public static void RunTestForManualResetEvent()
         {
+            //ExecutionContext.SuppressFlow();
             for(int i=0;i<100000;i++)
             {
-                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); Console.WriteLine("id is " + ((int)ob).ToString()); }), 0);
+                Thread td = new Thread(new ParameterizedThreadStart((object ob) => {  Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); Console.WriteLine("id is " + ((int)ob).ToString()); }), 0);
                 //td.Priority = ThreadPriority.AboveNormal;
                 td.Start(i);
             }
-            
+            //ExecutionContext.RestoreFlow();
         }
     }
 }

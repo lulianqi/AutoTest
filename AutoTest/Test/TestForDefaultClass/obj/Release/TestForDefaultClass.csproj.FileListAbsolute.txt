@@ -5,3 +5,10 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\MyCommonHelp
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\TestForDefaultClass.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\TestForDefaultClass.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Release\MyCommonHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.exe
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Release\TestForDefaultClass.pdb

@@ -1,0 +1,245 @@
+-------------------------------------------------------
+2017/8/30 21:28:03
+invalid server's version String
+   在 Tamir.SharpSsh.jsch.Session.connect(Int32 connectTimeout)
+   在 Tamir.SharpSsh.jsch.Session.connect()
+   在 Tamir.SharpSsh.SshBase.ConnectSession(Int32 tcpPort)
+   在 Tamir.SharpSsh.SshBase.Connect(Int32 tcpPort)
+   在 Tamir.SharpSsh.SshBase.Connect()
+   在 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForSsh.ExecutionDeviceConnect() 位置 f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\CaseActuator\ExecutionDevice\CaseProtocolExecutionForSsh.cs:行号 108
+-------------------------------------------------------
+2017/8/30 21:28:04
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:28:07
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:12
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:28:12
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:29:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:29:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:29:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:29:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:29:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:29:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:29:06
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2017/8/30 21:29:10
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:10
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:10
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:19
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:19
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:19
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:19
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:20
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:20
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 
+-------------------------------------------------------
+2017/8/30 21:29:20
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:480
+
+ID:0544 

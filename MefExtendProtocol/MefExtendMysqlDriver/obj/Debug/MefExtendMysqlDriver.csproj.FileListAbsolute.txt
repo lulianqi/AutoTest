@@ -42,3 +42,6 @@ F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyActiveM
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MySqlHelper.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MySql.Data.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MySqlHelper.pdb
+F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Tamir.SharpSSH.dll
+F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\DiffieHellman.dll
+F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Org.Mentalis.Security.dll
