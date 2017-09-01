@@ -1,0 +1,4 @@
+F:\file\Code\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Release\ActiveMQTest.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Release\ActiveMQTest.ActiveMQ.resources
+F:\file\Code\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Release\ActiveMQTest.Properties.Resources.resources
+F:\file\Code\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Release\ActiveMQTest.csproj.GenerateResource.Cache
