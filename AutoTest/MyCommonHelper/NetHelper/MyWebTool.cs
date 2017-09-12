@@ -245,7 +245,7 @@ namespace MyCommonHelper.NetHelper
             /// <summary>
             /// i will Send Data (you can put Head in Request)
             /// </summary>
-            /// <param name="url"> url </param>
+            /// <param name="url"> url [http://,https:// ,ftp:// ,file:// ]</param>
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
@@ -271,7 +271,8 @@ namespace MyCommonHelper.NetHelper
                     wr.Timeout = httpTimeOut;
                     wr.Method = method;
                     wr.ContentType = "application/x-www-form-urlencoded";
-                    
+                    //((HttpWebRequest)wr).KeepAlive = true;
+                    //((HttpWebRequest)wr).Pipelined = true;
                     HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
 
                     //wr.ContentType = "multipart/form-data";

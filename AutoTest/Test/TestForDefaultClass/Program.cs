@@ -7,6 +7,7 @@ using MyCommonHelper;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Net;
 
 namespace TestForDefaultClass
 {
@@ -28,6 +29,14 @@ namespace TestForDefaultClass
         public delegate void Mydelegate();
         static void Main(string[] args)
         {
+
+
+            //for (int i = 0; i < 1; i++)
+            //{
+            //    Console.WriteLine(MyWebTool.MyHttp.SendData("http://www.baidu.com"));
+            //}
+
+
             Process myProcess = Process.GetCurrentProcess();
             myProcess.StartInfo.FileName = "new test ";
             myProcess.PriorityClass = ProcessPriorityClass.High;
@@ -55,6 +64,8 @@ namespace TestForDefaultClass
             //strList.Insert(4, "4");
             RunMyHttpTest();
         }
+
+
 
         public static void RunSynchronizedTest()
         {
@@ -232,13 +243,24 @@ namespace TestForDefaultClass
         public static void RunTestForManualResetEvent()
         {
             //ExecutionContext.SuppressFlow();
-            for(int i=0;i<100000;i++)
+            for(int i=0;i<100;i++)
             {
-                Thread td = new Thread(new ParameterizedThreadStart((object ob) => {  Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); Console.WriteLine("id is " + ((int)ob).ToString()); }), 0);
+                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); Console.WriteLine("go on id is " + ((int)ob).ToString()); System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8")); Console.WriteLine("stop id is " + ((int)ob).ToString()); }), 0);
                 //td.Priority = ThreadPriority.AboveNormal;
                 td.Start(i);
             }
             //ExecutionContext.RestoreFlow();
+        }
+
+        public static void PipelinedHttp()
+        {
+            WebRequest wr = WebRequest.Create("http://pv.sohu.com/cityjson?ie=utf-8");
+            wr.Method = "GET";
+            wr.ContentType = "application/x-www-form-urlencoded";
+            ((HttpWebRequest)wr).KeepAlive = true;
+            ((HttpWebRequest)wr).Pipelined = true;
+            WebResponse rs = wr.GetResponse();
+
         }
     }
 }

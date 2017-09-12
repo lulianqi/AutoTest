@@ -1,0 +1,384 @@
+-------------------------------------------------------
+2017/9/11 21:50:04
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:04
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:04
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:04
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:04
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:05
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:51
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:51
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:50:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:53:58
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:55:04
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:56:52
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:57:11
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
+-------------------------------------------------------
+2017/9/11 21:57:24
+无效的 URI: 未能确定 URI 的格式。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Net.WebRequest.Create(String requestUriString)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, String saveFileName) 位置 f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 270
