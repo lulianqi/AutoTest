@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Net;
+using System.IO;
 
 namespace TestForDefaultClass
 {
@@ -29,7 +30,8 @@ namespace TestForDefaultClass
         public delegate void Mydelegate();
         static void Main(string[] args)
         {
-
+            Console.ReadKey(); 
+            PipelinedHttp();
 
             //for (int i = 0; i < 1; i++)
             //{
@@ -245,7 +247,8 @@ namespace TestForDefaultClass
             //ExecutionContext.SuppressFlow();
             for(int i=0;i<100;i++)
             {
-                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); Console.WriteLine("go on id is " + ((int)ob).ToString()); System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8")); Console.WriteLine("stop id is " + ((int)ob).ToString()); }), 0);
+                //http://pv.sohu.com/cityjson?ie=utf-8
+                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://wxwyjtest.huala.com/huala/v3/seller/list?page=1&size=10&lat=29.885259&lng=121.579006")); Console.WriteLine("stop id is " + ((int)ob).ToString()); }), 0);
                 //td.Priority = ThreadPriority.AboveNormal;
                 td.Start(i);
             }
@@ -254,13 +257,78 @@ namespace TestForDefaultClass
 
         public static void PipelinedHttp()
         {
-            WebRequest wr = WebRequest.Create("http://pv.sohu.com/cityjson?ie=utf-8");
-            wr.Method = "GET";
-            wr.ContentType = "application/x-www-form-urlencoded";
-            ((HttpWebRequest)wr).KeepAlive = true;
-            ((HttpWebRequest)wr).Pipelined = true;
-            WebResponse rs = wr.GetResponse();
+            for (int i = 0; i < 1; i++)
+            {
+                WebRequest wr = WebRequest.Create("http://pv.sohu.com/cityjson?ie=utf-8");
+                wr.Method = "GET";
+                wr.ContentType = "application/x-www-form-urlencoded";
+                ((HttpWebRequest)wr).KeepAlive = true;
+                ((HttpWebRequest)wr).Pipelined = true;
+
+                string re = "";
+
+                //IAsyncResult r = wr.BeginGetResponse(new AsyncCallback(RespCallback), wr);
+
+                WebResponse result = wr.GetResponse();
+                Stream ReceiveStream = result.GetResponseStream();
+                Byte[] read = new Byte[75];
+                int bytes = ReceiveStream.Read(read, 0, 75);
+                while (bytes > 0)
+                {
+                    re += Encoding.UTF8.GetString(read, 0, bytes);
+                    bytes = ReceiveStream.Read(read, 0, 75);
+                }
+                System.Diagnostics.Debug.WriteLine(re);
+
+                result.Close();
+                result = wr.GetResponse();
+                result.Close();
+                result = wr.GetResponse();
+            }
 
         }
+
+
+        private static void RespCallback(IAsyncResult asynchronousResult)
+        {
+            try
+            {
+                // Set the State of request to asynchronous.
+                WebRequest myWebRequest1 = (WebRequest)asynchronousResult.AsyncState;
+                // End the Asynchronous response.
+                WebResponse response = myWebRequest1.EndGetResponse(asynchronousResult);
+                // Read the response into a 'Stream' object.
+                Stream responseStream = response.GetResponseStream();
+                string re = "";
+                Byte[] read = new Byte[512];
+                int bytes = responseStream.Read(read, 0, 512);
+                while (bytes > 0)
+                {
+                    re += Encoding.UTF8.GetString(read, 0, bytes);
+                    bytes = responseStream.Read(read, 0, 512);
+                }
+                System.Diagnostics.Debug.WriteLine(re);
+                response.Close();
+            }
+            catch (WebException e)
+            {
+                Console.WriteLine("WebException raised!");
+                Console.WriteLine("\n{0}", e.Message);
+                Console.WriteLine("\n{0}", e.Status);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception raised!");
+                Console.WriteLine("Source : " + e.Source);
+                Console.WriteLine("Message : " + e.Message);
+            }
+            finally
+            {
+                
+            }
+        }
+
+
+
     }
 }

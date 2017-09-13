@@ -23,7 +23,14 @@ namespace MyCommonHelper
 {
     public static class MyExtensionMethods
     {
-
+        /// <summary>
+        /// 返回查找byte[]中的一个出现指定字符的位置
+        /// </summary>
+        /// <param name="bytes">byte[]</param>
+        /// <param name="targetByte">查找目标</param>
+        /// <param name="startIndex">开始索引</param>
+        /// <param name="leng">最大搜索长度</param>
+        /// <returns></returns>
         public static int MyIndexOf(this byte[] bytes,byte targetByte,int startIndex,int leng)
         {
             for (int i = startIndex; i < leng;i++ )

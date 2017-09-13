@@ -298,7 +298,7 @@ namespace MyCommonHelper.NetHelper
 
                     result = wr.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
 
-                    Stream ReceiveStream = result.GetResponseStream();
+                    Stream receiveStream = result.GetResponseStream();
 
                     if (saveFileName == null)
                     {
@@ -307,7 +307,7 @@ namespace MyCommonHelper.NetHelper
                         //    re += httpStreamReader.ReadToEnd();
                         //}
                         Byte[] read = new Byte[512];
-                        int bytes = ReceiveStream.Read(read, 0, 512);
+                        int bytes = receiveStream.Read(read, 0, 512);
                         if (showResponseHeads)
                         {
                             re = result.Headers.ToString();
@@ -315,7 +315,7 @@ namespace MyCommonHelper.NetHelper
                         while (bytes > 0)
                         {
                             re += responseEncoding.GetString(read, 0, bytes);
-                            bytes = ReceiveStream.Read(read, 0, 512);
+                            bytes = receiveStream.Read(read, 0, 512);
                         }
                     }
                     //save file
@@ -329,7 +329,7 @@ namespace MyCommonHelper.NetHelper
                             int offset = 0;
                             while (tempLen >= tempReadCount )
                             {
-                                tempLen = ReceiveStream.Read(infbytes, 0, tempReadCount);
+                                tempLen = receiveStream.Read(infbytes, 0, tempReadCount);
                                 stream.Write(infbytes, 0, tempLen);//FileStream 内建缓冲区，不用自己构建缓存写入,FileStream的offset会自动维护，也可以使用stream.Position强制指定
                                 offset += tempLen;
                             }
