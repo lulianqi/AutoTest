@@ -289,6 +289,26 @@ namespace MyCommonHelper
             return dataToBack;
         }
 
-
+        public static byte[] GroupByteList(List<byte[]> yourByteList)
+        {
+            if(yourByteList==null)
+            {
+                throw new Exception("yourByteList is null");
+            }
+            int byteLen = 0;
+            int nowCopyIndex = 0;
+            byte[] outBytes;
+            foreach(byte[] tempBytes in yourByteList)
+            {
+                byteLen += tempBytes.Length;
+            }
+            outBytes = new byte[byteLen];
+            foreach (byte[] tempBytes in yourByteList)
+            {
+                Array.Copy(tempBytes, 0, outBytes, nowCopyIndex, tempBytes.Length);
+                nowCopyIndex += tempBytes.Length;
+            }
+            return outBytes;
+        }
     }
 }
