@@ -160,11 +160,11 @@ namespace CaseExecutiveActuator.Tool
         /// <param name="yourTarget">the key you want get</param>
         /// <param name="yourSouce">the json Souce</param>
         /// <returns>back value</returns>
-        public static string PickJsonParameter(string yourTarget, string yourSouce)
+        public static string[] PickJsonParameter(string yourTarget, string yourSouce)
         {
             string tempTarget = "\"" + yourTarget + "\"";
             string[] myJsonBackAr = null;
-            string myJsonBack = null;
+            string[] myJsonBack = null;
             if (!yourSouce.Contains(tempTarget))
             {
                 return null;
@@ -181,25 +181,15 @@ namespace CaseExecutiveActuator.Tool
                         myJsonBackAr = GetJTokenValueEx(jObj, yourTarget);
                         if (myJsonBackAr != null)
                         {
-                            foreach (string tempStr in myJsonBackAr)
-                            {
-                                myJsonBack = (myJsonBack + tempStr + ",");
-                            }
+                            myJsonBack = StringHelper.AddStringArr(myJsonBack, myJsonBackAr);
                         }
-                    }
-                    if (myJsonBack != null)
-                    {
-                        myJsonBack = myJsonBack.Remove(myJsonBack.Length - 1);
                     }
                 }
                 else if (yourSouce.StartsWith("{"))
                 {
                     JObject jObj = (JObject)JsonConvert.DeserializeObject(yourSouce);
                     myJsonBackAr = GetJTokenValueEx(jObj, yourTarget);
-                    if (myJsonBackAr != null)
-                    {
-                        myJsonBack = String.Join(",", myJsonBackAr);
-                    }
+                    myJsonBack = myJsonBackAr;
                 }
             }
             catch (Exception ex)
@@ -305,7 +295,7 @@ namespace CaseExecutiveActuator.Tool
         }
 
         /// <summary>
-        /// get all the vlue from the json object by key 【将取出所有值】
+        /// get all the vlue from the json object by key 【将取出所有值,如果没有返回null】
         /// </summary>
         /// <param name="yourJToken">json object</param>
         /// <param name="yourKey">your Key</param>

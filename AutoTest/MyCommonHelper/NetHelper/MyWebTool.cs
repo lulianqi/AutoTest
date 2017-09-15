@@ -302,10 +302,13 @@ namespace MyCommonHelper.NetHelper
 
                     if (saveFileName == null)
                     {
-                        //using (var httpStreamReader = new StreamReader(ReceiveStream, responseEncoding))
-                        //{
-                        //    re += httpStreamReader.ReadToEnd();
-                        //}
+                        using (var httpStreamReader = new StreamReader(receiveStream, responseEncoding))
+                        {
+                            re += httpStreamReader.ReadToEnd();
+                        }
+
+                        //使用如下方法自己读取byte[] 是可行的，不过在Encoding 可变编码方式时，不能确保分段不被截断，直接使用内置StreamReader也是可以的
+                        /**  
                         Byte[] read = new Byte[512];
                         int bytes = receiveStream.Read(read, 0, 512);
                         if (showResponseHeads)
@@ -317,6 +320,7 @@ namespace MyCommonHelper.NetHelper
                             re += responseEncoding.GetString(read, 0, bytes);
                             bytes = receiveStream.Read(read, 0, 512);
                         }
+                         * */
                     }
                     //save file
                     else

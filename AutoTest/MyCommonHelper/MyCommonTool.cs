@@ -632,6 +632,30 @@ namespace MyCommonHelper
             }
             return myOurStb.ToString();
         }
+
+        public static string[] AddStringArr(string[] stringOne,string[]stringTow)
+        {
+            if (stringOne == null && stringTow==null)
+            {
+                return null;
+            }
+            else if(stringOne == null)
+            {
+                return stringTow;
+            }
+            else if (stringTow == null)
+            {
+                return stringOne;
+            }
+            else
+            {
+                string[] backStringArr = new string[stringOne.Length + stringTow.Length];
+                //Array.Copy()
+                stringOne.CopyTo(backStringArr, 0);
+                stringTow.CopyTo(backStringArr, stringOne.Length);
+                return backStringArr;
+            }
+        }
     }
 
     /// <summary>

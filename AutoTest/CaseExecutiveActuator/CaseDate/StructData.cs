@@ -309,6 +309,7 @@ namespace CaseExecutiveActuator
     {
         public string parameterName;
         public string parameterFindVaule;
+        public string parameterAdditionalVaule;
         public PickOutFunction parameterFunction;
 
         public ParameterSave(PickOutFunction yourFunction, string yourName, string yourFindVaule)
@@ -316,6 +317,15 @@ namespace CaseExecutiveActuator
             parameterFunction = yourFunction;
             parameterFindVaule = yourFindVaule;
             parameterName = yourName;
+            parameterAdditionalVaule = null;
+        }
+
+        public ParameterSave(PickOutFunction yourFunction, string yourName, string yourFindVaule,string yourAdditon)
+        {
+            parameterFunction = yourFunction;
+            parameterFindVaule = yourFindVaule;
+            parameterName = yourName;
+            parameterAdditionalVaule = yourAdditon;
         }
     }
 
@@ -334,13 +344,13 @@ namespace CaseExecutiveActuator
             myParameterSaves = null;
         }
 
-        public void addParameterSave(string yourName, string yourFindVaule, PickOutFunction yourFunction)
+        public void addParameterSave(string yourName, string yourFindVaule, PickOutFunction yourFunction, string yourAdditional)
         {
             if (myParameterSaves == null)
             {
                 myParameterSaves = new List<ParameterSave>();
             }
-            myParameterSaves.Add(new ParameterSave(yourFunction, yourName, yourFindVaule));
+            myParameterSaves.Add(new ParameterSave(yourFunction, yourName, yourFindVaule, yourAdditional));
         }
     }
 

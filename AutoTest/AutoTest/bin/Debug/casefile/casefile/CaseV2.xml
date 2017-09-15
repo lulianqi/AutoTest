@@ -169,6 +169,9 @@
       <Attribute>
         <ParameterSave>
           <NewParameter name="myDevId_1" mode="json">dev_id</NewParameter><!-- json xml str 值不能为空“”-->
+          <!-- json 查找出json对象中所有指定对象如果有多个用，隔开 (可以添加additional属性如additional="1"，表示取查找结果中的第一个值)-->
+          <NewParameter name="str_test" mode="str" additional="1-15">dev_id":"</NewParameter>
+          <!-- str 查找出str中中第一次出现指定字符串，取值未第一次出现索引到最后，如果需要指定出现位置及长度需要添加additional属性-->
           <NewParameter name="myAppId_1" mode="json">app_id</NewParameter>
         </ParameterSave>
         <Delay>100</Delay>

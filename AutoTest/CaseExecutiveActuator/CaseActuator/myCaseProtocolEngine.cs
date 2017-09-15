@@ -279,6 +279,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                         {
                                             string tempParameterName = CaseTool.GetXmlAttributeVaule(tempNode, "name");
                                             string tempParameterMode = CaseTool.GetXmlAttributeVaule(tempNode, "mode");
+                                            string tempParameterAdditional = CaseTool.GetXmlAttributeVaule(tempNode, "additional");
                                             string tempFindVaule = tempNode.InnerText;
                                             PickOutFunction tempPickOutFunction = PickOutFunction.pick_str;
                                             if (tempParameterName == null)
@@ -310,7 +311,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                 myCaseData.AddErrorMessage("Error :find error ParameterSave mode in Attribute");
                                                 continue;
                                             }
-                                            myCaseData.caseAttribute.addParameterSave(tempParameterName, tempFindVaule, tempPickOutFunction);
+                                            myCaseData.caseAttribute.addParameterSave(tempParameterName, tempFindVaule, tempPickOutFunction, tempParameterAdditional);
                                         }
                                     }
                                 }

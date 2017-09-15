@@ -1471,7 +1471,33 @@ namespace CaseExecutiveActuator.CaseActuator
                     switch (tempParameterSave.parameterFunction)
                     {
                         case PickOutFunction.pick_json:
-                            tempPickVaule = MyAssert.PickJsonParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
+                            string[] tempJsonPickArr=MyAssert.PickJsonParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
+                            if(tempJsonPickArr!=null)
+                            {
+                                if(tempParameterSave.parameterAdditionalVaule==null)
+                                {
+                                    tempPickVaule = string.Join(",", tempJsonPickArr);
+                                }
+                                else
+                                {
+                                    int tempJsonIndex;
+                                    if( int.TryParse(tempParameterSave.parameterAdditionalVaule,out tempJsonIndex))
+                                    {
+                                        tempJsonIndex=tempJsonIndex-1;
+                                        if(tempJsonIndex>-1&&tempJsonIndex<tempJsonPickArr.Length)
+                                        {
+                                            tempPickVaule = tempJsonPickArr[tempJsonIndex];
+                                        }
+                                    }
+                                    else
+                                    {
+                                        tempError = string.Format("【ID:{0}】ParameterSave 脚本数据不合法", yourRunData.id);
+                                        yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
+                                        SetNowActionError(tempError);
+                                        MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                                    }
+                                }
+                            }
                             break;
                         case PickOutFunction.pick_str:
                             string tempFindVaule;
