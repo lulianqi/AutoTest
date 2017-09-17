@@ -45,3 +45,13 @@ F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MySqlHelp
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Tamir.SharpSSH.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\DiffieHellman.dll
 F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Org.Mentalis.Security.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyActiveMQHelper.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MySqlHelper.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Tamir.SharpSSH.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Apache.NMS.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MySql.Data.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\DiffieHellman.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Org.Mentalis.Security.dll
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyActiveMQHelper.pdb
+D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MySqlHelper.pdb

@@ -6,6 +6,10 @@ using CaseExecutiveActuator;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Collections.Specialized;
+using MyCommonHelper.EncryptionHelper;
+using CaseExecutiveActuator.CaseActuator.ExecutionDevice;
+using CaseExecutiveActuator.Tool;
+using CaseExecutiveActuator.CaseActuator;
 
 namespace UnitTestForAutoTest
 {
@@ -15,7 +19,7 @@ namespace UnitTestForAutoTest
         [TestMethod]
         public void TestMethod1()
         {
-            CaseExecutiveActuator.CaseActionActuator myCAA = new CaseActionActuator();
+            CaseActionActuator myCAA = new CaseActionActuator();
             Type t = myCAA.GetType();
             foreach (System.Reflection.MemberInfo mi in t.GetMembers(BindingFlags.NonPublic))
             {
@@ -75,10 +79,10 @@ namespace UnitTestForAutoTest
          public void TestMethod_HexStringToByte()
          {
              string testData_1 = " 0x01 0x02 0x03 0x04 0x05 0x06 0x06 0x00 0xff 0xff";
-             byte[] result = MyEncryption.HexStringToByte(testData_1, MyEncryption.HexaDecimal.hex16, MyEncryption.ShowHexMode.spitSpace0x);
-             Console.WriteLine(MyEncryption.ByteToHexString(result,MyEncryption.HexaDecimal.hex2,MyEncryption.ShowHexMode.spitSpace0b));
-             Console.WriteLine(MyEncryption.ByteToHexString(result,MyEncryption.HexaDecimal.hex10,MyEncryption.ShowHexMode.spitSpace0d));
-             Console.WriteLine(MyEncryption.ByteToHexString(result,MyEncryption.HexaDecimal.hex16,MyEncryption.ShowHexMode.spitSpace0x));
+             byte[] result = MyBytes.HexStringToByte(testData_1, HexaDecimal.hex16, ShowHexMode.spitSpace0x);
+             Console.WriteLine(MyBytes.ByteToHexString(result, HexaDecimal.hex2, ShowHexMode.spitSpace0b));
+             Console.WriteLine(MyBytes.ByteToHexString(result, HexaDecimal.hex10, ShowHexMode.spitSpace0d));
+             Console.WriteLine(MyBytes.ByteToHexString(result, HexaDecimal.hex16, ShowHexMode.spitSpace0x));
          }
 
     }
@@ -105,19 +109,19 @@ namespace UnitTestForAutoTest
         [TestMethod]
          public void TestMethod_PickJsonParameter()
          {
-            string xx;
-            xx = CaseTool.PickJsonParameter("subId", "{\"body\":{\"addTime\":1472526614000,\"addTimeStr\":\"2016-08-30 11:10\",\"address\":\"双城国际4号楼 江汉路1785号\",\"aliasName\":\"\",\"bestTime\":1472547600000,\"bestTimeStr\":\"2016-08-30 17:00\",\"bestTimeString\":\"今天\n17:00\n送达\",\"consignee\":\"双\",\"creditAmount\":0,\"deliverTime\":\"无\",\"discountAmount\":0,\"dueDate\":\"\",\"dueDateNum\":\"\",\"gainAmount\":0,\"goodsAmount\":12100,\"id\":7335,\"isFinish\":false,\"isFirst\":\"0\",\"isPurchase\":0,\"isRemind\":0,\"isReturn\":0,\"marker\":1,\"mobile\":\"15158155511\",\"oneself\":[],\"orderId\":10827571,\"orderSn\":\"KF1472526613161\",\"orderStatus\":\"派送中\",\"orderStatusStr\":\"shipping\",\"orderType\":\"1\",\"payAmount\":12600,\"payNote\":\"结算测试单\",\"payTimeStr\":\"\",\"retAmount\":0,\"sellerAddress\":\"\",\"sellerMobile\":\"\",\"sellerName\":\"\",\"shipAmount\":500,\"shippingAmount\":500,\"shippingTime\":1472526616000,\"shippingTimeStr\":\"2016-08-30 11:10\",\"shippingType\":\"0\",\"supermarket\":[],\"suppliers\":[{\"expressInfo\":{\"expressCode\":\"\",\"expressCompany\":\"\",\"expressSn\":\"\",\"useExpress\":false},\"goods\":[{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000}],\"info\":{\"aliasName\":\"\",\"avoid\":0,\"distribute\":0,\"isSupplier\":1,\"name\":\"\",\"phone\":\"\",\"sellerType\":1,\"start\":0,\"supplierId\":10000,\"supplierName\":\"ShopForBalance10000\"}}]},\"success\":true}");
+            string[] xx;
+            xx = MyAssert.PickJsonParameter("subId", "{\"body\":{\"addTime\":1472526614000,\"addTimeStr\":\"2016-08-30 11:10\",\"address\":\"双城国际4号楼 江汉路1785号\",\"aliasName\":\"\",\"bestTime\":1472547600000,\"bestTimeStr\":\"2016-08-30 17:00\",\"bestTimeString\":\"今天\n17:00\n送达\",\"consignee\":\"双\",\"creditAmount\":0,\"deliverTime\":\"无\",\"discountAmount\":0,\"dueDate\":\"\",\"dueDateNum\":\"\",\"gainAmount\":0,\"goodsAmount\":12100,\"id\":7335,\"isFinish\":false,\"isFirst\":\"0\",\"isPurchase\":0,\"isRemind\":0,\"isReturn\":0,\"marker\":1,\"mobile\":\"15158155511\",\"oneself\":[],\"orderId\":10827571,\"orderSn\":\"KF1472526613161\",\"orderStatus\":\"派送中\",\"orderStatusStr\":\"shipping\",\"orderType\":\"1\",\"payAmount\":12600,\"payNote\":\"结算测试单\",\"payTimeStr\":\"\",\"retAmount\":0,\"sellerAddress\":\"\",\"sellerMobile\":\"\",\"sellerName\":\"\",\"shipAmount\":500,\"shippingAmount\":500,\"shippingTime\":1472526616000,\"shippingTimeStr\":\"2016-08-30 11:10\",\"shippingType\":\"0\",\"supermarket\":[],\"suppliers\":[{\"expressInfo\":{\"expressCode\":\"\",\"expressCompany\":\"\",\"expressSn\":\"\",\"useExpress\":false},\"goods\":[{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000}],\"info\":{\"aliasName\":\"\",\"avoid\":0,\"distribute\":0,\"isSupplier\":1,\"name\":\"\",\"phone\":\"\",\"sellerType\":1,\"start\":0,\"supplierId\":10000,\"supplierName\":\"ShopForBalance10000\"}}]},\"success\":true}");
             Console.WriteLine(xx);
-            Assert.IsFalse(xx != "9324", xx);
-            xx = CaseTool.PickJsonParameter("subId", "{\"body\":{\"addTime\":1472526614000,\"addTimeStr\":\"2016-08-30 11:10\",\"address\":\"双城国际4号楼 江汉路1785号\",\"aliasName\":\"\",\"bestTime\":1472547600000,\"bestTimeStr\":\"2016-08-30 17:00\",\"bestTimeString\":\"今天\n17:00\n送达\",\"consignee\":\"双\",\"creditAmount\":0,\"deliverTime\":\"无\",\"discountAmount\":0,\"dueDate\":\"\",\"dueDateNum\":\"\",\"gainAmount\":0,\"goodsAmount\":12100,\"id\":7335,\"isFinish\":false,\"isFirst\":\"0\",\"isPurchase\":0,\"isRemind\":0,\"isReturn\":0,\"marker\":1,\"mobile\":\"15158155511\",\"oneself\":[],\"orderId\":10827571,\"orderSn\":\"KF1472526613161\",\"orderStatus\":\"派送中\",\"orderStatusStr\":\"shipping\",\"orderType\":\"1\",\"payAmount\":12600,\"payNote\":\"结算测试单\",\"payTimeStr\":\"\",\"retAmount\":0,\"sellerAddress\":\"\",\"sellerMobile\":\"\",\"sellerName\":\"\",\"shipAmount\":500,\"shippingAmount\":500,\"shippingTime\":1472526616000,\"shippingTimeStr\":\"2016-08-30 11:10\",\"shippingType\":\"0\",\"supermarket\":[],\"suppliers\":[{\"expressInfo\":{\"expressCode\":\"\",\"expressCompany\":\"\",\"expressSn\":\"\",\"useExpress\":false},\"goods\":[{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000}],\"info\":{\"aliasName\":\"\",\"avoid\":0,\"distribute\":0,\"isSupplier\":1,\"name\":\"\",\"phone\":\"\",\"sellerType\":1,\"start\":0,\"supplierId\":10000,\"supplierName\":\"ShopForBalance10000\",\"subId\": 123}}]},\"success\":true}");
+            Assert.IsFalse(xx[0] != "9324", xx[0]);
+            xx = MyAssert.PickJsonParameter("subId", "{\"body\":{\"addTime\":1472526614000,\"addTimeStr\":\"2016-08-30 11:10\",\"address\":\"双城国际4号楼 江汉路1785号\",\"aliasName\":\"\",\"bestTime\":1472547600000,\"bestTimeStr\":\"2016-08-30 17:00\",\"bestTimeString\":\"今天\n17:00\n送达\",\"consignee\":\"双\",\"creditAmount\":0,\"deliverTime\":\"无\",\"discountAmount\":0,\"dueDate\":\"\",\"dueDateNum\":\"\",\"gainAmount\":0,\"goodsAmount\":12100,\"id\":7335,\"isFinish\":false,\"isFirst\":\"0\",\"isPurchase\":0,\"isRemind\":0,\"isReturn\":0,\"marker\":1,\"mobile\":\"15158155511\",\"oneself\":[],\"orderId\":10827571,\"orderSn\":\"KF1472526613161\",\"orderStatus\":\"派送中\",\"orderStatusStr\":\"shipping\",\"orderType\":\"1\",\"payAmount\":12600,\"payNote\":\"结算测试单\",\"payTimeStr\":\"\",\"retAmount\":0,\"sellerAddress\":\"\",\"sellerMobile\":\"\",\"sellerName\":\"\",\"shipAmount\":500,\"shippingAmount\":500,\"shippingTime\":1472526616000,\"shippingTimeStr\":\"2016-08-30 11:10\",\"shippingType\":\"0\",\"supermarket\":[],\"suppliers\":[{\"expressInfo\":{\"expressCode\":\"\",\"expressCompany\":\"\",\"expressSn\":\"\",\"useExpress\":false},\"goods\":[{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000}],\"info\":{\"aliasName\":\"\",\"avoid\":0,\"distribute\":0,\"isSupplier\":1,\"name\":\"\",\"phone\":\"\",\"sellerType\":1,\"start\":0,\"supplierId\":10000,\"supplierName\":\"ShopForBalance10000\",\"subId\": 123}}]},\"success\":true}");
             Console.WriteLine(xx);
-            Assert.IsFalse(xx != "9324,123", xx);
-            xx = CaseTool.PickJsonParameter("subId", "[{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000},{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000,\"lijie\":[{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000},{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000}]}]");
+            Assert.IsFalse(xx[0] != "9324,123", xx[0]);
+            xx = MyAssert.PickJsonParameter("subId", "[{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000},{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000,\"lijie\":[{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000},{\"goodsAttr\":\"0:0:件\",\"goodsDes\":\"\",\"goodsName\":\"高达1号机\",\"goodsNumber\":1,\"goodsSn\":\"00001\",\"goodsStatus\":\"已发货\",\"isSell\":0,\"name\":\"ShopForBalance10000\",\"orderStatuss\":\"have_purchase\",\"phone\":\"\",\"picUrl\":\"http://xp.liuxia8.cn/hlman-pic/goods/201601/1451973551583.jpg?s=220x220\",\"recPrice\":10000,\"remark\":\"1\",\"salePrice\":12100,\"sellerSkuId\":19100,\"sellerType\":\"1\",\"subId\":9324,\"supplierId\":10000}]}]");
             Console.WriteLine(xx);
-            Assert.IsFalse(xx != "9324,9324,9324,9324", xx);
-            xx = CaseTool.PickJsonParameter("token", " {\"body\":{\"account\":\"13000000001\",\"id\":10000,\"mobile\":\"13000000001\",\"name\":\"ShopForBalance\",\"roleList\":[\"seller\",\"seller\"],\"sellerList\":[{\"aliasName\":\"\",\"avoid\":0,\"distribute\":0,\"isDelete\":\"0\",\"isSupplier\":1,\"name\":\"ShopForBalance10000\",\"phone\":\"\",\"sellerId\":10000,\"start\":0,\"supplierId\":0,\"supplierName\":\"\"}],\"sellerQrcode\":\"http://xp.liuxia8.cn/huala/v3/qrcod-seller/\",\"sellerUrl\":\"http://xp.liuxia8.cn/huala/goshop/\",\"sex\":\"男\",\"state\":\"3\"},\"success\":true,\"token\":\"176c0e32-6072-40e2-89ac-df173cbbc2c6\"}");
+            Assert.IsFalse(xx[0] != "9324,9324,9324,9324", xx[0]);
+            xx = MyAssert.PickJsonParameter("token", " {\"body\":{\"account\":\"13000000001\",\"id\":10000,\"mobile\":\"13000000001\",\"name\":\"ShopForBalance\",\"roleList\":[\"seller\",\"seller\"],\"sellerList\":[{\"aliasName\":\"\",\"avoid\":0,\"distribute\":0,\"isDelete\":\"0\",\"isSupplier\":1,\"name\":\"ShopForBalance10000\",\"phone\":\"\",\"sellerId\":10000,\"start\":0,\"supplierId\":0,\"supplierName\":\"\"}],\"sellerQrcode\":\"http://xp.liuxia8.cn/huala/v3/qrcod-seller/\",\"sellerUrl\":\"http://xp.liuxia8.cn/huala/goshop/\",\"sex\":\"男\",\"state\":\"3\"},\"success\":true,\"token\":\"176c0e32-6072-40e2-89ac-df173cbbc2c6\"}");
             Console.WriteLine(xx);
-            Assert.IsFalse(xx != "176c0e32-6072-40e2-89ac-df173cbbc2c6", xx); 
+            Assert.IsFalse(xx[0] != "176c0e32-6072-40e2-89ac-df173cbbc2c6", xx[0]); 
         }
 
         [TestMethod]
@@ -147,7 +151,7 @@ namespace UnitTestForAutoTest
             string ParametersData = null;
             foreach(string testData in testDataList.AllKeys)
             {
-                ParametersData = CaseTool.TryGetParametersAdditionData(testData, out AdditionData);
+                //ParametersData = CaseTool.TryGetParametersAdditionData(testData, out AdditionData);
                 Console.WriteLine("--------------------------------");
                 Console.WriteLine(testData);
                 Console.WriteLine(ParametersData);
@@ -199,5 +203,19 @@ namespace UnitTestForAutoTest
             
         }
 
+        [TestMethod]
+        public void TestMethod_PickStrParameter()
+        {
+            string[] testDataList = new string[] { " public void TestMethod_MySplitIntEnd()", "12123123sdfsfsferfgffdfdf", "aaaaaaaaaaaaabbb", "aaaaaaaaaa" };
+            string targetStr = MyAssert.PickStrParameter("void ", "()", testDataList[0]);
+            Assert.IsTrue(targetStr == "TestMethod_MySplitIntEnd", targetStr);
+            targetStr = MyAssert.PickStrParameter("void ", "()", testDataList[1]);
+            Assert.IsTrue(targetStr == null, targetStr);
+            targetStr = MyAssert.PickStrParameter("aaa", "b", testDataList[2]);
+            Assert.IsTrue(targetStr == "aaaaaaaaaa", targetStr);
+            targetStr = MyAssert.PickStrParameter("aaa", "aaa", testDataList[3]);
+            Assert.IsTrue(targetStr == "", targetStr);
+
+        }
     }
 }

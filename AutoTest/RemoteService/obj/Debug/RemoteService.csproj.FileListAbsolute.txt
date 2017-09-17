@@ -69,3 +69,13 @@ F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MyActiveMQHelper.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MySqlHelper.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MySql.Data.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\MySqlHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyActiveMQHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MySqlHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\Tamir.SharpSSH.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\Apache.NMS.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MySql.Data.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\DiffieHellman.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\Org.Mentalis.Security.dll
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyActiveMQHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MySqlHelper.pdb

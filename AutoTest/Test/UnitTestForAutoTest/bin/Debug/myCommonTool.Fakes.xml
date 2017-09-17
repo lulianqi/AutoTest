@@ -1,0 +1,1331 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>myCommonTool.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.QualityTools.Testing.Fakes.Delegates.MyCommonToolDelegates">
+            <summary>包含用于 myCommonTool 的存根和填充码的自定义委托</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimErrorLog">
+            <summary>MyCommonHelper.ErrorLog 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimErrorLog.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimErrorLog.#ctor(MyCommonHelper.ErrorLog)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimErrorLog.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimErrorLog.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.Constructor">
+            <summary>设置 ErrorLog.ErrorLog() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.GetCurSourceFileNameInt32">
+            <summary>设置 ErrorLog.GetCurSourceFileName(Int32 skipFrames) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.GetLineNumInt32">
+            <summary>设置 ErrorLog.GetLineNum(Int32 skipFrames) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.PutInLogExException">
+            <summary>设置 ErrorLog.PutInLogEx(Exception errorException) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.PutInLogExString">
+            <summary>设置 ErrorLog.PutInLogEx(String errorMessage) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.PutInLogExStringInt32">
+            <summary>设置 ErrorLog.PutInLogEx(String errorMessage, Int32 skipFrames) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.PutInLogString">
+            <summary>设置 ErrorLog.PutInLog(String errorMessage) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.StaticConstructor">
+            <summary>设置 ErrorLog.ErrorLog() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.closeLog">
+            <summary>设置 ErrorLog.closeLog() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimErrorLog.savaUnHandleLogs">
+            <summary>设置 ErrorLog.savaUnHandleLogs() 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimErrorLog.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimFileService">
+            <summary>MyCommonHelper.FileService 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimFileService.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimFileService.#ctor(MyCommonHelper.FileService)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimFileService.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimFileService.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.Constructor">
+            <summary>设置 FileService.FileService() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.CreateDirectoryString">
+            <summary>设置 FileService.CreateDirectory(String yourPath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.GetAllFilesString">
+            <summary>设置 FileService.GetAllFiles(String yourPath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.GetDirectoryString">
+            <summary>设置 FileService.GetDirectory(String yourPath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.GetMyFilesDirectoryInfoDirectoryInfoArrayOutFileInfoArrayOut">
+            <summary>设置 FileService.GetMyFiles(DirectoryInfo yourDirectory, DirectoryInfo[]&amp; outDirectoryInfos, FileInfo[]&amp; outFileInfos) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.SaveDataRecordStringArrayInt32String">
+            <summary>设置 FileService.SaveDataRecord(String[] DataRecordLines, Int32 lineLen, String yourPath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.SaveFileByteArrayString">
+            <summary>设置 FileService.SaveFile(Byte[] yourDate, String yourPath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.SaveFileStringString">
+            <summary>设置 FileService.SaveFile(String yourDate, String yourPath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.SaveFileStringStringBooleanBoolean">
+            <summary>设置 FileService.SaveFile(String yourDate, String yourPath, Boolean isAdd, Boolean isAsLog) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.SaveLogFileStringString">
+            <summary>设置 FileService.SaveLogFile(String yourDate, String yourPath) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimFileService.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimFileService.AllInstances.SaveDataRecordStringArrayInt32String">
+            <summary>设置 FileService.SaveDataRecord(String[] DataRecordLines, Int32 lineLen, String yourPath) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyCommonTool">
+            <summary>MyCommonHelper.MyCommonTool 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyCommonTool.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyCommonTool.#ctor(MyCommonHelper.MyCommonTool)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyCommonTool.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyCommonTool.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyCommonTool.IsMyArrayIndexSameOf1ListOfM0ListOfM0ListOfM0OutListOfM0Out``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.OutOutFunc{System.Collections.Generic.List{``0},System.Collections.Generic.List{``0},System.Collections.Generic.List{``0},System.Collections.Generic.List{``0},System.Boolean})">
+            <summary>设置 MyCommonTool.IsMyArrayIndexSame(List`1&lt;!!0&gt; yourSouceAr, List`1&lt;!!0&gt; yourTargetAr, List`1&lt;!!0&gt;&amp; addAr, List`1&lt;!!0&gt;&amp; delAr) 的 填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyCommonTool.IsMyArrayIndexSameOf1M0ArrayM0ArrayListOfM0OutListOfM0Out``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.OutOutFunc{``0[],``0[],System.Collections.Generic.List{``0},System.Collections.Generic.List{``0},System.Boolean})">
+            <summary>设置 MyCommonTool.IsMyArrayIndexSame(!!0[] yourSouceAr, !!0[] yourTargetAr, List`1&lt;!!0&gt;&amp; addAr, List`1&lt;!!0&gt;&amp; delAr) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.ChangeSelectionColorRichTextBoxColor">
+            <summary>设置 MyCommonTool.ChangeSelectionColor(RichTextBox rtb, Color fontColor) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.ChangeSelectionColorRichTextBoxInt32Int32Color">
+            <summary>设置 MyCommonTool.ChangeSelectionColor(RichTextBox rtb, Int32 startIndex, Int32 len, Color fontColor) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.Constructor">
+            <summary>设置 MyCommonTool.MyCommonTool() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.GenerateRandomNumInt32">
+            <summary>设置 MyCommonTool.GenerateRandomNum(Int32 codeCount) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.GenerateRandomStrInt32Int32">
+            <summary>设置 MyCommonTool.GenerateRandomStr(Int32 strCount, Int32 GenerateType) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.OpenPressStringString">
+            <summary>设置 MyCommonTool.OpenPress(String FileName, String Arguments) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.SetControlFreezeControl">
+            <summary>设置 MyCommonTool.SetControlFreeze(Control yourCtr) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.SetControlUnfreezeControl">
+            <summary>设置 MyCommonTool.SetControlUnfreeze(Control yourCtr) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.StaticConstructor">
+            <summary>设置 MyCommonTool.MyCommonTool() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.findFileDirectoryString">
+            <summary>设置 MyCommonTool.findFileDirectory(String myPath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.findFileNameString">
+            <summary>设置 MyCommonTool.findFileName(String myPath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.myAddRecordStringStringRichTextBox">
+            <summary>设置 MyCommonTool.myAddRecord(String name, String vaule, RichTextBox myRtb) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.myAddRtbStrRichTextBoxRefStringColorBoolean">
+            <summary>设置 MyCommonTool.myAddRtbStr(RichTextBox&amp; rtb, String strInput, Color fontColor, Boolean isNewLine) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.setRichTextBoxContentBottomRichTextBoxRef">
+            <summary>设置 MyCommonTool.setRichTextBoxContentBottom(RichTextBox&amp; yourRtb) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.setRichTextBoxContentRichTextBoxRefString">
+            <summary>设置 MyCommonTool.setRichTextBoxContent(RichTextBox&amp; yourRtb, String yourStr) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.setRichTextBoxContentRichTextBoxRefStringColorBoolean">
+            <summary>设置 MyCommonTool.setRichTextBoxContent(RichTextBox&amp; yourRtb, String yourStr, Color fontColor, Boolean isNewLine) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyCommonTool.setRichTextBoxContentRichTextBoxRefStringColorBooleanBoolean">
+            <summary>设置 MyCommonTool.setRichTextBoxContent(RichTextBox&amp; yourRtb, String yourStr, Color fontColor, Boolean isNewLine, Boolean isSelectNotChange) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyCommonTool.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyEncryption">
+            <summary>MyCommonHelper.MyEncryption 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyEncryption.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyEncryption.#ctor(MyCommonHelper.MyEncryption)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyEncryption.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyEncryption.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyEncryption.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyEncryption.Constructor">
+            <summary>设置 MyEncryption.MyEncryption() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyEncryption.CreateMD5KeyString">
+            <summary>设置 MyEncryption.CreateMD5Key(String data) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyEncryption.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyExtensionMethods">
+            <summary>MyCommonHelper.MyExtensionMethods 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyExtensionMethods.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyExtensionMethods.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyExtensionMethods.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyExtensionMethods.CloneExOf1DictionaryOfStringM0``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.Dictionary{System.String,``0},System.Collections.Generic.Dictionary{System.String,``0}})">
+            <summary>设置 MyExtensionMethods.CloneEx(Dictionary`2&lt;String,!!0&gt; dc) 的 填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyExtensionMethods.LightCloneOf1ListOfM0``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.List{``0},System.Collections.Generic.List{``0}})">
+            <summary>设置 MyExtensionMethods.LightClone(List`1&lt;!!0&gt; souceList) 的 填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyGetAppointArrayOf1ListOfM0ArrayInt32``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.List{``0[]},System.Int32,``0[]})">
+            <summary>设置 MyExtensionMethods.MyGetAppointArray(List`1&lt;!!0[]&gt; myArratList, Int32 yourIndex) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyAddArrayListIPAddress">
+            <summary>设置 MyExtensionMethods.MyAdd(ArrayList myArratList, IPAddress yourIp) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyAddDictionaryOfStringStringKeyValuePairOfStringString">
+            <summary>设置 MyExtensionMethods.MyAdd(Dictionary`2&lt;String,String&gt; dc, KeyValuePair`2&lt;String,String&gt; yourKeyValuePair) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyAddDictionaryOfStringStringStringString">
+            <summary>设置 MyExtensionMethods.MyAdd(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyAddExDictionaryOfStringStringStringString">
+            <summary>设置 MyExtensionMethods.MyAddEx(Dictionary`2&lt;String,String&gt; dc, String yourKey, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyAddExNameValueCollectionStringString">
+            <summary>设置 MyExtensionMethods.MyAddEx(NameValueCollection dc, String yourKey, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyAddValueStringString">
+            <summary>设置 MyExtensionMethods.MyAddValue(String str, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MySplitIntEndStringCharStringOutInt32Out">
+            <summary>设置 MyExtensionMethods.MySplitIntEnd(String str, Char yourSplitChar, String&amp; yourStr, Int32&amp; yourInt) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MySplitToIntArrayStringCharInt32ArrayOut">
+            <summary>设置 MyExtensionMethods.MySplitToIntArray(String str, Char yourSplitChar, Int32[]&amp; yourIntArray) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyToStringNameValueCollection">
+            <summary>设置 MyExtensionMethods.MyToString(NameValueCollection nvc) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyTrimStrStringStringString">
+            <summary>设置 MyExtensionMethods.MyTrimStr(String str, String startValue, String endVaule) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.MyValueString">
+            <summary>设置 MyExtensionMethods.MyValue(String str) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.ToXmlValueString">
+            <summary>设置 MyExtensionMethods.ToXmlValue(String str) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.myAddNameValueCollectionStringString">
+            <summary>设置 MyExtensionMethods.myAdd(NameValueCollection nvc, String yourName, String yourValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyExtensionMethods.myTextTextBox">
+            <summary>设置 MyExtensionMethods.myText(TextBox tb) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyNetConfig">
+            <summary>MyCommonHelper.MyNetConfig 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyNetConfig.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyNetConfig.#ctor(MyCommonHelper.MyNetConfig)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyNetConfig.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyNetConfig.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyNetConfig.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyNetConfig.Constructor">
+            <summary>设置 MyNetConfig.MyNetConfig() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyNetConfig.PingIpOrDomainNameString">
+            <summary>设置 MyNetConfig.PingIpOrDomainName(String strIpOrDName) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyNetConfig.getBroadcasetAddress">
+            <summary>设置 MyNetConfig.getBroadcasetAddress() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyNetConfig.getNetworkInterfaceAddress">
+            <summary>设置 MyNetConfig.getNetworkInterfaceAddress() 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyNetConfig.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMySerialPort">
+            <summary>MyCommonHelper.MySerialPort 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMySerialPort.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMySerialPort.#ctor(MyCommonHelper.MySerialPort)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMySerialPort.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMySerialPort.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.Constructor">
+            <summary>设置 MySerialPort.MySerialPort() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.ConstructorControl">
+            <summary>设置 MySerialPort.MySerialPort(Control yourControl) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.OnMySerialPortReceiveDataAddMySerialPortdelegateReceiveData">
+            <summary>设置 MySerialPort.add_OnMySerialPortReceiveData(delegateReceiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.OnMySerialPortReceiveDataRemoveMySerialPortdelegateReceiveData">
+            <summary>设置 MySerialPort.remove_OnMySerialPortReceiveData(delegateReceiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.OnMySerialPortThrowErrorAddMySerialPortdelegateThrowError">
+            <summary>设置 MySerialPort.add_OnMySerialPortThrowError(delegateThrowError value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.OnMySerialPortThrowErrorRemoveMySerialPortdelegateThrowError">
+            <summary>设置 MySerialPort.remove_OnMySerialPortThrowError(delegateThrowError value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.closeSerialPort">
+            <summary>设置 MySerialPort.closeSerialPort() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.comm_DataReceivedObjectSerialDataReceivedEventArgs">
+            <summary>设置 MySerialPort.comm_DataReceived(Object sender, SerialDataReceivedEventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.creatNewSerialPort">
+            <summary>设置 MySerialPort.creatNewSerialPort() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.myErroerMessageGet">
+            <summary>设置 MySerialPort.get_myErroerMessage() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.myGetSerialList">
+            <summary>设置 MySerialPort.myGetSerialList() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.myIsByteGet">
+            <summary>设置 MySerialPort.get_myIsByte() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.myIsByteSetBoolean">
+            <summary>设置 MySerialPort.set_myIsByte(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.myIsWantInvokeGet">
+            <summary>设置 MySerialPort.get_myIsWantInvoke() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.openSerialPortStringInt32">
+            <summary>设置 MySerialPort.openSerialPort(String yourPortName, Int32 yourBaudRate) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.triggerErrorString">
+            <summary>设置 MySerialPort.triggerError(String yourMes) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.OnMySerialPortReceiveDataAddMySerialPortdelegateReceiveData">
+            <summary>设置 MySerialPort.add_OnMySerialPortReceiveData(delegateReceiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.OnMySerialPortReceiveDataRemoveMySerialPortdelegateReceiveData">
+            <summary>设置 MySerialPort.remove_OnMySerialPortReceiveData(delegateReceiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.OnMySerialPortThrowErrorAddMySerialPortdelegateThrowError">
+            <summary>设置 MySerialPort.add_OnMySerialPortThrowError(delegateThrowError value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.OnMySerialPortThrowErrorRemoveMySerialPortdelegateThrowError">
+            <summary>设置 MySerialPort.remove_OnMySerialPortThrowError(delegateThrowError value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.closeSerialPort">
+            <summary>设置 MySerialPort.closeSerialPort() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.comm_DataReceivedObjectSerialDataReceivedEventArgs">
+            <summary>设置 MySerialPort.comm_DataReceived(Object sender, SerialDataReceivedEventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.creatNewSerialPort">
+            <summary>设置 MySerialPort.creatNewSerialPort() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.myErroerMessageGet">
+            <summary>设置 MySerialPort.get_myErroerMessage() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.myGetSerialList">
+            <summary>设置 MySerialPort.myGetSerialList() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.myIsByteGet">
+            <summary>设置 MySerialPort.get_myIsByte() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.myIsByteSetBoolean">
+            <summary>设置 MySerialPort.set_myIsByte(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.myIsWantInvokeGet">
+            <summary>设置 MySerialPort.get_myIsWantInvoke() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.openSerialPortStringInt32">
+            <summary>设置 MySerialPort.openSerialPort(String yourPortName, Int32 yourBaudRate) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySerialPort.AllInstances.triggerErrorString">
+            <summary>设置 MySerialPort.triggerError(String yourMes) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMySocket">
+            <summary>MyCommonHelper.MySocket 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMySocket.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMySocket.#ctor(MyCommonHelper.MySocket)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMySocket.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMySocket.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.ConstructorIPEndPointInt32">
+            <summary>设置 MySocket.MySocket(IPEndPoint yourIPEndPoint, Int32 yourReceiveTick) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.OnReceiveDataAddMySocketdelegateReceiveData">
+            <summary>设置 MySocket.add_OnReceiveData(delegateReceiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.OnReceiveDataRemoveMySocketdelegateReceiveData">
+            <summary>设置 MySocket.remove_OnReceiveData(delegateReceiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.OnTcpConnectedAddMySocketdelegateConnected">
+            <summary>设置 MySocket.add_OnTcpConnected(delegateConnected value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.OnTcpConnectedRemoveMySocketdelegateConnected">
+            <summary>设置 MySocket.remove_OnTcpConnected(delegateConnected value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.OnTcpConnectionLostedAddMySocketConnectionLosted">
+            <summary>设置 MySocket.add_OnTcpConnectionLosted(ConnectionLosted value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.OnTcpConnectionLostedRemoveMySocketConnectionLosted">
+            <summary>设置 MySocket.remove_OnTcpConnectionLosted(ConnectionLosted value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.connectClient">
+            <summary>设置 MySocket.connectClient() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.connectClientAsync">
+            <summary>设置 MySocket.connectClientAsync() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.disConnectClient">
+            <summary>设置 MySocket.disConnectClient() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.isTcpClientConnectedGet">
+            <summary>设置 MySocket.get_isTcpClientConnected() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.isTcpClientConnectedSetBoolean">
+            <summary>设置 MySocket.set_isTcpClientConnected(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.myErroerMessageGet">
+            <summary>设置 MySocket.get_myErroerMessage() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.myReceiveTimer_ElapsedObjectElapsedEventArgs">
+            <summary>设置 MySocket.myReceiveTimer_Elapsed(Object sender, ElapsedEventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.mySocket_OnMyTcpConnectedString">
+            <summary>设置 MySocket.mySocket_OnMyTcpConnected(String yourInfo) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.newConnectThreadObject">
+            <summary>设置 MySocket.newConnectThread(Object ConnectTcpClient) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.sendDataByteArray">
+            <summary>设置 MySocket.sendData(Byte[] yourData) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.sendDataStringEncoding">
+            <summary>设置 MySocket.sendData(String yourData, Encoding yourEncoding) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMySocket.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.OnReceiveDataAddMySocketdelegateReceiveData">
+            <summary>设置 MySocket.add_OnReceiveData(delegateReceiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.OnReceiveDataRemoveMySocketdelegateReceiveData">
+            <summary>设置 MySocket.remove_OnReceiveData(delegateReceiveData value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.OnTcpConnectedAddMySocketdelegateConnected">
+            <summary>设置 MySocket.add_OnTcpConnected(delegateConnected value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.OnTcpConnectedRemoveMySocketdelegateConnected">
+            <summary>设置 MySocket.remove_OnTcpConnected(delegateConnected value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.OnTcpConnectionLostedAddMySocketConnectionLosted">
+            <summary>设置 MySocket.add_OnTcpConnectionLosted(ConnectionLosted value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.OnTcpConnectionLostedRemoveMySocketConnectionLosted">
+            <summary>设置 MySocket.remove_OnTcpConnectionLosted(ConnectionLosted value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.connectClient">
+            <summary>设置 MySocket.connectClient() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.connectClientAsync">
+            <summary>设置 MySocket.connectClientAsync() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.disConnectClient">
+            <summary>设置 MySocket.disConnectClient() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.isTcpClientConnectedGet">
+            <summary>设置 MySocket.get_isTcpClientConnected() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.isTcpClientConnectedSetBoolean">
+            <summary>设置 MySocket.set_isTcpClientConnected(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.myErroerMessageGet">
+            <summary>设置 MySocket.get_myErroerMessage() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.myReceiveTimer_ElapsedObjectElapsedEventArgs">
+            <summary>设置 MySocket.myReceiveTimer_Elapsed(Object sender, ElapsedEventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.mySocket_OnMyTcpConnectedString">
+            <summary>设置 MySocket.mySocket_OnMyTcpConnected(String yourInfo) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.newConnectThreadObject">
+            <summary>设置 MySocket.newConnectThread(Object ConnectTcpClient) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.sendDataByteArray">
+            <summary>设置 MySocket.sendData(Byte[] yourData) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMySocket.AllInstances.sendDataStringEncoding">
+            <summary>设置 MySocket.sendData(String yourData, Encoding yourEncoding) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyWebTool">
+            <summary>MyCommonHelper.MyWebTool 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper">
+            <summary>MyCommonHelper.MyWebTool+HttpHelper 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.#ctor(MyCommonHelper.MyWebTool.HttpHelper)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.AddHttpHeadsHttpWebRequestListOfKeyValuePairOfStringString">
+            <summary>设置 HttpHelper.AddHttpHeads(HttpWebRequest httpWebRequest, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.AddHttpHeadsWebHeaderCollectionListOfKeyValuePairOfStringString">
+            <summary>设置 HttpHelper.AddHttpHeads(WebHeaderCollection header, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.Constructor">
+            <summary>设置 HttpHelper.HttpHelper() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.SetHeaderValueWebHeaderCollectionStringString">
+            <summary>设置 HttpHelper.SetHeaderValue(WebHeaderCollection header, String name, String value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.StaticConstructor">
+            <summary>设置 HttpHelper.HttpHelper() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__0HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__0(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__1HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__1(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__2HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__2(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__3HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__3(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__4HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__4(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__5HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__5(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__6HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__6(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__7HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__7(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper._cctorb__8HttpWebRequestString">
+            <summary>设置 HttpHelper.&lt;.cctor&gt;b__8(HttpWebRequest yourRequest, String yourHeadValue) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpHelper.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate">
+            <summary>MyCommonHelper.MyWebTool+HttpMultipartDate 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.#ctor(MyCommonHelper.MyWebTool.HttpMultipartDate)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.Constructor">
+            <summary>设置 HttpMultipartDate.HttpMultipartDate() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.ConstructorStringStringStringBooleanString">
+            <summary>设置 HttpMultipartDate.HttpMultipartDate(String yourName, String yourFileName, String yourContentType, Boolean yourIsFile, String yourFileData) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.ContentTypeGet">
+            <summary>设置 HttpMultipartDate.get_ContentType() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.ContentTypeSetString">
+            <summary>设置 HttpMultipartDate.set_ContentType(String value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.FileDataGet">
+            <summary>设置 HttpMultipartDate.get_FileData() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.FileDataSetString">
+            <summary>设置 HttpMultipartDate.set_FileData(String value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.FileNameGet">
+            <summary>设置 HttpMultipartDate.get_FileName() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.FileNameSetString">
+            <summary>设置 HttpMultipartDate.set_FileName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.IsFileGet">
+            <summary>设置 HttpMultipartDate.get_IsFile() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.IsFileSetBoolean">
+            <summary>设置 HttpMultipartDate.set_IsFile(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.NameGet">
+            <summary>设置 HttpMultipartDate.get_Name() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.NameSetString">
+            <summary>设置 HttpMultipartDate.set_Name(String value) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.ContentTypeGet">
+            <summary>设置 HttpMultipartDate.get_ContentType() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.ContentTypeSetString">
+            <summary>设置 HttpMultipartDate.set_ContentType(String value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.FileDataGet">
+            <summary>设置 HttpMultipartDate.get_FileData() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.FileDataSetString">
+            <summary>设置 HttpMultipartDate.set_FileData(String value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.FileNameGet">
+            <summary>设置 HttpMultipartDate.get_FileName() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.FileNameSetString">
+            <summary>设置 HttpMultipartDate.set_FileName(String value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.IsFileGet">
+            <summary>设置 HttpMultipartDate.get_IsFile() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.IsFileSetBoolean">
+            <summary>设置 HttpMultipartDate.set_IsFile(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.NameGet">
+            <summary>设置 HttpMultipartDate.get_Name() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimHttpMultipartDate.AllInstances.NameSetString">
+            <summary>设置 HttpMultipartDate.set_Name(String value) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp">
+            <summary>MyCommonHelper.MyWebTool+MyHttp 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.HttpPostDataStringInt32StringStringBooleanStringString">
+            <summary>设置 MyHttp.HttpPostData(String url, Int32 timeOut, String name, String filename, Boolean isFile, String filePath, String bodyParameter) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.HttpPostDataStringListOfKeyValuePairOfStringStringStringListOfMyWebToolHttpMultipartDateStringInt32Encoding">
+            <summary>设置 MyHttp.HttpPostData(String url, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, String bodyData, List`1&lt;HttpMultipartDate&gt; multipartDateList, String bodyParameter, Int32 timeOut, Encoding yourBodyEncoding) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.SendDataStringStringString">
+            <summary>设置 MyHttp.SendData(String url, String data, String method) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.SendDataStringStringStringListOfKeyValuePairOfStringString">
+            <summary>设置 MyHttp.SendData(String url, String data, String method, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimMyWebTool.ShimMyHttp.StaticConstructor">
+            <summary>设置 MyHttp.MyHttp() 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimNewRoll">
+            <summary>MyCommonHelper.NewRoll 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimNewRoll.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimNewRoll.#ctor(MyCommonHelper.NewRoll)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimNewRoll.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimNewRoll.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.BeginChangeControlControl">
+            <summary>设置 NewRoll.BeginChange(Control controlA, Control controlB) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.BeginChangePanelPanel">
+            <summary>设置 NewRoll.BeginChange(Panel PaneleA, Panel PaneleB) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.BeginChangePanelPanelInt32Point">
+            <summary>设置 NewRoll.BeginChange(Panel PaneleA, Panel PaneleB, Int32 width, Point startposition) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.BeginChangePanelPanelInt32PointInt32Int32">
+            <summary>设置 NewRoll.BeginChange(Panel PaneleA, Panel PaneleB, Int32 width, Point startposition, Int32 speed, Int32 len) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.BeginRowUpPanelPanelInt32Point">
+            <summary>设置 NewRoll.BeginRowUp(Panel PaneleA, Panel PaneleB, Int32 height, Point startposition) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.Constructor">
+            <summary>设置 NewRoll.NewRoll() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.ConstructorInt32Int32">
+            <summary>设置 NewRoll.NewRoll(Int32 speed, Int32 len) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.RollLenGet">
+            <summary>设置 NewRoll.get_RollLen() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.RollLenSetInt32">
+            <summary>设置 NewRoll.set_RollLen(Int32 value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.RollSpeedGet">
+            <summary>设置 NewRoll.get_RollSpeed() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.RollSpeedSetInt32">
+            <summary>设置 NewRoll.set_RollSpeed(Int32 value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.mySystime_Tick_AtoBObjectEventArgs">
+            <summary>设置 NewRoll.mySystime_Tick_AtoB(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.mySystime_Tick_AupBObjectEventArgs">
+            <summary>设置 NewRoll.mySystime_Tick_AupB(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.mySystime_Tick_BtoAObjectEventArgs">
+            <summary>设置 NewRoll.mySystime_Tick_BtoA(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimNewRoll.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.BeginChangePanelPanel">
+            <summary>设置 NewRoll.BeginChange(Panel PaneleA, Panel PaneleB) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.BeginChangePanelPanelInt32Point">
+            <summary>设置 NewRoll.BeginChange(Panel PaneleA, Panel PaneleB, Int32 width, Point startposition) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.BeginChangePanelPanelInt32PointInt32Int32">
+            <summary>设置 NewRoll.BeginChange(Panel PaneleA, Panel PaneleB, Int32 width, Point startposition, Int32 speed, Int32 len) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.BeginRowUpPanelPanelInt32Point">
+            <summary>设置 NewRoll.BeginRowUp(Panel PaneleA, Panel PaneleB, Int32 height, Point startposition) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.RollLenGet">
+            <summary>设置 NewRoll.get_RollLen() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.RollLenSetInt32">
+            <summary>设置 NewRoll.set_RollLen(Int32 value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.RollSpeedGet">
+            <summary>设置 NewRoll.get_RollSpeed() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.RollSpeedSetInt32">
+            <summary>设置 NewRoll.set_RollSpeed(Int32 value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.mySystime_Tick_AtoBObjectEventArgs">
+            <summary>设置 NewRoll.mySystime_Tick_AtoB(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.mySystime_Tick_AupBObjectEventArgs">
+            <summary>设置 NewRoll.mySystime_Tick_AupB(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimNewRoll.AllInstances.mySystime_Tick_BtoAObjectEventArgs">
+            <summary>设置 NewRoll.mySystime_Tick_BtoA(Object sender, EventArgs e) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimStringHelper">
+            <summary>MyCommonHelper.StringHelper 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimStringHelper.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimStringHelper.#ctor(MyCommonHelper.StringHelper)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimStringHelper.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimStringHelper.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimStringHelper.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimStringHelper.Constructor">
+            <summary>设置 StringHelper.StringHelper() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimStringHelper.EncodeXmlExString">
+            <summary>设置 StringHelper.EncodeXmlEx(String strHtml) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimStringHelper.EncodeXmlString">
+            <summary>设置 StringHelper.EncodeXml(String strHtml) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimStringHelper.StrListAddListOfStringString">
+            <summary>设置 StringHelper.StrListAdd(List`1&lt;String&gt; strList, String yourSplit) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimStringHelper.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimVoiceService">
+            <summary>MyCommonHelper.VoiceService 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimVoiceService.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimVoiceService.#ctor(MyCommonHelper.VoiceService)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimVoiceService.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimVoiceService.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimVoiceService.Beep">
+            <summary>设置 VoiceService.Beep() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimVoiceService.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimVoiceService.Constructor">
+            <summary>设置 VoiceService.VoiceService() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimVoiceService.SpVoiceInitialization">
+            <summary>设置 VoiceService.SpVoiceInitialization() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimVoiceService.SpeakString">
+            <summary>设置 VoiceService.Speak(String yourData) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimVoiceService.StaticConstructor">
+            <summary>设置 VoiceService.VoiceService() 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimVoiceService.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimmyUdp">
+            <summary>MyCommonHelper.myUdp 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimmyUdp.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimmyUdp.#ctor(MyCommonHelper.myUdp)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimmyUdp.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.ShimmyUdp.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.Constructor">
+            <summary>设置 myUdp.myUdp() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.ConstructorInt32">
+            <summary>设置 myUdp.myUdp(Int32 yourPort) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.myClose">
+            <summary>设置 myUdp.myClose() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.myErroerMessageGet">
+            <summary>设置 myUdp.get_myErroerMessage() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.myNowIPEndPointGet">
+            <summary>设置 myUdp.get_myNowIPEndPoint() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.myReceive">
+            <summary>设置 myUdp.myReceive() 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.ShimmyUdp.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.AllInstances.myClose">
+            <summary>设置 myUdp.myClose() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.AllInstances.myErroerMessageGet">
+            <summary>设置 myUdp.get_myErroerMessage() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.AllInstances.myNowIPEndPointGet">
+            <summary>设置 myUdp.get_myNowIPEndPoint() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.ShimmyUdp.AllInstances.myReceive">
+            <summary>设置 myUdp.myReceive() 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.Shimmyini">
+            <summary>MyCommonHelper.myini 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.Shimmyini.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.Shimmyini.#ctor(MyCommonHelper.myini)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.Shimmyini.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.Shimmyini.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.Shimmyini.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.Shimmyini.Constructor">
+            <summary>设置 myini.myini() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.Shimmyini.IniReadValueStringStringString">
+            <summary>设置 myini.IniReadValue(String Section, String Key, String filepath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.Shimmyini.IniWriteValueStringStringStringString">
+            <summary>设置 myini.IniWriteValue(String Section, String Key, String Value, String filepath) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.Shimmyini.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubErrorLog">
+            <summary>MyCommonHelper.ErrorLog 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubErrorLog.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubErrorLog.InitializeStub">
+            <summary>初始化 type StubErrorLog 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubErrorLog.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubErrorLog.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubErrorLog.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubFileService">
+            <summary>MyCommonHelper.FileService 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubFileService.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubFileService.InitializeStub">
+            <summary>初始化 type StubFileService 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubFileService.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubFileService.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubFileService.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubMyCommonTool">
+            <summary>MyCommonHelper.MyCommonTool 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMyCommonTool.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMyCommonTool.InitializeStub">
+            <summary>初始化 type StubMyCommonTool 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyCommonTool.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyCommonTool.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyCommonTool.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubMyEncryption">
+            <summary>MyCommonHelper.MyEncryption 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMyEncryption.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMyEncryption.InitializeStub">
+            <summary>初始化 type StubMyEncryption 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyEncryption.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyEncryption.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyEncryption.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubMyNetConfig">
+            <summary>MyCommonHelper.MyNetConfig 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMyNetConfig.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMyNetConfig.InitializeStub">
+            <summary>初始化 type StubMyNetConfig 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyNetConfig.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyNetConfig.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMyNetConfig.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubMySerialPort">
+            <summary>MyCommonHelper.MySerialPort 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMySerialPort.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMySerialPort.#ctor(System.Windows.Forms.Control)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMySerialPort.InitializeStub">
+            <summary>初始化 type StubMySerialPort 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMySerialPort.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMySerialPort.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMySerialPort.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubMySocket">
+            <summary>MyCommonHelper.MySocket 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMySocket.#ctor(System.Net.IPEndPoint,System.Int32)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubMySocket.InitializeStub">
+            <summary>初始化 type StubMySocket 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMySocket.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMySocket.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubMySocket.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubStringHelper">
+            <summary>MyCommonHelper.StringHelper 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubStringHelper.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubStringHelper.InitializeStub">
+            <summary>初始化 type StubStringHelper 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubStringHelper.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubStringHelper.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubStringHelper.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubVoiceService">
+            <summary>MyCommonHelper.VoiceService 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubVoiceService.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubVoiceService.InitializeStub">
+            <summary>初始化 type StubVoiceService 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubVoiceService.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubVoiceService.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubVoiceService.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.StubmyUdp">
+            <summary>MyCommonHelper.myUdp 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubmyUdp.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubmyUdp.#ctor(System.Int32)">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.StubmyUdp.InitializeStub">
+            <summary>初始化 type StubmyUdp 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubmyUdp.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubmyUdp.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.StubmyUdp.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.Fakes.Stubmyini">
+            <summary>MyCommonHelper.myini 的存根类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.Stubmyini.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.Fakes.Stubmyini.InitializeStub">
+            <summary>初始化 type Stubmyini 的新实例</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.Stubmyini.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.Stubmyini.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:MyCommonHelper.Fakes.Stubmyini.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+        <member name="T:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper">
+            <summary>MyCommonHelper.FileHelper.CsvFileHelper 的填充码类型</summary>
+        </member>
+        <member name="M:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.#ctor(MyCommonHelper.FileHelper.CsvFileHelper)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="M:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="M:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.Bind(System.IDisposable)">
+            <summary>将接口的成员绑定到此填充码。</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.ConstructorStream">
+            <summary>设置 CsvFileHelper.CsvFileHelper(Stream stream) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.ConstructorStreamEncoding">
+            <summary>设置 CsvFileHelper.CsvFileHelper(Stream stream, Encoding encoding) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.ConstructorStreamEncodingChar">
+            <summary>设置 CsvFileHelper.CsvFileHelper(Stream stream, Encoding encoding, Char yourSeparator) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.ConstructorString">
+            <summary>设置 CsvFileHelper.CsvFileHelper(String filePath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.ConstructorStringEncoding">
+            <summary>设置 CsvFileHelper.CsvFileHelper(String filePath, Encoding encoding) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.CsvSeparatorGet">
+            <summary>设置 CsvFileHelper.get_CsvSeparator() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.CsvSeparatorSetChar">
+            <summary>设置 CsvFileHelper.set_CsvSeparator(Char value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.DataSouceTypeGet">
+            <summary>设置 CsvFileHelper.get_DataSouceType() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.DefaultCsvSeparatorGet">
+            <summary>设置 CsvFileHelper.get_DefaultCsvSeparator() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.DefaultCsvSeparatorSetChar">
+            <summary>设置 CsvFileHelper.set_DefaultCsvSeparator(Char value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.DefaultEncodingGet">
+            <summary>设置 CsvFileHelper.get_DefaultEncoding() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.DefaultEncodingSetEncoding">
+            <summary>设置 CsvFileHelper.set_DefaultEncoding(Encoding value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.Dispose">
+            <summary>设置 CsvFileHelper.Dispose() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.GetListCsvData">
+            <summary>设置 CsvFileHelper.GetListCsvData() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.IsSaveAsExcelGet">
+            <summary>设置 CsvFileHelper.get_IsSaveAsExcel() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.IsSaveAsExcelSetBoolean">
+            <summary>设置 CsvFileHelper.set_IsSaveAsExcel(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.OpenFileString">
+            <summary>设置 CsvFileHelper.OpenFile(String filePath) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.ParseContinueLineString">
+            <summary>设置 CsvFileHelper.ParseContinueLine(String line) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.ParseLineString">
+            <summary>设置 CsvFileHelper.ParseLine(String line) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.SaveCsvFileStringListOfListOfString">
+            <summary>设置 CsvFileHelper.SaveCsvFile(String yourFilePath, List`1&lt;List`1&lt;String&gt;&gt; yourDataSouse) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.SaveCsvFileStringListOfListOfStringBooleanEncoding">
+            <summary>设置 CsvFileHelper.SaveCsvFile(String yourFilePath, List`1&lt;List`1&lt;String&gt;&gt; yourDataSouse, Boolean isAppend, Encoding yourEncode) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.StaticConstructor">
+            <summary>设置 CsvFileHelper.CsvFileHelper() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.TrimColumnsGet">
+            <summary>设置 CsvFileHelper.get_TrimColumns() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.TrimColumnsSetBoolean">
+            <summary>设置 CsvFileHelper.set_TrimColumns(Boolean value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.WriteCsvLineListOfStringTextWriter">
+            <summary>设置 CsvFileHelper.WriteCsvLine(List`1&lt;String&gt; fields, TextWriter writer) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.WriteCsvVeiwListOfListOfStringTextWriter">
+            <summary>设置 CsvFileHelper.WriteCsvVeiw(List`1&lt;List`1&lt;String&gt;&gt; yourListCsvData, TextWriter writer) 的 填充码</summary>
+        </member>
+        <member name="T:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.CsvSeparatorGet">
+            <summary>设置 CsvFileHelper.get_CsvSeparator() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.CsvSeparatorSetChar">
+            <summary>设置 CsvFileHelper.set_CsvSeparator(Char value) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.DataSouceTypeGet">
+            <summary>设置 CsvFileHelper.get_DataSouceType() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.Dispose">
+            <summary>设置 CsvFileHelper.Dispose() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.GetListCsvData">
+            <summary>设置 CsvFileHelper.GetListCsvData() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.ParseContinueLineString">
+            <summary>设置 CsvFileHelper.ParseContinueLine(String line) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.ParseLineString">
+            <summary>设置 CsvFileHelper.ParseLine(String line) 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.TrimColumnsGet">
+            <summary>设置 CsvFileHelper.get_TrimColumns() 的 填充码</summary>
+        </member>
+        <member name="P:MyCommonHelper.FileHelper.Fakes.ShimCsvFileHelper.AllInstances.TrimColumnsSetBoolean">
+            <summary>设置 CsvFileHelper.set_TrimColumns(Boolean value) 的 填充码</summary>
+        </member>
+    </members>
+</doc>

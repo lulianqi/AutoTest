@@ -42,3 +42,7 @@ F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyActiveMQHelper.d
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Apache.NMS.ActiveMQ.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Apache.NMS.dll
 F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyActiveMQHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyActiveMQHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Apache.NMS.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyActiveMQHelper.pdb

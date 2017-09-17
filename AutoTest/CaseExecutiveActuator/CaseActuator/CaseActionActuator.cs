@@ -1463,6 +1463,14 @@ namespace CaseExecutiveActuator.CaseActuator
             }
 
             #region ParameterSaves
+            Action ParameterSavesDataError = () =>
+            {
+                tempError = string.Format("【ID:{0}】ParameterSave 脚本数据不合法", yourRunData.id);
+                yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
+                SetNowActionError(tempError);
+                MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+            };
+
             if(yourRunData.caseAttribute.myParameterSaves!=null)
             {
                 foreach (ParameterSave tempParameterSave in yourRunData.caseAttribute.myParameterSaves)
@@ -1470,55 +1478,146 @@ namespace CaseExecutiveActuator.CaseActuator
                     string tempPickVaule = null;
                     switch (tempParameterSave.parameterFunction)
                     {
+                        #region pick_json
                         case PickOutFunction.pick_json:
-                            string[] tempJsonPickArr=MyAssert.PickJsonParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
-                            if(tempJsonPickArr!=null)
+                            string[] tempJsonPickArr = MyAssert.PickJsonParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
+                            if (tempJsonPickArr != null)
                             {
-                                if(tempParameterSave.parameterAdditionalVaule==null)
+                                if (tempParameterSave.parameterAdditionalVaule == null)
                                 {
                                     tempPickVaule = string.Join(",", tempJsonPickArr);
                                 }
                                 else
                                 {
                                     int tempJsonIndex;
-                                    if( int.TryParse(tempParameterSave.parameterAdditionalVaule,out tempJsonIndex))
+                                    if (int.TryParse(tempParameterSave.parameterAdditionalVaule, out tempJsonIndex))
                                     {
-                                        tempJsonIndex=tempJsonIndex-1;
-                                        if(tempJsonIndex>-1&&tempJsonIndex<tempJsonPickArr.Length)
+                                        tempJsonIndex = tempJsonIndex - 1;
+                                        if (tempJsonIndex > -1 && tempJsonIndex < tempJsonPickArr.Length)
                                         {
                                             tempPickVaule = tempJsonPickArr[tempJsonIndex];
                                         }
                                     }
                                     else
                                     {
-                                        tempError = string.Format("【ID:{0}】ParameterSave 脚本数据不合法", yourRunData.id);
-                                        yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                                        SetNowActionError(tempError);
-                                        MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                                        ParameterSavesDataError();
                                     }
                                 }
                             }
-                            break;
+                            break; 
+                        #endregion
+
+                        #region pick_str
                         case PickOutFunction.pick_str:
-                            string tempFindVaule;
-                            int tempLen;
-                            MyAssert.GetStrPickData(tempParameterSave.parameterFindVaule, out tempFindVaule, out tempLen);
-                            if (tempFindVaule!=null)
+                            if(tempParameterSave.parameterAdditionalVaule == null)
                             {
-                                tempPickVaule = MyAssert.PickStrParameter(tempFindVaule, tempLen, yourExecutionResult.backContent);
+                                tempPickVaule = MyAssert.PickStrParameter(tempParameterSave.parameterFindVaule, 0, yourExecutionResult.backContent);
                             }
                             else
                             {
-                                tempError = string.Format("【ID:{0}】ParameterSave 脚本数据不合法", yourRunData.id);
-                                yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                                SetNowActionError(tempError);
-                                MyActionActuator.SetCaseNodeContentWarning(nowExecutiveNode);
+                                string tempPickStrSartStr;
+                                string tempPickStrEndStr;
+                                int tempPickStrSartInedx;
+                                int tempPickStrLen;
+                                switch (tempParameterSave.parameterAdditionalVaule)
+                                {
+                                    case "str":
+                                        tempPickVaule = MyAssert.PickStrParameter(tempParameterSave.parameterFindVaule, 0, yourExecutionResult.backContent);
+                                        break;
+                                    case "str-str":
+                                        MyAssert.GetStrPickData(tempParameterSave.parameterFindVaule, out tempPickStrSartStr, out tempPickStrEndStr);
+                                        if (tempPickStrEndStr==null)
+                                        {
+                                            ParameterSavesDataError();
+                                        }
+                                        else
+                                        {
+                                            tempPickVaule = MyAssert.PickStrParameter(tempPickStrSartStr, tempPickStrEndStr, yourExecutionResult.backContent);
+                                        }
+                                        break;
+                                    case "str-len":
+                                        MyAssert.GetStrPickData(tempParameterSave.parameterFindVaule, out tempPickStrSartStr, out tempPickStrEndStr);
+                                        if (tempPickStrEndStr==null)
+                                        {
+                                            ParameterSavesDataError();
+                                        }
+                                        else
+                                        {
+                                            if (int.TryParse(tempPickStrEndStr, out tempPickStrLen))
+                                            {
+                                                tempPickVaule = MyAssert.PickStrParameter(tempPickStrSartStr, tempPickStrLen, yourExecutionResult.backContent);
+                                            }
+                                            else
+                                            {
+                                                ParameterSavesDataError();
+                                            }
+                                        }
+                                        break;
+                                    case "index-len":
+                                         MyAssert.GetStrPickData(tempParameterSave.parameterFindVaule, out tempPickStrSartStr, out tempPickStrEndStr);
+                                        if (tempPickStrEndStr==null)
+                                        {
+                                            ParameterSavesDataError();
+                                        }
+                                        else
+                                        {
+                                            if (int.TryParse(tempPickStrEndStr, out tempPickStrLen) && int.TryParse(tempPickStrSartStr, out tempPickStrSartInedx))
+                                            {
+                                                tempPickVaule = MyAssert.PickStrParameter(tempPickStrSartInedx, tempPickStrLen, yourExecutionResult.backContent);
+                                            }
+                                            else
+                                            {
+                                                ParameterSavesDataError();
+                                            }
+                                        }
+                                        break;
+                                    case "index":
+                                        if (int.TryParse(tempParameterSave.parameterFindVaule, out tempPickStrSartInedx))
+                                        {
+                                            tempPickVaule = MyAssert.PickStrParameter(tempPickStrSartInedx, yourExecutionResult.backContent.Length - tempPickStrSartInedx, yourExecutionResult.backContent);
+                                        }
+                                        else
+                                        {
+                                            ParameterSavesDataError();
+                                        }
+                                        break;
+                                    default:
+                                        break;
+
+                                }
                             }
-                            
-                            break;
+                            break; 
+                        #endregion
+
+                        #region pick_xml
                         case PickOutFunction.pick_xml:
-                            tempPickVaule = MyAssert.PickXmlParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
-                            break;
+                            string[] tempXmlPickArr = MyAssert.PickXmlParameter(tempParameterSave.parameterFindVaule, yourExecutionResult.backContent);
+                            if (tempXmlPickArr != null)
+                            {
+                                if (tempParameterSave.parameterAdditionalVaule == null)
+                                {
+                                    tempPickVaule = string.Join(",", tempXmlPickArr);
+                                }
+                                else
+                                {
+                                    int tempXmlIndex;
+                                    if (int.TryParse(tempParameterSave.parameterAdditionalVaule, out tempXmlIndex))
+                                    {
+                                        tempXmlIndex = tempXmlIndex - 1;
+                                        if (tempXmlIndex > -1 && tempXmlIndex < tempXmlPickArr.Length)
+                                        {
+                                            tempPickVaule = tempXmlPickArr[tempXmlIndex];
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ParameterSavesDataError();
+                                    }
+                                }
+                            }
+                            break; 
+                        #endregion
+
                         default:
                             tempError = string.Format("【ID:{0}】 ParameterSave 暂不支持该数据提取方式", yourRunData.id);
                             yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);

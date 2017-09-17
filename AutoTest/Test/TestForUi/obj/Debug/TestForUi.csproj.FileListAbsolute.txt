@@ -88,3 +88,13 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyActiveMQHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySqlHelper.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySql.Data.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySqlHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyActiveMQHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySqlHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Tamir.SharpSSH.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Apache.NMS.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySql.Data.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\DiffieHellman.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Org.Mentalis.Security.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyActiveMQHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySqlHelper.pdb
