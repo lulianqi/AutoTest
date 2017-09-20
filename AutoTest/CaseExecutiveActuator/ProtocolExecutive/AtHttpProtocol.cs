@@ -116,21 +116,13 @@ namespace CaseExecutiveActuator.ProtocolExecutive
 
                     myWatch.Stop();
 
-                    Stream ReceiveStream = result.GetResponseStream();
+                    Stream receiveStream = result.GetResponseStream();
 
-                    Byte[] read = new Byte[512];
-                    int bytes = ReceiveStream.Read(read, 0, 512);
+                    using (var httpStreamReader = new StreamReader(receiveStream, Encoding.UTF8))
+                    {
+                        re += httpStreamReader.ReadToEnd();
+                    }
 
-                    if (showResponseHeads)
-                    {
-                        re = result.Headers.ToString();
-                    }
-                    while (bytes > 0)
-                    {
-                        Encoding encode = System.Text.Encoding.GetEncoding("UTF-8");
-                        re += encode.GetString(read, 0, bytes);
-                        bytes = ReceiveStream.Read(read, 0, 512);
-                    }
                 }
                 catch (WebException wex)
                 {

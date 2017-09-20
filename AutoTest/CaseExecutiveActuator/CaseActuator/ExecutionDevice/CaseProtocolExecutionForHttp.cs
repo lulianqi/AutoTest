@@ -193,7 +193,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             {
                 //在调用该函数前保证nowExecutionContent.ErrorMessage为空，且as一定成功
                 MyBasicHttpExecutionContent nowExecutionContent = yourExecutionContent as MyBasicHttpExecutionContent;
-                myResult.caseProtocol = CaseProtocol.vanelife_http;
+                myResult.caseProtocol = CaseProtocol.http;
                 myResult.caseTarget = nowExecutionContent.MyExecutionTarget;
                 string tempError;
                 string httpUri;

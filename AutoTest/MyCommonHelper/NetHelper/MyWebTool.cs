@@ -253,7 +253,27 @@ namespace MyCommonHelper.NetHelper
             /// <returns>back</returns>
             public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName)
             {
-                string re = "";
+                return SendData(url, data, method, heads, saveFileName,null);
+            }
+
+            /// <summary>
+            /// i will Send Data (you can put Head in Request)
+            /// </summary>
+            /// <param name="url"> url [http://,https:// ,ftp:// ,file:// ]</param>
+            /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
+            /// <param name="method">GET/POST</param>
+            /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
+            /// <param name="saveFileName">save your response as file （if not need set it null）</param>
+            /// <returns>back</returns>
+            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName,System.Threading.ManualResetEvent manualResetEvent)
+            {
+                Action WaitStartSignal = ()=>{
+                    if(manualResetEvent!=null)
+                    {
+                        manualResetEvent.WaitOne();
+                    }
+                };
+                string re ;
                 bool hasBody = !string.IsNullOrEmpty(data);
                 bool needBody = method.ToUpper() == "POST" || method.ToUpper() == "PUT";
                 WebRequest wr = null;
@@ -285,9 +305,10 @@ namespace MyCommonHelper.NetHelper
                         {
                             SomeBytes = Encoding.UTF8.GetBytes(data);
                             wr.ContentLength = SomeBytes.Length;
+                            WaitStartSignal();
                             Stream newStream = wr.GetRequestStream();                //连接建立Head已经发出，POST请求体还没有发送
                             newStream.Write(SomeBytes, 0, SomeBytes.Length);         //请求交互完成
-                            newStream.Close();
+                            newStream.Close();                                       //释放写入流（MSDN的示例也是在此处释放）
                         }
                         else
                         {
@@ -295,7 +316,7 @@ namespace MyCommonHelper.NetHelper
                         }
                     }
 
-
+                    WaitStartSignal();
                     result = wr.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
 
                     Stream receiveStream = result.GetResponseStream();
@@ -304,7 +325,7 @@ namespace MyCommonHelper.NetHelper
                     {
                         using (var httpStreamReader = new StreamReader(receiveStream, responseEncoding))
                         {
-                            re += httpStreamReader.ReadToEnd();
+                            re = httpStreamReader.ReadToEnd();
                         }
 
                         //使用如下方法自己读取byte[] 是可行的，不过在Encoding 可变编码方式时，不能确保分段不被截断，直接使用内置StreamReader也是可以的
@@ -404,7 +425,7 @@ namespace MyCommonHelper.NetHelper
             }
 
             /// <summary>
-            /// i will Send Data with multipart,if you do not want updata any file you can set isFile is false and set filePath is null (not maintain)
+            /// i will Send Data with multipart,if you do not want updata any file you can set isFile is false and set filePath is null (not maintain 请使用以HttpMultipartDate为参数的重载版本)
             /// </summary>
             /// <param name="url">url</param>
             /// <param name="timeOut">timeOut</param>

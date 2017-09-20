@@ -464,7 +464,7 @@ namespace CaseExecutiveActuator.CaseActuator
         /// <summary>
         /// 执行线程同步器
         /// </summary>
-        private ManualResetEvent myManualResetEvent = new ManualResetEvent(true);
+        private ManualResetEvent executiveManualResetEvent = new ManualResetEvent(true);
 
         /// <summary>
         /// 执行器名称
@@ -1348,7 +1348,7 @@ namespace CaseExecutiveActuator.CaseActuator
             {
                 MyActionActuator.SetCaseNodePause(nowExecutiveNode);
             }
-            myManualResetEvent.WaitOne();
+            executiveManualResetEvent.WaitOne();
             if (runState == CaseActuatorState.Stoping)
             {
                 nowAdditionalInfo = new ExecutiveAdditionalInfo(true);
@@ -2032,7 +2032,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     return false;
                 case  CaseActuatorState.Pause:
                     SetRunState(CaseActuatorState.Running);
-                    myManualResetEvent.Set();
+                    executiveManualResetEvent.Set();
                     SetNowExecutiveData("任务恢复");
                     return true;
                 case CaseActuatorState.Stop:
@@ -2048,7 +2048,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     caseRunTime.readyStart(yourStartNode);
                     runExecutionResultList.Clear();
                     SetRunState(CaseActuatorState.Running);
-                    myManualResetEvent.Set();
+                    executiveManualResetEvent.Set();
                     CreateNewActuatorTask();
                     SetNowExecutiveData("任务开始");
                     return true;
@@ -2069,7 +2069,7 @@ namespace CaseExecutiveActuator.CaseActuator
         {
             if (runState == CaseActuatorState.Running)
             {
-                myManualResetEvent.Reset();
+                executiveManualResetEvent.Reset();
                 SetRunState(CaseActuatorState.Pause);
                 SetNowExecutiveData("任务已暂停");
                 return true;
@@ -2095,7 +2095,7 @@ namespace CaseExecutiveActuator.CaseActuator
             }
             else if (runState == CaseActuatorState.Pause)
             {
-                myManualResetEvent.Set();
+                executiveManualResetEvent.Set();
                 SetRunState(CaseActuatorState.Stoping);
                 SetNowExecutiveData("正在终止任务");
                 return true;
@@ -2122,9 +2122,9 @@ namespace CaseExecutiveActuator.CaseActuator
             if (runState == CaseActuatorState.Running)
             {
                 PauseCaseScript();
-                myManualResetEvent.Set();
+                executiveManualResetEvent.Set();
                 SetNowExecutiveData("单步执行>");
-                myManualResetEvent.Reset();
+                executiveManualResetEvent.Reset();
                 return true;
 
             }
@@ -2134,8 +2134,8 @@ namespace CaseExecutiveActuator.CaseActuator
                 {
                     PauseCaseScript();
                     SetNowExecutiveData("单步执行>");
-                    myManualResetEvent.Set();
-                    myManualResetEvent.Reset();
+                    executiveManualResetEvent.Set();
+                    executiveManualResetEvent.Reset();
                     return true;
                 }
                 else
@@ -2147,8 +2147,8 @@ namespace CaseExecutiveActuator.CaseActuator
             else if (runState == CaseActuatorState.Pause)
             {
                 SetNowExecutiveData("单步执行>");
-                myManualResetEvent.Set();
-                myManualResetEvent.Reset();
+                executiveManualResetEvent.Set();
+                executiveManualResetEvent.Reset();
                 return true;
             }
             else if (runState == CaseActuatorState.Running)
@@ -2174,7 +2174,7 @@ namespace CaseExecutiveActuator.CaseActuator
             if (runState == CaseActuatorState.Stop)
             {
                 SetRunState(CaseActuatorState.Trying);
-                myManualResetEvent.Set();
+                executiveManualResetEvent.Set();
                 CreateNewActuatorTry(yourNode);
                 return true;
             }

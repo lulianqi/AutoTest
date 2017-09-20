@@ -30,7 +30,10 @@ namespace TestForDefaultClass
         public delegate void Mydelegate();
         static void Main(string[] args)
         {
-            Console.ReadKey(); 
+            Console.ReadKey();
+            
+
+
             PipelinedHttp();
 
             //for (int i = 0; i < 1; i++)
@@ -245,10 +248,11 @@ namespace TestForDefaultClass
         public static void RunTestForManualResetEvent()
         {
             //ExecutionContext.SuppressFlow();
-            for(int i=0;i<100;i++)
+            for(int i=0;i<200;i++)
             {
                 //http://pv.sohu.com/cityjson?ie=utf-8
-                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://wxwyjtest.huala.com/huala/v3/seller/list?page=1&size=10&lat=29.885259&lng=121.579006")); Console.WriteLine("stop id is " + ((int)ob).ToString()); }), 0);
+                //Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://wxwyjtest.huala.com/huala/v3/seller/list?page=1&size=10&lat=29.885259&lng=121.579006")); Console.WriteLine("stop id is " + ((int)ob).ToString()); }), 0);
+                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "GET", null, null, manualResetEvent)); Console.WriteLine("stop id is " + ((int)ob).ToString()); }), 0);
                 //td.Priority = ThreadPriority.AboveNormal;
                 td.Start(i);
             }
@@ -257,7 +261,7 @@ namespace TestForDefaultClass
 
         public static void PipelinedHttp()
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 200; i++)
             {
                 WebRequest wr = WebRequest.Create("http://pv.sohu.com/cityjson?ie=utf-8");
                 wr.Method = "GET";
@@ -267,23 +271,23 @@ namespace TestForDefaultClass
 
                 string re = "";
 
-                //IAsyncResult r = wr.BeginGetResponse(new AsyncCallback(RespCallback), wr);
+                IAsyncResult r = wr.BeginGetResponse(new AsyncCallback(RespCallback), wr);
 
-                WebResponse result = wr.GetResponse();
-                Stream ReceiveStream = result.GetResponseStream();
-                Byte[] read = new Byte[75];
-                int bytes = ReceiveStream.Read(read, 0, 75);
-                while (bytes > 0)
-                {
-                    re += Encoding.UTF8.GetString(read, 0, bytes);
-                    bytes = ReceiveStream.Read(read, 0, 75);
-                }
-                System.Diagnostics.Debug.WriteLine(re);
+                //WebResponse result = wr.GetResponse();
+                //Stream ReceiveStream = result.GetResponseStream();
+                //Byte[] read = new Byte[75];
+                //int bytes = ReceiveStream.Read(read, 0, 75);
+                //while (bytes > 0)
+                //{
+                //    re += Encoding.UTF8.GetString(read, 0, bytes);
+                //    bytes = ReceiveStream.Read(read, 0, 75);
+                //}
+                //System.Diagnostics.Debug.WriteLine(re);
 
-                result.Close();
-                result = wr.GetResponse();
-                result.Close();
-                result = wr.GetResponse();
+                //result.Close();
+                //result = wr.GetResponse();
+                //result.Close();
+                //result = wr.GetResponse();
             }
 
         }

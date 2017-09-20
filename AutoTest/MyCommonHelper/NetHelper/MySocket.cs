@@ -202,6 +202,10 @@ namespace MyCommonHelper.NetHelper
         /// </summary>
         public void DisConnect()
         {
+            if (myTcpClient==null)
+            {
+                return;
+            }
             myTcpClient.Close();
             myNetworkStream = null;
             if (myReceiveTimer != null)
