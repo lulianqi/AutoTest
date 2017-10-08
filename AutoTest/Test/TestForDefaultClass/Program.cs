@@ -31,15 +31,7 @@ namespace TestForDefaultClass
         static void Main(string[] args)
         {
             Console.ReadKey();
-            
-
-
             PipelinedHttp();
-
-            //for (int i = 0; i < 1; i++)
-            //{
-            //    Console.WriteLine(MyWebTool.MyHttp.SendData("http://www.baidu.com"));
-            //}
 
 
             Process myProcess = Process.GetCurrentProcess();
@@ -48,8 +40,14 @@ namespace TestForDefaultClass
 
             ExecutionContext.SuppressFlow();
 
+           
+
             Console.ReadKey(); 
             RunTestForManualResetEvent();
+
+            Console.ReadKey();
+            isOk = true;
+
             //for (int i = 0; i < 500; i++)
             {
                 Console.ReadKey();
@@ -243,16 +241,42 @@ namespace TestForDefaultClass
             }
         }
 
+        //public static readonly string testUrl = "http://www.youku.com/?spm=a2h0z.8244218.qheader.5~5~5!3~1~3~A";
+        //public static readonly string testUrl = "http://www.baidu.com";
+        //public static readonly string testUrl = "http://wxv4.huala.com/app.html";
+        //public static readonly string testUrl = "http://wl.jd.com/wl.js";
+        //public static readonly string testUrl = "http://shared-https.ydstatic.com/gouwuex/ext/script/load_url_s.txt?v=1507378";   //
+        //public static readonly string testUrl = "http://search.mi.com/search_%E6%89%8B%E6%9C%BA";
+        //public static readonly string testUrl = "http://wxv4.huala.com/huala/v3/seller/detail/562";   //http://wxv4.huala.com/huala/v3/iscollects/562
+        public static readonly string testUrl = "http://hz.meituan.com/ptapi/getHotCinema"; 
+
         //public static AutoResetEvent manualResetEvent = new AutoResetEvent(false);
         public static ManualResetEvent manualResetEvent = new ManualResetEvent(false);
+
+        public static bool isOk = false;
+       
+
         public static void RunTestForManualResetEvent()
         {
             //ExecutionContext.SuppressFlow();
-            for(int i=0;i<200;i++)
+            for(int i=0;i<100;i++)
             {
                 //http://pv.sohu.com/cityjson?ie=utf-8
                 //Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); manualResetEvent.WaitOne(); System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://wxwyjtest.huala.com/huala/v3/seller/list?page=1&size=10&lat=29.885259&lng=121.579006")); Console.WriteLine("stop id is " + ((int)ob).ToString()); }), 0);
-                Thread td = new Thread(new ParameterizedThreadStart((object ob) => { Console.WriteLine("start > " + ((int)ob).ToString()); Thread.Sleep(1000); System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "GET", null, null, manualResetEvent)); Console.WriteLine("stop id is " + ((int)ob).ToString()); }), 0);
+                Thread td = new Thread(new ParameterizedThreadStart((object ob) => {
+                    Console.WriteLine("start > " + ((int)ob).ToString());
+                    Thread.Sleep(1000);
+                    manualResetEvent.WaitOne();
+                    //while (!isOk)
+                    //{
+                    //    Thread.Sleep(10);
+                    //}
+                    for (int ii = 0; ii < 50; ii++)
+                    {
+                        System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData(testUrl, null, "GET", null, null, manualResetEvent));
+                    }
+                    Console.WriteLine("stop id is " + ((int)ob).ToString());
+                }), 0);
                 //td.Priority = ThreadPriority.AboveNormal;
                 td.Start(i);
             }
@@ -261,9 +285,9 @@ namespace TestForDefaultClass
 
         public static void PipelinedHttp()
         {
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < 5000; i++)
             {
-                WebRequest wr = WebRequest.Create("http://pv.sohu.com/cityjson?ie=utf-8");
+                WebRequest wr = WebRequest.Create(testUrl);
                 wr.Method = "GET";
                 wr.ContentType = "application/x-www-form-urlencoded";
                 ((HttpWebRequest)wr).KeepAlive = true;
@@ -295,6 +319,11 @@ namespace TestForDefaultClass
 
         private static void RespCallback(IAsyncResult asynchronousResult)
         {
+            //当前进程
+            //Process current = Process.GetCurrentProcess();
+            //进程下线程
+            //ProcessThreadCollection allThreads = current.Threads;
+            //System.Diagnostics.Debug.WriteLine("&&&&&&&&&&&&&&&&&&&&&&" + allThreads.Count);
             try
             {
                 // Set the State of request to asynchronous.
@@ -311,7 +340,7 @@ namespace TestForDefaultClass
                     re += Encoding.UTF8.GetString(read, 0, bytes);
                     bytes = responseStream.Read(read, 0, 512);
                 }
-                System.Diagnostics.Debug.WriteLine(re);
+                //System.Diagnostics.Debug.WriteLine(re);
                 response.Close();
             }
             catch (WebException e)

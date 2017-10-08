@@ -1,0 +1,6 @@
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.exe.config
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.csprojResolveAssemblyReference.cache

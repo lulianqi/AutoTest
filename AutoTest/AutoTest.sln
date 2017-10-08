@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCommonControl", "MyControl\MyCommonControl.csproj", "{AAA8BDB9-2468-4338-A8E8-BC2CE2752051}"
 EndProject
@@ -48,6 +48,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveMQTest", "IndependentTool\ActiveMQTest\ActiveMQTest.csproj", "{C59A6733-A1F2-4293-94C1-13BEE0D38616}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShanxiHuala_Interface", "IndependentTool\ShanxiHuala_Interface\ShanxiHuala_Interface.csproj", "{4A82E383-2D9A-4FF5-B541-F113DE605AB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForPipeHttp", "Test\TestForPipeHttp\TestForPipeHttp.csproj", "{321001FA-A07C-416D-8DC0-44B50DE56ABA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPipeHttpHelper", "MyPipeHttpHelper\MyPipeHttpHelper.csproj", "{ACAFE60B-C691-4ABF-9208-E6538663A011}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +139,14 @@ Global
 		{4A82E383-2D9A-4FF5-B541-F113DE605AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A82E383-2D9A-4FF5-B541-F113DE605AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A82E383-2D9A-4FF5-B541-F113DE605AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{321001FA-A07C-416D-8DC0-44B50DE56ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{321001FA-A07C-416D-8DC0-44B50DE56ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{321001FA-A07C-416D-8DC0-44B50DE56ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{321001FA-A07C-416D-8DC0-44B50DE56ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACAFE60B-C691-4ABF-9208-E6538663A011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACAFE60B-C691-4ABF-9208-E6538663A011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACAFE60B-C691-4ABF-9208-E6538663A011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACAFE60B-C691-4ABF-9208-E6538663A011}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +162,7 @@ Global
 		{F2A16124-3851-41F0-9588-776AAC528AEC} = {7267D9B6-B9DB-45D6-9616-95F366B1802B}
 		{C59A6733-A1F2-4293-94C1-13BEE0D38616} = {3DE4A3C8-3BF8-49A7-AB01-230E01542731}
 		{4A82E383-2D9A-4FF5-B541-F113DE605AB4} = {3DE4A3C8-3BF8-49A7-AB01-230E01542731}
+		{321001FA-A07C-416D-8DC0-44B50DE56ABA} = {7267D9B6-B9DB-45D6-9616-95F366B1802B}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
