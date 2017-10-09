@@ -23,23 +23,22 @@ namespace MyPipeHttpHelper
         public event delegatePipeStateOut OnPipeStateReport;
         public event delegatePipeResponseOut OnPipeResponseReport;
 
-        public int id = 0;
-        public PipeState state = PipeState.NotConnected;   //仅表示当前PipeHttp Socket状态，当前PipeHttp可能创建多个Socket连接，之前创建的状态不再维护。
-        public Socket mySocket;        //管道连接
-        public bool isReportResponse = false; //是否将返回数据推送给上层应用
-        public int reConectCount = 0;  //在指定数目后更新管道(默认0表示一直使用初始管道)（因为部分nginx都有100的限制），设置后会让单条管道发送性能下降
+        private int id = 0;
+        private PipeState state = PipeState.NotConnected;   //仅表示当前PipeHttp Socket状态，当前PipeHttp可能创建多个Socket连接，之前创建的状态不再维护。
+        private Socket mySocket;        //管道连接
+        private bool isReportResponse = false; //是否将返回数据推送给上层应用
+        private int reConectCount = 0;  //在指定数目后更新管道(默认0表示一直使用初始管道)（因为部分nginx都有100的限制），设置后会让单条管道发送性能下降
         private int nowConectCount = 0;
         Thread reciveThread;           //接收线程
         private IPAddress dnsIp;
         private int reciveBufferSize = 1024 * 128;  //接收缓存，当需要大量PipeHttp时请设置较小值（当isReportResponse为false该值无效）
 
 
-        public PipeHttp()
+        public PipeHttp():this(0,true)
         {
-            
-            //Connect();
         }
-        public PipeHttp(int yourReConectCount)
+
+        public PipeHttp(int yourReConectCount, bool yourIsReportResponse)
         {
             lock (idIndexLock)
             {
@@ -47,7 +46,17 @@ namespace MyPipeHttpHelper
                 idIndex++;
             }
             reConectCount = yourReConectCount;
+            isReportResponse = yourIsReportResponse;
             //Connect();
+        }
+
+        /// <summary>
+        /// get or set ReciveBufferSize 
+        /// </summary>
+        public int ReciveBufferSize
+        {
+            get { return reciveBufferSize; }
+            set { reciveBufferSize = value; }
         }
 
         private void ReportPipeState(string mes)
@@ -58,6 +67,8 @@ namespace MyPipeHttpHelper
             }
         }
 
+
+
         private void ReportPipeResponse(byte[] bytes)
         {
             if (OnPipeResponseReport != null)
@@ -66,7 +77,7 @@ namespace MyPipeHttpHelper
             }
         }
 
-        private bool Connect()
+        public bool Connect()
         {
             state = PipeState.Connecting;
             if(string.IsNullOrEmpty(rawRequest.Host))
@@ -81,9 +92,12 @@ namespace MyPipeHttpHelper
                 dnsIp = host.AddressList[0];
                 IPEndPoint hostEndPoint = new IPEndPoint(host.AddressList[0], rawRequest.HostPort);
                 mySocket.Connect(hostEndPoint);
-                reciveThread = new Thread(new ParameterizedThreadStart(ReceviData));
-                reciveThread.IsBackground = true;
-                reciveThread.Start(mySocket);
+                if (isReportResponse)
+                {
+                    reciveThread = new Thread(new ParameterizedThreadStart(ReceviData));
+                    reciveThread.IsBackground = true;
+                    reciveThread.Start(mySocket);
+                }
                 ReportPipeState("connect ok");
             }
             catch(Exception ex)
