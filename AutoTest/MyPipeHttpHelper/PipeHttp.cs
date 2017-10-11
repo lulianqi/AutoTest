@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define TESTMODE
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,9 +15,9 @@ namespace MyPipeHttpHelper
     {
         public static RawHttpRequest GlobalRawRequest = new RawHttpRequest();
         private static int idIndex = 0;
-        private static object idIndexLock;
+        private static object idIndexLock = new object();
 
-        public RawHttpRequest rawRequest = new RawHttpRequest();
+        public RawHttpRequest pipeRequest = new RawHttpRequest();
 
         public delegate void delegatePipeStateOut(string mes, int id);
         public delegate void delegatePipeResponseOut(byte[] response, int id);
@@ -30,7 +32,7 @@ namespace MyPipeHttpHelper
         private int reConectCount = 0;  //在指定数目后更新管道(默认0表示一直使用初始管道)（因为部分nginx都有100的限制），设置后会让单条管道发送性能下降
         private int nowConectCount = 0;
         Thread reciveThread;           //接收线程
-        private IPAddress dnsIp;
+        private IPAddress connctHost;
         private int reciveBufferSize = 1024 * 128;  //接收缓存，当需要大量PipeHttp时请设置较小值（当isReportResponse为false该值无效）
 
 
@@ -38,6 +40,7 @@ namespace MyPipeHttpHelper
         {
         }
 
+        
         public PipeHttp(int yourReConectCount, bool yourIsReportResponse)
         {
             lock (idIndexLock)
@@ -51,12 +54,28 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// get or set ReciveBufferSize 
+        /// get or set ReciveBufferSize (连接前设置有效)
         /// </summary>
         public int ReciveBufferSize
         {
             get { return reciveBufferSize; }
             set { reciveBufferSize = value; }
+        }
+
+        /// <summary>
+        /// get now pepe state 
+        /// </summary>
+        public PipeState GetState
+        {
+            get { return state; }
+        }
+
+        /// <summary>
+        /// get now reConectCount (if it is 0 that is say it will never reconnect)
+        /// </summary>
+        public int GetreReconectCount
+        {
+            get { return reConectCount; }
         }
 
         private void ReportPipeState(string mes)
@@ -80,17 +99,29 @@ namespace MyPipeHttpHelper
         public bool Connect()
         {
             state = PipeState.Connecting;
-            if(string.IsNullOrEmpty(rawRequest.Host))
+            if (string.IsNullOrEmpty(pipeRequest.ConnectHost))
             {
                 state = PipeState.DisConnected;
                 return false;
             }
             try
             {
-                System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry(rawRequest.Host);
+                if (!IPAddress.TryParse(pipeRequest.ConnectHost, out connctHost))
+                {
+                    System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry(pipeRequest.ConnectHost);
+                    connctHost = host.AddressList[0];
+#if TESTMODE
+                    System.Diagnostics.Debug.WriteLine("-------------------------------------");
+                    System.Diagnostics.Debug.WriteLine("Dns back");
+                    foreach (var tempIp in host.AddressList)
+                    {
+                        System.Diagnostics.Debug.WriteLine(tempIp.ToString());
+                    }
+                    System.Diagnostics.Debug.WriteLine("-------------------------------------");
+#endif
+                }
                 mySocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                dnsIp = host.AddressList[0];
-                IPEndPoint hostEndPoint = new IPEndPoint(host.AddressList[0], rawRequest.HostPort);
+                IPEndPoint hostEndPoint = new IPEndPoint(connctHost, pipeRequest.ConnectPort);
                 mySocket.Connect(hostEndPoint);
                 if (isReportResponse)
                 {
@@ -139,7 +170,7 @@ namespace MyPipeHttpHelper
 
         public void SendOne()
         {
-            SendOne(rawRequest.RawRequest);
+            SendOne(pipeRequest.RawRequest);
         }
 
         public void Send(int sendCount)
@@ -228,20 +259,26 @@ namespace MyPipeHttpHelper
                 catch (System.Threading.ThreadAbortException ex)
                 {
                     ReportPipeState("Applications active close ");//应用程序主动关闭接收线程
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    ReportPipeState(ex.Message);//应用程序主动关闭接收线程
-                    break;
-                }
-                finally
-                {
                     nowSocket.Close();
                     if (!(Thread.CurrentThread.Name == "close"))
                     {
                         state = PipeState.DisConnected;
                     }
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    ReportPipeState(ex.Message);//应用程序主动关闭接收线程
+                    nowSocket.Close();
+                    if (!(Thread.CurrentThread.Name == "close"))
+                    {
+                        state = PipeState.DisConnected;
+                    }
+                    break;
+                }
+                finally
+                {
+                    
                 }
             }
         }

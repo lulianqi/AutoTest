@@ -79,3 +79,6 @@ D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\DiffieHellman.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\Org.Mentalis.Security.dll
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MyActiveMQHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MySqlHelper.pdb
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Tamir.SharpSSH.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\DiffieHellman.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Org.Mentalis.Security.dll

@@ -140,7 +140,7 @@ namespace MyCommonHelper.NetHelper
         }
 
         /// <summary>
-        /// Initialization a mySocket (it may thow an error you need try catch it)
+        /// Initialization a mySocket (it may thow an error you need try catch it)（当前重载表示将使用事件的方式接收数据）
         /// </summary>
         /// <param name="endPointStr">a ip str like 10.10.10.10:80</param>
         /// <param name="yourReceiveTick">the receive time (ms)</param>

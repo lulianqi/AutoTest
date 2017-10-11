@@ -9,8 +9,8 @@ namespace MyPipeHttpHelper
     public class RawHttpRequest
     {
         //请求host建立连接时需要使用该地址进行握手
-        private string host = "";
-        private int hostPort = 80;
+        private string connectHost = "";
+        private int connectPort = 80;
         //请求行
         private string startLine = "";
         //请求头
@@ -20,16 +20,16 @@ namespace MyPipeHttpHelper
         //原始数据
         private byte[] rawRequest = null;
 
-        public string Host
+        public string ConnectHost
         {
-            get { return host; }
-            set { if (value != null) { host = value; } }
+            get { return connectHost; }
+            set { if (value != null) { connectHost = value; } }
         }
 
-        public int HostPort
+        public int ConnectPort
         {
-            get { return hostPort; }
-            set { if (value != null) { hostPort = value; } }
+            get { return connectPort; }
+            set { if (value != null) { connectPort = value; } }
         }
 
         public string StartLine

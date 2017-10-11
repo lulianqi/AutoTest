@@ -98,3 +98,6 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\DiffieHellman.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Org.Mentalis.Security.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MyActiveMQHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySqlHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Tamir.SharpSSH.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\DiffieHellman.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Org.Mentalis.Security.dll

@@ -14,8 +14,8 @@ namespace TestForPipeHttp
 
         public static class HttpRawData
         {
-            public static string host = "hz.meituan.com";
-            //public static string startLine = "GET http://www.baidu.com/ HTTP/1.1";
+            public static string host = "www.baidu.com";
+            public static string startLine = "GET http://www.baidu.com/ HTTP/1.1";
             //public static string startLine = "GET http://wxv4.huala.com/app.html HTTP/1.1";
             //public static string startLine = "GET http://www.youku.com/?spm=a2h0z.8244218.qheader.5~5~5!3~1~3~A HTTP/1.1";
             //public static string startLine = "GET http://r1.ykimg.com/material/0A03/201709/0925/132217/70x100a.png HTTP/1.1";
@@ -23,7 +23,7 @@ namespace TestForPipeHttp
             //public static string startLine = "GET http://wl.jd.com/wl.js HTTP/1.1";
             //public static string startLine = "GET http://shared-https.ydstatic.com/gouwuex/ext/script/load_url_s.txt?v=1507378 HTTP/1.1";   //jd  接口 没有100的限制
             //public static string startLine = "GET http://wxv4.huala.com/huala/v3/seller/detail/562 HTTP/1.1";
-            public static string startLine = "GET http://hz.meituan.com/ptapi/getHotCinema HTTP/1.1";
+            //public static string startLine = "GET http://hz.meituan.com/ptapi/getHotCinema HTTP/1.1";
             
             public static List<string> headers = new List<string>();
             public static string entityBody = "";
@@ -160,7 +160,7 @@ namespace TestForPipeHttp
 
             List<PipeHttp> phs = new List<PipeHttp>();
             
-            for(int i =0 ;i<20;i++)
+            for(int i =0 ;i<1;i++)
             {
                 phs.Add(new PipeHttp(100));
             }

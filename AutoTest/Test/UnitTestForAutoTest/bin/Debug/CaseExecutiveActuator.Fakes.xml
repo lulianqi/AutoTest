@@ -3931,11 +3931,14 @@
         <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimMyAssert.GetJTokenValueJTokenString">
             <summary>设置 MyAssert.GetJTokenValue(JToken yourJToken, String yourKey) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimMyAssert.GetStrPickDataStringStringOutInt32Out">
-            <summary>设置 MyAssert.GetStrPickData(String yourSouce, String&amp; yourTarget, Int32&amp; yourStrLen) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimMyAssert.GetStrPickDataStringStringOutStringOut">
+            <summary>设置 MyAssert.GetStrPickData(String yourSouce, String&amp; yourFrontTarget, String&amp; yourBackStr) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimMyAssert.PickJsonParameterStringString">
             <summary>设置 MyAssert.PickJsonParameter(String yourTarget, String yourSouce) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimMyAssert.PickStrParameterInt32Int32String">
+            <summary>设置 MyAssert.PickStrParameter(Int32 yourStrStart, Int32 yourStrLen, String yourSouce) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimMyAssert.PickStrParameterStringInt32String">
             <summary>设置 MyAssert.PickStrParameter(String yourTarget, Int32 yourStrLen, String yourSouce) 的 填充码</summary>

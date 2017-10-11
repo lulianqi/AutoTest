@@ -324,3 +324,9 @@ D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\My
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\MySqlHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\Org.Mentalis.Security.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\Tamir.SharpSSH.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\Tamir.SharpSSH.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\DiffieHellman.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\Org.Mentalis.Security.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\DiffieHellman.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\Org.Mentalis.Security.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\Tamir.SharpSSH.dll
