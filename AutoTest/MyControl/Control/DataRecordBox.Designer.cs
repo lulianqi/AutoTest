@@ -76,7 +76,7 @@
             this.ShowInNewWindow_ToolStripMenuItem,
             this.格式化选中内容ToolStripMenuItem});
             this.contextMenuStrip_RecBox.Name = "contextMenuStrip_RecBox";
-            this.contextMenuStrip_RecBox.Size = new System.Drawing.Size(161, 136);
+            this.contextMenuStrip_RecBox.Size = new System.Drawing.Size(161, 114);
             // 
             // FreezeText_ToolStripMenuItem
             // 
@@ -118,14 +118,14 @@
             // xMLToolStripMenuItem
             // 
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
-            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.xMLToolStripMenuItem.Text = "XML格式化";
             this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
             // 
             // jSONToolStripMenuItem
             // 
             this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
-            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.jSONToolStripMenuItem.Text = "JSON格式化";
             this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
             // 
@@ -201,6 +201,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_AlwaysGoBottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dataAddSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dataAddclean)).EndInit();
+
             this.ResumeLayout(false);
 
         }

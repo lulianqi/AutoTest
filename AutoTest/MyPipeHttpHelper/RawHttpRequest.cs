@@ -76,5 +76,13 @@ namespace MyPipeHttpHelper
         {
             CreateRawData(Encoding.UTF8);
         }
+
+        public void CreateRawData(Encoding yourEncoding, string yourRawRequest)
+        {
+            if (yourRawRequest != null)
+            {
+                rawRequest = yourEncoding.GetBytes(yourRawRequest);
+            }
+        }
     }
 }

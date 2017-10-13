@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MyCommonHelper">
+      <HintPath>..\..\MyCommonHelper\bin\Debug\MyCommonHelper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -75,6 +78,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MyControl\MyCommonControl.csproj">
+      <Project>{AAA8BDB9-2468-4338-A8E8-BC2CE2752051}</Project>
+      <Name>MyCommonControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MyPipeHttpHelper\MyPipeHttpHelper.csproj">
       <Project>{acafe60b-c691-4abf-9208-e6538663a011}</Project>
       <Name>MyPipeHttpHelper</Name>

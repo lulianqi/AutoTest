@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlSevice\ControlSwitch.cs" />
     <Compile Include="MyCommonControl.cs" />
     <Compile Include="Control\CBalloonBase.cs">
       <SubType>Form</SubType>
@@ -102,7 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Tool\MyTool.cs" />
+    <Compile Include="ControlSevice\MyTool.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Control\CBalloonBase.resx">

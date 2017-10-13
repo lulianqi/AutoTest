@@ -8,3 +8,7 @@ F:\file\Code\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpR
 F:\file\Code\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.pdb
 F:\file\Code\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyPipeHttpHelper.dll
 F:\file\Code\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyPipeHttpHelper.pdb
+F:\file\Code\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyCommonHelper.dll
+F:\file\Code\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyControl.dll
+F:\file\Code\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyControl.pdb
+F:\file\Code\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyCommonHelper.pdb

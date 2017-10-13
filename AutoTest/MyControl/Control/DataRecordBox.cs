@@ -69,9 +69,24 @@ namespace MyCommonControl
                 usersSavePath = System.Windows.Forms.Application.StartupPath + string.Format("\\{0}\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt", mianDirectory);
             }
             FileService.CreateDirectory(defaultDirectory);
+            if(!isShowIcon)
+            {
+                pictureBox_AlwaysGoBottom.Visible = false;
+                pictureBox_dataAddSave.Visible = false;
+                pictureBox_dataAddclean.Visible = false;
+            }
         }
 
-        
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (!isShowIcon)
+            {
+                pictureBox_AlwaysGoBottom.Visible = false;
+                pictureBox_dataAddSave.Visible = false;
+                pictureBox_dataAddclean.Visible = false;
+            }
+            base.OnPaint(e);
+        }
 
         private int maxLine = 5000;
 
@@ -122,6 +137,16 @@ namespace MyCommonControl
             get { return mianDirectory; }
             set { mianDirectory = value; }
         }
+
+        /// <summary>
+        /// 是否显示控制icon
+        /// </summary>
+        [DescriptionAttribute("是否显示控制icon")]
+        public bool IsShowIcon
+        {
+            get { return isShowIcon; }
+            set { isShowIcon = value; }
+        }
        
 
         private bool isPauseAdd = false;
@@ -155,6 +180,15 @@ namespace MyCommonControl
         }
 
         /// <summary>
+        /// 获取或设置当前文本
+        /// </summary>
+        public string Text
+        {
+            get { return richTextBox_dataContainer.Text; }
+            set { richTextBox_dataContainer.Text = value; }
+        }
+
+        /// <summary>
         /// 是否处于填充显示状态
         /// </summary>
         private bool isBoxFill = false;
@@ -163,6 +197,8 @@ namespace MyCommonControl
         {
             get { return isBoxFill; }
         }
+
+        private bool isShowIcon = true; 
 
         private string mianDirectory = "DataRecord";
 
@@ -542,6 +578,7 @@ namespace MyCommonControl
             }
             base.Dispose(disposing);
         }
+
 
        
 

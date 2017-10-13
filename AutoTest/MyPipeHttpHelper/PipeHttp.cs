@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyPipeHttpHelper
 {
-    public class PipeHttp
+    public class PipeHttp:IDisposable
     {
         public static RawHttpRequest GlobalRawRequest = new RawHttpRequest();
         private static int idIndex = 0;
@@ -54,12 +54,29 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
+        /// 获取当前管道Id
+        /// </summary>
+        public int Id
+        {
+            get { return id; }
+        }
+
+        /// <summary>
         /// get or set ReciveBufferSize (连接前设置有效)
         /// </summary>
         public int ReciveBufferSize
         {
             get { return reciveBufferSize; }
             set { reciveBufferSize = value; }
+        }
+
+        /// <summary>
+        /// get or set IsReportResponse (连接前设置有效)
+        /// </summary>
+        public bool IsReportResponse
+        {
+            get { return isReportResponse; }
+            set { isReportResponse = value; }
         }
 
         /// <summary>
@@ -141,11 +158,37 @@ namespace MyPipeHttpHelper
             return true;
         }
 
+        private void ReConnect()
+        {
+            //reciveThread.Abort();
+            ReportPipeState("ReConnect");
+            reciveThread.Name = "close";
+            Connect();
+        }
+
+        public void DisConnect()
+        {
+            ReportPipeState("ReConnect");
+            mySocket.Close();
+            reciveThread.Name = "close";
+            reciveThread.Abort();
+            state = PipeState.DisConnected;
+        }
 
         public void SendOne(byte[] requestRawBytes)
         {
             if (requestRawBytes==null)
             {
+                return;
+            }
+            if (mySocket == null)
+            {
+                ReportPipeState("the pipe is not connect");
+                return;
+            }
+            if (!mySocket.Connected)
+            {
+                ReportPipeState("the pipe is dis connect");
                 return;
             }
             try
@@ -202,14 +245,6 @@ namespace MyPipeHttpHelper
                 }));
             asynSendThread.IsBackground = true;
             asynSendThread.Start(new int[] { times, repeatTimes, waitTime });
-        }
-
-        private void ReConnect()
-        {
-            //reciveThread.Abort();
-            ReportPipeState("ReConnect");
-            reciveThread.Name = "close";
-            Connect();
         }
 
         private void ReceviData(object yourSocket)
@@ -281,6 +316,35 @@ namespace MyPipeHttpHelper
                     
                 }
             }
+        }
+
+        /// <summary>
+        /// 实现【IDisposable】强烈建议结束前调用
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected void Dispose(bool disposing)
+        {
+            if (mySocket!=null)
+            {
+                mySocket.Close();
+                mySocket.Dispose();
+                mySocket = null;
+            }
+            if (reciveThread!=null)
+            {
+                reciveThread.Abort();
+                reciveThread = null;
+            }
+        }
+
+        //如果没有非托管资源的释放，需谨慎添加析构函数，其可能影响GC性能
+        ~PipeHttp()
+        {
+            Dispose(false);
         }
     }
 }
