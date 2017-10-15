@@ -44,15 +44,30 @@ namespace MyPipeHttpHelper
             set { if (value != null) { headers = value; } }
         }
 
+        public string EntityBody
+        {
+            get { return entityBody; }
+            set { if (value != null) { entityBody = value; } }
+        }
+
         public byte[] RawRequest
         {
             get { return rawRequest; }
-            set { rawRequest = value; }
         }
 
         public RawHttpRequest()
         {
 
+        }
+
+        public string GetRequestText(Encoding yourEncoding)
+        {
+            return yourEncoding.GetString(rawRequest);
+        }
+
+        public string GetRequestText()
+        {
+            return GetRequestText(Encoding.UTF8);
         }
 
         public void CreateRawData(Encoding yourEncoding)
@@ -77,6 +92,10 @@ namespace MyPipeHttpHelper
             CreateRawData(Encoding.UTF8);
         }
 
+        public void CreateRawData(byte[] yourRawRequest)
+        {
+            rawRequest = yourRawRequest;
+        }
         public void CreateRawData(Encoding yourEncoding, string yourRawRequest)
         {
             if (yourRawRequest != null)

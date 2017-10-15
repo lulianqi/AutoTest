@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -19,14 +20,21 @@ namespace PipeHttpRuner
         }
 
         private List<PipeHttp> pipeList;
+        private bool isPutResponseInStream;
+        private FileStream responseFileStream;
+        private string responseFilePath;
 
         private void MyInitializeComponent()
         {
+            Control.CheckForIllegalCrossThreadCalls = false;                                    //自行控制ui线程安全
             cb_responseType.SelectedIndex = 0;
+            cb_editRequestMethod.SelectedIndex = 0;
+            cb_editRequestEdition.SelectedIndex = 0;
             PipeHttp.GlobalRawRequest.CreateRawData(Encoding.UTF8, tb_rawRequest.Text);
             tb_pileHost_TextChanged(null, null);
             tb_pilePort_TextChanged(null, null);
-
+            responseFilePath = System.Windows.Forms.Application.StartupPath + string.Format("\\Response\\response_{0}.txt", DateTime.Now.ToString("yyyy.MM.dd"));
+            
         }
 
         private void ReportMyMessage(string mes)
@@ -34,9 +42,9 @@ namespace PipeHttpRuner
             rtb_dataRecieve.AddDate(mes, Color.Bisque, true);
         }
 
-        void ph_OnPipeStateReport(string mes, int id)
+        void ph_OnPipeInfoReport(string mes, int id)
         {
-            rtb_dataRecieve.AddDate(string.Format("ID:[{0}] : {1}",id , mes), Color.Indigo, true);
+            rtb_dataRecieve.AddDate(string.Format("ID:[{0}] : {1}",id , mes), Color.Black, true);
             //System.Diagnostics.Debug.WriteLine("-------------------------------------");
             //System.Diagnostics.Debug.WriteLine(string.Format("ID:{0} [{1}]", id, mes));
             //System.Diagnostics.Debug.WriteLine("-------------------------------------");
@@ -44,9 +52,49 @@ namespace PipeHttpRuner
 
         void ph_OnPipeResponseReport(byte[] response, int id)
         {
-            string resposeStr = Encoding.UTF8.GetString(response);
-            System.Diagnostics.Debug.Write(resposeStr);
-            
+            if(isPutResponseInStream)
+            {
+                responseFileStream.Write(response, 0, response.Length);
+            }
+            else
+            {
+                string resposeStr = Encoding.UTF8.GetString(response);
+                //System.Diagnostics.Debug.Write(resposeStr);
+                rtb_dataRecieve.AddDate(resposeStr, Color.Maroon, false);
+            }
+        }
+
+        void tempPipeHttp_OnPipeStateReport(PipeState state, int id)
+        {
+            if(this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate { tempPipeHttp_OnPipeStateReport(state,id); }));
+            }
+            else
+            {
+                foreach(ListViewItem tempItem in lv_pipeList.Items)
+                {
+                    if(id==((PipeHttp)tempItem.Tag).Id)
+                    {
+                        switch (state)
+                        {
+                            case PipeState.Connected:
+                                tempItem.BackColor = Color.LightGreen;
+                                lv_pipeList.Update();
+                                break;
+                            case PipeState.Connecting:
+                                tempItem.BackColor = Color.LightYellow;
+                                lv_pipeList.Update();
+                                break;
+                            default:
+                                tempItem.BackColor = Color.Plum;
+                                lv_pipeList.Update();
+                                break;
+                        }
+                        break;
+                    }
+                }
+            }
         }
 
         private void AddPipeList(PipeHttp ph)
@@ -85,7 +133,7 @@ namespace PipeHttpRuner
             PipeHttp ph = new PipeHttp(100, true);
             ph.pipeRequest = PipeHttp.GlobalRawRequest;
             ph.OnPipeResponseReport += ph_OnPipeResponseReport;
-            ph.OnPipeStateReport += ph_OnPipeStateReport;
+            ph.OnPipeInfoReport += ph_OnPipeInfoReport;
             ph.Connect();
             ph.Send(100);
         }
@@ -93,14 +141,15 @@ namespace PipeHttpRuner
 
 
 
+        #region UI event
         //添加管道
         private void bt_addPile_Click(object sender, EventArgs e)
         {
             int reConnectTime = 0;
             int pileAddCount = 0;
-            if(int.TryParse(tb_reConTime.Text,out reConnectTime)&&int.TryParse(tb_addTime.Text,out pileAddCount))
+            if (int.TryParse(tb_reConTime.Text, out reConnectTime) && int.TryParse(tb_addTime.Text, out pileAddCount))
             {
-                if(reConnectTime<0)
+                if (reConnectTime < 0)
                 {
                     reConnectTime = 0;
                     tb_reConTime.Text = "0";
@@ -112,11 +161,12 @@ namespace PipeHttpRuner
                     tb_addTime.Text = "1";
                     ReportMyMessage("PileAddCount can not less than 1 ,so we set it 1");
                 }
-                for(int i=0;i<pileAddCount;i++)
+                for (int i = 0; i < pileAddCount; i++)
                 {
                     PipeHttp tempPipeHttp = new PipeHttp(reConnectTime, cb_responseType.SelectedIndex == 0);
-                    tempPipeHttp.OnPipeStateReport += ph_OnPipeStateReport;
+                    tempPipeHttp.OnPipeInfoReport += ph_OnPipeInfoReport;
                     tempPipeHttp.OnPipeResponseReport += ph_OnPipeResponseReport;
+                    tempPipeHttp.OnPipeStateReport += tempPipeHttp_OnPipeStateReport;
                     tempPipeHttp.pipeRequest = PipeHttp.GlobalRawRequest;
                     AddPipeList(tempPipeHttp);
                 }
@@ -127,16 +177,18 @@ namespace PipeHttpRuner
             }
         }
 
+        
+
         private void bt_connectAllPile_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem tempLvt in lv_pipeList.Items)
             {
                 PipeHttp tempPh = (PipeHttp)tempLvt.Tag;
                 //tempPh.IsReportResponse = cb_isRecieve.Checked;
-                if(tempPh.Connect())
+                if (tempPh.Connect())
                 {
-                    tempLvt.BackColor = Color.LightGreen;
-                    lv_pipeList.Update();
+                    //tempLvt.BackColor = Color.LightGreen;
+                    //lv_pipeList.Update();
                 }
                 else
                 {
@@ -148,9 +200,9 @@ namespace PipeHttpRuner
         private void bt_sendRequest_Click(object sender, EventArgs e)
         {
             int sendCount = 1;
-            if(int.TryParse(tb_RequstCount.Text,out sendCount))
+            if (int.TryParse(tb_RequstCount.Text, out sendCount))
             {
-                foreach(PipeHttp tempPh in pipeList)
+                foreach (PipeHttp tempPh in pipeList)
                 {
                     if (cb_isAsynSend.Checked)
                     {
@@ -184,10 +236,10 @@ namespace PipeHttpRuner
 
         private void tb_pilePort_TextChanged(object sender, EventArgs e)
         {
-            int tempCounectPort=80;
+            int tempCounectPort = 80;
             if (int.TryParse(tb_pilePort.Text, out tempCounectPort))
             {
-                if(tempCounectPort>65532)
+                if (tempCounectPort > 65532)
                 {
                     tempCounectPort = 80;
                     tb_pilePort.Text = "80";
@@ -200,11 +252,95 @@ namespace PipeHttpRuner
             PipeHttp.GlobalRawRequest.ConnectPort = tempCounectPort;
         }
 
+        //pictureBox change for all
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            ((PictureBox)sender).BackColor = Color.Honeydew;
+        }
+
+        //pictureBox change for all
+        private void pictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            ((PictureBox)sender).BackColor = Color.Transparent;
+        }
         
-       
+        #endregion
 
-       
+        private void bt_editAddHead_Click(object sender, EventArgs e)
+        {
+            lv_editRequestHeads.Items.Add(new ListViewItem(string.Format("{0}: {1}", tb_editHeadKey.Text, tb_editHeadVaule.Text)));
+        }
 
+        //请求编辑取消
+        private void pb_editRequestCancel_Click(object sender, EventArgs e)
+        {
+            panel_editRequest.Visible = false;
+        }
+
+        //请求编辑确定
+        private void pb_editRequestComfrim_Click(object sender, EventArgs e)
+        {
+            PipeHttp.GlobalRawRequest.StartLine = string.Format("{0} {1} {2}", cb_editRequestMethod.Text, tb_editSartLine.Text, cb_editRequestEdition.Text);
+            PipeHttp.GlobalRawRequest.Headers.Clear();
+            foreach(ListViewItem tempHead in lv_editRequestHeads.Items)
+            {
+                PipeHttp.GlobalRawRequest.Headers.Add(tempHead.Text);
+            }
+            PipeHttp.GlobalRawRequest.EntityBody = tb_editRequestBody.Text;
+            PipeHttp.GlobalRawRequest.CreateRawData();
+            tb_rawRequest.Text = PipeHttp.GlobalRawRequest.GetRequestText();
+            panel_editRequest.Visible = false;
+        }
+
+        //移除heads
+        private void pb_editRequestDelHaeds_Click(object sender, EventArgs e)
+        {
+            lv_editRequestHeads.Items.Clear();
+        }
+
+        private void pb_editRawRequest_Click(object sender, EventArgs e)
+        {
+            panel_editRequest.Visible = true;
+        }
+
+        private void ck_saveResponse_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ck_saveResponse.Checked)
+            {
+                pb_saveResponseStream.Visible = true;
+                isPutResponseInStream = true;
+                int tempFileTag=0;
+                string tempBakPath=responseFilePath;
+                while (File.Exists(tempBakPath))
+                {
+                    tempFileTag++;
+                    if(tempFileTag==10000)
+                    {
+                        break;
+                    }
+                    tempBakPath = string.Format("{0}_bak{1}", responseFilePath, tempFileTag);
+                }
+                if (responseFilePath != tempBakPath)
+                {
+                    Directory.Move(responseFilePath, tempBakPath);
+                }
+                responseFileStream = new FileStream(responseFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+            }
+            else
+            {
+                pb_saveResponseStream.Visible = false;
+                isPutResponseInStream = false;
+                responseFileStream.Dispose();
+            }
+        }
+
+        private void pb_saveResponseStream_Click(object sender, EventArgs e)
+        {
+            if(responseFileStream!=null)
+            {
+                responseFileStream.Flush();
+            }
+        }
        
 
     }

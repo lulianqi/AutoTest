@@ -19,11 +19,13 @@ namespace MyPipeHttpHelper
 
         public RawHttpRequest pipeRequest = new RawHttpRequest();
 
-        public delegate void delegatePipeStateOut(string mes, int id);
+        public delegate void delegatePipeInfoReport(string mes, int id);
         public delegate void delegatePipeResponseOut(byte[] response, int id);
+        public delegate void delegatePipeStateOut(PipeState state, int id);
 
-        public event delegatePipeStateOut OnPipeStateReport;
+        public event delegatePipeInfoReport OnPipeInfoReport;
         public event delegatePipeResponseOut OnPipeResponseReport;
+        public event delegatePipeStateOut OnPipeStateReport;
 
         private int id = 0;
         private PipeState state = PipeState.NotConnected;   //仅表示当前PipeHttp Socket状态，当前PipeHttp可能创建多个Socket连接，之前创建的状态不再维护。
@@ -95,15 +97,22 @@ namespace MyPipeHttpHelper
             get { return reConectCount; }
         }
 
-        private void ReportPipeState(string mes)
+        private void ReportPipeInfo(string mes)
         {
-            if (OnPipeStateReport!=null)
+            if (OnPipeInfoReport!=null)
             {
-                OnPipeStateReport(mes, id);
+                OnPipeInfoReport(mes, id);
             }
         }
 
-
+        private void ChangePipeState(PipeState yourState)
+        {
+            state = yourState;
+            if(OnPipeInfoReport!=null)
+            {
+                OnPipeStateReport(state, id);
+            }
+        }
 
         private void ReportPipeResponse(byte[] bytes)
         {
@@ -115,10 +124,10 @@ namespace MyPipeHttpHelper
 
         public bool Connect()
         {
-            state = PipeState.Connecting;
+            ChangePipeState(PipeState.Connecting);
             if (string.IsNullOrEmpty(pipeRequest.ConnectHost))
             {
-                state = PipeState.DisConnected;
+                ChangePipeState( PipeState.DisConnected);
                 return false;
             }
             try
@@ -146,33 +155,33 @@ namespace MyPipeHttpHelper
                     reciveThread.IsBackground = true;
                     reciveThread.Start(mySocket);
                 }
-                ReportPipeState("connect ok");
+                ReportPipeInfo("connect ok");
             }
             catch(Exception ex)
             {
-                ReportPipeState(ex.Message);
-                state = PipeState.DisConnected;
+                ReportPipeInfo(ex.Message);
+                ChangePipeState( PipeState.DisConnected);
                 return false;
             }
-            state = PipeState.Connected;
+            ChangePipeState( PipeState.Connected);
             return true;
         }
 
         private void ReConnect()
         {
             //reciveThread.Abort();
-            ReportPipeState("ReConnect");
+            ReportPipeInfo("ReConnect");
             reciveThread.Name = "close";
             Connect();
         }
 
         public void DisConnect()
         {
-            ReportPipeState("ReConnect");
+            ReportPipeInfo("ReConnect");
             mySocket.Close();
             reciveThread.Name = "close";
             reciveThread.Abort();
-            state = PipeState.DisConnected;
+            ChangePipeState(PipeState.DisConnected);
         }
 
         public void SendOne(byte[] requestRawBytes)
@@ -183,12 +192,12 @@ namespace MyPipeHttpHelper
             }
             if (mySocket == null)
             {
-                ReportPipeState("the pipe is not connect");
+                ReportPipeInfo("the pipe is not connect");
                 return;
             }
             if (!mySocket.Connected)
             {
-                ReportPipeState("the pipe is dis connect");
+                ReportPipeInfo("the pipe is dis connect");
                 return;
             }
             try
@@ -206,7 +215,7 @@ namespace MyPipeHttpHelper
             }
             catch (Exception ex)
             {
-                ReportPipeState(ex.Message);
+                ReportPipeInfo(ex.Message);
                 ReConnect();
             }
         }
@@ -241,7 +250,7 @@ namespace MyPipeHttpHelper
                             }
                         }
                     }
-                    ReportPipeState("asynSendThread complete");
+                    ReportPipeInfo("asynSendThread complete");
                 }));
             asynSendThread.IsBackground = true;
             asynSendThread.Start(new int[] { times, repeatTimes, waitTime });
@@ -257,8 +266,8 @@ namespace MyPipeHttpHelper
             {
                 if (!nowSocket.Connected)
                 {
-                    ReportPipeState("the tcp is disconnect");
-                    state = PipeState.DisConnected;
+                    ReportPipeInfo("the tcp is disconnect");
+                    ChangePipeState(PipeState.DisConnected);
                     break;
                 }
                 try
@@ -284,7 +293,7 @@ namespace MyPipeHttpHelper
                         }
                         else if (Thread.CurrentThread.Name == "close")
                         {
-                            ReportPipeState("the abandon socket receive task close by no data receive d");
+                            ReportPipeInfo("the abandon socket receive task close by no data receive d");
                             nowSocket.Close();  //该链接是一个被抛弃的连接，关闭他不要改变当前PipeHttp状态（因为被遗弃前可能还有未接收完成的数据所以没有马上关闭）
                             break;
                         }
@@ -293,21 +302,21 @@ namespace MyPipeHttpHelper
                 }
                 catch (System.Threading.ThreadAbortException ex)
                 {
-                    ReportPipeState("Applications active close ");//应用程序主动关闭接收线程
+                    ReportPipeInfo("Applications active close ");//应用程序主动关闭接收线程
                     nowSocket.Close();
                     if (!(Thread.CurrentThread.Name == "close"))
                     {
-                        state = PipeState.DisConnected;
+                        ChangePipeState(PipeState.DisConnected);
                     }
                     break;
                 }
                 catch (Exception ex)
                 {
-                    ReportPipeState(ex.Message);//应用程序主动关闭接收线程
+                    ReportPipeInfo(ex.Message);//应用程序主动关闭接收线程
                     nowSocket.Close();
                     if (!(Thread.CurrentThread.Name == "close"))
                     {
-                        state = PipeState.DisConnected;
+                        ChangePipeState(PipeState.DisConnected);
                     }
                     break;
                 }
