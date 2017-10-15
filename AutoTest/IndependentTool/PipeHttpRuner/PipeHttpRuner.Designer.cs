@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             MyCommonControl.Control.TextBoxWithWatermak tb_editHeadKey;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PipeHttpRuner));
             this.lb_pipeHost = new System.Windows.Forms.Label();
             this.lv_pipeList = new System.Windows.Forms.ListView();
             this.columnHeader_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,17 +42,9 @@
             this.cb_isAsynSend = new System.Windows.Forms.CheckBox();
             this.lb_requestCount = new System.Windows.Forms.Label();
             this.bt_connectAllPile = new System.Windows.Forms.Button();
-            this.tb_RequstCount = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.tb_addTime = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.tb_reConTime = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.tb_pilePort = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.tb_pileHost = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.rtb_dataRecieve = new MyCommonControl.DataRecordBox();
             this.tb_rawRequest = new System.Windows.Forms.TextBox();
             this.panel_editRequest = new System.Windows.Forms.Panel();
             this.lb_editHeads = new System.Windows.Forms.Label();
-            this.tb_editHeadVaule = new MyCommonControl.Control.TextBoxWithWatermak();
-            this.tb_editSartLine = new MyCommonControl.Control.TextBoxWithWatermak();
             this.bt_editAddHead = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader_heads = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,8 +52,22 @@
             this.cb_editRequstMethod = new System.Windows.Forms.ComboBox();
             this.lb_editStartLine = new System.Windows.Forms.Label();
             this.tb_editRequestBody = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_editHeadVaule = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_editSartLine = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_RequstCount = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_addTime = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_reConTime = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_pilePort = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.tb_pileHost = new MyCommonControl.Control.TextBoxWithWatermak();
+            this.rtb_dataRecieve = new MyCommonControl.DataRecordBox();
+            this.pictureBox_caseParameter = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             tb_editHeadKey = new MyCommonControl.Control.TextBoxWithWatermak();
             this.panel_editRequest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_caseParameter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_pipeHost
@@ -175,64 +182,6 @@
             this.bt_connectAllPile.UseVisualStyleBackColor = true;
             this.bt_connectAllPile.Click += new System.EventHandler(this.bt_connectAllPile_Click);
             // 
-            // tb_RequstCount
-            // 
-            this.tb_RequstCount.Location = new System.Drawing.Point(703, 463);
-            this.tb_RequstCount.Name = "tb_RequstCount";
-            this.tb_RequstCount.Size = new System.Drawing.Size(115, 21);
-            this.tb_RequstCount.TabIndex = 14;
-            this.tb_RequstCount.Text = "1";
-            this.tb_RequstCount.WatermarkText = "RequstCount/pipe";
-            // 
-            // tb_addTime
-            // 
-            this.tb_addTime.Location = new System.Drawing.Point(620, 404);
-            this.tb_addTime.Name = "tb_addTime";
-            this.tb_addTime.Size = new System.Drawing.Size(77, 21);
-            this.tb_addTime.TabIndex = 10;
-            this.tb_addTime.Text = "1";
-            this.tb_addTime.WatermarkText = "add time";
-            // 
-            // tb_reConTime
-            // 
-            this.tb_reConTime.Location = new System.Drawing.Point(688, 342);
-            this.tb_reConTime.Name = "tb_reConTime";
-            this.tb_reConTime.Size = new System.Drawing.Size(130, 21);
-            this.tb_reConTime.TabIndex = 6;
-            this.tb_reConTime.Text = "0";
-            this.tb_reConTime.WatermarkText = "0 is never reconnect";
-            // 
-            // tb_pilePort
-            // 
-            this.tb_pilePort.Location = new System.Drawing.Point(349, 318);
-            this.tb_pilePort.Name = "tb_pilePort";
-            this.tb_pilePort.Size = new System.Drawing.Size(61, 21);
-            this.tb_pilePort.TabIndex = 3;
-            this.tb_pilePort.Text = "80";
-            this.tb_pilePort.WatermarkText = "pipe port";
-            this.tb_pilePort.TextChanged += new System.EventHandler(this.tb_pilePort_TextChanged);
-            // 
-            // tb_pileHost
-            // 
-            this.tb_pileHost.Location = new System.Drawing.Point(73, 318);
-            this.tb_pileHost.Name = "tb_pileHost";
-            this.tb_pileHost.Size = new System.Drawing.Size(260, 21);
-            this.tb_pileHost.TabIndex = 2;
-            this.tb_pileHost.Text = "www.baidu.com";
-            this.tb_pileHost.WatermarkText = "pipe adress ip or host";
-            this.tb_pileHost.TextChanged += new System.EventHandler(this.tb_pileHost_TextChanged);
-            // 
-            // rtb_dataRecieve
-            // 
-            this.rtb_dataRecieve.CanFill = true;
-            this.rtb_dataRecieve.IsShowIcon = true;
-            this.rtb_dataRecieve.Location = new System.Drawing.Point(3, 3);
-            this.rtb_dataRecieve.MaxLine = 5000;
-            this.rtb_dataRecieve.MianDirectory = "DataRecord";
-            this.rtb_dataRecieve.Name = "rtb_dataRecieve";
-            this.rtb_dataRecieve.Size = new System.Drawing.Size(815, 311);
-            this.rtb_dataRecieve.TabIndex = 0;
-            // 
             // tb_rawRequest
             // 
             this.tb_rawRequest.BackColor = System.Drawing.Color.Azure;
@@ -247,6 +196,9 @@
             // 
             // panel_editRequest
             // 
+            this.panel_editRequest.BackColor = System.Drawing.Color.Lavender;
+            this.panel_editRequest.Controls.Add(this.pictureBox1);
+            this.panel_editRequest.Controls.Add(this.pictureBox_caseParameter);
             this.panel_editRequest.Controls.Add(this.tb_editRequestBody);
             this.panel_editRequest.Controls.Add(this.lb_editHeads);
             this.panel_editRequest.Controls.Add(this.tb_editHeadVaule);
@@ -270,33 +222,6 @@
             this.lb_editHeads.Size = new System.Drawing.Size(41, 12);
             this.lb_editHeads.TabIndex = 22;
             this.lb_editHeads.Text = "Heads:";
-            // 
-            // tb_editHeadVaule
-            // 
-            this.tb_editHeadVaule.Location = new System.Drawing.Point(117, 31);
-            this.tb_editHeadVaule.Name = "tb_editHeadVaule";
-            this.tb_editHeadVaule.Size = new System.Drawing.Size(174, 21);
-            this.tb_editHeadVaule.TabIndex = 21;
-            this.tb_editHeadVaule.Text = "Keep-Alive";
-            this.tb_editHeadVaule.WatermarkText = "head vaule";
-            // 
-            // tb_editHeadKey
-            // 
-            tb_editHeadKey.Location = new System.Drawing.Point(43, 31);
-            tb_editHeadKey.Name = "tb_editHeadKey";
-            tb_editHeadKey.Size = new System.Drawing.Size(72, 21);
-            tb_editHeadKey.TabIndex = 20;
-            tb_editHeadKey.Text = "Connection";
-            tb_editHeadKey.WatermarkText = "head key";
-            // 
-            // tb_editSartLine
-            // 
-            this.tb_editSartLine.Location = new System.Drawing.Point(160, 5);
-            this.tb_editSartLine.Name = "tb_editSartLine";
-            this.tb_editSartLine.Size = new System.Drawing.Size(305, 21);
-            this.tb_editSartLine.TabIndex = 19;
-            this.tb_editSartLine.Text = "www.baidu.com";
-            this.tb_editSartLine.WatermarkText = "http://www.baidu.com";
             // 
             // bt_editAddHead
             // 
@@ -365,11 +290,133 @@
             this.tb_editRequestBody.TabIndex = 23;
             this.tb_editRequestBody.WatermarkText = "Request Body";
             // 
+            // tb_editHeadVaule
+            // 
+            this.tb_editHeadVaule.Location = new System.Drawing.Point(117, 31);
+            this.tb_editHeadVaule.Name = "tb_editHeadVaule";
+            this.tb_editHeadVaule.Size = new System.Drawing.Size(174, 21);
+            this.tb_editHeadVaule.TabIndex = 21;
+            this.tb_editHeadVaule.Text = "Keep-Alive";
+            this.tb_editHeadVaule.WatermarkText = "head vaule";
+            // 
+            // tb_editHeadKey
+            // 
+            tb_editHeadKey.Location = new System.Drawing.Point(43, 31);
+            tb_editHeadKey.Name = "tb_editHeadKey";
+            tb_editHeadKey.Size = new System.Drawing.Size(72, 21);
+            tb_editHeadKey.TabIndex = 20;
+            tb_editHeadKey.Text = "Connection";
+            tb_editHeadKey.WatermarkText = "head key";
+            // 
+            // tb_editSartLine
+            // 
+            this.tb_editSartLine.Location = new System.Drawing.Point(160, 5);
+            this.tb_editSartLine.Name = "tb_editSartLine";
+            this.tb_editSartLine.Size = new System.Drawing.Size(305, 21);
+            this.tb_editSartLine.TabIndex = 19;
+            this.tb_editSartLine.Text = "www.baidu.com";
+            this.tb_editSartLine.WatermarkText = "http://www.baidu.com";
+            // 
+            // tb_RequstCount
+            // 
+            this.tb_RequstCount.Location = new System.Drawing.Point(703, 463);
+            this.tb_RequstCount.Name = "tb_RequstCount";
+            this.tb_RequstCount.Size = new System.Drawing.Size(115, 21);
+            this.tb_RequstCount.TabIndex = 14;
+            this.tb_RequstCount.Text = "1";
+            this.tb_RequstCount.WatermarkText = "RequstCount/pipe";
+            // 
+            // tb_addTime
+            // 
+            this.tb_addTime.Location = new System.Drawing.Point(620, 404);
+            this.tb_addTime.Name = "tb_addTime";
+            this.tb_addTime.Size = new System.Drawing.Size(77, 21);
+            this.tb_addTime.TabIndex = 10;
+            this.tb_addTime.Text = "1";
+            this.tb_addTime.WatermarkText = "add time";
+            // 
+            // tb_reConTime
+            // 
+            this.tb_reConTime.Location = new System.Drawing.Point(688, 342);
+            this.tb_reConTime.Name = "tb_reConTime";
+            this.tb_reConTime.Size = new System.Drawing.Size(130, 21);
+            this.tb_reConTime.TabIndex = 6;
+            this.tb_reConTime.Text = "0";
+            this.tb_reConTime.WatermarkText = "0 is never reconnect";
+            // 
+            // tb_pilePort
+            // 
+            this.tb_pilePort.Location = new System.Drawing.Point(349, 318);
+            this.tb_pilePort.Name = "tb_pilePort";
+            this.tb_pilePort.Size = new System.Drawing.Size(61, 21);
+            this.tb_pilePort.TabIndex = 3;
+            this.tb_pilePort.Text = "80";
+            this.tb_pilePort.WatermarkText = "pipe port";
+            this.tb_pilePort.TextChanged += new System.EventHandler(this.tb_pilePort_TextChanged);
+            // 
+            // tb_pileHost
+            // 
+            this.tb_pileHost.Location = new System.Drawing.Point(73, 318);
+            this.tb_pileHost.Name = "tb_pileHost";
+            this.tb_pileHost.Size = new System.Drawing.Size(260, 21);
+            this.tb_pileHost.TabIndex = 2;
+            this.tb_pileHost.Text = "www.baidu.com";
+            this.tb_pileHost.WatermarkText = "pipe adress ip or host";
+            this.tb_pileHost.TextChanged += new System.EventHandler(this.tb_pileHost_TextChanged);
+            // 
+            // rtb_dataRecieve
+            // 
+            this.rtb_dataRecieve.CanFill = true;
+            this.rtb_dataRecieve.IsShowIcon = true;
+            this.rtb_dataRecieve.Location = new System.Drawing.Point(3, 3);
+            this.rtb_dataRecieve.MaxLine = 5000;
+            this.rtb_dataRecieve.MianDirectory = "DataRecord";
+            this.rtb_dataRecieve.Name = "rtb_dataRecieve";
+            this.rtb_dataRecieve.Size = new System.Drawing.Size(815, 311);
+            this.rtb_dataRecieve.TabIndex = 0;
+            // 
+            // pictureBox_caseParameter
+            // 
+            this.pictureBox_caseParameter.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_caseParameter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox_caseParameter.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_caseParameter.Image")));
+            this.pictureBox_caseParameter.Location = new System.Drawing.Point(584, 3);
+            this.pictureBox_caseParameter.Name = "pictureBox_caseParameter";
+            this.pictureBox_caseParameter.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox_caseParameter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_caseParameter.TabIndex = 35;
+            this.pictureBox_caseParameter.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(558, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(620, 431);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
+            // 
             // PipeHttpRuner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 527);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel_editRequest);
             this.Controls.Add(this.tb_rawRequest);
             this.Controls.Add(this.bt_connectAllPile);
@@ -393,6 +440,9 @@
             this.Load += new System.EventHandler(this.PipeHttpRuner_Load);
             this.panel_editRequest.ResumeLayout(false);
             this.panel_editRequest.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_caseParameter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,6 +480,9 @@
         private MyCommonControl.Control.TextBoxWithWatermak tb_editHeadVaule;
         private MyCommonControl.Control.TextBoxWithWatermak tb_editSartLine;
         private MyCommonControl.Control.TextBoxWithWatermak tb_editRequestBody;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox_caseParameter;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
