@@ -118,7 +118,7 @@ namespace TestForPipeHttp
             }
 
             //异步发送，(由此触发的重连，新线程的创建都会使用异步的方式)如果要更新管道请设置reConectCount
-            public void AsynSend(int times,int repeatTimes,int waitTime)
+            public void AsynSendEx(int times,int repeatTimes,int waitTime)
             {
                 Thread asynSendThread=new Thread(new ParameterizedThreadStart(
                     (object ob)=>{
@@ -139,6 +139,24 @@ namespace TestForPipeHttp
                 asynSendThread.Start(new int[] { times, repeatTimes, waitTime });
             }
 
+            public void AsynSend(int times, int repeatTimes, int waitTime)
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback((object ob) =>
+                {
+                    for (int i = 0; i < ((int[])ob)[0]; i++)
+                    {
+                        Send(((int[])ob)[1]);
+                        if (((int[])ob)[2] > 0)
+                        {
+                            if (((int[])ob)[2] > 0)
+                            {
+                                Thread.Sleep(((int[])ob)[2]);
+                            }
+                        }
+                    }
+                    ReportPipeInfo("asynSendThread complete");
+                }), new int[] { times, repeatTimes, waitTime });
+            }
             private void ReConnect()
             {
                 //reciveThread.Abort();
