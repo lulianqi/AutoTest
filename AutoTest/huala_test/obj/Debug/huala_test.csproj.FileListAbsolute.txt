@@ -5,3 +5,10 @@ F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.exe
 F:\file\Code\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.pdb
+D:\my\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\huala_test.exe
+D:\my\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\huala_test.pdb
+D:\my\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\MyCommonHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.csprojResolveAssemblyReference.cache
+D:\my\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.exe
+D:\my\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.pdb

@@ -24,9 +24,10 @@ namespace PipeHttpRuner
         private FileStream responseFileStream;
         private string responseFilePath;
 
+
         private void MyInitializeComponent()
         {
-            Control.CheckForIllegalCrossThreadCalls = false;                                    //自行控制ui线程安全
+            //Control.CheckForIllegalCrossThreadCalls = false;                                    //自行控制ui线程安全
             cb_responseType.SelectedIndex = 0;
             cb_editRequestMethod.SelectedIndex = 0;
             cb_editRequestEdition.SelectedIndex = 0;
@@ -39,36 +40,57 @@ namespace PipeHttpRuner
 
         private void ReportMyMessage(string mes)
         {
-            rtb_dataRecieve.AddDate(mes, Color.Bisque, true);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate { ReportMyMessage(mes); }));
+            }
+            else
+            {
+                rtb_dataRecieve.AddDate(mes, Color.Bisque, true);
+            }
+            
         }
 
         void ph_OnPipeInfoReport(string mes, int id)
         {
-            rtb_dataRecieve.AddDate(string.Format("ID:[{0}] : {1}",id , mes), Color.Black, true);
-            //System.Diagnostics.Debug.WriteLine("-------------------------------------");
-            //System.Diagnostics.Debug.WriteLine(string.Format("ID:{0} [{1}]", id, mes));
-            //System.Diagnostics.Debug.WriteLine("-------------------------------------");
+            if(this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate { ph_OnPipeInfoReport(mes, id); }));
+            }
+            else
+            {
+                rtb_dataRecieve.AddDate(string.Format("ID:[{0}] : {1}", id, mes), Color.Black, true);
+            }
+            
         }
 
         void ph_OnPipeResponseReport(byte[] response, int id)
         {
-            if(isPutResponseInStream)
+            if (this.InvokeRequired)
             {
-                responseFileStream.Write(response, 0, response.Length);
+                //this.Invoke(new MethodInvoker(delegate { ph_OnPipeResponseReport(response, id); }));
+                this.BeginInvoke(new Action<byte[],int>(ph_OnPipeResponseReport), new object[] { response, id });  //数据量过大会影响接收
             }
             else
             {
-                string resposeStr = Encoding.UTF8.GetString(response);
-                //System.Diagnostics.Debug.Write(resposeStr);
-                rtb_dataRecieve.AddDate(resposeStr, Color.Maroon, false);
-            }
+                if (isPutResponseInStream)
+                {
+                    responseFileStream.Write(response, 0, response.Length);
+                }
+                else
+                {
+                    string resposeStr = Encoding.UTF8.GetString(response);
+                    //System.Diagnostics.Debug.Write(resposeStr);
+                    rtb_dataRecieve.AddDate(resposeStr, Color.Maroon, false);
+                }
+            }  
         }
 
-        void tempPipeHttp_OnPipeStateReport(PipeState state, int id)
+        void ph_OnPipeStateReport(PipeState state, int id)
         {
             if(this.InvokeRequired)
             {
-                this.Invoke(new MethodInvoker(delegate { tempPipeHttp_OnPipeStateReport(state,id); }));
+                this.Invoke(new MethodInvoker(delegate { ph_OnPipeStateReport(state,id); }));
             }
             else
             {
@@ -141,7 +163,7 @@ namespace PipeHttpRuner
 
 
 
-        #region UI event
+        #region UI main event
         //添加管道
         private void bt_addPile_Click(object sender, EventArgs e)
         {
@@ -166,7 +188,7 @@ namespace PipeHttpRuner
                     PipeHttp tempPipeHttp = new PipeHttp(reConnectTime, cb_responseType.SelectedIndex == 0);
                     tempPipeHttp.OnPipeInfoReport += ph_OnPipeInfoReport;
                     tempPipeHttp.OnPipeResponseReport += ph_OnPipeResponseReport;
-                    tempPipeHttp.OnPipeStateReport += tempPipeHttp_OnPipeStateReport;
+                    tempPipeHttp.OnPipeStateReport += ph_OnPipeStateReport;
                     tempPipeHttp.pipeRequest = PipeHttp.GlobalRawRequest;
                     AddPipeList(tempPipeHttp);
                 }
@@ -202,6 +224,16 @@ namespace PipeHttpRuner
             int sendCount = 1;
             if (int.TryParse(tb_RequstCount.Text, out sendCount))
             {
+                if (!ck_saveResponse.Checked)
+                {
+                    if(pipeList.Count*sendCount>=1000)
+                    {
+                        if(MessageBox.Show("it show much response data if you want save it to stream file","response mode chose",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                        {
+                            ck_saveResponse.Checked = true;
+                        }
+                    }
+                }
                 foreach (PipeHttp tempPh in pipeList)
                 {
                     if (cb_isAsynSend.Checked)
@@ -252,57 +284,6 @@ namespace PipeHttpRuner
             PipeHttp.GlobalRawRequest.ConnectPort = tempCounectPort;
         }
 
-        //pictureBox change for all
-        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            ((PictureBox)sender).BackColor = Color.Honeydew;
-        }
-
-        //pictureBox change for all
-        private void pictureBox_MouseLeave(object sender, EventArgs e)
-        {
-            ((PictureBox)sender).BackColor = Color.Transparent;
-        }
-        
-        #endregion
-
-        private void bt_editAddHead_Click(object sender, EventArgs e)
-        {
-            lv_editRequestHeads.Items.Add(new ListViewItem(string.Format("{0}: {1}", tb_editHeadKey.Text, tb_editHeadVaule.Text)));
-        }
-
-        //请求编辑取消
-        private void pb_editRequestCancel_Click(object sender, EventArgs e)
-        {
-            panel_editRequest.Visible = false;
-        }
-
-        //请求编辑确定
-        private void pb_editRequestComfrim_Click(object sender, EventArgs e)
-        {
-            PipeHttp.GlobalRawRequest.StartLine = string.Format("{0} {1} {2}", cb_editRequestMethod.Text, tb_editSartLine.Text, cb_editRequestEdition.Text);
-            PipeHttp.GlobalRawRequest.Headers.Clear();
-            foreach(ListViewItem tempHead in lv_editRequestHeads.Items)
-            {
-                PipeHttp.GlobalRawRequest.Headers.Add(tempHead.Text);
-            }
-            PipeHttp.GlobalRawRequest.EntityBody = tb_editRequestBody.Text;
-            PipeHttp.GlobalRawRequest.CreateRawData();
-            tb_rawRequest.Text = PipeHttp.GlobalRawRequest.GetRequestText();
-            panel_editRequest.Visible = false;
-        }
-
-        //移除heads
-        private void pb_editRequestDelHaeds_Click(object sender, EventArgs e)
-        {
-            lv_editRequestHeads.Items.Clear();
-        }
-
-        private void pb_editRawRequest_Click(object sender, EventArgs e)
-        {
-            panel_editRequest.Visible = true;
-        }
-
         private void ck_saveResponse_CheckedChanged(object sender, EventArgs e)
         {
             if(ck_saveResponse.Checked)
@@ -338,10 +319,129 @@ namespace PipeHttpRuner
         {
             if(responseFileStream!=null)
             {
-                responseFileStream.Flush();
+                responseFileStream.Flush(true);
             }
         }
-       
+        //pictureBox change for all
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            ((PictureBox)sender).BackColor = Color.Honeydew;
+        }
+
+        //pictureBox change for all
+        private void pictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            ((PictureBox)sender).BackColor = Color.Transparent;
+        }
+        
+        #endregion
+
+        #region edit request event
+        private void bt_editAddHead_Click(object sender, EventArgs e)
+        {
+            lv_editRequestHeads.Items.Add(new ListViewItem(string.Format("{0}: {1}", tb_editHeadKey.Text, tb_editHeadVaule.Text)));
+        }
+
+        //请求编辑取消
+        private void pb_editRequestCancel_Click(object sender, EventArgs e)
+        {
+            panel_editRequest.Visible = false;
+        }
+
+        //请求编辑确定
+        private void pb_editRequestComfrim_Click(object sender, EventArgs e)
+        {
+            PipeHttp.GlobalRawRequest.StartLine = string.Format("{0} {1} {2}", cb_editRequestMethod.Text, tb_editSartLine.Text, cb_editRequestEdition.Text);
+            PipeHttp.GlobalRawRequest.Headers.Clear();
+            foreach (ListViewItem tempHead in lv_editRequestHeads.Items)
+            {
+                PipeHttp.GlobalRawRequest.Headers.Add(tempHead.Text);
+            }
+            PipeHttp.GlobalRawRequest.EntityBody = tb_editRequestBody.Text;
+            PipeHttp.GlobalRawRequest.CreateRawData();
+            tb_rawRequest.Text = PipeHttp.GlobalRawRequest.GetRequestText();
+            panel_editRequest.Visible = false;
+        }
+
+        //移除heads
+        private void pb_editRequestDelHaeds_Click(object sender, EventArgs e)
+        {
+            lv_editRequestHeads.Items.Clear();
+        }
+
+        private void lv_editRequestHeads_DoubleClick(object sender, EventArgs e)
+        {
+            if(lv_editRequestHeads.SelectedItems!=null)
+            {
+                foreach(ListViewItem tempHead in lv_editRequestHeads.SelectedItems)
+                {
+                    lv_editRequestHeads.Items.Remove(tempHead);
+                }
+            }
+        }
+
+        private void pb_editRawRequest_Click(object sender, EventArgs e)
+        {
+            panel_editRequest.Visible = true;
+        } 
+        #endregion
+
+        
+
+        private void removeThisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(lv_pipeList.SelectedItems!=null)
+            {
+                foreach(ListViewItem tempItem in lv_pipeList.SelectedItems)
+                {
+                    PipeHttp tempPh = (PipeHttp)tempItem.Tag;
+                    tempPh.OnPipeInfoReport -= ph_OnPipeInfoReport;
+                    tempPh.OnPipeResponseReport -= ph_OnPipeResponseReport;
+                    tempPh.OnPipeStateReport -= ph_OnPipeStateReport;
+                    tempPh.Dispose();
+                    pipeList.Remove(tempPh);
+                    lv_pipeList.Items.Remove(tempItem);
+                }
+            }
+        }
+
+        private void removeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem tempItem in lv_pipeList.Items)
+            {
+                PipeHttp tempPh = (PipeHttp)tempItem.Tag;
+                tempPh.OnPipeInfoReport -= ph_OnPipeInfoReport;
+                tempPh.OnPipeResponseReport -= ph_OnPipeResponseReport;
+                tempPh.OnPipeStateReport -= ph_OnPipeStateReport;
+                tempPh.Dispose();
+                pipeList.Remove(tempPh);
+                lv_pipeList.Items.Remove(tempItem);
+            }
+        }
+
+        private void reconnectThisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lv_pipeList.SelectedItems != null)
+            {
+                foreach (ListViewItem tempItem in lv_pipeList.SelectedItems)
+                {
+                    PipeHttp tempPh = (PipeHttp)tempItem.Tag;
+                    tempPh.ReConnect();
+                }
+            }
+        }
+
+        private void reconnectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem tempItem in lv_pipeList.Items)
+            {
+                PipeHttp tempPh = (PipeHttp)tempItem.Tag;
+                tempPh.ReConnect();
+            }
+        }
+
+
+
 
     }
 }

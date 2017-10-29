@@ -154,7 +154,7 @@ namespace TestForPipeHttp
                             }
                         }
                     }
-                    ReportPipeInfo("asynSendThread complete");
+                    System.Diagnostics.Debug.WriteLine("asynSendThread complete");
                 }), new int[] { times, repeatTimes, waitTime });
             }
             private void ReConnect()
@@ -178,17 +178,17 @@ namespace TestForPipeHttp
 
             List<PipeHttp> phs = new List<PipeHttp>();
             
-            for(int i =0 ;i<1;i++)
+            for(int i =0 ;i<100;i++)
             {
-                phs.Add(new PipeHttp(100));
+                phs.Add(new PipeHttp(0));
             }
             Console.WriteLine("press enter to send");
             Console.ReadLine();
             foreach(PipeHttp tph in phs)
             {
                 Console.WriteLine(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss fff"));
-                //tph.Send(100);
-                tph.AsynSend(1000, 1, 0);
+                tph.Send(100);
+                //tph.AsynSend(1000, 1, 0);
                 Console.WriteLine(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss fff"));
             }
             Console.ReadLine();

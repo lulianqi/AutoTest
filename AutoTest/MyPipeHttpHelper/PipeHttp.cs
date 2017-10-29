@@ -1,4 +1,5 @@
 ﻿#define TESTMODE
+#define THREADPOOLMODE
 
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,10 @@ namespace MyPipeHttpHelper
         private static int idIndex = 0;
         private static object idIndexLock = new object();
 
+        static PipeHttp()
+        {
+        }
+
         public RawHttpRequest pipeRequest = new RawHttpRequest();
 
         public delegate void delegatePipeInfoReport(string mes, int id);
@@ -27,6 +32,7 @@ namespace MyPipeHttpHelper
         public event delegatePipeResponseOut OnPipeResponseReport;
         public event delegatePipeStateOut OnPipeStateReport;
 
+        private object tag;                                 //用于双向绑定
         private int id = 0;
         private PipeState state = PipeState.NotConnected;   //仅表示当前PipeHttp Socket状态，当前PipeHttp可能创建多个Socket连接，之前创建的状态不再维护。
         private Socket mySocket;        //管道连接
@@ -55,6 +61,12 @@ namespace MyPipeHttpHelper
             //Connect();
         }
 
+        public Object Tag
+        {
+            get { return tag; }
+            set { tag = value; }
+        }
+
         /// <summary>
         /// 获取当前管道Id
         /// </summary>
@@ -73,12 +85,11 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// get or set IsReportResponse (连接前设置有效)
+        /// get  IsReportResponse (初始化时设置)
         /// </summary>
         public bool IsReportResponse
         {
             get { return isReportResponse; }
-            set { isReportResponse = value; }
         }
 
         /// <summary>
@@ -122,9 +133,21 @@ namespace MyPipeHttpHelper
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool Connect()
         {
             ChangePipeState(PipeState.Connecting);
+            if (mySocket != null)
+            {
+                if (mySocket.Connected)
+                {
+                    ChangePipeState(PipeState.Connected);
+                    return true;
+                }
+            }
             if (string.IsNullOrEmpty(pipeRequest.ConnectHost))
             {
                 ChangePipeState( PipeState.DisConnected);
@@ -147,10 +170,12 @@ namespace MyPipeHttpHelper
 #endif
                 }
                 mySocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                //mySocket.NoDelay = true;
                 IPEndPoint hostEndPoint = new IPEndPoint(connctHost, pipeRequest.ConnectPort);
                 mySocket.Connect(hostEndPoint);
                 if (isReportResponse)
                 {
+                    //ThreadPool.QueueUserWorkItem(new WaitCallback(ReceviData), mySocket);  //这里使用线程池将失去部分对线程的控制能力(创建及启动会自动被延迟)
                     reciveThread = new Thread(new ParameterizedThreadStart(ReceviData));
                     reciveThread.IsBackground = true;
                     reciveThread.Start(mySocket);
@@ -167,20 +192,35 @@ namespace MyPipeHttpHelper
             return true;
         }
 
-        private void ReConnect()
+        /// <summary>
+        /// ReConnect并不会马上结束上一个TCP连接（链接会在指定时间内接收不到任何消息后自动被关闭，接收线程也会一起结束），就是说上一个链接依然会接收到未到达的回包
+        /// </summary>
+        public void ReConnect()
         {
-            //reciveThread.Abort();
-            ReportPipeInfo("ReConnect");
-            reciveThread.Name = "close";
+            if (mySocket != null)
+            {
+                mySocket = null; //置空mySocket让Connect可以开启新连接
+                ReportPipeInfo("ReConnect");
+                if (isReportResponse)
+                {
+                    reciveThread.Name = "close";
+                }
+            }
             Connect();
         }
 
+        /// <summary>
+        /// DisConnect会立刻关闭当前链接并放弃任何未到达的数据包
+        /// </summary>
         public void DisConnect()
         {
-            ReportPipeInfo("ReConnect");
+            ReportPipeInfo("DisConnect");
             mySocket.Close();
-            reciveThread.Name = "close";
-            reciveThread.Abort();
+            if (isReportResponse)
+            {
+                reciveThread.Name = "close";
+                reciveThread.Abort();
+            }
             ChangePipeState(PipeState.DisConnected);
         }
 
@@ -312,14 +352,14 @@ namespace MyPipeHttpHelper
                         }
                         else if (Thread.CurrentThread.Name == "close")
                         {
-                            ReportPipeInfo("the abandon socket receive task close by no data receive d");
+                            ReportPipeInfo("the abandon socket receive task close by no data received");
                             nowSocket.Close();  //该链接是一个被抛弃的连接，关闭他不要改变当前PipeHttp状态（因为被遗弃前可能还有未接收完成的数据所以没有马上关闭）
                             break;
                         }
                         Thread.Sleep(freeTime);
                     }
                 }
-                catch (System.Threading.ThreadAbortException ex)
+                catch (System.Threading.ThreadAbortException)
                 {
                     ReportPipeInfo("Applications active close ");//应用程序主动关闭接收线程
                     nowSocket.Close();
@@ -331,7 +371,7 @@ namespace MyPipeHttpHelper
                 }
                 catch (Exception ex)
                 {
-                    ReportPipeInfo(ex.Message);//应用程序主动关闭接收线程
+                    ReportPipeInfo(ex.Message);//应用程序被动关闭接收线程
                     nowSocket.Close();
                     if (!(Thread.CurrentThread.Name == "close"))
                     {

@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PipeHttpRuner));
             this.lb_pipeHost = new System.Windows.Forms.Label();
             this.lv_pipeList = new System.Windows.Forms.ListView();
             this.columnHeader_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_reConectCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip_forPipeList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeThisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reconnectThisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reconnectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lb_reConTime = new System.Windows.Forms.Label();
             this.lb_responseType = new System.Windows.Forms.Label();
             this.cb_responseType = new System.Windows.Forms.ComboBox();
@@ -67,6 +73,7 @@
             this.ck_saveResponse = new System.Windows.Forms.CheckBox();
             this.panel_addPipe = new System.Windows.Forms.Panel();
             this.pb_saveResponseStream = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip_forPipeList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_editRawRequest)).BeginInit();
             this.panel_editRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_editRequestDelHaeds)).BeginInit();
@@ -91,6 +98,7 @@
             this.lv_pipeList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader_id,
             this.columnHeader_reConectCount});
+            this.lv_pipeList.ContextMenuStrip = this.contextMenuStrip_forPipeList;
             this.lv_pipeList.FullRowSelect = true;
             this.lv_pipeList.Location = new System.Drawing.Point(821, 3);
             this.lv_pipeList.Name = "lv_pipeList";
@@ -108,6 +116,44 @@
             // 
             this.columnHeader_reConectCount.Text = "reConectCount";
             this.columnHeader_reConectCount.Width = 97;
+            // 
+            // contextMenuStrip_forPipeList
+            // 
+            this.contextMenuStrip_forPipeList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeThisToolStripMenuItem,
+            this.removeAllToolStripMenuItem,
+            this.reconnectThisToolStripMenuItem,
+            this.reconnectAllToolStripMenuItem});
+            this.contextMenuStrip_forPipeList.Name = "contextMenuStrip_forPipeList";
+            this.contextMenuStrip_forPipeList.Size = new System.Drawing.Size(161, 92);
+            // 
+            // removeThisToolStripMenuItem
+            // 
+            this.removeThisToolStripMenuItem.Name = "removeThisToolStripMenuItem";
+            this.removeThisToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.removeThisToolStripMenuItem.Text = "Remove this";
+            this.removeThisToolStripMenuItem.Click += new System.EventHandler(this.removeThisToolStripMenuItem_Click);
+            // 
+            // removeAllToolStripMenuItem
+            // 
+            this.removeAllToolStripMenuItem.Name = "removeAllToolStripMenuItem";
+            this.removeAllToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.removeAllToolStripMenuItem.Text = "Remove all";
+            this.removeAllToolStripMenuItem.Click += new System.EventHandler(this.removeAllToolStripMenuItem_Click);
+            // 
+            // reconnectThisToolStripMenuItem
+            // 
+            this.reconnectThisToolStripMenuItem.Name = "reconnectThisToolStripMenuItem";
+            this.reconnectThisToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.reconnectThisToolStripMenuItem.Text = "Reconnect this";
+            this.reconnectThisToolStripMenuItem.Click += new System.EventHandler(this.reconnectThisToolStripMenuItem_Click);
+            // 
+            // reconnectAllToolStripMenuItem
+            // 
+            this.reconnectAllToolStripMenuItem.Name = "reconnectAllToolStripMenuItem";
+            this.reconnectAllToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.reconnectAllToolStripMenuItem.Text = "Reconnect all";
+            this.reconnectAllToolStripMenuItem.Click += new System.EventHandler(this.reconnectAllToolStripMenuItem_Click);
             // 
             // lb_reConTime
             // 
@@ -407,6 +453,7 @@
             this.lv_editRequestHeads.TabIndex = 13;
             this.lv_editRequestHeads.UseCompatibleStateImageBehavior = false;
             this.lv_editRequestHeads.View = System.Windows.Forms.View.Details;
+            this.lv_editRequestHeads.DoubleClick += new System.EventHandler(this.lv_editRequestHeads_DoubleClick);
             // 
             // columnHeader_heads
             // 
@@ -458,11 +505,11 @@
             // ck_saveResponse
             // 
             this.ck_saveResponse.AutoSize = true;
-            this.ck_saveResponse.Location = new System.Drawing.Point(678, 321);
+            this.ck_saveResponse.Location = new System.Drawing.Point(617, 321);
             this.ck_saveResponse.Name = "ck_saveResponse";
-            this.ck_saveResponse.Size = new System.Drawing.Size(108, 16);
+            this.ck_saveResponse.Size = new System.Drawing.Size(162, 16);
             this.ck_saveResponse.TabIndex = 39;
-            this.ck_saveResponse.Text = "Save To Stream";
+            this.ck_saveResponse.Text = "Save Response To Stream";
             this.ck_saveResponse.UseVisualStyleBackColor = true;
             this.ck_saveResponse.CheckedChanged += new System.EventHandler(this.ck_saveResponse_CheckedChanged);
             // 
@@ -504,12 +551,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 527);
+            this.Controls.Add(this.rtb_dataRecieve);
             this.Controls.Add(this.pb_saveResponseStream);
             this.Controls.Add(this.panel_addPipe);
             this.Controls.Add(this.ck_saveResponse);
             this.Controls.Add(this.panel_editRequest);
             this.Controls.Add(this.pb_editRawRequest);
-            this.Controls.Add(this.rtb_dataRecieve);
             this.Controls.Add(this.tb_rawRequest);
             this.Controls.Add(this.lv_pipeList);
             this.Controls.Add(this.lb_pipeHost);
@@ -518,6 +565,7 @@
             this.Name = "PipeHttpRuner";
             this.Text = "PipeHttp";
             this.Load += new System.EventHandler(this.PipeHttpRuner_Load);
+            this.contextMenuStrip_forPipeList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_editRawRequest)).EndInit();
             this.panel_editRequest.ResumeLayout(false);
             this.panel_editRequest.PerformLayout();
@@ -572,6 +620,11 @@
         private System.Windows.Forms.CheckBox ck_saveResponse;
         private System.Windows.Forms.Panel panel_addPipe;
         private System.Windows.Forms.PictureBox pb_saveResponseStream;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_forPipeList;
+        private System.Windows.Forms.ToolStripMenuItem removeThisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reconnectThisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reconnectAllToolStripMenuItem;
     }
 }
 

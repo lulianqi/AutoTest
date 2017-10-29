@@ -5,6 +5,6 @@ F:\file\Code\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.pdb
 F:\file\Code\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.pdb
-D:\my\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.csprojResolveAssemblyReference.cache
