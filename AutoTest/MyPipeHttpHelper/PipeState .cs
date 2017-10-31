@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace MyPipeHttpHelper
 {
+    /// <summary>
+    /// Connecte state 【管线连接状态】
+    /// </summary>
     public enum PipeState
     {
-        Connected,
-        DisConnected,
-        NotConnected,
+        Connected,                //【已连接】
+        DisConnected,             //【断开连接】
+        NotConnected,             //【】
         Connecting
     }
 }

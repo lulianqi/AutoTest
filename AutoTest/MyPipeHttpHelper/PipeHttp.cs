@@ -33,22 +33,26 @@ namespace MyPipeHttpHelper
         public event delegatePipeStateOut OnPipeStateReport;
 
         private object tag;                                 //用于双向绑定
-        private int id = 0;
+        private int id = 0;                                 //PipeHttp ID
         private PipeState state = PipeState.NotConnected;   //仅表示当前PipeHttp Socket状态，当前PipeHttp可能创建多个Socket连接，之前创建的状态不再维护。
-        private Socket mySocket;        //管道连接
-        private bool isReportResponse = false; //是否将返回数据推送给上层应用
-        private int reConectCount = 0;  //在指定数目后更新管道(默认0表示一直使用初始管道)（因为部分nginx都有100的限制），设置后会让单条管道发送性能下降
+        private Socket mySocket;                            //管道连接
+        private bool isReportResponse = false;              //是否将返回数据推送给上层应用
+        private int reConectCount = 0;                      //在指定数目后更新管道(默认0表示一直使用初始管道)（因为部分nginx都有100的限制），设置后会让单条管道发送性能下降
         private int nowConectCount = 0;
-        Thread reciveThread;           //接收线程
-        private IPAddress connctHost;
-        private int reciveBufferSize = 1024 * 128;  //接收缓存，当需要大量PipeHttp时请设置较小值（当isReportResponse为false该值无效）
+        Thread reciveThread;                                //接收线程
+        private IPAddress connctHost;                       //链接地址
+        private int reciveBufferSize = 1024 * 128;          //接收缓存，当需要大量PipeHttp时请设置较小值（当isReportResponse为false该值无效）
 
 
         public PipeHttp():this(0,true)
         {
         }
 
-        
+        /// <summary>
+        /// initialization PipeHttp
+        /// </summary>
+        /// <param name="yourReConectCount">ReConect Count</param>
+        /// <param name="yourIsReportResponse">is report response</param>
         public PipeHttp(int yourReConectCount, bool yourIsReportResponse)
         {
             lock (idIndexLock)
@@ -61,6 +65,9 @@ namespace MyPipeHttpHelper
             //Connect();
         }
 
+        /// <summary>
+        /// get or set Tag
+        /// </summary>
         public Object Tag
         {
             get { return tag; }
@@ -68,7 +75,7 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// 获取当前管道Id
+        /// get the pipe id 【获取当前管道Id】
         /// </summary>
         public int Id
         {
@@ -76,7 +83,7 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// get or set ReciveBufferSize (连接前设置有效)
+        /// get or set ReciveBufferSize 【连接前设置有效】
         /// </summary>
         public int ReciveBufferSize
         {
@@ -85,7 +92,7 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// get  IsReportResponse (初始化时设置)
+        /// get  IsReportResponse 【仅能在初始化时设置】
         /// </summary>
         public bool IsReportResponse
         {
@@ -101,7 +108,7 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// get now reConectCount (if it is 0 that is say it will never reconnect)
+        /// get now reConectCount (if it is 0 that is say it will never reconnect)【仅能在初始化时设置，如果为0表示不会进行重连】
         /// </summary>
         public int GetreReconectCount
         {
@@ -134,9 +141,9 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// 
+        /// connect the pipe (if it is connected,it will use old socket) 【对于已经连接的pipe不会再次连接，而由于默认无心跳保持机制，可能存在实际已经断开，而tcp层依然认为连接存在的情况，可以发送任意数据确认是否有效，或者直接断开再次连接】
         /// </summary>
-        /// <returns></returns>
+        /// <returns>is sucess</returns>
         public bool Connect()
         {
             ChangePipeState(PipeState.Connecting);
@@ -193,7 +200,7 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// ReConnect并不会马上结束上一个TCP连接（链接会在指定时间内接收不到任何消息后自动被关闭，接收线程也会一起结束），就是说上一个链接依然会接收到未到达的回包
+        /// ReConnect （it will creat new socket but the old will not be stoped  immediately ）【无论并不会马上结束上一个TCP连接（链接会在指定时间内接收不到任何消息后自动被关闭，接收线程也会一起结束），就是说上一个链接依然会接收到未到达的回包】
         /// </summary>
         public void ReConnect()
         {
@@ -210,7 +217,7 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// DisConnect会立刻关闭当前链接并放弃任何未到达的数据包
+        /// DisConnect （now socket will be stoped  immediately）【会立刻关闭当前链接并放弃任何未到达的数据包】
         /// </summary>
         public void DisConnect()
         {
@@ -224,6 +231,10 @@ namespace MyPipeHttpHelper
             ChangePipeState(PipeState.DisConnected);
         }
 
+        /// <summary>
+        /// send one raw http
+        /// </summary>
+        /// <param name="requestRawBytes">raw data</param>
         public void SendOne(byte[] requestRawBytes)
         {
             if (requestRawBytes==null)
@@ -260,11 +271,18 @@ namespace MyPipeHttpHelper
             }
         }
 
+        /// <summary>
+        /// send one inner http (you can set it by PipeRequest)【使用内置的PipeRequest，如果要控制发送内容，请设置PipeRequest】
+        /// </summary>
         public void SendOne()
         {
             SendOne(pipeRequest.RawRequest);
         }
 
+        /// <summary>
+        /// send inner http with sendCount
+        /// </summary>
+        /// <param name="sendCount">send Count</param>
         public void Send(int sendCount)
         {
             for (int i = 0; i < sendCount; i++)
@@ -273,7 +291,12 @@ namespace MyPipeHttpHelper
             }
         }
 
-        //异步发送，(由此触发的重连，新线程的创建都会使用异步的方式)如果要更新管道请设置reConectCount
+        /// <summary>
+        /// send asyn【异步发送，(由此触发的重连，新线程的创建都会使用异步的方式)如果要更新管道请设置reConectCount】
+        /// </summary>
+        /// <param name="times">发多少组</param>
+        /// <param name="repeatTimes">每组多少次</param>
+        /// <param name="waitTime">每组延时多少</param>
         public void AsynSend(int times, int repeatTimes, int waitTime)
         {
             ThreadPool.QueueUserWorkItem(new WaitCallback((object ob) =>
@@ -387,7 +410,7 @@ namespace MyPipeHttpHelper
         }
 
         /// <summary>
-        /// 实现【IDisposable】强烈建议结束前调用
+        /// Dispose  【实现【IDisposable】强烈建议结束前调用】
         /// </summary>
         public void Dispose()
         {
