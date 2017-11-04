@@ -23,7 +23,8 @@ namespace PipeHttpRuner
         private bool isPutResponseInStream;
         private FileStream responseFileStream;
         private string responseFilePath;
-
+        private Timer getResponsTimer;
+        private int nowGetResponsTimerIndex;
 
         private void MyInitializeComponent()
         {
@@ -35,7 +36,26 @@ namespace PipeHttpRuner
             tb_pileHost_TextChanged(null, null);
             tb_pilePort_TextChanged(null, null);
             responseFilePath = System.Windows.Forms.Application.StartupPath + string.Format("\\Response\\response_{0}.txt", DateTime.Now.ToString("yyyy.MM.dd"));
-            
+            getResponsTimer = new Timer();
+            getResponsTimer.Interval = 200;
+            getResponsTimer.Tick += getResponsTimer_Tick;
+            //getResponsTimer.Start();
+        }
+
+        void getResponsTimer_Tick(object sender, EventArgs e)
+        {
+            if(nowGetResponsTimerIndex!=0)
+            {
+                nowGetResponsTimerIndex = 0;
+                if(lb_getResponseState.ForeColor==Color.LimeGreen)
+                {
+                    lb_getResponseState.ForeColor = Color.LightSalmon;
+                }
+                else
+                {
+                    lb_getResponseState.ForeColor = Color.LimeGreen;
+                }
+            }
         }
 
         private void ReportMyMessage(string mes)
@@ -76,6 +96,7 @@ namespace PipeHttpRuner
                 if (isPutResponseInStream)
                 {
                     responseFileStream.Write(response, 0, response.Length);
+                    nowGetResponsTimerIndex++;
                 }
                 else
                 {
@@ -289,6 +310,8 @@ namespace PipeHttpRuner
             if(ck_saveResponse.Checked)
             {
                 pb_saveResponseStream.Visible = true;
+                lb_getResponseState.Visible = true;
+                getResponsTimer.Enabled = true;
                 isPutResponseInStream = true;
                 int tempFileTag=0;
                 string tempBakPath=responseFilePath;
@@ -310,6 +333,8 @@ namespace PipeHttpRuner
             else
             {
                 pb_saveResponseStream.Visible = false;
+                lb_getResponseState.Visible = false;
+                getResponsTimer.Enabled = false;
                 isPutResponseInStream = false;
                 responseFileStream.Dispose();
             }
@@ -351,6 +376,24 @@ namespace PipeHttpRuner
         //请求编辑确定
         private void pb_editRequestComfrim_Click(object sender, EventArgs e)
         {
+            //get host 
+            int tempStart = tb_editSartLine.Text.IndexOf("//");
+            int tempEnd = 0;
+            if (tempStart>0)
+            {
+                tempStart = tempStart + 2;
+                tempEnd = tb_editSartLine.Text.IndexOf('/', tempStart);
+                if (tempEnd > 0)
+                {
+                    tb_pileHost.Text = tb_editSartLine.Text.Substring(tempStart , tempEnd - tempStart);
+                }
+                else
+                {
+                    tb_pileHost.Text = tb_editSartLine.Text.Substring(tempStart );
+                }
+            }
+
+            //get requeset
             PipeHttp.GlobalRawRequest.StartLine = string.Format("{0} {1} {2}", cb_editRequestMethod.Text, tb_editSartLine.Text, cb_editRequestEdition.Text);
             PipeHttp.GlobalRawRequest.Headers.Clear();
             foreach (ListViewItem tempHead in lv_editRequestHeads.Items)

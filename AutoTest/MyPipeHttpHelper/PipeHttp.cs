@@ -376,6 +376,9 @@ namespace MyPipeHttpHelper
                         else if (Thread.CurrentThread.Name == "close")
                         {
                             ReportPipeInfo("the abandon socket receive task close by no data received");
+#if TESTMODE
+                            System.Diagnostics.Debug.WriteLine("receive task close by no data received");
+#endif
                             nowSocket.Close();  //该链接是一个被抛弃的连接，关闭他不要改变当前PipeHttp状态（因为被遗弃前可能还有未接收完成的数据所以没有马上关闭）
                             break;
                         }

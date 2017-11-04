@@ -73,6 +73,7 @@
             this.ck_saveResponse = new System.Windows.Forms.CheckBox();
             this.panel_addPipe = new System.Windows.Forms.Panel();
             this.pb_saveResponseStream = new System.Windows.Forms.PictureBox();
+            this.lb_getResponseState = new System.Windows.Forms.Label();
             this.contextMenuStrip_forPipeList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_editRawRequest)).BeginInit();
             this.panel_editRequest.SuspendLayout();
@@ -428,7 +429,7 @@
             this.tb_editSartLine.Name = "tb_editSartLine";
             this.tb_editSartLine.Size = new System.Drawing.Size(305, 21);
             this.tb_editSartLine.TabIndex = 19;
-            this.tb_editSartLine.Text = "www.baidu.com";
+            this.tb_editSartLine.Text = "http://www.baidu.com";
             this.tb_editSartLine.WatermarkText = "http://www.baidu.com";
             // 
             // bt_editAddHead
@@ -505,7 +506,7 @@
             // ck_saveResponse
             // 
             this.ck_saveResponse.AutoSize = true;
-            this.ck_saveResponse.Location = new System.Drawing.Point(617, 321);
+            this.ck_saveResponse.Location = new System.Drawing.Point(605, 321);
             this.ck_saveResponse.Name = "ck_saveResponse";
             this.ck_saveResponse.Size = new System.Drawing.Size(162, 16);
             this.ck_saveResponse.TabIndex = 39;
@@ -546,11 +547,24 @@
             this.pb_saveResponseStream.Visible = false;
             this.pb_saveResponseStream.Click += new System.EventHandler(this.pb_saveResponseStream_Click);
             // 
+            // lb_getResponseState
+            // 
+            this.lb_getResponseState.AutoSize = true;
+            this.lb_getResponseState.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_getResponseState.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lb_getResponseState.Location = new System.Drawing.Point(766, 321);
+            this.lb_getResponseState.Name = "lb_getResponseState";
+            this.lb_getResponseState.Size = new System.Drawing.Size(24, 16);
+            this.lb_getResponseState.TabIndex = 41;
+            this.lb_getResponseState.Text = "●";
+            this.lb_getResponseState.Visible = false;
+            // 
             // PipeHttpRuner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 527);
+            this.Controls.Add(this.lb_getResponseState);
             this.Controls.Add(this.rtb_dataRecieve);
             this.Controls.Add(this.pb_saveResponseStream);
             this.Controls.Add(this.panel_addPipe);
@@ -562,6 +576,11 @@
             this.Controls.Add(this.lb_pipeHost);
             this.Controls.Add(this.tb_pilePort);
             this.Controls.Add(this.tb_pileHost);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(978, 566);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(978, 566);
             this.Name = "PipeHttpRuner";
             this.Text = "PipeHttp";
             this.Load += new System.EventHandler(this.PipeHttpRuner_Load);
@@ -625,6 +644,7 @@
         private System.Windows.Forms.ToolStripMenuItem removeAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reconnectThisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reconnectAllToolStripMenuItem;
+        private System.Windows.Forms.Label lb_getResponseState;
     }
 }
 
