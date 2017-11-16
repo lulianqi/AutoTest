@@ -20,36 +20,54 @@ namespace MyPipeHttpHelper
         //原始数据
         private byte[] rawRequest = null;
 
+        /// <summary>
+        /// get or set Connect Host(for the tcp link)
+        /// </summary>
         public string ConnectHost
         {
             get { return connectHost; }
             set { if (value != null) { connectHost = value; } }
         }
 
+        /// <summary>
+        /// get or set Connect Port(for the tcp link)
+        /// </summary>
         public int ConnectPort
         {
             get { return connectPort; }
             set { if (value != null) { connectPort = value; } }
         }
 
+        /// <summary>
+        /// get or set http startline
+        /// </summary>
         public string StartLine
         {
             get { return startLine; }
             set { if (value != null) { startLine = value; } }
         }
 
+        /// <summary>
+        /// get or set http heads
+        /// </summary>
         public List<string> Headers
         {
             get { return headers; }
             set { if (value != null) { headers = value; } }
         }
 
+        /// <summary>
+        /// get or set http entity body
+        /// </summary>
         public string EntityBody
         {
             get { return entityBody; }
             set { if (value != null) { entityBody = value; } }
         }
 
+        /// <summary>
+        /// get the rawRequest (now rawRequest)
+        /// </summary>
         public byte[] RawRequest
         {
             get { return rawRequest; }
@@ -60,16 +78,29 @@ namespace MyPipeHttpHelper
 
         }
 
+        /// <summary>
+        /// get the rawRequest by your encoding  (now rawRequest)
+        /// </summary>
+        /// <param name="yourEncoding">encoding</param>
+        /// <returns>rawRequest</returns>
         public string GetRequestText(Encoding yourEncoding)
         {
             return yourEncoding.GetString(rawRequest);
         }
 
+        /// <summary>
+        /// get the rawRequest by utf 8  (now rawRequest)
+        /// </summary>
+        /// <returns>rawRequest</returns>
         public string GetRequestText()
         {
             return GetRequestText(Encoding.UTF8);
         }
 
+        /// <summary>
+        /// Create RawData wtih you data that set by StartLine/Headers/EntityBody
+        /// </summary>
+        /// <param name="yourEncoding">your encoding</param>
         public void CreateRawData(Encoding yourEncoding)
         {
             StringBuilder requestSb = new StringBuilder();
@@ -87,6 +118,9 @@ namespace MyPipeHttpHelper
             rawRequest = yourEncoding.GetBytes(requestSb.ToString());
         }
 
+        /// <summary>
+        /// Create RawData wtih you data that set by StartLine/Headers/EntityBody (utf 8)
+        /// </summary>
         public void CreateRawData()
         {
             CreateRawData(Encoding.UTF8);
@@ -96,6 +130,10 @@ namespace MyPipeHttpHelper
         {
             rawRequest = yourRawRequest;
         }
+
+        /// <summary>
+        /// Create RawData wtih you data that set by yourRawRequest
+        /// </summary>
         public void CreateRawData(Encoding yourEncoding, string yourRawRequest)
         {
             if (yourRawRequest != null)

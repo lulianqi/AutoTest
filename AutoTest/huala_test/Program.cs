@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MyCommonHelper.FileHelper;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -10,7 +12,7 @@ namespace huala_test
         static void Main(string[] args)
         {
             Console.ReadLine();
-            CreateQrCode();
+            AnalysisNginxLog();
             Console.ReadLine();
         }
 
@@ -37,6 +39,92 @@ namespace huala_test
                 Console.WriteLine(tempRespans);
                 System.Diagnostics.Debug.WriteLine(tempRespans);
             }
+
+        }
+
+        private static void AnalysisNginxLog()
+        {
+            StreamReader sr = new StreamReader(@"D:\NG\login.txt", Encoding.UTF8);
+            List<List<string>> loginList = new List<List<string>>();
+            string temmUa=null;
+            temmUa = sr.ReadLine();
+            while(temmUa!=null)
+            {
+                int startIndex = temmUa.IndexOf("\"  \"", 0);
+                startIndex = temmUa.IndexOf("\"  \"", startIndex+4);
+                int endIndex = temmUa.IndexOf("\"", startIndex+4);
+                if (startIndex > 0 && endIndex > 0)
+                {
+                    temmUa = temmUa.Substring(startIndex + 4, endIndex - startIndex-4);
+                    #region 设备类型
+                    string tempDivers;
+                    if (temmUa.Contains("Android"))
+                    {
+                        tempDivers = "Android";
+                    }
+                    else if (temmUa.Contains("iPhone"))
+                    {
+                        tempDivers = "iPhone";
+                    }
+                    else
+                    {
+                        tempDivers = "Web";
+                    } 
+                    #endregion
+                    
+                    #region 浏览器
+                    string tempBrowser = "unknow";
+                    if (tempDivers == "Web")
+                    {
+                        if (temmUa.Contains("360SE"))
+                        {
+                            tempBrowser = "360SE";
+                        }
+                        else if (temmUa.Contains("360EE"))
+                        {
+                            tempBrowser = "360EE";
+                        }
+                        else if (temmUa.Contains("Maxthon"))
+                        {
+                            tempBrowser = "Maxthon";
+                        }
+                        else if (temmUa.Contains("Opera"))
+                        {
+                            tempBrowser = "Opera";
+                        }
+                        else if (temmUa.Contains("Firefox"))
+                        {
+                            tempBrowser = "Firefox";
+                        }
+                        else if (temmUa.Contains("MSIE"))
+                        {
+                            tempBrowser = temmUa.Substring(temmUa.IndexOf("MSIE"), 8);
+                        }
+                        else if (temmUa.Contains("Chrome"))
+                        {
+                            tempBrowser = temmUa.Substring(temmUa.IndexOf("Chrome"), 9);
+                        }
+                        else if (temmUa.Contains("Safari"))
+                        {
+                            tempBrowser = temmUa.Substring(temmUa.IndexOf("Safari"), 10);
+                        }
+                    } 
+                    else
+                    {
+                        tempBrowser = "MobilePhone";
+                    }
+                    #endregion
+                    loginList.Add((new string[] { temmUa, tempDivers ,tempBrowser}).ToList<string>());
+                }
+                else
+                {
+                    loginList.Add((new string[] { "errer", "errer", "errer" }).ToList<string>());
+                }
+                
+                temmUa = sr.ReadLine();
+            }
+
+            CsvFileHelper.SaveCsvFile(@"D:\NG\new.csv", loginList, false , new System.Text.UTF8Encoding(false));
 
         }
     }
