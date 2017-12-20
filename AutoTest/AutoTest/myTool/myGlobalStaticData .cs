@@ -29,7 +29,7 @@ namespace AutoTest.myTool
         //声明为 volatile 的字段不受编译器优化（假定由单个线程访问）的限制。这样可以确保该字段在任何时间呈现的都是最新的值。
 
         public static AutoResetEvent myAutoResetEvent = new AutoResetEvent(false);
-        //myAutoResetEvent.Set();  开锁              
+        //myAutoResetEvent.Set();  开锁      (Set 方法释放单个线程。 如果没有等待线程，等待句柄将一直保持等待线程尝试通过状态，或者直到它的 Reset 方法被调用。 )        
         //myAutoResetEvent.WaitOne(); 调用后主动上锁，即一个WaitOne通过会阻断所有其他的WaitOne，直到Set才会再通过一个WaitOne  （就是说正常情况下一个AutoResetEvent只能激活一个线程）
 
         public static ManualResetEvent myManualResetEvent = new ManualResetEvent(false); //如果为 true，则将初始状态设置为终止（等待 ManualResetEvent 的线程不阻塞）；如果为 false，则将初始状态设置为非终止(阻止状态)。

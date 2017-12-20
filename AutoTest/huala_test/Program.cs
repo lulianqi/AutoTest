@@ -12,7 +12,7 @@ namespace huala_test
         static void Main(string[] args)
         {
             Console.ReadLine();
-            AnalysisNginxLog();
+            CreateQrCode();
             Console.ReadLine();
         }
 
@@ -29,7 +29,7 @@ namespace huala_test
 
         private static void CreateQrCode()
         {
-            string suuids = "8fc493d2-a9d1-4a11-a007-34ed59ca813f,4527c714-b16f-44db-8b86-c384cd3abf4b,a20c170d-ddac-48dd-9b26-201bd4791aa2,3711af7a-350e-4ce4-a0a9-a01030b5bad8,88d0ef3f-322f-46a3-8fa9-6754dd57f964,add27d4c-3a77-449b-ae70-f32a850a026e,2a49c3a3-945d-444a-863c-3e859e12b66b,b8d63b97-dc59-4bea-be27-1f394a4e90d9,36f0e30d-ddaf-41eb-a8b3-3f74994a7ff0,a9bc04e2-b9d7-4a13-90a7-88e8d860cf14,a647b85b-4d24-4b7e-b2b1-2e3f184b2d70,a6fd5b9d-da8a-4168-82fc-881818c6b258,c3f5ad39-0f42-4c86-941c-727a927d7fd6,454df581-f2e2-4530-826a-74fc9626e248,ee9ab441-e6f7-4677-a566-307a81c5afeb,a6ec2ad0-4a34-42e2-9b1a-708aa7fafe8f,b0d52016-45f7-11e7-b83e-005056824593,fe1457ad-45da-11e7-b83e-005056824593,26192659-45df-11e7-b83e-005056824593,1b502c04-45df-11e7-b83e-005056824593,3c449c41-ace6-4d85-b1a8-dfd883f1a074,8b89cb24-137e-4297-b32b-9721a5dbcab7,fd074bf7-f79e-4e2b-9e14-e0e5a31f0695,b0da768e-45f7-11e7-b83e-005056824593,41d5fd95-45dc-11e7-b83e-005056824593,1913cf7b-506f-4c5c-a6c8-2e1a1a18183d,1b5207ea-45df-11e7-b83e-005056824593,497c9977-6bf6-4ebe-878b-c90174b2083d,152de762-536d-4681-98f4-537e34de3c40";
+            string suuids = "4e74dc90-988e-4e58-beb0-dabc8b34019b,77d6b300-45dc-11e7-b83e-005056824593,82c09089-0863-4ff6-a729-42468de0c7f9,efc7f749-93c2-4386-be38-c9b455650af5,e9a9454d-5b27-4824-9a0c-ce46977a6b93,a7782913-1978-4a1a-9ab7-6878536c5fd3";
             string[] suuidAr = suuids.Split(',');
             foreach (string nowSuuid in suuidAr)
             {
@@ -127,5 +127,16 @@ namespace huala_test
             CsvFileHelper.SaveCsvFile(@"D:\NG\new.csv", loginList, false , new System.Text.UTF8Encoding(false));
 
         }
+   
+        private static void CreatSeckillActivityOrder(string hltoken ,string userId ,string seckillActivityId , string seckillActivityGoodsId)
+        {
+            List<KeyValuePair<string,string>> heads=new List<KeyValuePair<string,string>>();
+            heads.Add(new KeyValuePair<string,string>("Content-Type","application/json"));
+            heads.Add(new KeyValuePair<string,string>("Cookie",string.Format("hltoken={0}; token=oN2Zfszme7aKT5VT3Jf0udj7PxvM; v3wx-token=\"5_FntEA12D0W_PoB7UQH4GlEx8EZNZM_YlyEOfQsoQ8UP_AwXUkdZKlJ41fomZH54R2gyZmYPpHDqx4EWoqV8Imw,oN2Zfszme7aKT5VT3Jf0udj7PxvM,o-r_hwFcvwXRdYBYd5fePChWiadk\"; USERID={1}; wxConfig=%7B%22signature%22%3A%22069f608d49f55f570f945bc1bb9449668994fb4f%22%2C%22appId%22%3A%22wx01f2ab6d9e41169a%22%2C%22nonceStr%22%3A%22ca4d171ec4fe43b6a0679cd9af28bad3%22%2C%22timestamp%22%3A%221513597811%22%7D; currentCity=%E5%AE%81%E6%B3%A2%E5%B8%82; currentLocation={%22address%22:%22%E6%B5%99%E6%B1%9F%E7%9C%81%E5%AE%81%E6%B3%A2%E5%B8%82%E6%B1%9F%E4%B8%9C%E5%8C%BA%E7%94%AC%E6%B1%9F%E5%A4%A7%E6%A1%A5%22%2C%22province%22:%22%E6%B5%99%E6%B1%9F%E7%9C%81%22%2C%22city%22:%22%E5%AE%81%E6%B3%A2%E5%B8%82%22%2C%22district%22:%22%E6%B1%9F%E4%B8%9C%E5%8C%BA%22%2C%22street%22:%22%E7%94%AC%E6%B1%9F%E5%A4%A7%E6%A1%A5%22%2C%22streetNumber%22:%22%22%2C%22lng%22:121.568649%2C%22lat%22:29.880267%2C%22signBuilding%22:%22%E7%94%AC%E6%B1%9F%E5%A4%A7%E6%A1%A5%E5%8D%9778%E7%B1%B3%22}",hltoken,userId)));
+            string tempResponse=null;
+            tempResponse = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(string.Format("https://wxwyjtest.huala.com/huala/v3/seckillActivity/canBuy?seckillActivityId={0}&seckillActivityGoodsId={1}", seckillActivityId, seckillActivityGoodsId), null, "GET", heads);
+            Console.WriteLine();
+        }
+
     }
 }
