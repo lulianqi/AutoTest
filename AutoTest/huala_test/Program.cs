@@ -128,11 +128,11 @@ namespace huala_test
 
         }
    
-        private static void CreatSeckillActivityOrder(string hltoken ,string userId ,string seckillActivityId , string seckillActivityGoodsId)
+        private static void CreatSeckillActivityOrder(string hltoken ,string addressId ,string seckillActivityId , string seckillActivityGoodsId)
         {
             List<KeyValuePair<string,string>> heads=new List<KeyValuePair<string,string>>();
             heads.Add(new KeyValuePair<string,string>("Content-Type","application/json"));
-            heads.Add(new KeyValuePair<string,string>("Cookie",string.Format("hltoken={0}; token=oN2Zfszme7aKT5VT3Jf0udj7PxvM; v3wx-token=\"5_FntEA12D0W_PoB7UQH4GlEx8EZNZM_YlyEOfQsoQ8UP_AwXUkdZKlJ41fomZH54R2gyZmYPpHDqx4EWoqV8Imw,oN2Zfszme7aKT5VT3Jf0udj7PxvM,o-r_hwFcvwXRdYBYd5fePChWiadk\"; USERID={1}; wxConfig=%7B%22signature%22%3A%22069f608d49f55f570f945bc1bb9449668994fb4f%22%2C%22appId%22%3A%22wx01f2ab6d9e41169a%22%2C%22nonceStr%22%3A%22ca4d171ec4fe43b6a0679cd9af28bad3%22%2C%22timestamp%22%3A%221513597811%22%7D; currentCity=%E5%AE%81%E6%B3%A2%E5%B8%82; currentLocation={%22address%22:%22%E6%B5%99%E6%B1%9F%E7%9C%81%E5%AE%81%E6%B3%A2%E5%B8%82%E6%B1%9F%E4%B8%9C%E5%8C%BA%E7%94%AC%E6%B1%9F%E5%A4%A7%E6%A1%A5%22%2C%22province%22:%22%E6%B5%99%E6%B1%9F%E7%9C%81%22%2C%22city%22:%22%E5%AE%81%E6%B3%A2%E5%B8%82%22%2C%22district%22:%22%E6%B1%9F%E4%B8%9C%E5%8C%BA%22%2C%22street%22:%22%E7%94%AC%E6%B1%9F%E5%A4%A7%E6%A1%A5%22%2C%22streetNumber%22:%22%22%2C%22lng%22:121.568649%2C%22lat%22:29.880267%2C%22signBuilding%22:%22%E7%94%AC%E6%B1%9F%E5%A4%A7%E6%A1%A5%E5%8D%9778%E7%B1%B3%22}",hltoken,userId)));
+            heads.Add(new KeyValuePair<string,string>("Cookie",string.Format("hltoken={0}",hltoken)));
             string tempResponse=null;
             tempResponse = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(string.Format("https://wxwyjtest.huala.com/huala/v3/seckillActivity/canBuy?seckillActivityId={0}&seckillActivityGoodsId={1}", seckillActivityId, seckillActivityGoodsId), null, "GET", heads);
             Console.WriteLine();
