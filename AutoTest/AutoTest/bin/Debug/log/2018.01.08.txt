@@ -1,0 +1,27 @@
+-------------------------------------------------------
+2018/1/8 11:33:01
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:84
+
+ID:0957  Keep-Alive 和 Close 不能使用此属性设置。
+参数名: value
+-------------------------------------------------------
+2018/1/8 16:20:16
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:84
+
+ID:0957  Keep-Alive 和 Close 不能使用此属性设置。
+参数名: value
+-------------------------------------------------------
+2018/1/8 16:42:42
+ErrorFile:f:\file\Code\AutoTest\AutoTest\AutoTest\myTool\CaseFileXmlAnalysis.cs
+ErrorLine:69
+
+ID:00017  第 122 行，位置 5 上的开始标记“Head”与结束标记“Heads”不匹配。 第 123 行，位置 13。
+-------------------------------------------------------
+2018/1/8 16:43:00
+ErrorFile:f:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\ProtocolExecutive\AtHttpProtocol.cs
+ErrorLine:84
+
+ID:0957  Keep-Alive 和 Close 不能使用此属性设置。
+参数名: value

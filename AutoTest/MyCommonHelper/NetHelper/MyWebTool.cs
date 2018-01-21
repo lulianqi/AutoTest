@@ -91,7 +91,7 @@ namespace MyCommonHelper.NetHelper
             static HttpHelper()
             {
                 dicHeadSetFun.Add("Accept".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Accept = yourHeadValue));
-                dicHeadSetFun.Add("Connection".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Connection = yourHeadValue));
+                dicHeadSetFun.Add("Connection".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { string tempHeadVaule = yourHeadValue.ToLower(); if (tempHeadVaule.IndexOf("keep-alive") != -1) { yourRequest.KeepAlive = true; } else if (tempHeadVaule.IndexOf("closee") != -1) { yourRequest.KeepAlive = false; } else { yourRequest.Connection = yourHeadValue; } }));
                 dicHeadSetFun.Add("Date".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => { DateTime tempTime; if (!DateTime.TryParse(yourHeadValue, out tempTime)) tempTime = DateTime.Now; yourRequest.Date = tempTime; }));  //2009-05-01 14:57:32 //修改该头需要4.0版本支持，如果升级4.0可以取消该注释，启用该功能
                 //dicHeadSetFun.Add("KeepAlive".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.KeepAlive = yourHeadValue));//该头可以直接使用Headers.Add
                 dicHeadSetFun.Add("Transfer-Encoding".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.TransferEncoding = yourHeadValue));
@@ -100,7 +100,7 @@ namespace MyCommonHelper.NetHelper
                 dicHeadSetFun.Add("Expect".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Expect = yourHeadValue));
                 dicHeadSetFun.Add("Host".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Host = yourHeadValue)); //修改该头需要4.0版本支持，如果升级4.0可以取消该注释，启用该功能
                 dicHeadSetFun.Add("IfModifiedSince".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Referer = yourHeadValue));
-                dicHeadSetFun.Add("Referer".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Accept = yourHeadValue));
+                dicHeadSetFun.Add("Referer".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.Referer = yourHeadValue));
                 dicHeadSetFun.Add("User-Agent".ToUpper(), new SetHeadAttributeCallback((yourRequest, yourHeadValue) => yourRequest.UserAgent = yourHeadValue));
             }
 
@@ -130,6 +130,8 @@ namespace MyCommonHelper.NetHelper
                     }
                 }
             }
+
+
 
             /// <summary>
             /// 添加http请求头属性（全部使用默认header.Add进行添加，失败后使用SetHeaderValue进行添加，不过依然可能失败）
@@ -164,22 +166,20 @@ namespace MyCommonHelper.NetHelper
                 }
             }
 
+            /// <summary>
+            /// 设置请求头（注意该方法未经过测试，使用前请先测试）
+            /// </summary>
+            /// <param name="header">WebHeaderCollection</param>
+            /// <param name="name">key</param>
+            /// <param name="value">value</param>
             public static void SetHeaderValue(WebHeaderCollection header, string name, string value)
             {
-
-                var property = typeof(WebHeaderCollection).GetProperty("InnerCollection",
-
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-
+                var property = typeof(WebHeaderCollection).GetProperty("InnerCollection", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
                 if (property != null)
                 {
-
                     var collection = property.GetValue(header, null) as NameValueCollection;
-
                     collection[name] = value;
-
                 }
-
             }
         }
 
@@ -273,7 +273,7 @@ namespace MyCommonHelper.NetHelper
                         manualResetEvent.WaitOne();
                     }
                 };
-                string re ;
+                string re = null;
                 bool hasBody = !string.IsNullOrEmpty(data);
                 bool needBody = method.ToUpper() == "POST" || method.ToUpper() == "PUT";
                 WebRequest wr = null;
@@ -290,7 +290,10 @@ namespace MyCommonHelper.NetHelper
                     wr = WebRequest.Create(url);
                     wr.Timeout = httpTimeOut;
                     wr.Method = method;
-                    wr.ContentType = "application/x-www-form-urlencoded";
+                    if (heads==null)
+                    {
+                        wr.ContentType = "application/x-www-form-urlencoded";
+                    }
                     //((HttpWebRequest)wr).KeepAlive = true;
                     //((HttpWebRequest)wr).Pipelined = true;
                     HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
@@ -323,9 +326,13 @@ namespace MyCommonHelper.NetHelper
 
                     if (saveFileName == null)
                     {
+                        if (showResponseHeads)
+                        {
+                            re = result.Headers.ToString();
+                        }
                         using (var httpStreamReader = new StreamReader(receiveStream, responseEncoding))
                         {
-                            re = httpStreamReader.ReadToEnd();
+                            re += httpStreamReader.ReadToEnd();
                         }
 
                         //使用如下方法自己读取byte[] 是可行的，不过在Encoding 可变编码方式时，不能确保分段不被截断，直接使用内置StreamReader也是可以的

@@ -79,7 +79,10 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                     wr.Timeout = httpTimeOut;
                     //HttpWebRequest wr = (HttpWebRequest)HttpWebRequest.Create(url);
                     wr.Method = method;
-                    wr.ContentType = "application/x-www-form-urlencoded";
+                    if (heads == null)
+                    {
+                        wr.ContentType = "application/x-www-form-urlencoded";
+                    }
 
                     MyWebTool.HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
                     
@@ -199,8 +202,10 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                     wr.Timeout = httpTimeOut;
                     //HttpWebRequest wr = (HttpWebRequest)HttpWebRequest.Create(url);
                     wr.Method = method;
-                    wr.ContentType = "application/x-www-form-urlencoded";
-
+                    if (heads==null)
+                    {
+                        wr.ContentType = "application/x-www-form-urlencoded";
+                    }
                     MyWebTool.HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
                     
                     //((HttpWebRequest)wr).KeepAlive = true;
