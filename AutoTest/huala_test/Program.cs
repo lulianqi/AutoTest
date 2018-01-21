@@ -1,6 +1,8 @@
 ﻿using MyCommonHelper.FileHelper;
+using MySqlHelper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -138,5 +140,66 @@ namespace huala_test
             Console.WriteLine();
         }
 
+        private static void TestForAllInOneInterface()
+        {
+            //MySqlDrive mySql = new MySqlDrive("Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test");
+            MySqlDrive mySql = new MySqlDrive("Server=192.168.200.24;UserId=qa;Password=123456;Database=xinyunlian_member");
+            mySql.OnDriveStateChange += mySql_OnDriveStateChange;
+            mySql.OnGetErrorMessage += mySql_OnGetErrorMessage;
+            mySql.OnGetInfoMessage += mySql_OnGetInfoMessage;
+
+            DataTable myTable = mySql.ExecuteQuery("select store_name , SUID,UUID from store limit 100 , 300");
+            if (myTable!=null)
+            {
+                foreach (DataRow rows in myTable.Rows)
+                {
+                    bool isDataOk = true;
+                    foreach (var filed in rows.ItemArray)
+                    {
+                        if(filed==null)
+                        {
+                            isDataOk = false;
+                            break;
+                        }
+                    }
+                    if(!isDataOk)
+                    {
+                        Console.WriteLine("find Error data");
+                        break;
+                    }
+                    Console.WriteLine(String.Format("{0},开始同步......."));
+                    string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("http://wxv4.huala.com/huala/weixin/createQrCode?suid={0}", nowSuuid));
+                    Console.WriteLine(tempRespans);
+                }
+            }
+            else
+            {
+                Console.WriteLine(mySql.NowError);
+            }
+
+
+            mySql.OnDriveStateChange -= mySql_OnDriveStateChange;
+            mySql.OnGetErrorMessage -= mySql_OnGetErrorMessage;
+            mySql.OnGetInfoMessage -= mySql_OnGetInfoMessage;
+            mySql.Dispose();
+        }
+
+        static void mySql_OnGetInfoMessage(object sender, string InfoMessage)
+        {
+            Console.WriteLine("mySql_OnGetInfoMessage");
+            Console.WriteLine(InfoMessage);
+        }
+
+        static void mySql_OnGetErrorMessage(object sender, string ErrorMessage)
+        {
+            Console.WriteLine("mySql_OnGetErrorMessage");
+            Console.WriteLine(ErrorMessage);
+        }
+
+        static void mySql_OnDriveStateChange(object sender, bool isCounect)
+        {
+            Console.WriteLine("mySql_OnDriveStateChange");
+            Console.WriteLine(isCounect.ToString());
+        }
     }
 }
