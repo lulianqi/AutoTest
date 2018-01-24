@@ -1,94 +1,94 @@
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForCom 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForSsh 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForTelnet 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyActionActuator 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuatorOutPutType 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuatorState 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocol 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseStaticDataClass 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseStaticDataType 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.PickOutFunction 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseType 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseResult 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseAction 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseExpectType 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterizationContentEncodingType 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataSourceCsv 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataIndex 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataStrIndex 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataLong 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataRandomStr 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataNowTime 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataList 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.ExportMefAssembly 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.MyExtendProtocolDriver 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.RunCaseCount 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCsaeQueue 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCaseLoop 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCaseRunTime 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyInterface 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateBasicAnonymous 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateGetExecutiveData 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateQueueChangeEventHandler 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateLoopChangeEventHandler 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.caseParameterizationContent 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.HttpMultipart 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.HttpAisleConfig 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myExpectInfo 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterSave 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myCaseAttribute 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myCaseLaodInfo 生成存根: 类型是一个值类型。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.MyAssert 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.MyExtensionMethods 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.CaseTool 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ProtocolExecutive.AtHttpProtocol 生成存根: 类型已密封。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{C2F03965-0560-40FB-A39B-C52016183B92} 生成存根: 类型不受支持，因为存在内部限制。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+ExecutiveAdditionalInfo 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+ExecutivebasicData 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateActuatorParameterListEventHandler 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateGetActionErrorEventHandler 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateGetActuatorStateEventHandler 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateGetExecutiveDataEventHandler 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateGetExecutiveResultEventHandler 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ICaseExecutionDevice 生成填充码: 类型是一个接口。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForActiveMQ+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForCom 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForConsole+<>c__DisplayClass3 生成填充码: 类型不受支持，因为存在内部限制。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForMysql+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForSsh 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForTcp+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForTelnet 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyActionActuator 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCaseDataTypeEngine+GetStaticDataAction`1 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuatorOutPutType 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuatorState 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocol 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseStaticDataClass 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseStaticDataType 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.PickOutFunction 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseType 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseResult 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseAction 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseExpectType 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterizationContentEncodingType 生成填充码: 类型是一个枚举。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ICaseExecutionContent 生成填充码: 类型是一个接口。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.IConnectExecutiveData 生成填充码: 类型是一个接口。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.IRunTimeStaticData 生成填充码: 类型是一个接口。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.IRunTimeDataSource 生成填充码: 类型是一个接口。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.ExportMefAssembly 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.IExtendProtocolDriver 生成填充码: 类型是一个接口。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.MyExtendProtocolDriver 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.RunCaseCount 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCsaeQueue 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCaseLoop 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCelerityCaseRunTime+myCaseLoop 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCelerityCaseRunTime+myCsaeQueue 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyInterface 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateBasicAnonymous 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateGetExecutiveData 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateQueueChangeEventHandler 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateLoopChangeEventHandler 生成填充码: 类型是一个委托。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ICaseProtocolExecution 生成填充码: 类型是一个接口。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.CaseTool+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
-D:\my\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{C2F03965-0560-40FB-A39B-C52016183B92} 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForCom 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForSsh 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForTelnet 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyActionActuator 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuatorOutPutType 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuatorState 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocol 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseStaticDataClass 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseStaticDataType 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.PickOutFunction 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseType 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseResult 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseAction 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseExpectType 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterizationContentEncodingType 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataSourceCsv 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataIndex 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataStrIndex 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataLong 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataRandomStr 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataNowTime 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataList 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.ExportMefAssembly 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.MyExtendProtocolDriver 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.RunCaseCount 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCsaeQueue 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCaseLoop 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCaseRunTime 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyInterface 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateBasicAnonymous 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateGetExecutiveData 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateQueueChangeEventHandler 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateLoopChangeEventHandler 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.caseParameterizationContent 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.HttpMultipart 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.HttpAisleConfig 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myExpectInfo 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterSave 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myCaseAttribute 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.myCaseLaodInfo 生成存根: 类型是一个值类型。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.MyAssert 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.MyExtensionMethods 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.CaseTool 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ProtocolExecutive.AtHttpProtocol 生成存根: 类型已密封。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{F07C1A5B-3B37-4C80-8674-8E8750D19D5E} 生成存根: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+ExecutiveAdditionalInfo 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+ExecutivebasicData 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateActuatorParameterListEventHandler 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateGetActionErrorEventHandler 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateGetActuatorStateEventHandler 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateGetExecutiveDataEventHandler 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateGetExecutiveResultEventHandler 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ICaseExecutionDevice 生成填充码: 类型是一个接口。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForActiveMQ+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForCom 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForConsole+<>c__DisplayClass3 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForMysql+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForSsh 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForTcp+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.ExecutionDevice.CaseProtocolExecutionForTelnet 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyActionActuator 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCaseDataTypeEngine+GetStaticDataAction`1 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuatorOutPutType 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuatorState 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseProtocol 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseStaticDataClass 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseStaticDataType 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.PickOutFunction 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseType 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseResult 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseAction 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseExpectType 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterizationContentEncodingType 生成填充码: 类型是一个枚举。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ICaseExecutionContent 生成填充码: 类型是一个接口。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.IConnectExecutiveData 生成填充码: 类型是一个接口。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.IRunTimeStaticData 生成填充码: 类型是一个接口。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.IRunTimeDataSource 生成填充码: 类型是一个接口。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.ExportMefAssembly 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.IExtendProtocolDriver 生成填充码: 类型是一个接口。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.MyExtendProtocolDriver 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.RunCaseCount 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCsaeQueue 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCaseLoop 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCelerityCaseRunTime+myCaseLoop 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.MyCelerityCaseRunTime+myCsaeQueue 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyInterface 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateBasicAnonymous 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateGetExecutiveData 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateQueueChangeEventHandler 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateLoopChangeEventHandler 生成填充码: 类型是一个委托。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ICaseProtocolExecution 生成填充码: 类型是一个接口。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.CaseTool+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{F07C1A5B-3B37-4C80-8674-8E8750D19D5E} 生成填充码: 类型不受支持，因为存在内部限制。

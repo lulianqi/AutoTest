@@ -1511,7 +1511,7 @@ namespace CaseExecutiveActuator.CaseActuator
                         case PickOutFunction.pick_str:
                             if(tempParameterSave.parameterAdditionalVaule == null)
                             {
-                                tempPickVaule = MyAssert.PickStrParameter(tempParameterSave.parameterFindVaule, 0, yourExecutionResult.backContent);
+                                tempPickVaule = yourExecutionResult.backContent; 
                             }
                             else
                             {
@@ -1581,7 +1581,8 @@ namespace CaseExecutiveActuator.CaseActuator
                                             ParameterSavesDataError();
                                         }
                                         break;
-                                    default:
+                                    default:   //all 或 其他值不能识别的查找方式都被当作all
+                                        tempPickVaule = yourExecutionResult.backContent;
                                         break;
 
                                 }

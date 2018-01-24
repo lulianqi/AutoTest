@@ -101,3 +101,5 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForUi\bin\Debug\MySqlHelper.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Tamir.SharpSSH.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\DiffieHellman.dll
 F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\Org.Mentalis.Security.dll
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\TestForUi.exe.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\Test\TestForUi\bin\Debug\TestForUi.exe.lastcodeanalysissucceeded

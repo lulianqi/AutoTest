@@ -48,3 +48,5 @@ D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\MyControl.
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\MyControl.pdb
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Debug\ActiveMQTest.pdb
+F:\file\Code\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\ActiveMQTest.exe.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\ActiveMQTest.exe.lastcodeanalysissucceeded

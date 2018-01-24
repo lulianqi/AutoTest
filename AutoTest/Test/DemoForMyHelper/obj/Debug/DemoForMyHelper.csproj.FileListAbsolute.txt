@@ -46,3 +46,5 @@ D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyActiveMQHelper.d
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Apache.NMS.ActiveMQ.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\Apache.NMS.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\MyActiveMQHelper.pdb
+F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\DemoForMyHelper.exe.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\Test\DemoForMyHelper\bin\Debug\DemoForMyHelper.exe.lastcodeanalysissucceeded

@@ -49,6 +49,10 @@
       <Project>{81c596cb-84d9-4171-80ce-2e08d6db351b}</Project>
       <Name>MyCommonHelper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MySqlHelper\MySqlHelper.csproj">
+      <Project>{6d60ff1a-1672-4fe0-a405-1810b3e72ca2}</Project>
+      <Name>MySqlHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

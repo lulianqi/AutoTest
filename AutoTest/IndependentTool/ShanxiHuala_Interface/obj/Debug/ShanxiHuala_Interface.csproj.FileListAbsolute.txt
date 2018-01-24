@@ -44,3 +44,5 @@ D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\S
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.csproj.GenerateResource.Cache
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.exe
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.pdb
+F:\file\Code\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\bin\Debug\ShanxiHuala_Interface.exe.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\bin\Debug\ShanxiHuala_Interface.exe.lastcodeanalysissucceeded

@@ -55,3 +55,5 @@ D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\DiffieHel
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\Org.Mentalis.Security.dll
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MyActiveMQHelper.pdb
 D:\my\GitHub\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MySqlHelper.pdb
+F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MefExtendMysqlDriver.dll.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\MefExtendProtocol\MefExtendMysqlDriver\bin\Debug\MefExtendMysqlDriver.dll.lastcodeanalysissucceeded

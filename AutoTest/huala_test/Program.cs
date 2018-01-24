@@ -14,7 +14,8 @@ namespace huala_test
         static void Main(string[] args)
         {
             Console.ReadLine();
-            CreateQrCode();
+            TestForAllInOneInterface();
+            Console.WriteLine("any key to exit");
             Console.ReadLine();
         }
 
@@ -148,7 +149,7 @@ namespace huala_test
             mySql.OnGetErrorMessage += mySql_OnGetErrorMessage;
             mySql.OnGetInfoMessage += mySql_OnGetInfoMessage;
 
-            DataTable myTable = mySql.ExecuteQuery("select store_name , SUID,UUID from store limit 100 , 300");
+            DataTable myTable = mySql.ExecuteQuery("select store_name , SUID,UUID from store limit 100 , 50");
             if (myTable!=null)
             {
                 foreach (DataRow rows in myTable.Rows)
@@ -167,9 +168,19 @@ namespace huala_test
                         Console.WriteLine("find Error data");
                         break;
                     }
-                    Console.WriteLine(String.Format("{0},开始同步......."));
-                    string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("http://wxv4.huala.com/huala/weixin/createQrCode?suid={0}", nowSuuid));
-                    Console.WriteLine(tempRespans);
+                    Console.WriteLine(String.Format("{0} :开始同步.......", rows[0].ToString()));
+                    string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://wxwyjtest.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
+                    if(tempRespans.Contains("\"success\":true"))
+                    {
+                        Console.WriteLine("同步完成");
+                    }
+                    else
+                    {
+                        Console.WriteLine("同步错误");
+                    }
+                    System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+                    System.Diagnostics.Debug.WriteLine(String.Format("https://wxwyjtest.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
+                    System.Diagnostics.Debug.WriteLine(tempRespans);
                 }
             }
             else

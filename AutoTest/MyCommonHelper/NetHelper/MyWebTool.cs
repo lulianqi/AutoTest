@@ -196,7 +196,8 @@ namespace MyCommonHelper.NetHelper
                 //ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(
                 //    (sender, certificate, chain, sslPolicyErrors) => { return true; });
                 ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
-                Console.WriteLine(ServicePointManager.DefaultConnectionLimit);               
+                //Console.WriteLine(ServicePointManager.DefaultConnectionLimit); //默认最大并发数有限，可以使用System.Net.ServicePointManager.DefaultConnectionLimit重设该值
+                System.Net.ServicePointManager.DefaultConnectionLimit = 2000;
             }
 
             private static bool MyRemoteCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)

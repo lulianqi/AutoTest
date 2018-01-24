@@ -330,3 +330,5 @@ F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\Org.Mentalis.S
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\DiffieHellman.dll
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\Org.Mentalis.Security.dll
 F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\obj\Debug\Fakes\cea\b\Tamir.SharpSSH.dll
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\UnitTestForAutoTest.dll.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\Test\UnitTestForAutoTest\bin\Debug\UnitTestForAutoTest.dll.lastcodeanalysissucceeded

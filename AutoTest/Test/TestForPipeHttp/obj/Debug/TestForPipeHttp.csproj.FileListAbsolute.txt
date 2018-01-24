@@ -9,3 +9,6 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.ex
 F:\file\Code\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.exe
 F:\file\Code\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.pdb
+F:\file\Code\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.exe.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.exe.lastcodeanalysissucceeded
+F:\file\Code\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.csprojResolveAssemblyReference.cache

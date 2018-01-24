@@ -170,8 +170,8 @@
         <ParameterSave>
           <NewParameter name="myDevId_1" mode="json">dev_id</NewParameter><!-- json xml str 值不能为空“”-->
           <!-- json 查找出json对象中所有指定对象如果有多个用，隔开 (可以添加additional属性如additional="1"，表示取查找结果中的第一个值)-->
-          <NewParameter name="str_test" mode="str" additional="str-len">dev_id":"-15</NewParameter>
-          <!-- str 查找出str中中第一次出现指定字符串截取到最后，如果需要指定出现位置及长度需要添加additional属性（"str" ：默认值 "str-str"：使用2个字符串截取中间（最后一个‘-’出现的索引之后标识截取结束字符串标识）  "str-len" ：使用字符串查找开始并截取指定长度  "index-len"： 使用指定索引开始并截取指定长度 "index"：使用指定索引开始并截后面所有）-->
+          <NewParameter name="str_test" mode="str" additional="str-lenCCC">dev_id":"-15</NewParameter>
+          <!-- str 查找出str中中第一次出现指定字符串截取到最后，如果需要指定出现位置及长度需要添加additional属性（"all":默认值，不加属性或错误的附加属性都会被解析为all，表示所有返回值    "str" ：表示取指定字符串后所有内容 "str-str"：使用2个字符串截取中间（最后一个‘-’出现的索引之后标识截取结束字符串标识）  "str-len" ：使用字符串查找开始并截取指定长度  "index-len"： 使用指定索引开始并截取指定长度 "index"：使用指定索引开始并截后面所有）-->
           <!-- xml 使用xpath进行xml查找，结果为所以匹配项InnerXml，多个则用，分割(可以添加additional属性如additional="1"，表示取查找结果中的第一个值)-->
           <!-- /	从根节点选取。
           //	从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。

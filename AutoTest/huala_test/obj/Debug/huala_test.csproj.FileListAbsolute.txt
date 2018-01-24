@@ -12,3 +12,8 @@ D:\my\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.exe
 D:\my\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.pdb
+F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\MySqlHelper.dll
+F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\MySql.Data.dll
+F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\MySqlHelper.pdb
+F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\huala_test.exe.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\huala_test.exe.lastcodeanalysissucceeded

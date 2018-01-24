@@ -10,5 +10,6 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper
 F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper.pdb
-F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.exe.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.exe.lastcodeanalysissucceeded

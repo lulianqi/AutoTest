@@ -82,3 +82,5 @@ D:\my\GitHub\AutoTest\AutoTest\RemoteService\bin\Debug\MySqlHelper.pdb
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Tamir.SharpSSH.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\DiffieHellman.dll
 F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\Org.Mentalis.Security.dll
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\RemoteService.exe.CodeAnalysisLog.xml
+F:\file\Code\AutoTest\AutoTest\RemoteService\bin\Debug\RemoteService.exe.lastcodeanalysissucceeded
