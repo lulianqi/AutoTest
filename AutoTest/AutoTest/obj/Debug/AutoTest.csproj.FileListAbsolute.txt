@@ -166,5 +166,3 @@ D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MySql.Data.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\DiffieHellman.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\Org.Mentalis.Security.dll
 D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\MySqlHelper.pdb
-F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe.CodeAnalysisLog.xml
-F:\file\Code\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe.lastcodeanalysissucceeded

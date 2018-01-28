@@ -2123,8 +2123,9 @@ namespace CaseExecutiveActuator.CaseActuator
             if (runState == CaseActuatorState.Running)
             {
                 PauseCaseScript();
-                executiveManualResetEvent.Set();
                 SetNowExecutiveData("单步执行>");
+                executiveManualResetEvent.Set();
+                Thread.Sleep(100);
                 executiveManualResetEvent.Reset();
                 return true;
 
@@ -2136,6 +2137,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     PauseCaseScript();
                     SetNowExecutiveData("单步执行>");
                     executiveManualResetEvent.Set();
+                    Thread.Sleep(100);
                     executiveManualResetEvent.Reset();
                     return true;
                 }
@@ -2149,6 +2151,7 @@ namespace CaseExecutiveActuator.CaseActuator
             {
                 SetNowExecutiveData("单步执行>");
                 executiveManualResetEvent.Set();
+                Thread.Sleep(100);
                 executiveManualResetEvent.Reset();
                 return true;
             }

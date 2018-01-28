@@ -143,13 +143,14 @@ namespace huala_test
 
         private static void TestForAllInOneInterface()
         {
-            //MySqlDrive mySql = new MySqlDrive("Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_test");
-            MySqlDrive mySql = new MySqlDrive("Server=192.168.200.24;UserId=qa;Password=123456;Database=xinyunlian_member");
+            MySqlDrive mySql = new MySqlDrive("Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_goods");
+            //MySqlDrive mySql = new MySqlDrive("Server=192.168.200.24;UserId=qa;Password=123456;Database=xinyunlian_member");
             mySql.OnDriveStateChange += mySql_OnDriveStateChange;
             mySql.OnGetErrorMessage += mySql_OnGetErrorMessage;
             mySql.OnGetInfoMessage += mySql_OnGetInfoMessage;
 
-            DataTable myTable = mySql.ExecuteQuery("select store_name , SUID,UUID from store limit 100 , 50");
+            //DataTable myTable = mySql.ExecuteQuery("select store_name , SUID,UUID from store limit 100 , 50");
+            DataTable myTable = mySql.ExecuteQuery("select store_name , SUID,UUID from store where UUID !=\"\"  limit 1000 , 500");
             if (myTable!=null)
             {
                 foreach (DataRow rows in myTable.Rows)
@@ -169,7 +170,7 @@ namespace huala_test
                         break;
                     }
                     Console.WriteLine(String.Format("{0} :开始同步.......", rows[0].ToString()));
-                    string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://wxwyjtest.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
+                    string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://wxv4.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
                     if(tempRespans.Contains("\"success\":true"))
                     {
                         Console.WriteLine("同步完成");
@@ -179,7 +180,7 @@ namespace huala_test
                         Console.WriteLine("同步错误");
                     }
                     System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
-                    System.Diagnostics.Debug.WriteLine(String.Format("https://wxwyjtest.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
+                    System.Diagnostics.Debug.WriteLine(String.Format("https://wxv4.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
                     System.Diagnostics.Debug.WriteLine(tempRespans);
                 }
             }

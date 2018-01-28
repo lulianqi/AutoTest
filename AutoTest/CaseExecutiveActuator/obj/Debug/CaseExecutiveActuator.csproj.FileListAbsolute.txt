@@ -42,5 +42,3 @@ D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySqlHelper.pdb
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySqlHelper.dll
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySql.Data.dll
 F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySqlHelper.pdb
-F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll.CodeAnalysisLog.xml
-F:\file\Code\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll.lastcodeanalysissucceeded
