@@ -178,7 +178,14 @@ namespace MyCommonControl
         {
             get { return isAutoSave; }
         }
-
+        
+        /// <summary>
+        /// 当前是否处于在新窗口打开的模式
+        /// </summary>
+        public bool IsShowInNewWindow
+        {
+            get { return !(this.Controls.Contains(richTextBox_dataContainer)); }
+        }
         /// <summary>
         /// 获取或设置当前文本
         /// </summary>
@@ -188,11 +195,11 @@ namespace MyCommonControl
             set { richTextBox_dataContainer.Text = value; }
         }
 
+        private bool isBoxFill = false;
+
         /// <summary>
         /// 是否处于填充显示状态
         /// </summary>
-        private bool isBoxFill = false;
-    
         public bool IsBoxFill
         {
             get { return isBoxFill; }

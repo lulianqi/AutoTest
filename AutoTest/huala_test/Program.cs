@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace huala_test
 {
@@ -14,7 +15,8 @@ namespace huala_test
         static void Main(string[] args)
         {
             Console.ReadLine();
-            TestForAllInOneInterface();
+            MoreTestForAllInOneInterface();
+            //TestForAllInOneInterface();
             Console.WriteLine("any key to exit");
             Console.ReadLine();
         }
@@ -141,8 +143,26 @@ namespace huala_test
             Console.WriteLine();
         }
 
+        private static void MoreTestForAllInOneInterface()
+        {
+            for(int i =0 ; i <50 ;i++ )
+            {
+                Thread tempThread = new Thread(new ParameterizedThreadStart(TestForAllInOneInterface));
+                tempThread.Priority = ThreadPriority.Normal;
+                tempThread.IsBackground = true;
+                Console.WriteLine("TestForAllInOneInterface thread start");
+                tempThread.Start(string.Format("select store_name , SUID,UUID from store where UUID !=\"\"  limit {0} , 10",500 + i * 10));
+            }
+        }
+
         private static void TestForAllInOneInterface()
         {
+            TestForAllInOneInterface("select store_name , SUID,UUID from store where UUID !=\"\"  limit 1100 , 100");
+        }
+
+        private static void TestForAllInOneInterface(object obj)
+        {
+            string extSql = (string)obj;
             MySqlDrive mySql = new MySqlDrive("Server=192.168.200.152;UserId=root;Password=xpsh;Database=huala_goods");
             //MySqlDrive mySql = new MySqlDrive("Server=192.168.200.24;UserId=qa;Password=123456;Database=xinyunlian_member");
             mySql.OnDriveStateChange += mySql_OnDriveStateChange;
@@ -150,7 +170,7 @@ namespace huala_test
             mySql.OnGetInfoMessage += mySql_OnGetInfoMessage;
 
             //DataTable myTable = mySql.ExecuteQuery("select store_name , SUID,UUID from store limit 100 , 50");
-            DataTable myTable = mySql.ExecuteQuery("select store_name , SUID,UUID from store where UUID !=\"\"  limit 1000 , 500");
+            DataTable myTable = mySql.ExecuteQuery(extSql);
             if (myTable!=null)
             {
                 foreach (DataRow rows in myTable.Rows)
@@ -169,8 +189,10 @@ namespace huala_test
                         Console.WriteLine("find Error data");
                         break;
                     }
-                    Console.WriteLine(String.Format("{0} :开始同步.......", rows[0].ToString()));
-                    string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://wxv4.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
+                    int ThreadId = Thread.CurrentThread.ManagedThreadId;
+                    Console.WriteLine(String.Format("【ThreadId:{1}】{0} :开始同步.......", rows[0].ToString(), ThreadId));
+                    //string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://wxv4.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
+                    string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://wxwyjtest.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
                     if(tempRespans.Contains("\"success\":true"))
                     {
                         Console.WriteLine("同步完成");
@@ -180,7 +202,7 @@ namespace huala_test
                         Console.WriteLine("同步错误");
                     }
                     System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
-                    System.Diagnostics.Debug.WriteLine(String.Format("https://wxv4.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
+                    System.Diagnostics.Debug.WriteLine(String.Format("https://wxwyjtest.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
                     System.Diagnostics.Debug.WriteLine(tempRespans);
                 }
             }

@@ -15,6 +15,3 @@ D:\GitHub\AutoTest\AutoTest\MyCommonHelper\bin\Debug\MyCommonHelper.pdb
 D:\GitHub\AutoTest\AutoTest\MyCommonHelper\obj\Debug\MyCommonHelper.csprojResolveAssemblyReference.cache
 D:\GitHub\AutoTest\AutoTest\MyCommonHelper\obj\Debug\MyCommonHelper.dll
 D:\GitHub\AutoTest\AutoTest\MyCommonHelper\obj\Debug\MyCommonHelper.pdb
-F:\file\Code\AutoTest\AutoTest\MyCommonHelper\obj\Debug\MyCommonHelper.csprojResolveAssemblyReference.cache
-F:\file\Code\AutoTest\AutoTest\MyCommonHelper\bin\Debug\MyCommonHelper.dll.CodeAnalysisLog.xml
-F:\file\Code\AutoTest\AutoTest\MyCommonHelper\bin\Debug\MyCommonHelper.dll.lastcodeanalysissucceeded

@@ -189,6 +189,7 @@ namespace MyCommonHelper.NetHelper
             public static int httpReadWriteTimeout = 300000;                                     //WebRequest.ReadWriteTimeout 该属性暂时未设置           （读取/写入超时）
             public static bool showResponseHeads = false;                                        //是否返回http返回头
             public static Encoding responseEncoding = System.Text.Encoding.GetEncoding("UTF-8"); //如果要显示返回数据，返回数据将使用此编码
+            public static string defaultContentType = null;
             static readonly string EOF = "\r\n";
 
             static MyHttp()
@@ -291,9 +292,9 @@ namespace MyCommonHelper.NetHelper
                     wr = WebRequest.Create(url);
                     wr.Timeout = httpTimeOut;
                     wr.Method = method;
-                    if (heads==null)
+                    if (heads==null && defaultContentType!=null)
                     {
-                        wr.ContentType = "application/x-www-form-urlencoded";
+                        wr.ContentType = defaultContentType;
                     }
                     //((HttpWebRequest)wr).KeepAlive = true;
                     //((HttpWebRequest)wr).Pipelined = true;

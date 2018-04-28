@@ -1,0 +1,5 @@
+F:\file\Code\AutoTest\AutoTest\TestForMergeSrt\bin\Debug\TestForMergeSrt.exe
+F:\file\Code\AutoTest\AutoTest\TestForMergeSrt\bin\Debug\TestForMergeSrt.pdb
+F:\file\Code\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.csprojResolveAssemblyReference.cache
+F:\file\Code\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.exe
+F:\file\Code\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.pdb
