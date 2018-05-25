@@ -1,6 +1,0 @@
-F:\file\Code\AutoTest\AutoTest\myCommonTool\bin\Release\myCommonTool.dll
-F:\file\Code\AutoTest\AutoTest\myCommonTool\bin\Release\myCommonTool.pdb
-F:\file\Code\AutoTest\AutoTest\myCommonTool\bin\Release\SpeechLib.dll
-F:\file\Code\AutoTest\AutoTest\myCommonTool\obj\Release\MyCommonTool.csprojResolveAssemblyReference.cache
-F:\file\Code\AutoTest\AutoTest\myCommonTool\obj\Release\myCommonTool.dll
-F:\file\Code\AutoTest\AutoTest\myCommonTool\obj\Release\myCommonTool.pdb
