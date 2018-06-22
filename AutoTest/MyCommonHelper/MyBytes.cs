@@ -225,6 +225,25 @@ namespace MyCommonHelper
             return tempBytes;
         }
 
+         /// <summary>
+        /// 生成随机字节数组
+        /// </summary>
+        /// <param name="byteLen">数组长度</param>
+        /// <returns>随机字节数组</returns>
+        public static byte[] CreatRandomBytes(int byteLen)
+        {
+            byte[] tempBytes = new byte[byteLen];
+            for (int i = 0; i < byteLen; i++)
+            {
+                Random ran = new Random(Guid.NewGuid().GetHashCode());
+                {
+                    tempBytes[i] = (byte)ran.Next(0x00, 0xff);
+                }
+            }
+            return tempBytes;
+        }
+    
+
         /// <summary>
         /// i will change your bytes to IP by vanelife way
         /// </summary>3
@@ -253,7 +272,7 @@ namespace MyCommonHelper
         }
 
         /// <summary>
-        /// i will change your bytes to int,and bytes can not more than 4 byte(小端序，低位在前)
+        /// i will change your bytes to int,and bytes can not more than 4 byte(默认 小端序，低位在前，这里使用大端序列，并仅取2字节)  
         /// </summary>
         /// <param name="yourLen">your bytes</param>
         /// <returns>your len</returns>
@@ -276,7 +295,7 @@ namespace MyCommonHelper
         }
 
         /// <summary>
-        /// i will change a int to byte and change the 1,2(小端序，低位在前)
+        /// i will change a int to byte and change the 1,2(默认 小端序，低位在前，这里使用大端序列，并仅取2字节)
         /// </summary>
         /// <param name="yourLen">your Len</param>
         /// <returns>your bytes</returns>
@@ -287,6 +306,22 @@ namespace MyCommonHelper
             dataToBack[0] = tempData[1];
             dataToBack[1] = tempData[0];
             return dataToBack;
+
+            //int c = 97;
+            //byte[] cb = BitConverter.GetBytes(c);//小端
+            //Array.Reverse(cb);//反转成大端   Reverse() 无返回值直接反转目标
+
+            //也可以先把数值转换再转成字节数组
+            //int c2 = IPAddress.HostToNetworkOrder(c);//大端字节数
+            //byte[] bb = System.BitConverter.GetBytes(c2);//字节数组
+
+            //string s = "code";
+            //byte[] sbb = Encoding.BigEndianUnicode.GetBytes(s);//大端
+            //byte[] sbs = Encoding.Unicode.GetBytes(s);//小端
+
+            //.NET short 网络大小端转换 一般操作系统文件都是小端，网络传输一般使用大端
+            //System.Net.IPAddress.HostToNetworkOrder（本机到网络转换）
+            //System.Net.IPAddress.NetworkToHostOrder(网络字节转成本机)
         }
 
         public static byte[] GroupByteList(List<byte[]> yourByteList)

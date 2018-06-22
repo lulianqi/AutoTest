@@ -310,20 +310,24 @@ namespace MyCommonHelper.NetHelper
                         {
                             SomeBytes = Encoding.UTF8.GetBytes(data);
                             wr.ContentLength = SomeBytes.Length;
-                            WaitStartSignal();
-                            Stream newStream = wr.GetRequestStream();                //连接建立Head已经发出，POST请求体还没有发送
+                            WaitStartSignal();                                       //尽可能确保所有manualResetEvent都在数据完全准备完成后
+                            Stream newStream = wr.GetRequestStream();                //连接建立Head已经发出，POST请求体还没有发送 (服务器可能会先回http 100)
                             newStream.Write(SomeBytes, 0, SomeBytes.Length);         //请求交互完成
                             newStream.Close();                                       //释放写入流（MSDN的示例也是在此处释放）
                         }
                         else
                         {
                             wr.ContentLength = 0;
+                            WaitStartSignal();
+                            result = wr.GetResponse();   
                         }
                     }
-
-                    WaitStartSignal();
-                    result = wr.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
-
+                    else
+                    {
+                        WaitStartSignal();
+                        result = wr.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
+                    }
+                   
                     Stream receiveStream = result.GetResponseStream();
 
                     if (saveFileName == null)
