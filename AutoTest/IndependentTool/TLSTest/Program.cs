@@ -20,6 +20,11 @@ namespace TLSTest
             byte[] clientHello = MyBytes.HexStringToByte("16030100c6010000c2030351adaa772a453edd1c42c48e85d98c671e1619b06fa8a88641f27b43d2797a3c00001c5a5ac02bc02fc02cc030cca9cca8c013c014009c009d002f0035000a0100007daaaa0000ff0100010000000014001200000f642e62616977616e6469616e2e636e0017000000230000000d00140012040308040401050308050501080606010201000500050100000000001200000010000e000c02683208687474702f312e3175500000000b00020100000a000a0008aaaa001d001700187a7a000100",
                 HexaDecimal.hex16, ShowHexMode.@null);
 
+            TLSPacket.TLSPlaintext tp = new TLSPacket.TLSPlaintext(TLSPacket.TLSContentType.Handshake, new TLSPacket.ProtocolVersion(0x03, 0x03));
+            TLSPacket.ClientHello ch = new TLSPacket.ClientHello("d.baiwandian.cn");
+            clientHello = tp.CreateRawData(ch.GetProtocolRawData());
+
+
             Console.ReadLine();
             MyTLS myTLS = new MyTLS();
             myTLS.Connect();
@@ -126,6 +131,7 @@ namespace TLSTest
                 try
                 {
                     receiveCount = nowSocket.Receive(nowReciveBytes);
+                    if (receiveCount>0)
                     {
                         byte[] tempOutBytes = new byte[receiveCount];
                         Array.Copy(nowReciveBytes, tempOutBytes, receiveCount);
@@ -134,6 +140,9 @@ namespace TLSTest
                         //string respose = Encoding.UTF8.GetString(nowReciveBytes, 0, receiveCount);
                         string respose = MyBytes.ByteToHexString(tempOutBytes, HexaDecimal.hex16, ShowHexMode.space);
                         System.Diagnostics.Debug.Write(respose);
+                    }
+                    else
+                    {
                         Thread.Sleep(10);
                     }
 

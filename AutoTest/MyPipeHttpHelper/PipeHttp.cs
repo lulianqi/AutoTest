@@ -364,7 +364,7 @@ namespace MyPipeHttpHelper
                         //System.Diagnostics.Debug.WriteLine(string.Format("\r\n----------------------{0}------------------------", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss fff")));
                         //string respose = Encoding.UTF8.GetString(nowReciveBytes, 0, receviCount);
                         //System.Diagnostics.Debug.Write(respose);
-                        //Thread.Sleep(10);
+                        //Thread.Sleep(10); //如果当前有数据不应该等待很可能后面还有数据
                     }
                     else
                     {

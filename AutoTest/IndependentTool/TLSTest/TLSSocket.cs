@@ -1,6 +1,7 @@
 ﻿#define TESTMODE
 #define THREADPOOLMODE
 
+using MyCommonHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,7 +114,8 @@ namespace TLSTest
             certificate_verify=15, 
             client_key_exchange=16,
             finished=20
-        }
+        }
+
 
         /// <summary>
         /// 核心子协议
@@ -142,6 +144,7 @@ namespace TLSTest
             public static byte[] CreatRandom()
             {
                 byte[] GMTUnixTime = BitConverter.GetBytes(GetTimeStamp());
+                Array.Reverse(GMTUnixTime);
                 byte[] RandomBytes = MyCommonHelper.MyBytes.CreatRandomBytes(28);
                 return MyCommonHelper.MyBytes.GroupByteList(new List<byte[]>() { GMTUnixTime, RandomBytes });
             }
@@ -193,8 +196,8 @@ namespace TLSTest
                     return new byte[]{0x00,0x00};
                 }
                 byte[] tempCipherSuites = new byte[cipherSuiteList.Count*2+2];
-                tempCipherSuites[0] = BitConverter.GetBytes(cipherSuiteList.Count*2)[0];
-                tempCipherSuites[1] = BitConverter.GetBytes(cipherSuiteList.Count*2)[1];
+                tempCipherSuites[1] = BitConverter.GetBytes(cipherSuiteList.Count*2)[0];
+                tempCipherSuites[0] = BitConverter.GetBytes(cipherSuiteList.Count*2)[1];
                 int tempIndex = 2;
                 foreach(var cipherSuite in cipherSuiteList)
                 {
@@ -214,7 +217,7 @@ namespace TLSTest
 
             public static byte[] CreatCipherSuites()
             {
-                return new byte[] { 0x5a, 0x5a, 0xc0, 0x2b, 0xc0, 0x2f, 0xc0, 0x2c, 0xc0, 0x30, 0xcc, 0xa9, 0xcc, 0xa8, 0xc0, 0x13, 0xc0, 0x14, 0x00, 0x9c, 0x00, 0x9d, 0x00, 0x2f, 0x00, 0x35, 0x00, 0x0a };
+                return new byte[] { 0x00, 0x1c, 0x5a, 0x5a, 0xc0, 0x2b, 0xc0, 0x2f, 0xc0, 0x2c, 0xc0, 0x30, 0xcc, 0xa9, 0xcc, 0xa8, 0xc0, 0x13, 0xc0, 0x14, 0x00, 0x9c, 0x00, 0x9d, 0x00, 0x2f, 0x00, 0x35, 0x00, 0x0a };
             }
         }
 
@@ -247,15 +250,15 @@ namespace TLSTest
                         extentionLengh += tempExtention.ExtensionData.Length + 4;
                     }
                     byte[] tempRawExtentions = new byte[extentionLengh+2];
-                    tempRawExtentions[0] = BitConverter.GetBytes(extentionLengh)[0];
-                    tempRawExtentions[1] = BitConverter.GetBytes(extentionLengh)[1];
+                    tempRawExtentions[1] = BitConverter.GetBytes(extentionLengh)[0];
+                    tempRawExtentions[0] = BitConverter.GetBytes(extentionLengh)[1];
                     int nowCopyIndex = 2;
                     foreach (var tempExtention in yourExtensionList)
                     {
                         Array.Copy(tempExtention.ExtensionType, 0, tempRawExtentions, nowCopyIndex, 2);
                         nowCopyIndex = nowCopyIndex + 2;
-                        tempRawExtentions[nowCopyIndex] = BitConverter.GetBytes(tempExtention.ExtensionData.Length)[0];
-                        tempRawExtentions[nowCopyIndex + 1] = BitConverter.GetBytes(tempExtention.ExtensionData.Length)[1];
+                        tempRawExtentions[nowCopyIndex+1] = BitConverter.GetBytes(tempExtention.ExtensionData.Length)[0];
+                        tempRawExtentions[nowCopyIndex] = BitConverter.GetBytes(tempExtention.ExtensionData.Length)[1];
                         nowCopyIndex = nowCopyIndex + 2;
                         Array.Copy(tempExtention.ExtensionData, 0, tempRawExtentions, nowCopyIndex, tempExtention.ExtensionData.Length);
                         nowCopyIndex = tempExtention.ExtensionData.Length;
@@ -271,12 +274,14 @@ namespace TLSTest
                 byte sererNameType = 0x00;
                 byte[] hostName = Encoding.UTF8.GetBytes(yourHostName);
 
-                int serverNameListLen = 3 + hostName.Length;
+                int serverNameListLen = 5 + hostName.Length;
                 byte[] serverName = new byte[serverNameListLen];
-                serverName[0] = BitConverter.GetBytes(serverNameListLen)[0];
-                serverName[1] = BitConverter.GetBytes(serverNameListLen)[1];
+                serverName[1] = BitConverter.GetBytes(serverNameListLen-2)[0];
+                serverName[0] = BitConverter.GetBytes(serverNameListLen-2)[1];
                 serverName[2] = sererNameType;
-                Array.Copy(hostName, 0, serverName, 3, hostName.Length);
+                serverName[4] = BitConverter.GetBytes(hostName.Length)[0];
+                serverName[3] = BitConverter.GetBytes(hostName.Length)[1];
+                Array.Copy(hostName, 0, serverName, 5, hostName.Length);
                 #endregion
 
                 return CreatExtensions(new List<Extension>() { new Extension(new byte[] { 0x00, 0x00 }, serverName) });
@@ -327,7 +332,8 @@ namespace TLSTest
         {
             TLSContentType contentType;
             ProtocolVersion version;
-            UInt16 length;      //此 API 不兼容 CLS。 兼容 CLS 的替代 API 为 Int32。
+            //UInt16 length;      //此 API 不兼容 CLS。 兼容 CLS 的替代 API 为 Int32。
+            int length;      //此 API 不兼容 CLS。 兼容 CLS 的替代 API 为 Int32。
             byte[] rawData;
             
             public TLSPlaintext(TLSContentType yourType, ProtocolVersion yourVersion)
@@ -338,13 +344,22 @@ namespace TLSTest
 
             }
 
-            public byte[] GetRawData(UInt16 yourLength)
+            public byte[] GetRawData(int yourLength)
             {
                 length = yourLength;
                 byte[] myTempLen = BitConverter.GetBytes(length);
                 Array.Reverse(myTempLen);
-                Array.Copy(myTempLen, 0, rawData, 3, 2);
+                Array.Copy(myTempLen, 2, rawData, 3, 2);
                 return rawData;
+            }
+
+            public byte[] CreateRawData(byte[] yourChildProtocolData)
+            {
+                length = yourChildProtocolData.Length;
+                byte[] myTempLen = BitConverter.GetBytes(length);
+                Array.Reverse(myTempLen);
+                Array.Copy(myTempLen, 2, rawData, 3, 2);
+                return MyCommonHelper.MyBytes.GroupByteList(new List<byte[]> { rawData, yourChildProtocolData });
             }
 
         }
@@ -399,15 +414,17 @@ namespace TLSTest
                 byte[] nowCipherSuites = CipherSuites.CreatCipherSuites();
                 byte[] nowCompressionMethod = CompressionMethod.CreatCompressionMethod();
                 byte[] nowExtention = Extensions.CreatExtensions(hostName);
+                //nowExtention = MyBytes.HexStringToByte("014c0000001c001a00001764617461756e696f6e2e62616977616e6469616e2e636e000500050100000000000a00080006001d00170018000b00020100000d00140012060106030401050102010403050302030202002300d0826acd16d68307143347c574ad11aabec8fb5237460655dfcbb28505c7941a0b80ee75db6b339ab2033e991c5cdb8a39748f313c0dfb08467646007170577fd9f395ff621fbf59cb1aea78081121e0f626d625aab620a760a44b18a14e6eb91dcea5356fdbf2d2f9afa0984ed00e356761ac5693b127b7e0824380eb1968d1a0c6a85ce8d4f532c895e0456a9d56820e57abdd86925d629ef86b75e5f9cea098750d789f5e47e7ec5dcd8bafca47b7709b47fd7ca1e0f258f9d16394923def423aa57cd72149edd10406d1cecc2b31ce0010000e000c02683208687474702f312e310017000000180006000a03020100ff01000100",
+                //HexaDecimal.hex16, ShowHexMode.@null);
 
                 byte[] nowClientHello = MyCommonHelper.MyBytes.GroupByteList(new List<byte[]> { nowVersion, nowRandom, nowSessionID, nowCipherSuites, nowCompressionMethod, nowExtention });
                 base.length = nowClientHello.Length;
 
                 byte[] nowRawData = new byte[nowClientHello.Length + 4];
                 nowRawData[0] = (byte)base.handshakeType;
-                nowRawData[1] = BitConverter.GetBytes(base.length)[0];
+                nowRawData[3] = BitConverter.GetBytes(base.length)[0];
                 nowRawData[2] = BitConverter.GetBytes(base.length)[1];
-                nowRawData[3] = BitConverter.GetBytes(base.length)[2];
+                nowRawData[1] = BitConverter.GetBytes(base.length)[2];
                 Array.Copy(nowClientHello, 0, nowRawData, 4, base.length);
 
                 return nowRawData;
