@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using MyCommonHelper;
+using Chilkat;
 
 namespace TLSTest
 {
@@ -15,6 +16,7 @@ namespace TLSTest
     {
         static void Main(string[] args)
         {
+            TestChilkat();
             DoMyTest();
 
             byte[] clientHello = MyBytes.HexStringToByte("16030100c6010000c2030351adaa772a453edd1c42c48e85d98c671e1619b06fa8a88641f27b43d2797a3c00001c5a5ac02bc02fc02cc030cca9cca8c013c014009c009d002f0035000a0100007daaaa0000ff0100010000000014001200000f642e62616977616e6469616e2e636e0017000000230000000d00140012040308040401050308050501080606010201000500050100000000001200000010000e000c02683208687474702f312e3175500000000b00020100000a000a0008aaaa001d001700187a7a000100",
@@ -53,12 +55,68 @@ namespace TLSTest
             Console.ReadLine();
         }
 
+        static void TestChilkat()
+        {
+            Chilkat.Socket socket = new Chilkat.Socket();
+
+            bool success;
+            success = socket.UnlockComponent("Anything for 30-day trial");
+            if (success != true)
+            {
+                Console.WriteLine(socket.LastErrorText);
+                return;
+            }
+
+            bool ssl = true;
+            int maxWaitMillisec = 20000;
+
+            //  The SSL server hostname may be an IP address, a domain name,
+            //  or "localhost".  You'll need to change this:
+            string sslServerHost;
+            sslServerHost = "www.baiwandian.cn";
+            int sslServerPort = 443;
+
+            //  Connect to the SSL server:
+            success = socket.Connect(sslServerHost, sslServerPort, ssl, maxWaitMillisec);
+            if (success != true)
+            {
+                Console.WriteLine(socket.LastErrorText);
+                return;
+            }
+
+            //  Set maximum timeouts for reading an writing (in millisec)
+            socket.MaxReadIdleMs = 20000;
+            socket.MaxSendIdleMs = 20000;
+
+            //  Send a "Hello Server! -EOM-" message:
+            success = socket.SendString("lijie");
+            if (success != true)
+            {
+                Console.WriteLine(socket.LastErrorText);
+                return;
+            }
+
+            //  The server (in this example) is going to send a "Hello Client! -EOM-"
+            //  message.  Read it:
+            string receivedMsg = socket.ReceiveUntilMatch("-EOM-");
+            if (socket.LastMethodSuccess != true)
+            {
+                Console.WriteLine(socket.LastErrorText);
+                return;
+            }
+
+            //  Close the connection with the server
+            //  Wait a max of 20 seconds (20000 millsec)
+            success = socket.Close(20000);
+
+            Console.WriteLine(receivedMsg);
+        }
 
     }
 
     class MyTLS
     {
-        private Socket mySocket;
+        private System.Net.Sockets.Socket mySocket;
         private string originPath = "https://d.baiwandian.cn/login#/phoneLogin";
         private string host = "d.baiwandian.cn";
         private IPAddress connctHost;
@@ -78,7 +136,7 @@ namespace TLSTest
                     System.Diagnostics.Debug.WriteLine("-------------------------------------");
 #endif
 
-            mySocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            mySocket = new System.Net.Sockets.Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 //mySocket.NoDelay = true;
                 IPEndPoint hostEndPoint = new IPEndPoint(connctHost, 443);
                 mySocket.Connect(hostEndPoint);
@@ -119,7 +177,7 @@ namespace TLSTest
         private void ReceviData(object yourSocket)
         {
             byte[] nowReciveBytes = new byte[1024 * 128];
-            Socket nowSocket = (Socket)yourSocket;
+            System.Net.Sockets.Socket nowSocket = (System.Net.Sockets.Socket)yourSocket;
             int receiveCount = 0;
             while (true)
             {

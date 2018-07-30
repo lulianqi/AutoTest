@@ -26,3 +26,4 @@ D:\my\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpR
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.Properties.Resources.resources
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.csproj.GenerateResource.Cache
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.exe

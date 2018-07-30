@@ -14,6 +14,7 @@ namespace huala_test
     {
         static void Main(string[] args)
         {
+            AnalysisDTBLog();
             Console.ReadLine();
             MoreTestForAllInOneInterface();
             //TestForAllInOneInterface();
@@ -130,6 +131,52 @@ namespace huala_test
             }
 
             CsvFileHelper.SaveCsvFile(@"D:\NG\new.csv", loginList, false , new System.Text.UTF8Encoding(false));
+
+        }
+
+        private static void AnalysisDTBLog()
+        {
+            StreamReader sr = new StreamReader(@"D:\NG\dtb.txt", Encoding.UTF8);
+            List<List<string>> loginList = new List<List<string>>();
+            string temmUa = null;
+            temmUa = sr.ReadLine();
+            while (temmUa != null)
+            {
+                if (!temmUa.StartsWith("iPhone"))
+                {
+                    string phone = "null";
+                    string osVersion = "null";
+                    int osVersionIndex = temmUa.IndexOf("%2C");
+                    int osVersionEndIndex=0;
+                    if(osVersionIndex>0)
+                    {
+                        phone = System.Web.HttpUtility.UrlDecode(temmUa.Substring(0, osVersionIndex));
+
+                        osVersionEndIndex = temmUa.IndexOf('&', osVersionIndex);
+                        if(osVersionEndIndex>0)
+                        {
+                            osVersion = temmUa.Substring(osVersionIndex + 3, osVersionEndIndex - osVersionIndex-3);
+                            
+
+                            loginList.Add(new List<string>() { phone, osVersion, osVersion[0].ToString() });
+                        }
+                        else
+                        {
+                            Console.WriteLine("error data");
+                            Console.WriteLine(temmUa);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("error data");
+                        Console.WriteLine(temmUa);
+                    }
+
+                }
+                temmUa = sr.ReadLine();
+            }
+
+            CsvFileHelper.SaveCsvFile(@"D:\NG\dtb.csv", loginList, false, new System.Text.UTF8Encoding(false));
 
         }
    

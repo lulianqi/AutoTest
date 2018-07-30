@@ -12,3 +12,5 @@ D:\my\GitHub\AutoTest\AutoTest\IndependentTool\TLSTest\bin\Debug\MyCommonHelper.
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\TLSTest\obj\Debug\TLSTest.csprojResolveAssemblyReference.cache
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\TLSTest\obj\Debug\TLSTest.exe
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\TLSTest\obj\Debug\TLSTest.pdb
+F:\file\Code\AutoTest\AutoTest\IndependentTool\TLSTest\bin\Debug\TLSTest.exe.config
+F:\file\Code\AutoTest\AutoTest\IndependentTool\TLSTest\bin\Debug\ChilkatDotNet45.dll
