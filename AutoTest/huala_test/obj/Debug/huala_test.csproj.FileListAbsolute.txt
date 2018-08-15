@@ -15,3 +15,13 @@ D:\my\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.pdb
 F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\MySqlHelper.dll
 F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\MySql.Data.dll
 F:\file\Code\AutoTest\AutoTest\huala_test\bin\Debug\MySqlHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\huala_test.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\huala_test.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\MyCommonHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\MySqlHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\MySql.Data.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\bin\Debug\MySqlHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\huala_test\obj\Debug\huala_test.pdb

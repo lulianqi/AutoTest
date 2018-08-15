@@ -10,3 +10,8 @@ D:\my\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csprojResol
 F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.dll.CodeAnalysisLog.xml
 F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.dll.lastcodeanalysissucceeded
 F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.pdb

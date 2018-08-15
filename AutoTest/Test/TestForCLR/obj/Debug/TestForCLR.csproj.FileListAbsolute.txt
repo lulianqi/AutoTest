@@ -8,3 +8,8 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.exe.CodeAnalysisLog.xml
 F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.exe.lastcodeanalysissucceeded
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.pdb

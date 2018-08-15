@@ -8,3 +8,7 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.exe
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.pdb
 F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.exe.CodeAnalysisLog.xml
 F:\file\Code\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.exe.lastcodeanalysissucceeded
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.pdb

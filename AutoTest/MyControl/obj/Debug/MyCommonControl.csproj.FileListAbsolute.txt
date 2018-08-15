@@ -34,3 +34,15 @@ D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.Properties.Re
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.GenerateResource.Cache
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
 D:\my\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\CBalloon.CBalloonBase.resources
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.DataRecordBox.resources
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.PlayButton.resources
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.Properties.Resources.resources
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.GenerateResource.Cache
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb

@@ -14,3 +14,10 @@ D:\my\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csprojResolveAs
 F:\file\Code\AutoTest\AutoTest\MySvnHelper\bin\Debug\MySvnHelper.dll.CodeAnalysisLog.xml
 F:\file\Code\AutoTest\AutoTest\MySvnHelper\bin\Debug\MySvnHelper.dll.lastcodeanalysissucceeded
 F:\file\Code\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\MySvnHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\MySvnHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\SharpSvn.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\SharpPlink-x64.svnExe
+F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.pdb

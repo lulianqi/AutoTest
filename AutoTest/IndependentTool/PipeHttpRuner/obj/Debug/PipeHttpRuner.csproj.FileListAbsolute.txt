@@ -27,3 +27,16 @@ D:\my\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpR
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.csproj.GenerateResource.Cache
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\PipeHttpRuner.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\PipeHttpRuner.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyCommonHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyControl.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyPipeHttpHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyControl.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyPipeHttpHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.PipeHttpRuner.resources
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.Properties.Resources.resources
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.csproj.GenerateResource.Cache
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\PipeHttpRuner\obj\Debug\PipeHttpRuner.pdb

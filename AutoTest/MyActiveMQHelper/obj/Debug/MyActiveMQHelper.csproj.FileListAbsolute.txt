@@ -10,3 +10,8 @@ D:\my\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.pdb
 F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelper.dll.CodeAnalysisLog.xml
 F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelper.dll.lastcodeanalysissucceeded
 F:\file\Code\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.pdb

@@ -14,7 +14,10 @@ namespace huala_test
     {
         static void Main(string[] args)
         {
-            AnalysisDTBLog();
+            Console.WriteLine("any key to start");
+            Console.ReadLine();
+            AnalysisIpLog();
+            //AnalysisDTBLog();
             Console.ReadLine();
             MoreTestForAllInOneInterface();
             //TestForAllInOneInterface();
@@ -179,7 +182,83 @@ namespace huala_test
             CsvFileHelper.SaveCsvFile(@"D:\NG\dtb.csv", loginList, false, new System.Text.UTF8Encoding(false));
 
         }
-   
+
+        private class IpInfo
+        {
+            string ip;
+            int count;
+            string affiliation;
+        }
+
+        private static void AnalysisIpLog()
+        {
+            StreamReader sr = new StreamReader(@"D:\NG\ip.txt", Encoding.UTF8);
+            Dictionary<string,int> ipDc=new Dictionary<string,int>();
+            List<List<string>> loginList = new List<List<string>>();
+            string temIpTxt = null;
+            temIpTxt = sr.ReadLine();
+            while (temIpTxt != null)
+            {
+                temIpTxt = temIpTxt.TrimEnd(' ');
+                if (temIpTxt != "" && temIpTxt.Length<17)
+                {
+                    if(ipDc.Keys.Contains(temIpTxt))
+                    {
+                        ipDc[temIpTxt]++;
+                    }
+                    else
+                    {
+                        ipDc.Add(temIpTxt, 1);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(string.Format("error data [{0}]",temIpTxt));
+                }
+                temIpTxt = sr.ReadLine();
+            }
+
+            foreach (var ipKv in ipDc)
+            {
+                string ipAffiliation = "";
+                string ipSource ="";
+                try
+                {
+                    ipSource = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format(" http://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query={0}&co=&resource_id=6006&t=1534239628331&ie=utf8&oe=utf8&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery110207479682729924466_1534239324699&_=1534239324704", ipKv.Key));
+                }
+                catch(Exception ex)
+                {
+                    ipSource = ex.Message;
+                }
+                System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+                System.Diagnostics.Debug.WriteLine(ipSource);
+                int ipStart= ipSource.IndexOf("location\":\"");
+                if(ipStart>0)
+                {
+                    ipStart=ipStart+11;
+                    int ipEnd = ipSource.IndexOf('"', ipStart);
+                    if (ipEnd > ipStart)
+                    {
+                        ipAffiliation = ipSource.Substring(ipStart, ipEnd - ipStart);
+                    }
+                    else
+                    {
+                        ipAffiliation = string.Format("error: [{0}]", ipSource);
+                    }
+                }
+                else
+                {
+                    ipAffiliation = string.Format("error: [{0}]", ipSource);
+                }
+                loginList.Add(new List<string>() { ipKv.Key, ipAffiliation, ipKv.Value.ToString() });
+            }
+
+            CsvFileHelper.SaveCsvFile(@"D:\NG\ipLog.csv", loginList, false, new System.Text.UTF8Encoding(false));
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("AnalysisIpLog Complete");
+        }
+
+
         private static void CreatSeckillActivityOrder(string hltoken ,string addressId ,string seckillActivityId , string seckillActivityGoodsId)
         {
             List<KeyValuePair<string,string>> heads=new List<KeyValuePair<string,string>>();

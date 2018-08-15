@@ -3,3 +3,8 @@ F:\file\Code\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.pdb
 F:\file\Code\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.csprojResolveAssemblyReference.cache
 F:\file\Code\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.exe
 F:\file\Code\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.pdb
