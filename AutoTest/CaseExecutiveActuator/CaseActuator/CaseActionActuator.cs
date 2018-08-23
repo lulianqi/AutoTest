@@ -13,7 +13,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
-//using System.Windows.Forms;
 using System.Xml;
 
 
@@ -439,20 +438,6 @@ namespace CaseExecutiveActuator.CaseActuator
             }
         }
 
-        /// <summary>
-        /// 描述单次执行所需的基本数据集  (未使用)
-        /// </summary>
-        private class ExecutivebasicData
-        {
-            MyRunCaseData<ICaseExecutionContent> runCaseData;
-            CaseCell executiveNode;
-
-            public ExecutivebasicData(MyRunCaseData<ICaseExecutionContent> yourCaseData, CaseCell yourExecutiveNode)
-            {
-                runCaseData = yourCaseData;
-                executiveNode = yourExecutiveNode;
-            }
-        }
 
         #endregion
 
