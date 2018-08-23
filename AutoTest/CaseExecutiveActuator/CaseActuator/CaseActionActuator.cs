@@ -13,7 +13,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Xml;
 
 
@@ -445,9 +445,9 @@ namespace CaseExecutiveActuator.CaseActuator
         private class ExecutivebasicData
         {
             MyRunCaseData<ICaseExecutionContent> runCaseData;
-            TreeNode executiveNode;
+            CaseCell executiveNode;
 
-            public ExecutivebasicData(MyRunCaseData<ICaseExecutionContent> yourCaseData,TreeNode yourExecutiveNode)
+            public ExecutivebasicData(MyRunCaseData<ICaseExecutionContent> yourCaseData, CaseCell yourExecutiveNode)
             {
                 runCaseData = yourCaseData;
                 executiveNode = yourExecutiveNode;

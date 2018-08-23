@@ -16,7 +16,16 @@ namespace huala_test
         {
             Console.WriteLine("any key to start");
             Console.ReadLine();
-            AnalysisIpLog();
+            System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+            GetCompanyInfo("济南市历城区永隆商店");
+            System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+            GetCompanyInfo("济南市历城区便民食品商店");
+            System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+            GetCompanyInfo("济南市历城区自信商行");
+            System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+            GetCompanyInfo("济南市长清区常来商店");
+
+            //AnalysisIpLog();
             //AnalysisDTBLog();
             Console.ReadLine();
             MoreTestForAllInOneInterface();
@@ -181,6 +190,17 @@ namespace huala_test
 
             CsvFileHelper.SaveCsvFile(@"D:\NG\dtb.csv", loginList, false, new System.Text.UTF8Encoding(false));
 
+        }
+
+
+
+        private static void GetCompanyInfo(string companyName)
+        {
+            List<KeyValuePair<string,string>> myHeads =new List<KeyValuePair<string,string>>();
+            myHeads.Add(new KeyValuePair<string,string>("authoration","apicode"));
+            myHeads.Add(new KeyValuePair<string,string>("apicode","1f9ad9bd346d4f7caba8c62bf41d8522"));
+            string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://api.yonyoucloud.com/apis/yonyoucloudresearch/enterpriseSearch/queryFull?fullname={0}", companyName), null, "GET", myHeads);
+            Console.WriteLine(tempRespans);
         }
 
         private class IpInfo
