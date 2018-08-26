@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Xml;
 
 
@@ -602,8 +602,8 @@ namespace CaseExecutiveActuator.CaseActuator
         }
     }
 
-
-
+    /*
+    * this class reference System.Windows.Forms so remove 
     /// <summary>
     /// myCelerityCaseRunTime same to myCaseRunTime ,but it more higher performance
     /// </summary>
@@ -891,4 +891,5 @@ namespace CaseExecutiveActuator.CaseActuator
             }
         }
     }
+     * */
 }
