@@ -700,7 +700,7 @@ namespace CaseExecutiveActuator.CaseActuator
         }
 
         /// <summary>
-        /// 获取当前CASE列表
+        /// 获取当前CASE列表 【以唯一ID表示的project，及以唯一ID表示的case列，用于对外选择case】
         /// </summary>
         public Dictionary<int, Dictionary<int, CaseCell>> RunTimeCaseDictionary
         {
@@ -728,7 +728,7 @@ namespace CaseExecutiveActuator.CaseActuator
         {
             get
             {
-                return ((runCellProjctCollection != null) && (runCellProjctCollection != null));
+                return ((runCellProjctCollection != null) && (runTimeCaseDictionary != null));
             }
         }
 

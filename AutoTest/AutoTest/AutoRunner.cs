@@ -369,6 +369,7 @@ namespace AutoTest
                             if (nowCaseTreeAction!=null)
                             {
                                 nowCaseTreeAction.Dispose();
+                            }
                             nowCaseTreeAction = new CaseTreeActionControl( nowCaseActionActuator);
                         }
                         else
