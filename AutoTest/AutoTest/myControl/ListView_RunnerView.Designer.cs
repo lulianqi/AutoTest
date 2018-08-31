@@ -1,4 +1,4 @@
-﻿namespace AutoTest.myControl
+﻿namespace AutoTest.MyControl
 {
     partial class ListView_RunnerView
     {

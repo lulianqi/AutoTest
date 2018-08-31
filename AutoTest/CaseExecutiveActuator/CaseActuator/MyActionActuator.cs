@@ -24,6 +24,8 @@ using System.Windows.Forms;
 
 namespace CaseExecutiveActuator.CaseActuator
 {
+
+    //该工具引用到System.Windows.Forms，已于20180831移除，由CaseTreeAction替代原有功能
     /// <summary>
     /// 在这里绑定UI组件，如果想让运行过程事实反馈到UI界面上，请到此订阅（如果使用了自定义的UI组件，请在相应的位置按原有规则添加反馈）
     /// </summary>
@@ -240,7 +242,6 @@ namespace CaseExecutiveActuator.CaseActuator
             if (yourCell.UiTag is TreeNode)
             {
                 TreeNode yourTreeNode = (TreeNode)yourCell.UiTag;
-
                 CaseTreeNodeChangeState(yourTreeNode, Color.Pink);
             }
         }

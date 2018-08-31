@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System;
 
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using AutoTest.myDialogWindow;
 using System.Threading;
 using MyCommonHelper;
@@ -232,15 +232,15 @@ namespace AutoTest
 
         public void loadVaneConfigDictionary()
         {
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myAssignedNumberDictionary, 0);
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myProtocolTypeDictionary, 1);
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myStatusDictionary, 2);
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myContentTypeDictionary, 3);
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myNewVersionFlagDictionary, 4);
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myGWAbilityDictionary, 5);
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myRouterAuthModeDictionary, 6);
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myWifiAssignedNumberDictionary, 7);
-            myTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myVersionTypeNumberDictionary, 8);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myAssignedNumberDictionary, 0);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myProtocolTypeDictionary, 1);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myStatusDictionary, 2);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myContentTypeDictionary, 3);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myNewVersionFlagDictionary, 4);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myGWAbilityDictionary, 5);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myRouterAuthModeDictionary, 6);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myWifiAssignedNumberDictionary, 7);
+            MyTool.myVaneConfigTool.loadVaneConfigFile(vc_configPath, myShareData.myVersionTypeNumberDictionary, 8);
         }
 
         public void startReceiveBroadcast(int yourPort)

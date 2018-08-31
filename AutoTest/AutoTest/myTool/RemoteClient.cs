@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 
 using AutoTest.myDialogWindow;
-using AutoTest.myControl;
+using AutoTest.MyControl;
 
 
 /*******************************************************************************
@@ -23,7 +23,7 @@ using AutoTest.myControl;
 *******************************************************************************/
 
 
-namespace AutoTest.myTool
+namespace AutoTest.MyTool
 {
     class ExecuteServiceCallback : IExecuteServiceCallback
     {

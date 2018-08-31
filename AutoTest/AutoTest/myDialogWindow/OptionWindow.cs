@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using MyCommonHelper;
 
 /*******************************************************************************

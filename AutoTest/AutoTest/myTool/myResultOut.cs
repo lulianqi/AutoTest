@@ -20,7 +20,7 @@ using MyCommonHelper;
 * 描    述: 创建
 *******************************************************************************/
 
-namespace AutoTest.myTool
+namespace AutoTest.MyTool
 {
     class myResultOut
     {

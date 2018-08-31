@@ -81,25 +81,25 @@
     <Compile Include="AutoRunner.Designer.cs">
       <DependentUpon>AutoRunner.cs</DependentUpon>
     </Compile>
-    <Compile Include="myControl\ListView_RemoteRunnerView.cs">
+    <Compile Include="MyControl\ListView_RemoteRunnerView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="myControl\ListView_RemoteRunnerView.Designer.cs">
+    <Compile Include="MyControl\ListView_RemoteRunnerView.Designer.cs">
       <DependentUpon>ListView_RemoteRunnerView.cs</DependentUpon>
     </Compile>
-    <Compile Include="myControl\ListView_RunnerView.cs">
+    <Compile Include="MyControl\ListView_RunnerView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="myControl\ListView_RunnerView.Designer.cs">
+    <Compile Include="MyControl\ListView_RunnerView.Designer.cs">
       <DependentUpon>ListView_RunnerView.cs</DependentUpon>
     </Compile>
-    <Compile Include="myControl\myChildWindow.cs">
+    <Compile Include="MyControl\MyChildWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="myControl\RemoteClientNode.cs">
+    <Compile Include="MyControl\RemoteClientNode.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="myControl\RemoteClientNode.Designer.cs">
+    <Compile Include="MyControl\RemoteClientNode.Designer.cs">
       <DependentUpon>RemoteClientNode.cs</DependentUpon>
     </Compile>
     <Compile Include="MyDialogWindow\AboutBox.cs">
@@ -209,21 +209,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyResource.resx</DependentUpon>
     </Compile>
-    <Compile Include="myTool\CaseRunner.cs" />
-    <Compile Include="myTool\myGlobalStaticData .cs" />
-    <Compile Include="myTool\myResultOut.cs" />
-    <Compile Include="myTool\myShareData.cs" />
-    <Compile Include="myTool\myStruct.cs" />
-    <Compile Include="myTool\CaseFileXmlAnalysis.cs" />
-    <Compile Include="myTool\myVaneConfigTool.cs" />
-    <Compile Include="myTool\RemoteClient.cs" />
+    <Compile Include="MyTool\CaseRunner.cs" />
+    <Compile Include="MyTool\CaseTreeActionControl.cs" />
+    <Compile Include="MyTool\myGlobalStaticData .cs" />
+    <Compile Include="MyTool\myResultOut.cs" />
+    <Compile Include="MyTool\myShareData.cs" />
+    <Compile Include="MyTool\myStruct.cs" />
+    <Compile Include="MyTool\CaseFileXmlAnalysis.cs" />
+    <Compile Include="MyTool\myVaneConfigTool.cs" />
+    <Compile Include="MyTool\RemoteClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AutoRunner.resx">
       <DependentUpon>AutoRunner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="myControl\myChildWindow.resx">
-      <DependentUpon>myChildWindow.cs</DependentUpon>
+    <EmbeddedResource Include="MyControl\MyChildWindow.resx">
+      <DependentUpon>MyChildWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MyDialogWindow\AboutBox.resx">

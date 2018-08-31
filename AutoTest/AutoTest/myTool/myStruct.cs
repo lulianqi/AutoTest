@@ -18,7 +18,7 @@ using System.Xml;
 *******************************************************************************/
 
 
-namespace AutoTest.myTool
+namespace AutoTest.MyTool
 {
     class myStruct
     {

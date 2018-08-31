@@ -20,7 +20,7 @@ using System.Diagnostics;
 *******************************************************************************/
 
 
-namespace AutoTest.myTool
+namespace AutoTest.MyTool
 {
     static class myGlobalStaticData
     {

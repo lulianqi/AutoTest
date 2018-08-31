@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using AutoTest.myControl;
+using AutoTest.MyControl;
 using System.Threading;
 using System.Net;
-using AutoTest.myTool;
+using AutoTest.MyTool;
 
 using SYDControls;
 using MyCommonHelper;

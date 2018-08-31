@@ -1,4 +1,4 @@
-﻿using AutoTest.myControl;
+﻿using AutoTest.MyControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

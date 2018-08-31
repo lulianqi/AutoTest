@@ -1,0 +1,6 @@
+-------------------------------------------------------
+2018/8/31 13:01:08
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:161
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using AutoTest.myControl;
+using AutoTest.MyControl;
 using System.ServiceModel;
 
 namespace AutoTest.myDialogWindow

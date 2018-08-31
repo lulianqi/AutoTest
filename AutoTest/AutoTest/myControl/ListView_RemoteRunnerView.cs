@@ -24,7 +24,7 @@ using AutoTest.RemoteServiceReference;
 *******************************************************************************/
 
 
-namespace AutoTest.myControl
+namespace AutoTest.MyControl
 {
     public partial class ListView_RemoteRunnerView : ListViewExDB
     {

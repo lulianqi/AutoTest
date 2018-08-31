@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using System.Xml;
 using System.Net;
 using System.IO;
@@ -86,6 +86,7 @@ namespace AutoTest
 
         public System.Windows.Forms.Timer myCasetimer = new System.Windows.Forms.Timer();       //运行状态计数器                   ***重构考虑移除
         public CaseActionActuator nowCaseActionActuator;                                        //用于执行及处理基础case单元的执行器
+        public CaseTreeActionControl nowCaseTreeAction;
         public CaseFileXmlAnalysis myCase = new CaseFileXmlAnalysis();                          //用例数据处理集,将向外提供
         List<caseProject> myCaseProjects = new List<caseProject>();                             //树中所有工程集合
 
@@ -365,6 +366,10 @@ namespace AutoTest
                             nowCaseActionActuator.OnActuatorStateChanged += nowCaseActionActuator_OnActuatorStateChanged;
                             nowCaseActionActuator.OnExecutiveResult += nowCaseActionActuator_OnExecutiveResult;
                             nowCaseActionActuator.LoadScriptRunTime(tempNode);
+                            if (nowCaseTreeAction!=null)
+                            {
+                                nowCaseTreeAction.Dispose();
+                            nowCaseTreeAction = new CaseTreeActionControl( nowCaseActionActuator);
                         }
                         else
                         {
@@ -1043,7 +1048,7 @@ namespace AutoTest
                     MessageBox.Show("执行器中未发现任何可用数据", "stop");
                     return;
                 }
-                if (!myTool.myResultOut.createReport(myCase.myFile, nowCaseActionActuator.NowExecutionResultList, ref myReportPath))
+                if (!MyTool.myResultOut.createReport(myCase.myFile, nowCaseActionActuator.NowExecutionResultList, ref myReportPath))
                 {
                     MessageBox.Show("报告生成失败，祥见错误日志", "stop");
                 }
@@ -1723,7 +1728,7 @@ namespace AutoTest
                         {
                             tempFrom.Close();
                         }
-                        if (tempFrom is AutoTest.myControl.MyCaceCBalloon)
+                        if (tempFrom is AutoTest.MyControl.MyCaceCBalloon)
                         {
                             tempFrom.Close();
                         }
@@ -1815,8 +1820,8 @@ namespace AutoTest
                     if (((CaseCell)tvw_Case.SelectedNode.Tag).CaseType == CaseType.Case)
                     {
                         Point myPosition = new Point(tvw_Case.SelectedNode.Bounds.X, tvw_Case.SelectedNode.Bounds.Y + 150);
-                        myControl.MyCaceCBalloon myListViewCBallon = null;
-                        myListViewCBallon = new myControl.MyCaceCBalloon(tvw_Case.SelectedNode);
+                        MyControl.MyCaceCBalloon myListViewCBallon = null;
+                        myListViewCBallon = new MyControl.MyCaceCBalloon(tvw_Case.SelectedNode);
                         myListViewCBallon.Owner = this;
                         myListViewCBallon.HasShadow = true;
                         myListViewCBallon.setBalloonPosition(this, myPosition, new Size(1, 1));

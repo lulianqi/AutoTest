@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using System.Threading;
 using MyCommonHelper;
 using MyCommonHelper.NetHelper;
@@ -99,7 +99,7 @@ namespace AutoTest
             //f.Show();
             //return;
 
-            myControl.MyChildWindow myWindow = new myControl.MyChildWindow();
+            MyControl.MyChildWindow myWindow = new MyControl.MyChildWindow();
             myWindow.TopLevel = false;
             myWindow.Parent = this.richTextBox1;
             myWindow.Show();

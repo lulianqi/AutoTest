@@ -19,7 +19,7 @@ using System.Drawing;
 *******************************************************************************/
 
 
-namespace AutoTest.myTool
+namespace AutoTest.MyTool
 {
     static class myShareData
     {

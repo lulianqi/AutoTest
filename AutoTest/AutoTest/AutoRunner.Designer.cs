@@ -1,4 +1,4 @@
-﻿using AutoTest.myControl;
+﻿using AutoTest.MyControl;
 using MyCommonControl;
 
 namespace AutoTest
@@ -123,7 +123,7 @@ namespace AutoTest
             this.cb_cr_SelectAll = new System.Windows.Forms.CheckBox();
             this.pictureBox_cr_addUser = new System.Windows.Forms.PictureBox();
             this.cb_cr_isCb = new System.Windows.Forms.CheckBox();
-            this.listView_CaseRunner = new AutoTest.myControl.ListView_RunnerView();
+            this.listView_CaseRunner = new AutoTest.MyControl.ListView_RunnerView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));

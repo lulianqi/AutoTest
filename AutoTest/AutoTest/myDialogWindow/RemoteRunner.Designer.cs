@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RemoteRunnerView = new AutoTest.myControl.ListView_RemoteRunnerView();
+            this.RemoteRunnerView = new AutoTest.MyControl.ListView_RemoteRunnerView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -112,7 +112,7 @@
 
         #endregion
 
-        private myControl.ListView_RemoteRunnerView RemoteRunnerView;
+        private MyControl.ListView_RemoteRunnerView RemoteRunnerView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;

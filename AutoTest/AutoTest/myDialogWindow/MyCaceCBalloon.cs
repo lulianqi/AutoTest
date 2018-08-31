@@ -6,14 +6,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using System.Xml;
 using System.Collections;
 using MyCommonHelper;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
 
-namespace AutoTest.myControl
+namespace AutoTest.MyControl
 {
     public partial class MyCaceCBalloon : CBalloon.CBalloonBase
     {

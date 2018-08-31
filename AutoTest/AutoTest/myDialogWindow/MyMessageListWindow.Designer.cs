@@ -1,4 +1,4 @@
-﻿using AutoTest.myControl;
+﻿using AutoTest.MyControl;
 using MyCommonControl;
 namespace AutoTest.myDialogWindow
 {

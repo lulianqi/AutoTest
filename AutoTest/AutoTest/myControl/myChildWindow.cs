@@ -20,7 +20,7 @@ using System.ComponentModel;
 *******************************************************************************/
 
 
-namespace AutoTest.myControl
+namespace AutoTest.MyControl
 {
     //public partial class MyChildWindow : DevComponents.DotNetBar.Office2007RibbonForm
     public partial class MyChildWindow : Form

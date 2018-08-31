@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-using AutoTest.myTool;
+using AutoTest.MyTool;
 
 namespace AutoTest.myDialogWindow
 {

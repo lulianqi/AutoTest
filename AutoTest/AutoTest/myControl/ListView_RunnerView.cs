@@ -22,7 +22,7 @@ using MyCommonControl;
 *******************************************************************************/
 
 
-namespace AutoTest.myControl
+namespace AutoTest.MyControl
 {
     /// <summary>
     /// 为CaseRunner提供绑定的ListView，并在指定列添加制定Controls

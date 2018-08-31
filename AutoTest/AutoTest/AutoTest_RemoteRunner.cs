@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using System.Xml;
 using System.Net;
 using System.IO;
@@ -20,7 +20,7 @@ using MyCommonHelper;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
 using System.ServiceModel;
-using AutoTest.myControl;
+using AutoTest.MyControl;
 
 
 /*******************************************************************************

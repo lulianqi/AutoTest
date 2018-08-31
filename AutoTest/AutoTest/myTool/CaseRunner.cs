@@ -11,7 +11,7 @@ using System.Xml;
 using CaseExecutiveActuator.Cell;
 using MyCommonHelper;
 using System.Windows.Forms;
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using System.Drawing;
 using AutoTest.myDialogWindow;
 using CaseExecutiveActuator.CaseActuator;
@@ -488,7 +488,7 @@ namespace AutoTest
                     return;
                 }
                 string myReportPath="";
-                if (!myTool.myResultOut.createReport(runnerCasePath, runerActuator.NowExecutionResultList, ref myReportPath))
+                if (!MyTool.myResultOut.createReport(runnerCasePath, runerActuator.NowExecutionResultList, ref myReportPath))
                 {
                     MessageBox.Show("报告生成失败，祥见错误日志", "stop");
                 }

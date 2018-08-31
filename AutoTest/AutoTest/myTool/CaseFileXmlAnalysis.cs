@@ -17,7 +17,7 @@ using System.Xml;
 * 描    述: 创建
 *******************************************************************************/
 
-namespace AutoTest.myTool
+namespace AutoTest.MyTool
 {
     public class CaseFileXmlAnalysis
     {

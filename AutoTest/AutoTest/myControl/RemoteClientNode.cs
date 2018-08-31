@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using AutoTest.RemoteServiceReference;
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using System.ServiceModel;
 
 
@@ -25,7 +25,7 @@ using System.ServiceModel;
 *******************************************************************************/
 
 
-namespace AutoTest.myControl
+namespace AutoTest.MyControl
 {
     public partial class RemoteClientNode : DevComponents.AdvTree.Node
     {
@@ -114,20 +114,20 @@ namespace AutoTest.myControl
         {
             switch (nowSate)
             {
-                case myTool.RemoteClient.RemoteClientState.Break:
+                case MyTool.RemoteClient.RemoteClientState.Break:
                     this.Cells[0].Text = this.remoteClient.ToString()+"尝试重新连接";
                     this.ImageIndex = 1;
                     break;
-                case myTool.RemoteClient.RemoteClientState.Connecting:
+                case MyTool.RemoteClient.RemoteClientState.Connecting:
                     this.Cells[0].Text = this.remoteClient.ToString() + "正在连接连接";
                     this.ImageIndex = 2;
                     break;
-                case myTool.RemoteClient.RemoteClientState.Connected:
+                case MyTool.RemoteClient.RemoteClientState.Connected:
                     this.Cells[0].Text = this.remoteClient.ToString();
                     this.ImageIndex = 0;
                     this.Expand();
                     break;
-                case myTool.RemoteClient.RemoteClientState.Lost:
+                case MyTool.RemoteClient.RemoteClientState.Lost:
                     this.Cells[0].Text = this.remoteClient.ToString() + "失去连接";
                     this.ImageIndex = 3;
                     break;

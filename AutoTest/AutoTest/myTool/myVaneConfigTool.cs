@@ -22,7 +22,7 @@ using MyCommonHelper;
 *******************************************************************************/
 
 
-namespace AutoTest.myTool
+namespace AutoTest.MyTool
 {
 
     /// <summary>

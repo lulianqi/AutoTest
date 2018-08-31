@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Net;
-using AutoTest.myTool;
+using AutoTest.MyTool;
 using MyCommonHelper;
 using MyCommonHelper.NetHelper;
 
