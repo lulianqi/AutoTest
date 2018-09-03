@@ -24,6 +24,9 @@ using System.Xml;
 
 namespace CaseExecutiveActuator.CaseActuator
 {
+    public delegate void delegateQueueChangeEventHandler(CaseCell yourTarget, string yourMessage);
+    public delegate void delegateLoopChangeEventHandler(CaseCell yourTarget, string yourMessage);
+
     class RunCaseCount
     {
         /// <summary>

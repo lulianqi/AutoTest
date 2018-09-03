@@ -16,7 +16,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
     {
         private bool isConnect;
         private myConnectForTelnet myExecutionDeviceInfo;
-        public event delegateGetExecutiveData OnGetExecutiveData;
+        public event CaseExecutiveActuator.CaseActuator.CaseActionActuator.delegateGetExecutiveData OnGetExecutiveData;
 
         private MyTelnet telnetShell;
 
@@ -119,7 +119,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             isConnect = false;
         }
 
-        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, CaseActionActuator.delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             List<string> errorList = new List<string>();
             string tempError = null;

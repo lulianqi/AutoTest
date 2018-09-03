@@ -26,7 +26,9 @@ namespace CaseExecutiveActuator
         ExecutiveInfo,
         ExecutiveError,
         ActuatorInfo,
-        ActuatorError
+        ActuatorError,
+        CaseLoadInfo,
+        CaseLoadError
     }
 
 

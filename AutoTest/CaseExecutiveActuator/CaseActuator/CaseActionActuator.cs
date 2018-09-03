@@ -514,6 +514,9 @@ namespace CaseExecutiveActuator.CaseActuator
         private int executiveThinkTime;
         private int caseThinkTime;
 
+
+
+        public delegate void delegateGetExecutiveData(string sender, CaseActuatorOutPutType outType, string yourContent);
         public delegate void delegateGetExecutiveDataEventHandler(string yourTitle, string yourContent);
         public delegate void delegateGetActionErrorEventHandler(string yourContent);
         public delegate void delegateGetExecutiveResultEventHandler(string sender, MyExecutionDeviceResult yourResult);
@@ -521,9 +524,9 @@ namespace CaseExecutiveActuator.CaseActuator
         public delegate void delegateActuatorParameterListEventHandler();
 
 
-        public event delegateGetExecutiveData OnGetExecutiveData;
-        public event delegateGetExecutiveResultEventHandler OnExecutiveResult;
-        public event delegateGetActuatorStateEventHandler OnActuatorStateChanged;
+        public event delegateGetExecutiveData OnGetExecutiveData;                         //运行过程中的错误或异常通知（但不包括正常case执行信息）
+        public event delegateGetExecutiveResultEventHandler OnExecutiveResult;            //case执行结果通知
+        public event delegateGetActuatorStateEventHandler OnActuatorStateChanged;         //当前Actuator状态变化通知
         public delegateActuatorParameterListEventHandler OnActuatorParameterListChanged;  //外部需要访问 event修饰后，会禁止非创建类服务
 
 
@@ -815,7 +818,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                 tempActuatorName = tempNodeChild.Attributes["name"].Value;
                                                 if (!Enum.TryParse<CaseProtocol>(tempNodeChild.Attributes["protocol"].Value,out tempActuatorProtocol))
                                                 {
-                                                    SetNowActionError(string.Format("find unknow Protocol in ScriptRunTime  with {0} ", tempActuatorName));
+                                                    SetNowExecutiveActuatorError(string.Format("find unknow Protocol in ScriptRunTime  with {0} ", tempActuatorName));
                                                 }
                                                 else
                                                 {
@@ -881,13 +884,13 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 System.Net.IPAddress tempIp;
                                                                 if (!(System.Net.IPAddress.TryParse(tempTcpHost, out tempIp) && int.TryParse(tempTcpPort, out tempTcpNowPort) && tempTcpNowPort < 65536 && tempTcpNowPort >0))
                                                                 {
-                                                                    SetNowActionError(string.Format("[add tcp actuator ]find error data in host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    SetNowExecutiveActuatorError(string.Format("[add tcp actuator ]find error data in host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                     break;
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                SetNowActionError(string.Format("[add tcp actuator ]can not find host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                SetNowExecutiveActuatorError(string.Format("[add tcp actuator ]can not find host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
                                                             #endregion
@@ -915,19 +918,19 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 System.Net.IPAddress tempIp;
                                                                 if (!(System.Net.IPAddress.TryParse(tempTelnetHost, out tempIp) && int.TryParse(tempTelnetPort, out tempTelnetNowPort) && tempTelnetNowPort < 65536 && tempTelnetNowPort > 0))
                                                                 {
-                                                                    SetNowActionError(string.Format("[add telnet actuator ]find error data in host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    SetNowExecutiveActuatorError(string.Format("[add telnet actuator ]find error data in host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                     break;
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                SetNowActionError(string.Format("[add telnet actuator ]can not find host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                SetNowExecutiveActuatorError(string.Format("[add telnet actuator ]can not find host or port data when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
                                                             //user name
                                                             if (tempTelnetUser == null || tempTelnetPassword == null)
                                                             {
-                                                                SetNowActionError(string.Format("[add telnet actuator ]can not find user name or password data when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                SetNowExecutiveActuatorError(string.Format("[add telnet actuator ]can not find user name or password data when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
                                                             //encodeing
@@ -941,7 +944,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 }
                                                                 catch
                                                                 {
-                                                                    SetNowActionError(string.Format("[add telnet actuator ] your encoding is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    SetNowExecutiveActuatorError(string.Format("[add telnet actuator ] your encoding is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                     break;
                                                                 }
                                                             }
@@ -962,7 +965,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             tempComPortName=CaseTool.GetXmlInnerVaule(tempNodeChild,"portName");
                                                             if(tempComPortName==null)
                                                             {
-                                                                SetNowActionError(string.Format("[add com actuator ]can not find portName when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                SetNowExecutiveActuatorError(string.Format("[add com actuator ]can not find portName when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
                                                             //baudRate
@@ -970,13 +973,13 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             {
                                                                 if(tempComBaudRate<1)
                                                                 {
-                                                                    SetNowActionError(string.Format("[add com actuator ] your baudRate is illegal (it must >0) when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    SetNowExecutiveActuatorError(string.Format("[add com actuator ] your baudRate is illegal (it must >0) when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                     break;
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                SetNowActionError(string.Format("[add com actuator ]can not find baudRate or your baudRate is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                SetNowExecutiveActuatorError(string.Format("[add com actuator ]can not find baudRate or your baudRate is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
                                                             //dataBits
@@ -987,7 +990,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 {
                                                                     if(tempComDataBits<5 || tempComDataBits>8)
                                                                     {
-                                                                        SetNowActionError(string.Format("[add com actuator ] your dataBits is illegal (it must in [5,8]) when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                        SetNowExecutiveActuatorError(string.Format("[add com actuator ] your dataBits is illegal (it must in [5,8]) when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                         break;
                                                                     }
                                                                 }
@@ -998,7 +1001,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             {
                                                                 if (!Enum.TryParse<SerialPortParity>(tempComStr, out tempComParity))
                                                                 {
-                                                                    SetNowActionError(string.Format("[add com actuator ] your parity is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    SetNowExecutiveActuatorError(string.Format("[add com actuator ] your parity is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                     break;
                                                                 }
                                                             }
@@ -1008,7 +1011,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             {
                                                                 if (!Enum.TryParse<SerialPortStopBits>(tempComStr, out tempComStopBits))
                                                                 {
-                                                                    SetNowActionError(string.Format("[add com actuator ] your stopBits is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    SetNowExecutiveActuatorError(string.Format("[add com actuator ] your stopBits is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                     break;
                                                                 }
                                                             }
@@ -1022,7 +1025,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 }
                                                                 catch
                                                                 {
-                                                                    SetNowActionError(string.Format("[add com actuator ] your encoding is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    SetNowExecutiveActuatorError(string.Format("[add com actuator ] your encoding is illegal when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                     break;
                                                                 }
                                                             }
@@ -1031,7 +1034,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_com);
                                                             break;
                                                         default:
-                                                            SetNowActionError(string.Format("find nonsupport Protocol in ScriptRunTime  with {0} ", tempActuatorName));
+                                                            SetNowExecutiveActuatorError(string.Format("find nonsupport Protocol in ScriptRunTime  with {0} ", tempActuatorName));
                                                             break;
                                                     }
                                                 }
@@ -1039,12 +1042,12 @@ namespace CaseExecutiveActuator.CaseActuator
                                             }
                                             else
                                             {
-                                                SetNowActionError("can not find name or protocol in ScriptRunTime - RunTimeActuator");
+                                                SetNowExecutiveActuatorError("can not find name or protocol in ScriptRunTime - RunTimeActuator");
                                             }
                                         }
                                         else
                                         {
-                                            SetNowActionError("find unkonw data in ScriptRunTime - RunTimeActuator");
+                                            SetNowExecutiveActuatorError("find unkonw data in ScriptRunTime - RunTimeActuator");
                                         }
                                     }
                                 }
@@ -1072,7 +1075,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                 }
                                                 catch
                                                 {
-                                                    SetNowActionError(string.Format("find unknown type in RunTimeStaticData - ScriptRunTime in [{0}] with [{1}]", tempNodeChild.InnerXml, tempTypeStr));
+                                                    SetNowExecutiveActuatorError(string.Format("find unknown type in RunTimeStaticData - ScriptRunTime in [{0}] with [{1}]", tempNodeChild.InnerXml, tempTypeStr));
                                                     continue;
                                                 }
                                                 switch (MyCaseDataTypeEngine.dictionaryStaticDataTypeClass[tempType])
@@ -1087,14 +1090,14 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             }
                                                             else
                                                             {
-                                                                SetNowActionError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
+                                                                SetNowExecutiveActuatorError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
                                                                 break;
                                                             }
                                                             //runActuatorStaticDataCollection.RunActuatorStaticDataKeyList.MyAdd(new KeyValuePair<string, string>());
                                                         }
                                                         else
                                                         {
-                                                            SetNowActionError(string.Format("find nonsupport Protocol 【{0}】with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ", tempType));
+                                                            SetNowExecutiveActuatorError(string.Format("find nonsupport Protocol 【{0}】with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ", tempType));
                                                             break;
                                                         }
                                                         break ;
@@ -1110,14 +1113,14 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             }
                                                             else
                                                             {
-                                                                SetNowActionError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
+                                                                SetNowExecutiveActuatorError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
                                                                 break;
                                                             }
                                                             //runActuatorStaticDataCollection.RunActuatorStaticDataParameterList.MyAdd(tempName, tempRunTimeStaticData);
                                                         }
                                                         else
                                                         {
-                                                            SetNowActionError(string.Format("find error in 【RunTimeStaticData】->【{0}】:value:【{1}】 by {2}", tempName, tempVaule, tempTypeError));
+                                                            SetNowExecutiveActuatorError(string.Format("find error in 【RunTimeStaticData】->【{0}】:value:【{1}】 by {2}", tempName, tempVaule, tempTypeError));
                                                         }
                                                         break;
                                                     //caseStaticDataSource
@@ -1131,30 +1134,30 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             }
                                                             else
                                                             {
-                                                                SetNowActionError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
+                                                                SetNowExecutiveActuatorError(string.Format("find same key 【{0}】in RunTimeParameter with [ CaseStaticDataClass.caseStaticDataKey] in - ScriptRunTime ,and will drop this key", tempName));
                                                                 break;
                                                             }
                                                             //runActuatorStaticDataCollection.RunActuatorStaticDataSouceList.MyAdd<IRunTimeDataSource>(tempName, tempRunTimeDataSource);
                                                         }
                                                         else
                                                         {
-                                                            SetNowActionError(string.Format("find error in 【RunTimeStaticData】->【{0}】:value:【{1}】 by {2}", tempName, tempVaule, tempTypeError));
+                                                            SetNowExecutiveActuatorError(string.Format("find error in 【RunTimeStaticData】->【{0}】:value:【{1}】 by {2}", tempName, tempVaule, tempTypeError));
                                                         }
                                                         break;
                                                     default:
-                                                        SetNowActionError(string.Format("find nonsupport Protocol 【{0}】with [ CaseStaticDataClass] in - ScriptRunTime ", tempType));
+                                                        SetNowExecutiveActuatorError(string.Format("find nonsupport Protocol 【{0}】with [ CaseStaticDataClass] in - ScriptRunTime ", tempType));
                                                         break;
                                                 }
 
                                             }
                                             else
                                             {
-                                                SetNowActionError(string.Format("can not find name or type in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
+                                                SetNowExecutiveActuatorError(string.Format("can not find name or type in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
                                             }
                                         }
                                         else
                                         {
-                                            SetNowActionError(string.Format("find unkonw data in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
+                                            SetNowExecutiveActuatorError(string.Format("find unkonw data in RunTimeStaticData - ScriptRunTime with [{0}]", tempNodeChild.InnerXml));
                                         }
                                     }
                                 }
@@ -1163,14 +1166,14 @@ namespace CaseExecutiveActuator.CaseActuator
                             #endregion
                            
                             default:
-                                SetNowActionError(string.Format("find unkonw data in ScriptRunTime with [{0}]",tempNode.InnerXml));
+                                SetNowExecutiveActuatorError(string.Format("find unkonw data in ScriptRunTime with [{0}]",tempNode.InnerXml));
                                 break;
                         }
                     }
                 }
                 else
                 {
-                    SetNowActionError(string.Format("find error Source Nodewith [{0}]", sourceNode.InnerXml));
+                    SetNowExecutiveActuatorError(string.Format("find error Source Nodewith [{0}]", sourceNode.InnerXml));
                 }
             }
         }
@@ -1180,29 +1183,29 @@ namespace CaseExecutiveActuator.CaseActuator
         /// </summary>
         public void ConnectExecutionDevice()
         {
-            SetNowExecutiveData("CaseExecutionDevice connecting ......");
+            SetNowExecutiveActuatorInfo("CaseExecutionDevice connecting ......");
             foreach (KeyValuePair<string, ICaseExecutionDevice> tempKvp in myExecutionDeviceList)
             {
-                SetNowExecutiveData(string.Format("【RunTimeActuator】:{0} connecting······", tempKvp.Key));
+                SetNowExecutiveActuatorInfo(string.Format("【RunTimeActuator】:{0} connecting······", tempKvp.Key));
 #if INTEST
                 System.Diagnostics.Trace.WriteLine(string.Format("[{0}]: connecting······{1}", myName, tempKvp.Key));
 #endif
                 if (tempKvp.Value.ExecutionDeviceConnect())
                 {
-                    SetNowExecutiveData(string.Format("【RunTimeActuator】:{0} connect scusess", tempKvp.Key));
+                    SetNowExecutiveActuatorInfo(string.Format("【RunTimeActuator】:{0} connect scusess", tempKvp.Key));
 #if INTEST
                     System.Diagnostics.Trace.WriteLine(string.Format("[{0}]: connect scusess······{1}", myName, tempKvp.Key));
 #endif
                 }
                 else
                 {
-                    SetNowActionError(string.Format("【RunTimeActuator】:{0} connect fail", tempKvp.Key));
+                    SetNowExecutiveActuatorError(string.Format("【RunTimeActuator】:{0} connect fail", tempKvp.Key));
 #if INTEST
                     System.Diagnostics.Trace.WriteLine(string.Format("[{0}]: connect fail······{1}", myName, tempKvp.Key));
 #endif
                 }
             }
-            SetNowExecutiveData("Connect complete");
+            SetNowExecutiveActuatorInfo("Connect complete");
         }
 
         /// <summary>
@@ -1228,7 +1231,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 {
                     invalidThreadList.Add(myActuatorTaskThread);
                     ClearInvalidThreadList();
-                    SetNowActionError("Forced to terminate the residual task");
+                    SetNowExecutiveActuatorError("Forced to terminate the residual task");
                 }
             }
             myActuatorTaskThread = new Thread(new ThreadStart(ExecutiveActuatorTask));
@@ -1260,7 +1263,7 @@ namespace CaseExecutiveActuator.CaseActuator
                         //Stoping
                         if (nowAdditionalInfo.IsStoping)
                         {
-                            SetNowExecutiveData("操作者主动终止任务");
+                            SetNowExecutiveActuatorInfo("操作者主动终止任务");
                             goto EndTask;
                         }
                         //ReTry
@@ -1278,14 +1281,14 @@ namespace CaseExecutiveActuator.CaseActuator
                 else
                 {
                     //没有执行数据请处理
-                    SetNowActionError("严重异常，未找到合法执行数据");
+                    SetNowExecutiveActuatorError("严重异常，未找到合法执行数据");
 
                 }
             }
             EndTask:
             DisconnectExecutionDevice();
             SetRunState(CaseActuatorState.Stop);
-            SetNowExecutiveData("任务已结束");
+            SetNowExecutiveActuatorInfo("任务已结束");
         }
 
         /// <summary>
@@ -1300,7 +1303,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 {
                     invalidThreadList.Add(myActuatorTryThread);
                     ClearInvalidThreadList();
-                    SetNowActionError("Forced to terminate the residual task");
+                    SetNowExecutiveActuatorError("Forced to terminate the residual task");
                 }
             }
             myActuatorTryThread = new Thread(new ParameterizedThreadStart(ExecutiveActuatorTry));
@@ -1328,12 +1331,12 @@ namespace CaseExecutiveActuator.CaseActuator
             else
             {
                 //没有执行数据请处理
-                SetNowActionError("严重异常，未找到合法执行数据");
+                SetNowExecutiveActuatorError("严重异常，未找到合法执行数据");
             }
 
             DisconnectExecutionDevice();
             SetRunState(CaseActuatorState.Stop);
-            SetNowExecutiveData("定项执行完成");
+            SetNowExecutiveActuatorInfo("定项执行完成");
         }
 
         /// <summary>
@@ -1375,7 +1378,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     else
                     {
                         //Device没有连接
-                        SetNowExecutiveData(string.Format("【ID:{0}】 {1}连接中断，尝试连接中···", nowRunCaseData.id, nowRunCaseData.testContent.MyCaseActuator));
+                        SetNowExecutiveActuatorInfo(string.Format("【ID:{0}】 {1}连接中断，尝试连接中···", nowRunCaseData.id, nowRunCaseData.testContent.MyCaseActuator));
                         if (nowDevice.ExecutionDeviceConnect())
                         {
                             //nowDevice.executionDeviceRun()
@@ -1383,7 +1386,7 @@ namespace CaseExecutiveActuator.CaseActuator
                         }
                         else
                         {
-                            SetNowExecutiveData(string.Format("【ID:{0}】 {1}连接失败", nowRunCaseData.id, nowRunCaseData.testContent.MyCaseActuator));
+                            SetNowExecutiveActuatorInfo(string.Format("【ID:{0}】 {1}连接失败", nowRunCaseData.id, nowRunCaseData.testContent.MyCaseActuator));
                             caseTreeAction.SetCaseNodeConnectInterrupt(nowExecutiveNode);
 
                             tempIsBreakError = true;
@@ -1394,7 +1397,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 else
                 {
                     //testContent没有找到合适的myCaseActuator
-                    SetNowExecutiveData(string.Format("【ID:{0}】 未找到指定CaseActuator", nowRunCaseData.id));
+                    SetNowExecutiveActuatorInfo(string.Format("【ID:{0}】 未找到指定CaseActuator", nowRunCaseData.id));
                     caseTreeAction.SetCaseNodeNoActuator(nowExecutiveNode);
                     caseTreeAction.SetCaseNodeContentWarning(nowExecutiveNode);
 
@@ -1405,7 +1408,7 @@ namespace CaseExecutiveActuator.CaseActuator
             else
             {
                 //nowRunCaseData有错误
-                SetNowActionError(string.Format("【ID:{0}】 执行数据脚本存在错误", nowRunCaseData.id));
+                SetNowExecutiveActuatorError(string.Format("【ID:{0}】 执行数据脚本存在错误", nowRunCaseData.id));
                 caseTreeAction.SetCaseNodeAbnormal(nowExecutiveNode);
 
                 tempIsBreakError = true;
@@ -1421,7 +1424,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 int tempSleepTime = executiveThinkTime + caseThinkTime;
                 if(tempSleepTime>0)
                 {
-                    SetNowExecutiveData(string.Format("sleep {0} ms···", tempSleepTime));
+                    SetNowExecutiveActuatorInfo(string.Format("sleep {0} ms···", tempSleepTime));
                     Thread.Sleep(tempSleepTime);
                 }
             }
@@ -1469,7 +1472,7 @@ namespace CaseExecutiveActuator.CaseActuator
             {
                 tempError = string.Format("【ID:{0}】ParameterSave 脚本数据不合法", yourRunData.id);
                 yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                SetNowActionError(tempError);
+                SetNowExecutiveActuatorError(tempError);
                 caseTreeAction.SetCaseNodeContentWarning(nowExecutiveNode);
             };
 
@@ -1624,13 +1627,13 @@ namespace CaseExecutiveActuator.CaseActuator
                         default:
                             tempError = string.Format("【ID:{0}】 ParameterSave 暂不支持该数据提取方式", yourRunData.id);
                             yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                            SetNowActionError(tempError);
+                            SetNowExecutiveActuatorError(tempError);
                             caseTreeAction.SetCaseNodeContentWarning(nowExecutiveNode);
                             break;
                     }
                     if(tempPickVaule==null)
                     {
-                        SetNowActionError(string.Format("【ID:{0}】 ParameterSave 在执行结果中未找到指定参数", yourRunData.id));
+                        SetNowExecutiveActuatorError(string.Format("【ID:{0}】 ParameterSave 在执行结果中未找到指定参数", yourRunData.id));
                     }
                     else
                     {
@@ -1652,7 +1655,7 @@ namespace CaseExecutiveActuator.CaseActuator
                             if (yourRunData.actions[yourExecutionResult.result].addInfo != null)
                             {
                                 VoiceService.Speak(yourRunData.actions[yourExecutionResult.result].addInfo);
-                                SetNowExecutiveData("【action_alarm】");
+                                SetNowExecutiveActuatorInfo("【action_alarm】");
                             }
                             else
                             {
@@ -1681,7 +1684,7 @@ namespace CaseExecutiveActuator.CaseActuator
                             {
                                 tempError = string.Format("【ID:{0}】 CaseAction Case数据中部没有发现目的ID", yourRunData.id);
                                 yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                                SetNowActionError(tempError);
+                                SetNowExecutiveActuatorError(tempError);
                                 caseTreeAction.SetCaseNodeContentWarning(nowExecutiveNode);
                             }
                             else
@@ -1692,21 +1695,21 @@ namespace CaseExecutiveActuator.CaseActuator
                                 {
                                     if (caseRunTime.gotoMyCase(tempProjectID, tempCaseID, runTimeCaseDictionary))
                                     {
-                                        SetNowExecutiveData("【action_goto】");
+                                        SetNowExecutiveActuatorInfo("【action_goto】");
                                         yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(string.Format("【action_goto】触发，已经跳转到Project：{0}  Case：{1}", tempProjectID, tempCaseID));
                                     }
                                     else
                                     {
                                         tempError = string.Format("【ID:{0}】action_goto跳转任务未成功", yourRunData.id);
                                         yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                                        SetNowActionError(tempError);
+                                        SetNowExecutiveActuatorError(tempError);
                                     }
                                 }
                                 else
                                 {
                                     tempError = string.Format("【ID:{0}】 CaseAction 目标跳转Case不合法", yourRunData.id);
                                     yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                                    SetNowActionError(tempError);
+                                    SetNowExecutiveActuatorError(tempError);
                                     caseTreeAction.SetCaseNodeContentWarning(nowExecutiveNode);
                                 }
                             }
@@ -1735,7 +1738,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                             nowAdditionalInfo = new ExecutiveAdditionalInfo(true, tempTryTimes);
                                             if (nowAdditionalInfo.TryTimes > 0)
                                             {
-                                                SetNowExecutiveData("【action_retry】将被触发");
+                                                SetNowExecutiveActuatorInfo("【action_retry】将被触发");
                                             }
                                             else
                                             {
@@ -1758,7 +1761,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                 {
                                     tempError = string.Format("【ID:{0}】 retry 解析错误", yourRunData.id);
                                     yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                                    SetNowActionError(tempError);
+                                    SetNowExecutiveActuatorError(tempError);
                                     caseTreeAction.SetCaseNodeContentWarning(nowExecutiveNode);
                                 }
                             }
@@ -1786,7 +1789,7 @@ namespace CaseExecutiveActuator.CaseActuator
                         case CaseAction.action_unknow:
                             tempError = string.Format("【ID:{0}】 CaseAction 未能解析", yourRunData.id);
                             yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
-                            SetNowActionError(tempError);
+                            SetNowExecutiveActuatorError(tempError);
                             caseTreeAction.SetCaseNodeContentWarning(nowExecutiveNode);
                             break;
                         default:
@@ -1834,50 +1837,51 @@ namespace CaseExecutiveActuator.CaseActuator
         /// 触发【OnGetExecutiveData】
         /// </summary>
         /// <param name="yourContent"></param>
-        private void SetNowExecutiveData(string yourContent)
+        /// <param name="ExecutiveDataType"></param>
+        private void SetNowExecutiveData(string yourContent, CaseActuatorOutPutType ExecutiveDataType)
         {
             if (OnGetExecutiveData != null)
             {
-                this.OnGetExecutiveData(myName,CaseActuatorOutPutType.ActuatorInfo, yourContent);
+                this.OnGetExecutiveData(myName, ExecutiveDataType , yourContent);
             }
+        }
+
+        /// <summary>
+        /// 触发【OnGetExecutiveData】
+        /// </summary>
+        /// <param name="yourContent"></param>
+        private void SetNowExecutiveActuatorInfo(string yourContent)
+        {
+            SetNowExecutiveData(yourContent, CaseActuatorOutPutType.ActuatorInfo);
         }
 
         /// <summary>
         /// 设置nowExecutiveData 及触发【OnGetExecutiveData】
         /// </summary>
         /// <param name="yourContent"></param>
-        private void SetAndSaveNowExecutiveData(string yourContent)
+        private void SetAndSaveNowExecutiveActuatorInfo(string yourContent)
         {
             nowExecutiveData = yourContent;
-            if (OnGetExecutiveData != null)
-            {
-                this.OnGetExecutiveData(myName,CaseActuatorOutPutType.ActuatorInfo, yourContent);
-            }
+            SetNowExecutiveData(yourContent, CaseActuatorOutPutType.ActuatorInfo);
         }
 
         /// <summary>
         /// 触发【OnGetActionError】
         /// </summary>
         /// <param name="yourContent">Action Error Content</param>
-        private void SetNowActionError(string yourContent)
+        private void SetNowExecutiveActuatorError(string yourContent)
         {
-            if (OnGetExecutiveData != null)
-            {
-                this.OnGetExecutiveData(myName, CaseActuatorOutPutType.ActuatorError, yourContent);
-            }
+            SetNowExecutiveData(yourContent, CaseActuatorOutPutType.ActuatorError);
         }
 
         /// <summary>
         ///  设置 myErrorInfo 并 触发【OnGetActionError】（若不想触发OnGetActionError请直接操作myErrorInfo）
         /// </summary>
         /// <param name="yourContent">Action Error Content</param>
-        private void SetAndSaveNowActionError(string yourContent)
+        private void SetAndSaveNowExecutiveActuatorError(string yourContent)
         {
             myErrorInfo = yourContent;
-            if (OnGetExecutiveData != null)
-            {
-                this.OnGetExecutiveData(myName, CaseActuatorOutPutType.ActuatorError, myErrorInfo);
-            }
+            SetNowExecutiveData(yourContent, CaseActuatorOutPutType.ActuatorError);
         }
 
         /// <summary>
@@ -1944,7 +1948,7 @@ namespace CaseExecutiveActuator.CaseActuator
                      myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForHttp((myConnectForHttp)yourDeviceConnectInfo));
                     break;
                 default:
-                    SetNowActionError(yourDeviceName + " is an nonsupport Protocol");
+                    SetNowExecutiveActuatorError(yourDeviceName + " is an nonsupport Protocol");
                     break;
             }
             return true;
@@ -1980,7 +1984,7 @@ namespace CaseExecutiveActuator.CaseActuator
             }
             else
             {
-                SetNowActionError("your CaseDictionary or ProjctCollection is null");
+                SetNowExecutiveActuatorError("your CaseDictionary or ProjctCollection is null");
             }
         }
 
@@ -2036,7 +2040,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 case  CaseActuatorState.Pause:
                     SetRunState(CaseActuatorState.Running);
                     executiveManualResetEvent.Set();
-                    SetNowExecutiveData("任务恢复");
+                    SetNowExecutiveActuatorInfo("任务恢复");
                     return true;
                 case CaseActuatorState.Stop:
                     if (yourStartNode == null)
@@ -2053,7 +2057,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     SetRunState(CaseActuatorState.Running);
                     executiveManualResetEvent.Set();
                     CreateNewActuatorTask();
-                    SetNowExecutiveData("任务开始");
+                    SetNowExecutiveActuatorInfo("任务开始");
                     return true;
                 case CaseActuatorState.Trying:
                     SetAndSaveNowActionError("存在未还未结束指定项任务");
@@ -2074,7 +2078,7 @@ namespace CaseExecutiveActuator.CaseActuator
             {
                 executiveManualResetEvent.Reset();
                 SetRunState(CaseActuatorState.Pause);
-                SetNowExecutiveData("任务已暂停");
+                SetNowExecutiveActuatorInfo("任务已暂停");
                 return true;
             }
             else
@@ -2093,14 +2097,14 @@ namespace CaseExecutiveActuator.CaseActuator
             if (runState == CaseActuatorState.Running)
             {
                 SetRunState(CaseActuatorState.Stoping);
-                SetNowExecutiveData("正在终止任务");
+                SetNowExecutiveActuatorInfo("正在终止任务");
                 return true;
             }
             else if (runState == CaseActuatorState.Pause)
             {
                 executiveManualResetEvent.Set();
                 SetRunState(CaseActuatorState.Stoping);
-                SetNowExecutiveData("正在终止任务");
+                SetNowExecutiveActuatorInfo("正在终止任务");
                 return true;
             }
             else if (runState == CaseActuatorState.Stoping)
@@ -2125,7 +2129,7 @@ namespace CaseExecutiveActuator.CaseActuator
             if (runState == CaseActuatorState.Running)
             {
                 PauseCaseScript();
-                SetNowExecutiveData("单步执行>");
+                SetNowExecutiveActuatorInfo("单步执行>");
                 executiveManualResetEvent.Set();
                 Thread.Sleep(100);
                 executiveManualResetEvent.Reset();
@@ -2137,7 +2141,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 if (RunCaseScript(yourNode))
                 {
                     PauseCaseScript();
-                    SetNowExecutiveData("单步执行>");
+                    SetNowExecutiveActuatorInfo("单步执行>");
                     executiveManualResetEvent.Set();
                     Thread.Sleep(100);
                     executiveManualResetEvent.Reset();
@@ -2151,7 +2155,7 @@ namespace CaseExecutiveActuator.CaseActuator
             }
             else if (runState == CaseActuatorState.Pause)
             {
-                SetNowExecutiveData("单步执行>");
+                SetNowExecutiveActuatorInfo("单步执行>");
                 executiveManualResetEvent.Set();
                 Thread.Sleep(100);
                 executiveManualResetEvent.Reset();
