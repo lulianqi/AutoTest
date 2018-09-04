@@ -12,6 +12,5 @@ F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.dll.lastcod
 F:\file\Code\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csprojResolveAssemblyReference.cache
 F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.pdb
-F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csprojResolveAssemblyReference.cache
 F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.pdb

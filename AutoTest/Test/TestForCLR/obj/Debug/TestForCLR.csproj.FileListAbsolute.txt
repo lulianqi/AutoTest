@@ -10,6 +10,5 @@ F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.exe.CodeAnal
 F:\file\Code\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.exe.lastcodeanalysissucceeded
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.pdb
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.csprojResolveAssemblyReference.cache
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.pdb

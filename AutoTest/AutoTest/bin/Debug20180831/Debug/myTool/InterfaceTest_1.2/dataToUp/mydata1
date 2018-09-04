@@ -1,0 +1,499 @@
+my file test
+hi vane
+this is data for dev
+over
+bbb
+aaa是
+到底
+id：0003
+××××××××××××××××××××××××××××××××××
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+
+设备不掉线
+离线终端能不能直接删除
+
+
+20102  文档：无效的device_sn，请检查
+       返回：device_sn 参数非法，请检查
+
+20304 /  50407手册上没有
+	   
+datapoint/create 中dp_desc中特殊字符未转义
+如 dp_desc 这是一个数据点描述:"over
+查询结果将是{
+      "dp_mode":"rw",
+      "dp_type":"obj",
+      "dp_schema":"{\"boolval\":{\"type\":\"bool\"},\"numval\":{\"type\":\"value\",\"unit\":\"℃\",\"min\":-5,\"max\":45,\"step\":1}}",
+      "dp_desc":"这是一个数据点描述:"over"
+  }
+
+  
+dp_schema一定是json吗？
+当dp_type设置为raw时，dp_schema是不是可以为字符串？？
+
+device/get_info离线的设备不能查询设备信息
+下线的设备不能更新装备状态，但设备信息应该是可以查询的
+
+device/get_status离线的设备不能查询设备状态
+
+datapoint/create 在离线的endpoint上可以成功绑定数据节点，且可以重复绑定
+1：设置endpoint的online为false
+2：datapoint/create在该endpoint上创建数据节点
+3：datapoint/create在该endpoint上创建数据节点（与上一步使用相同数据节点）
+
+
+datapoint/get_info 离线的终端不能查询终端信息
+
+endpoint离线后不能进行datapoint/list_data，datapoint/get_last，datapoint/get_data
+虽然终端下线，终端之前上传的数据用户应该是可以查询的
+
+
+datapoint/publish 使用dev_id上传数据name中含有\及"名称未转义，
+datapoint/publish 上传数据使用name=test“
+datapoint/list_data 列举出现如	{
+		"name":"TEST1",
+		"timestamp":"2013-12-20 17:42:50"
+	}的错误json格式的数据
+	
+	
+删除数据节点后再添加同名数据节点，数据节点里面的数据还可以被查询出来
+

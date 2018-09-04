@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html>
+<body>
+<h1><br />AutoTest V1.2   Atuo_interface Report</h1>
+ <div style="color:#00FF00">
+		<p></p>
+		<table>
+			<tr>
+			  <td width="50px">
+			  </td>
+			  <td>报告生成时间:</td>
+			</tr>
+		</table>
+	 </div>
+<hr />
+<p> </p>
+<div style="color:#00FF00">
+</div>
+<h2>Test Remark</h2>
+<p> </p>
+<div style="color:#00FF00">
+		<table>
+			<tr>
+				<td width="50px"  > </td>
+				<td >状态色对照表:</td>
+			</tr>
+			<tr>
+			    <td width="50px"  > </td>
+				<td width="100px" bgcolor="#FA8072" >不通过</td>
+				<td width="100px" bgcolor="#FFFACD" >未知错误</td>
+				<td width="100px" bgcolor="#FFA500" >无法执行</td>
+				<td width="100px" bgcolor="#E0FFFF" >通过</td>
+				<td width="100px" bgcolor="#E6E6FA" >未知状态</td>
+			</tr>
+		</table>
+		<p> </p>
+		<table>
+			<tr>
+				<td width="50px"  > </td>
+				<td >目标用例文件:</td>
+			</tr>
+			<tr>
+				<td width="50px"  > </td>
+			</tr>
+		</table>
+</div>
+<h2>Test Result</h2>
+<p> </p>
+<div style="color:#00FF00">
+		<table border="0"   cellpadding="0" cellspacing="1" bgcolor="#ACDDEC" >
+			<tr>
+			  <td width="50px"  > </td>
+			  <td width="200px" ><h5>项目:</h5></td>
+			  <td width="150px"  ><h5>结果:</h5></td>
+			</tr>
+			<tr>
+			  <td width="50px"  > </td>
+			  <td >执行用例总数:</td>
+			</tr>
+			<tr>
+			  <td width="50px"  > </td>
+			  <td >通过的用例数:</td>
+			</tr>
+			<tr>
+			  <td width="50px"  > </td>
+			  <td >不通过的用例数:</td>
+			</tr>
+			<tr>
+			  <td width="50px"  > </td>
+			  <td >无法执行的用例数:</td>
+			</tr>
+			<tr>
+			  <td width="50px"  > </td>
+			  <td >未能解析的用例总数:</td>
+			</tr>
+			<tr>
+			  <td width="50px"  > </td>
+			  <td >异常用例总数:</td>
+			</tr>
+		</table>
+</div>
+<h2>Test Record</h2>
+<p> </p>
+	<div >
+		
+	</div>
+<table border="0"  width="100%" cellpadding="0" cellspacing="1" bgcolor="#ACDDEC" >
+<tbody>
+<tr>
+<td width="100px" ></td>
+<td width="100px" ></td>
+<td width="100px" ></td>
+<td width="100px" ></td>
+<td width="100px"></td>
+<td width="700px" ></td>
+<td width="500px" ></td>
+<td width="200px"></td>
+</tr>
+<tr>
+<td><h5>caseID</h5></td>
+<td><h5>CaseProtocol</h5></td>
+<td><h5>执行时间</h5></td>
+<td><h5>执行耗时</h5></td>
+<td><h5>执行结果</h5></td>
+<td><h5>执行过程</h5></td>
+<td><h5>执行反馈</h5></td>
+<td><h5>其他信息</h5></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

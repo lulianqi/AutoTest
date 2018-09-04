@@ -1078,7 +1078,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                     SetNowExecutiveActuatorError(string.Format("find unknown type in RunTimeStaticData - ScriptRunTime in [{0}] with [{1}]", tempNodeChild.InnerXml, tempTypeStr));
                                                     continue;
                                                 }
-                                                switch (MyCaseDataTypeEngine.dictionaryStaticDataTypeClass[tempType])
+                                                switch (CaseRunTimeDataTypeEngine.dictionaryStaticDataTypeClass[tempType])
                                                 {
                                                     //caseStaticDataKey 
                                                     case  CaseStaticDataClass.caseStaticDataKey:
@@ -1105,7 +1105,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                     case CaseStaticDataClass.caseStaticDataParameter:
                                                         IRunTimeStaticData tempRunTimeStaticData;
                                                         string tempTypeError;
-                                                        if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[tempType](out tempRunTimeStaticData, out tempTypeError, tempVaule))
+                                                        if (CaseRunTimeDataTypeEngine.dictionaryStaticDataParameterAction[tempType](out tempRunTimeStaticData, out tempTypeError, tempVaule))
                                                         {
                                                             if (!runActuatorStaticDataCollection.IsHaveSameKey(tempName))
                                                             {
@@ -1126,7 +1126,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                     //caseStaticDataSource
                                                     case CaseStaticDataClass.caseStaticDataSource:
                                                         IRunTimeDataSource tempRunTimeDataSource;
-                                                        if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[tempType](out tempRunTimeDataSource, out tempTypeError, tempVaule))
+                                                        if (CaseRunTimeDataTypeEngine.dictionaryStaticDataSourceAction[tempType](out tempRunTimeDataSource, out tempTypeError, tempVaule))
                                                         {
                                                             if (!runActuatorStaticDataCollection.IsHaveSameKey(tempName))
                                                             {
@@ -1176,6 +1176,124 @@ namespace CaseExecutiveActuator.CaseActuator
                     SetNowExecutiveActuatorError(string.Format("find error Source Nodewith [{0}]", sourceNode.InnerXml));
                 }
             }
+        }
+
+        public void LoadScriptCaseProject(XmlNode sourceProjectNode)
+        {
+
+            Dictionary<int, Dictionary<int, CaseCell>> myProjectCaseDictionary = new Dictionary<int, Dictionary<int, CaseCell>>();
+            ProjctCollection myProjctCollection = new ProjctCollection();
+
+            foreach (XmlNode tempNode in sourceProjectNode)
+            {
+                myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempNode);
+                string thisErrorTitle = "Project ID:" + tempProjectLoadInfo.id;
+                if (tempProjectLoadInfo.ErrorMessage != "")
+                {
+                    SetNowExecutiveData(string.Format("【{0}】\r\n{1}", thisErrorTitle, tempProjectLoadInfo.ErrorMessage), CaseActuatorOutPutType.CaseLoadError);
+                }
+                //if (tempProjectLoadInfo.caseType == CaseType.ScriptRunTime)
+                //{
+                //    //deal with ScriptRunTime
+                //    if (nowCaseActionActuator == null)
+                //    {
+                //        nowCaseActionActuator = new CaseActionActuator();
+                //        nowCaseActionActuator.OnGetExecutiveData += nowCaseActionActuator_OnGetExecutiveData;
+                //        nowCaseActionActuator.OnActuatorStateChanged += nowCaseActionActuator_OnActuatorStateChanged;
+                //        nowCaseActionActuator.OnExecutiveResult += nowCaseActionActuator_OnExecutiveResult;
+                //        nowCaseActionActuator.LoadScriptRunTime(tempNode);
+                //        if (nowCaseTreeAction!=null)
+                //        {
+                //            nowCaseTreeAction.Dispose();
+                //        }
+                //        nowCaseTreeAction = new CaseTreeActionControl( nowCaseActionActuator);
+                //    }
+                //    else
+                //    {
+                //        thisErrorTitle = "ScriptRunTime";
+                //        ShowMessage("find another ScriptRunTime ,ScriptRunTime is unique so it will be skip", thisErrorTitle);
+                //    }
+                //    continue;
+                //}
+                if (tempProjectLoadInfo.caseType != CaseType.Project)
+                {
+                    SetNowExecutiveData("not legal Project ,it will be skip", CaseActuatorOutPutType.CaseLoadError);
+                    continue;
+                }
+
+                CaseCell tempProjctCell = new CaseCell(tempProjectLoadInfo.caseType, tempNode, null);
+                myProjctCollection.Add(tempProjctCell);
+
+                Dictionary<int, CaseCell> tempCaseDictionary = new Dictionary<int, CaseCell>();
+                if (myProjectCaseDictionary.ContainsKey(tempProjectLoadInfo.id))
+                {
+                    SetNowExecutiveData(string.Format("【{0}】\r\n{1}", thisErrorTitle, "find the same project id in this file ,it will make [Goto] abnormal"), CaseActuatorOutPutType.CaseLoadError);
+                }
+                else
+                {
+                    myProjectCaseDictionary.Add(tempProjectLoadInfo.id, tempCaseDictionary);
+                }
+
+                //myTargetCaseList 将包含当前project或repeat集合元素
+                List<KeyValuePair<CaseCell, XmlNode>> myTargetCaseList = new List<KeyValuePair<CaseCell, XmlNode>>();
+                myTargetCaseList.Add(new KeyValuePair<CaseCell, XmlNode>(tempProjctCell, tempNode));
+                while (myTargetCaseList.Count > 0)
+                {
+                    //Case analyze
+                    foreach (XmlNode tempChildNode in myTargetCaseList[0].Value)
+                    {
+                        //load Show Info
+                        myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempChildNode);
+                        thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
+                        if (tempCaseLoadInfo.ErrorMessage != "")
+                        {
+                            SetNowExecutiveData("tempCaseLoadInfo.ErrorMessage", CaseActuatorOutPutType.CaseLoadError);
+                            SetNowExecutiveData(string.Format("【{0}】\r\n{1}", thisErrorTitle, "this error can not be repair so drop it"), CaseActuatorOutPutType.CaseLoadError);
+                        }
+                        else
+                        {
+                            if (tempCaseLoadInfo.caseType == CaseType.Case)
+                            {
+                                //load Run Data
+                                var tempCaseRunData = MyCaseScriptAnalysisEngine.GetCaseRunData(tempChildNode);
+                                if (tempCaseRunData.errorMessages != null)
+                                {
+                                    foreach (string tempErrorMes in tempCaseRunData.errorMessages)
+                                    {
+                                        SetNowExecutiveData(string.Format("【{0}】\r\n{1}", thisErrorTitle, tempErrorMes), CaseActuatorOutPutType.CaseLoadError);
+   
+                                    }
+                                }
+                                CaseCell tempChildCell = new CaseCell(tempCaseLoadInfo.caseType, tempChildNode, tempCaseRunData);
+                                if (tempCaseDictionary.ContainsKey(tempCaseLoadInfo.id))
+                                {
+                                    SetNowExecutiveData(string.Format("【{0}】\r\n{1}", thisErrorTitle, "find the same case id in this project ,it will make [Goto] abnormal"), CaseActuatorOutPutType.CaseLoadError);
+                                }
+                                else
+                                {
+                                    tempCaseDictionary.Add(tempCaseLoadInfo.id, tempChildCell);
+                                }
+                                myTargetCaseList[0].Key.Add(tempChildCell);
+                            }
+                            else if (tempCaseLoadInfo.caseType == CaseType.Repeat)
+                            {
+                                CaseCell tempChildCell = new CaseCell(tempCaseLoadInfo.caseType, tempChildNode, null);
+
+                                myTargetCaseList[0].Key.Add(tempChildCell);
+                                myTargetCaseList.Add(new KeyValuePair<CaseCell, XmlNode>(tempChildCell, tempChildNode));
+                            }
+                            else
+                            {
+                                //it will cant be project and if it is unknow i will not show it
+                                SetNowExecutiveData(string.Format("【{0}】\r\n{1}", thisErrorTitle, "find unkown case so drop it"), CaseActuatorOutPutType.CaseLoadError);
+                            }
+                        }
+                    }
+                    myTargetCaseList.Remove(myTargetCaseList[0]);
+                }
+            }
+
+            SetCaseRunTime(myProjectCaseDictionary, myProjctCollection);
         }
 
         /// <summary>
@@ -1940,7 +2058,6 @@ namespace CaseExecutiveActuator.CaseActuator
                 case CaseProtocol.telnet:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForTelnet((myConnectForTelnet)yourDeviceConnectInfo));
                     break;
-
                 case CaseProtocol.vanelife_http:
                     myExecutionDeviceList.MyAdd(yourDeviceName, new CaseProtocolExecutionForVanelife_http((myConnectForVanelife_http)yourDeviceConnectInfo));
                     break;
@@ -1996,27 +2113,27 @@ namespace CaseExecutiveActuator.CaseActuator
         {
             if (runCellProjctCollection == null)
             {
-                SetAndSaveNowActionError("your CellProjctCollection is null");
+                SetAndSaveNowExecutiveActuatorError("your CellProjctCollection is null");
                 return false;
             }
             if (runTimeCaseDictionary==null)
             {
-                SetAndSaveNowActionError("your RunTimeCaseDictionary is null");
+                SetAndSaveNowExecutiveActuatorError("your RunTimeCaseDictionary is null");
                 return false;
             }
             if (caseRunTime == null)
             {
-                SetAndSaveNowActionError("your CaseRuntime is null");
+                SetAndSaveNowExecutiveActuatorError("your CaseRuntime is null");
                 return false;
             }
             if (myExecutionDeviceList.Count == 0)
             {
-                SetAndSaveNowActionError("can not find any ExecutionDevice");
+                SetAndSaveNowExecutiveActuatorError("can not find any ExecutionDevice");
                 return false;
             }
             if (yourStartNode==null)
             {
-                SetAndSaveNowActionError("your StartNode is null");
+                SetAndSaveNowExecutiveActuatorError("your StartNode is null");
                 return false;
             }
             return true;
@@ -2032,10 +2149,10 @@ namespace CaseExecutiveActuator.CaseActuator
             switch (runState)
             {
                 case CaseActuatorState.Running:
-                    SetAndSaveNowActionError("当前任务还未结束");
+                    SetAndSaveNowExecutiveActuatorError("当前任务还未结束");
                     return false;
                 case CaseActuatorState.Stoping:
-                    SetAndSaveNowActionError("当前任务正在终止中");
+                    SetAndSaveNowExecutiveActuatorError("当前任务正在终止中");
                     return false;
                 case  CaseActuatorState.Pause:
                     SetRunState(CaseActuatorState.Running);
@@ -2045,7 +2162,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 case CaseActuatorState.Stop:
                     if (yourStartNode == null)
                     {
-                        SetAndSaveNowActionError("未发现任何可用节点");
+                        SetAndSaveNowExecutiveActuatorError("未发现任何可用节点");
                         return false;
                     }
                     else if (!IsActionActuatorCanRun(yourStartNode))
@@ -2060,7 +2177,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     SetNowExecutiveActuatorInfo("任务开始");
                     return true;
                 case CaseActuatorState.Trying:
-                    SetAndSaveNowActionError("存在未还未结束指定项任务");
+                    SetAndSaveNowExecutiveActuatorError("存在未还未结束指定项任务");
                     return false;
                 default:
                     return false;
@@ -2083,7 +2200,7 @@ namespace CaseExecutiveActuator.CaseActuator
             }
             else
             {
-                SetAndSaveNowActionError("未发现处于运行状态中的任务");
+                SetAndSaveNowExecutiveActuatorError("未发现处于运行状态中的任务");
                 return false;
             }
         }
@@ -2109,12 +2226,12 @@ namespace CaseExecutiveActuator.CaseActuator
             }
             else if (runState == CaseActuatorState.Stoping)
             {
-                SetAndSaveNowActionError("正在终止任务");
+                SetAndSaveNowExecutiveActuatorError("正在终止任务");
                 return false;
             }
             else
             { 
-                SetAndSaveNowActionError("当前项目已经停止");
+                SetAndSaveNowExecutiveActuatorError("当前项目已经停止");
                 return false;
             }
         }
@@ -2149,7 +2266,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 }
                 else
                 {
-                    SetAndSaveNowActionError("无法进行单步执行");
+                    SetAndSaveNowExecutiveActuatorError("无法进行单步执行");
                     return false;
                 }
             }
@@ -2163,12 +2280,12 @@ namespace CaseExecutiveActuator.CaseActuator
             }
             else if (runState == CaseActuatorState.Running)
             {
-                SetAndSaveNowActionError("正在结束项目，无法进行单步执行");
+                SetAndSaveNowExecutiveActuatorError("正在结束项目，无法进行单步执行");
                 return false;
             }
             else if (runState == CaseActuatorState.Trying)
             {
-                SetAndSaveNowActionError("存在正在执行指定项任务");
+                SetAndSaveNowExecutiveActuatorError("存在正在执行指定项任务");
                 return false;
             }
             return false;
@@ -2190,12 +2307,12 @@ namespace CaseExecutiveActuator.CaseActuator
             }
             else if (runState == CaseActuatorState.Trying)
             {
-                SetAndSaveNowActionError("上一个指定项任务还未结束");
+                SetAndSaveNowExecutiveActuatorError("上一个指定项任务还未结束");
                 return false;
             }
             else
             {
-                SetAndSaveNowActionError("要进行定向执行前，必须先停止任务");
+                SetAndSaveNowExecutiveActuatorError("要进行定向执行前，必须先停止任务");
                 return false;
             }
         }

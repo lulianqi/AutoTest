@@ -32,7 +32,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
     {
         private bool isConnect;
         private myConnectForConsole myExecutionDeviceInfo;
-        public event delegateGetExecutiveData OnGetExecutiveData;
+        public event CaseActionActuator.delegateGetExecutiveData OnGetExecutiveData;
 
         public new static MyConsoleExecutionContent GetRunContent(XmlNode yourContentNode)
         {
@@ -173,7 +173,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             isConnect = false;
         }
 
-        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, CaseActuator.CaseActionActuator.delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             List<string> errorList = new List<string>();
             string tempError = null;
@@ -233,7 +233,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 {
                     foreach (var addInfo in nowExecutionContent.staticDataAddList)
                     {
-                        switch (MyCaseDataTypeEngine.dictionaryStaticDataTypeClass[addInfo.StaticDataType])
+                        switch (CaseRunTimeDataTypeEngine.dictionaryStaticDataTypeClass[addInfo.StaticDataType])
                         {
                             //caseStaticDataKey 
                             case CaseStaticDataClass.caseStaticDataKey:
@@ -258,7 +258,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                             case CaseStaticDataClass.caseStaticDataParameter:
                                 IRunTimeStaticData tempRunTimeStaticData;
                                 string tempTypeError;
-                                if (MyCaseDataTypeEngine.dictionaryStaticDataParameterAction[addInfo.StaticDataType](out tempRunTimeStaticData, out tempTypeError, addInfo.ConfigureData.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
+                                if (CaseRunTimeDataTypeEngine.dictionaryStaticDataParameterAction[addInfo.StaticDataType](out tempRunTimeStaticData, out tempTypeError, addInfo.ConfigureData.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
                                 {
                                     if (!DealNowResultError(tempError, "Add", addInfo.Name))
                                     {
@@ -274,7 +274,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                             //caseStaticDataSource
                             case CaseStaticDataClass.caseStaticDataSource:
                                 IRunTimeDataSource tempRunTimeDataSource;
-                                if (MyCaseDataTypeEngine.dictionaryStaticDataSourceAction[addInfo.StaticDataType](out tempRunTimeDataSource, out tempTypeError, addInfo.ConfigureData.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
+                                if (CaseRunTimeDataTypeEngine.dictionaryStaticDataSourceAction[addInfo.StaticDataType](out tempRunTimeDataSource, out tempTypeError, addInfo.ConfigureData.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError)))
                                 {
                                     if (!DealNowResultError(tempError, "Add", addInfo.Name))
                                     {

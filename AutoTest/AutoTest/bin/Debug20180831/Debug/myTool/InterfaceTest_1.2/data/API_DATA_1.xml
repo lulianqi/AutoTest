@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface.9.25>
+  <api>
+    <name>device!activeDevice.do</name>
+    <longdata></longdata>
+    <device_sn>设备唯一序列号</device_sn>
+    <access_key>设备访问密码</access_key>
+  </api>
+  <api>
+    <name>device!getDeviceInfo.do</name>
+    <longdata></longdata>
+    <device_id>设备序列号</device_id>
+    <access_key>设备访问密钥</access_key>
+  </api>
+  <api>
+    <name>device!updateDevice.do</name>
+    <longdata></longdata>
+    <device_sn>设备唯一序列号</device_sn>
+    <device_description>设备描述</device_description>
+    <software_version>软件版本</software_version>
+    <hardware_version>硬件版本</hardware_version> 
+  </api>
+  <api>
+    <name>device!updateDeviceKey.do</name>
+    <strMsg></strMsg>
+    <device_sn>设备唯一序列号</device_sn>
+    <old_access_key>旧访问密码</old_access_key>
+    <new_access_key>设备访问密钥</new_access_key>
+  </api>
+  <api>
+    <name>device!updateDeviceStatus.do</name>
+    <strMsg></strMsg>
+    <device_sn>设备唯一序列号</device_sn>
+    <signalstrength>信号强度(0~100整数，0最小，100最大</signalstrength>
+  </api>
+  <api>
+    <name>device!listEndpoint.do</name>
+    <strMsg></strMsg>
+    <device_id>设备序列号</device_id>
+    <access_key>设备访问密钥</access_key>
+  </api>
+  <api>
+    <name>device!deleteEndpoint.do</name>
+    <strMsg></strMsg>
+    <device_sn>设备唯一序列号</device_sn>
+    <ep_id>终端id (endpoint id)</ep_id>
+  </api>
+  <api>
+    <name>device!bindEndpoint.do</name>
+    <longdata></longdata>
+    <device_sn>设备唯一序列号</device_sn>
+    <device_id>设备序列号</device_id>
+    <ep_id>终端id (endpoint id)</ep_id>
+    <vendor>厂商</vendor>
+    <model>设备型号</model>
+    <hw_version>硬件版本</hw_version>
+    <sw_version>软件版本</sw_version>
+  </api>
+  <api>
+    <name>device!getEndpointInfo.do</name>
+    <longdata></longdata>
+    <device_id>设备序列号</device_id>
+    <access_key>设备访问密钥</access_key>
+    <ep_id>终端id (endpoint id)</ep_id>
+  </api>
+  <api>
+    <name>endpoint!updateEndpointStatus.do</name>
+    <longdata></longdata>
+    <device_sn>设备唯一序列号</device_sn>
+    <device_id>设备序列号</device_id>
+    <ep_id>终端id (endpoint id)</ep_id>
+    <onlinestatus>在线状态，1：在线，0：离线 </onlinestatus>
+    <signal_strength>信号强度(0~100整数，0最小，100最大</signal_strength>
+  </api>
+  <api>
+    <name>endpoint!listDatapoint.do</name>
+    <longdata></longdata>
+    <device_id>设备序列号</device_id>
+    <access_key>设备访问密钥</access_key>
+    <ep_id>终端id (endpoint id)</ep_id>
+  </api>
+  <api>
+    <name>data!bindDatapoint.do</name>
+    <longdata></longdata>
+    <device_sn>设备唯一序列号</device_sn>
+    <device_id>设备序列号</device_id>
+    <ep_id>终端id (endpoint id)</ep_id>
+    <dp_id>datapoint id</dp_id>
+    <dptype>传感器类型 (app用来调用相应plugin做数据展示)</dptype>
+    <datatype>数据类型 (raw, bool, binary, int, string)</datatype>
+    <unit>测量单位 (毫米，摄氏度等，没有就用 NA )</unit>
+    <description>传感器描述</description>
+  </api>
+  <api>
+    <name>data!getDatapointInfo.do</name>
+    <longdata></longdata>
+    <device_id>设备序列号</device_id>
+    <access_key>设备访问密钥</access_key>
+    <ep_id>终端id (endpoint id)</ep_id>
+    <dp_id>datapoint id</dp_id>
+  </api>
+  <api>
+    <name>data!delDatapoint.do</name>
+    <longdata></longdata>
+    <device_id>设备序列号</device_id>
+    <ep_id>终端id (endpoint id)</ep_id>
+    <dp_id>datapoint id</dp_id>
+  </api>
+  <api>
+    <name>data!publishData.do</name>
+    <longdata></longdata>
+    <time>数据时间戳. 格式:yyyy-MM-dd HH:mm:ss.fff</time>
+    <device_id>设备序列号</device_id>
+    <access_key>设备访问密钥</access_key>
+    <ep_id>终端id (endpoint id)</ep_id>
+    <dp_id>datapoint id</dp_id>
+    <data>数据</data>
+  </api>
+  <api>
+    <name>data!getNewData.do</name>
+    <longdata></longdata>
+    <time>数据时间戳. 格式:yyyy-MM-dd HH:mm:ss.fff</time>
+    <device_id>设备序列号</device_id>
+    <access_key>设备访问密钥</access_key>
+    <ep_id>终端id (endpoint id)</ep_id>
+    <dp_id>datapoint id</dp_id>
+  </api>
+  <api>
+    <name>data!getDPointDataByTime.do</name>
+    <longdata></longdata>
+    <starttime>开始时间. 格式:yyyy-MM-dd HH:mm:ss</starttime>
+    <endtime>结束时间. 格式:yyyy-MM-dd HH:mm:ss</endtime>
+    <device_id>设备序列号</device_id>
+    <access_key>设备访问密钥</access_key>
+    <ep_id>终端id (endpoint id)</ep_id>
+    <dp_id>datapoint id</dp_id>
+  </api>
+  <api>
+    <name>user/register</name>
+    <longdata></longdata>
+    <access_token>请求API授权字符串</access_token>
+    <username>用户名</username>
+    <nickname>昵称</nickname>
+    <password>密码</password>
+    <email>邮箱</email>
+    <phone>手机号</phone>
+  </api>
+  <api>
+    <name></name>
+    <longdata></longdata>
+    <data1></data1>
+    <data2></data2>
+    <data3></data3>
+    <data4></data4>
+    <data5></data5>
+  </api>
+  <api>
+    <name></name>
+    <longdata></longdata>
+    <data1></data1>
+    <data2></data2>
+    <data3></data3>
+    <data4></data4>
+    <data5></data5>
+  </api>
+  
+</interface.9.25>

@@ -21,4 +21,3 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\bin\Debug\MyCommonHelper.dl
 F:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\obj\Debug\MyCommonHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\obj\Debug\MyCommonHelper.pdb
-F:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\obj\Debug\MyCommonHelper.csprojResolveAssemblyReference.cache

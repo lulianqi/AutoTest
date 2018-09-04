@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VaneLife_V1 version="1.0">
+  <Project name="Project调试示例1" remark="测试用例调试用例e">
+    <case id="001001" target="user/register">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>access_token=1060abde65ff718ee79dd25d6961c796ffb1fe71&amp;username=test15@qq.com&amp;nickname=tester&amp;password=e10adc3949ba59abbe56e057f20f883e&amp;email=test@qq.com&amp;phone=13635458666</Content>
+      <Expect>{"ret":2001,"msg":"User name duplicated"}</Expect>
+      <method>POST</method>
+      <remark>Remark</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="001002" target="user/register">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>access_token=1060abde65ff718ee79dd25d6961c796ffb1fe71&amp;username=test15@qq.com&amp;nickname=tester&amp;password=e10adc3949ba59abbe56e057f20f883e&amp;email=test@qq.com&amp;phone=13635458666</Content>
+      <Expect>{"ret":2001,"msg":"User name duplicated"}</Expect>
+      <method>POSTxx</method>
+      <remark>Remark</remark>
+      <delay>5000</delay>
+      <level>1</level>
+    </case>
+    <case id="001006" target="user/register">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>access_token=1060abde65ff718ee79dd25d6961c796ffb1fe71&amp;username=test15@qq.com&amp;nickname=tester&amp;password=e10adc3949ba59abbe56e057f20f883e&amp;email=test@qq.com&amp;phone=13635458666</Content>
+      <Expect>{"ret":2001,"msgX":"User name duplicated"}</Expect>
+      <method>POST</method>
+      <remark>Remark</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="001003" target="user/register">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>用例数据11</Content>
+      <Expect>期望输出</Expect>jjjo<method>POST</method><remark>Remark</remark><delay></delay><level>1</level></case>
+    <case id="001004" target="user/register">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>用例数据</Content>
+      <Expect>期望输出</Expect>
+      <method>POST</method>
+      <remark>Remark</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="Project调试示例2" remark="测试用例调试用例">
+    <case id="002001" target="user/register">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>用例数据</Content>
+      <Expect>期望输出</Expect>
+      <method>POST</method>
+      <remark>Remark</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="002002" target="user/register">
+      <repeat>StartRepeat</repeat>
+      <times>30</times>
+      <Content>用例数据</Content>
+      <Expect>期望输出</Expect>
+      <method>POST</method>
+      <remark>Remark</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="002003" target="user/register">
+      <repeat>EndRepeat</repeat>
+      <times>
+      </times>
+      <Content>用例数据</Content>
+      <Expect>期望输出</Expect>
+      <method>POST</method>
+      <remark>Remark</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="002004" target="user/register">
+      <repeat>EndRepeat</repeat>
+      <times>
+      </times>
+      <Content>用例数据</Content>
+      <Expect>期望输出</Expect>
+      <method>POST</method>
+      <remark>Remark</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+  </Project>
+  <Project name="Project调试示例3" remark="测试用例调试用例">
+    <case id="003001" target="device/get_info">
+      <!--case标签，target表示人口-->
+      <repeat>
+      </repeat>
+      <!--是否重复-->
+      <times>
+      </times>
+      <!--重复次数-->
+      <Content>access_id=E1B3EDB023DA345FAB1C1F392A4FC5E8</Content>
+      <!--case内容-->
+      <Expect>{"vendor":"Vane","ver_hw":"1.0","ver_sw":"1.0","model":"SM01","desc":"描述"}</Expect>
+      <!--case预期值-->
+      <method>POST</method>
+      <!--http发送方法-->
+      <remark>Remark</remark>
+      <!--case备注-->
+      <delay>
+      </delay>
+      <!--执行延时-->
+      <level>1</level>
+      <!--用例级别-->
+    </case>
+  </Project>
+  <Project name="Project调试示例4" remark="设备激活测试1">
+    <case id="004001" target="device/active">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>device_sn=device13874353371&amp;device_key=1</Content>
+      <Expect method="is">
+        StatusCode:  400
+        {
+        "error_code":"10106",
+        "error":"参数长度错误"
+        }
+      </Expect>
+      <method>POST</method>
+      <remark>错误长度的key</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="004002" target="device/active">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>device_sn=device13874353371&amp;device_key=12345</Content>
+      <Expect method="is">
+        StatusCode:  400
+        {
+        "error_code":"10106",
+        "error":"参数长度错误"
+        }
+      </Expect>
+      <method>POST</method>
+      <remark>错误长度的key</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="004003" target="device/active">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>device_sn=device13874353371&amp;device_key=123456789012345678901</Content>
+      <Expect method="is">
+        StatusCode:  400
+        {
+        "error_code":"10106",
+        "error":"参数长度错误"
+        }
+      </Expect>
+      <method>POST</method>
+      <remark>错误长度的key</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="004004" target="device/active">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>device_sn=device13874353371&amp;device_key=12345678901234567890</Content>
+      <Expect method="is">
+        {
+        "dev_id":"E5BE5C5CBE4281C1A0AA3751F4F005E8",
+        "app_id":"E5B5E2781D7EC3268F67C69E2534CFE8"
+        }
+      </Expect>
+      <method>POST</method>
+      <remark>20字节的key</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="004005" target="device/active">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>device_sn=device13874353371&amp;device_key=123456</Content>
+      <Expect method="is">
+        {
+        "dev_id":"E50C3B8F08F57D59F5FB3D9824DBCDE8",
+        "app_id":"E50291124E8B14A95FE8850FFA7588E8"
+        }
+      </Expect>
+      <method>POST</method>
+      <remark>6字节的key</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="004006" target="device/active">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>device_sn=device13874353371&amp;device_key=123456_</Content>
+      <Expect method="is">
+        StatusCode:  400
+        {
+        "error_code":"30102",
+        "error":"不是有效格式的device_key参数，请输入有效的device_key参数"
+        }
+      </Expect>
+      <method>POST</method>
+      <remark>含有错误字符的key</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+    <case id="004007" target="device/active">
+      <repeat>
+      </repeat>
+      <times>
+      </times>
+      <Content>device_sn=device13874353371&amp;device_key=123456&amp;device_desc={"vendor":"Vane","ver_hw":"1.0","ver_sw":"1.0","model":"SM01","desc":"描述"}</Content>
+      <Expect method="is">
+        {
+        "dev_id":"E50C3B8F08F57D59F5FB3D9824DBCDE8",
+        "app_id":"E50291124E8B14A95FE8850FFA7588E8"
+        }
+      </Expect>
+      <method>POST</method>
+      <remark>带描述的激活</remark>
+      <delay>
+      </delay>
+      <level>1</level>
+    </case>
+  </Project>
+</VaneLife_V1>

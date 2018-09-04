@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html>
+<head>
+  <script>
+   function f_sex(obj){
+    if(obj.checked==true)
+		obj.next('span').style.display="none";
+    else
+	{
+		obj.next('span').style.display="block";
+     //document.getElementById("tr1").style.display="block";
+	 }
+   }
+   function f_email(obj){
+    if(obj.checked==true)
+     document.getElementById("tr2").style.display="none";
+    else
+     document.getElementById("tr2").style.display="block";
+   }
+   
+   (document).ready(function() {  
+    ('.trshow').click(function() {  
+        ('.trhide').css('display', 'none');  
+        (this).next('tr').css('display', 'block');  
+    }); 
+	
+})  
+   
+  </script>
+ </head>
+  <body>
+    <h1>
+      <br />AutoTestForVane vanelife_interface Report</h1>
+    <p>测试时间:</p>
+    <hr />
+    <p>
+    </p>
+    <h2>Test Remark</h2>
+    <p>
+    </p>
+    <h2>Test Record</h2>
+    <p>
+    </p>
+    <table style="height: 42px;" width="665">
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+                                    <td>001001</td>
+                                    <td>18:36:34</td>
+                                    <td>107</td>
+                                    <td>fail</td>
+                                    <td>
+										(<input type="checkbox" onclick="f_email(this)"/>隐藏)
+										<span id="tr1">
+									StatusCode:  404
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+    &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;  
+    &lt;!--&lt;link rel="stylesheet" type="text/css" href="./styles.css"&gt;--&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    {"ret":"404","msg":"页面不存在"}
+  &lt;/body&gt;
+&lt;/html&gt;
+</span>
+									</td>
+                                    <td>预期值:{"ret":2001,"msg":"User name duplicated"}</td>
+                                    <td>NULL</td>
+                                    </tr>
+        <tr>
+                                    <td>001002</td>
+                                    <td>18:36:36</td>
+                                    <td>null</td>
+                                    <td>unknow</td>
+                                    <td>Unknow Error</td>
+                                    <td>未知错误</td>
+                                    <td>NULL</td>
+                                    </tr>
+        <tr>
+                                    <td>001006</td>
+                                    <td>18:36:37</td>
+                                    <td>5</td>
+                                    <td>fail</td>
+                                    <td>StatusCode:  404
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+    &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;  
+    &lt;!--&lt;link rel="stylesheet" type="text/css" href="./styles.css"&gt;--&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    {"ret":"404","msg":"页面不存在"}
+  &lt;/body&gt;
+&lt;/html&gt;</td>
+                                    <td>预期值:{"ret":2001,"msgX":"User name duplicated"}</td>
+                                    <td>NULL</td>
+                                    </tr>
+        <tr>
+                                    <td>001003</td>
+                                    <td>18:36:38</td>
+                                    <td>null</td>
+                                    <td>break</td>
+                                    <td>skip ; 未发送</td>
+                                    <td>用例数据解析失败</td>
+                                    <td>NULL</td>
+                                    </tr>
+        <tr>
+                                    <td>001004</td>
+                                    <td>18:36:39</td>
+                                    <td>null</td>
+                                    <td>break</td>
+                                    <td>skip ; 未发送</td>
+                                    <td>
+										<tr class="trshow">  
+											<td>test1</td>  
+										</tr>  
+										<tr class="trhide">  
+											<td>test2</td>  
+										</tr> 
+									</td>
+                                    <td>NULL</td>
+                                    </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

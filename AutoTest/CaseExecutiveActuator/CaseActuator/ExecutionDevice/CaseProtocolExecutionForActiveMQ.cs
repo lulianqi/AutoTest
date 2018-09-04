@@ -33,7 +33,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
     {
         private bool isConnect;
         private myConnectForActiveMQ myExecutionDeviceInfo;
-        public event delegateGetExecutiveData OnGetExecutiveData;
+        public event CaseActionActuator.delegateGetExecutiveData OnGetExecutiveData;
 
         private MyActiveMQ activeMQ;
 
@@ -176,7 +176,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
             isConnect = false;
         }
 
-        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, CaseActionActuator.delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             List<string> errorList = new List<string>();
             string tempError = null;

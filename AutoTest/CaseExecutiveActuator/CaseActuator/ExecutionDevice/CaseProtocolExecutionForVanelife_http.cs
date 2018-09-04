@@ -35,7 +35,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
         private bool isConnect;
         private myConnectForVanelife_http myExecutionDeviceInfo;
 
-        public event delegateGetExecutiveData OnGetExecutiveData;
+        public event CaseActionActuator.delegateGetExecutiveData OnGetExecutiveData;
 
         /// <summary>
         /// here i can get the data your need in the  XmlNode the for the 【ICaseExecutionDevice】
@@ -181,7 +181,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
         }
 
 
-        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, CaseActionActuator.delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();//默认该值为null，不会输出参数数据结果（如果不需要输出可以保持该字段为null）

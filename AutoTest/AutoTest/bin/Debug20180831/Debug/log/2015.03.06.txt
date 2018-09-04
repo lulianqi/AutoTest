@@ -1,0 +1,52 @@
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 372
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 372
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 372
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 372
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 372
+未将对象引用设置到对象的实例。
+SYDControls
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 163
+由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.11.101:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 372
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 163
+由于目标机器积极拒绝，无法连接。 192.168.11.115:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 372
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 255
+无法将数据写入传输连接: 您的主机中的软件放弃了一个已建立的连接。。

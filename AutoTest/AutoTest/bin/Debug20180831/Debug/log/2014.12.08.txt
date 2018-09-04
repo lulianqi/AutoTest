@@ -1,0 +1,39 @@
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 78
+由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.11.106:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 121
+未将对象引用设置到对象的实例。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 79
+由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.11.101:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 122
+未将对象引用设置到对象的实例。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 80
+由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.11.106:19990
+++++++++++++++++++++
+ErrorFile: 
+ErrorLine: 0
+由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.11.101:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 80
+由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.11.101:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 80
+由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.11.106:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 80
+由于目标机器积极拒绝，无法连接。 192.168.11.101:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 80
+由于目标机器积极拒绝，无法连接。 192.168.4.184:19990

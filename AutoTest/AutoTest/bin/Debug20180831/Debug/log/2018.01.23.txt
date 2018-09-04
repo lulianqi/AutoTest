@@ -1,0 +1,12 @@
+-------------------------------------------------------
+2018/1/23 17:16:08
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:161
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2018/1/23 17:19:33
+ErrorFile:f:\file\Code\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:161
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000

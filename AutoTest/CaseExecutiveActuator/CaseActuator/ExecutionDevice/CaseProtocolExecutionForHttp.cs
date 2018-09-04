@@ -32,7 +32,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
         private bool isConnect;
         private myConnectForHttp myExecutionDeviceInfo;
 
-        public event delegateGetExecutiveData OnGetExecutiveData;
+        public event CaseActionActuator.delegateGetExecutiveData OnGetExecutiveData;
 
         public new static MyBasicHttpExecutionContent GetRunContent(XmlNode yourContentNode)
         {
@@ -185,7 +185,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
         }
 
 
-        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
+        public MyExecutionDeviceResult ExecutionDeviceRun(ICaseExecutionContent yourExecutionContent, CaseActionActuator.delegateGetExecutiveData yourExecutiveDelegate, string sender, ActuatorStaticDataCollection yourActuatorStaticDataCollection, int caseId)
         {
             MyExecutionDeviceResult myResult = new MyExecutionDeviceResult();
             myResult.staticDataResultCollection = new System.Collections.Specialized.NameValueCollection();

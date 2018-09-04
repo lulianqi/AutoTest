@@ -85,7 +85,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 {
                     if (startNode.IsHasChild)
                     {
-                        myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(startNode.CaseXmlNode);
+                        myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(startNode.CaseXmlNode);
                         nowLoops.Add(new CaseLoopCountInfo(startNode.ChildCells[0], tempProjectLoadInfo.times));
                     }
                 }
@@ -114,7 +114,7 @@ namespace CaseExecutiveActuator.CaseActuator
                     {
                         if (startNode.IsHasChild)
                         {
-                            myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(startNode.CaseXmlNode);
+                            myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(startNode.CaseXmlNode);
                             nowLoops.Add(new CaseLoopCountInfo(startNode.ChildCells[0], tempProjectLoadInfo.times * tempRate));
                         }
                     }
@@ -126,7 +126,6 @@ namespace CaseExecutiveActuator.CaseActuator
 
 
     }
-
 
     /// <summary>
     /// CsaeQueue it will only used in myCaseRunTime
@@ -227,7 +226,7 @@ namespace CaseExecutiveActuator.CaseActuator
                 {
                     if (nowCaseNode.IsHasChild)
                     {
-                        myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(nowCaseNode.CaseXmlNode);
+                        myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(nowCaseNode.CaseXmlNode);
                         AddCaseLoop(nowCaseNode.ChildCells[0], tempProjectLoadInfo.times);
                     }
                     return nextCase();
@@ -269,7 +268,7 @@ namespace CaseExecutiveActuator.CaseActuator
                         {
                             if (tempNextLoopTreeNode.IsHasChild)
                             {
-                                myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempNextLoopTreeNode.CaseXmlNode);
+                                myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempNextLoopTreeNode.CaseXmlNode);
                                 AddCaseLoop(tempNextLoopTreeNode.ChildCells[0], tempProjectLoadInfo.times);
                             }
 
@@ -299,7 +298,7 @@ namespace CaseExecutiveActuator.CaseActuator
                         {
                             if (nowCaseNode.IsHasChild)
                             {
-                                myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(nowCaseNode.CaseXmlNode);
+                                myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(nowCaseNode.CaseXmlNode);
                                 AddCaseLoop(nowCaseNode.ChildCells[0], tempProjectLoadInfo.times);
                             }
 

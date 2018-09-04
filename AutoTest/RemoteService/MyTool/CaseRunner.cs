@@ -268,7 +268,7 @@ namespace RemoteService
 
                 foreach (XmlNode tempNode in myCaseProject)
                 {
-                    myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempNode);
+                    myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempNode);
                     string thisErrorTitle = "Project ID:" + tempProjectLoadInfo.id;
                     if (tempProjectLoadInfo.ErrorMessage != "")
                     {
@@ -319,7 +319,7 @@ namespace RemoteService
                         foreach (XmlNode tempChildNode in myTargetCaseList[0].Value)
                         {
                             //load Show Info
-                            myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.getCaseLoadInfo(tempChildNode);
+                            myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempChildNode);
                             thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
                             if (tempCaseLoadInfo.ErrorMessage != "")
                             {
@@ -331,7 +331,7 @@ namespace RemoteService
                                 if (tempCaseLoadInfo.caseType == CaseType.Case)
                                 {
                                     //load Run Data
-                                    var tempCaseRunData = MyCaseScriptAnalysisEngine.getCaseRunData(tempChildNode);
+                                    var tempCaseRunData = MyCaseScriptAnalysisEngine.GetCaseRunData(tempChildNode);
                                     if (tempCaseRunData.errorMessages != null)
                                     {
                                         foreach (string tempErrorMes in tempCaseRunData.errorMessages)

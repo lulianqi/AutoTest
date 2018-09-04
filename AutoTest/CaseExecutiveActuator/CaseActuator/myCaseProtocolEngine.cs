@@ -28,8 +28,7 @@ using MySqlHelper;
 namespace CaseExecutiveActuator.CaseActuator
 {
     using HttpMultipartDate = MyCommonHelper.NetHelper.MyWebTool.HttpMultipartDate;
-    
-    
+
     public class BasicProtocolPars
     {
         /// <summary>
@@ -43,12 +42,7 @@ namespace CaseExecutiveActuator.CaseActuator
         }
     }
 
-    #region ExecutionDevice
-    //move to ExecutionDevice folder
-    #endregion
-    
-
-    
+  
     /// <summary>
     ///  完成脚本不包含可变协议的通用解析，如果您想新增一种类型的协议支持，这里需要添加支持
     /// </summary>
@@ -59,7 +53,7 @@ namespace CaseExecutiveActuator.CaseActuator
         /// </summary>
         /// <param name="yourRunNode">your XmlNode</param>
         /// <returns>myRunCaseData you want</returns>
-        public static MyRunCaseData<ICaseExecutionContent> getCaseRunData(XmlNode sourceNode) 
+        public static MyRunCaseData<ICaseExecutionContent> GetCaseRunData(XmlNode sourceNode) 
         {
             MyRunCaseData<ICaseExecutionContent> myCaseData = new MyRunCaseData<ICaseExecutionContent>();
             CaseProtocol contentProtocol = CaseProtocol.unknownProtocol;
@@ -334,7 +328,7 @@ namespace CaseExecutiveActuator.CaseActuator
         /// </summary>
         /// <param name="runCaseData">MyRunCaseData</param>
         /// <returns>the info with myCaseLaodInfo</returns>
-        public static myCaseLaodInfo getCaseLoadInfo(MyRunCaseData<ICaseExecutionContent> runCaseData)
+        public static myCaseLaodInfo GetCaseLoadInfo(MyRunCaseData<ICaseExecutionContent> runCaseData)
         {
             myCaseLaodInfo myInfo = new myCaseLaodInfo("NULL");
             myInfo.id = runCaseData.id;
@@ -357,7 +351,7 @@ namespace CaseExecutiveActuator.CaseActuator
         /// </summary>
         /// <param name="sourceNode">source Node</param>
         /// <returns>the info with myCaseLaodInfo</returns>
-        public static myCaseLaodInfo getCaseLoadInfo(XmlNode sourceNode)
+        public static myCaseLaodInfo GetCaseLoadInfo(XmlNode sourceNode)
         {
             myCaseLaodInfo myInfo = new myCaseLaodInfo("NULL");
             switch (sourceNode.Name)

@@ -50,3 +50,15 @@ D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\MyControl.
 D:\my\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Debug\ActiveMQTest.pdb
 F:\file\Code\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\ActiveMQTest.exe.CodeAnalysisLog.xml
 F:\file\Code\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\ActiveMQTest.exe.lastcodeanalysissucceeded
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\ActiveMQTest.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\ActiveMQTest.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\MyCommonHelper.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\MyControl.dll
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\MyCommonHelper.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\bin\Debug\MyControl.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Debug\ActiveMQTest.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Debug\ActiveMQTest.ActiveMQ.resources
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Debug\ActiveMQTest.Properties.Resources.resources
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Debug\ActiveMQTest.csproj.GenerateResource.Cache
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Debug\ActiveMQTest.exe
+F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ActiveMQTest\obj\Debug\ActiveMQTest.pdb

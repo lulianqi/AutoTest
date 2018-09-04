@@ -1,0 +1,59 @@
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 243
+无法将数据写入传输连接: 远程主机强迫关闭了一个现有的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 243
+无法将数据写入传输连接: 远程主机强迫关闭了一个现有的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 243
+无法将数据写入传输连接: 远程主机强迫关闭了一个现有的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 243
+无法将数据写入传输连接: 远程主机强迫关闭了一个现有的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 243
+无法将数据写入传输连接: 远程主机强迫关闭了一个现有的连接。。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 151
+由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.11.100:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 205
+通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 151
+由于目标机器积极拒绝，无法连接。 192.168.11.106:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 324
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 218
+通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 218
+通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 218
+通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 163
+由于目标机器积极拒绝，无法连接。 192.168.11.106:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
+ErrorLine: 337
+无法访问已释放的对象。
+对象名:“MyVaneConfig”。
+System.Windows.Forms

@@ -1,0 +1,11 @@
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 81
+由于目标机器积极拒绝，无法连接。 192.168.11.109:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 81
+由于目标机器积极拒绝，无法连接。 192.168.11.109:19990
+++++++++++++++++++++
+ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
+ErrorLine: 81
+由于目标机器积极拒绝，无法连接。 192.168.11.109:19990

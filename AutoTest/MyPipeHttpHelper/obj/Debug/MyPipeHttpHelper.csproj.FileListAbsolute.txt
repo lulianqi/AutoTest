@@ -12,6 +12,5 @@ F:\file\Code\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.dll.C
 F:\file\Code\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.dll.lastcodeanalysissucceeded
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.pdb
-F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.csprojResolveAssemblyReference.cache
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.pdb

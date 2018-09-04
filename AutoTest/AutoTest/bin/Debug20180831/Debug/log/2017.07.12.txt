@@ -1,0 +1,12 @@
+-------------------------------------------------------
+2017/7/12 23:12:11
+ErrorFile:f:\file\Code\AutoTest\AutoTest\AutoTest\myTool\CaseFileXmlAnalysis.cs
+ErrorLine:67
+
+ID:00017  “=”是意外的标记。标记应为“;”。 第 895 行，位置 77。
+-------------------------------------------------------
+2017/7/12 23:12:19
+ErrorFile:f:\file\Code\AutoTest\AutoTest\AutoTest\myTool\CaseFileXmlAnalysis.cs
+ErrorLine:67
+
+ID:00017  “=”是意外的标记。标记应为“;”。 第 895 行，位置 77。
