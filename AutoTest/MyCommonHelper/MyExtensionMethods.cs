@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
 
 /*******************************************************************************
@@ -54,15 +53,6 @@ namespace MyCommonHelper
             return MyIndexOf(bytes, targetByte, startIndex, bytes.Length - startIndex);
         }
 
-        /// <summary>
-        /// 获取文本url编码值
-        /// </summary>
-        /// <param name="tb">文本框</param>
-        /// <returns>文本url编码值</returns>
-        public static string MyText(this TextBox tb)
-        {
-            return System.Web.HttpUtility.UrlEncode(tb.Text);
-        }
 
         /// <summary>
         /// 以xml的数据要求格式化string中的特殊字符（null时返回""）

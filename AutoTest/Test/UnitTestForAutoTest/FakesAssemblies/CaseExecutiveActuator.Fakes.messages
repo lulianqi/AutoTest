@@ -41,7 +41,7 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecuti
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.MyExtensionMethods 生成存根: 类型已密封。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.CaseTool 生成存根: 类型已密封。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ProtocolExecutive.AtHttpProtocol 生成存根: 类型已密封。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{55E4CB00-8A33-47C5-9174-E03C9EA33FD5} 生成存根: 类型不受支持，因为存在内部限制。
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{A2366280-C5D0-4963-A701-0B1967CCB17C} 生成存根: 类型不受支持，因为存在内部限制。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+ExecutiveAdditionalInfo 生成填充码: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.CaseActionActuator+delegateActuatorParameterListEventHandler 生成填充码: 类型是一个委托。
@@ -88,4 +88,4 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecuti
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.delegateBasicAnonymous 生成填充码: 类型是一个委托。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ICaseProtocolExecution 生成填充码: 类型是一个接口。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.Tool.CaseTool+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{55E4CB00-8A33-47C5-9174-E03C9EA33FD5} 生成填充码: 类型不受支持，因为存在内部限制。
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 <PrivateImplementationDetails>{A2366280-C5D0-4963-A701-0B1967CCB17C} 生成填充码: 类型不受支持，因为存在内部限制。

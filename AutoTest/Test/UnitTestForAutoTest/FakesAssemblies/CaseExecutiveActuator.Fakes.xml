@@ -835,8 +835,8 @@
         <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimCaseActionActuator.KillAll">
             <summary>设置 CaseActionActuator.KillAll() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimCaseActionActuator.LoadScriptCaseProjectXmlNode">
-            <summary>设置 CaseActionActuator.LoadScriptCaseProject(XmlNode sourceProjectNode) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimCaseActionActuator.LoadScriptCaseProjectXmlNodeList">
+            <summary>设置 CaseActionActuator.LoadScriptCaseProject(XmlNodeList sourceProjectNodeList) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimCaseActionActuator.LoadScriptRunTimeXmlNode">
             <summary>设置 CaseActionActuator.LoadScriptRunTime(XmlNode sourceNode) 的 填充码</summary>
@@ -1003,8 +1003,8 @@
         <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimCaseActionActuator.AllInstances.KillAll">
             <summary>设置 CaseActionActuator.KillAll() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimCaseActionActuator.AllInstances.LoadScriptCaseProjectXmlNode">
-            <summary>设置 CaseActionActuator.LoadScriptCaseProject(XmlNode sourceProjectNode) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimCaseActionActuator.AllInstances.LoadScriptCaseProjectXmlNodeList">
+            <summary>设置 CaseActionActuator.LoadScriptCaseProject(XmlNodeList sourceProjectNodeList) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimCaseActionActuator.AllInstances.LoadScriptRunTimeXmlNode">
             <summary>设置 CaseActionActuator.LoadScriptRunTime(XmlNode sourceNode) 的 填充码</summary>
@@ -1444,14 +1444,14 @@
         <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimMyCaseScriptAnalysisEngine.Constructor">
             <summary>设置 MyCaseScriptAnalysisEngine.MyCaseScriptAnalysisEngine() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimMyCaseScriptAnalysisEngine.getCaseLoadInfoMyRunCaseDataOfICaseExecutionContent">
-            <summary>设置 MyCaseScriptAnalysisEngine.getCaseLoadInfo(MyRunCaseData`1&lt;ICaseExecutionContent&gt; runCaseData) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimMyCaseScriptAnalysisEngine.GetCaseLoadInfoMyRunCaseDataOfICaseExecutionContent">
+            <summary>设置 MyCaseScriptAnalysisEngine.GetCaseLoadInfo(MyRunCaseData`1&lt;ICaseExecutionContent&gt; runCaseData) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimMyCaseScriptAnalysisEngine.getCaseLoadInfoXmlNode">
-            <summary>设置 MyCaseScriptAnalysisEngine.getCaseLoadInfo(XmlNode sourceNode) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimMyCaseScriptAnalysisEngine.GetCaseLoadInfoXmlNode">
+            <summary>设置 MyCaseScriptAnalysisEngine.GetCaseLoadInfo(XmlNode sourceNode) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimMyCaseScriptAnalysisEngine.getCaseRunDataXmlNode">
-            <summary>设置 MyCaseScriptAnalysisEngine.getCaseRunData(XmlNode sourceNode) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.CaseActuator.Fakes.ShimMyCaseScriptAnalysisEngine.GetCaseRunDataXmlNode">
+            <summary>设置 MyCaseScriptAnalysisEngine.GetCaseRunData(XmlNode sourceNode) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.CaseActuator.Fakes.ShimMyCaseScriptAnalysisEngine.AllInstances">
             <summary>为所有实例成员定义填充码</summary>

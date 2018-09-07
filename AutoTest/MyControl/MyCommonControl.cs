@@ -15,7 +15,11 @@ namespace MyCommonControl
         [DllImport("user32.dll")]
         public static extern bool SendMessage(IntPtr hWnd, UInt32 m, int wParam, int lParam);
 
+        [System.Runtime.InteropServices.DllImport("user32")]
+        public static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, IntPtr lParam);
+
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int ShowScrollBar(IntPtr hWnd, int iBar, int bShow);
+
     }
 }

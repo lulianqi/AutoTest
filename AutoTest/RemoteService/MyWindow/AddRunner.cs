@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MyCommonHelper;
+using MyCommonControl;
 
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
@@ -113,16 +114,16 @@ namespace RemoteService.MyWindow
                 {
                     foreach(string tempError in errorList)
                     {
-                        MyCommonTool.setRichTextBoxContent(ref rtb_info, tempError, Color.Black, true);
+                        MyControlHelper.setRichTextBoxContent(ref rtb_info, tempError, Color.Black, true);
                     }
                 }
                 newCaseRunner.RunnerCasePath = tb_caseFilePath.Text;
-                MyCommonTool.setRichTextBoxContent(ref rtb_info, "加载完成请继续", Color.Blue, true);
+                MyControlHelper.setRichTextBoxContent(ref rtb_info, "加载完成请继续", Color.Blue, true);
                 LoadFileData();
             }
             else
             {
-                MyCommonTool.setRichTextBoxContent(ref rtb_info, errorMessage, Color.Red, true);
+                MyControlHelper.setRichTextBoxContent(ref rtb_info, errorMessage, Color.Red, true);
                 newCaseRunner = null;
                 FreezeAdd();
                 MessageBox.Show(errorMessage);
@@ -180,7 +181,7 @@ namespace RemoteService.MyWindow
                 catch
                 {
                     newCaseRunner.RunerActuator.ExecutiveThinkTime = 0;
-                    MyCommonTool.setRichTextBoxContent(ref rtb_info, "WaitTime Set Error", Color.Red, true);
+                    MyControlHelper.setRichTextBoxContent(ref rtb_info, "WaitTime Set Error", Color.Red, true);
                 }
                 try
                 {
@@ -189,7 +190,7 @@ namespace RemoteService.MyWindow
                 catch
                 {
                     tempCloneNum = 0;
-                    MyCommonTool.setRichTextBoxContent(ref rtb_info, "CloneNum Set Error", Color.Red, true);
+                    MyControlHelper.setRichTextBoxContent(ref rtb_info, "CloneNum Set Error", Color.Red, true);
                 }
                 newCaseRunner.RunnerName = tempName;
                 try
@@ -198,10 +199,10 @@ namespace RemoteService.MyWindow
                 }
                 catch
                 {
-                    MyCommonTool.setRichTextBoxContent(ref rtb_info, "StartCell Set Error", Color.Red, true);
+                    MyControlHelper.setRichTextBoxContent(ref rtb_info, "StartCell Set Error", Color.Red, true);
                 }
                 myOwner.AddRunner(newCaseRunner);
-                MyCommonTool.setRichTextBoxContent(ref rtb_info, "新用户 " + tempName + "添加成功", Color.Red, true);
+                MyControlHelper.setRichTextBoxContent(ref rtb_info, "新用户 " + tempName + "添加成功", Color.Red, true);
                 if (tempCloneNum>0)
                 {
                     if (tempCloneNum > 200)
@@ -211,7 +212,7 @@ namespace RemoteService.MyWindow
                             for (int i = 0; i < tempCloneNum; i++)
                             {
                                 myOwner.AddRunner(newCaseRunner.Clone(tempName + "#" + i));
-                                MyCommonTool.setRichTextBoxContent(ref rtb_info, "新克隆用户 " + tempName + "#" + i + " 添加成功", Color.Red, true);
+                                MyControlHelper.setRichTextBoxContent(ref rtb_info, "新克隆用户 " + tempName + "#" + i + " 添加成功", Color.Red, true);
                             }
                         }
                     }
@@ -220,7 +221,7 @@ namespace RemoteService.MyWindow
                         for (int i = 0; i < tempCloneNum; i++)
                         {
                             myOwner.AddRunner(newCaseRunner.Clone(tempName + "#" + i));
-                            MyCommonTool.setRichTextBoxContent(ref rtb_info, "新克隆用户 " + tempName + "#" + i + " 添加成功", Color.Red, true);
+                            MyControlHelper.setRichTextBoxContent(ref rtb_info, "新克隆用户 " + tempName + "#" + i + " 添加成功", Color.Red, true);
                         }
                     }
                 }

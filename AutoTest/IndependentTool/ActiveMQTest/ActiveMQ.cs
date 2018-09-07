@@ -2,6 +2,7 @@
 using Apache.NMS.ActiveMQ;
 using MyCommonHelper;
 using MyCommonHelper.EncryptionHelper;
+using MyCommonControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -335,7 +336,7 @@ namespace ActiveMQTest
                 }
                 else
                 {
-                    MyCommonTool.SetControlFreeze(lv_pathList);
+                    MyControlHelper.SetControlFreeze(lv_pathList);
                     lv_pathList.ClearEx();
                     foreach (IMessageConsumer tempConsumer in souceData)
                     {
@@ -345,7 +346,7 @@ namespace ActiveMQTest
                         tempLvi.SubItems[0].Tag = tempConsumer;
                         lv_pathList.AddItemEx(tempLvi);
                     }
-                    MyCommonTool.SetControlUnfreeze(lv_pathList);
+                    MyControlHelper.SetControlUnfreeze(lv_pathList);
                 }
             }
         }

@@ -17,3 +17,4 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.pdb
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.csprojResolveAssemblyReference.cache

@@ -103,7 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ControlSevice\MyTool.cs" />
+    <Compile Include="ControlSevice\MyControlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Control\CBalloonBase.resx">

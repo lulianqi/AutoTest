@@ -10,6 +10,7 @@ using AutoTest.MyTool;
 using System.Xml;
 using System.Collections;
 using MyCommonHelper;
+using MyCommonControl;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
 
@@ -69,17 +70,17 @@ namespace AutoTest.MyControl
             }
             if(yourCaseRunData.testContent!=null)
             {
-                MyCommonTool.myAddRtbStr(ref rtb_Content, "【Actuator】:" + yourCaseRunData.testContent.MyCaseActuator, Color.DarkOrchid, true);
-                MyCommonTool.myAddRtbStr(ref rtb_Content, yourCaseRunData.testContent.MyExecutionContent, Color.Maroon, true);
+                MyControlHelper.myAddRtbStr(ref rtb_Content, "【Actuator】:" + yourCaseRunData.testContent.MyCaseActuator, Color.DarkOrchid, true);
+                MyControlHelper.myAddRtbStr(ref rtb_Content, yourCaseRunData.testContent.MyExecutionContent, Color.Maroon, true);
                 //rtb_Content.AppendText((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].InnerXml);
                 string xmlContent;
                 if(MyCommonTool.FormatXmlString((((CaseCell)myTargetNode.Tag).CaseXmlNode)["Content"].OuterXml,out xmlContent))
                 {
-                    MyCommonTool.myAddRtbStr(ref rtb_Content, xmlContent, Color.Black, true);
+                    MyControlHelper.myAddRtbStr(ref rtb_Content, xmlContent, Color.Black, true);
                 }
                 else
                 {
-                    MyCommonTool.myAddRtbStr(ref rtb_Content, xmlContent, Color.Red, true);
+                    MyControlHelper.myAddRtbStr(ref rtb_Content, xmlContent, Color.Red, true);
                 }
                 rtb_Content.Select(0, 0);
                 rtb_Content.ScrollToCaret();

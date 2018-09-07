@@ -447,17 +447,17 @@ namespace MyCommonControl
                 {
                     foreach (KeyValuePair<string, Color> puaseLine in puaseLines)
                     {
-                        MyCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, puaseLine.Key, puaseLine.Value, isNewLine, true);
+                        MyControlHelper.setRichTextBoxContent(ref this.richTextBox_dataContainer, puaseLine.Key, puaseLine.Value, isNewLine, true);
                     }
                     puaseLines.Clear();
                 }
                 if (isAlwaysGoBottom)
                 {
-                    MyCommonHelper.MyCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine);
+                    MyControlHelper.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine);
                 }
                 else
                 {
-                    MyCommonTool.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine, true);
+                    MyControlHelper.setRichTextBoxContent(ref this.richTextBox_dataContainer, yourStr, fontColor, isNewLine, true);
                 }
                 if(richTextBox_dataContainer.Lines.Length>maxLine)
                 {
@@ -469,12 +469,12 @@ namespace MyCommonControl
                     }
                     Array.Copy(tempLines, tempDropLineLen, tempLines, 0, maxLine / 2);
                     Array.Resize(ref tempLines, maxLine / 2);
-                    MyCommonTool.SetControlFreeze(richTextBox_dataContainer);
+                    MyControlHelper.SetControlFreeze(richTextBox_dataContainer);
                     richTextBox_dataContainer.Lines = tempLines;
                     richTextBox_dataContainer.SelectAll();
                     richTextBox_dataContainer.SelectionColor = Color.Gray;
                     richTextBox_dataContainer.DeselectAll();
-                    MyCommonTool.SetControlUnfreeze(richTextBox_dataContainer);
+                    MyControlHelper.SetControlUnfreeze(richTextBox_dataContainer);
                 }
                 
             }

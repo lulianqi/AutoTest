@@ -357,10 +357,19 @@ namespace AutoTest.MyTool
             }
         }
 
+        /// <summary>
+        /// 请在UI资源被释放前，释放CaseTreeActionControl
+        /// </summary>
         public void Dispose()
         {
-            ActionActuator.MyCaseTreeAction.OnCaseTreeChange -= MyCaseTreeAction_OnCaseTreeChange;
-            ActionActuator = null;
+            if (ActionActuator != null)
+            {
+                if (ActionActuator.MyCaseTreeAction != null)
+                {
+                    ActionActuator.MyCaseTreeAction.OnCaseTreeChange -= MyCaseTreeAction_OnCaseTreeChange;
+                }
+                ActionActuator = null;
+            }
         }
     }
 }

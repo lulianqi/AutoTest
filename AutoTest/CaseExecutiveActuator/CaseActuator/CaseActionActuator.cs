@@ -1178,13 +1178,13 @@ namespace CaseExecutiveActuator.CaseActuator
             }
         }
 
-        public void LoadScriptCaseProject(XmlNode sourceProjectNode)
+        public void LoadScriptCaseProject(XmlNodeList sourceProjectNodeList)
         {
 
             Dictionary<int, Dictionary<int, CaseCell>> myProjectCaseDictionary = new Dictionary<int, Dictionary<int, CaseCell>>();
             ProjctCollection myProjctCollection = new ProjctCollection();
 
-            foreach (XmlNode tempNode in sourceProjectNode)
+            foreach (XmlNode tempNode in sourceProjectNodeList)
             {
                 myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempNode);
                 string thisErrorTitle = "Project ID:" + tempProjectLoadInfo.id;
@@ -1192,29 +1192,11 @@ namespace CaseExecutiveActuator.CaseActuator
                 {
                     SetNowExecutiveData(string.Format("【{0}】\r\n{1}", thisErrorTitle, tempProjectLoadInfo.ErrorMessage), CaseActuatorOutPutType.CaseLoadError);
                 }
-                //if (tempProjectLoadInfo.caseType == CaseType.ScriptRunTime)
-                //{
-                //    //deal with ScriptRunTime
-                //    if (nowCaseActionActuator == null)
-                //    {
-                //        nowCaseActionActuator = new CaseActionActuator();
-                //        nowCaseActionActuator.OnGetExecutiveData += nowCaseActionActuator_OnGetExecutiveData;
-                //        nowCaseActionActuator.OnActuatorStateChanged += nowCaseActionActuator_OnActuatorStateChanged;
-                //        nowCaseActionActuator.OnExecutiveResult += nowCaseActionActuator_OnExecutiveResult;
-                //        nowCaseActionActuator.LoadScriptRunTime(tempNode);
-                //        if (nowCaseTreeAction!=null)
-                //        {
-                //            nowCaseTreeAction.Dispose();
-                //        }
-                //        nowCaseTreeAction = new CaseTreeActionControl( nowCaseActionActuator);
-                //    }
-                //    else
-                //    {
-                //        thisErrorTitle = "ScriptRunTime";
-                //        ShowMessage("find another ScriptRunTime ,ScriptRunTime is unique so it will be skip", thisErrorTitle);
-                //    }
-                //    continue;
-                //}
+                if (tempProjectLoadInfo.caseType == CaseType.ScriptRunTime)
+                {
+                    LoadScriptRunTime(tempNode);
+                    continue;
+                }
                 if (tempProjectLoadInfo.caseType != CaseType.Project)
                 {
                     SetNowExecutiveData("not legal Project ,it will be skip", CaseActuatorOutPutType.CaseLoadError);

@@ -17,6 +17,7 @@ using System.Net.NetworkInformation;
 using AutoTest.myDialogWindow;
 using System.Collections;
 using MyCommonHelper;
+using MyCommonControl;
 using MyCommonHelper.NetHelper;
 using CaseExecutiveActuator;
 using CaseExecutiveActuator.Cell;
@@ -341,127 +342,140 @@ namespace AutoTest
                 nowCaseActionActuator.Dispose();
                 nowCaseActionActuator = null;
             }
+            if (nowCaseTreeAction != null)
+            {
+                nowCaseTreeAction.Dispose();
+            }
 
-            ProjctCollection myProjctCollection = new ProjctCollection();
-            //try
+
+            nowCaseActionActuator = new CaseActionActuator();
+            nowCaseActionActuator.OnGetExecutiveData += nowCaseActionActuator_OnGetExecutiveData;
+            nowCaseActionActuator.OnActuatorStateChanged += nowCaseActionActuator_OnActuatorStateChanged;
+            nowCaseActionActuator.OnExecutiveResult += nowCaseActionActuator_OnExecutiveResult;
+            nowCaseTreeAction = new CaseTreeActionControl(nowCaseActionActuator);
+
+            nowCaseActionActuator.LoadScriptCaseProject(myCaseProject);
+
+            //ProjctCollection myProjctCollection = new ProjctCollection();
+            try
             {
 
                 #region Project analyze
 
-                foreach (XmlNode tempNode in myCaseProject)
-                {
-                    myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempNode);
-                    string thisErrorTitle = "Project ID:" + tempProjectLoadInfo.id;
-                    if (tempProjectLoadInfo.ErrorMessage != "")
-                    {
-                        ShowMessage(tempProjectLoadInfo.ErrorMessage, thisErrorTitle);
-                    }
-                    if (tempProjectLoadInfo.caseType == CaseType.ScriptRunTime)
-                    {
-                        //deal with ScriptRunTime
-                        if (nowCaseActionActuator == null)
-                        {
-                            nowCaseActionActuator = new CaseActionActuator();
-                            nowCaseActionActuator.OnGetExecutiveData += nowCaseActionActuator_OnGetExecutiveData;
-                            nowCaseActionActuator.OnActuatorStateChanged += nowCaseActionActuator_OnActuatorStateChanged;
-                            nowCaseActionActuator.OnExecutiveResult += nowCaseActionActuator_OnExecutiveResult;
-                            nowCaseActionActuator.LoadScriptRunTime(tempNode);
-                            if (nowCaseTreeAction!=null)
-                            {
-                                nowCaseTreeAction.Dispose();
-                            }
-                            nowCaseTreeAction = new CaseTreeActionControl( nowCaseActionActuator);
-                        }
-                        else
-                        {
-                            thisErrorTitle = "ScriptRunTime";
-                            ShowMessage("find another ScriptRunTime ,ScriptRunTime is unique so it will be skip", thisErrorTitle);
-                        }
-                        continue;
-                    }
-                    if (tempProjectLoadInfo.caseType != CaseType.Project)
-                    {
-                        ShowMessage("not legal Project ,it will be skip");
-                        continue;
-                    }
+                //foreach (XmlNode tempNode in myCaseProject)
+                //{
+                //    myCaseLaodInfo tempProjectLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempNode);
+                //    string thisErrorTitle = "Project ID:" + tempProjectLoadInfo.id;
+                //    if (tempProjectLoadInfo.ErrorMessage != "")
+                //    {
+                //        ShowMessage(tempProjectLoadInfo.ErrorMessage, thisErrorTitle);
+                //    }
+                //    if (tempProjectLoadInfo.caseType == CaseType.ScriptRunTime)
+                //    {
+                //        //deal with ScriptRunTime
+                //        if (nowCaseActionActuator == null)
+                //        {
+                //            nowCaseActionActuator = new CaseActionActuator();
+                //            nowCaseActionActuator.OnGetExecutiveData += nowCaseActionActuator_OnGetExecutiveData;
+                //            nowCaseActionActuator.OnActuatorStateChanged += nowCaseActionActuator_OnActuatorStateChanged;
+                //            nowCaseActionActuator.OnExecutiveResult += nowCaseActionActuator_OnExecutiveResult;
+                //            nowCaseActionActuator.LoadScriptRunTime(tempNode);
+                //            if (nowCaseTreeAction!=null)
+                //            {
+                //                nowCaseTreeAction.Dispose();
+                //            }
+                //            nowCaseTreeAction = new CaseTreeActionControl( nowCaseActionActuator);
+                //        }
+                //        else
+                //        {
+                //            thisErrorTitle = "ScriptRunTime";
+                //            ShowMessage("find another ScriptRunTime ,ScriptRunTime is unique so it will be skip", thisErrorTitle);
+                //        }
+                //        continue;
+                //    }
+                //    if (tempProjectLoadInfo.caseType != CaseType.Project)
+                //    {
+                //        ShowMessage("not legal Project ,it will be skip");
+                //        continue;
+                //    }
 
-                    #region deal this Project
+                //    #region deal this Project
 
-                    CaseCell tempProjctCell = new CaseCell(tempProjectLoadInfo.caseType,tempNode,null);
-                    myProjctCollection.Add(tempProjctCell);
+                //    CaseCell tempProjctCell = new CaseCell(tempProjectLoadInfo.caseType,tempNode,null);
+                //    myProjctCollection.Add(tempProjctCell);
                    
-                    Dictionary<int, CaseCell> tempCaseDictionary = new Dictionary<int, CaseCell>();
-                    if (myProjectCaseDictionary.ContainsKey(tempProjectLoadInfo.id))
-                    {
-                        ShowMessage("find the same project id in this file ,it will make [Goto] abnormal", thisErrorTitle);
-                    }
-                    else
-                    {
-                        myProjectCaseDictionary.Add(tempProjectLoadInfo.id, tempCaseDictionary);
-                    }
+                //    Dictionary<int, CaseCell> tempCaseDictionary = new Dictionary<int, CaseCell>();
+                //    if (myProjectCaseDictionary.ContainsKey(tempProjectLoadInfo.id))
+                //    {
+                //        ShowMessage("find the same project id in this file ,it will make [Goto] abnormal", thisErrorTitle);
+                //    }
+                //    else
+                //    {
+                //        myProjectCaseDictionary.Add(tempProjectLoadInfo.id, tempCaseDictionary);
+                //    }
 
-                    //myTargetCaseList 将包含当前project或repeat集合元素
-                    List<KeyValuePair<CaseCell, XmlNode>> myTargetCaseList = new List<KeyValuePair<CaseCell, XmlNode>>();
-                    myTargetCaseList.Add(new KeyValuePair<CaseCell, XmlNode>(tempProjctCell, tempNode));
-                    while (myTargetCaseList.Count > 0)
-                    {
-                        //Case analyze
-                        foreach (XmlNode tempChildNode in myTargetCaseList[0].Value)
-                        {
-                            //load Show Info
-                            myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempChildNode);
-                            thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
-                            if (tempCaseLoadInfo.ErrorMessage != "")
-                            {
-                                ShowMessage(tempCaseLoadInfo.ErrorMessage);
-                                ShowMessage("this error can not be repair so drop it", thisErrorTitle);
-                            }
-                            else
-                            {
-                                if (tempCaseLoadInfo.caseType == CaseType.Case)
-                                {
-                                    //load Run Data
-                                    var tempCaseRunData = MyCaseScriptAnalysisEngine.GetCaseRunData(tempChildNode);
-                                    if (tempCaseRunData.errorMessages != null)
-                                    {
-                                        foreach (string tempErrorMes in tempCaseRunData.errorMessages)
-                                        {
-                                            ShowMessage(tempErrorMes, thisErrorTitle);
-                                        }
-                                    }
-                                    CaseCell tempChildCell = new CaseCell(tempCaseLoadInfo.caseType, tempChildNode, tempCaseRunData);
-                                    if (tempCaseDictionary.ContainsKey(tempCaseLoadInfo.id))
-                                    {
-                                        ShowMessage("find the same case id in this project ,it will make [Goto] abnormal", thisErrorTitle);
-                                    }
-                                    else
-                                    {
-                                        tempCaseDictionary.Add(tempCaseLoadInfo.id, tempChildCell);
-                                    }
-                                    myTargetCaseList[0].Key.Add(tempChildCell);
-                                }
-                                else if (tempCaseLoadInfo.caseType == CaseType.Repeat)
-                                {
-                                    CaseCell tempChildCell = new CaseCell(tempCaseLoadInfo.caseType, tempChildNode, null);
+                //    //myTargetCaseList 将包含当前project或repeat集合元素
+                //    List<KeyValuePair<CaseCell, XmlNode>> myTargetCaseList = new List<KeyValuePair<CaseCell, XmlNode>>();
+                //    myTargetCaseList.Add(new KeyValuePair<CaseCell, XmlNode>(tempProjctCell, tempNode));
+                //    while (myTargetCaseList.Count > 0)
+                //    {
+                //        //Case analyze
+                //        foreach (XmlNode tempChildNode in myTargetCaseList[0].Value)
+                //        {
+                //            //load Show Info
+                //            myCaseLaodInfo tempCaseLoadInfo = MyCaseScriptAnalysisEngine.GetCaseLoadInfo(tempChildNode);
+                //            thisErrorTitle = "Case ID:" + tempCaseLoadInfo.id;
+                //            if (tempCaseLoadInfo.ErrorMessage != "")
+                //            {
+                //                ShowMessage(tempCaseLoadInfo.ErrorMessage);
+                //                ShowMessage("this error can not be repair so drop it", thisErrorTitle);
+                //            }
+                //            else
+                //            {
+                //                if (tempCaseLoadInfo.caseType == CaseType.Case)
+                //                {
+                //                    //load Run Data
+                //                    var tempCaseRunData = MyCaseScriptAnalysisEngine.GetCaseRunData(tempChildNode);
+                //                    if (tempCaseRunData.errorMessages != null)
+                //                    {
+                //                        foreach (string tempErrorMes in tempCaseRunData.errorMessages)
+                //                        {
+                //                            ShowMessage(tempErrorMes, thisErrorTitle);
+                //                        }
+                //                    }
+                //                    CaseCell tempChildCell = new CaseCell(tempCaseLoadInfo.caseType, tempChildNode, tempCaseRunData);
+                //                    if (tempCaseDictionary.ContainsKey(tempCaseLoadInfo.id))
+                //                    {
+                //                        ShowMessage("find the same case id in this project ,it will make [Goto] abnormal", thisErrorTitle);
+                //                    }
+                //                    else
+                //                    {
+                //                        tempCaseDictionary.Add(tempCaseLoadInfo.id, tempChildCell);
+                //                    }
+                //                    myTargetCaseList[0].Key.Add(tempChildCell);
+                //                }
+                //                else if (tempCaseLoadInfo.caseType == CaseType.Repeat)
+                //                {
+                //                    CaseCell tempChildCell = new CaseCell(tempCaseLoadInfo.caseType, tempChildNode, null);
 
-                                    myTargetCaseList[0].Key.Add(tempChildCell);
-                                    myTargetCaseList.Add(new KeyValuePair<CaseCell, XmlNode>(tempChildCell, tempChildNode));
-                                }
-                                else
-                                {
-                                    //it will cant be project and if it is unknow i will not show it
-                                    ShowMessage("find unkown case so drop it", thisErrorTitle);
-                                }
-                            }
-                        }
-                        myTargetCaseList.Remove(myTargetCaseList[0]);
-                    }
-                    #endregion
+                //                    myTargetCaseList[0].Key.Add(tempChildCell);
+                //                    myTargetCaseList.Add(new KeyValuePair<CaseCell, XmlNode>(tempChildCell, tempChildNode));
+                //                }
+                //                else
+                //                {
+                //                    //it will cant be project and if it is unknow i will not show it
+                //                    ShowMessage("find unkown case so drop it", thisErrorTitle);
+                //                }
+                //            }
+                //        }
+                //        myTargetCaseList.Remove(myTargetCaseList[0]);
+                //    }
+                //    #endregion
 
-                }
+                //}
                 #endregion
 
-                if (nowCaseActionActuator == null)
+                if (nowCaseActionActuator.NowExecutionDeviceList.Count<1)
                 {
                     tvw_Case.Enabled = false;
                     ShowMessage("ScriptRunTime is not find ");
@@ -471,36 +485,36 @@ namespace AutoTest
                 else
                 {
                     tvw_Case.Enabled = true;
-                    nowCaseActionActuator.SetCaseRunTime(myProjectCaseDictionary, myProjctCollection);
+                    //nowCaseActionActuator.SetCaseRunTime(myProjectCaseDictionary, myProjctCollection);
                     //启动数据呈现
                     lb_msg1.Text = "case load success";
                 }
             }
-            ////严重错误
-            //catch (Exception ex)
-            //{
-            //    int projectErrorIndex = 0;
-            //    string caseErrorIndex = "";
-            //    if (myProjectCaseDictionary.Count != 0)
-            //    {
-            //        projectErrorIndex = myProjectCaseDictionary.Count;
-            //        if (projectErrorIndex > 0)
-            //        {
-            //            foreach (Dictionary<int, CaseCell> tempProject in myProjectCaseDictionary.Values)
-            //            {
-            //                caseErrorIndex += " ->" + (tempProject.Count + 1);
-            //            }
-            //        }
-            //    }
-            //    MessageBox.Show(string.Format("用例脚本错误，请检查\n详见错误日志\n错误代码：{0}X{1}", projectErrorIndex, caseErrorIndex), "STOP");
-            //    tvw_Case.Nodes.Clear();
-            //    ErrorLog.PutInLog("ID:0527  " + ex.Message);
-            //    ErrorLog.PutInLog("脚本错误位置  ：第" + projectErrorIndex + "个工程，第" + (caseErrorIndex) + "个用例");
-            //    //启动数据呈现
-            //    lb_msg1.Text = "case file error";
-            //    ShowMessage(ex.Message);
-            //}
-            CreateTree(myProjctCollection);
+            //严重错误
+            catch (Exception ex)
+            {
+                int projectErrorIndex = 0;
+                string caseErrorIndex = "";
+                if (myProjectCaseDictionary.Count != 0)
+                {
+                    projectErrorIndex = myProjectCaseDictionary.Count;
+                    if (projectErrorIndex > 0)
+                    {
+                        foreach (Dictionary<int, CaseCell> tempProject in myProjectCaseDictionary.Values)
+                        {
+                            caseErrorIndex += " ->" + (tempProject.Count + 1);
+                        }
+                    }
+                }
+                MessageBox.Show(string.Format("用例脚本错误，请检查\n详见错误日志\n错误代码：{0}X{1}", projectErrorIndex, caseErrorIndex), "STOP");
+                tvw_Case.Nodes.Clear();
+                ErrorLog.PutInLog("ID:0527  " + ex.Message);
+                ErrorLog.PutInLog("脚本错误位置  ：第" + projectErrorIndex + "个工程，第" + (caseErrorIndex) + "个用例");
+                //启动数据呈现
+                lb_msg1.Text = "case file error";
+                ShowMessage(ex.Message);
+            }
+            CreateTree(nowCaseActionActuator.RunCellProjctCollection);
 
         }
 
@@ -764,7 +778,7 @@ namespace AutoTest
         /// <param name="yourResult">your Result</param>
         private void AddExecutiveResultToLvDataAdd(MyExecutionDeviceResult yourResult)
         {
-            MyCommonTool.SetControlFreeze(listView_DataAdd);
+            MyControlHelper.SetControlFreeze(listView_DataAdd);
             listView_DataAdd.BeginUpdate();
             listView_DataAdd.Items.Add(new ListViewItem(new string[] { listView_DataAdd.Items.Count.ToString(), yourResult.caseId.ToString(), yourResult.startTime, yourResult.spanTime, yourResult.result.ToString(), yourResult.caseTarget + "->" + yourResult.backContent, yourResult.staticDataResultCollection.MyToFormatString() + yourResult.additionalRemark }));
             if (pictureBox_dataAddStopTag)
@@ -772,7 +786,7 @@ namespace AutoTest
                 listView_DataAdd.EnsureVisible(listView_DataAdd.Items.Count - 1);
             }
             listView_DataAdd.EndUpdate();
-            MyCommonTool.SetControlUnfreeze(listView_DataAdd);
+            MyControlHelper.SetControlUnfreeze(listView_DataAdd);
 
             nowProjectRunCount.allCount++;
             if (yourResult.result == CaseResult.Pass)
@@ -831,6 +845,13 @@ namespace AutoTest
                     trb_addRecord.AddDate(yourContent, Color.DarkGreen, true);
                     break;
                 case CaseActuatorOutPutType.ActuatorError:
+                    trb_addRecord.AddDate(yourContent, Color.Red, true);
+                    ShowMessage(yourContent);
+                    break;
+                case CaseActuatorOutPutType.CaseLoadInfo:
+                    trb_addRecord.AddDate(yourContent, Color.DarkGreen, true);
+                    break;
+                case CaseActuatorOutPutType.CaseLoadError:
                     trb_addRecord.AddDate(yourContent, Color.Red, true);
                     ShowMessage(yourContent);
                     break;
@@ -911,7 +932,7 @@ namespace AutoTest
         {
             myini.IniWriteValue("vane", "filepath", tb_caseFilePath.Text, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
 
-            if (GetMainTaskRunState() == CaseActuatorState.Running)
+            if (GetMainTaskRunState() == CaseActuatorState.Running || GetMainTaskRunState() == CaseActuatorState.Pause)
             {
                 if (MessageBox.Show("您有任务还在运行，是否强制关闭？", "Warning", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                 {
@@ -919,7 +940,14 @@ namespace AutoTest
                 }
                 else
                 {
+                    //TreeAction需要立刻释放，此时UI资源已经被释放了
+                    if (nowCaseTreeAction != null)
+                    {
+                        nowCaseTreeAction.Dispose();
+                        nowCaseTreeAction = null;
+                    }
                     nowCaseActionActuator.StopCaseScript();
+                   
                     Thread.Sleep(100);
                     if ((GetMainTaskRunState() == CaseActuatorState.Running))
                     {

@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +13,7 @@ using MyCommonHelper;
 using MyCommonHelper.NetHelper;
 using MyCommonHelper.FileHelper;
 using System.IO;
+using MyCommonControl;
 
 namespace AutoTest
 {
@@ -470,11 +471,11 @@ namespace AutoTest
             return;
             for (int i = 0; i < 1; i++)
             {
-                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmbprivate void button2_Click(object sender, EventArgs e)", Color.Red, true);
-                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmbprivate void button2_Click(object sender, EventArgs e)", Color.Beige, true);
-                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Blue, true);
-                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.BurlyWood, true);
-                MyCommonTool.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Black, true);
+                MyControlHelper.setRichTextBoxContent(ref richTextBox1, "nmbprivate void button2_Click(object sender, EventArgs e)", Color.Red, true);
+                MyControlHelper.setRichTextBoxContent(ref richTextBox1, "nmbprivate void button2_Click(object sender, EventArgs e)", Color.Beige, true);
+                MyControlHelper.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Blue, true);
+                MyControlHelper.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.BurlyWood, true);
+                MyControlHelper.setRichTextBoxContent(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Black, true);
             }
 
             return;
@@ -491,7 +492,7 @@ namespace AutoTest
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            MyCommonTool.SetControlFreeze(richTextBox1);
+            MyControlHelper.SetControlFreeze(richTextBox1);
             int tempStart = richTextBox1.SelectionStart;
             int tempEnd = richTextBox1.SelectionLength;
 
@@ -500,7 +501,7 @@ namespace AutoTest
             //myCommonTool.setControlContentBottom(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.BurlyWood, true);
             //myCommonTool.setControlContentBottom(ref richTextBox1, "nmprivate void button2_Click(object sender, EventArgs e)b", Color.Black, true);
             richTextBox1.Select(tempStart, tempEnd);
-            MyCommonTool.SetControlUnfreeze(richTextBox1);
+            MyControlHelper.SetControlUnfreeze(richTextBox1);
 
             dataRecordBox1.AddDate("nmprivate void button2_Click(object sender, EventArgs e)b", Color.Blue, true);
             dataRecordBox1.AddDate("nmprivate void button2_Click(object sender, EventArgs e)b", Color.Black, true);

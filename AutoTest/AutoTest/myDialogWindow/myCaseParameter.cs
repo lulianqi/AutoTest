@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 using AutoTest.MyTool;
 using MyCommonHelper;
+using MyCommonControl;
+using MyCommonControl;
 
 
 /*******************************************************************************
@@ -119,7 +121,7 @@ namespace AutoTest.myDialogWindow
 
         public void updatalistView_CaseParameter()
         {
-            MyCommonTool.SetControlFreeze(listView_CaseParameter);
+            MyControlHelper.SetControlFreeze(listView_CaseParameter);
             listView_CaseParameter.BeginUpdate();
             listView_CaseParameter.Items.Clear();
             try
@@ -154,7 +156,7 @@ namespace AutoTest.myDialogWindow
                 //RunActuatorStaticDataCollection可能在执行线程中被修改
             }
             listView_CaseParameter.EndUpdate();
-            MyCommonTool.SetControlUnfreeze(listView_CaseParameter);
+            MyControlHelper.SetControlUnfreeze(listView_CaseParameter);
         }
 
 
