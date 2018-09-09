@@ -7,6 +7,7 @@ using MySshHelper;
 using Tamir.SharpSsh;
 using System.IO;
 using MyCommonHelper;
+using MyCommonHelper.FileHelper;
 
 
 namespace DemoForMyHelper

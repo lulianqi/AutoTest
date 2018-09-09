@@ -8,6 +8,7 @@ using AutoTest.MyTool;
 using AutoTest.myDialogWindow;
 using System.Threading;
 using MyCommonHelper;
+using MyCommonHelper.FileHelper;
 
 
 /*******************************************************************************

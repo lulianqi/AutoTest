@@ -8,6 +8,7 @@ using System.Xml;
 using MyCommonHelper;
 using CaseExecutiveActuator.Tool;
 using Tamir.SharpSsh;
+using MyCommonHelper.FileHelper;
 
 /*******************************************************************************
 * Copyright (c) 2015 lijie

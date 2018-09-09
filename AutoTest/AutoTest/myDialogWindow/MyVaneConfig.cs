@@ -15,6 +15,7 @@ using AutoTest.MyTool;
 using SYDControls;
 using MyCommonHelper;
 using MyCommonHelper.NetHelper;
+using MyCommonHelper.FileHelper;
 
 /*******************************************************************************
 * Copyright (c) 2013,浙江风向标科技有限公司

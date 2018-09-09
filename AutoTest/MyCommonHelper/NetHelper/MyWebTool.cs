@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using MyCommonHelper.FileHelper;
 
 
 /*******************************************************************************

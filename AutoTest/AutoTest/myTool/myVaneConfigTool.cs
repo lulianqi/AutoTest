@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Net;
 using MyCommonHelper;
+using MyCommonHelper.FileHelper;
 
 
 /*******************************************************************************

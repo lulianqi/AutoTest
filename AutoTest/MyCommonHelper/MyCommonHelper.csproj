@@ -47,6 +47,9 @@
     <Compile Include="EncryptionHelper\MyRSA.cs" />
     <Compile Include="EncryptionHelper\MyTripleDES.cs" />
     <Compile Include="EncryptionHelper\MyXOR.cs" />
+    <Compile Include="FileHelper\ErrorLog.cs" />
+    <Compile Include="FileHelper\FileService.cs" />
+    <Compile Include="FileHelper\MyIni.cs" />
     <Compile Include="MyBytes.cs" />
     <Compile Include="MyHiPerformanceTick.cs" />
     <Compile Include="NetHelper\MyTelnet.cs" />

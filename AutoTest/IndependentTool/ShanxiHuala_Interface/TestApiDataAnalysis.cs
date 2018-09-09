@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCommonHelper.FileHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,7 @@ namespace ShanxiHuala_Interface
             }
             catch (Exception ex)
             {
-                MyCommonHelper.ErrorLog.PutInLog("ID:00017  " + ex.Message);
+                ErrorLog.PutInLog("ID:00017  " + ex.Message);
                 return false;
             }
             myFile = tempFileName;

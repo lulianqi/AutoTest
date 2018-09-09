@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using AutoTest.MyTool;
 using MyCommonHelper;
+using MyCommonHelper.FileHelper;
 
 /*******************************************************************************
 * Copyright (c) 2013,浙江风向标
@@ -73,9 +74,9 @@ namespace AutoTest.myDialogWindow
                     myOwner.nowCaseActionActuator.ExecutiveThinkTime = int.Parse(tb_ow_maxline.Text);
                 }
                 myOwner.postDataDes = cb_ow_postDes.SelectedIndex;
-                myini.IniWriteValue("vane", "sleeptime", tb_ow_waittime.Text, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
-                myini.IniWriteValue("vane", "maxline", tb_ow_maxline.Text, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
-                myini.IniWriteValue("postsetting", "body",cb_ow_postDes.SelectedIndex.ToString() , System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+                MyIni.IniWriteValue("vane", "sleeptime", tb_ow_waittime.Text, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+                MyIni.IniWriteValue("vane", "maxline", tb_ow_maxline.Text, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+                MyIni.IniWriteValue("postsetting", "body", cb_ow_postDes.SelectedIndex.ToString(), System.Environment.CurrentDirectory + "\\seting\\seting.ini");
             }
             catch (Exception ex)
             {

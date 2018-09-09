@@ -7,3 +7,7 @@ F:\file\Code\GitHub\AutoTest\AutoTest\TestForMergeSrt\bin\Debug\TestForMergeSrt.
 F:\file\Code\GitHub\AutoTest\AutoTest\TestForMergeSrt\bin\Debug\TestForMergeSrt.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.pdb
+D:\my\GitHub\AutoTest\AutoTest\TestForMergeSrt\bin\Debug\TestForMergeSrt.exe
+D:\my\GitHub\AutoTest\AutoTest\TestForMergeSrt\bin\Debug\TestForMergeSrt.pdb
+D:\my\GitHub\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.exe
+D:\my\GitHub\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.pdb

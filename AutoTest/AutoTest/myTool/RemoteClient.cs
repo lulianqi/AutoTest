@@ -8,6 +8,7 @@ using System.Threading;
 
 using AutoTest.myDialogWindow;
 using AutoTest.MyControl;
+using MyCommonHelper.FileHelper;
 
 
 /*******************************************************************************
@@ -443,7 +444,7 @@ namespace AutoTest.MyTool
             }
             catch (Exception ex)
             {
-                MyCommonHelper.ErrorLog.PutInLog(ex);
+                ErrorLog.PutInLog(ex);
                 if (counectTime > 0 && isLive)
                 {
                     counectTime--;
@@ -467,7 +468,7 @@ namespace AutoTest.MyTool
                 {
                     SetClientState(RemoteClientState.Break);
                     Thread.Sleep(2000);
-                    MyCommonHelper.ErrorLog.PutInLog(ex);
+                    ErrorLog.PutInLog(ex);
                     counectTime = reCounectTime;
                     goto ReConnect;
                 }

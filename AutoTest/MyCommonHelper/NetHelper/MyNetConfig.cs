@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Management;
 using System.Net.NetworkInformation;
 using MyCommonHelper;
+using MyCommonHelper.FileHelper;
 
 /*******************************************************************************
 * Copyright (c) 2015 lijie

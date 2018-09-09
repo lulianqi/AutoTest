@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Timers;
 using System.Threading;
+using MyCommonHelper.FileHelper;
 
 
 /*******************************************************************************

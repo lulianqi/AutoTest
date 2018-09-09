@@ -24,6 +24,7 @@ using CaseExecutiveActuator.Cell;
 using CaseExecutiveActuator.CaseMefHelper;
 using CaseExecutiveActuator.CaseActuator;
 using CaseExecutiveActuator.Tool;
+using MyCommonHelper.FileHelper;
 
 /*******************************************************************************
 * Copyright (c) 2015 lijie
@@ -227,17 +228,17 @@ namespace AutoTest
             //myReceiveData.vaneV = myini.IniReadValue("vaneinterface", "v", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
             //myReceiveData.vaneUrl = myini.IniReadValue("vaneinterface", "vaneUrl", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
 
-            tb_caseFilePath.Text = myini.IniReadValue("casepath", "defaultpath", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            tb_caseFilePath.Text = MyIni.IniReadValue("casepath", "defaultpath", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
 
-            tb_tryTestData.Text = myini.IniReadValue("vane", "trytest", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
-            tb_caseFilePath.Text = myini.IniReadValue("vane", "filepath", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            tb_tryTestData.Text = MyIni.IniReadValue("vane", "trytest", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            tb_caseFilePath.Text = MyIni.IniReadValue("vane", "filepath", System.Environment.CurrentDirectory + "\\seting\\seting.ini");
 
             
             try
             {
-                maxLine = int.Parse(myini.IniReadValue("vane", "maxline", System.Environment.CurrentDirectory + "\\seting\\seting.ini"));
-                sleepTime = int.Parse(myini.IniReadValue("vane", "sleeptime", System.Environment.CurrentDirectory + "\\seting\\seting.ini"));
-                postDataDes = int.Parse(myini.IniReadValue("postsetting", "body", System.Environment.CurrentDirectory + "\\seting\\seting.ini"));
+                maxLine = int.Parse(MyIni.IniReadValue("vane", "maxline", System.Environment.CurrentDirectory + "\\seting\\seting.ini"));
+                sleepTime = int.Parse(MyIni.IniReadValue("vane", "sleeptime", System.Environment.CurrentDirectory + "\\seting\\seting.ini"));
+                postDataDes = int.Parse(MyIni.IniReadValue("postsetting", "body", System.Environment.CurrentDirectory + "\\seting\\seting.ini"));
             }
             catch(Exception ex)
             {
@@ -930,7 +931,7 @@ namespace AutoTest
         //close
         private void AutoTest_FormClosing(object sender, FormClosingEventArgs e)
         {
-            myini.IniWriteValue("vane", "filepath", tb_caseFilePath.Text, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            MyIni.IniWriteValue("vane", "filepath", tb_caseFilePath.Text, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
 
             if (GetMainTaskRunState() == CaseActuatorState.Running || GetMainTaskRunState() == CaseActuatorState.Pause)
             {
@@ -1234,7 +1235,7 @@ namespace AutoTest
             //{
             //    return;
             //}
-            myini.IniWriteValue("casepath", "pathtoopen", ((DevComponents.DotNetBar.ButtonItem)sender).Name, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+            MyIni.IniWriteValue("casepath", "pathtoopen", ((DevComponents.DotNetBar.ButtonItem)sender).Name, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
             System.Diagnostics.Process.Start(System.Environment.CurrentDirectory + "\\myTool\\XmlPad.exe");
         }
 
@@ -1414,7 +1415,7 @@ namespace AutoTest
             {
                 if (MessageBox.Show("功能模块丢失，是否直接打开脚本文件进行编辑", "Warming", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    myini.IniWriteValue("casepath", "pathtoopen", myCase.myFile, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+                    MyIni.IniWriteValue("casepath", "pathtoopen", myCase.myFile, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
                     System.Diagnostics.Process.Start(System.Environment.CurrentDirectory + "\\myTool\\XmlPad.exe");
                 }
             }
@@ -1431,7 +1432,7 @@ namespace AutoTest
             {
                 if (MessageBox.Show("功能模块丢失，是否直接打开脚本文件进行编辑", "Warming", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    myini.IniWriteValue("casepath", "pathtoopen", myCase.myFile, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
+                    MyIni.IniWriteValue("casepath", "pathtoopen", myCase.myFile, System.Environment.CurrentDirectory + "\\seting\\seting.ini");
                     System.Diagnostics.Process.Start(System.Environment.CurrentDirectory + "\\myTool\\XmlPad.exe");
                 }
             }

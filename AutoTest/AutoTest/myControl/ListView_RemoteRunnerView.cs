@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 using MyCommonControl;
 using AutoTest.RemoteServiceReference;
+using MyCommonHelper.FileHelper;
 
 
 /*******************************************************************************
@@ -126,7 +127,7 @@ namespace AutoTest.MyControl
                 }
                 else
                 {
-                    MyCommonHelper.ErrorLog.PutInLog("unkonw runnerState find in ListView_RemoteRunnerView");
+                    ErrorLog.PutInLog("unkonw runnerState find in ListView_RemoteRunnerView");
                 }
 
                 if (runnerState.RunnerProgress != null)
@@ -135,7 +136,7 @@ namespace AutoTest.MyControl
                 }
                 else
                 {
-                    MyCommonHelper.ErrorLog.PutInLog("no RunnerProgress find in ListView_RemoteRunnerView");
+                    ErrorLog.PutInLog("no RunnerProgress find in ListView_RemoteRunnerView");
                 }
 
                 this.Controls.Add(runerProgressBar);
@@ -171,7 +172,7 @@ namespace AutoTest.MyControl
                 }
                 else
                 {
-                    MyCommonHelper.ErrorLog.PutInLog("unkonw runnerState find in ListView_RemoteRunnerView");
+                    ErrorLog.PutInLog("unkonw runnerState find in ListView_RemoteRunnerView");
                 }
                 return true;
             }

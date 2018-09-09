@@ -7,3 +7,7 @@ F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.ex
 F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.pdb
+D:\my\GitHub\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.exe
+D:\my\GitHub\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.pdb
+D:\my\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.exe
+D:\my\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.pdb

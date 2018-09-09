@@ -16,6 +16,7 @@ using System.Drawing;
 using AutoTest.myDialogWindow;
 using CaseExecutiveActuator.CaseActuator;
 using CaseExecutiveActuator.Tool;
+using MyCommonHelper.FileHelper;
 
 /*******************************************************************************
 * Copyright (c) 2015 lijie
