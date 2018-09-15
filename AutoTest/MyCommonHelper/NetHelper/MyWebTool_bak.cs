@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using MyCommonHelper.FileHelper;
 
 
 /*******************************************************************************
@@ -190,11 +191,7 @@ namespace MyCommonHelper.NetHelper
             public static bool showResponseHeads = false;                                        //是否返回http返回头
             public static Encoding responseEncoding = System.Text.Encoding.GetEncoding("UTF-8"); //如果要显示返回数据，返回数据将使用此编码
             public static string defaultContentType = null;
-            private static readonly string EOF = "\r\n";
-            public static bool withDefaultCookieContainer = false;                               //是否默认启用CookieContainer，如果启用则默认会管理所有使用MyHttp的cookie内容
-            private static CookieContainer cookieContainer;
-
-
+            static readonly string EOF = "\r\n";
 
             static MyHttp()
             {
@@ -203,8 +200,6 @@ namespace MyCommonHelper.NetHelper
                 ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
                 //Console.WriteLine(ServicePointManager.DefaultConnectionLimit); //默认最大并发数有限，可以使用System.Net.ServicePointManager.DefaultConnectionLimit重设该值
                 System.Net.ServicePointManager.DefaultConnectionLimit = 2000;
-                //cookieContainer = new CookieContainer(5000, 500, 1000);
-                cookieContainer = new CookieContainer();
             }
 
             private static bool MyRemoteCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
@@ -264,20 +259,6 @@ namespace MyCommonHelper.NetHelper
                 return SendData(url, data, method, heads, saveFileName,null);
             }
 
-             /// <summary>
-            /// i will Send Data (you can put Head in Request) （CookieContainer will use withDefaultCookieContainer）
-            /// </summary>
-            /// <param name="url"> url [http://,https:// ,ftp:// ,file:// ]</param>
-            /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
-            /// <param name="method">GET/POST</param>
-            /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
-            /// <param name="saveFileName">save your response as file （if not need set it null）</param>
-            /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName, System.Threading.ManualResetEvent manualResetEvent)
-            {
-                return SendData(url, data, method, heads, withDefaultCookieContainer, saveFileName, null);
-            }
-
             /// <summary>
             /// i will Send Data (you can put Head in Request)
             /// </summary>
@@ -285,11 +266,9 @@ namespace MyCommonHelper.NetHelper
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
-            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</isAntoCookie>
             /// <param name="saveFileName">save your response as file （if not need set it null）</param>
-            /// <param name="manualResetEvent">ManualResetEvent 并发集合点 （if not need set it null）</param>
             /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads,bool isAntoCookie ,string saveFileName, System.Threading.ManualResetEvent manualResetEvent)
+            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName,System.Threading.ManualResetEvent manualResetEvent)
             {
                 Action WaitStartSignal = ()=>{
                     if(manualResetEvent!=null)
@@ -300,8 +279,8 @@ namespace MyCommonHelper.NetHelper
                 string re = null;
                 bool hasBody = !string.IsNullOrEmpty(data);
                 bool needBody = method.ToUpper() == "POST" || method.ToUpper() == "PUT";
-                WebRequest webRequest = null;
-                WebResponse webResponse = null;
+                WebRequest wr = null;
+                WebResponse result = null;
 
                 try
                 {
@@ -311,67 +290,52 @@ namespace MyCommonHelper.NetHelper
                         url += "?" + data;
                         data = null;           //make sure the data is null when Request is not post
                     }
-                    webRequest = WebRequest.Create(url);
-                    webRequest.Timeout = httpTimeOut;
-                    webRequest.Method = method;
+                    wr = WebRequest.Create(url);
+                    wr.Timeout = httpTimeOut;
+                    wr.Method = method;
                     if (heads==null && defaultContentType!=null)
                     {
-                        webRequest.ContentType = defaultContentType;
+                        wr.ContentType = defaultContentType;
                     }
                     //((HttpWebRequest)wr).KeepAlive = true;
                     //((HttpWebRequest)wr).Pipelined = true;
-                    HttpHelper.AddHttpHeads((HttpWebRequest)webRequest, heads);
+                    HttpHelper.AddHttpHeads((HttpWebRequest)wr, heads);
 
                     //wr.ContentType = "multipart/form-data";
                     char[] reserved = { '?', '=', '&' };
                     StringBuilder UrlEncoded = new StringBuilder();
                     byte[] SomeBytes = null;
-                    if (isAntoCookie)
-                    {
-                        ((HttpWebRequest)webRequest).CookieContainer = cookieContainer;
-                    }
-
                     if (needBody)
                     {
                         if (hasBody)
                         {
                             SomeBytes = Encoding.UTF8.GetBytes(data);
-                            webRequest.ContentLength = SomeBytes.Length;
+                            wr.ContentLength = SomeBytes.Length;
                             WaitStartSignal();                                       //尽可能确保所有manualResetEvent都在数据完全准备完成后
-                            Stream newStream = webRequest.GetRequestStream();        //连接建立Head已经发出，POST请求体还没有发送 (服务器可能会先回http 100)  (包括tcp及TLS链接建立都在这里)
+                            Stream newStream = wr.GetRequestStream();                //连接建立Head已经发出，POST请求体还没有发送 (服务器可能会先回http 100)
                             newStream.Write(SomeBytes, 0, SomeBytes.Length);         //请求交互完成
-                            newStream.Close();                                       //释放写入流（MSDN的示例也是在此处释放）(执行到此处请求就已经结束)
-                            webResponse = webRequest.GetResponse();                  //此处的GetResponse不会发起任何网络请求，只是为了填充webResponse
+                            newStream.Close();                                       //释放写入流（MSDN的示例也是在此处释放）
                         }
                         else
                         {
-                            webRequest.ContentLength = 0;
+                            wr.ContentLength = 0;
                             WaitStartSignal();
-                            webResponse = webRequest.GetResponse();   
+                            result = wr.GetResponse();   
                         }
                     }
                     else
                     {
                         WaitStartSignal();
-                        webResponse = webRequest.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
+                        result = wr.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
                     }
-
-                    Stream receiveStream = webResponse.GetResponseStream();
-
-                    if (isAntoCookie)
-                    {
-
-                        if (((HttpWebResponse)webResponse).Cookies != null && ((HttpWebResponse)webResponse).Cookies.Count > 0)
-                        {
-                            cookieContainer.Add(((HttpWebResponse)webResponse).Cookies);
-                        }
-                    }
+                   
+                    Stream receiveStream = result.GetResponseStream();
 
                     if (saveFileName == null)
                     {
                         if (showResponseHeads)
                         {
-                            re = webResponse.Headers.ToString();
+                            re = result.Headers.ToString();
                         }
                         using (var httpStreamReader = new StreamReader(receiveStream, responseEncoding))
                         {
@@ -437,9 +401,9 @@ namespace MyCommonHelper.NetHelper
 
                 finally
                 {
-                    if (webResponse != null)
+                    if (result != null)
                     {
-                        webResponse.Close();
+                        result.Close();
                     }
                 }
                 return re;
@@ -461,7 +425,7 @@ namespace MyCommonHelper.NetHelper
             }
 
             /// <summary>
-            /// DownloadFile with http 
+            /// DownloadFile with http
             /// </summary>
             /// <param name="url">url</param>
             /// <param name="saveFileName">save File path</param>
@@ -475,7 +439,6 @@ namespace MyCommonHelper.NetHelper
             }
 
             /// <summary>
-            /// 停止维护
             /// i will Send Data with multipart,if you do not want updata any file you can set isFile is false and set filePath is null (not maintain 请使用以HttpMultipartDate为参数的重载版本)
             /// </summary>
             /// <param name="url">url</param>
@@ -652,14 +615,13 @@ namespace MyCommonHelper.NetHelper
             /// </summary>
             /// <param name="url">url</param>
             /// <param name="heads">heads (if not need it ,just set it null)</param>
-            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</isAntoCookie>
             /// <param name="bodyData">normal body (if not need it ,just set it null)</param>
             /// <param name="HttpMultipartDate">MultipartDate list(if not need it ,just set it null)</param>
             /// <param name="bodyMultipartParameter">celerity MultipartParameter like "a=1&b=2&c=3" (if not need it ,just set it null)</param>
             /// <param name="timeOut">timeOut</param>
             /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
             /// <returns>back data</returns>
-            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads,bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding)
+            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding)
             {
                 string responseContent = null;
                 Encoding httpBodyEncoding = Encoding.UTF8;
@@ -796,12 +758,6 @@ namespace MyCommonHelper.NetHelper
 
                 webRequest.ContentLength = memStream.Length;
 
-                //设置CookieContainer
-                if (isAntoCookie)
-                {
-                    ((HttpWebRequest)webRequest).CookieContainer = cookieContainer;
-                }
-
                 //开始请求
                 try
                 {
@@ -815,16 +771,6 @@ namespace MyCommonHelper.NetHelper
                     requestStream.Close();
 
                     httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
-
-                    if (isAntoCookie)
-                    {
-
-                        if (httpWebResponse.Cookies != null && httpWebResponse.Cookies.Count > 0)
-                        {
-                            cookieContainer.Add(httpWebResponse.Cookies);
-                        }
-                    }
-
                     if (showResponseHeads)
                     {
                         responseContent = httpWebResponse.Headers.ToString();
@@ -873,23 +819,6 @@ namespace MyCommonHelper.NetHelper
             }
 
             
-            /// <summary>
-            /// post multipart data
-            /// </summary>
-            /// <param name="url">url</param>
-            /// <param name="heads">heads (if not need it ,just set it null)</param>
-            /// <param name="bodyData">normal body (if not need it ,just set it null)</param>
-            /// <param name="HttpMultipartDate">MultipartDate list(if not need it ,just set it null)</param>
-            /// <param name="bodyMultipartParameter">celerity MultipartParameter like "a=1&b=2&c=3" (if not need it ,just set it null)</param>
-            /// <param name="timeOut">timeOut</param>
-            /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
-            /// <returns>back data</returns>
-            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding)
-            {
-                return HttpPostData(url, heads, withDefaultCookieContainer, bodyData, multipartDateList, bodyMultipartParameter, timeOut, yourBodyEncoding);
-            }
-
-
             /// <summary>
             /// post multipart data
             /// </summary>
