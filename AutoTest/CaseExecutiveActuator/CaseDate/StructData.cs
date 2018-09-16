@@ -169,7 +169,7 @@ namespace CaseExecutiveActuator
     {
         public int caseId;                                              //case ID
         public CaseProtocol caseProtocol;                               //case 协议类型
-        public string requestTime;                                      //case 请求或执行时间 （这个时间指确认请求已经发出达到服务端，而不包括服务端的处理时间）(默认以毫秒为单位，可以支持更高的精度)
+        public string requestTime;                                      //case 请求或执行时间 （这个时间指确认请求已经发出达到服务端，而不包括服务端的处理时间）(默认以毫秒为单位，可以支持更高的精度)(若不提供该数值请设置该值为spanTime)
         public string spanTime;                                         //整个CASE 请求的执行时间 (默认以毫秒为单位，可以支持更高的精度)
         public string startTime;                                        //case 请求的开始时间     (尽量使用该种格式，并至少保证秒精度 DateTime.Now.ToString("HH:mm:ss");)
         public string caseTarget;                                       //当前case 请求的目标简述如接口名

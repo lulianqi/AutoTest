@@ -182,6 +182,23 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
+        public class HttpTimeLine
+        {
+            /// <summary>
+            /// 开始时间
+            /// </summary>
+            public DateTime StartTime { get; set; }
+            /// <summary>
+            /// 耗时（毫秒为单位）
+            /// </summary>
+            public long ElapsedTime { get; set; }
+
+            public HttpTimeLine()
+            {
+                ElapsedTime = 0;
+            }
+        }
+
         public class MyHttp
         {
             public int httpTimeOut = 100000;                                              //http time out ,SendData and HttpPostData will use this value   （连接超时）
@@ -299,13 +316,44 @@ namespace MyCommonHelper.NetHelper
             /// <returns>back</returns>
             public string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads,bool isAntoCookie ,string saveFileName, System.Threading.ManualResetEvent manualResetEvent)
             {
-                Action WaitStartSignal = ()=>{
-                    if(manualResetEvent!=null)
+                return SendData(url, data, method, heads, isAntoCookie, saveFileName, manualResetEvent, null);
+            }
+
+            /// <summary>
+            /// i will Send Data (you can put Head in Request)
+            /// </summary>
+            /// <param name="url"> url [http://,https:// ,ftp:// ,file:// ]</param>
+            /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
+            /// <param name="method">GET/POST</param>
+            /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
+            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</isAntoCookie>
+            /// <param name="saveFileName">save your response as file （if not need set it null）</param>
+            /// <param name="manualResetEvent">ManualResetEvent 并发集合点 （if not need set it null）</param>
+            /// <param name="timeline">请求时间线，请求耗时(如果不需要请传null)</param>
+            /// <returns>back</returns>
+            public string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, bool isAntoCookie, string saveFileName, System.Threading.ManualResetEvent manualResetEvent,HttpTimeLine timeline)
+            {
+                Stopwatch myWatch = null;
+                string re = null;
+
+                Action WaitStartSignal = () =>
+                {
+                    if (manualResetEvent != null)
                     {
                         manualResetEvent.WaitOne();
                     }
+
+                    if(timeline!=null)
+                    {
+                        timeline.StartTime = DateTime.Now;
+                        myWatch.Start();
+                    }
                 };
-                string re = null;
+
+                if(timeline!=null)
+                {
+                    myWatch = new Stopwatch();
+                }
                 bool hasBody = !string.IsNullOrEmpty(data);
                 bool needBody = method.ToUpper() == "POST" || method.ToUpper() == "PUT";
                 WebRequest webRequest = null;
@@ -322,7 +370,7 @@ namespace MyCommonHelper.NetHelper
                     webRequest = WebRequest.Create(url);
                     webRequest.Timeout = httpTimeOut;
                     webRequest.Method = method;
-                    if (heads==null && defaultContentType!=null)
+                    if (heads == null && defaultContentType != null)
                     {
                         webRequest.ContentType = defaultContentType;
                     }
@@ -350,18 +398,30 @@ namespace MyCommonHelper.NetHelper
                             newStream.Write(SomeBytes, 0, SomeBytes.Length);         //请求交互完成
                             newStream.Close();                                       //释放写入流（MSDN的示例也是在此处释放）(执行到此处请求就已经结束)
                             webResponse = webRequest.GetResponse();                  //此处的GetResponse不会发起任何网络请求，只是为了填充webResponse
+                            if (timeline != null)
+                            {
+                                myWatch.Stop();
+                            }
                         }
                         else
                         {
                             webRequest.ContentLength = 0;
                             WaitStartSignal();
-                            webResponse = webRequest.GetResponse();   
+                            webResponse = webRequest.GetResponse();
+                            if (timeline != null)
+                            {
+                                myWatch.Stop();
+                            }
                         }
                     }
                     else
                     {
                         WaitStartSignal();
                         webResponse = webRequest.GetResponse();                       //GetResponse 方法向 Internet 资源发送请求并返回 WebResponse 实例。如果该请求已由 GetRequestStream 调用启动，则 GetResponse 方法完成该请求并返回任何响应。
+                        if (timeline != null)
+                        {
+                            myWatch.Stop();
+                        }
                     }
 
                     Stream receiveStream = webResponse.GetResponseStream();
@@ -404,13 +464,13 @@ namespace MyCommonHelper.NetHelper
                     //save file
                     else
                     {
-                        using (FileStream stream = new FileStream(saveFileName,FileMode.Create,FileAccess.Write,FileShare.Write))
+                        using (FileStream stream = new FileStream(saveFileName, FileMode.Create, FileAccess.Write, FileShare.Write))
                         {
                             int tempReadCount = 1024;
                             byte[] infbytes = new byte[tempReadCount]; //反复使用前也不要清空，因为后面写入会指定有效长度
                             int tempLen = tempReadCount;
                             int offset = 0;
-                            while (tempLen >= tempReadCount )
+                            while (tempLen >= tempReadCount)
                             {
                                 tempLen = receiveStream.Read(infbytes, 0, tempReadCount);
                                 stream.Write(infbytes, 0, tempLen);//FileStream 内建缓冲区，不用自己构建缓存写入,FileStream的offset会自动维护，也可以使用stream.Position强制指定
@@ -449,6 +509,14 @@ namespace MyCommonHelper.NetHelper
                     {
                         webResponse.Close();
                     }
+                    if (timeline != null)
+                    {
+                        if (myWatch.IsRunning)
+                        {
+                            myWatch.Stop();
+                        }
+                        timeline.ElapsedTime = myWatch.ElapsedMilliseconds;
+                    }
                 }
                 return re;
             }
@@ -483,7 +551,7 @@ namespace MyCommonHelper.NetHelper
             }
 
             /// <summary>
-            /// 停止维护
+            /// ***********该重载停止维护************
             /// i will Send Data with multipart,if you do not want updata any file you can set isFile is false and set filePath is null (not maintain 请使用以HttpMultipartDate为参数的重载版本)
             /// </summary>
             /// <param name="url">url</param>
@@ -666,14 +734,37 @@ namespace MyCommonHelper.NetHelper
             /// <returns>back data</returns>
             public string HttpPostData(string url, List<KeyValuePair<string, string>> heads,bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, Encoding yourBodyEncoding)
             {
+                return HttpPostData(url, heads, isAntoCookie, bodyData, multipartDateList, bodyMultipartParameter, yourBodyEncoding, null);
+            }
+
+
+            /// <summary>
+            /// post multipart data
+            /// </summary>
+            /// <param name="url">url</param>
+            /// <param name="heads">heads (if not need it ,just set it null)</param>
+            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</param>
+            /// <param name="bodyData">normal body (if not need it ,just set it null)</param>
+            /// <param name="multipartDateList">MultipartDate list(if not need it ,just set it null)</param>
+            /// <param name="bodyMultipartParameter">celerity MultipartParameter your should set it like "a=1&amp;b=2&amp;c=3" and it will send in multipart format (if not need it ,just set it null)</param>
+            /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
+            /// <param name="timeline">请求时间线，请求耗时(如果不需要请传null)</param>
+            /// <returns>back data</returns>
+            public string HttpPostData(string url, List<KeyValuePair<string, string>> heads, bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, Encoding yourBodyEncoding, HttpTimeLine timeline)
+            {
                 string responseContent = null;
                 Encoding httpBodyEncoding = Encoding.UTF8;
                 string defaultMultipartContentType = "application/octet-stream";
                 NameValueCollection stringDict = new NameValueCollection();
                 HttpWebRequest webRequest = null;
-                HttpWebResponse httpWebResponse =null;
+                HttpWebResponse httpWebResponse = null;
+                Stopwatch myWatch = null;
 
-                if (yourBodyEncoding!=null)
+                if (timeline != null)
+                {
+                    myWatch = new Stopwatch();
+                }
+                if (yourBodyEncoding != null)
                 {
                     httpBodyEncoding = yourBodyEncoding;
                 }
@@ -711,20 +802,20 @@ namespace MyCommonHelper.NetHelper
                 webRequest.ContentType = "multipart/form-data; boundary=" + boundary;
 
                 //写如常规body
-                if (bodyData!=null)
+                if (bodyData != null)
                 {
                     var bodybytes = httpBodyEncoding.GetBytes(bodyData);
                     memStream.Write(bodybytes, 0, bodybytes.Length);
                 }
 
-                if (multipartDateList!=null)
+                if (multipartDateList != null)
                 {
-                    foreach(HttpMultipartDate nowMultipart in multipartDateList)
+                    foreach (HttpMultipartDate nowMultipart in multipartDateList)
                     {
                         //Console.WriteLine(System.DateTime.Now.Ticks);
                         //const string filePartHeader = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\n" + "Content-Type: {2}\r\n\r\n";
                         string nowPartHeader = "Content-Disposition: form-data";
-                        if(nowMultipart.Name!=null)
+                        if (nowMultipart.Name != null)
                         {
                             nowPartHeader += string.Format("; name=\"{0}\"", nowMultipart.Name);
                         }
@@ -769,7 +860,7 @@ namespace MyCommonHelper.NetHelper
                         }
                     }
                 }
-                 
+
                 //快捷写入写入POST非文件参数
                 if (bodyMultipartParameter != null)
                 {
@@ -815,11 +906,19 @@ namespace MyCommonHelper.NetHelper
                     var tempBuffer = new byte[memStream.Length];
                     memStream.Read(tempBuffer, 0, tempBuffer.Length);
                     memStream.Close();
-
+                    if(timeline!=null)
+                    {
+                        timeline.StartTime = DateTime.Now;
+                        myWatch.Start();
+                    }
                     requestStream.Write(tempBuffer, 0, tempBuffer.Length);
                     requestStream.Close();
 
                     httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
+                    if (timeline != null)
+                    {
+                        myWatch.Stop();
+                    }
 
                     if (isAntoCookie)
                     {
@@ -868,16 +967,24 @@ namespace MyCommonHelper.NetHelper
 
                 finally
                 {
-                    if(httpWebResponse!=null)
+                    if (httpWebResponse != null)
                     {
                         httpWebResponse.Close();
+                    }
+                    if (timeline != null)
+                    {
+                        if (myWatch.IsRunning)
+                        {
+                            myWatch.Stop();
+                        }
+                        timeline.ElapsedTime = myWatch.ElapsedMilliseconds;
                     }
                 }
 
                 return responseContent;
             }
 
-            
+
             /// <summary>
             /// post multipart data
             /// </summary>

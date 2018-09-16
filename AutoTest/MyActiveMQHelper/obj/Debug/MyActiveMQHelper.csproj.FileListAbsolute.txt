@@ -13,3 +13,4 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelpe
 F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelper.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.pdb
+D:\my\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.csprojResolveAssemblyReference.cache

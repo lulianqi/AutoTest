@@ -34,6 +34,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
     {
         private bool isConnect;
         private myConnectForVanelife_http myExecutionDeviceInfo;
+        private AtHttpProtocol.HttpClient httpClient;
 
         public event CaseActionActuator.delegateGetExecutiveData OnGetExecutiveData;
 
@@ -146,6 +147,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
         public CaseProtocolExecutionForVanelife_http(myConnectForVanelife_http yourConnectInfo)
         {
             myExecutionDeviceInfo = yourConnectInfo;
+            httpClient = new AtHttpProtocol.HttpClient();
         }
 
         public object Clone()
@@ -212,18 +214,18 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                 //Start Http 
                 if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.httpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
+                    httpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.httpMethod, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
                 }
                 else
                 {
                     if (nowExecutionContent.myHttpMultipart.IsFilled())
                     {
                         //由于vanelife协议要求在Multipart把业务数据全部放在了url中
-                        AtHttpProtocol.HttpClient.HttpPostData(tempUrlAddress + "?" + vanelifeData, 30000, nowExecutionContent.myHttpMultipart.name, nowExecutionContent.myHttpMultipart.fileName, nowExecutionContent.myHttpMultipart.isFile, nowExecutionContent.myHttpMultipart.fileData, null, myResult);
+                        httpClient.HttpPostData(tempUrlAddress + "?" + vanelifeData, 30000, nowExecutionContent.myHttpMultipart.name, nowExecutionContent.myHttpMultipart.fileName, nowExecutionContent.myHttpMultipart.isFile, nowExecutionContent.myHttpMultipart.fileData, null, myResult);
                     }
                     else
                     {
-                        AtHttpProtocol.HttpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.httpMethod, myResult);
+                        httpClient.SendData(tempUrlAddress, vanelifeData, nowExecutionContent.httpMethod, myResult);
                     }
                 }
 

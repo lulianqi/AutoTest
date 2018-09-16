@@ -34,17 +34,11 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             public static int httpTimeOut = 100000;                                            //http time out , HttpPostData will not use this value
             public static int httpReadWriteTimeout = 300000;                                   //WebRequest.ReadWriteTimeout 该属性暂时未设置
             public static bool showResponseHeads = false;                                      //是否返回http返回头
-            public bool withDefaultCookieContainer = false;                                    //是否默认启用CookieContainer，如果启用则默认会管理所有使用MyHttp的cookie内容
-            private CookieContainer cookieContainer;
+
             static HttpClient()
             {
                 ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(
                     (sender, certificate, chain, sslPolicyErrors) => { return true; });                
-            }
-
-            public HttpClient()
-            {
-                cookieContainer = new CookieContainer();
             }
 
             /// <summary>
@@ -55,7 +49,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="method">GET/POST</param>
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <returns>back </returns>
-            public  string SendData(string url, string data, string method, MyExecutionDeviceResult myEdr)
+            public static string SendData(string url, string data, string method, MyExecutionDeviceResult myEdr)
             {
                 return SendData(url, data, method, null, myEdr);
             }
@@ -68,7 +62,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="method">GET/POST</param>
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <returns>back </returns>
-            public string SendData(string url, string data, string method, List<KeyValuePair<string,string>> heads, MyExecutionDeviceResult myEdr)
+            public static string SendData(string url, string data, string method, List<KeyValuePair<string,string>> heads, MyExecutionDeviceResult myEdr)
             {
                 string re = "";
                 bool hasBody = !string.IsNullOrEmpty(data);
@@ -177,7 +171,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <param name="saveFileName">the file will save with this name</param>
             /// <returns>back</returns>
-            public string SendDataSaveEx(string url, string data, string method, MyExecutionDeviceResult myEdr, string saveFileName)
+            public static string SendDataSaveEx(string url, string data, string method, MyExecutionDeviceResult myEdr, string saveFileName)
             {
                 return SendDataSaveEx(url, data, method, null, myEdr, saveFileName);
             }
@@ -191,7 +185,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <param name="saveFileName">the file will save with this name</param>
             /// <returns>back</returns>
-            public string SendDataSaveEx(string url, string data, string method, List<KeyValuePair<string, string>> heads, MyExecutionDeviceResult myEdr, string saveFileName)
+            public static string SendDataSaveEx(string url, string data, string method, List<KeyValuePair<string, string>> heads, MyExecutionDeviceResult myEdr, string saveFileName)
             {
                 string re = "";
                 bool hasBody = !string.IsNullOrEmpty(data);
@@ -336,7 +330,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <param name="saveFileName">the file will save with this name</param>
             /// <returns>back</returns>
-            public string SendData(string url, string data, string method, MyExecutionDeviceResult myEdr, string saveFileName)
+            public static string SendData(string url, string data, string method, MyExecutionDeviceResult myEdr, string saveFileName)
             {
                 return SendData(url, data, method, null, myEdr, saveFileName);
             }
@@ -350,7 +344,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <param name="saveFileName">the file will save with this name</param>
             /// <returns>back</returns>
-            public string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, MyExecutionDeviceResult myEdr, string saveFileName)
+            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, MyExecutionDeviceResult myEdr, string saveFileName)
             {
                 string re = "";
                 bool hasBody = !string.IsNullOrEmpty(data);
@@ -432,7 +426,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <param name="bodyParameter">the other Parameter in body</param>
             /// <param name="myAht">the myAutoHttpTest will fill the data</param>
             /// <returns>back</returns>
-            public string HttpPostData(string url, int timeOut, string name, string filename, bool isFile, string filePath, string bodyParameter, MyExecutionDeviceResult myEdr)
+            public static string HttpPostData(string url, int timeOut, string name, string filename, bool isFile, string filePath, string bodyParameter, MyExecutionDeviceResult myEdr)
             {
                 string responseContent =null;
                 NameValueCollection stringDict = new NameValueCollection();
@@ -609,7 +603,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
                 return responseContent;
             }
 
-            public string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<MyWebTool.HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding, MyExecutionDeviceResult myEdr)
+            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<MyWebTool.HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding, MyExecutionDeviceResult myEdr)
             {
                 string responseContent = null;
                 Encoding httpBodyEncoding = Encoding.UTF8;

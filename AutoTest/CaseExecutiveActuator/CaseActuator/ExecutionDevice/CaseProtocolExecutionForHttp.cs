@@ -31,6 +31,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
     {
         private bool isConnect;
         private myConnectForHttp myExecutionDeviceInfo;
+        private AtHttpProtocol.HttpClient httpClient;
 
         public event CaseActionActuator.delegateGetExecutiveData OnGetExecutiveData;
 
@@ -150,6 +151,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
         public CaseProtocolExecutionForHttp(myConnectForHttp yourConnectInfo)
         {
             myExecutionDeviceInfo = yourConnectInfo;
+            httpClient = new AtHttpProtocol.HttpClient();
         }
 
         public object Clone()
@@ -242,15 +244,15 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                             myMultiparts.Add(new MyCommonHelper.NetHelper.MyWebTool.HttpMultipartDate(tempPt.name, tempPt.fileName, null, tempPt.isFile, tempPt.fileData));
                         }
                     }
-                    AtHttpProtocol.HttpClient.HttpPostData(httpUri, httpHeads, httpBody, myMultiparts, null, MyConfiguration.PostFileTimeOut, null, myResult);
+                    httpClient.HttpPostData(httpUri, httpHeads, httpBody, myMultiparts, null, MyConfiguration.PostFileTimeOut, null, myResult);
                 }
                 else if (nowExecutionContent.myHttpAisleConfig.httpDataDown.IsFilled())
                 {
-                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
+                    httpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult, CaseTool.GetFullPath(nowExecutionContent.myHttpAisleConfig.httpDataDown.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError), MyConfiguration.CaseFilePath));
                 }
                 else
                 {
-                    AtHttpProtocol.HttpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult);
+                    httpClient.SendData(httpUri, httpBody, nowExecutionContent.httpMethod, httpHeads, myResult);
                 }
 
                 if (tempError != null)
