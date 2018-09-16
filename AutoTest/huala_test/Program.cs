@@ -12,6 +12,7 @@ namespace huala_test
 {
     class Program
     {
+        static MyCommonHelper.NetHelper.MyWebTool.MyHttp myHttp = new MyCommonHelper.NetHelper.MyWebTool.MyHttp();
         static void Main(string[] args)
         {
             Console.WriteLine("any key to start");
@@ -40,7 +41,7 @@ namespace huala_test
             string[] goodArr = goodStr.Split(',');
             foreach (string goodId in goodArr)
             {
-                Console.WriteLine(MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("http://wxtest.huala.com/huala/v3/sync-goods?goodsId={0}", goodId)));
+                Console.WriteLine(myHttp.SendData(String.Format("http://wxtest.huala.com/huala/v3/sync-goods?goodsId={0}", goodId)));
             }
 
         }
@@ -53,7 +54,7 @@ namespace huala_test
             {
                 System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
                 System.Diagnostics.Debug.WriteLine(nowSuuid);
-                string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("http://wxv4.huala.com/huala/weixin/createQrCode?suid={0}", nowSuuid));
+                string tempRespans = myHttp.SendData(String.Format("http://wxv4.huala.com/huala/weixin/createQrCode?suid={0}", nowSuuid));
                 Console.WriteLine(tempRespans);
                 System.Diagnostics.Debug.WriteLine(tempRespans);
             }
@@ -199,7 +200,7 @@ namespace huala_test
             List<KeyValuePair<string,string>> myHeads =new List<KeyValuePair<string,string>>();
             myHeads.Add(new KeyValuePair<string,string>("authoration","apicode"));
             myHeads.Add(new KeyValuePair<string,string>("apicode","1f9ad9bd346d4f7caba8c62bf41d8522"));
-            string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://api.yonyoucloud.com/apis/yonyoucloudresearch/enterpriseSearch/queryFull?fullname={0}", companyName), null, "GET", myHeads);
+            string tempRespans = myHttp.SendData(String.Format("https://api.yonyoucloud.com/apis/yonyoucloudresearch/enterpriseSearch/queryFull?fullname={0}", companyName), null, "GET", myHeads);
             Console.WriteLine(tempRespans);
         }
 
@@ -244,7 +245,7 @@ namespace huala_test
                 string ipSource ="";
                 try
                 {
-                    ipSource = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format(" http://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query={0}&co=&resource_id=6006&t=1534239628331&ie=utf8&oe=utf8&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery110207479682729924466_1534239324699&_=1534239324704", ipKv.Key));
+                    ipSource = myHttp.SendData(String.Format(" http://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query={0}&co=&resource_id=6006&t=1534239628331&ie=utf8&oe=utf8&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery110207479682729924466_1534239324699&_=1534239324704", ipKv.Key));
                 }
                 catch(Exception ex)
                 {
@@ -285,7 +286,7 @@ namespace huala_test
             heads.Add(new KeyValuePair<string,string>("Content-Type","application/json"));
             heads.Add(new KeyValuePair<string,string>("Cookie",string.Format("hltoken={0}",hltoken)));
             string tempResponse=null;
-            tempResponse = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(string.Format("https://wxwyjtest.huala.com/huala/v3/seckillActivity/canBuy?seckillActivityId={0}&seckillActivityGoodsId={1}", seckillActivityId, seckillActivityGoodsId), null, "GET", heads);
+            tempResponse = myHttp.SendData(string.Format("https://wxwyjtest.huala.com/huala/v3/seckillActivity/canBuy?seckillActivityId={0}&seckillActivityGoodsId={1}", seckillActivityId, seckillActivityGoodsId), null, "GET", heads);
             Console.WriteLine();
         }
 
@@ -338,7 +339,7 @@ namespace huala_test
                     int ThreadId = Thread.CurrentThread.ManagedThreadId;
                     Console.WriteLine(String.Format("【ThreadId:{1}】{0} :开始同步.......", rows[0].ToString(), ThreadId));
                     //string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://wxv4.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
-                    string tempRespans = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String.Format("https://wxwyjtest.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
+                    string tempRespans = myHttp.SendData(String.Format("https://wxwyjtest.huala.com/huala/seller/login/AllInOneNative?suid={0}&uuid={1}", rows[1].ToString(), rows[2].ToString()));
                     if(tempRespans.Contains("\"success\":true"))
                     {
                         Console.WriteLine("同步完成");

@@ -28,6 +28,8 @@ namespace TestForDefaultClass
     class Program
     {
         public delegate void Mydelegate();
+
+        static MyWebTool.MyHttp myHttp = new MyWebTool.MyHttp();
         static void Main(string[] args)
         {
             Uri baseUri = new Uri("http://www.contoso.com/");
@@ -186,17 +188,17 @@ namespace TestForDefaultClass
                 Console.WriteLine(string.Format("{0}\r\n{1}\r\n{2}\r\n{3}\r\n{4}", l1, l2, l3, l2 - l1, l3 - l2));
             }
             Console.ReadLine();
-            Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST",null,@"D:\shou.txt"));
-            Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
-            Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
-            Console.WriteLine(MyWebTool.MyHttp.SendData("https://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
-            Console.WriteLine(MyWebTool.MyHttp.SendData("https://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
+            Console.WriteLine(myHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
+            Console.WriteLine(myHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
+            Console.WriteLine(myHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
+            Console.WriteLine(myHttp.SendData("https://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
+            Console.WriteLine(myHttp.SendData("https://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
             Console.ReadLine();
-            MyWebTool.MyHttp.showResponseHeads = true;
-            Console.WriteLine(MyWebTool.MyHttp.SendData("http://www.baidu.com", null, "Get", null, @"D:\baidu.txt"));
+            myHttp.showResponseHeads = true;
+            Console.WriteLine(myHttp.SendData("http://www.baidu.com", null, "Get", null, @"D:\baidu.txt"));
             Console.ReadLine();
-            MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", "a=1&b=2&c=3");
-            MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", null);
+            myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", "a=1&b=2&c=3");
+            myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", null);
             List<MyWebTool.HttpMultipartDate> ntds = new List<MyWebTool.HttpMultipartDate>();
             List<KeyValuePair<string, string>> heads = new List<KeyValuePair<string, string>>();
             heads.Add(new KeyValuePair<string, string>("Hostx", "HttpPostData"));
@@ -208,13 +210,13 @@ namespace TestForDefaultClass
             ntds.Add(new MyWebTool.HttpMultipartDate(null, null, "type", false, null));
             ntds.Add(new MyWebTool.HttpMultipartDate("name", "filename", null, true, @"C:\Users\administer\Desktop\new 2")); //@"C:\Users\cllq\Desktop\CSV\my.csv"
 
-            Console.WriteLine(MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", null, null, null, null, 1000, null));
-            Console.WriteLine(MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", null, null, ntds, null, 1000, null));
-            Console.WriteLine(MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", 1000, Encoding.UTF8));
+            Console.WriteLine(myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", null, null, null, null, 1000, null));
+            Console.WriteLine(myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", null, null, ntds, null, 1000, null));
+            Console.WriteLine(myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", 1000, Encoding.UTF8));
             Console.ReadLine();
-            MyWebTool.MyHttp.showResponseHeads = true;
-            Console.WriteLine(MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "Get"));
-            Console.WriteLine(MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", 1000, Encoding.UTF8));
+            myHttp.showResponseHeads = true;
+            Console.WriteLine(myHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "Get"));
+            Console.WriteLine(myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", 1000, Encoding.UTF8));
             Console.ReadLine();
         }
 
@@ -263,7 +265,7 @@ namespace TestForDefaultClass
 
                     for (int m = 0; m < 100 ;m++ )
                     {
-                        System.Diagnostics.Debug.WriteLine(MyWebTool.MyHttp.SendData("http://wxv4.huala.com/huala/v3/seller/detail/562", null, "GET", null, null, manualResetEvent)); 
+                        System.Diagnostics.Debug.WriteLine(myHttp.SendData("http://wxv4.huala.com/huala/v3/seller/detail/562", null, "GET", null, null, manualResetEvent)); 
                     } 
                     Console.WriteLine("stop id is " + ((int)ob).ToString()); 
                 }), 0);

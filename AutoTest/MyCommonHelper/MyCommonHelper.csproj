@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="EncryptionHelper\MyAES.cs" />
     <Compile Include="EncryptionHelper\MyDES.cs" />
+    <Compile Include="EncryptionHelper\MyRC4.cs" />
     <Compile Include="EncryptionHelper\MyRSA.cs" />
     <Compile Include="EncryptionHelper\MyTripleDES.cs" />
     <Compile Include="EncryptionHelper\MyXOR.cs" />

@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using MyCommonHelper.FileHelper;
 
 
 /*******************************************************************************
@@ -24,7 +25,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace MyCommonHelper.NetHelper
 {
-    public static class MyWebTool
+    public class MyWebTool
     {
         public class HttpMultipartDate
         {
@@ -36,9 +37,7 @@ namespace MyCommonHelper.NetHelper
             testdata
             -----------------8d46c074125a195--
              * */
-
-
-            
+          
             /// <summary>
             /// name属性值,为null则不加
             /// </summary>
@@ -69,7 +68,7 @@ namespace MyCommonHelper.NetHelper
             /// </summary>
             /// <param name="yourName">name属性值,为null则不加</param>
             /// <param name="yourFileName">filename属性值,为null则不加</param>
-            /// <param name="yourContentType">Multipart下Content-Type: application/octet-stream,为null则不加</param>
+            /// <param name="yourContentType">Multipart下Content-Type: application/octet-stream,为null则为默认值application/octet-stream</param>
             /// <param name="yourIsFile">是否把fileData当作文件路径处理</param>
             /// <param name="yourFileData">文件内容或文件路径。为null则当作""（作为路径时如果路径不存在将会返回错误）</param>
             public HttpMultipartDate(string yourName,string yourFileName,string yourContentType,bool yourIsFile,string yourFileData)
@@ -183,16 +182,16 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
-        public static class MyHttp
+        public class MyHttp
         {
-            public static int httpTimeOut = 100000;                                              //http time out , HttpPostData will not use this value   （连接超时）
-            public static int httpReadWriteTimeout = 300000;                                     //WebRequest.ReadWriteTimeout 该属性暂时未设置           （读取/写入超时）
-            public static bool showResponseHeads = false;                                        //是否返回http返回头
-            public static Encoding responseEncoding = System.Text.Encoding.GetEncoding("UTF-8"); //如果要显示返回数据，返回数据将使用此编码
-            public static string defaultContentType = null;
-            private static readonly string EOF = "\r\n";
-            public static bool withDefaultCookieContainer = false;                               //是否默认启用CookieContainer，如果启用则默认会管理所有使用MyHttp的cookie内容
-            private static CookieContainer cookieContainer;
+            public int httpTimeOut = 100000;                                              //http time out ,SendData and HttpPostData will use this value   （连接超时）
+            public int httpReadWriteTimeout = 300000;                                     //WebRequest.ReadWriteTimeout 该属性暂时未设置           （读取/写入超时）
+            public bool showResponseHeads = false;                                        //是否返回http返回头
+            public Encoding responseEncoding = System.Text.Encoding.GetEncoding("UTF-8"); //如果要显示返回数据，返回数据将使用此编码
+            public string defaultContentType = null;
+            private readonly string EOF = "\r\n";
+            public bool withDefaultCookieContainer = false;                               //是否默认启用CookieContainer，如果启用则默认会管理所有使用MyHttp的cookie内容
+            private CookieContainer cookieContainer;
 
 
 
@@ -203,8 +202,6 @@ namespace MyCommonHelper.NetHelper
                 ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
                 //Console.WriteLine(ServicePointManager.DefaultConnectionLimit); //默认最大并发数有限，可以使用System.Net.ServicePointManager.DefaultConnectionLimit重设该值
                 System.Net.ServicePointManager.DefaultConnectionLimit = 2000;
-                //cookieContainer = new CookieContainer(5000, 500, 1000);
-                cookieContainer = new CookieContainer();
             }
 
             private static bool MyRemoteCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
@@ -212,7 +209,18 @@ namespace MyCommonHelper.NetHelper
                 return true;
             }
 
+            public MyHttp()
+            {
+                //cookieContainer = new CookieContainer(5000, 500, 1000);
+                cookieContainer = new CookieContainer();
+            }
 
+            public MyHttp(bool isShowResponseHeads, bool isWithDefaultCookieContainer) : this()
+            {
+                showResponseHeads = isShowResponseHeads;
+                withDefaultCookieContainer = isWithDefaultCookieContainer;
+            }
+           
 
             /// <summary>
             /// i will Send Data 
@@ -221,7 +229,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <returns>back </returns>
-            public static string SendData(string url, string data, string method)
+            public string SendData(string url, string data, string method)
             {
                 return SendData(url, data, method, null,null);
             }
@@ -231,7 +239,7 @@ namespace MyCommonHelper.NetHelper
             /// </summary>
             /// <param name="url">url</param>
             /// <returns>back</returns>
-            public static string SendData(string url)
+            public string SendData(string url)
             {
                 return SendData(url, null, "GET", null,null);
             }
@@ -243,9 +251,8 @@ namespace MyCommonHelper.NetHelper
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
-            /// <param name="saveFileName">save your response as file （if not need set it null）</param>
             /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads)
+            public string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads)
             {
                 return SendData(url, data, method, heads, null);
             }
@@ -259,7 +266,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
             /// <param name="saveFileName">save your response as file （if not need set it null）</param>
             /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName)
+            public string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName)
             {
                 return SendData(url, data, method, heads, saveFileName,null);
             }
@@ -272,8 +279,9 @@ namespace MyCommonHelper.NetHelper
             /// <param name="method">GET/POST</param>
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
             /// <param name="saveFileName">save your response as file （if not need set it null）</param>
+            /// <param name="manualResetEvent">ManualResetEvent 并发集合点 （if not need set it null）</param>
             /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName, System.Threading.ManualResetEvent manualResetEvent)
+            public string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName, System.Threading.ManualResetEvent manualResetEvent)
             {
                 return SendData(url, data, method, heads, withDefaultCookieContainer, saveFileName, null);
             }
@@ -289,7 +297,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="saveFileName">save your response as file （if not need set it null）</param>
             /// <param name="manualResetEvent">ManualResetEvent 并发集合点 （if not need set it null）</param>
             /// <returns>back</returns>
-            public static string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads,bool isAntoCookie ,string saveFileName, System.Threading.ManualResetEvent manualResetEvent)
+            public string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads,bool isAntoCookie ,string saveFileName, System.Threading.ManualResetEvent manualResetEvent)
             {
                 Action WaitStartSignal = ()=>{
                     if(manualResetEvent!=null)
@@ -451,7 +459,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="url">url</param>
             /// <param name="heads">heads</param>
             /// <param name="saveFileName">save File path</param>
-            public static void DownloadFile(string url, List<KeyValuePair<string, string>> heads, string saveFileName)
+            public void DownloadFile(string url, List<KeyValuePair<string, string>> heads, string saveFileName)
             {
                 using (WebClient client = new WebClient())
                 {
@@ -465,7 +473,7 @@ namespace MyCommonHelper.NetHelper
             /// </summary>
             /// <param name="url">url</param>
             /// <param name="saveFileName">save File path</param>
-            public static void DownloadFile(string url, string saveFileName)
+            public void DownloadFile(string url, string saveFileName)
             {
                 using (WebClient client = new WebClient())
                 {
@@ -486,7 +494,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="filePath">file path or cmd</param>
             /// <param name="bodyParameter">the other Parameter in body</param>
             /// <returns>back</returns>
-            public static string HttpPostData(string url, int timeOut, string name, string filename,bool isFile ,string filePath, string bodyParameter)
+            public string HttpPostData(string url, int timeOut, string name, string filename,bool isFile ,string filePath, string bodyParameter)
             {
                 string responseContent; 
                 NameValueCollection stringDict = new NameValueCollection();
@@ -645,21 +653,18 @@ namespace MyCommonHelper.NetHelper
                 return responseContent;
             }
 
-
-
             /// <summary>
             /// post multipart data
             /// </summary>
             /// <param name="url">url</param>
             /// <param name="heads">heads (if not need it ,just set it null)</param>
-            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</isAntoCookie>
+            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</param>
             /// <param name="bodyData">normal body (if not need it ,just set it null)</param>
-            /// <param name="HttpMultipartDate">MultipartDate list(if not need it ,just set it null)</param>
-            /// <param name="bodyMultipartParameter">celerity MultipartParameter like "a=1&b=2&c=3" (if not need it ,just set it null)</param>
-            /// <param name="timeOut">timeOut</param>
+            /// <param name="multipartDateList">MultipartDate list(if not need it ,just set it null)</param>
+            /// <param name="bodyMultipartParameter">celerity MultipartParameter your should set it like "a=1&amp;b=2&amp;c=3" and it will send in multipart format (if not need it ,just set it null)</param>
             /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
             /// <returns>back data</returns>
-            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads,bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding)
+            public string HttpPostData(string url, List<KeyValuePair<string, string>> heads,bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, Encoding yourBodyEncoding)
             {
                 string responseContent = null;
                 Encoding httpBodyEncoding = Encoding.UTF8;
@@ -702,7 +707,7 @@ namespace MyCommonHelper.NetHelper
 
                 // 设置属性
                 webRequest.Method = "POST";
-                webRequest.Timeout = timeOut;
+                webRequest.Timeout = httpTimeOut;
                 webRequest.ContentType = "multipart/form-data; boundary=" + boundary;
 
                 //写如常规body
@@ -880,13 +885,12 @@ namespace MyCommonHelper.NetHelper
             /// <param name="heads">heads (if not need it ,just set it null)</param>
             /// <param name="bodyData">normal body (if not need it ,just set it null)</param>
             /// <param name="HttpMultipartDate">MultipartDate list(if not need it ,just set it null)</param>
-            /// <param name="bodyMultipartParameter">celerity MultipartParameter like "a=1&b=2&c=3" (if not need it ,just set it null)</param>
-            /// <param name="timeOut">timeOut</param>
+            /// <param name="bodyMultipartParameter">celerity MultipartParameter like "a=1&amp;b=2&amp;c=3" (if not need it ,just set it null)</param>
             /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
             /// <returns>back data</returns>
-            public static string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding)
+            public string HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, Encoding yourBodyEncoding)
             {
-                return HttpPostData(url, heads, withDefaultCookieContainer, bodyData, multipartDateList, bodyMultipartParameter, timeOut, yourBodyEncoding);
+                return HttpPostData(url, heads, withDefaultCookieContainer, bodyData, multipartDateList, bodyMultipartParameter, yourBodyEncoding);
             }
 
 
@@ -896,9 +900,9 @@ namespace MyCommonHelper.NetHelper
             /// <param name="url">url</param>
             /// <param name="HttpMultipartDate">MultipartDate list(if not need it ,just set it null)</param>
             /// <returns>back data</returns>
-            public static string HttpPostData(string url,HttpMultipartDate HttpMultipartDate)
+            public string HttpPostData(string url,HttpMultipartDate HttpMultipartDate)
             {
-                return HttpPostData(url, null, null, new List<HttpMultipartDate>() { HttpMultipartDate }, null, 100000, null);
+                return HttpPostData(url, null, null, new List<HttpMultipartDate>() { HttpMultipartDate }, null , null);
             }
         }
     }

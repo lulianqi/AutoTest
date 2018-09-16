@@ -1140,7 +1140,7 @@ namespace AutoTest
             }
             else
             {
-                string myTempStr = MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(tb_tryTestData.Text, "", "GET");
+                string myTempStr = (new MyCommonHelper.NetHelper.MyWebTool.MyHttp()).SendData(tb_tryTestData.Text, "", "GET");
                 trb_addRecord.AddDate( myTempStr, Color.Gray, true);
             }
         }

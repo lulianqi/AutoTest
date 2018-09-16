@@ -434,7 +434,7 @@ namespace AutoTest
         private void button1_Click(object sender, EventArgs e)
         {
             //MyWebTool.MyHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", null);
-            MyWebTool.MyHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "GET");
+            (new MyCommonHelper.NetHelper.MyWebTool.MyHttp()).SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "GET");
             //mySP.openSerialPort("COM6", 57600);
         }
 

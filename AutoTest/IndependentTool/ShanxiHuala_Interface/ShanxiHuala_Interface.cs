@@ -22,6 +22,8 @@ namespace ShanxiHuala_Interface
             InitializeComponent();
         }
 
+        private MyCommonHelper.NetHelper.MyWebTool.MyHttp myHttp = new MyCommonHelper.NetHelper.MyWebTool.MyHttp();
+
         private string tipInfoPath = System.Environment.CurrentDirectory + "\\interfaceData.xml";
 
         private String host = "http://192.168.200.142:8091";
@@ -56,7 +58,7 @@ namespace ShanxiHuala_Interface
 
         private void bt_oauth_Click(object sender, EventArgs e)
         {
-            string response = MyWebTool.MyHttp.SendData(string.Format("{0}/oauth/token", host), "grant_type=client_credentials&scope=trust+read+write", "POST",
+            string response = myHttp.SendData(string.Format("{0}/oauth/token", host), "grant_type=client_credentials&scope=trust+read+write", "POST",
                 new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("Authorization", string.Format(" Basic {0}", Convert.ToBase64String(Encoding.UTF8.GetBytes(client_id + ":" + client_secret)))) });
             string nowToken= GetAccess_token(response);
             if(nowToken==null)
@@ -89,7 +91,7 @@ namespace ShanxiHuala_Interface
             //<Api name="api">rtb_sendBody.Text.Replace("    "," ")</Api>
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            string response = MyWebTool.MyHttp.SendData(string.Format("{0}{1}", tb_host.Text, tb_url.Text), rtb_sendBody.Text, cb_httpMethod.Text, myHeads);
+            string response = myHttp.SendData(string.Format("{0}{1}", tb_host.Text, tb_url.Text), rtb_sendBody.Text, cb_httpMethod.Text, myHeads);
             if (nowNode!=null)
             {
                 nowNode.InnerText = rtb_sendBody.Text;
