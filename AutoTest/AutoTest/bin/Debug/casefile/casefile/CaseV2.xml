@@ -71,14 +71,22 @@
         <dev_secret></dev_secret>
         <default_url></default_url>
       </NewActuator>
+      <NewActuator name="http2" protocol="http">
+        <default_url>http://pv.sohu.com</default_url>
+        <timeOut>100000</timeOut><!--毫秒为单位不填则取默认值100000 【非必填】-->
+        <show_response_heads>false</show_response_heads><!--true/false 不填这为默认false【非必填】-->
+        <use_cookieContainer>true</use_cookieContainer><!--true/false 不填这为默认false【非必填】-->
+        <request_encoding>utf-8</request_encoding><!--encoding属性可以选择绝大多数编码方式如utf-8（详见https://msdn.microsoft.com/zh-cn/library/system.text.encoding(v=vs.110).aspx）不填这为默认utf-8【非必填】-->
+        <response_encoding>utf-8</response_encoding>
+      </NewActuator>
       <NewActuator name="http" protocol="http">
         <default_url>http://pv.sohu.com</default_url>
       </NewActuator>
       <NewActuator name="mq" protocol="activeMQ">
         <brokerUri>tcp://192.168.200.150:61616</brokerUri> <!--必填-->
         <clientId></clientId><!--选填(不填则不需要此节点)(下面的节点信息无特殊说明都为非必填)，如果这里使用了指定值将不能同时建立2条使用同样clientId的连接-->
-        <factoryUserName>username</factoryUserName>
-        <factoryPassword>password</factoryPassword>
+        <factoryUserName>username</factoryUserName><!--选填，如果没有用户名密码可以不填含该项或填空-->
+        <factoryPassword>password</factoryPassword><!--选填，如果没有用户名密码可以不填含该项或填空-->
         <queue>q1</queue>
         <queue>q2</queue>
         <topic>t1</topic>
@@ -717,6 +725,51 @@
         </Attribute>
       </Case>
     </Repeat>
+    <Case id="1000050001" remark="http cookies test">
+      <Content protocol="http" actuator="http2">
+        <Uri httpMethod="GET">https://wxsytest.huala.com/huala/v3/qaLogin?oId=oN2Zfszme7aKT5VT3Jf0udj7PxvM</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+        <Body>lj is good</Body>
+      </Content>
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000050002" remark="http cookies test">
+      <Content protocol="http" actuator="http2">
+        <Uri httpMethod="GET">https://wxsytest.huala.com/huala/v3/qaLogin?oId=oN2Zfszme7aKT5VT3Jf0udj7PxvM</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+        <Body>lj is good</Body>
+      </Content>
+      <Expect method="contain">baidu</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000050003" remark="http cookies test">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="GET">https://wxsytest.huala.com/huala/v3/qaLogin?oId=oN2Zfszme7aKT5VT3Jf0udj7PxvM</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+        <Body>lj is good</Body>
+      </Content>
+      <Expect method="contain">baidu</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
   </Project>
   <Project id="1000010004" name="Project test" remark="case测试">
     <Case id="1000040001" remark="console">

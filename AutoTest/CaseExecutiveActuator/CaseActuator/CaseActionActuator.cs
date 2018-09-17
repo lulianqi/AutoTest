@@ -868,7 +868,72 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_vanelifeHttp);
                                                             break;
                                                         case CaseProtocol.http:
-                                                            myConnectForHttp ConnectInfo_http = new myConnectForHttp(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "default_url"));
+                                                            string tempHttpSetValue = null;
+                                                            int tempHttpTimeOut=0;
+                                                            bool tempHttpIsShowHeads=false;
+                                                            bool tempHttpIsUseCookie = false;
+                                                            Encoding tempHttpRequestEncoding = Encoding.UTF8;
+                                                            Encoding tempHttpResponseEncoding = Encoding.UTF8;
+                                                            #region GetConnectForHttp
+                                                            //timeOut
+                                                            tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "timeOut");
+                                                            if(!int.TryParse(tempHttpSetValue, out tempHttpTimeOut))
+                                                            {
+                                                                SetNowExecutiveActuatorError(string.Format("[add http actuator ]find error data in timeOut when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                break;
+                                                            }
+                                                            //show_response_heads
+                                                            tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "show_response_heads");
+                                                            if(tempHttpSetValue=="true" || tempHttpSetValue=="false")
+                                                            {
+                                                                tempHttpIsShowHeads= (tempHttpSetValue=="true");
+                                                            }
+                                                            else
+                                                            {
+                                                                SetNowExecutiveActuatorError(string.Format("[add http actuator ]find error data in show_response_heads when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                break;
+                                                            }
+                                                            //use_cookieContainer
+                                                            tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "use_cookieContainer");
+                                                            if(tempHttpSetValue=="true" || tempHttpSetValue=="false")
+                                                            {
+                                                                tempHttpIsUseCookie = (tempHttpSetValue == "true");
+                                                            }
+                                                            else
+                                                            {
+                                                                SetNowExecutiveActuatorError(string.Format("[add http actuator ]find error data in use_cookieContainer when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                break;
+                                                            }
+                                                            //request_encoding
+                                                            tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "request_encoding");
+                                                            if (tempHttpSetValue != null)
+                                                            {
+                                                                try
+                                                                {
+                                                                    tempHttpRequestEncoding = Encoding.GetEncoding(tempHttpSetValue);
+                                                                }
+                                                                catch
+                                                                {
+                                                                    SetNowExecutiveActuatorError(string.Format("[add http actuator ]  your encoding is illegal in request_encoding when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
+                                                            }
+                                                            //response_encoding
+                                                            tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "response_encoding");
+                                                            if (tempHttpSetValue != null)
+                                                            {
+                                                                try
+                                                                {
+                                                                    tempHttpResponseEncoding = Encoding.GetEncoding(tempHttpSetValue);
+                                                                }
+                                                                catch
+                                                                {
+                                                                    SetNowExecutiveActuatorError(string.Format("[add http actuator ]  your encoding is illegal in response_encoding when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
+                                                            } 
+	#endregion
+                                                            myConnectForHttp ConnectInfo_http = new myConnectForHttp(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "default_url"),tempHttpTimeOut,tempHttpIsShowHeads,tempHttpIsUseCookie,tempHttpRequestEncoding,tempHttpResponseEncoding);
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_http);
                                                             break;
                                                         case CaseProtocol.mysql:
@@ -934,9 +999,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                 SetNowExecutiveActuatorError(string.Format("[add telnet actuator ]can not find user name or password data when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
-                                                            //encodeing
                                                             //encoding
-
                                                             if (tempTelnetEncoding != null)
                                                             {
                                                                 try

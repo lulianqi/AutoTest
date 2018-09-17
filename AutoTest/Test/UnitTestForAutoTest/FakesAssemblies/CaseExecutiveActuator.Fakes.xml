@@ -3064,8 +3064,8 @@
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.Behavior">
             <summary>为已填充的类型的所有方法分配行为</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.ConstructorCaseProtocolString">
-            <summary>设置 myConnectForHttp.myConnectForHttp(CaseProtocol yourCaseProtocol, String yourDefault_url) 的 填充码</summary>
+        <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.ConstructorCaseProtocolStringInt32BooleanBooleanEncodingEncoding">
+            <summary>设置 myConnectForHttp.myConnectForHttp(CaseProtocol yourCaseProtocol, String yourDefault_url, Int32 yourTimeOut, Boolean yourIsShowResponseHeads, Boolean yourIsUseDefaultCookieContainer, Encoding yourRequestEncoding, Encoding yourResponseEncoding) 的 填充码</summary>
         </member>
         <member name="P:CaseExecutiveActuator.Fakes.ShimmyConnectForHttp.MyCaseProtocolGet">
             <summary>设置 myConnectForHttp.get_MyCaseProtocol() 的 填充码</summary>
@@ -3811,7 +3811,7 @@
         <member name="T:CaseExecutiveActuator.Fakes.StubmyConnectForHttp">
             <summary>CaseExecutiveActuator.myConnectForHttp 的存根类型</summary>
         </member>
-        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.#ctor(CaseExecutiveActuator.CaseProtocol,System.String)">
+        <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.#ctor(CaseExecutiveActuator.CaseProtocol,System.String,System.Int32,System.Boolean,System.Boolean,System.Text.Encoding,System.Text.Encoding)">
             <summary>初始化新实例</summary>
         </member>
         <member name="M:CaseExecutiveActuator.Fakes.StubmyConnectForHttp.InitializeStub">
@@ -3979,12 +3979,6 @@
         <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.HttpPostDataStringListOfKeyValuePairOfStringStringStringListOfMyWebToolHttpMultipartDateStringInt32EncodingMyExecutionDeviceResult">
             <summary>设置 HttpClient.HttpPostData(String url, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, String bodyData, List`1&lt;HttpMultipartDate&gt; multipartDateList, String bodyMultipartParameter, Int32 timeOut, Encoding yourBodyEncoding, MyExecutionDeviceResult myEdr) 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataSaveExStringStringStringListOfKeyValuePairOfStringStringMyExecutionDeviceResultString">
-            <summary>设置 HttpClient.SendDataSaveEx(String url, String data, String method, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, MyExecutionDeviceResult myEdr, String saveFileName) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataSaveExStringStringStringMyExecutionDeviceResultString">
-            <summary>设置 HttpClient.SendDataSaveEx(String url, String data, String method, MyExecutionDeviceResult myEdr, String saveFileName) 的 填充码</summary>
-        </member>
         <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.SendDataStringStringStringListOfKeyValuePairOfStringStringMyExecutionDeviceResult">
             <summary>设置 HttpClient.SendData(String url, String data, String method, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, MyExecutionDeviceResult myEdr) 的 填充码</summary>
         </member>
@@ -4000,11 +3994,26 @@
         <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.StaticConstructor">
             <summary>设置 HttpClient.HttpClient() 的 填充码</summary>
         </member>
-        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient._cctorb__0ObjectX509CertificateX509ChainSslPolicyErrors">
-            <summary>设置 HttpClient.&lt;.cctor&gt;b__0(Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) 的 填充码</summary>
-        </member>
         <member name="T:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.AllInstances">
             <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.AllInstances.HttpPostDataStringInt32StringStringBooleanStringStringMyExecutionDeviceResult">
+            <summary>设置 HttpClient.HttpPostData(String url, Int32 timeOut, String name, String filename, Boolean isFile, String filePath, String bodyParameter, MyExecutionDeviceResult myEdr) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.AllInstances.HttpPostDataStringListOfKeyValuePairOfStringStringStringListOfMyWebToolHttpMultipartDateStringInt32EncodingMyExecutionDeviceResult">
+            <summary>设置 HttpClient.HttpPostData(String url, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, String bodyData, List`1&lt;HttpMultipartDate&gt; multipartDateList, String bodyMultipartParameter, Int32 timeOut, Encoding yourBodyEncoding, MyExecutionDeviceResult myEdr) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.AllInstances.SendDataStringStringStringListOfKeyValuePairOfStringStringMyExecutionDeviceResult">
+            <summary>设置 HttpClient.SendData(String url, String data, String method, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, MyExecutionDeviceResult myEdr) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.AllInstances.SendDataStringStringStringListOfKeyValuePairOfStringStringMyExecutionDeviceResultString">
+            <summary>设置 HttpClient.SendData(String url, String data, String method, List`1&lt;KeyValuePair`2&lt;String,String&gt;&gt; heads, MyExecutionDeviceResult myEdr, String saveFileName) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.AllInstances.SendDataStringStringStringMyExecutionDeviceResult">
+            <summary>设置 HttpClient.SendData(String url, String data, String method, MyExecutionDeviceResult myEdr) 的 填充码</summary>
+        </member>
+        <member name="P:CaseExecutiveActuator.ProtocolExecutive.Fakes.ShimAtHttpProtocol.ShimHttpClient.AllInstances.SendDataStringStringStringMyExecutionDeviceResultString">
+            <summary>设置 HttpClient.SendData(String url, String data, String method, MyExecutionDeviceResult myEdr, String saveFileName) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Tool.Fakes.ShimCaseTool">
             <summary>CaseExecutiveActuator.Tool.CaseTool 的填充码类型</summary>
@@ -4054,6 +4063,9 @@
         <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimCaseTool.GetXmlParametContentXmlNode">
             <summary>设置 CaseTool.GetXmlParametContent(XmlNode sourceNode) 的 填充码</summary>
         </member>
+        <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimCaseTool.GetXmlParametContentXmlNodeString">
+            <summary>设置 CaseTool.GetXmlParametContent(XmlNode sourceNode, String tagName) 的 填充码</summary>
+        </member>
         <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimCaseTool.StaticConstructor">
             <summary>设置 CaseTool.CaseTool() 的 填充码</summary>
         </member>
@@ -4065,9 +4077,6 @@
         </member>
         <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimCaseTool.getTargetCaseIDStringInt32OutInt32Out">
             <summary>设置 CaseTool.getTargetCaseID(String yourData, Int32&amp; PorjectID, Int32&amp; CaseID) 的 填充码</summary>
-        </member>
-        <member name="P:CaseExecutiveActuator.Tool.Fakes.ShimCaseTool.getXmlParametContentXmlNodeString">
-            <summary>设置 CaseTool.getXmlParametContent(XmlNode sourceNode, String tagName) 的 填充码</summary>
         </member>
         <member name="T:CaseExecutiveActuator.Tool.Fakes.ShimMyAssert">
             <summary>CaseExecutiveActuator.Tool.MyAssert 的填充码类型</summary>

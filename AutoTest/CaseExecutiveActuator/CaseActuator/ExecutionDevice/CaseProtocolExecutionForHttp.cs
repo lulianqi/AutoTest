@@ -104,7 +104,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                     //AisleConfig
                     if (yourContentNode["AisleConfig"] != null)
                     {
-                        myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
+                        myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.GetXmlParametContent(yourContentNode["AisleConfig"], "HttpDataDown");
                     }
                     //HttpMultipart
                     XmlNode tempHttpMultipartNode = yourContentNode["HttpMultipart"];

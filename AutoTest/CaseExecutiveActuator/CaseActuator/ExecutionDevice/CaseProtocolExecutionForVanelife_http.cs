@@ -105,8 +105,8 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
 
                         if (tempHttpConfigDataNode["AisleConfig"] != null)
                         {
-                            myRunContent.myHttpAisleConfig.httpAddress = CaseTool.getXmlParametContent(tempHttpConfigDataNode["AisleConfig"], "HttpAddress");
-                            myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.getXmlParametContent(tempHttpConfigDataNode["AisleConfig"], "HttpDataDown");
+                            myRunContent.myHttpAisleConfig.httpAddress = CaseTool.GetXmlParametContent(tempHttpConfigDataNode["AisleConfig"], "HttpAddress");
+                            myRunContent.myHttpAisleConfig.httpDataDown = CaseTool.GetXmlParametContent(tempHttpConfigDataNode["AisleConfig"], "HttpDataDown");
                         }
                         if (tempHttpConfigDataNode["HttpMultipart"] != null)
                         {

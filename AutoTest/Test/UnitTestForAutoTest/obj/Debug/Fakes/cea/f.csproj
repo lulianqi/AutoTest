@@ -8,7 +8,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
-    <ProjectGuid>cc579a50-324b-41a7-b7a5-fc0283aa235f</ProjectGuid>
+    <ProjectGuid>6cc5cb94-d19d-4839-a9b3-a6a5b50319c4</ProjectGuid>
     <!-- update GUID here -->
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -51,12 +51,12 @@
       <Aliases>mqttf</Aliases>
     </Reference>
     <Reference Include="CaseExecutiveActuator">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\CaseExecutiveActuator.dll</HintPath>
       <Aliases>cea</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="MyCommonHelper">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyCommonHelper.dll</HintPath>
       <Aliases>mch</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -66,7 +66,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Newtonsoft.Json.dll</HintPath>
       <Aliases>nj</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -81,7 +81,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="AutoTest">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\AutoTest.exe</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
@@ -89,7 +89,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="MyControl">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Windows.Forms">
@@ -97,11 +97,11 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SYDControls">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\SYDControls.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\bin\Debug\SYDControls.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Runtime.Serialization">
@@ -121,19 +121,19 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="MyActiveMQHelper">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyActiveMQHelper.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyActiveMQHelper.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="MySqlHelper">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySqlHelper.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySqlHelper.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Tamir.SharpSSH">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Tamir.SharpSSH.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Tamir.SharpSSH.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="MyVoiceHelper">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyVoiceHelper.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MyVoiceHelper.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Data">
@@ -165,23 +165,23 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Apache.NMS.ActiveMQ">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.ActiveMQ.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.ActiveMQ.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Apache.NMS">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Apache.NMS.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySql.Data.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\MySql.Data.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="DiffieHellman">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\DiffieHellman.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\DiffieHellman.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Org.Mentalis.Security">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Org.Mentalis.Security.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\Org.Mentalis.Security.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Xml.Linq">
@@ -189,7 +189,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SpeechLib">
-      <HintPath>D:\my\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\SpeechLib.dll</HintPath>
+      <HintPath>F:\file\Code\GitHub\AutoTest\AutoTest\CaseExecutiveActuator\bin\Debug\SpeechLib.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Transactions">

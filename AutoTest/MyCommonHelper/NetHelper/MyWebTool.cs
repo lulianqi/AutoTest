@@ -204,12 +204,13 @@ namespace MyCommonHelper.NetHelper
             public int httpTimeOut = 100000;                                              //http time out ,SendData and HttpPostData will use this value   （连接超时）
             public int httpReadWriteTimeout = 300000;                                     //WebRequest.ReadWriteTimeout 该属性暂时未设置           （读取/写入超时）
             public bool showResponseHeads = false;                                        //是否返回http返回头
+            public Encoding requestEncoding = System.Text.Encoding.GetEncoding("UTF-8");  //需要发送数据，将使用此编码（HttpPostData 不使用该设置，需要单独设置）
             public Encoding responseEncoding = System.Text.Encoding.GetEncoding("UTF-8"); //如果要显示返回数据，返回数据将使用此编码
             public string defaultContentType = null;
-            private readonly string EOF = "\r\n";
             public bool withDefaultCookieContainer = false;                               //是否默认启用CookieContainer，如果启用则默认会管理所有使用MyHttp的cookie内容
-            private CookieContainer cookieContainer;
 
+            private readonly string EOF = "\r\n";
+            private CookieContainer cookieContainer;
 
 
             static MyHttp()
@@ -232,7 +233,8 @@ namespace MyCommonHelper.NetHelper
                 cookieContainer = new CookieContainer();
             }
 
-            public MyHttp(bool isShowResponseHeads, bool isWithDefaultCookieContainer) : this()
+            public MyHttp(bool isShowResponseHeads, bool isWithDefaultCookieContainer)
+                : this()
             {
                 showResponseHeads = isShowResponseHeads;
                 withDefaultCookieContainer = isWithDefaultCookieContainer;
@@ -326,7 +328,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
-            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</isAntoCookie>
+            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</param>
             /// <param name="saveFileName">save your response as file （if not need set it null）</param>
             /// <param name="manualResetEvent">ManualResetEvent 并发集合点 （if not need set it null）</param>
             /// <param name="timeline">请求时间线，请求耗时(如果不需要请传null)</param>
@@ -391,7 +393,7 @@ namespace MyCommonHelper.NetHelper
                     {
                         if (hasBody)
                         {
-                            SomeBytes = Encoding.UTF8.GetBytes(data);
+                            SomeBytes = requestEncoding.GetBytes(data);
                             webRequest.ContentLength = SomeBytes.Length;
                             WaitStartSignal();                                       //尽可能确保所有manualResetEvent都在数据完全准备完成后
                             Stream newStream = webRequest.GetRequestStream();        //连接建立Head已经发出，POST请求体还没有发送 (服务器可能会先回http 100)  (包括tcp及TLS链接建立都在这里)
@@ -478,6 +480,27 @@ namespace MyCommonHelper.NetHelper
                             }
                             re = string.Format("file save success in [ {0} ]  with {1}byte", saveFileName, offset);
                         }
+                        #region WriteAllBytes
+                        /**
+                        byte[] infbytes = new byte[10240];
+
+                        int tempLen = 512;
+                        int offset = 0;
+
+                        //数据最多20k可以不需要分段读取
+                        while (tempLen - 512 >= 0)
+                        {
+                        tempLen = ReceiveStream.Read(infbytes, offset, 512);
+                        offset += tempLen;
+                        }
+                        byte[] bytesToSave = new byte[offset];
+                        for (int i = 0; i < offset; i++)
+                        {
+                        bytesToSave[i] = infbytes[i];
+                        }
+                        File.WriteAllBytes(saveFileName, bytesToSave);
+                        * */
+                        #endregion
                     }
                 }
 
@@ -721,22 +744,7 @@ namespace MyCommonHelper.NetHelper
                 return responseContent;
             }
 
-            /// <summary>
-            /// post multipart data
-            /// </summary>
-            /// <param name="url">url</param>
-            /// <param name="heads">heads (if not need it ,just set it null)</param>
-            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</param>
-            /// <param name="bodyData">normal body (if not need it ,just set it null)</param>
-            /// <param name="multipartDateList">MultipartDate list(if not need it ,just set it null)</param>
-            /// <param name="bodyMultipartParameter">celerity MultipartParameter your should set it like "a=1&amp;b=2&amp;c=3" and it will send in multipart format (if not need it ,just set it null)</param>
-            /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
-            /// <returns>back data</returns>
-            public string HttpPostData(string url, List<KeyValuePair<string, string>> heads,bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, Encoding yourBodyEncoding)
-            {
-                return HttpPostData(url, heads, isAntoCookie, bodyData, multipartDateList, bodyMultipartParameter, yourBodyEncoding, null);
-            }
-
+            
 
             /// <summary>
             /// post multipart data
@@ -748,9 +756,10 @@ namespace MyCommonHelper.NetHelper
             /// <param name="multipartDateList">MultipartDate list(if not need it ,just set it null)</param>
             /// <param name="bodyMultipartParameter">celerity MultipartParameter your should set it like "a=1&amp;b=2&amp;c=3" and it will send in multipart format (if not need it ,just set it null)</param>
             /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
+            /// <param name="manualResetEvent">ManualResetEvent 并发集合点 （if not need set it null）</param>
             /// <param name="timeline">请求时间线，请求耗时(如果不需要请传null)</param>
             /// <returns>back data</returns>
-            public string HttpPostData(string url, List<KeyValuePair<string, string>> heads, bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, Encoding yourBodyEncoding, HttpTimeLine timeline)
+            public string HttpPostData(string url, List<KeyValuePair<string, string>> heads, bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, Encoding yourBodyEncoding, System.Threading.ManualResetEvent manualResetEvent, HttpTimeLine timeline)
             {
                 string responseContent = null;
                 Encoding httpBodyEncoding = Encoding.UTF8;
@@ -906,6 +915,10 @@ namespace MyCommonHelper.NetHelper
                     var tempBuffer = new byte[memStream.Length];
                     memStream.Read(tempBuffer, 0, tempBuffer.Length);
                     memStream.Close();
+                    if (manualResetEvent != null)
+                    {
+                        manualResetEvent.WaitOne();
+                    }
                     if(timeline!=null)
                     {
                         timeline.StartTime = DateTime.Now;
@@ -982,6 +995,22 @@ namespace MyCommonHelper.NetHelper
                 }
 
                 return responseContent;
+            }
+
+            /// <summary>
+            /// post multipart data
+            /// </summary>
+            /// <param name="url">url</param>
+            /// <param name="heads">heads (if not need it ,just set it null)</param>
+            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</param>
+            /// <param name="bodyData">normal body (if not need it ,just set it null)</param>
+            /// <param name="multipartDateList">MultipartDate list(if not need it ,just set it null)</param>
+            /// <param name="bodyMultipartParameter">celerity MultipartParameter your should set it like "a=1&amp;b=2&amp;c=3" and it will send in multipart format (if not need it ,just set it null)</param>
+            /// <param name="yourBodyEncoding">the MultipartParameter Encoding (if set it null ,it will be utf 8)</param>
+            /// <returns>back data</returns>
+            public string HttpPostData(string url, List<KeyValuePair<string, string>> heads, bool isAntoCookie, string bodyData, List<HttpMultipartDate> multipartDateList, string bodyMultipartParameter, Encoding yourBodyEncoding)
+            {
+                return HttpPostData(url, heads, isAntoCookie, bodyData, multipartDateList, bodyMultipartParameter, yourBodyEncoding, null,null);
             }
 
 

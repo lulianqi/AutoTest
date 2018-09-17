@@ -203,7 +203,7 @@ namespace CaseExecutiveActuator.Tool
         }
 
         /// <summary>
-        /// i will get the Attribute in sourceNode child with specified tag attribute(Ex if it is inexistence i will return null)
+        /// i will get the Attribute in sourceNode child with specified tag attribute( if it is inexistence i will return null)
         /// </summary>
         /// <param name="sourceNode">source Node(if it is null i will Throw error)</param>
         /// <param name="tagAttribute">the Attribute taht you want</param>
@@ -290,7 +290,7 @@ namespace CaseExecutiveActuator.Tool
         /// <param name="sourceNode">source Node (please make sure the sourceNode not null)</param>
         /// <param name="tagName">child name</param>
         /// <returns>caseParameterizationContent you want</returns>
-        public static caseParameterizationContent getXmlParametContent(XmlNode sourceNode, string tagName)
+        public static caseParameterizationContent GetXmlParametContent(XmlNode sourceNode, string tagName)
         {
             caseParameterizationContent myParameContent = new caseParameterizationContent();
             if (sourceNode != null)

@@ -56,13 +56,34 @@ namespace CaseExecutiveActuator
     public class myConnectForHttp : IConnectExecutiveData
     {
 
+        public int timeOut = 100000;
+        public bool isShowResponseHeads = false;
+        public bool isUseDefaultCookieContainer = false;                            
+        public Encoding requestEncoding = System.Text.Encoding.GetEncoding("UTF-8");  
+        public Encoding responseEncoding = System.Text.Encoding.GetEncoding("UTF-8"); 
+                       
+
         public CaseProtocol caseProtocol;
         public string default_url;
 
-        public myConnectForHttp(CaseProtocol yourCaseProtocol, string yourDefault_url)
+        public myConnectForHttp(CaseProtocol yourCaseProtocol, string yourDefault_url, int yourTimeOut, bool yourIsShowResponseHeads, bool yourIsUseDefaultCookieContainer, Encoding yourRequestEncoding, Encoding yourResponseEncoding)
         {
             caseProtocol = yourCaseProtocol;
             default_url = yourDefault_url;
+            if (yourTimeOut > 0)
+            {
+                timeOut = yourTimeOut;
+            }
+            isShowResponseHeads = yourIsShowResponseHeads;
+            isUseDefaultCookieContainer = yourIsUseDefaultCookieContainer;
+            if (yourRequestEncoding != null)
+            {
+                requestEncoding = yourRequestEncoding;
+            }
+            if (yourResponseEncoding!=null)
+            {
+                responseEncoding = yourResponseEncoding;
+            }
         }
         public CaseProtocol MyCaseProtocol
         {
