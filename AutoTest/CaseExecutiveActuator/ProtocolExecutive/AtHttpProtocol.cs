@@ -30,18 +30,23 @@ namespace CaseExecutiveActuator.ProtocolExecutive
     public static class AtHttpProtocol
     {
         public class HttpClient
-        {
-            public static int httpTimeOut = 100000;                                            //http time out , HttpPostData will not use this value
-            public static int httpReadWriteTimeout = 300000;                                   //WebRequest.ReadWriteTimeout 该属性暂时未设置
-            public static bool showResponseHeads = false;                                      //是否返回http返回头
-            public bool withDefaultCookieContainer = false;                                    //是否默认启用CookieContainer，如果启用则默认会管理所有使用MyHttp的cookie内容
-            
+        {          
             private MyWebTool.MyHttp myHttp;
 
 
             public HttpClient()
             {
                 myHttp = new MyWebTool.MyHttp();
+            }
+
+            public HttpClient(int yourTimeOut, bool yourIsShowResponseHeads, bool yourIsUseDefaultCookieContainer, Encoding yourRequestEncoding, Encoding yourResponseEncoding)
+            {
+                myHttp = new MyWebTool.MyHttp();
+                myHttp.showResponseHeads = yourIsShowResponseHeads;
+                myHttp.withDefaultCookieContainer = yourIsUseDefaultCookieContainer;
+                myHttp.httpTimeOut = yourTimeOut;
+                myHttp.requestEncoding = yourRequestEncoding;
+                myHttp.responseEncoding = yourResponseEncoding;
             }
 
             /// <summary>

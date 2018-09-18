@@ -685,7 +685,7 @@
           <Head name="lj">good</Head>
           <Head name="lj2">good2</Head>
         </Heads>
-        <Body>lj is good</Body>
+        <Body>lj is good</Body><!--except POST / PUT other data will add the url 如果不是使用PSOT或GET方法，Body会被直接加到url后并添加?连接符（事实上除非使用POST与PUT建议您不要添加Body节点）-->
       </Content>
       <Expect method="contain">baidu</Expect>
       <Attribute>
@@ -732,7 +732,7 @@
           <Head name="lj">good</Head>
           <Head name="lj2">good2</Head>
         </Heads>
-        <Body>lj is good</Body>
+        <Body></Body>
       </Content>
       <Expect method="contain">success</Expect>
       <Attribute>
@@ -747,9 +747,9 @@
           <Head name="lj">good</Head>
           <Head name="lj2">good2</Head>
         </Heads>
-        <Body>lj is good</Body>
+        <Body></Body>
       </Content>
-      <Expect method="contain">baidu</Expect>
+      <Expect method="contain">success</Expect>
       <Attribute>
         <Delay>100</Delay>
         <Level>1</Level>
@@ -757,14 +757,14 @@
     </Case>
     <Case id="1000050003" remark="http cookies test">
       <Content protocol="http" actuator="http">
-        <Uri httpMethod="GET">https://wxsytest.huala.com/huala/v3/qaLogin?oId=oN2Zfszme7aKT5VT3Jf0udj7PxvM</Uri>
+        <Uri httpMethod="POST">https://wxsytest.huala.com/huala/v3/qaLogin?oId=oN2Zfszme7aKT5VT3Jf0udj7PxvM</Uri>
         <Heads>
           <Head name="lj">good</Head>
           <Head name="lj2">good2</Head>
         </Heads>
         <Body>lj is good</Body>
       </Content>
-      <Expect method="contain">baidu</Expect>
+      <Expect method="contain">success</Expect>
       <Attribute>
         <Delay>100</Delay>
         <Level>1</Level>

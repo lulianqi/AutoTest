@@ -877,32 +877,38 @@ namespace CaseExecutiveActuator.CaseActuator
                                                             #region GetConnectForHttp
                                                             //timeOut
                                                             tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "timeOut");
-                                                            if(!int.TryParse(tempHttpSetValue, out tempHttpTimeOut))
+                                                            if (tempHttpSetValue==null)
+                                                            {
+                                                                tempHttpTimeOut = 100000;
+                                                            }
+                                                            else if(!int.TryParse(tempHttpSetValue, out tempHttpTimeOut))
                                                             {
                                                                 SetNowExecutiveActuatorError(string.Format("[add http actuator ]find error data in timeOut when add RunTimeActuator with [{0}]", tempActuatorName));
                                                                 break;
                                                             }
                                                             //show_response_heads
+                                                            bool isSucceed = false;
+
                                                             tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "show_response_heads");
-                                                            if(tempHttpSetValue=="true" || tempHttpSetValue=="false")
+                                                            if (tempHttpSetValue != null)
                                                             {
-                                                                tempHttpIsShowHeads= (tempHttpSetValue=="true");
-                                                            }
-                                                            else
-                                                            {
-                                                                SetNowExecutiveActuatorError(string.Format("[add http actuator ]find error data in show_response_heads when add RunTimeActuator with [{0}]", tempActuatorName));
-                                                                break;
+                                                                tempHttpIsShowHeads = CaseTool.GetTureOrFalse(tempHttpSetValue, out isSucceed);
+                                                                if (!isSucceed)
+                                                                {
+                                                                    SetNowExecutiveActuatorError(string.Format("[add http actuator ]find error data in show_response_heads when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
                                                             }
                                                             //use_cookieContainer
                                                             tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "use_cookieContainer");
-                                                            if(tempHttpSetValue=="true" || tempHttpSetValue=="false")
+                                                            if (tempHttpSetValue != null)
                                                             {
-                                                                tempHttpIsUseCookie = (tempHttpSetValue == "true");
-                                                            }
-                                                            else
-                                                            {
-                                                                SetNowExecutiveActuatorError(string.Format("[add http actuator ]find error data in use_cookieContainer when add RunTimeActuator with [{0}]", tempActuatorName));
-                                                                break;
+                                                                tempHttpIsUseCookie = CaseTool.GetTureOrFalse(tempHttpSetValue, out isSucceed);
+                                                                if (!isSucceed)
+                                                                {
+                                                                    SetNowExecutiveActuatorError(string.Format("[add http actuator ]find error data in use_cookieContainer when add RunTimeActuator with [{0}]", tempActuatorName));
+                                                                    break;
+                                                                }
                                                             }
                                                             //request_encoding
                                                             tempHttpSetValue = CaseTool.GetXmlInnerVaule(tempNodeChild, "request_encoding");
@@ -932,7 +938,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                                                     break;
                                                                 }
                                                             } 
-	#endregion
+	                                                        #endregion
                                                             myConnectForHttp ConnectInfo_http = new myConnectForHttp(tempActuatorProtocol, CaseTool.GetXmlInnerVauleWithEmpty(tempNodeChild, "default_url"),tempHttpTimeOut,tempHttpIsShowHeads,tempHttpIsUseCookie,tempHttpRequestEncoding,tempHttpResponseEncoding);
                                                             AddExecutionDevice(tempActuatorName, ConnectInfo_http);
                                                             break;

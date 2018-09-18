@@ -363,7 +363,7 @@ namespace MyCommonHelper.NetHelper
 
                 try
                 {
-                    //except POST other data will add the url,if you want adjust the rules change here
+                    //except POST / PUT other data will add the url,if you want adjust the rules change here
                     if (!needBody && hasBody)
                     {
                         url += "?" + data;

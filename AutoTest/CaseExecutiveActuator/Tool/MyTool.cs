@@ -161,6 +161,47 @@ namespace CaseExecutiveActuator.Tool
         }
 
         /// <summary>
+        /// get a bool value from a string with "true" or "false"
+        /// </summary>
+        /// <param name="sourceString">source string</param>
+        /// <param name="isTrue">is succeed</param>
+        /// <returns>out result</returns>
+        public static bool GetTureOrFalse(string sourceString, out bool isSucceed)
+        {
+            isSucceed = true;
+            if(!string.IsNullOrEmpty(sourceString))
+            {
+                if(sourceString.ToLower()=="true")
+                {
+                    return true;
+                }
+                else if (sourceString.ToLower() == "false")
+                {
+                    return false;
+                }
+            }
+            isSucceed = false;
+            return false;
+        }
+
+        /// <summary>
+        /// get a bool value from a string with "true" or "false"
+        /// </summary>
+        /// <param name="sourceString">source string</param>
+        /// <returns>out result</returns>
+        public static bool GetTureOrFalse(string sourceString)
+        {
+            if (!string.IsNullOrEmpty(sourceString))
+            {
+                if (sourceString.ToLower() == "true")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// i will get the date in sourceNode child with specified tag name(Ex if it is inexistence i will return null)[获取第一个匹配项的内容，如果没有返回null]
         /// </summary>
         /// <param name="sourceNode">source Node (if it is null i will Throw error)</param>

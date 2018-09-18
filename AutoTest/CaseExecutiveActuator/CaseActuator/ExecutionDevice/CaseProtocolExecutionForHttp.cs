@@ -151,7 +151,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
         public CaseProtocolExecutionForHttp(myConnectForHttp yourConnectInfo)
         {
             myExecutionDeviceInfo = yourConnectInfo;
-            httpClient = new AtHttpProtocol.HttpClient();
+            httpClient = new AtHttpProtocol.HttpClient(yourConnectInfo.timeOut, yourConnectInfo.isShowResponseHeads, yourConnectInfo.isUseDefaultCookieContainer, yourConnectInfo.requestEncoding, yourConnectInfo.responseEncoding);
         }
 
         public object Clone()
