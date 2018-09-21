@@ -31,6 +31,7 @@ namespace CaseExecutiveActuator.Cell
         private XmlNode caseXmlNode;
         private MyRunCaseData<ICaseExecutionContent> caseRunData;
         private object uiTag;
+        private object resultTag;
 
         private CaseCell nextCell;
         private CaseCell parentCell;
@@ -79,6 +80,15 @@ namespace CaseExecutiveActuator.Cell
         {
             get { return uiTag; }
             set { uiTag = value; }
+        }
+
+        /// <summary>
+        /// 获取或设置ResultTag，可绑定case的执行结果
+        /// </summary>
+        public object ResultTag
+        {
+            get { return resultTag; }
+            set { resultTag = value; }
         }
 
         /// <summary>

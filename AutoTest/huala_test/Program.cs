@@ -15,6 +15,7 @@ namespace huala_test
         static MyCommonHelper.NetHelper.MyWebTool.MyHttp myHttp = new MyCommonHelper.NetHelper.MyWebTool.MyHttp();
         static void Main(string[] args)
         {
+
             Console.WriteLine("any key to start");
             Console.ReadLine();
             System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
