@@ -171,7 +171,7 @@ namespace MyCommonHelper
         /// <param name="bytesA"></param>
         /// <param name="bytesB"></param>
         /// <returns></returns>
-        public static bool isBytesSame(byte[] bytesA, byte[] bytesB)
+        public static bool IsBytesSame(byte[] bytesA, byte[] bytesB)
         {
             if (bytesA == null || bytesB == null)
             {
@@ -199,7 +199,7 @@ namespace MyCommonHelper
         /// </summary>
         /// <param name="yourBytes"></param>
         /// <returns></returns>
-        public static byte[] rmBytesEnd(byte[] yourBytes)
+        public static byte[] RmBytesEnd(byte[] yourBytes)
         {
             if (yourBytes == null)
             {
@@ -249,7 +249,7 @@ namespace MyCommonHelper
         /// </summary>3
         /// <param name="yourData">your bytes</param>
         /// <returns>your IP</returns>
-        public static string getIpByBytes(byte[] yourData)
+        public static string GetIpByBytes(byte[] yourData)
         {
             if (yourData == null)
             {
@@ -276,7 +276,7 @@ namespace MyCommonHelper
         /// </summary>
         /// <param name="yourLen">your bytes</param>
         /// <returns>your len</returns>
-        public static int getByteLen(byte[] yourLen)
+        public static int GetByteLen(byte[] yourLen)
         {
             //return BitConverter.ToUInt16(yourLen,0);
             if (yourLen.Length > 4)
@@ -299,7 +299,7 @@ namespace MyCommonHelper
         /// </summary>
         /// <param name="yourLen">your Len</param>
         /// <returns>your bytes</returns>
-        public static byte[] createInt16Bytes(int yourLen)
+        public static byte[] CreateInt16Bytes(int yourLen)
         {
             byte[] tempData = BitConverter.GetBytes(yourLen);
             byte[] dataToBack = new byte[2];
