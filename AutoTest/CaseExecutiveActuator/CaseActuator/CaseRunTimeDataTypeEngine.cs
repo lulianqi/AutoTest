@@ -256,7 +256,7 @@ namespace CaseExecutiveActuator.CaseActuator
         public static bool GetCsvStaticDataSource(out IRunTimeDataSource yourStaticData, out string errorMes, string yourFormatData)
         {
             errorMes = null;
-            yourStaticData = new MyStaticDataSourceCsv();
+            yourStaticData = null;
             string csvPath = null;
             int CodePage = 65001;
             Encoding csvEncoding = null;

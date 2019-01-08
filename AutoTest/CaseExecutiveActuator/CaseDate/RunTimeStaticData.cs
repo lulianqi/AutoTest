@@ -27,12 +27,12 @@ namespace CaseExecutiveActuator
     
     #region IRunTimeStaticData  
 
-    //这里的IRunTimeStaticData全部是struct，如果要修改为class 请重新检查深度克隆的逻辑
+    //这里的IRunTimeStaticData全部是struct，如果要修改为class 请重新检查深度克隆的逻辑   (已经切换为class)
 
     /// <summary>
     /// 为StaticData提供类似索引递增的动态数据【IRunTimeStaticData】
     /// </summary>
-    public struct MyStaticDataIndex : IRunTimeStaticData
+    public class MyStaticDataIndex : IRunTimeStaticData
     {
         private bool isNew;
         private int dataIndex;
@@ -40,6 +40,7 @@ namespace CaseExecutiveActuator
         private int defaultEnd;
         private int defaultStep;
 
+        public string OriginalConnectString { get; private set; }
         public string RunTimeStaticDataType
         {
             get { return "staticData_index"; }
@@ -53,9 +54,15 @@ namespace CaseExecutiveActuator
             defaultStep = yourStep;
         }
 
+        public MyStaticDataIndex(int yourStart, int yourEnd, int yourStep, string originalConnectString)
+            : this(yourStart, yourEnd, yourStep)
+        {
+            OriginalConnectString = originalConnectString;
+        }
+
         public object Clone()
         {
-            return new MyStaticDataIndex(defaultStart, defaultEnd, defaultStep);
+            return new MyStaticDataIndex(defaultStart, defaultEnd, defaultStep, OriginalConnectString);
         }
 
 
@@ -111,7 +118,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 为StaticData提定长字符串型数字索引支持【IRunTimeStaticData】
     /// </summary>
-    public struct MyStaticDataStrIndex : IRunTimeStaticData
+    public class MyStaticDataStrIndex : IRunTimeStaticData
     {
         private bool isNew;
         private long dataIndex;
@@ -120,6 +127,7 @@ namespace CaseExecutiveActuator
         private long defaultStep;
         private int strLen;
 
+        public string OriginalConnectString { get; private set; }
         public string RunTimeStaticDataType
         {
             get { return "staticData_strIndex"; }
@@ -133,9 +141,15 @@ namespace CaseExecutiveActuator
             strLen = yourStrLen;
         }
 
+        public MyStaticDataStrIndex(long yourStart, long yourEnd, long yourStep, int yourStrLen, string originalConnectString)
+            : this(yourStart, yourEnd, yourStep, yourStrLen)
+        {
+            OriginalConnectString = originalConnectString;
+        }
+
         public object Clone()
         {
-            return new MyStaticDataStrIndex(defaultStart, defaultEnd, defaultStep, strLen);
+            return new MyStaticDataStrIndex(defaultStart, defaultEnd, defaultStep, strLen, OriginalConnectString);
         }
 
         private string GetLenStr(long yourLeng)
@@ -203,7 +217,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 为StaticData提供长数字索引支持【IRunTimeStaticData】
     /// </summary>
-    public struct MyStaticDataLong : IRunTimeStaticData
+    public class MyStaticDataLong : IRunTimeStaticData
     {
         private bool isNew;
         private long dataIndex;
@@ -211,6 +225,7 @@ namespace CaseExecutiveActuator
         private long defaultEnd;
         private long defaultStep;
 
+        public string OriginalConnectString { get; private set; }
         public string RunTimeStaticDataType
         {
             get { return "staticData_long"; }
@@ -223,9 +238,15 @@ namespace CaseExecutiveActuator
             defaultStep = yourStep;
         }
 
+        public MyStaticDataLong(long yourStart, long yourEnd, long yourStep, string originalConnectString)
+            : this(yourStart, yourEnd, yourStep)
+        {
+            OriginalConnectString = originalConnectString;
+        }
+
         public object Clone()
         {
-            return new MyStaticDataLong(defaultStart, defaultEnd, defaultStep);
+            return new MyStaticDataLong(defaultStart, defaultEnd, defaultStep, OriginalConnectString);
         }
 
 
@@ -280,12 +301,13 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 为StaticData提供随机字符串动态数据【IRunTimeStaticData】
     /// </summary>
-    public struct MyStaticDataRandomStr : IRunTimeStaticData
+    public class MyStaticDataRandomStr : IRunTimeStaticData
     {
         string myNowStr;
         int myStrNum;
         int myStrType;
 
+        public string OriginalConnectString { get; private set; }
         public string RunTimeStaticDataType
         {
             get { return "staticData_random"; }
@@ -298,9 +320,15 @@ namespace CaseExecutiveActuator
             myStrType = yourStrType;
         }
 
+        public MyStaticDataRandomStr(int yourStrNum, int yourStrType, string originalConnectString)
+            : this(yourStrNum, yourStrType)
+        {
+            OriginalConnectString = originalConnectString;
+        }
+
         public object Clone()
         {
-            return new MyStaticDataRandomStr(myStrNum, myStrType);
+            return new MyStaticDataRandomStr(myStrNum, myStrType, OriginalConnectString);
         }
 
         public string DataCurrent()
@@ -334,11 +362,12 @@ namespace CaseExecutiveActuator
     /// <summary>
     /// 为StaticData提供当前时间的动态数据【IRunTimeStaticData】
     /// </summary>
-    public struct MyStaticDataNowTime : IRunTimeStaticData
+    public class MyStaticDataNowTime : IRunTimeStaticData
     {
         string myNowStr;
         string myDataFormatInfo;
 
+        public string OriginalConnectString { get; private set; }
         public string RunTimeStaticDataType
         {
             get { return "staticData_time"; }
@@ -350,9 +379,15 @@ namespace CaseExecutiveActuator
             myDataFormatInfo = yourRormatInfo;
         }
 
+        public MyStaticDataNowTime(string yourRormatInfo, string originalConnectString)
+            : this(yourRormatInfo)
+        {
+            OriginalConnectString = originalConnectString;
+        }
+
         public object Clone()
         {
-            return new MyStaticDataNowTime(myDataFormatInfo);
+            return new MyStaticDataNowTime(myDataFormatInfo, OriginalConnectString);
         }
 
         public string DataCurrent()
@@ -386,7 +421,7 @@ namespace CaseExecutiveActuator
     /// <summary>
     ///  为StaticData提供当基于List的列表数据支持据【IRunTimeStaticData】
     /// </summary>
-    public struct MyStaticDataList : IRunTimeStaticData
+    public class MyStaticDataList : IRunTimeStaticData
     {
         private bool isNew;
         private string souseData;
@@ -395,6 +430,7 @@ namespace CaseExecutiveActuator
         private bool isRandom;
         private Random ran;
 
+        public string OriginalConnectString { get;private set; }
         public string RunTimeStaticDataType
         {
             get { return "staticData_list"; }
@@ -417,9 +453,15 @@ namespace CaseExecutiveActuator
             }
         }
 
+        public MyStaticDataList(string yourSourceData, bool isRandomNext, string originalConnectString)
+            : this(yourSourceData, isRandomNext)
+        {
+            OriginalConnectString = originalConnectString;
+        }
+
         public object Clone()
         {
-            return new MyStaticDataList(souseData, isRandom);
+            return new MyStaticDataList(souseData, isRandom, OriginalConnectString);
         }
 
         public string DataCurrent()

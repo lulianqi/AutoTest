@@ -15,8 +15,12 @@ namespace huala_test
         static MyCommonHelper.NetHelper.MyWebTool.MyHttp myHttp = new MyCommonHelper.NetHelper.MyWebTool.MyHttp();
         static void Main(string[] args)
         {
-
             Console.WriteLine("any key to start");
+            Console.ReadLine();
+            AnalysisGbCode();
+            Console.WriteLine("any key to start");
+            Console.ReadLine();
+            AnalysisIpLog();
             Console.ReadLine();
             System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
             GetCompanyInfo("济南市历城区永隆商店");
@@ -148,6 +152,53 @@ namespace huala_test
 
         }
 
+        private static void AnalysisGbCode()
+        {
+            StreamReader sr = new StreamReader(@"D:\NG\gb.txt", Encoding.UTF8);
+            List<List<string>> loginList = new List<List<string>>();
+            string myRequestUri="https://xingzhengquhua.51240.com/{0}__xingzhengquhua/";
+            string myFindKey=">{0}</a></li><li><a href=\"/";
+            string myFindOne="<ul class=\"list\"><li><a href=\"/";
+            string nowAdress = null;
+            string nowGbCode = null;
+            nowAdress = sr.ReadLine();
+            while (nowAdress != null)
+            {
+                Console.WriteLine(nowAdress);
+                List<string> tempGbInfoList = new List<string>();
+                tempGbInfoList.Add(nowAdress);
+                string nowFindKey = string.Format(myFindKey, nowAdress);
+                string tempRespans = myHttp.SendData(string.Format(myRequestUri, nowAdress));
+                System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+                System.Diagnostics.Debug.WriteLine(tempRespans);
+                int startIndex = 0;
+                
+                startIndex = tempRespans.IndexOf(nowFindKey, startIndex);
+                while (startIndex >= 0)
+                {
+                    nowGbCode = tempRespans.Substring(startIndex + nowFindKey.Length, 12);
+                    Console.WriteLine(nowGbCode);
+                    tempGbInfoList.Add(nowGbCode);
+                    startIndex = tempRespans.IndexOf(nowFindKey, startIndex + nowFindKey.Length);
+                }
+                if (tempGbInfoList.Count == 1)
+                {
+                    if (tempRespans.Contains(myFindOne))
+                    {
+                        startIndex = tempRespans.IndexOf(myFindOne, 0);
+                        nowGbCode = tempRespans.Substring(startIndex + myFindOne.Length, 12);
+                        Console.WriteLine(nowGbCode);
+                        tempGbInfoList.Add(nowGbCode);
+                    }
+                }
+                loginList.Add(tempGbInfoList);
+                nowAdress = sr.ReadLine();
+                Thread.Sleep(5000);
+            }
+            CsvFileHelper.SaveCsvFile(@"D:\NG\whf.csv", loginList, false, new System.Text.UTF8Encoding(false));
+        }
+
+
         private static void AnalysisDTBLog()
         {
             StreamReader sr = new StreamReader(@"D:\NG\dtb.txt", Encoding.UTF8);
@@ -246,7 +297,8 @@ namespace huala_test
                 string ipSource ="";
                 try
                 {
-                    ipSource = myHttp.SendData(String.Format(" http://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query={0}&co=&resource_id=6006&t=1534239628331&ie=utf8&oe=utf8&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery110207479682729924466_1534239324699&_=1534239324704", ipKv.Key));
+                    //http://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query={0}&co=&resource_id=6006&t=1534239628331&ie=utf8&oe=utf8&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery110207479682729924466_1534239324699&_=1534239324704
+                    ipSource = myHttp.SendData(String.Format("https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query={0}&co=&resource_id=6006&t=1539666176249&ie=utf8&oe=utf-8&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery1102018209732151379288_1539666075511&_=1539666075515 ", ipKv.Key));
                 }
                 catch(Exception ex)
                 {

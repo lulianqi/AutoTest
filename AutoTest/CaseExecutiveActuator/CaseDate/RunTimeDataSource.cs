@@ -25,13 +25,14 @@ namespace CaseExecutiveActuator
 {
 
     #region IRunTimeDataSource
-    public struct MyStaticDataSourceCsv : IRunTimeDataSource
+    public class MyStaticDataSourceCsv : IRunTimeDataSource
     {
         private bool isNew;
         private int nowRowIndex;
         private int nowColumnIndex;
         private List<List<string>> csvData;
 
+        public string OriginalConnectString { get; private set; }
         public string RunTimeStaticDataType
         {
             get { return "staticDataSource_csv"; }
@@ -44,9 +45,15 @@ namespace CaseExecutiveActuator
             nowColumnIndex = 0;
             csvData = yourCsvData;
         }
+
+        public MyStaticDataSourceCsv(List<List<string>> yourCsvData, string originalConnectString)
+            : this(yourCsvData)
+        {
+            OriginalConnectString = originalConnectString;
+        }
         public object Clone()
         {
-            return new MyStaticDataSourceCsv(csvData);
+            return new MyStaticDataSourceCsv(csvData, OriginalConnectString);
         }
         public bool IsConnected
         {

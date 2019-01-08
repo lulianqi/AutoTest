@@ -1,0 +1,60 @@
+-------------------------------------------------------
+2018/12/5 20:47:08
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2018/12/5 20:47:37
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2018/12/5 20:47:45
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2018/12/5 20:47:53
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2018/12/5 20:52:26
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\MyTool\CaseFileXmlAnalysis.cs
+ErrorLine:70
+
+ID:00017  第 2 行，位置 2 上的开始标记“VaneLife_V1”与结束标记“Project”不匹配。 第 411 行，位置 5。
+-------------------------------------------------------
+2018/12/5 20:52:31
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\MyTool\CaseFileXmlAnalysis.cs
+ErrorLine:70
+
+ID:00017  第 2 行，位置 2 上的开始标记“VaneLife_V1”与结束标记“Project”不匹配。 第 411 行，位置 5。
+-------------------------------------------------------
+2018/12/5 20:55:01
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\MyTool\CaseFileXmlAnalysis.cs
+ErrorLine:70
+
+ID:00017  第 2 行，位置 2 上的开始标记“VaneLife_V1”与结束标记“Project”不匹配。 第 134 行，位置 5。
+-------------------------------------------------------
+2018/12/5 20:55:09
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\MyTool\CaseFileXmlAnalysis.cs
+ErrorLine:70
+
+ID:00017  第 2 行，位置 2 上的开始标记“VaneLife_V1”与结束标记“Project”不匹配。 第 134 行，位置 5。
+-------------------------------------------------------
+2018/12/5 22:46:44
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\MyTool\CaseFileXmlAnalysis.cs
+ErrorLine:70
+
+ID:00017  第 2 行，位置 2 上的开始标记“VaneLife_V1”与结束标记“Project”不匹配。 第 134 行，位置 5。
+-------------------------------------------------------
+2018/12/5 22:53:31
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\AutoTest\MyTool\CaseFileXmlAnalysis.cs
+ErrorLine:70
+
+ID:00017  第 2 行，位置 2 上的开始标记“VaneLife_V1”与结束标记“Project”不匹配。 第 171 行，位置 5。

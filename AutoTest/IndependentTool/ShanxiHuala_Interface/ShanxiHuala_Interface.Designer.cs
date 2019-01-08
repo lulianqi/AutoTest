@@ -153,6 +153,7 @@
             // rtb_response
             // 
             this.rtb_response.CanFill = true;
+            this.rtb_response.IsShowIcon = true;
             this.rtb_response.Location = new System.Drawing.Point(237, 377);
             this.rtb_response.MaxLine = 5000;
             this.rtb_response.MianDirectory = "DataRecord";

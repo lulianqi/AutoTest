@@ -770,6 +770,20 @@
         <Level>1</Level>
       </Attribute>
     </Case>
+	<Case id="1000050004" remark="cdn_test">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="GET">https://test.huala.com/lijie/test.css</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+      </Content>
+      <Expect method="contain"></Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
   </Project>
   <Project id="1000010004" name="Project test" remark="case测试">
     <Case id="1000040001" remark="console">

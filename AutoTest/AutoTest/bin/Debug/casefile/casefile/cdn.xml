@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VaneLife_V1><!-- 基本规则，节点名首字母大写，属性首字母小写 -->
+  <ScriptRunTime>
+    <RunTimeParameter>
+    </RunTimeParameter>
+    <RunTimeActuator>
+      <NewActuator name="http" protocol="http">
+        <default_url>http://pv.sohu.com</default_url>
+      </NewActuator>
+    </RunTimeActuator>
+  </ScriptRunTime>
+  <Project id="1000010003" name="Project http" remark="http测试">
+    <Case id="1000020001" remark="case备注">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="GET">http://www.m.baidu.com</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+        <Body>lj is good</Body><!--except POST / PUT other data will add the url 如果不是使用PSOT或GET方法，Body会被直接加到url后并添加?连接符（事实上除非使用POST与PUT建议您不要添加Body节点）-->
+      </Content>
+      <Expect method="contain">baidu</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000010001" remark="case备注">
+      <Content protocol="vanelife_http" actuator="httpApi">
+        <ContentData target="cityjson">ie=utf-8</ContentData>
+        <HttpConfig httpMethod="GET">
+          <AisleConfig>
+            <HttpAddress>http://pv.sohu.com/</HttpAddress>
+          </AisleConfig>
+        </HttpConfig>
+      </Content>
+      <Expect method="contain">浙江</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Repeat remark="备注" times="2000">
+      <Case id="1000010002" remark="case备注">
+        <Content protocol="vanelife_http" actuator="httpApi">
+          <ContentData target="cityjson">ie=utf-8</ContentData>
+          <HttpConfig httpMethod="GET">
+            <AisleConfig>
+              <HttpAddress>http://pv.sohu.com/</HttpAddress>
+            </AisleConfig>
+          </HttpConfig>
+        </Content>
+        <Expect method="contain">浙江</Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+    <Case id="1000050001" remark="http cookies test">
+      <Content protocol="http" actuator="http2">
+        <Uri httpMethod="GET">https://wxsytest.huala.com/huala/v3/qaLogin?oId=oN2Zfszme7aKT5VT3Jf0udj7PxvM</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+        <Body></Body>
+      </Content>
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000050002" remark="http cookies test">
+      <Content protocol="http" actuator="http2">
+        <Uri httpMethod="GET">https://wxsytest.huala.com/huala/v3/qaLogin?oId=oN2Zfszme7aKT5VT3Jf0udj7PxvM</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+        <Body></Body>
+      </Content>
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Case id="1000050003" remark="http cookies test">
+      <Content protocol="http" actuator="http">
+        <Uri httpMethod="POST">https://wxsytest.huala.com/huala/v3/qaLogin?oId=oN2Zfszme7aKT5VT3Jf0udj7PxvM</Uri>
+        <Heads>
+          <Head name="lj">good</Head>
+          <Head name="lj2">good2</Head>
+        </Heads>
+        <Body>lj is good</Body>
+      </Content>
+      <Expect method="contain">success</Expect>
+      <Attribute>
+        <Delay>100</Delay>
+        <Level>1</Level>
+      </Attribute>
+    </Case>
+    <Repeat remark="备注" times="20">
+      <Case id="1000050004" remark="cdn_test">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="GET">https://test.huala.com/lijie/test.css</Uri>
+          <Heads>
+            <Head name="lj">good</Head>
+            <Head name="lj2">good2</Head>
+          </Heads>
+        </Content>
+        <Expect method="contain"></Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+    <Repeat remark="备注" times="20">
+      <Case id="1000050005" remark="cdn_wxsytest">
+        <Content protocol="http" actuator="http">
+          <Uri httpMethod="GET">https://wxsytest.huala.com/lijie/test.css</Uri>
+          <Heads>
+            <Head name="lj">good</Head>
+            <Head name="lj2">good2</Head>
+          </Heads>
+        </Content>
+        <Expect method="contain"></Expect>
+        <Attribute>
+          <Delay>100</Delay>
+          <Level>1</Level>
+        </Attribute>
+      </Case>
+    </Repeat>
+  </Project>
+</VaneLife_V1>
