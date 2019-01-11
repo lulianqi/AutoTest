@@ -141,7 +141,7 @@ namespace AutoTest.myDialogWindow
                         }
                         break;
                     case ShowRunTimeParameterType.DataSouce:
-                        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
+                        foreach (KeyValuePair<string, CaseExecutiveActuator.IRunTimeDataSource> tempKvp  in myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.RunActuatorStaticDataSouceList)
                         {
                             listView_CaseParameter.Items.Add(new ListViewItem(new string[] { tempKvp.Key, tempKvp.Value.DataCurrent() }));
                         }
@@ -204,7 +204,6 @@ namespace AutoTest.myDialogWindow
                     break;
             }
             updatalistView_CaseParameter();
-            
         }
 
         #region pictureBox button

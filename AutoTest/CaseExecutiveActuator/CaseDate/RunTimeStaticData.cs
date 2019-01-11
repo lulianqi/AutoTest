@@ -41,7 +41,7 @@ namespace CaseExecutiveActuator
         private int defaultStep;
 
         public string OriginalConnectString { get; private set; }
-        public string RunTimeStaticDataType
+        public string RunTimeStaticDataTypeAlias
         {
             get { return "staticData_index"; }
         }
@@ -128,7 +128,7 @@ namespace CaseExecutiveActuator
         private int strLen;
 
         public string OriginalConnectString { get; private set; }
-        public string RunTimeStaticDataType
+        public string RunTimeStaticDataTypeAlias
         {
             get { return "staticData_strIndex"; }
         }
@@ -226,7 +226,7 @@ namespace CaseExecutiveActuator
         private long defaultStep;
 
         public string OriginalConnectString { get; private set; }
-        public string RunTimeStaticDataType
+        public string RunTimeStaticDataTypeAlias
         {
             get { return "staticData_long"; }
         }
@@ -308,7 +308,7 @@ namespace CaseExecutiveActuator
         int myStrType;
 
         public string OriginalConnectString { get; private set; }
-        public string RunTimeStaticDataType
+        public string RunTimeStaticDataTypeAlias
         {
             get { return "staticData_random"; }
         }
@@ -368,7 +368,7 @@ namespace CaseExecutiveActuator
         string myDataFormatInfo;
 
         public string OriginalConnectString { get; private set; }
-        public string RunTimeStaticDataType
+        public string RunTimeStaticDataTypeAlias
         {
             get { return "staticData_time"; }
         }
@@ -431,7 +431,7 @@ namespace CaseExecutiveActuator
         private Random ran;
 
         public string OriginalConnectString { get;private set; }
-        public string RunTimeStaticDataType
+        public string RunTimeStaticDataTypeAlias
         {
             get { return "staticData_list"; }
         }

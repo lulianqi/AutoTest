@@ -500,11 +500,11 @@ namespace CaseExecutiveActuator.Tool
                         }
                         else if (keyAdditionData == "=")
                         {
-                            tempVaule = yourStaticDataList[keyParameter].DataCurrent();
+                            tempVaule = yourStaticDataSourceList[keyParameter].DataCurrent();
                         }
                         else if (keyAdditionData == "+")
                         {
-                            tempVaule = yourStaticDataList[keyParameter].DataMoveNext();
+                            tempVaule = yourStaticDataSourceList[keyParameter].DataMoveNext();
                         }
                         else if (keyAdditionData.StartsWith("+")) //+10 前移10
                         {

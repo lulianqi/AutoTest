@@ -98,12 +98,21 @@ namespace CaseExecutiveActuator
     public interface IRunTimeStaticData : ICloneable
     {
         /// <summary>
-        /// 获取当前初始化数据类型
+        ///原始连接字符串
         /// </summary>
-        string RunTimeStaticDataType
+        string OriginalConnectString
         {
             get;
         }
+
+        /// <summary>
+        /// 获取当前初始化数据类型别名
+        /// </summary>
+        string RunTimeStaticDataTypeAlias
+        {
+            get;
+        }
+
         /// <summary>
         /// 获取当前游标地址的值
         /// </summary>
@@ -160,7 +169,6 @@ namespace CaseExecutiveActuator
         /// <returns>是否成功设置</returns>
         bool DataSet(string vauleAddress, string expectData);
     }
-
 
     //用于脚本执行器的接口
     public interface ICaseExecutionDevice :ICloneable

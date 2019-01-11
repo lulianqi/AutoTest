@@ -33,7 +33,7 @@ namespace CaseExecutiveActuator
         private List<List<string>> csvData;
 
         public string OriginalConnectString { get; private set; }
-        public string RunTimeStaticDataType
+        public string RunTimeStaticDataTypeAlias
         {
             get { return "staticDataSource_csv"; }
         }
