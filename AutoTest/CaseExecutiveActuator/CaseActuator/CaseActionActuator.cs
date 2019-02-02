@@ -314,7 +314,7 @@ namespace CaseExecutiveActuator.CaseActuator
         /// <param name="configVaule">config Vaule</param>
         /// <returns>is success</returns>
         [MethodImplAttribute(MethodImplOptions.Synchronized)] 
-        public bool SetStaticData(string key, string configVaule)
+        public bool SetStaticDataValue(string key, string configVaule)
         {
             var tempDataList = IsHasSameKey(key, 0);
             if (tempDataList == null)
@@ -1638,7 +1638,7 @@ namespace CaseExecutiveActuator.CaseActuator
             }
 
             #region ParameterSaves
-            Action ParameterSavesDataError = () =>
+            Action ParameterSaveDataError = () =>
             {
                 tempError = string.Format("【ID:{0}】ParameterSave 脚本数据不合法", yourRunData.id);
                 yourExecutionResult.additionalRemark = yourExecutionResult.additionalRemark.MyAddValue(tempError);
@@ -1675,7 +1675,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                     }
                                     else
                                     {
-                                        ParameterSavesDataError();
+                                        ParameterSaveDataError();
                                     }
                                 }
                             }
@@ -1703,7 +1703,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                         MyAssert.GetStrPickData(tempParameterSave.parameterFindVaule, out tempPickStrSartStr, out tempPickStrEndStr);
                                         if (tempPickStrEndStr==null)
                                         {
-                                            ParameterSavesDataError();
+                                            ParameterSaveDataError();
                                         }
                                         else
                                         {
@@ -1714,7 +1714,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                         MyAssert.GetStrPickData(tempParameterSave.parameterFindVaule, out tempPickStrSartStr, out tempPickStrEndStr);
                                         if (tempPickStrEndStr==null)
                                         {
-                                            ParameterSavesDataError();
+                                            ParameterSaveDataError();
                                         }
                                         else
                                         {
@@ -1724,7 +1724,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                             }
                                             else
                                             {
-                                                ParameterSavesDataError();
+                                                ParameterSaveDataError();
                                             }
                                         }
                                         break;
@@ -1732,7 +1732,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                          MyAssert.GetStrPickData(tempParameterSave.parameterFindVaule, out tempPickStrSartStr, out tempPickStrEndStr);
                                         if (tempPickStrEndStr==null)
                                         {
-                                            ParameterSavesDataError();
+                                            ParameterSaveDataError();
                                         }
                                         else
                                         {
@@ -1742,7 +1742,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                             }
                                             else
                                             {
-                                                ParameterSavesDataError();
+                                                ParameterSaveDataError();
                                             }
                                         }
                                         break;
@@ -1753,7 +1753,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                         }
                                         else
                                         {
-                                            ParameterSavesDataError();
+                                            ParameterSaveDataError();
                                         }
                                         break;
                                     default:   //all 或 其他值不能识别的查找方式都被当作all
@@ -1787,7 +1787,7 @@ namespace CaseExecutiveActuator.CaseActuator
                                     }
                                     else
                                     {
-                                        ParameterSavesDataError();
+                                        ParameterSaveDataError();
                                     }
                                 }
                             }

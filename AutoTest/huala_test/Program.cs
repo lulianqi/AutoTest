@@ -13,9 +13,47 @@ namespace huala_test
     class Program
     {
         static MyCommonHelper.NetHelper.MyWebTool.MyHttp myHttp = new MyCommonHelper.NetHelper.MyWebTool.MyHttp();
+
+        public class TestBaseClass
+        {
+            public TestBaseClass()
+            {
+                Console.WriteLine("initialize TestBaseClass");
+            }
+            public void DoTest()
+            {
+                Console.WriteLine("TestBaseClass");
+            }
+
+            public static explicit operator int(TestBaseClass fahr)
+            {
+                return 0;
+            }
+        }
+
+        public class TestClass : TestBaseClass
+        {
+            public string Name = "TestClass";
+
+            public TestClass()
+            {
+                Console.WriteLine("initialize TestClass");
+            }
+
+            public TestClass(string value)
+            {
+                Console.WriteLine("initialize "+ value);
+            }
+            public new void DoTest()
+            {
+                Console.WriteLine("TestClass");
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("any key to start");
+            var xx = System.Text.RegularExpressions.Regex.Match(@"/**/jQuery110206968683307627757_1548318672771({""status"":""lijie"",""t"":""1548329456000"",""set_cache_time"":"""",""data"":[]})",@"""status"":"".*?""");
             Console.ReadLine();
             AnalysisGbCode();
             Console.WriteLine("any key to start");

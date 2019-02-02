@@ -303,7 +303,7 @@ namespace CaseExecutiveActuator.CaseActuator.ExecutionDevice
                         string tempSetVauleStr = addInfo.Value.GetTargetContentData(yourActuatorStaticDataCollection, myResult.staticDataResultCollection, out tempError);
                         if (!DealNowResultError(tempError, "Set", addInfo.Key))
                         {
-                            if (yourActuatorStaticDataCollection.SetStaticData(addInfo.Key, tempSetVauleStr))
+                            if (yourActuatorStaticDataCollection.SetStaticDataValue(addInfo.Key, tempSetVauleStr))
                             {
                                 ExecutiveDelegate("[CaseProtocolExecutionForConsole][ExecutionDeviceRun][Set]", CaseActuatorOutPutType.ExecutiveInfo, string.Format("static data set success with the key :{0} ", addInfo.Key));
                             }

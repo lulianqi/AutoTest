@@ -313,7 +313,7 @@ namespace AutoTest.myDialogWindow
                     {
                         if (tempKvp.Key == tb_keyAdd.Text)
                         {
-                            if(!myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.SetStaticData(tb_keyAdd.Text, tb_valueAdd.Text))
+                            if(!myParentWindow.nowCaseActionActuator.RunActuatorStaticDataCollection.SetStaticDataValue(tb_keyAdd.Text, tb_valueAdd.Text))
                             {
                                 MessageBox.Show(string.Format("[{0}]不能应用于指定的【CaseStaticData】键", tb_valueAdd.Text), "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             }
