@@ -240,7 +240,7 @@ namespace CaseExecutiveActuator.Tool
             }
             if(yourSouce.Length>=yourStrStart+yourStrLen)
             {
-                yourSouce.Substring(yourStrStart, yourStrLen);
+                return yourSouce.Substring(yourStrStart, yourStrLen);
             }
             return null;
         }
