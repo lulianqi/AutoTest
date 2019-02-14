@@ -240,6 +240,10 @@ namespace CaseExecutiveActuator.Tool
             }
             if(yourSouce.Length>=yourStrStart+yourStrLen)
             {
+                if (yourStrLen == 0)
+                {
+                    return yourSouce.Remove(0, yourStrStart);
+                }
                 return yourSouce.Substring(yourStrStart, yourStrLen);
             }
             return null;
@@ -286,8 +290,8 @@ namespace CaseExecutiveActuator.Tool
                 {
                     int tempEnd = tempPickStr.IndexOf(yourStrEnd);
                     tempPickStr = tempPickStr.Remove(tempEnd);
+                    return tempPickStr;
                 }
-                return tempPickStr;
             }
             return null;
         }

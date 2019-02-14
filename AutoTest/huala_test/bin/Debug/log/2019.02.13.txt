@@ -1,0 +1,8 @@
+-------------------------------------------------------
+2019/2/13 17:09:26
+指定的值含有无效的 CRLF 字符。
+参数名: value
+   在 System.Net.WebHeaderCollection.CheckBadChars(String name, Boolean isHeaderValue)
+   在 System.Net.WebHeaderCollection.Add(String name, String value)
+   在 MyCommonHelper.NetHelper.MyWebTool.HttpHelper.AddHttpHeads(HttpWebRequest httpWebRequest, List`1 heads) 位置 f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 127
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, Boolean isAntoCookie, String saveFileName, ManualResetEvent manualResetEvent, HttpTimeLine timeline) 位置 f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 381

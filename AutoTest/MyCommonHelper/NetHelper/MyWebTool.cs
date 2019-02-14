@@ -244,7 +244,7 @@ namespace MyCommonHelper.NetHelper
             /// <summary>
             /// i will Send Data 
             /// </summary>
-            /// <param name="url"> url </param>
+            /// <param name="url"> url [http://,https:// ,ftp:// ,file:// ]</param>
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <returns>back </returns>
@@ -256,7 +256,7 @@ namespace MyCommonHelper.NetHelper
             /// <summary>
             /// i will Send Data with Get
             /// </summary>
-            /// <param name="url">url</param>
+            /// <param name="url">url [http://,https:// ,ftp:// ,file:// ]</param>
             /// <returns>back</returns>
             public string SendData(string url)
             {
@@ -266,7 +266,7 @@ namespace MyCommonHelper.NetHelper
              /// <summary>
             /// i will Send Data (you can put Head in Request)
             /// </summary>
-            /// <param name="url"> url </param>
+            /// <param name="url">url [http://,https:// ,ftp:// ,file:// ] </param>
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
@@ -312,7 +312,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="data"> param if method is not POST it will add to the url (if[GET].. url+?+data / if[PUT]or[POST] it will in body})</param>
             /// <param name="method">GET/POST</param>
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
-            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</isAntoCookie>
+            /// <param name="isAntoCookie">is use static CookieContainer （是否使用默认CookieContainer管理cookie，优先级高于withDefaultCookieContainer）</param>
             /// <param name="saveFileName">save your response as file （if not need set it null）</param>
             /// <param name="manualResetEvent">ManualResetEvent 并发集合点 （if not need set it null）</param>
             /// <returns>back</returns>
@@ -550,7 +550,7 @@ namespace MyCommonHelper.NetHelper
             /// <param name="url">url</param>
             /// <param name="heads">heads</param>
             /// <param name="saveFileName">save File path</param>
-            public void DownloadFile(string url, List<KeyValuePair<string, string>> heads, string saveFileName)
+            public static void DownloadFile(string url, List<KeyValuePair<string, string>> heads, string saveFileName)
             {
                 using (WebClient client = new WebClient())
                 {
@@ -564,7 +564,7 @@ namespace MyCommonHelper.NetHelper
             /// </summary>
             /// <param name="url">url</param>
             /// <param name="saveFileName">save File path</param>
-            public void DownloadFile(string url, string saveFileName)
+            public static void DownloadFile(string url, string saveFileName)
             {
                 using (WebClient client = new WebClient())
                 {

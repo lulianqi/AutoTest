@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 
@@ -53,7 +54,11 @@ namespace huala_test
         static void Main(string[] args)
         {
             Console.WriteLine("any key to start");
-            var xx = System.Text.RegularExpressions.Regex.Match(@"/**/jQuery110206968683307627757_1548318672771({""status"":""lijie"",""t"":""1548329456000"",""set_cache_time"":"""",""data"":[]})",@"""status"":"".*?""");
+            Console.ReadLine();
+            byte[] tempBytes = MyCommonHelper.EncryptionHelper.MyRSA.Encrypt(Encoding.UTF8.GetBytes("9999"), Convert.FromBase64String("ALeCvfr7nJaqOxsGU30RE7De2C/WCsIQlCKQO+zMMMJ/8ANJbsndk4ZFFlaFa4A6lBEPDxFL4NfVtCupTJmKzDF33FPhaNrRgZYJNxRz38k2L/TVVFIYFxPaNDJlSjmAQ19tf35AUr2ZBNqnkR8cSRbYcoxNTaAKX2jS5ENL8QSn"), Convert.FromBase64String("AQAB"));
+            Console.WriteLine(Convert.ToBase64String(tempBytes));
+            System.Diagnostics.Debug.WriteLine(System.Web.HttpUtility.UrlEncode(Convert.ToBase64String(tempBytes)));
+            LoginBaiwandian("15158155511", "9999");
             Console.ReadLine();
             AnalysisGbCode();
             Console.WriteLine("any key to start");
@@ -76,6 +81,61 @@ namespace huala_test
             //TestForAllInOneInterface();
             Console.WriteLine("any key to exit");
             Console.ReadLine();
+        }
+
+        private static void LoginBaiwandian(string name,string pwd)
+        {
+            myHttp.withDefaultCookieContainer = true;
+            myHttp.showResponseHeads=true;
+            string tempHost = "ecom-qa.baiwandian.cn";
+            string tempRequest;
+            string tempToken;
+            tempRequest = myHttp.SendData(string.Format(@"http://{0}/xinyunlian-weixin-ecom/wx/login.jhtml", tempHost));
+            Console.WriteLine(tempRequest);
+            //Set-Cookie: token=aa62a95c-ca89-4ab8-a7ee-fd9561055213;path=/
+            tempToken = PickStrParameter("token=", ";path=/", tempRequest);
+            if (tempToken == null) 
+            {
+                Console.WriteLine("can not find token");
+                return;
+            }
+            tempRequest = myHttp.SendData(string.Format(@"http://{0}/xinyunlian-weixin-ecom/common/public_key.jhtml?_={1}", tempHost, (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000), null, "GET", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("token",tempToken) });
+            Console.WriteLine(tempRequest);
+            string tempExponent = PickStrParameter("\"exponent\":\"", "\"", tempRequest);
+            string tempModulus = PickStrParameter("\"modulus\":\"", "\",", tempRequest);
+            if(tempExponent==null || tempModulus==null)
+            {
+                Console.WriteLine("can not find public key");
+                return;
+            }
+            byte[] keyModulus =  Convert.FromBase64String(tempModulus);
+            //byte[] keyModulus_ = new byte[keyModulus.Length - 1];
+            //Array.Copy(keyModulus, 1, keyModulus_, 0, keyModulus.Length - 1);
+            //keyModulus = keyModulus_;
+            //BigInteger.Parse()
+            //Array.Reverse(keyModulus);
+            byte[] tempPwdBytes = MyCommonHelper.EncryptionHelper.MyRSA.Encrypt(Encoding.UTF8.GetBytes("9999"), keyModulus, Convert.FromBase64String(tempExponent));
+            //Array.Reverse(tempPwdBytes);
+            string tempPwd = System.Web.HttpUtility.UrlEncode(Convert.ToBase64String(tempPwdBytes));
+            tempRequest = myHttp.SendData(string.Format(@"http://{0}/xinyunlian-weixin-ecom/wx/login/submit.jhtml", tempHost), string.Format("username=15158155511&enPassword={0}&sn=&agentName=", tempPwd), "POST", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("token", tempToken), new KeyValuePair<string, string>("X-Requested-With", "XMLHttpRequest"), new KeyValuePair<string, string>("Content-Type", " application/x-www-form-urlencoded; charset=UTF-8") });
+            Console.WriteLine(tempRequest);
+        }
+
+        private static string PickStrParameter(string yourTarget, string yourStrEnd, string yourSouce)
+        {
+            if (yourSouce.Contains(yourTarget))
+            {
+                string tempPickStr;
+                int tempStart = yourSouce.IndexOf(yourTarget) + yourTarget.Length;
+                tempPickStr = yourSouce.Remove(0, tempStart);
+                if (tempPickStr.Contains(yourStrEnd))
+                {
+                    int tempEnd = tempPickStr.IndexOf(yourStrEnd);
+                    tempPickStr = tempPickStr.Remove(tempEnd);
+                    return tempPickStr;
+                }
+            }
+            return null;
         }
 
         private static void Sync_goods()
