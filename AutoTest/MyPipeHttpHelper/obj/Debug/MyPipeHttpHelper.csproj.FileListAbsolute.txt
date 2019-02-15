@@ -13,4 +13,3 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelpe
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.pdb
-F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.csprojResolveAssemblyReference.cache

@@ -85,12 +85,11 @@ namespace huala_test
 
         private static void LoginBaiwandian(string name,string pwd)
         {
-            myHttp.withDefaultCookieContainer = true;
-            myHttp.showResponseHeads=true;
+            myHttp.IsWithDefaultCookieContainer = true;
             string tempHost = "ecom-qa.baiwandian.cn";
             string tempRequest;
             string tempToken;
-            tempRequest = myHttp.SendData(string.Format(@"http://{0}/xinyunlian-weixin-ecom/wx/login.jhtml", tempHost));
+            tempRequest = myHttp.SendHttpRequest(string.Format(@"http://{0}/xinyunlian-weixin-ecom/wx/login.jhtml", tempHost),null,"GET",null,true,null,null).ResponseRaw;
             Console.WriteLine(tempRequest);
             //Set-Cookie: token=aa62a95c-ca89-4ab8-a7ee-fd9561055213;path=/
             tempToken = PickStrParameter("token=", ";path=/", tempRequest);
@@ -99,7 +98,7 @@ namespace huala_test
                 Console.WriteLine("can not find token");
                 return;
             }
-            tempRequest = myHttp.SendData(string.Format(@"http://{0}/xinyunlian-weixin-ecom/common/public_key.jhtml?_={1}", tempHost, (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000), null, "GET", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("token",tempToken) });
+            tempRequest = myHttp.SendHttpRequest(string.Format(@"http://{0}/xinyunlian-weixin-ecom/common/public_key.jhtml?_={1}", tempHost, (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000), null, "GET", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("token", tempToken) },true,null,null).ResponseRaw;
             Console.WriteLine(tempRequest);
             string tempExponent = PickStrParameter("\"exponent\":\"", "\"", tempRequest);
             string tempModulus = PickStrParameter("\"modulus\":\"", "\",", tempRequest);
@@ -117,7 +116,9 @@ namespace huala_test
             byte[] tempPwdBytes = MyCommonHelper.EncryptionHelper.MyRSA.Encrypt(Encoding.UTF8.GetBytes("9999"), keyModulus, Convert.FromBase64String(tempExponent));
             //Array.Reverse(tempPwdBytes);
             string tempPwd = System.Web.HttpUtility.UrlEncode(Convert.ToBase64String(tempPwdBytes));
-            tempRequest = myHttp.SendData(string.Format(@"http://{0}/xinyunlian-weixin-ecom/wx/login/submit.jhtml", tempHost), string.Format("username=15158155511&enPassword={0}&sn=&agentName=", tempPwd), "POST", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("token", tempToken), new KeyValuePair<string, string>("X-Requested-With", "XMLHttpRequest"), new KeyValuePair<string, string>("Content-Type", " application/x-www-form-urlencoded; charset=UTF-8") });
+            tempRequest = myHttp.SendHttpRequest(string.Format(@"http://{0}/xinyunlian-weixin-ecom/wx/login/submit.jhtml", tempHost), string.Format("username=15158155511&enPassword={0}&sn=&agentName=", tempPwd), "POST", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("token", tempToken), new KeyValuePair<string, string>("X-Requested-With", "XMLHttpRequest"), new KeyValuePair<string, string>("Content-Type", " application/x-www-form-urlencoded; charset=UTF-8")},true,null,null).ResponseRaw;
+            Console.WriteLine(tempRequest);
+            tempRequest = myHttp.SendHttpRequest(string.Format(@"http://{0}/xinyunlian-weixin-ecom/wx/login/submit.jhtml", tempHost), string.Format("username=15158155511&enPassword={0}&sn=&agentName=", tempPwd), "POST", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("token", tempToken), new KeyValuePair<string, string>("X-Requested-With", "XMLHttpRequest"), new KeyValuePair<string, string>("Content-Type", " application/x-www-form-urlencoded; charset=UTF-8"), new KeyValuePair<string, string>("Cookie", " test cookies") }, false, null, null).ResponseRaw;
             Console.WriteLine(tempRequest);
         }
 

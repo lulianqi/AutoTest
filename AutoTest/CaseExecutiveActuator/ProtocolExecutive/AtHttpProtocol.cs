@@ -32,6 +32,7 @@ namespace CaseExecutiveActuator.ProtocolExecutive
         public class HttpClient
         {          
             private MyWebTool.MyHttp myHttp;
+            private bool isShowRawResponse;
 
 
             public HttpClient()
@@ -41,12 +42,11 @@ namespace CaseExecutiveActuator.ProtocolExecutive
 
             public HttpClient(int yourTimeOut, bool yourIsShowResponseHeads, bool yourIsUseDefaultCookieContainer, Encoding yourRequestEncoding, Encoding yourResponseEncoding)
             {
-                myHttp = new MyWebTool.MyHttp();
-                myHttp.showResponseHeads = yourIsShowResponseHeads;
-                myHttp.withDefaultCookieContainer = yourIsUseDefaultCookieContainer;
-                myHttp.httpTimeOut = yourTimeOut;
-                myHttp.requestEncoding = yourRequestEncoding;
-                myHttp.responseEncoding = yourResponseEncoding;
+                myHttp = new MyWebTool.MyHttp(true, yourIsUseDefaultCookieContainer);
+                isShowRawResponse = yourIsShowResponseHeads;
+                myHttp.HttpTimeOut = yourTimeOut;
+                myHttp.RequestEncoding = yourRequestEncoding;
+                myHttp.ResponseEncoding = yourResponseEncoding;
             }
 
             /// <summary>
@@ -72,8 +72,9 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <returns>back </returns>
             public void SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, MyExecutionDeviceResult myEdr)
             {
-                MyWebTool.HttpTimeLine timeline = new MyWebTool.HttpTimeLine();
-                myEdr.backContent = myHttp.SendData(url, data, method, heads, myHttp.withDefaultCookieContainer, null, null, timeline);
+                MyWebTool.MyHttpResponse httpResponse = myHttp.SendHttpRequest(url, data, method, heads, myHttp.IsWithDefaultCookieContainer, null, null);
+                myEdr.backContent = isShowRawResponse ? httpResponse.ResponseRaw : httpResponse.ResponseBody;
+                MyWebTool.HttpTimeLine timeline = httpResponse.TimeLine ?? new MyWebTool.HttpTimeLine();
                 myEdr.startTime = timeline.StartTime.ToString("HH:mm:ss");
                 myEdr.requestTime = myEdr.spanTime = timeline.ElapsedTime.ToString();
             }
@@ -105,8 +106,9 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <returns>back</returns>
             public void SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, MyExecutionDeviceResult myEdr, string saveFileName)
             {
-                MyWebTool.HttpTimeLine timeline = new MyWebTool.HttpTimeLine();
-                myEdr.backContent = myHttp.SendData(url, data, method, heads, myHttp.withDefaultCookieContainer, saveFileName, null, timeline);
+                MyWebTool.MyHttpResponse httpResponse = myHttp.SendHttpRequest(url, data, method, heads, myHttp.IsWithDefaultCookieContainer, saveFileName, null);
+                myEdr.backContent = isShowRawResponse ? httpResponse.ResponseRaw : httpResponse.ResponseBody;
+                MyWebTool.HttpTimeLine timeline = httpResponse.TimeLine ?? new MyWebTool.HttpTimeLine();
                 myEdr.startTime = timeline.StartTime.ToString("HH:mm:ss");
                 myEdr.requestTime = myEdr.spanTime = timeline.ElapsedTime.ToString();
             }
@@ -126,16 +128,18 @@ namespace CaseExecutiveActuator.ProtocolExecutive
             /// <returns>back</returns>
             public void HttpPostData(string url, int timeOut, string name, string filename, bool isFile, string filePath, string bodyParameter, MyExecutionDeviceResult myEdr)
             {
-                MyWebTool.HttpTimeLine timeline = new MyWebTool.HttpTimeLine();
-                myEdr.backContent = myHttp.HttpPostData(url, null, myHttp.withDefaultCookieContainer, null, new List<MyWebTool.HttpMultipartDate>() { new MyWebTool.HttpMultipartDate() }, bodyParameter, null, null, timeline);
+                MyWebTool.MyHttpResponse httpResponse = myHttp.SendMultipartRequest(url, null, myHttp.IsWithDefaultCookieContainer, null, new List<MyWebTool.HttpMultipartDate>() { new MyWebTool.HttpMultipartDate(name,filename,null,isFile,filePath) }, bodyParameter, null, null, null);
+                myEdr.backContent = isShowRawResponse ? httpResponse.ResponseRaw : httpResponse.ResponseBody;
+                MyWebTool.HttpTimeLine timeline = httpResponse.TimeLine ?? new MyWebTool.HttpTimeLine();
                 myEdr.startTime = timeline.StartTime.ToString("HH:mm:ss");
                 myEdr.requestTime = myEdr.spanTime = timeline.ElapsedTime.ToString();
             }
 
             public void HttpPostData(string url, List<KeyValuePair<string, string>> heads, string bodyData, List<MyWebTool.HttpMultipartDate> multipartDateList, string bodyMultipartParameter, int timeOut, Encoding yourBodyEncoding, MyExecutionDeviceResult myEdr)
             {
-                MyWebTool.HttpTimeLine timeline = new MyWebTool.HttpTimeLine();
-                myEdr.backContent = myHttp.HttpPostData(url, heads, myHttp.withDefaultCookieContainer, bodyData, multipartDateList, bodyMultipartParameter, yourBodyEncoding,null, timeline);
+                MyWebTool.MyHttpResponse httpResponse = myHttp.SendMultipartRequest(url, heads, myHttp.IsWithDefaultCookieContainer, bodyData, multipartDateList, bodyMultipartParameter, yourBodyEncoding, null, null);
+                myEdr.backContent = isShowRawResponse ? httpResponse.ResponseRaw : httpResponse.ResponseBody;
+                MyWebTool.HttpTimeLine timeline = httpResponse.TimeLine ?? new MyWebTool.HttpTimeLine();
                 myEdr.startTime = timeline.StartTime.ToString("HH:mm:ss");
                 myEdr.requestTime = myEdr.spanTime = timeline.ElapsedTime.ToString();
             }

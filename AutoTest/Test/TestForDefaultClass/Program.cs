@@ -194,11 +194,8 @@ namespace TestForDefaultClass
             Console.WriteLine(myHttp.SendData("https://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
             Console.WriteLine(myHttp.SendData("https://pv.sohu.com/cityjson?ie=utf-8", null, "POST", null, @"D:\shou.txt"));
             Console.ReadLine();
-            myHttp.showResponseHeads = true;
             Console.WriteLine(myHttp.SendData("http://www.baidu.com", null, "Get", null, @"D:\baidu.txt"));
             Console.ReadLine();
-            myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", "a=1&b=2&c=3");
-            myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", 10000, "name", "filenmae", false, "testdata", null);
             List<MyWebTool.HttpMultipartDate> ntds = new List<MyWebTool.HttpMultipartDate>();
             List<KeyValuePair<string, string>> heads = new List<KeyValuePair<string, string>>();
             heads.Add(new KeyValuePair<string, string>("Hostx", "HttpPostData"));
@@ -214,7 +211,6 @@ namespace TestForDefaultClass
             Console.WriteLine(myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", null, null, ntds, null, null));
             Console.WriteLine(myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", Encoding.UTF8));
             Console.ReadLine();
-            myHttp.showResponseHeads = true;
             Console.WriteLine(myHttp.SendData("http://pv.sohu.com/cityjson?ie=utf-8", null, "Get"));
             Console.WriteLine(myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", heads, "body", ntds, "a=1&b=2", Encoding.UTF8));
             Console.ReadLine();

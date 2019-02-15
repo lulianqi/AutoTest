@@ -61,7 +61,6 @@
     <Compile Include="MyExtensionMethods.cs" />
     <Compile Include="NetHelper\MyNetConfig.cs" />
     <Compile Include="NetHelper\MySerialPort.cs" />
-    <Compile Include="MyShareData.cs" />
     <Compile Include="NetHelper\MySocket.cs" />
     <Compile Include="NetHelper\MyWebTool.cs" />
     <Compile Include="MyWindowsCmd.cs" />

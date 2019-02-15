@@ -18,7 +18,8 @@ namespace DemoForMyHelper
             //DemoForActionMQ.RunTest();
             //new DemoForMySocket().StartTcp();
             //new DemoForMySerialPort().MySerialPortStart();
-            DemoForMyCommonHelper.DotestForMyhttp();
+            DemoForMyCommonHelper.DotestForMyhttp2();
+            Console.ReadKey();
             new DemoForMyTelnet().Strat();
             Console.WriteLine("end of demo");
             Console.ReadKey();

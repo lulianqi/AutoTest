@@ -38,11 +38,24 @@ namespace DemoForMyHelper
             hml.Add(new MyWebTool.HttpMultipartDate("multipart name", null ,"comtenttype", false, "test data"));
 
             myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, "body data", hml, null, null);
-
             myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, "body data", hml, "a=1&b=2&c=4", null);
             hml.Add(new MyWebTool.HttpMultipartDate("multipart name", "file name", "comtenttype", true, @"D:\shou1.txt"));
 
             myHttp.HttpPostData("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, "body data", hml, "a=1&b=2&c=4", null);
+        }
+
+        public static void DotestForMyhttp2()
+        {
+            MyWebTool.MyHttp myHttp = new MyWebTool.MyHttp(false, true);
+
+            List<MyWebTool.HttpMultipartDate> hml = new List<MyWebTool.HttpMultipartDate>();
+            hml.Add(new MyWebTool.HttpMultipartDate("multipart name", "file name", null, false, "test data"));
+            hml.Add(new MyWebTool.HttpMultipartDate("multipart name", null, "comtenttype", false, "test data"));
+
+            Console.WriteLine(myHttp.SendMultipartRequest("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, true, "body data", hml, null, null,null, null).ResponseBody);
+            Console.WriteLine(myHttp.SendMultipartRequest("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, true, "body data", hml, "a=1&b=2&c=4", null, null, null).ResponseRaw);
+            hml.Add(new MyWebTool.HttpMultipartDate("multipart name", "file name", "comtenttype", true, @"D:\shou1.txt"));
+            Console.WriteLine(myHttp.SendMultipartRequest("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, true, "body data", hml, "a=1&b=2&c=4", null, null, null).ResponseBody);
         }
     }
 }

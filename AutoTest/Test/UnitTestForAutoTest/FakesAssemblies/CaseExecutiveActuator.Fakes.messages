@@ -13,13 +13,6 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecuti
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseAction 生成存根: 类型是一个值类型。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseExpectType 生成存根: 类型是一个值类型。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.ParameterizationContentEncodingType 生成存根: 类型是一个值类型。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataSourceCsv 生成存根: 类型是一个值类型。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataIndex 生成存根: 类型是一个值类型。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataStrIndex 生成存根: 类型是一个值类型。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataLong 生成存根: 类型是一个值类型。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataRandomStr 生成存根: 类型是一个值类型。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataNowTime 生成存根: 类型是一个值类型。
-F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.MyStaticDataList 生成存根: 类型是一个值类型。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.ExportMefAssembly 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseMefHelper.MyExtendProtocolDriver 生成存根: 类型对 exported or assembly(CaseExecutiveActuator.Fakes) 不可见。
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\UnitTestForAutoTest\Fakes\CaseExecutiveActuator.fakes : warning : 无法为 CaseExecutiveActuator.CaseActuator.delegateQueueChangeEventHandler 生成存根: 类型已密封。

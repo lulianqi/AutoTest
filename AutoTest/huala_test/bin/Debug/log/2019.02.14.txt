@@ -1,0 +1,6 @@
+-------------------------------------------------------
+2019/2/14 17:55:57
+流不可读。
+   在 System.IO.StreamReader..ctor(Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen)
+   在 System.IO.StreamReader..ctor(Stream stream, Encoding encoding)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendData(String url, String data, String method, List`1 heads, Boolean isAntoCookie, String saveFileName, ManualResetEvent manualResetEvent, HttpTimeLine timeline) 位置 f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 526

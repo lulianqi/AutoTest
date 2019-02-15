@@ -18,3 +18,4 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommo
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache
+F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache

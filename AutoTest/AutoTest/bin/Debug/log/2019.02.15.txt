@@ -1,0 +1,18 @@
+-------------------------------------------------------
+2019/2/15 14:30:01
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2019/2/15 14:33:17
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
+-------------------------------------------------------
+2019/2/15 14:50:09
+ErrorFile:f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MySocket.cs
+ErrorLine:162
+
+由于目标计算机积极拒绝，无法连接。 192.168.78.110:60000
