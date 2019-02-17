@@ -55,9 +55,11 @@ namespace huala_test
         {
             Console.WriteLine("any key to start");
             Console.ReadLine();
+            var xx = MyCommonHelper.EncryptionHelper.MyRSA.VerifyPwdData(@"b1FtfA/sGjCCwC/hQJ/z023hdkK1I3dADHKoc30Pca23kFEV+sTSb+Gg3nl/fpAveO3n6fCR4kk1voKGkqV5+Yt1PIcamVawpR4N31hUadOCrF2OjfN93e35Ls1HGEjwMPIgwMkHRLfxfiiYyTZcQvsHW0afBgLJipImCyFRYxk=", @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDC7kw8r6tq43pwApYvkJ5laljaN9BZb21TAIfT/vexbobzH7Q8SUdP5uDPXEBKzOjx2L28y7Xs1d9v3tdPfKI2LR7PAzWBmDMn8riHrDDNpUpJnlAGUqJG9ooPn8j7YNpcxCa1iybOlc2kEhmJn5uwoanQq+CA6agNkqly2H4j6wIDAQAB");
             byte[] tempBytes = MyCommonHelper.EncryptionHelper.MyRSA.Encrypt(Encoding.UTF8.GetBytes("9999"), Convert.FromBase64String("ALeCvfr7nJaqOxsGU30RE7De2C/WCsIQlCKQO+zMMMJ/8ANJbsndk4ZFFlaFa4A6lBEPDxFL4NfVtCupTJmKzDF33FPhaNrRgZYJNxRz38k2L/TVVFIYFxPaNDJlSjmAQ19tf35AUr2ZBNqnkR8cSRbYcoxNTaAKX2jS5ENL8QSn"), Convert.FromBase64String("AQAB"));
             Console.WriteLine(Convert.ToBase64String(tempBytes));
             System.Diagnostics.Debug.WriteLine(System.Web.HttpUtility.UrlEncode(Convert.ToBase64String(tempBytes)));
+            Console.ReadLine();
             LoginBaiwandian("15158155511", "9999");
             Console.ReadLine();
             AnalysisGbCode();
