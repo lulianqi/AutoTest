@@ -109,7 +109,7 @@ namespace CaseExecutiveActuator
                 {
                     if (csvPosition.Length == 2)
                     {
-                        return GetDataVaule(csvPosition[0], csvPosition[1]);
+                        return GetDataVaule(csvPosition[1], csvPosition[0]);
                     }
                 }
             }
@@ -130,7 +130,7 @@ namespace CaseExecutiveActuator
 
         public string DataCurrent()
         {
-            //不需要检查 Index ，索引在内部操作，不可能越界
+            //不需要检查 Index ，索引在内部操作，不可能越界  , 内部取值先定位到行再定位到列， 而外部XY坐标系是先X（列号）再Y（行号），需要注意是正好相反的（vauleAddress 使用坐标系）
             return csvData[nowRowIndex][nowColumnIndex] ?? "";
         }
 
