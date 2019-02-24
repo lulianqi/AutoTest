@@ -171,21 +171,34 @@ namespace CaseExecutiveActuator
         /// <summary>
         ///  设置源数据（使用|分割数据地址及数据值，如果以|开头则表示设置当前地址的值，不含有|的数据也表示当前值）
         /// </summary>
-        /// <param name="expectData">数据地址及数据内容字符串</param>
+        /// <param name="ExpressionData">数据地址及数据内容字符串</param>
         /// <returns>是否完成</returns>
+        public bool DataExpressionSet(string ExpressionData)
+        {
+            if (ExpressionData != null)
+            {
+                int splitIndex = ExpressionData.IndexOf('|');
+                if (splitIndex > 0)
+                {
+                    return DataSet(ExpressionData.Substring(0, splitIndex), ExpressionData.Remove(0, splitIndex + 1));
+                }
+                else if (splitIndex == 0)
+                {
+                    return DataSet(ExpressionData.Remove(0, 1));
+                }
+                else
+                {
+                    return DataSet(ExpressionData);
+                }
+            }
+            return false;
+        }
+
         public bool DataSet(string expectData)
         {
             if (expectData != null)
             {
-                int splitIndex = expectData.IndexOf('|');
-                if (splitIndex > 0)
-                {
-                    return DataSet(expectData.Substring(0, splitIndex), expectData.Remove(0, splitIndex) + 1);
-                }
-                else
-                {
-                    csvData[nowRowIndex][nowColumnIndex] = expectData;
-                }
+                csvData[nowRowIndex][nowColumnIndex] = expectData;
                 return true;
             }
             return false;
