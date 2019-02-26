@@ -1,0 +1,16 @@
+-------------------------------------------------------
+2019/2/26 19:48:08
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 828
+-------------------------------------------------------
+2019/2/26 21:05:29
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 f:\file\Code\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830

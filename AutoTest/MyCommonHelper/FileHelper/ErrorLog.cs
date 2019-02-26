@@ -73,7 +73,7 @@ namespace MyCommonHelper.FileHelper
         {
             if (isStart)
             {
-                closeLog();
+                CloseLog();
                 sw.Close();
                 fs.Close();
                 isStart = false;
@@ -103,7 +103,7 @@ namespace MyCommonHelper.FileHelper
         /// <summary>
         /// here i will save the log not handle 
         /// </summary>
-        private static void savaUnHandleLogs()
+        private static void SavaUnHandleLogs()
         {
             if (!isStart)
             {
@@ -137,7 +137,7 @@ namespace MyCommonHelper.FileHelper
             {
                 return;
             }
-            savaUnHandleLogs();
+            SavaUnHandleLogs();
             if (isUsing == false)
             {
                 isUsing = true;
@@ -161,7 +161,7 @@ namespace MyCommonHelper.FileHelper
             {
                 return;
             }
-            savaUnHandleLogs();
+            SavaUnHandleLogs();
             if (isUsing == false)
             {
                 isUsing = true;
@@ -183,9 +183,9 @@ namespace MyCommonHelper.FileHelper
         /// <summary>
         /// when you close your application you can call me to deal with the log you not put in the file 
         /// </summary>
-        public static void closeLog()
+        public static void CloseLog()
         {
-            savaUnHandleLogs();
+            SavaUnHandleLogs();
             Stop();
         }
     }
