@@ -5,6 +5,7 @@ using System.Text;
 using MyCommonHelper.EncryptionHelper;
 using MyCommonHelper;
 using MyCommonHelper.NetHelper;
+using MyCommonHelper.FileHelper;
 
 namespace DemoForMyHelper
 {
@@ -56,6 +57,14 @@ namespace DemoForMyHelper
             Console.WriteLine(myHttp.SendMultipartRequest("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, true, "body data", hml, "a=1&b=2&c=4", null, null, null).ResponseRaw);
             hml.Add(new MyWebTool.HttpMultipartDate("multipart name", "file name", "comtenttype", true, @"D:\shou1.txt"));
             Console.WriteLine(myHttp.SendMultipartRequest("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, true, "body data", hml, "a=1&b=2&c=4", null, null, null).ResponseBody);
+        }
+
+        public static void TestForCsv()
+        {
+            CsvFileHelper csv = new CsvFileHelper(null,"sd,dd,f,,\r\nsd,dd\r\n");
+            CsvFileHelper csv2 = new CsvFileHelper(null,"sd,dd,f,,\"sd\r\n\"\"\r\ndd,ee\",ss\r\ndddd,dddd\r\n");
+            var v1 = csv.GetListCsvData();
+            var v2 = csv2.GetListCsvData();
         }
     }
 }

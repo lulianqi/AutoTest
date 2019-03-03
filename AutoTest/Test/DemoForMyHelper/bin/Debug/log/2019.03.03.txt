@@ -1,0 +1,91 @@
+-------------------------------------------------------
+2019/3/3 21:58:57
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 22:00:36
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 22:14:19
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 22:28:18
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 22:51:27
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 22:56:29
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 22:58:27
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 23:12:04
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 23:13:56
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 23:15:15
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 23:15:41
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 23:17:39
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
+-------------------------------------------------------
+2019/3/3 23:19:36
+未能找到文件“D:\shou1.txt”。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
+   在 MyCommonHelper.NetHelper.MyWebTool.MyHttp.SendMultipartRequest(String url, List`1 heads, Boolean isAntoCookie, String bodyData, List`1 multipartDateList, String bodyMultipartParameter, Encoding yourBodyEncoding, String saveFileName, ManualResetEvent manualResetEvent) 位置 d:\my\GitHub\AutoTest\AutoTest\MyCommonHelper\NetHelper\MyWebTool.cs:行号 830
