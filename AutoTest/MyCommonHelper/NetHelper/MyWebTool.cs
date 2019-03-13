@@ -200,6 +200,9 @@ namespace MyCommonHelper.NetHelper
             }
         }
 
+        /// <summary>
+        /// 使用前请先查看ErrorMes是否有错误信息
+        /// </summary>
         public class MyHttpResponse
         {
             private int statusCode = -99;
@@ -263,6 +266,9 @@ namespace MyCommonHelper.NetHelper
                 }
             }
 
+            /// <summary>
+            /// 获取Response Body（如果返回null则表示请求未发起，错误原因通过ErrorMes查看）
+            /// </summary>
             public string ResponseBody
             {
                 get
@@ -274,10 +280,18 @@ namespace MyCommonHelper.NetHelper
                     return responseBody;
                 }
             }
+
+            /// <summary>
+            /// 获取Response Raw格式的报文（如果返回null则表示请求未发起，错误原因通过ErrorMes查看）
+            /// </summary>
             public string ResponseRaw
             {
                 get
                 {
+                    if (errorMes != null)
+                    {
+                        return null;
+                    }
                     if (responseRaw == null && HttpResponse != null)
                     {
                         responseRaw = string.Format("{0}\r\n{1}{2}", ResponseLine ?? "NULL", ResponseHeads.ToString(), ResponseBody ?? "NULL");
@@ -453,12 +467,27 @@ namespace MyCommonHelper.NetHelper
                 //ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(
                 //    (sender, certificate, chain, sslPolicyErrors) => { return true; });
                 ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
-                //Console.WriteLine(ServicePointManager.DefaultConnectionLimit); //默认最大并发数有限，可以使用System.Net.ServicePointManager.DefaultConnectionLimit重设该值
-                System.Net.ServicePointManager.DefaultConnectionLimit = 2000;
+                System.Net.ServicePointManager.DefaultConnectionLimit = 2000; //默认最大并发数有限，可以使用System.Net.ServicePointManager.DefaultConnectionLimit重设该值
+            }
+
+            private static bool enableServerCertificateValidation = false;
+            public static bool EnableServerCertificateValidation
+            {
+                get { return enableServerCertificateValidation; }
+                set
+                {
+                    enableServerCertificateValidation = value;
+                    if (enableServerCertificateValidation) { ServicePointManager.ServerCertificateValidationCallback = null; }
+                    else { ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback; }
+                }
             }
 
             private static bool MyRemoteCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
             {
+                if (enableServerCertificateValidation && sslPolicyErrors != System.Net.Security.SslPolicyErrors.None)
+                {
+                    return false;
+                }
                 return true;
             }
 
@@ -559,10 +588,11 @@ namespace MyCommonHelper.NetHelper
                 return SendHttpRequest(url, data, method, heads, isAntoCookie, saveFileName, manualResetEvent).ResponseBody;
             }
 
+            // [ <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag> ]
             /// <summary>
             /// Send Http Request 
             /// </summary>
-            /// <param name="url">url (must start with protocol scheme like [http://,https:// ,ftp:// ,file:// ]) [ <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag> ]</param>
+            /// <param name="url">url (must start with protocol scheme like [http://,https:// ,ftp:// ,file:// ])</param> 
             /// <param name="queryStr"> queryStr will add to the url (like url+?+data )  if method is not POST or PUT queryStr will add in request entity as body</param>
             /// <param name="method">GET/POST/PUT/HEAD/TRACE/OPTIONS/DELETE</param>
             /// <param name="heads">http Head list （if not need set it null）(header 名是不区分大小写的)</param>
