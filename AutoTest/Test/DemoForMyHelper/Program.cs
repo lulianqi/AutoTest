@@ -19,7 +19,7 @@ namespace DemoForMyHelper
             //new DemoForMySocket().StartTcp();
             //new DemoForMySerialPort().MySerialPortStart();
             DemoForMyCommonHelper.TestForCsv();
-            DemoForMyCommonHelper.DotestForMyhttp2();
+            DemoForMyCommonHelper.DotestForMyhttps();
             Console.ReadKey();
             new DemoForMyTelnet().Strat();
             Console.WriteLine("end of demo");

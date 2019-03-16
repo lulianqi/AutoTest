@@ -59,6 +59,18 @@ namespace DemoForMyHelper
             Console.WriteLine(myHttp.SendMultipartRequest("http://pv.sohu.com/cityjson?ie=utf-8", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("name", "DotestForMyhttp") }, true, "body data", hml, "a=1&b=2&c=4", null, null, null).ResponseBody);
         }
 
+        public static void DotestForMyhttps()
+        {
+            MyWebTool.MyHttp.EnableServerCertificateValidation = true;
+            MyWebTool.MyHttp myHttp = new MyWebTool.MyHttp(false, true);
+            //https://iuc.oppomobile.com/account/user-info
+            MyCommonHelper.NetHelper.MyWebTool.MyHttpResponse myHttpResponse = myHttp.SendHttpRequest(@"https://lijie.com/hello", null, "GET", null, false, null, null);
+            Console.WriteLine(myHttpResponse.ResponseRaw ?? myHttpResponse.ErrorMes);
+            myHttpResponse = myHttp.SendHttpRequest(@"https://iuc.oppomobile.com/account/user-info", null, "GET", null, false, null, null);
+            Console.WriteLine(myHttpResponse.ResponseRaw ?? myHttpResponse.ErrorMes);
+            //Console.WriteLine(myHttp.SendData(@"https://api.weixin.qq.com/sns/oauth2/access_token?code=061v6AGK1pOTj40nF0EK1LNwGK1v6AGV&grant_type=authorization_code&appid=wx01f2ab6d9e41169a&secret=1d2f3f1bdd6b2790b48ae64c8bc9bfdb"));
+        }
+
         public static void TestForCsv()
         {
             CsvFileHelper csv = new CsvFileHelper(null,"sd,dd,f,,\r\nsd,dd\r\n");
