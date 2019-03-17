@@ -569,7 +569,7 @@ namespace MyCommonHelper.NetHelper
             /// <returns>back data</returns>
             public string SendData(string url, string data, string method, List<KeyValuePair<string, string>> heads, string saveFileName, System.Threading.ManualResetEvent manualResetEvent)
             {
-                return SendData(url, data, method, heads, withDefaultCookieContainer, saveFileName, null);
+                return SendData(url, data, method, heads, withDefaultCookieContainer, saveFileName, manualResetEvent);
             }
 
             /// <summary>

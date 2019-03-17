@@ -1,0 +1,8 @@
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.csprojResolveAssemblyReference.cache
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\TestForHttpClient.exe.config
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\TestForHttpClient.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\TestForHttpClient.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.exe
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.pdb
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\MyCommonHelper.dll
+D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\MyCommonHelper.pdb
