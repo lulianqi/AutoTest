@@ -20,3 +20,12 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\SharpPlink-x64.svnEx
 F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csprojResolveAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\MySvnHelper.dll
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\MySvnHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\SharpSvn.dll
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\bin\Debug\SharpPlink-x64.svnExe
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.dll
+G:\GitHub\AutoTest\AutoTest\MySvnHelper\obj\Debug\MySvnHelper.pdb

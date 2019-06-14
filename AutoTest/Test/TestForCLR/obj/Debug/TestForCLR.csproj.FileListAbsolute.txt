@@ -12,3 +12,8 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForCLR\bin\Debug\TestForCLR.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForCLR\obj\Debug\TestForCLR.pdb

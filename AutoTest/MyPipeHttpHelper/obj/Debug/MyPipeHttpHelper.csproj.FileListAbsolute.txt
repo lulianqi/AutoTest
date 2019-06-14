@@ -13,3 +13,8 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelpe
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.dll
+G:\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\bin\Debug\MyPipeHttpHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.dll
+G:\GitHub\AutoTest\AutoTest\MyPipeHttpHelper\obj\Debug\MyPipeHttpHelper.pdb

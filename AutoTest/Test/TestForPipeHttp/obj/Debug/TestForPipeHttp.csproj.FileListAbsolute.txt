@@ -17,3 +17,10 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.csprojResolveAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.exe.config
+G:\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\bin\Debug\TestForPipeHttp.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForPipeHttp\obj\Debug\TestForPipeHttp.pdb

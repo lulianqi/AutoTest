@@ -19,3 +19,12 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestFor
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojResolveAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\TestForDefaultClass.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper.dll
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\bin\Debug\MyCommonHelper.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForDefaultClass\obj\Debug\TestForDefaultClass.pdb

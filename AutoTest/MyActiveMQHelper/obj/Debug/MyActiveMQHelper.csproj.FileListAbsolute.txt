@@ -14,3 +14,10 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelpe
 F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.csprojResolveAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelper.dll
+G:\GitHub\AutoTest\AutoTest\MyActiveMQHelper\bin\Debug\MyActiveMQHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.dll
+G:\GitHub\AutoTest\AutoTest\MyActiveMQHelper\obj\Debug\MyActiveMQHelper.pdb

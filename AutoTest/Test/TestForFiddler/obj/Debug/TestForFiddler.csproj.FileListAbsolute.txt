@@ -11,3 +11,8 @@ D:\my\GitHub\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.exe
 D:\my\GitHub\AutoTest\AutoTest\TestForFiddler\bin\Debug\TestForFiddler.pdb
 D:\my\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.exe
 D:\my\GitHub\AutoTest\AutoTest\TestForFiddler\obj\Debug\TestForFiddler.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForFiddler\bin\Debug\TestForFiddler.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForFiddler\bin\Debug\TestForFiddler.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForFiddler\obj\Debug\TestForFiddler.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForFiddler\obj\Debug\TestForFiddler.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForFiddler\obj\Debug\TestForFiddler.pdb

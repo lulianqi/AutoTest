@@ -21,3 +21,12 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.csprojResolveAssemblyReference.cache
 F:\file\Code\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.dll
+G:\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MySshHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.dll
+G:\GitHub\AutoTest\AutoTest\MySshHelper\bin\Debug\MyCommonHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.dll
+G:\GitHub\AutoTest\AutoTest\MySshHelper\obj\Debug\MySshHelper.pdb

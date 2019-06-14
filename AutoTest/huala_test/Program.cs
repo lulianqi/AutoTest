@@ -51,10 +51,17 @@ namespace huala_test
             }
         }
 
+
         static void Main(string[] args)
         {
-            
+            var d = MyCommonHelper.MyBytes.HexStringToByte(" 0x11 0x12", MyCommonHelper.HexaDecimal.hex16, MyCommonHelper.ShowHexMode.spitSpace0x);
+          
+
+
             Console.WriteLine("any key to start");
+            Console.ReadLine();
+            DealFreeHttpNginxLog();
+            Console.WriteLine("DealFreeHttpNginxLog complete");
             Console.ReadLine();
             var xx = MyCommonHelper.EncryptionHelper.MyRSA.VerifyPwdData(@"b1FtfA/sGjCCwC/hQJ/z023hdkK1I3dADHKoc30Pca23kFEV+sTSb+Gg3nl/fpAveO3n6fCR4kk1voKGkqV5+Yt1PIcamVawpR4N31hUadOCrF2OjfN93e35Ls1HGEjwMPIgwMkHRLfxfiiYyTZcQvsHW0afBgLJipImCyFRYxk=", @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDC7kw8r6tq43pwApYvkJ5laljaN9BZb21TAIfT/vexbobzH7Q8SUdP5uDPXEBKzOjx2L28y7Xs1d9v3tdPfKI2LR7PAzWBmDMn8riHrDDNpUpJnlAGUqJG9ooPn8j7YNpcxCa1iybOlc2kEhmJn5uwoanQq+CA6agNkqly2H4j6wIDAQAB");
             byte[] tempBytes = MyCommonHelper.EncryptionHelper.MyRSA.Encrypt(Encoding.UTF8.GetBytes("9999"), Convert.FromBase64String("ALeCvfr7nJaqOxsGU30RE7De2C/WCsIQlCKQO+zMMMJ/8ANJbsndk4ZFFlaFa4A6lBEPDxFL4NfVtCupTJmKzDF33FPhaNrRgZYJNxRz38k2L/TVVFIYFxPaNDJlSjmAQ19tf35AUr2ZBNqnkR8cSRbYcoxNTaAKX2jS5ENL8QSn"), Convert.FromBase64String("AQAB"));
@@ -251,6 +258,41 @@ namespace huala_test
             }
 
             CsvFileHelper.SaveCsvFile(@"D:\NG\new.csv", loginList, false , new System.Text.UTF8Encoding(false));
+
+        }
+
+        private static void DealFreeHttpNginxLog()
+        {
+            StreamReader sr = new StreamReader(@"D:\UpdateCheck.log", Encoding.UTF8);
+            string tempCheckTxt = sr.ReadLine();
+            while (tempCheckTxt != null)
+            {
+                string ip, activeTime, query = null;
+                int startIndex, endIndex;
+                startIndex = tempCheckTxt.IndexOf(' ');
+                //if(startIndex<0)
+                //{
+
+                //    System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+                //    System.Diagnostics.Debug.WriteLine(tempCheckTxt);
+                //    System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+                //    continue;
+                //}
+                ip = tempCheckTxt.Substring(0, startIndex);
+                startIndex = tempCheckTxt.IndexOf('[', startIndex);
+                activeTime= tempCheckTxt.Substring(startIndex+1,20);
+
+                startIndex = tempCheckTxt.IndexOf("GET /UpdateCheck/", startIndex);
+                endIndex = tempCheckTxt.IndexOf(' ', startIndex+17);
+                query= tempCheckTxt.Substring(startIndex+17, endIndex- startIndex-17);
+
+                System.Diagnostics.Debug.WriteLine("{0} {1} {2}", ip, activeTime, query);
+                Thread.Sleep(5000);
+                //string tempRespans = myHttp.SendData(String.Format("http://192.168.79.238:5000/UpdateCheck/{0}&time={1}&ip={2}", query, activeTime,ip));
+                string tempRespans = myHttp.SendData(String.Format("http://api.lulianqi.com/UpdateCheck/{0}&time={1}&ip={2}", query, activeTime, ip));
+                Console.WriteLine(tempRespans);
+                tempCheckTxt = sr.ReadLine();
+            }
 
         }
 

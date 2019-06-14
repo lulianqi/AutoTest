@@ -196,12 +196,12 @@
             this.Controls.Add(this.richTextBox_dataContainer);
             this.Name = "DataRecordBox";
             this.Size = new System.Drawing.Size(652, 182);
+            this.Load += new System.EventHandler(this.DataRecordBox_Load);
             this.richTextBox_dataContainer.ResumeLayout(false);
             this.contextMenuStrip_RecBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_AlwaysGoBottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dataAddSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_dataAddclean)).EndInit();
-
             this.ResumeLayout(false);
 
         }

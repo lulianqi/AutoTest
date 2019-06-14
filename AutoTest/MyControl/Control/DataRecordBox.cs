@@ -63,13 +63,7 @@ namespace MyCommonControl
         /// </summary>
         private void MyInitializeComponent()
         {
-            if (mianDirectory != "DataRecord")
-            {
-                defaultDirectory = System.Windows.Forms.Application.StartupPath + string.Format("\\{0}\\AutoSave\\", mianDirectory);
-                defaultSavePath = System.Windows.Forms.Application.StartupPath + string.Format("\\{0}\\AutoSave\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt",mianDirectory);
-                usersSavePath = System.Windows.Forms.Application.StartupPath + string.Format("\\{0}\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt", mianDirectory);
-            }
-            FileService.CreateDirectory(defaultDirectory);
+           
             if(!isShowIcon)
             {
                 pictureBox_AlwaysGoBottom.Visible = false;
@@ -77,6 +71,22 @@ namespace MyCommonControl
                 pictureBox_dataAddclean.Visible = false;
             }
         }
+
+        private void DataRecordBox_Load(object sender, EventArgs e)
+        {
+            if (mianDirectory != "DataRecord")
+            {
+                defaultDirectory = System.Windows.Forms.Application.StartupPath + string.Format("\\{0}\\AutoSave\\", mianDirectory);
+                defaultSavePath = System.Windows.Forms.Application.StartupPath + string.Format("\\{0}\\AutoSave\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt", mianDirectory);
+                usersSavePath = System.Windows.Forms.Application.StartupPath + string.Format("\\{0}\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt", mianDirectory);
+            }
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) //vs设计器会执行 构造函数及Load方法，所以有些代码不需要在设计器模式下执行
+            {
+                FileService.CreateDirectory(defaultDirectory);
+            }   
+        }
+
+
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -211,9 +221,7 @@ namespace MyCommonControl
         private string mianDirectory = "DataRecord";
 
         private string defaultDirectory = System.Windows.Forms.Application.StartupPath + "\\DataRecord\\AutoSave\\";
-
         private string defaultSavePath = System.Windows.Forms.Application.StartupPath + "\\DataRecord\\AutoSave\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt";
-
         private string usersSavePath = System.Windows.Forms.Application.StartupPath + "\\DataRecord\\" + DateTime.Now.ToString("yyyy.MM.dd") + ".txt";
 
         private List<KeyValuePair<string, Color>> puaseLines = new List<KeyValuePair<string, Color>>();
@@ -587,11 +595,6 @@ namespace MyCommonControl
             base.Dispose(disposing);
         }
 
-
-       
-
-
-        
 
         /*
          * 使用API选择丢弃更新，为最佳手段

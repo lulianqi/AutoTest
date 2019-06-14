@@ -46,3 +46,17 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj
 F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csprojResolveAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.dll
+G:\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyControl.pdb
+G:\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.dll
+G:\GitHub\AutoTest\AutoTest\MyControl\bin\Debug\MyCommonHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\CBalloon.CBalloonBase.resources
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.DataRecordBox.resources
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.PlayButton.resources
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.Properties.Resources.resources
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.GenerateResource.cache
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyCommonControl.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.dll
+G:\GitHub\AutoTest\AutoTest\MyControl\obj\Debug\MyControl.pdb

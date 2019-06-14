@@ -14,3 +14,10 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csprojResolveAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.dll
+G:\GitHub\AutoTest\AutoTest\MyVoiceHelper\bin\Debug\MyVoiceHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.dll
+G:\GitHub\AutoTest\AutoTest\MyVoiceHelper\obj\Debug\MyVoiceHelper.pdb

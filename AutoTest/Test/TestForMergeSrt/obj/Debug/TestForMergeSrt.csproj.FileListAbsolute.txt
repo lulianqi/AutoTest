@@ -11,3 +11,8 @@ D:\my\GitHub\AutoTest\AutoTest\TestForMergeSrt\bin\Debug\TestForMergeSrt.exe
 D:\my\GitHub\AutoTest\AutoTest\TestForMergeSrt\bin\Debug\TestForMergeSrt.pdb
 D:\my\GitHub\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.exe
 D:\my\GitHub\AutoTest\AutoTest\TestForMergeSrt\obj\Debug\TestForMergeSrt.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForMergeSrt\bin\Debug\TestForMergeSrt.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForMergeSrt\bin\Debug\TestForMergeSrt.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForMergeSrt\obj\Debug\TestForMergeSrt.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForMergeSrt\obj\Debug\TestForMergeSrt.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForMergeSrt\obj\Debug\TestForMergeSrt.pdb

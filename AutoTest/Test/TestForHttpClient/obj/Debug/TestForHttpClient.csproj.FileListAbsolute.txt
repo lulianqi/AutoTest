@@ -6,3 +6,13 @@ D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClien
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.pdb
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\MyCommonHelper.dll
 D:\my\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\MyCommonHelper.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\TestForHttpClient.exe.config
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\TestForHttpClient.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\TestForHttpClient.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\MyCommonHelper.dll
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\bin\Debug\MyCommonHelper.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForHttpClient\obj\Debug\TestForHttpClient.pdb

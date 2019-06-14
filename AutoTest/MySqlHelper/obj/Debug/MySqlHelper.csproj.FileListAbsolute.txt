@@ -14,3 +14,10 @@ F:\file\Code\GitHub\AutoTest\AutoTest\MySqlHelper\bin\Debug\MySqlHelper.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.dll
 F:\file\Code\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.pdb
 D:\my\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.csprojResolveAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MySqlHelper\bin\Debug\MySqlHelper.dll
+G:\GitHub\AutoTest\AutoTest\MySqlHelper\bin\Debug\MySqlHelper.pdb
+G:\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.dll
+G:\GitHub\AutoTest\AutoTest\MySqlHelper\obj\Debug\MySqlHelper.pdb

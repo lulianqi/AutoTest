@@ -56,3 +56,17 @@ F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\
 F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.csproj.GenerateResource.Cache
 F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.pdb
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\bin\Debug\ShanxiHuala_Interface.exe
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\bin\Debug\ShanxiHuala_Interface.pdb
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\bin\Debug\MyCommonHelper.dll
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\bin\Debug\MyControl.dll
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\bin\Debug\MyCommonHelper.pdb
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\bin\Debug\MyControl.pdb
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.csprojAssemblyReference.cache
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.ShanxiHuala_Interface.resources
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.Properties.Resources.resources
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.csproj.GenerateResource.cache
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.csproj.CopyComplete
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.exe
+G:\GitHub\AutoTest\AutoTest\IndependentTool\ShanxiHuala_Interface\obj\Debug\ShanxiHuala_Interface.pdb

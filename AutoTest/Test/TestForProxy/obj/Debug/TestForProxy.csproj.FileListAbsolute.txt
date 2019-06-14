@@ -12,3 +12,8 @@ F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.e
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.pdb
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.exe
 F:\file\Code\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForProxy\bin\Debug\TestForProxy.pdb
+G:\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.csproj.CoreCompileInputs.cache
+G:\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.exe
+G:\GitHub\AutoTest\AutoTest\Test\TestForProxy\obj\Debug\TestForProxy.pdb
