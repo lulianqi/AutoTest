@@ -407,6 +407,7 @@ namespace MyCommonHelper
             {
                 if (src[i] == find[0])
                 {
+                    if (find.Length == 1) return i;
                     for (int m = 1; m < find.Length; m++)
                     {
                         if (src[i + m] != find[m]) break;

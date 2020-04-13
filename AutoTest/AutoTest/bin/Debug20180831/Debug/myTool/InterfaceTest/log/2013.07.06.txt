@@ -1,5 +1,0 @@
-ID:0811  StartIndex 不能小于 0。
-参数名: startIndex
-++++++++++
-ID:0811  StartIndex 不能小于 0。
-参数名: startIndex

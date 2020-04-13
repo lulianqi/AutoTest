@@ -1,7 +1,0 @@
-ID:0352  System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
-   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
-   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
-++++++++++
-ID:0352  System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
-   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
-   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)

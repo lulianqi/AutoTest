@@ -1,4 +1,0 @@
-ErrorFile: d:\my\code\Vane\AutoTest\AutoTest\AutoTest\myTool\RemoteClient.cs
-ErrorLine: 321
-正在中止线程。
-System.Runtime.Serialization

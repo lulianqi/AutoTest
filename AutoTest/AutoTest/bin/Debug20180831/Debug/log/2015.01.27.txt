@@ -1,9 +1,0 @@
-ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\myTool\mySocket.cs
-ErrorLine: 163
-套接字操作尝试一个无法连接的主机。 192.168.3.103:19990
-++++++++++++++++++++
-ErrorFile: E:\Project\VaneApi\AutoTestForVane\AutoTestForVane\AutoTestForVane\vanelife_config.cs
-ErrorLine: 363
-无法访问已释放的对象。
-对象名:“MyVaneConfig”。
-System.Windows.Forms

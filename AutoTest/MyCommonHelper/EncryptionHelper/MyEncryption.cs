@@ -168,9 +168,6 @@ namespace MyCommonHelper.EncryptionHelper
             return outBytes;
         }
 
-
-
-
         public static byte[] GenerateKey(SymmetricAlgorithmType yourType,int keySize)
         {
             byte[] outBytes;

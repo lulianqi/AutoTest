@@ -1,4 +1,0 @@
-ErrorFile: d:\my\code\Vane\AutoTest\AutoTest\AutoTest\myTool\RemoteClient.cs
-ErrorLine: 285
-消息无法在分配的超时 00:01:00 内传输。可靠通道的传输窗口中没有可用空间。分配给该操作的时间可能是更长超时的一部分。
-mscorlib

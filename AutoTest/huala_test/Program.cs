@@ -282,9 +282,9 @@ namespace huala_test
                 startIndex = tempCheckTxt.IndexOf('[', startIndex);
                 activeTime= tempCheckTxt.Substring(startIndex+1,20);
 
-                startIndex = tempCheckTxt.IndexOf("GET /UpdateCheck/", startIndex);
-                endIndex = tempCheckTxt.IndexOf(' ', startIndex+17);
-                query= tempCheckTxt.Substring(startIndex+17, endIndex- startIndex-17);
+                startIndex = tempCheckTxt.IndexOf("GET /freehttp/UpdateCheck/", startIndex);
+                endIndex = tempCheckTxt.IndexOf(' ', startIndex+26);
+                query= tempCheckTxt.Substring(startIndex+26, endIndex- startIndex-26);
 
                 System.Diagnostics.Debug.WriteLine("{0} {1} {2}", ip, activeTime, query);
                 Thread.Sleep(5000);

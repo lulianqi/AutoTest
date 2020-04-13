@@ -1,3 +1,0 @@
-ID:00017  未能找到路径“E:\Project\VaneApi\AutoTestForVane\AutoTestForVaneg\AutoTestForVane\bin\Debug\casefile\DebugCase.xml”的一部分。
-++++++++++
-ID:00017  未能找到路径“E:\Project\VaneApi\AutoTestForVane\AutoTestForVaneg\AutoTestForVane\bin\Debug\casefile\DebugCase.xml”的一部分。
