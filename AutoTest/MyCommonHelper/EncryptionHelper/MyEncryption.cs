@@ -89,10 +89,10 @@ namespace MyCommonHelper.EncryptionHelper
                 //StreamReader sr = new StreamReader(encStream);
 
                 // Read the stream as a string.
-                
-                //byte[] buffer = new byte[CypherText.Length];
-                //encStream.Read(buffer, 0, buffer.Length);
-                byte[] buffer = ms.ToArray();
+
+                byte[] buffer = new byte[CypherText.Length];
+                encStream.Read(buffer, 0, buffer.Length);
+                //byte[] buffer = ms.ToArray();
 
                 // Close the streams.
 
@@ -128,6 +128,7 @@ namespace MyCommonHelper.EncryptionHelper
                 default:
                     throw new Exception("not support this encrypt type");
             }
+            key.Key = yourKey;
             key.Mode = yourCipherMode;
             key.Padding = yourPaddingMode;
             if (key.Mode != CipherMode.ECB)
@@ -157,6 +158,7 @@ namespace MyCommonHelper.EncryptionHelper
                 default:
                     throw new Exception("not support this encrypt type");
             }
+            key.Key = yourKey;
             key.Mode = yourCipherMode;
             key.Padding = yourPaddingMode;
             if (key.Mode != CipherMode.ECB)
